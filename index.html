@@ -681,7 +681,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-story">
+<meta name="game-release" content="playtest-20261110-ch5-v34">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -6101,6 +6101,1772 @@ if (typeof module !== 'undefined') module.exports = {
   selectG6Expansion
 };
 if (typeof window !== 'undefined') window.selectG6Expansion = selectG6Expansion;
+const CH5_QUESTION_BANK = [{
+  "id": "ch5_o_postwar_01",
+  "kpId": "o_postwar",
+  "grade": 6,
+  "kind": "rank",
+  "title": "島嶼照片年表 1",
+  "params": {
+    "story": "這是虛構島嶼的照片清冊。只按標示的年份，由早到晚整理；不是每個地方都以相同順序發展。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["1958 年：漁民在海邊曬網", "1976 年：港邊新增冷凍倉庫", "1993 年：倉庫加裝電腦記錄", "2018 年：部分倉庫改作展覽館"],
+    "topLabel": "最早",
+    "bottomLabel": "最晚",
+    "hints": ["先比較年份，數字較小的在前面。不能只憑設備外觀猜年代。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:6bc93eb9047d56591cdaf39a"
+}, {
+  "id": "ch5_o_postwar_02",
+  "kpId": "o_postwar",
+  "grade": 6,
+  "kind": "rank",
+  "title": "島嶼照片年表 2",
+  "params": {
+    "story": "這是虛構島嶼的照片清冊。只按標示的年份，由早到晚整理；不是每個地方都以相同順序發展。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["1962 年：居民手工縫製布袋", "1978 年：布袋工坊買進縫紉機", "1996 年：工坊增設設計室", "2021 年：設計室開放旅客體驗"],
+    "topLabel": "最早",
+    "bottomLabel": "最晚",
+    "hints": ["先比較年份，數字較小的在前面。不能只憑設備外觀猜年代。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:7c37769a64a75ea83ce2ee95"
+}, {
+  "id": "ch5_o_postwar_03",
+  "kpId": "o_postwar",
+  "grade": 6,
+  "kind": "rank",
+  "title": "島嶼照片年表 3",
+  "params": {
+    "story": "這是虛構島嶼的照片清冊。只按標示的年份，由早到晚整理；不是每個地方都以相同順序發展。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["1956 年：小船把貨送到木棧橋", "1972 年：新碼頭開始使用", "1989 年：碼頭裝設起重機", "2016 年：老木棧橋成為步道"],
+    "topLabel": "最早",
+    "bottomLabel": "最晚",
+    "hints": ["先比較年份，數字較小的在前面。不能只憑設備外觀猜年代。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:bb2db6f20deafbdae916442f"
+}, {
+  "id": "ch5_o_postwar_04",
+  "kpId": "o_postwar",
+  "grade": 6,
+  "kind": "rank",
+  "title": "島嶼照片年表 4",
+  "params": {
+    "story": "這是虛構島嶼的照片清冊。只按標示的年份，由早到晚整理；不是每個地方都以相同順序發展。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["1965 年：街口只有一家修車鋪", "1983 年：修車鋪擴大為零件工坊", "2004 年：工坊加入電腦繪圖", "2023 年：工坊開辦修理課程"],
+    "topLabel": "最早",
+    "bottomLabel": "最晚",
+    "hints": ["先比較年份，數字較小的在前面。不能只憑設備外觀猜年代。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:5f662777f54b661bf8aea252"
+}, {
+  "id": "ch5_o_postwar_05",
+  "kpId": "o_postwar",
+  "grade": 6,
+  "kind": "rank",
+  "title": "島嶼照片年表 5",
+  "params": {
+    "story": "這是虛構島嶼的照片清冊。只按標示的年份，由早到晚整理；不是每個地方都以相同順序發展。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["1954 年：農家在田邊整理稻穀", "1974 年：村內建起碾米廠", "1998 年：米廠開始提供導覽", "2020 年：米廠加入線上預約"],
+    "topLabel": "最早",
+    "bottomLabel": "最晚",
+    "hints": ["先比較年份，數字較小的在前面。不能只憑設備外觀猜年代。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:fe2f93061f1e63719c9dabf0"
+}, {
+  "id": "ch5_o_postwar_06",
+  "kpId": "o_postwar",
+  "grade": 6,
+  "kind": "rank",
+  "title": "島嶼照片年表 6",
+  "params": {
+    "story": "這是虛構島嶼的照片清冊。只按標示的年份，由早到晚整理；不是每個地方都以相同順序發展。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["1968 年：居民用紙本登記借書", "1986 年：圖書室擴建", "2007 年：圖書室改用電腦查書", "2024 年：老借書桌放進特展"],
+    "topLabel": "最早",
+    "bottomLabel": "最晚",
+    "hints": ["先比較年份，數字較小的在前面。不能只憑設備外觀猜年代。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:d2a0177a67b798747c44e584"
+}, {
+  "id": "ch5_o_tech_01",
+  "kpId": "o_tech",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "展示資訊檢查 1",
+  "params": {
+    "story": "只依本題的條件分類：能否直接或間接認出特定的人？非個人資料也不表示可以不查其他權利就任意公開。",
+    "bins": [{
+      "id": "personal",
+      "name": "可辨認個人的資料",
+      "desc": "單獨或合起來能認出特定的人"
+    }, {
+      "id": "general",
+      "name": "本題非個人資料",
+      "desc": "本題已說明無法連結到特定的人"
+    }],
+    "cards": [{
+      "text": "阿海的姓名連同住家地址",
+      "bin": "personal"
+    }, {
+      "text": "能清楚認出小梅的生活照",
+      "bin": "personal"
+    }, {
+      "text": "不含人物或住址的公共鐘塔建材表",
+      "bin": "general"
+    }, {
+      "text": "無法連結到人的港口水深表",
+      "bin": "general"
+    }],
+    "hints": ["看資料能否連結到特定的人。遮住姓名不一定足夠；本題不要求判定是否可以刊登。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:79e1f0a355b2fef086644966"
+}, {
+  "id": "ch5_o_tech_02",
+  "kpId": "o_tech",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "展示資訊檢查 2",
+  "params": {
+    "story": "只依本題的條件分類：能否直接或間接認出特定的人？非個人資料也不表示可以不查其他權利就任意公開。",
+    "bins": [{
+      "id": "personal",
+      "name": "可辨認個人的資料",
+      "desc": "單獨或合起來能認出特定的人"
+    }, {
+      "id": "general",
+      "name": "本題非個人資料",
+      "desc": "本題已說明無法連結到特定的人"
+    }],
+    "cards": [{
+      "text": "能查到借閱人的會員編號與對照名單",
+      "bin": "personal"
+    }, {
+      "text": "能辨認本人身分的訪談錄音",
+      "bin": "personal"
+    }, {
+      "text": "沒有記錄參加者的展覽開放時段",
+      "bin": "general"
+    }, {
+      "text": "無人物也無住戶資訊的港口模型尺寸",
+      "bin": "general"
+    }],
+    "hints": ["看資料能否連結到特定的人。遮住姓名不一定足夠；本題不要求判定是否可以刊登。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:967e8eea63a0639c9662b60f"
+}, {
+  "id": "ch5_o_tech_03",
+  "kpId": "o_tech",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "展示資訊檢查 3",
+  "params": {
+    "story": "只依本題的條件分類：能否直接或間接認出特定的人？非個人資料也不表示可以不查其他權利就任意公開。",
+    "bins": [{
+      "id": "personal",
+      "name": "可辨認個人的資料",
+      "desc": "單獨或合起來能認出特定的人"
+    }, {
+      "id": "general",
+      "name": "本題非個人資料",
+      "desc": "本題已說明無法連結到特定的人"
+    }],
+    "cards": [{
+      "text": "寫著姓名的借閱簿簽名頁",
+      "bin": "personal"
+    }, {
+      "text": "能連到特定居民的聯絡電話",
+      "bin": "personal"
+    }, {
+      "text": "只有公共展廳數量的統計",
+      "bin": "general"
+    }, {
+      "text": "不含私人住處的公共步道路線說明",
+      "bin": "general"
+    }],
+    "hints": ["看資料能否連結到特定的人。遮住姓名不一定足夠；本題不要求判定是否可以刊登。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:4978119c89dc8c212a709631"
+}, {
+  "id": "ch5_o_tech_04",
+  "kpId": "o_tech",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "展示資訊檢查 4",
+  "params": {
+    "story": "只依本題的條件分類：能否直接或間接認出特定的人？非個人資料也不表示可以不查其他權利就任意公開。",
+    "bins": [{
+      "id": "personal",
+      "name": "可辨認個人的資料",
+      "desc": "單獨或合起來能認出特定的人"
+    }, {
+      "id": "general",
+      "name": "本題非個人資料",
+      "desc": "本題已說明無法連結到特定的人"
+    }],
+    "cards": [{
+      "text": "把姓名遮住，仍可看清臉的照片",
+      "bin": "personal"
+    }, {
+      "text": "可配對到特定人的學校與班級名冊",
+      "bin": "personal"
+    }, {
+      "text": "無人能被辨認的空展廳照片",
+      "bin": "general"
+    }, {
+      "text": "只記錄公共鐘塔高度的表格",
+      "bin": "general"
+    }],
+    "hints": ["看資料能否連結到特定的人。遮住姓名不一定足夠；本題不要求判定是否可以刊登。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:bff3888f76f18869ebb10c79"
+}, {
+  "id": "ch5_o_tech_05",
+  "kpId": "o_tech",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "展示資訊檢查 5",
+  "params": {
+    "story": "只依本題的條件分類：能否直接或間接認出特定的人？非個人資料也不表示可以不查其他權利就任意公開。",
+    "bins": [{
+      "id": "personal",
+      "name": "可辨認個人的資料",
+      "desc": "單獨或合起來能認出特定的人"
+    }, {
+      "id": "general",
+      "name": "本題非個人資料",
+      "desc": "本題已說明無法連結到特定的人"
+    }],
+    "cards": [{
+      "text": "與本人姓名連在一起的職業資料",
+      "bin": "personal"
+    }, {
+      "text": "可辨認特定個人的手指指紋",
+      "bin": "personal"
+    }, {
+      "text": "完全不含居民資訊的公共橋梁建材表",
+      "bin": "general"
+    }, {
+      "text": "只有展品總件數的統計",
+      "bin": "general"
+    }],
+    "hints": ["看資料能否連結到特定的人。遮住姓名不一定足夠；本題不要求判定是否可以刊登。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:d4c2d94bdf74601bf9f58884"
+}, {
+  "id": "ch5_o_tech_06",
+  "kpId": "o_tech",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "展示資訊檢查 6",
+  "params": {
+    "story": "只依本題的條件分類：能否直接或間接認出特定的人？非個人資料也不表示可以不查其他權利就任意公開。",
+    "bins": [{
+      "id": "personal",
+      "name": "可辨認個人的資料",
+      "desc": "單獨或合起來能認出特定的人"
+    }, {
+      "id": "general",
+      "name": "本題非個人資料",
+      "desc": "本題已說明無法連結到特定的人"
+    }],
+    "cards": [{
+      "text": "含姓名及電子郵件的報名單",
+      "bin": "personal"
+    }, {
+      "text": "可透過對照表找到本人的編碼",
+      "bin": "personal"
+    }, {
+      "text": "沒有任何個人可被連結的展覽海報尺寸",
+      "bin": "general"
+    }, {
+      "text": "沒有住戶資料的公共廣場面積資料",
+      "bin": "general"
+    }],
+    "hints": ["看資料能否連結到特定的人。遮住姓名不一定足夠；本題不要求判定是否可以刊登。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:0ef832825561c008eef58b03"
+}, {
+  "id": "ch5_o_economy_01",
+  "kpId": "o_economy",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "港口進出貨 1",
+  "params": {
+    "story": "以本島為觀察位置。依貨物跨境買賣的方向分類。",
+    "bins": [{
+      "id": "in",
+      "name": "進口",
+      "desc": "從國外買進本島"
+    }, {
+      "id": "out",
+      "name": "出口",
+      "desc": "從本島賣到國外"
+    }],
+    "cards": [{
+      "text": "本島向國外買進紙漿",
+      "bin": "in"
+    }, {
+      "text": "本島向國外買進相機",
+      "bin": "in"
+    }, {
+      "text": "本島製造陶杯後賣到國外",
+      "bin": "out"
+    }, {
+      "text": "本島製造布袋後賣到國外",
+      "bin": "out"
+    }],
+    "hints": ["從國外買進本島是進口；本島賣到國外是出口。不是依產品名稱判斷。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:4b10a60eb13f6072ceedfa6b"
+}, {
+  "id": "ch5_o_economy_02",
+  "kpId": "o_economy",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "港口進出貨 2",
+  "params": {
+    "story": "以本島為觀察位置。依貨物跨境買賣的方向分類。",
+    "bins": [{
+      "id": "in",
+      "name": "進口",
+      "desc": "從國外買進本島"
+    }, {
+      "id": "out",
+      "name": "出口",
+      "desc": "從本島賣到國外"
+    }],
+    "cards": [{
+      "text": "本島向國外買進木材",
+      "bin": "in"
+    }, {
+      "text": "本島向國外買進螺絲",
+      "bin": "in"
+    }, {
+      "text": "本島製造茶葉後賣到國外",
+      "bin": "out"
+    }, {
+      "text": "本島製造玩具後賣到國外",
+      "bin": "out"
+    }],
+    "hints": ["從國外買進本島是進口；本島賣到國外是出口。不是依產品名稱判斷。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:06fba4ba9d146e32428e7d9e"
+}, {
+  "id": "ch5_o_economy_03",
+  "kpId": "o_economy",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "港口進出貨 3",
+  "params": {
+    "story": "以本島為觀察位置。依貨物跨境買賣的方向分類。",
+    "bins": [{
+      "id": "in",
+      "name": "進口",
+      "desc": "從國外買進本島"
+    }, {
+      "id": "out",
+      "name": "出口",
+      "desc": "從本島賣到國外"
+    }],
+    "cards": [{
+      "text": "本島向國外買進棉花",
+      "bin": "in"
+    }, {
+      "text": "本島向國外買進鏡片",
+      "bin": "in"
+    }, {
+      "text": "本島製造燈具後賣到國外",
+      "bin": "out"
+    }, {
+      "text": "本島製造桌子後賣到國外",
+      "bin": "out"
+    }],
+    "hints": ["從國外買進本島是進口；本島賣到國外是出口。不是依產品名稱判斷。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:62f02dcfb7d3a9ed7a912b9d"
+}, {
+  "id": "ch5_o_economy_04",
+  "kpId": "o_economy",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "港口進出貨 4",
+  "params": {
+    "story": "以本島為觀察位置。依貨物跨境買賣的方向分類。",
+    "bins": [{
+      "id": "in",
+      "name": "進口",
+      "desc": "從國外買進本島"
+    }, {
+      "id": "out",
+      "name": "出口",
+      "desc": "從本島賣到國外"
+    }],
+    "cards": [{
+      "text": "本島向國外買進咖啡豆",
+      "bin": "in"
+    }, {
+      "text": "本島向國外買進銅線",
+      "bin": "in"
+    }, {
+      "text": "本島製造雨傘後賣到國外",
+      "bin": "out"
+    }, {
+      "text": "本島製造腳踏車後賣到國外",
+      "bin": "out"
+    }],
+    "hints": ["從國外買進本島是進口；本島賣到國外是出口。不是依產品名稱判斷。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:663316401885ab60e568c184"
+}, {
+  "id": "ch5_o_economy_05",
+  "kpId": "o_economy",
+  "grade": 6,
+  "kind": "rank",
+  "title": "陶杯的旅程",
+  "params": {
+    "story": "這批貨物按照卡片所寫的前後關係處理。請由取得材料排到送達；本題只描述這批貨物。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["取得做杯子的陶土", "用陶土製作並燒好杯子", "把燒好的杯子裝箱", "把裝箱的杯子送到店裡"],
+    "topLabel": "先做",
+    "bottomLabel": "最後做",
+    "hints": ["材料先到，才能製作；製作完成再裝箱，裝箱後送達。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:2d9d41755c473699e9c4e06d"
+}, {
+  "id": "ch5_o_economy_06",
+  "kpId": "o_economy",
+  "grade": 6,
+  "kind": "rank",
+  "title": "照片框的旅程",
+  "params": {
+    "story": "這批貨物按照卡片所寫的前後關係處理。請由取得材料排到送達；本題只描述這批貨物。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["取得做框的木料", "用木料製作照片框", "把做好的照片框裝箱", "把裝箱的照片框送到展館"],
+    "topLabel": "先做",
+    "bottomLabel": "最後做",
+    "hints": ["材料先到，才能製作；製作完成再裝箱，裝箱後送達。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:22a6440be72045b8a5e79561"
+}, {
+  "id": "ch5_o_debate_01",
+  "kpId": "o_debate",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "紀錄還是看法 1",
+  "params": {
+    "story": "分類句子的性質。可查證不等於已證實，更不能單靠一句話指認誰拿走照片。",
+    "bins": [{
+      "id": "fact",
+      "name": "可查證的事件或紀錄",
+      "desc": "能找資料或相關人士核對"
+    }, {
+      "id": "opinion",
+      "name": "個人看法",
+      "desc": "感受、喜好或主張"
+    }],
+    "cards": [{
+      "text": "借閱簿記著昨天歸還相簿",
+      "bin": "fact"
+    }, {
+      "text": "我覺得這本相簿最好看",
+      "bin": "opinion"
+    }, {
+      "text": "收據寫著買了三個相框",
+      "bin": "fact"
+    }, {
+      "text": "我希望展覽天天開放",
+      "bin": "opinion"
+    }],
+    "hints": ["時間、數量、簽名和人物說法可以再核對；喜好、希望與主張屬於看法。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:4951e1315211f1251adfce02"
+}, {
+  "id": "ch5_o_debate_02",
+  "kpId": "o_debate",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "紀錄還是看法 2",
+  "params": {
+    "story": "分類句子的性質。可查證不等於已證實，更不能單靠一句話指認誰拿走照片。",
+    "bins": [{
+      "id": "fact",
+      "name": "可查證的事件或紀錄",
+      "desc": "能找資料或相關人士核對"
+    }, {
+      "id": "opinion",
+      "name": "個人看法",
+      "desc": "感受、喜好或主張"
+    }],
+    "cards": [{
+      "text": "公告寫著展覽九點開門",
+      "bin": "fact"
+    }, {
+      "text": "我認為早一點開門更好",
+      "bin": "opinion"
+    }, {
+      "text": "訪客名冊記著今天有二十人到訪",
+      "bin": "fact"
+    }, {
+      "text": "我覺得安靜的展廳比較舒服",
+      "bin": "opinion"
+    }],
+    "hints": ["時間、數量、簽名和人物說法可以再核對；喜好、希望與主張屬於看法。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:7bea5b6ae955c6dabb10b01b"
+}, {
+  "id": "ch5_o_debate_03",
+  "kpId": "o_debate",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "紀錄還是看法 3",
+  "params": {
+    "story": "分類句子的性質。可查證不等於已證實，更不能單靠一句話指認誰拿走照片。",
+    "bins": [{
+      "id": "fact",
+      "name": "可查證的事件或紀錄",
+      "desc": "能找資料或相關人士核對"
+    }, {
+      "id": "opinion",
+      "name": "個人看法",
+      "desc": "感受、喜好或主張"
+    }],
+    "cards": [{
+      "text": "點收單記著收回五張照片",
+      "bin": "fact"
+    }, {
+      "text": "我喜歡彩色照片",
+      "bin": "opinion"
+    }, {
+      "text": "小梅說她星期一來借相簿",
+      "bin": "fact"
+    }, {
+      "text": "我認為大家應該輪流導覽",
+      "bin": "opinion"
+    }],
+    "hints": ["時間、數量、簽名和人物說法可以再核對；喜好、希望與主張屬於看法。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:a9dddea0ef4a701462f1a3d7"
+}, {
+  "id": "ch5_o_debate_04",
+  "kpId": "o_debate",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "紀錄還是看法 4",
+  "params": {
+    "story": "分類句子的性質。可查證不等於已證實，更不能單靠一句話指認誰拿走照片。",
+    "bins": [{
+      "id": "fact",
+      "name": "可查證的事件或紀錄",
+      "desc": "能找資料或相關人士核對"
+    }, {
+      "id": "opinion",
+      "name": "個人看法",
+      "desc": "感受、喜好或主張"
+    }],
+    "cards": [{
+      "text": "清冊把照片編為第一號到第十號",
+      "bin": "fact"
+    }, {
+      "text": "我覺得木框比金屬框漂亮",
+      "bin": "opinion"
+    }, {
+      "text": "報紙印著特展的名稱",
+      "bin": "fact"
+    }, {
+      "text": "我希望下次展出更多老街故事",
+      "bin": "opinion"
+    }],
+    "hints": ["時間、數量、簽名和人物說法可以再核對；喜好、希望與主張屬於看法。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:2a3af299ba11332fd4f646ce"
+}, {
+  "id": "ch5_o_debate_05",
+  "kpId": "o_debate",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "紀錄還是看法 5",
+  "params": {
+    "story": "分類句子的性質。可查證不等於已證實，更不能單靠一句話指認誰拿走照片。",
+    "bins": [{
+      "id": "fact",
+      "name": "可查證的事件或紀錄",
+      "desc": "能找資料或相關人士核對"
+    }, {
+      "id": "opinion",
+      "name": "個人看法",
+      "desc": "感受、喜好或主張"
+    }],
+    "cards": [{
+      "text": "館員說箱子放在準備桌上",
+      "bin": "fact"
+    }, {
+      "text": "我認為準備桌應該移到角落",
+      "bin": "opinion"
+    }, {
+      "text": "登記簿有兩位點收人的簽名",
+      "bin": "fact"
+    }, {
+      "text": "我覺得訪談比看照片有趣",
+      "bin": "opinion"
+    }],
+    "hints": ["時間、數量、簽名和人物說法可以再核對；喜好、希望與主張屬於看法。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:24179dabf8484524107fba3d"
+}, {
+  "id": "ch5_o_debate_06",
+  "kpId": "o_debate",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "紀錄還是看法 6",
+  "params": {
+    "story": "分類句子的性質。可查證不等於已證實，更不能單靠一句話指認誰拿走照片。",
+    "bins": [{
+      "id": "fact",
+      "name": "可查證的事件或紀錄",
+      "desc": "能找資料或相關人士核對"
+    }, {
+      "id": "opinion",
+      "name": "個人看法",
+      "desc": "感受、喜好或主張"
+    }],
+    "cards": [{
+      "text": "收據記著相框在星期三送達",
+      "bin": "fact"
+    }, {
+      "text": "我覺得這家店的包裝最漂亮",
+      "bin": "opinion"
+    }, {
+      "text": "公開行程表寫著下午有一場導覽",
+      "bin": "fact"
+    }, {
+      "text": "我希望導覽再長一點",
+      "bin": "opinion"
+    }],
+    "hints": ["時間、數量、簽名和人物說法可以再核對；喜好、希望與主張屬於看法。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:40417b3366c7212e6d18790e"
+}, {
+  "id": "ch5_m_chart_01",
+  "kpId": "m_chart",
+  "grade": 6,
+  "kind": "chart",
+  "title": "老街展示統計 1",
+  "params": {
+    "story": "這是特展練習用的虛構統計，共 100 人。每人只算在一類。調整指定類別的角度，再算人數。",
+    "populationLabel": "示意統計總人數",
+    "total": 100,
+    "cats": [{
+      "name": "農林漁牧業",
+      "pct": 25
+    }, {
+      "name": "工業",
+      "pct": 35
+    }, {
+      "name": "服務業",
+      "pct": 40
+    }],
+    "targetIdx": 0,
+    "hints": ["農林漁牧業占 25%，圓心角是 360 × 25 ÷ 100＝90 度；人數是 100 × 25 ÷ 100＝25 人。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:4f16878112380e64a93f5bb8"
+}, {
+  "id": "ch5_m_chart_02",
+  "kpId": "m_chart",
+  "grade": 6,
+  "kind": "chart",
+  "title": "老街展示統計 2",
+  "params": {
+    "story": "這是特展練習用的虛構統計，共 200 人。每人只算在一類。調整指定類別的角度，再算人數。",
+    "populationLabel": "示意統計總人數",
+    "total": 200,
+    "cats": [{
+      "name": "農林漁牧業",
+      "pct": 15
+    }, {
+      "name": "工業",
+      "pct": 30
+    }, {
+      "name": "服務業",
+      "pct": 55
+    }],
+    "targetIdx": 2,
+    "hints": ["服務業占 55%，圓心角是 360 × 55 ÷ 100＝198 度；人數是 200 × 55 ÷ 100＝110 人。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:88668d4752ba7c46c00914b0"
+}, {
+  "id": "ch5_m_chart_03",
+  "kpId": "m_chart",
+  "grade": 6,
+  "kind": "chart",
+  "title": "老街展示統計 3",
+  "params": {
+    "story": "這是特展練習用的虛構統計，共 400 人。每人只算在一類。調整指定類別的角度，再算人數。",
+    "populationLabel": "示意統計總人數",
+    "total": 400,
+    "cats": [{
+      "name": "農林漁牧業",
+      "pct": 20
+    }, {
+      "name": "工業",
+      "pct": 25
+    }, {
+      "name": "服務業",
+      "pct": 55
+    }],
+    "targetIdx": 1,
+    "hints": ["工業占 25%，圓心角是 360 × 25 ÷ 100＝90 度；人數是 400 × 25 ÷ 100＝100 人。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:47662268096c8c43895b34c4"
+}, {
+  "id": "ch5_m_chart_04",
+  "kpId": "m_chart",
+  "grade": 6,
+  "kind": "chart",
+  "title": "老街展示統計 4",
+  "params": {
+    "story": "這是特展練習用的虛構統計，共 200 人。每人只算在一類。調整指定類別的角度，再算人數。",
+    "populationLabel": "示意統計總人數",
+    "total": 200,
+    "cats": [{
+      "name": "步行",
+      "pct": 35
+    }, {
+      "name": "搭公車",
+      "pct": 40
+    }, {
+      "name": "騎腳踏車",
+      "pct": 25
+    }],
+    "targetIdx": 0,
+    "hints": ["步行占 35%，圓心角是 360 × 35 ÷ 100＝126 度；人數是 200 × 35 ÷ 100＝70 人。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:e1b4e0d7f6a5ef7b23c22aea"
+}, {
+  "id": "ch5_m_chart_05",
+  "kpId": "m_chart",
+  "grade": 6,
+  "kind": "chart",
+  "title": "老街展示統計 5",
+  "params": {
+    "story": "這是特展練習用的虛構統計，共 100 人。每人只算在一類。調整指定類別的角度，再算人數。",
+    "populationLabel": "示意統計總人數",
+    "total": 100,
+    "cats": [{
+      "name": "看照片",
+      "pct": 30
+    }, {
+      "name": "聽導覽",
+      "pct": 45
+    }, {
+      "name": "看模型",
+      "pct": 25
+    }],
+    "targetIdx": 1,
+    "hints": ["聽導覽占 45%，圓心角是 360 × 45 ÷ 100＝162 度；人數是 100 × 45 ÷ 100＝45 人。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:4ff2e8528274a475992a0821"
+}, {
+  "id": "ch5_m_chart_06",
+  "kpId": "m_chart",
+  "grade": 6,
+  "kind": "chart",
+  "title": "老街展示統計 6",
+  "params": {
+    "story": "這是特展練習用的虛構統計，共 400 人。每人只算在一類。調整指定類別的角度，再算人數。",
+    "populationLabel": "示意統計總人數",
+    "total": 400,
+    "cats": [{
+      "name": "上午到訪",
+      "pct": 40
+    }, {
+      "name": "下午到訪",
+      "pct": 35
+    }, {
+      "name": "晚上到訪",
+      "pct": 25
+    }],
+    "targetIdx": 2,
+    "hints": ["晚上到訪占 25%，圓心角是 360 × 25 ÷ 100＝90 度；人數是 400 × 25 ÷ 100＝100 人。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:42e603c866d057caef20c257"
+}, {
+  "id": "ch5_o_rules_01",
+  "kpId": "o_rules",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "規範從哪裡來 1",
+  "params": {
+    "story": "同一行為可能涉及多種規範。本題只按卡片明示的來源分類，不判定故事人物的法律責任。",
+    "bins": [{
+      "id": "custom",
+      "name": "習俗",
+      "desc": "群體相傳的生活方式"
+    }, {
+      "id": "moral",
+      "name": "道德",
+      "desc": "誠實、尊重、體諒等價值"
+    }, {
+      "id": "law",
+      "name": "法律",
+      "desc": "國家制定的規範"
+    }],
+    "cards": [{
+      "text": "家族相傳過年一起拍合照",
+      "bin": "custom"
+    }, {
+      "text": "出於體諒，等阿公慢慢說完",
+      "bin": "moral"
+    }, {
+      "text": "國家制定個人資料保護法，規範個資的蒐集與利用",
+      "bin": "law"
+    }],
+    "hints": ["題目寫「相傳」的生活方式是習俗；出於體諒等價值是道德；國家制定的法律屬於法律。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:29162bb343d9893d12fb63c6"
+}, {
+  "id": "ch5_o_rules_02",
+  "kpId": "o_rules",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "規範從哪裡來 2",
+  "params": {
+    "story": "同一行為可能涉及多種規範。本題只按卡片明示的來源分類，不判定故事人物的法律責任。",
+    "bins": [{
+      "id": "custom",
+      "name": "習俗",
+      "desc": "群體相傳的生活方式"
+    }, {
+      "id": "moral",
+      "name": "道德",
+      "desc": "誠實、尊重、體諒等價值"
+    }, {
+      "id": "law",
+      "name": "法律",
+      "desc": "國家制定的規範"
+    }],
+    "cards": [{
+      "text": "村民相傳端午掛香包",
+      "bin": "custom"
+    }, {
+      "text": "出於誠實，承認自己說錯",
+      "bin": "moral"
+    }, {
+      "text": "國家制定個人資料保護法，規範個資的蒐集與利用",
+      "bin": "law"
+    }],
+    "hints": ["題目寫「相傳」的生活方式是習俗；出於體諒等價值是道德；國家制定的法律屬於法律。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:ee0dcc2ef12a263e4bbb5e74"
+}, {
+  "id": "ch5_o_rules_03",
+  "kpId": "o_rules",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "規範從哪裡來 3",
+  "params": {
+    "story": "同一行為可能涉及多種規範。本題只按卡片明示的來源分類，不判定故事人物的法律責任。",
+    "bins": [{
+      "id": "custom",
+      "name": "習俗",
+      "desc": "群體相傳的生活方式"
+    }, {
+      "id": "moral",
+      "name": "道德",
+      "desc": "誠實、尊重、體諒等價值"
+    }, {
+      "id": "law",
+      "name": "法律",
+      "desc": "國家制定的規範"
+    }],
+    "cards": [{
+      "text": "家人相傳中秋一起賞月",
+      "bin": "custom"
+    }, {
+      "text": "出於尊重，先聽不同的想法",
+      "bin": "moral"
+    }, {
+      "text": "國家制定個人資料保護法，規範個資的蒐集與利用",
+      "bin": "law"
+    }],
+    "hints": ["題目寫「相傳」的生活方式是習俗；出於體諒等價值是道德；國家制定的法律屬於法律。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:6c245eac03acfd7c6319a096"
+}, {
+  "id": "ch5_o_rules_04",
+  "kpId": "o_rules",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "規範從哪裡來 4",
+  "params": {
+    "story": "同一行為可能涉及多種規範。本題只按卡片明示的來源分類，不判定故事人物的法律責任。",
+    "bins": [{
+      "id": "custom",
+      "name": "習俗",
+      "desc": "群體相傳的生活方式"
+    }, {
+      "id": "moral",
+      "name": "道德",
+      "desc": "誠實、尊重、體諒等價值"
+    }, {
+      "id": "law",
+      "name": "法律",
+      "desc": "國家制定的規範"
+    }],
+    "cards": [{
+      "text": "街坊相傳元宵一起賞燈",
+      "bin": "custom"
+    }, {
+      "text": "出於關心，安慰失望的朋友",
+      "bin": "moral"
+    }, {
+      "text": "國家制定個人資料保護法，規範個資的蒐集與利用",
+      "bin": "law"
+    }],
+    "hints": ["題目寫「相傳」的生活方式是習俗；出於體諒等價值是道德；國家制定的法律屬於法律。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:86b7056d2b1e31e285527e72"
+}, {
+  "id": "ch5_o_rules_05",
+  "kpId": "o_rules",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "規範從哪裡來 5",
+  "params": {
+    "story": "同一行為可能涉及多種規範。本題只按卡片明示的來源分類，不判定故事人物的法律責任。",
+    "bins": [{
+      "id": "custom",
+      "name": "習俗",
+      "desc": "群體相傳的生活方式"
+    }, {
+      "id": "moral",
+      "name": "道德",
+      "desc": "誠實、尊重、體諒等價值"
+    }, {
+      "id": "law",
+      "name": "法律",
+      "desc": "國家制定的規範"
+    }],
+    "cards": [{
+      "text": "家族相傳年節一起做年糕",
+      "bin": "custom"
+    }, {
+      "text": "出於感謝，向幫忙的人道謝",
+      "bin": "moral"
+    }, {
+      "text": "國家制定個人資料保護法，規範個資的蒐集與利用",
+      "bin": "law"
+    }],
+    "hints": ["題目寫「相傳」的生活方式是習俗；出於體諒等價值是道德；國家制定的法律屬於法律。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:7190bd5acbc7c14ad793f009"
+}, {
+  "id": "ch5_o_rules_06",
+  "kpId": "o_rules",
+  "grade": 6,
+  "kind": "sortbins",
+  "title": "規範從哪裡來 6",
+  "params": {
+    "story": "同一行為可能涉及多種規範。本題只按卡片明示的來源分類，不判定故事人物的法律責任。",
+    "bins": [{
+      "id": "custom",
+      "name": "習俗",
+      "desc": "群體相傳的生活方式"
+    }, {
+      "id": "moral",
+      "name": "道德",
+      "desc": "誠實、尊重、體諒等價值"
+    }, {
+      "id": "law",
+      "name": "法律",
+      "desc": "國家制定的規範"
+    }],
+    "cards": [{
+      "text": "居民相傳節慶時布置門前",
+      "bin": "custom"
+    }, {
+      "text": "出於公平，讓每個人輪流說話",
+      "bin": "moral"
+    }, {
+      "text": "國家制定個人資料保護法，規範個資的蒐集與利用",
+      "bin": "law"
+    }],
+    "hints": ["題目寫「相傳」的生活方式是習俗；出於體諒等價值是道德；國家制定的法律屬於法律。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:dab8a17c4c9452e6a2ce1302"
+}, {
+  "id": "ch5_j_num200_01",
+  "kpId": "j_num200",
+  "grade": 2,
+  "kind": "rank",
+  "title": "照片編號 1",
+  "params": {
+    "story": "把照片的編號從小排到大。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["18 號", "26 號", "39 號", "45 號"],
+    "topLabel": "最小",
+    "bottomLabel": "最大",
+    "hints": ["先比百位，再比十位和個位。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:85065410f7a6588c0fd4cb1a"
+}, {
+  "id": "ch5_j_num200_02",
+  "kpId": "j_num200",
+  "grade": 2,
+  "kind": "rank",
+  "title": "照片編號 2",
+  "params": {
+    "story": "把照片的編號從小排到大。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["47 號", "74 號", "107 號", "140 號"],
+    "topLabel": "最小",
+    "bottomLabel": "最大",
+    "hints": ["先比百位，再比十位和個位。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:a947e14c6061ecbb52e741d6"
+}, {
+  "id": "ch5_j_num200_03",
+  "kpId": "j_num200",
+  "grade": 2,
+  "kind": "rank",
+  "title": "照片編號 3",
+  "params": {
+    "story": "把照片的編號從小排到大。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["62 號", "68 號", "86 號", "92 號"],
+    "topLabel": "最小",
+    "bottomLabel": "最大",
+    "hints": ["先比百位，再比十位和個位。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:00d12a9575ccd4602ccf989f"
+}, {
+  "id": "ch5_j_num200_04",
+  "kpId": "j_num200",
+  "grade": 2,
+  "kind": "rank",
+  "title": "照片編號 4",
+  "params": {
+    "story": "把照片的編號從小排到大。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["95 號", "109 號", "119 號", "190 號"],
+    "topLabel": "最小",
+    "bottomLabel": "最大",
+    "hints": ["先比百位，再比十位和個位。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:47b6a3f0e7f159b5262fac5e"
+}, {
+  "id": "ch5_j_num200_05",
+  "kpId": "j_num200",
+  "grade": 2,
+  "kind": "rank",
+  "title": "照片編號 5",
+  "params": {
+    "story": "把照片的編號從小排到大。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["101 號", "110 號", "120 號", "200 號"],
+    "topLabel": "最小",
+    "bottomLabel": "最大",
+    "hints": ["先比百位，再比十位和個位。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:df841be91cdcd96cb9d0a8f7"
+}, {
+  "id": "ch5_j_num200_06",
+  "kpId": "j_num200",
+  "grade": 2,
+  "kind": "rank",
+  "title": "照片編號 6",
+  "params": {
+    "story": "把照片的編號從小排到大。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["56 號", "65 號", "156 號", "165 號"],
+    "topLabel": "最小",
+    "bottomLabel": "最大",
+    "hints": ["先比百位，再比十位和個位。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:74e360f4a61f39b24bce392a"
+}, {
+  "id": "ch5_j_vocab_cur_01",
+  "kpId": "j_vocab_cur",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "展覽詞語：老",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "阿海說：「這是一張老照片。」 這裡的意思是哪一個？",
+      "options": [{
+        "text": "拍了很久的照片",
+        "correct": true,
+        "why": "「老照片」是拍了很久的照片。"
+      }, {
+        "text": "剛拍好的照片",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。「老照片」是拍了很久的照片。"
+      }, {
+        "text": "還沒拍的照片",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。「老照片」是拍了很久的照片。"
+      }],
+      "hint": "「老照片」是拍了很久的照片。"
+    }],
+    "passNeed": 1,
+    "hints": ["「老照片」是拍了很久的照片。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:830a1c930dbe1c55e6b187dc"
+}, {
+  "id": "ch5_j_vocab_cur_02",
+  "kpId": "j_vocab_cur",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "展覽詞語：屋",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "阿海指著照片說：「那是我以前住的屋子。」 這裡的意思是哪一個？",
+      "options": [{
+        "text": "河上的船",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。「屋子」就是房子。"
+      }, {
+        "text": "寫字的筆",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。「屋子」就是房子。"
+      }, {
+        "text": "住的房子",
+        "correct": true,
+        "why": "「屋子」就是房子。"
+      }],
+      "hint": "「屋子」就是房子。"
+    }],
+    "passNeed": 1,
+    "hints": ["「屋子」就是房子。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:e26e251e23e84a2e8b26ce5e"
+}, {
+  "id": "ch5_j_vocab_cur_03",
+  "kpId": "j_vocab_cur",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "展覽詞語：街",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "我們到老街找阿海。 這裡的意思是哪一個？",
+      "options": [{
+        "text": "天上的白雲",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。街是有房屋的道路。"
+      }, {
+        "text": "房子之間供人通行的道路",
+        "correct": true,
+        "why": "街是有房屋的道路。"
+      }, {
+        "text": "桌上的相片",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。街是有房屋的道路。"
+      }],
+      "hint": "街是有房屋的道路。"
+    }],
+    "passNeed": 1,
+    "hints": ["街是有房屋的道路。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:9d6393aebdeebcc7a7050ec2"
+}, {
+  "id": "ch5_j_vocab_cur_04",
+  "kpId": "j_vocab_cur",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "展覽詞語：貨",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "浪叔把貨物送到店裡。 這裡的意思是哪一個？",
+      "options": [{
+        "text": "要運送的物品",
+        "correct": true,
+        "why": "貨物是買賣或運送的物品。"
+      }, {
+        "text": "準備睡覺的人",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。貨物是買賣或運送的物品。"
+      }, {
+        "text": "掛在天上的月亮",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。貨物是買賣或運送的物品。"
+      }],
+      "hint": "貨物是買賣或運送的物品。"
+    }],
+    "passNeed": 1,
+    "hints": ["貨物是買賣或運送的物品。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:f1deb1dffd6ffe95a7c92200"
+}, {
+  "id": "ch5_j_vocab_cur_05",
+  "kpId": "j_vocab_cur",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "展覽詞語：紀",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "館員把今天的事寫成紀錄。 這裡的意思是哪一個？",
+      "options": [{
+        "text": "把紙撕掉",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。紀錄可以把事情記下來，之後再查看。"
+      }, {
+        "text": "把門關上",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。紀錄可以把事情記下來，之後再查看。"
+      }, {
+        "text": "把事情記下來",
+        "correct": true,
+        "why": "紀錄可以把事情記下來，之後再查看。"
+      }],
+      "hint": "紀錄可以把事情記下來，之後再查看。"
+    }],
+    "passNeed": 1,
+    "hints": ["紀錄可以把事情記下來，之後再查看。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:717b91af2150b8fbb8cbe197"
+}, {
+  "id": "ch5_j_vocab_cur_06",
+  "kpId": "j_vocab_cur",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "展覽詞語：畫",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "展示卡上畫著一間老屋。 這裡的意思是哪一個？",
+      "options": [{
+        "text": "拿水杯喝水",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。這裡的「畫」是描出老屋的樣子。"
+      }, {
+        "text": "用線條和顏色描出樣子",
+        "correct": true,
+        "why": "這裡的「畫」是描出老屋的樣子。"
+      }, {
+        "text": "拿剪刀剪紙",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。這裡的「畫」是描出老屋的樣子。"
+      }],
+      "hint": "這裡的「畫」是描出老屋的樣子。"
+    }],
+    "passNeed": 1,
+    "hints": ["這裡的「畫」是描出老屋的樣子。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:6d68a5a57d9b79a71895c8df"
+}, {
+  "id": "ch5_j_add2_01",
+  "kpId": "j_add2",
+  "grade": 2,
+  "kind": "problems",
+  "title": "整理貨物 1",
+  "params": {
+    "story": "幫浪叔核對清單。",
+    "problems": [{
+      "q": "原有 26 個空相框，又送來 17 個。現在共有幾個？",
+      "answer": 43,
+      "unit": "個",
+      "explain": "26 ＋ 17＝43。"
+    }],
+    "passNeed": 1,
+    "hints": ["26 ＋ 17＝43。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:13f71089e89c8eedb8e61850"
+}, {
+  "id": "ch5_j_add2_02",
+  "kpId": "j_add2",
+  "grade": 2,
+  "kind": "problems",
+  "title": "整理貨物 2",
+  "params": {
+    "story": "幫浪叔核對清單。",
+    "problems": [{
+      "q": "原有 58 個照片袋，用了 24 個。還有幾個？",
+      "answer": 34,
+      "unit": "個",
+      "explain": "58 − 24＝34。"
+    }],
+    "passNeed": 1,
+    "hints": ["58 − 24＝34。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:f3225101784e588ba2077ac1"
+}, {
+  "id": "ch5_j_add2_03",
+  "kpId": "j_add2",
+  "grade": 2,
+  "kind": "problems",
+  "title": "整理貨物 3",
+  "params": {
+    "story": "幫浪叔核對清單。",
+    "problems": [{
+      "q": "原有 35 個紙卡，又送來 28 個。現在共有幾個？",
+      "answer": 63,
+      "unit": "個",
+      "explain": "35 ＋ 28＝63。"
+    }],
+    "passNeed": 1,
+    "hints": ["35 ＋ 28＝63。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:2c5bd6fbb68593918d58c597"
+}, {
+  "id": "ch5_j_add2_04",
+  "kpId": "j_add2",
+  "grade": 2,
+  "kind": "problems",
+  "title": "整理貨物 4",
+  "params": {
+    "story": "幫浪叔核對清單。",
+    "problems": [{
+      "q": "原有 73 個貨箱，用了 36 個。還有幾個？",
+      "answer": 37,
+      "unit": "個",
+      "explain": "73 − 36＝37。"
+    }],
+    "passNeed": 1,
+    "hints": ["73 − 36＝37。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:3089a28b1d7da1b0b64ba1ca"
+}, {
+  "id": "ch5_j_add2_05",
+  "kpId": "j_add2",
+  "grade": 2,
+  "kind": "problems",
+  "title": "整理貨物 5",
+  "params": {
+    "story": "幫浪叔核對清單。",
+    "problems": [{
+      "q": "原有 42 個封套，又送來 19 個。現在共有幾個？",
+      "answer": 61,
+      "unit": "個",
+      "explain": "42 ＋ 19＝61。"
+    }],
+    "passNeed": 1,
+    "hints": ["42 ＋ 19＝61。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:84c47e43cafd8ccf493e5a47"
+}, {
+  "id": "ch5_j_add2_06",
+  "kpId": "j_add2",
+  "grade": 2,
+  "kind": "problems",
+  "title": "整理貨物 6",
+  "params": {
+    "story": "幫浪叔核對清單。",
+    "problems": [{
+      "q": "原有 91 個小標籤，用了 47 個。還有幾個？",
+      "answer": 44,
+      "unit": "個",
+      "explain": "91 − 47＝44。"
+    }],
+    "passNeed": 1,
+    "hints": ["91 − 47＝44。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:3a3ff502d700cb4afd597c50"
+}, {
+  "id": "ch5_j_time_01",
+  "kpId": "j_time",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "借閱時間 1",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "看借閱桌的鐘，現在是幾時幾分？",
+      "options": [{
+        "text": "8 時 0 分",
+        "correct": true,
+        "why": "短針看時，長針看分。現在是 8 時 0 分。"
+      }, {
+        "text": "8 時 5 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 8 時 0 分。"
+      }, {
+        "text": "9 時 0 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 8 時 0 分。"
+      }],
+      "hint": "短針看時，長針看分。現在是 8 時 0 分。",
+      "figure": {
+        "type": "clock",
+        "h": 8,
+        "m": 0
+      }
+    }],
+    "passNeed": 1,
+    "hints": ["短針看時，長針看分。現在是 8 時 0 分。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:946b5a03e1947b6b71cb03c3"
+}, {
+  "id": "ch5_j_time_02",
+  "kpId": "j_time",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "借閱時間 2",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "看借閱桌的鐘，現在是幾時幾分？",
+      "options": [{
+        "text": "9 時 35 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 9 時 30 分。"
+      }, {
+        "text": "10 時 30 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 9 時 30 分。"
+      }, {
+        "text": "9 時 30 分",
+        "correct": true,
+        "why": "短針看時，長針看分。現在是 9 時 30 分。"
+      }],
+      "hint": "短針看時，長針看分。現在是 9 時 30 分。",
+      "figure": {
+        "type": "clock",
+        "h": 9,
+        "m": 30
+      }
+    }],
+    "passNeed": 1,
+    "hints": ["短針看時，長針看分。現在是 9 時 30 分。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:a4a3988949ec92e556ea38f6"
+}, {
+  "id": "ch5_j_time_03",
+  "kpId": "j_time",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "借閱時間 3",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "看借閱桌的鐘，現在是幾時幾分？",
+      "options": [{
+        "text": "11 時 15 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 10 時 15 分。"
+      }, {
+        "text": "10 時 15 分",
+        "correct": true,
+        "why": "短針看時，長針看分。現在是 10 時 15 分。"
+      }, {
+        "text": "10 時 20 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 10 時 15 分。"
+      }],
+      "hint": "短針看時，長針看分。現在是 10 時 15 分。",
+      "figure": {
+        "type": "clock",
+        "h": 10,
+        "m": 15
+      }
+    }],
+    "passNeed": 1,
+    "hints": ["短針看時，長針看分。現在是 10 時 15 分。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:bc533a4440acc6b9f232b080"
+}, {
+  "id": "ch5_j_time_04",
+  "kpId": "j_time",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "借閱時間 4",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "看借閱桌的鐘，現在是幾時幾分？",
+      "options": [{
+        "text": "11 時 45 分",
+        "correct": true,
+        "why": "短針看時，長針看分。現在是 11 時 45 分。"
+      }, {
+        "text": "11 時 50 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 11 時 45 分。"
+      }, {
+        "text": "12 時 45 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 11 時 45 分。"
+      }],
+      "hint": "短針看時，長針看分。現在是 11 時 45 分。",
+      "figure": {
+        "type": "clock",
+        "h": 11,
+        "m": 45
+      }
+    }],
+    "passNeed": 1,
+    "hints": ["短針看時，長針看分。現在是 11 時 45 分。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:52bbb2f84f9354ac99bbc3e7"
+}, {
+  "id": "ch5_j_time_05",
+  "kpId": "j_time",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "借閱時間 5",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "看借閱桌的鐘，現在是幾時幾分？",
+      "options": [{
+        "text": "2 時 25 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 2 時 20 分。"
+      }, {
+        "text": "3 時 20 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 2 時 20 分。"
+      }, {
+        "text": "2 時 20 分",
+        "correct": true,
+        "why": "短針看時，長針看分。現在是 2 時 20 分。"
+      }],
+      "hint": "短針看時，長針看分。現在是 2 時 20 分。",
+      "figure": {
+        "type": "clock",
+        "h": 2,
+        "m": 20
+      }
+    }],
+    "passNeed": 1,
+    "hints": ["短針看時，長針看分。現在是 2 時 20 分。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:ffba00a558393a17d1ff7650"
+}, {
+  "id": "ch5_j_time_06",
+  "kpId": "j_time",
+  "grade": 2,
+  "kind": "pickone",
+  "title": "借閱時間 6",
+  "params": {
+    "story": "和余館員一起整理老照片特展。",
+    "items": [{
+      "q": "看借閱桌的鐘，現在是幾時幾分？",
+      "options": [{
+        "text": "4 時 55 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 3 時 55 分。"
+      }, {
+        "text": "3 時 55 分",
+        "correct": true,
+        "why": "短針看時，長針看分。現在是 3 時 55 分。"
+      }, {
+        "text": "3 時 0 分",
+        "correct": false,
+        "why": "再讀一次問題，對照資料。短針看時，長針看分。現在是 3 時 55 分。"
+      }],
+      "hint": "短針看時，長針看分。現在是 3 時 55 分。",
+      "figure": {
+        "type": "clock",
+        "h": 3,
+        "m": 55
+      }
+    }],
+    "passNeed": 1,
+    "hints": ["短針看時，長針看分。現在是 3 時 55 分。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:89ee1e65700a9fb8ebf26a87"
+}, {
+  "id": "ch5_j_shape_01",
+  "kpId": "j_shape",
+  "grade": 2,
+  "kind": "sortbins",
+  "title": "展示圖案分類 1",
+  "params": {
+    "story": "看卡片前面的圖形，把一樣的放在一起。",
+    "bins": [{
+      "id": "triangle",
+      "name": "三角形",
+      "desc": "三條直邊"
+    }, {
+      "id": "circle",
+      "name": "圓形",
+      "desc": "圓圓的，沒有角"
+    }],
+    "cards": [{
+      "text": "△ 小旗圖案",
+      "bin": "triangle"
+    }, {
+      "text": "△ 屋頂圖案",
+      "bin": "triangle"
+    }, {
+      "text": "○ 印章圖案",
+      "bin": "circle"
+    }, {
+      "text": "○ 時鐘面圖案",
+      "bin": "circle"
+    }],
+    "hints": ["△ 有三條直邊，□ 有四條一樣長的邊和四個直角；○ 是圓形。把 三角形 和圓形分開。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:1297d61fb694a132a791b099"
+}, {
+  "id": "ch5_j_shape_02",
+  "kpId": "j_shape",
+  "grade": 2,
+  "kind": "sortbins",
+  "title": "展示圖案分類 2",
+  "params": {
+    "story": "看卡片前面的圖形，把一樣的放在一起。",
+    "bins": [{
+      "id": "triangle",
+      "name": "三角形",
+      "desc": "三條直邊"
+    }, {
+      "id": "circle",
+      "name": "圓形",
+      "desc": "圓圓的，沒有角"
+    }],
+    "cards": [{
+      "text": "△ 船帆圖案",
+      "bin": "triangle"
+    }, {
+      "text": "△ 標記圖案",
+      "bin": "triangle"
+    }, {
+      "text": "○ 輪子圖案",
+      "bin": "circle"
+    }, {
+      "text": "○ 月亮圖案",
+      "bin": "circle"
+    }],
+    "hints": ["△ 有三條直邊，□ 有四條一樣長的邊和四個直角；○ 是圓形。把 三角形 和圓形分開。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:5d474d398bc2877ab8609967"
+}, {
+  "id": "ch5_j_shape_03",
+  "kpId": "j_shape",
+  "grade": 2,
+  "kind": "sortbins",
+  "title": "展示圖案分類 3",
+  "params": {
+    "story": "看卡片前面的圖形，把一樣的放在一起。",
+    "bins": [{
+      "id": "square",
+      "name": "正方形",
+      "desc": "四條邊一樣長、四個直角"
+    }, {
+      "id": "circle",
+      "name": "圓形",
+      "desc": "圓圓的，沒有角"
+    }],
+    "cards": [{
+      "text": "□ 紙卡圖案",
+      "bin": "square"
+    }, {
+      "text": "□ 窗戶圖案",
+      "bin": "square"
+    }, {
+      "text": "○ 盤子圖案",
+      "bin": "circle"
+    }, {
+      "text": "○ 貼紙圖案",
+      "bin": "circle"
+    }],
+    "hints": ["△ 有三條直邊，□ 有四條一樣長的邊和四個直角；○ 是圓形。把 正方形 和圓形分開。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:816070deb7f46ad189a34b77"
+}, {
+  "id": "ch5_j_shape_04",
+  "kpId": "j_shape",
+  "grade": 2,
+  "kind": "sortbins",
+  "title": "展示圖案分類 4",
+  "params": {
+    "story": "看卡片前面的圖形，把一樣的放在一起。",
+    "bins": [{
+      "id": "square",
+      "name": "正方形",
+      "desc": "四條邊一樣長、四個直角"
+    }, {
+      "id": "circle",
+      "name": "圓形",
+      "desc": "圓圓的，沒有角"
+    }],
+    "cards": [{
+      "text": "□ 相框圖案",
+      "bin": "square"
+    }, {
+      "text": "□ 地磚圖案",
+      "bin": "square"
+    }, {
+      "text": "○ 鏡子圖案",
+      "bin": "circle"
+    }, {
+      "text": "○ 按鈕圖案",
+      "bin": "circle"
+    }],
+    "hints": ["△ 有三條直邊，□ 有四條一樣長的邊和四個直角；○ 是圓形。把 正方形 和圓形分開。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:92497acc34107259bfdc1206"
+}, {
+  "id": "ch5_j_plastic_01",
+  "kpId": "j_plastic",
+  "grade": 2,
+  "kind": "rank",
+  "title": "少用一次性用品 1",
+  "params": {
+    "story": "按這次出門到回家的先後，把做法排好。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["出門前，把水裝進水壺", "帶水壺到展館", "口渴時喝水壺的水", "回家後清洗水壺"],
+    "topLabel": "出門前",
+    "bottomLabel": "回家後",
+    "hints": ["先準備，帶出門使用，回家整理後再使用。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:2c7b7adeaaa27523e2d9a3ba"
+}, {
+  "id": "ch5_j_plastic_02",
+  "kpId": "j_plastic",
+  "grade": 2,
+  "kind": "rank",
+  "title": "少用一次性用品 2",
+  "params": {
+    "story": "按這次出門到回家的先後，把做法排好。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["出門前準備布袋", "帶布袋到商店", "把買好的物品放進布袋", "回家後把布袋收好下次用"],
+    "topLabel": "出門前",
+    "bottomLabel": "回家後",
+    "hints": ["先準備，帶出門使用，回家整理後再使用。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:27f6c1ed36a2b9b9a33a1936"
+}, {
+  "id": "ch5_j_plastic_03",
+  "kpId": "j_plastic",
+  "grade": 2,
+  "kind": "rank",
+  "title": "少用一次性用品 3",
+  "params": {
+    "story": "按這次出門到回家的先後，把做法排好。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["出門前帶好餐盒", "請店員把餐點放進餐盒", "吃完餐盒裡的餐點", "清洗餐盒下次再用"],
+    "topLabel": "出門前",
+    "bottomLabel": "回家後",
+    "hints": ["先準備，帶出門使用，回家整理後再使用。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:6c8e5a0ed4cac8bf69a203fc"
+}, {
+  "id": "ch5_j_plastic_04",
+  "kpId": "j_plastic",
+  "grade": 2,
+  "kind": "rank",
+  "title": "少用一次性用品 4",
+  "params": {
+    "story": "按這次出門到回家的先後，把做法排好。",
+    "prompt": "依資料把卡片排好。",
+    "items": ["出門前帶好自己的杯子", "請店員把飲料裝進杯子", "喝完杯子裡的飲料", "清洗杯子下次再用"],
+    "topLabel": "出門前",
+    "bottomLabel": "回家後",
+    "hints": ["先準備，帶出門使用，回家整理後再使用。", "依題目提供的資料再檢查一次。"]
+  },
+  "contentKey": "ch5:05518d041aeee1cba29bf5e5"
+}];
+const CH5_BANK_REVIEWED = true;
 const CURRICULUM_NOTE = '學習內容代碼已核對教育部／國教院正式課綱（2026-11-06）。上下學期是本遊戲的建議分類，並非官方或各出版社的共同進度；可跨學期勾選。國語第三學習階段涵蓋五、六年級。';
 const KNOWLEDGE_POINTS = [{
   id: 'm_prime',
@@ -12402,6 +14168,16 @@ const ZHUYIN_DATA = {
     "清冊": ["ㄑㄧㄥ", "ㄘㄜˋ"]
   }
 };
+Object.assign(ZHUYIN_DATA.chars, {
+  '帆': 'ㄈㄢˊ',
+  '磚': 'ㄓㄨㄢ',
+  '渴': 'ㄎㄜˇ'
+});
+Object.assign(ZHUYIN_DATA.words, {
+  '相框': ['ㄒㄧㄤˋ', 'ㄎㄨㄤ'],
+  '相片': ['ㄒㄧㄤˋ', 'ㄆㄧㄢˋ'],
+  '船帆': ['ㄔㄨㄢˊ', 'ㄈㄢˊ']
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -24944,11 +26720,11 @@ const COMPANION_REWARD_RULES = [{
 }, {
   id: 'trimonster',
   ach: 'starmap_ch4',
-  text: '完成第四章《星圖失竊案》（製作中）'
+  text: '完成第四章《星圖失竊案》'
 }, {
   id: 'gorilla',
   ach: 'island_ch5',
-  text: '完成第五章《老照片裡的島》（開發預覽）'
+  text: '完成第五章《老照片裡的島》'
 }, {
   id: 'emberlizard',
   ach: 'lighthouse_ch6',
@@ -32009,17 +33785,18 @@ function beginStoryTask(state, id) {
   const kp = pool[count % pool.length],
     diff = getSettings(state).difficulty,
     seed = Math.floor(Math.random() * 1e9);
-  const native = kp === room.kp && !storyAlternative(state, id) && !old?.done && !state.student.chapters?.[MECH_ROOMS[id].chapter]?.rooms?.[room.id]?.done;
-  const generated = native ? null : generateMission(null, kp, seed, false, diff, state);
+  const variant = typeof ch5SelectStage === 'function' ? ch5SelectStage(state, id, kp, seed, diff) : null;
+  const native = !variant && kp === room.kp && !storyAlternative(state, id) && !old?.done && !state.student.chapters?.[MECH_ROOMS[id].chapter]?.rooms?.[room.id]?.done;
+  const generated = native || variant ? null : generateMission(null, kp, seed, false, diff, state);
   const idx = diff === 'easy' ? 0 : 1;
-  let task = native ? {
+  let task = variant || (native ? {
     kind: room.mech,
     params: room.params,
     key: 'story',
     allowHints: diff !== 'hard'
   } : {
     ...generated.stages[idx]
-  };
+  });
   task = {
     ...task,
     kpId: kp,
@@ -32168,6 +33945,29 @@ function g6Remember(learning, stage) {
     g6Seen: recent('g6Seen', stage.contentKey, 10000),
     g6Families: recent('g6Families', stage.variantGroup, 20),
     g6Stimuli: recent('g6Stimuli', stage.stimulusGroup, 20)
+  };
+}
+function ch5SelectStage(state, eventId, kp, seed, difficulty) {
+  if (!/^f[1-6]$/.test(eventId) || typeof CH5_QUESTION_BANK === 'undefined' || !CH5_BANK_REVIEWED || !learningAllows(state, kp)) return null;
+  const pool = CH5_QUESTION_BANK.filter(q => q.grade === studentGrade(state.student) && q.kpId === kp);
+  if (!pool.length) return null;
+  const history = [...(state.learning?.seen || []).map(x => x.key), ...(state.learning?.g6Seen || []), ...(state.practiceLog || []).map(x => x.contentKey)].filter(Boolean);
+  const unseen = pool.filter(q => !history.includes(q.contentKey));
+  const choices = unseen.length ? unseen : [...pool].sort((a, b) => history.lastIndexOf(a.contentKey) - history.lastIndexOf(b.contentKey)).slice(0, 1);
+  const q = choices[(seed >>> 0) % choices.length];
+  return {
+    kind: q.kind,
+    params: JSON.parse(JSON.stringify(q.params)),
+    key: 'story',
+    allowHints: difficulty !== 'hard',
+    bankId: 'ch5-20261110',
+    questionId: q.id,
+    questionTitle: q.title,
+    contentKey: q.contentKey,
+    contentVersion: 'ch5-20261110.1',
+    contentGrade: q.grade,
+    semester: KP_BY_ID[kp].semester,
+    repeatPractice: !unseen.length
   };
 }
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
@@ -37259,6 +39059,92 @@ const COMPANION_SHOULDER_FIT = {
     "cute": [[202.8, 171], [202.3, 171], [201.8, 170], [107.0, 171], [107.0, 171], [107.0, 170]]
   }
 };
+Object.assign(SCENE_ART, {
+  archive: 'assets/scenes/archive/background.webp',
+  oldstreet: 'assets/scenes/oldstreet/background.webp'
+});
+Object.assign(ART_LAYOUT, {
+  elder: {
+    w: 1024,
+    h: 1536,
+    face: '300 0 400 400'
+  }
+});
+Object.assign(CHAR_ART, {
+  elder: {
+    tachie: {
+      normal: 'assets/chars/elder/tachie_normal.webp'
+    },
+    portrait: {
+      normal: 'assets/chars/elder/portrait_normal.webp'
+    }
+  }
+});
+Object.assign(FIELD_ART, {
+  elder: {
+    frames: 2,
+    path: 'assets/field/elder',
+    anchors: [{
+      head: [160, 69],
+      neck: [160, 119],
+      pin: [180, 157],
+      top: 30
+    }, {
+      head: [160, 69],
+      neck: [160, 119],
+      pin: [180, 157],
+      top: 30
+    }]
+  }
+});
+const CH5_PROP_ART = {
+  "photo_box_open": "assets/props/ch5/photo_box_open.webp",
+  "photo_front": "assets/props/ch5/photo_front.webp",
+  "photo_back": "assets/props/ch5/photo_back.webp",
+  "loan_ledger": "assets/props/ch5/loan_ledger.webp",
+  "then_now_board": "assets/props/ch5/then_now_board.webp",
+  "elder_note": "assets/props/ch5/elder_note.webp"
+};
+SCENES.museum.props = [...(SCENES.museum.props || []), {
+  id: 'ch5-photo-box',
+  art: 'photo_box_open',
+  x: 790,
+  y: 500,
+  w: 220,
+  requires: ['c5_brief']
+}];
+SCENES.archive.props = [{
+  id: 'ch5-front',
+  art: 'photo_front',
+  x: 430,
+  y: 505,
+  w: 160
+}, {
+  id: 'ch5-back',
+  art: 'photo_back',
+  x: 560,
+  y: 505,
+  w: 160
+}, {
+  id: 'ch5-ledger',
+  art: 'loan_ledger',
+  x: 940,
+  y: 520,
+  w: 210
+}];
+SCENES.oldstreet.props = [{
+  id: 'ch5-board',
+  art: 'then_now_board',
+  x: 420,
+  y: 510,
+  w: 260
+}, {
+  id: 'ch5-note',
+  art: 'elder_note',
+  x: 600,
+  y: 485,
+  w: 100
+}];
 Object.assign(STORY_LEARNING, {
   f1: {
     goal: '完成小任務，再一起核對照片清冊。',
@@ -37293,7 +39179,7 @@ Object.assign(SCENE_MOOD, {
   archive: '照片和紀錄，等著被仔細閱讀。',
   oldstreet: '海邊的老故事，在這條街上延續。'
 });
-const CH5_ENABLED = !!(SCENE_ART.archive && SCENE_ART.oldstreet) || typeof location !== 'undefined' && location.hash === '#ch5';
+const CH5_ENABLED = !!(SCENE_ART.archive && SCENE_ART.oldstreet && typeof CH5_BANK_REVIEWED !== 'undefined' && CH5_BANK_REVIEWED) || typeof location !== 'undefined' && location.hash === '#ch5';
 SCENES.archive.art = SCENE_ART.archive ? 'archive' : 'museum';
 SCENES.oldstreet.art = SCENE_ART.oldstreet ? 'oldstreet' : 'market';
 if (!CH5_ENABLED) NPC_TALK.grayraven = NPC_TALK.grayraven.filter(t => t.node !== 'd_c5_gr_ch5');
@@ -44166,7 +46052,7 @@ function SceneView({
     pointerEvents: "none",
     "aria-hidden": "true"
   }, scene.props.filter(pr => condOk(story, pr.requires)).map(pr => {
-    const url = typeof CH4_PROP_ART !== 'undefined' && CH4_PROP_ART[pr.art] || null;
+    const url = typeof CH5_PROP_ART !== 'undefined' && CH5_PROP_ART[pr.art] || typeof CH4_PROP_ART !== 'undefined' && CH4_PROP_ART[pr.art] || null;
     if (!url) return null;
     const w = pr.w || 200,
       h = w * 0.75,
@@ -44179,6 +46065,9 @@ function SceneView({
       width: w,
       height: h,
       preserveAspectRatio: "xMidYMax meet",
+      onError: e => {
+        e.currentTarget.style.display = 'none';
+      },
       "data-scene-prop": pr.id
     });
   })), scene.id === 'agency' && React.createElement("g", {
@@ -44562,7 +46451,7 @@ function MechOverlay({
     title = juniorRoom?.title || room.title;
   const params = juniorRoom && task ? {
     ...task.params,
-    story: juniorRoom.goal
+    story: task.bankId === 'ch5-20261110' ? juniorRoom.goal + '\n' + (task.params.story || '') : juniorRoom.goal
   } : task?.params;
   const instructions = task && juniorMechInstructions(student, mechId, task);
   if (!task || task.blocked || !Mech) return React.createElement("div", {
@@ -44596,7 +46485,7 @@ function MechOverlay({
     "data-junior-mech-guide": mechId
   }, React.createElement("b", null, "\u600E\u9EBC\u73A9"), instructions.map(t => React.createElement("p", {
     key: t
-  }, t))), task.repeatPractice && React.createElement(Notice, null, "\u9019\u662F\u540C\u89C0\u5FF5\u7684\u8907\u7FD2\u6A5F\u95DC\u3002"), React.createElement("div", {
+  }, t))), task.repeatPractice && React.createElement(Notice, null, task.bankId === 'ch5-20261110' ? '這個單元的照片變化題都看過了。這次複習較早做過的一題，也可以先離開、換個單元。' : '這是同觀念的複習機關。'), React.createElement("div", {
     "data-story-event": mechId,
     "data-story-kp": task.kpId,
     "data-story-difficulty": task.difficulty
@@ -46303,7 +48192,7 @@ function Adventure({
         notify(`新證據：${storyEvidence(student, e)?.name}`);
         setNewEv(n => n + 1);
       });
-      const after = storyMechAfter(student, mech);
+      const after = mr.chapter === 'island_ch5' && state.student.story?.flags?.c5_done ? null : storyMechAfter(student, mech);
       if (after) {
         story2 = applyStory(story2, {
           set: after.set || []
@@ -46518,7 +48407,19 @@ function Adventure({
       title: !open ? MAP_LOCK_HINT[h.to] : undefined,
       onClick: () => interact(h)
     }, h.kind === 'npc' ? NPCS[h.npc].name : h.label, !open && React.createElement("small", null, MAP_LOCK_HINT[h.to]));
-  })), mech && React.createElement(MechOverlay, {
+  })), !busy && scene.id === 'archive' && story.flags.c5_done && React.createElement("div", {
+    className: "card col",
+    id: "ch5-review"
+  }, React.createElement("h3", null, "\u8001\u7167\u7247\u7DF4\u7FD2\u684C"), React.createElement("p", null, "\u9078\u4E00\u500B\u5C0F\u4EFB\u52D9\uFF0C\u518D\u7DF4\u4E00\u6B21\u3002\u984C\u76EE\u6703\u4F9D\u5BB6\u9577\u8A2D\u5B9A\u7684\u5DF2\u5B78\u7BC4\u570D\u8ABF\u6574\u3002"), React.createElement("div", {
+    className: "row",
+    style: {
+      flexWrap: 'wrap'
+    }
+  }, ['f1', 'f2', 'f3', 'f4', 'f5', 'f6'].map((id, i) => React.createElement(Btn, {
+    key: id,
+    id: 'ch5-review-' + id,
+    onClick: () => openMech(id)
+  }, studentGrade(student) === 2 ? ['照片編號', '展示詞語', '貨物清單', '看鐘面', '圖案分類', '少用塑膠'][i] : storyRoom(id).title)))), mech && React.createElement(MechOverlay, {
     key: mech,
     mechId: mech,
     state: state,
@@ -48820,7 +50721,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.09-v33\uFF08\u7B2C\u56DB\u7AE0\u4F4E\u5E74\u7D1A\u5167\u5BB9\u30FB\u7B2C\u4E94\u7AE0\u958B\u767C\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v34\uFF08\u7B2C\u4E94\u7AE0\u6B63\u5F0F\u958B\u653E\u30FB\u8001\u7167\u7247\u8B8A\u5316\u984C\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -49314,7 +51215,7 @@ function App() {
   });
   return React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.09-v33",
+    "data-build": "2026.11.10-v34",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
