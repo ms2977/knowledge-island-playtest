@@ -613,6 +613,67 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .junior-deduction :focus-visible { outline: 3px solid #ba790f; outline-offset: 3px; }
 @media (max-width: 640px) { .junior-evidence-options { grid-template-columns: 1fr; } .junior-route { padding: 10px 12px; } .junior .book { padding-bottom: 88px; } }
 
+/* One live preview stays visible while the outfit list scrolls. No save-data changes. */
+#wardrobe { --wardrobe-top:64px; padding-bottom:100px; }
+#wardrobe .wardrobe-layout { grid-template-columns:minmax(290px,.8fr) minmax(0,1.2fr); align-items:start; }
+#wardrobe .wardrobe-preview { position:sticky; top:calc(var(--wardrobe-top) + env(safe-area-inset-top,0px)); z-index:10; display:flex; flex-direction:column; height: min(650px,calc(100dvh - var(--wardrobe-top) - 100px)); min-height:320px; max-height:none; padding:14px; gap:10px; background:var(--surface); color:var(--fg); border-color:var(--line); box-shadow:var(--shadow); }
+.wardrobe-preview-switch { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+.wardrobe-preview-switch button { padding:7px 10px; min-height:38px; border:1px solid var(--line); border-radius:10px; background:var(--surface2); color:var(--fg); font-size:.85rem; }
+.wardrobe-preview-switch button[aria-pressed=true] { background:var(--teal); color:var(--bg); border-color:var(--teal); }
+.wardrobe-preview-switch>span { margin-left:auto; font-size:.8rem; color:var(--muted); }
+.wardrobe-preview-note { font-size:.76rem; text-align:center; color:var(--muted); }
+#wardrobe .wardrobe-field-view { flex:1; min-height:0; }
+#wardrobe .wardrobe-field-view[hidden],#wardrobe .wardrobe-figure[hidden] { display:none!important; }
+#wardrobe .field-preview { height:100%; min-height:0; padding:12px; flex-direction:column-reverse; justify-content:center; gap:10px; }
+#wardrobe .field-preview>svg { flex:1; min-height:0; height:auto; width:100%; max-width:310px; overflow:hidden; }
+#wardrobe .field-preview-copy { flex-shrink:0; align-items:center; gap:8px; }
+#wardrobe .field-preview-copy>span { display:none; }
+#wardrobe .field-walk-toggle { align-self:center; }
+#wardrobe .field-directions button,#wardrobe .field-walk-toggle { min-height:38px; }
+#wardrobe .wardrobe-figure { position:relative; inset:auto; flex:1; min-height:0; border-radius:12px; overflow:hidden; background:radial-gradient(ellipse at 50% 40%,#485777,#162236); }
+#wardrobe .wardrobe-controls { gap:16px; min-width:0; }
+#wardrobe .wv-item { background:var(--surface); color:var(--fg); border-color:var(--line); }
+#wardrobe .wv-item.on { background:var(--teal-soft); color:var(--fg); border-color:var(--teal); }
+#wardrobe .wv-item .wv-slot { color:var(--muted); }
+#wardrobe .wv-item.locked { background:var(--surface2); color:var(--muted); }
+#wardrobe .wardrobe-actions { position:fixed; bottom:0; left:0; right:0; z-index:25; max-width:1208px; margin:0 auto; padding:12px max(16px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px)); background:var(--surface); border:1px solid var(--line); box-shadow:0 -4px 16px #0001; }
+.app:has(#wardrobe) #speak-btn { bottom:calc(84px + env(safe-area-inset-bottom,0px)); }
+#wardrobe .wardrobe-panel button { scroll-margin-top:calc(var(--wardrobe-top) + 16px); scroll-margin-bottom:100px; }
+/* Body and accessories share one slow idle transform and one frame. */
+.pet-idle { transform-box:fill-box; transform-origin:50% 100%; }
+.pet-idle.pet-snail { animation:pet-snail-idle 4.8s ease-in-out infinite; }
+.pet-idle.pet-pig { animation:pet-pig-idle 3.4s ease-in-out infinite; }
+@keyframes pet-snail-idle { 0%,100%{transform:scale(1)} 50%{transform:scale(1.025,.985)} }
+@keyframes pet-pig-idle { 0%,100%{transform:scale(1) rotate(0)} 45%{transform:scale(1.015,1.025) rotate(-1deg)} 70%{transform:scale(1) rotate(1deg)} }
+@media(max-width:800px) {
+  #wardrobe { padding-inline:10px; gap:10px; }
+  #wardrobe .wardrobe-layout { grid-template-columns:1fr; gap:12px; }
+  #wardrobe .wardrobe-preview { height:clamp(200px,31dvh,270px); min-height:0; padding:8px; gap:5px; border-radius:14px; }
+  #wardrobe .wardrobe-preview-switch button { min-height:34px; padding:4px 9px; font-size:.8rem; }
+  #wardrobe .wardrobe-preview-note { display:none; }
+  #wardrobe .field-preview { flex-direction:row; gap:6px; padding:6px 10px; }
+  #wardrobe .field-preview>svg { height:100%; width:45%; max-width:170px; flex:0 1 170px; }
+  #wardrobe .field-preview-copy { flex:1; align-items:flex-start; }
+  #wardrobe .field-preview-copy b { display:none; }
+  #wardrobe .field-directions { display:grid; grid-template-columns:1fr 1fr; }
+  #wardrobe .field-directions button,#wardrobe .field-walk-toggle { min-height:34px; padding:4px 6px; font-size:.75rem; white-space:nowrap; }
+  #wardrobe .field-walk-toggle { align-self:flex-start; }
+  #wardrobe .wardrobe-controls { padding:12px; }
+  #wardrobe .wardrobe-controls h1 { font-size:1.2rem; }
+  #wardrobe .wardrobe-actions { gap:8px; }
+  #wardrobe .wardrobe-actions>.btn { width:auto; font-size:.85rem; justify-content:center; }
+  #wardrobe .wardrobe-actions>#wardrobe-save { flex:1; }
+  #wardrobe .wardrobe-actions>span { display:none; }
+  #wardrobe .wardrobe-panel button { scroll-margin-top:calc(var(--wardrobe-top) + clamp(200px,31dvh,270px) + 16px); }
+}
+@media(max-height:500px) and (max-width:800px) {
+  #wardrobe .wardrobe-preview { height:160px; }
+  #wardrobe .field-preview-copy b { display:none; }
+  #wardrobe .field-directions { display:flex; }
+  #wardrobe .wardrobe-panel button { scroll-margin-top:calc(var(--wardrobe-top) + 176px); }
+}
+@media(prefers-reduced-motion:reduce) { .pet-idle { animation:none!important; } }
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -620,7 +681,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261109-backup">
+<meta name="game-release" content="playtest-20261109-wardrobe">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -36081,6 +36142,36 @@ function rewardGearPlacement(kind, {
   const bottom = layout ? Math.max(height + 4, headTop + headHeight * .24) : headTop + headHeight * .15;
   return [headX - width * .5, bottom - height, width, height];
 }
+const COMPANION_SHOULDER_FIT = {
+  "p_ari": {
+    "detective": [[206.8, 174], [207.2, 175], [207.2, 175], [103.0, 175], [103.0, 175], [104.0, 171]],
+    "casual": [[206.8, 173], [206.8, 173], [206.8, 173], [103.5, 174], [104.0, 174], [104.0, 170]],
+    "formal": [[207.2, 176], [208.2, 175], [208.2, 175], [102.5, 176], [103.0, 175], [103.5, 171]],
+    "home": [[207.7, 171], [208.6, 171], [208.6, 173], [102.5, 173], [102.0, 173], [102.5, 170]],
+    "cute": [[206.8, 174], [207.7, 174], [207.2, 175], [103.0, 174], [103.0, 173], [104.0, 171]]
+  },
+  "p_cheng": {
+    "detective": [[200.5, 172], [200.5, 173], [200.1, 175], [109.0, 173], [109.5, 171], [109.5, 170]],
+    "casual": [[201.8, 173], [201.4, 172], [201.8, 172], [111.5, 173], [111.0, 173], [110.0, 170]],
+    "formal": [[202.8, 170], [202.8, 171], [202.8, 173], [108.5, 173], [108.5, 172], [108.5, 170]],
+    "home": [[202.3, 171], [202.3, 172], [202.3, 173], [111.0, 171], [111.5, 172], [111.5, 170]],
+    "cute": [[202.3, 170], [202.8, 170], [202.3, 170], [109.0, 170], [108.0, 170], [108.0, 170]]
+  },
+  "p_shuang": {
+    "detective": [[212.5, 175], [212.5, 175], [211.5, 175], [110.0, 175], [108.5, 172], [109.5, 171]],
+    "casual": [[209.5, 170], [210.0, 171], [210.0, 171], [110.5, 171], [110.0, 171], [110.5, 171]],
+    "formal": [[211.0, 171], [211.0, 170], [210.5, 171], [106.5, 172], [107.0, 173], [108.0, 171]],
+    "home": [[212.0, 171], [213.5, 171], [212.0, 170], [107.5, 172], [107.5, 171], [107.5, 171]],
+    "cute": [[211.5, 171], [211.0, 170], [211.0, 171], [111.0, 171], [110.5, 172], [111.5, 170]]
+  },
+  "p_leo": {
+    "detective": [[202.3, 172], [202.3, 174], [202.3, 173], [108.0, 173], [108.0, 171], [108.0, 170]],
+    "casual": [[201.8, 171], [201.4, 172], [201.4, 171], [108.5, 171], [109.0, 171], [109.0, 170]],
+    "formal": [[199.2, 172], [199.2, 173], [199.2, 173], [111.0, 173], [111.5, 173], [111.5, 170]],
+    "home": [[202.3, 173], [202.3, 173], [202.8, 173], [108.5, 173], [108.5, 173], [108.5, 171]],
+    "cute": [[202.8, 171], [202.3, 171], [201.8, 170], [107.0, 171], [107.0, 171], [107.0, 170]]
+  }
+};
 const VP = {
   x: 640,
   y: 300
@@ -41062,7 +41153,8 @@ function VectorFieldSprite({
   })))));
 }
 function FieldPreview({
-  student
+  student,
+  active = true
 }) {
   const [direction, setDirection] = useState('front'),
     [walking, setWalking] = useState(false);
@@ -41085,20 +41177,16 @@ function FieldPreview({
     "aria-pressed": walking,
     onClick: () => setWalking(!walking)
   }, walking ? '停止走動' : '試走看看')), React.createElement("svg", {
-    viewBox: "-100 -260 180 275",
+    viewBox: "-105 -260 210 280",
     role: "img",
     "aria-label": "\u76EE\u524D\u9020\u578B\u8207\u5925\u4F34\u7684\u5834\u666F\u5C0F\u4EBA"
-  }, React.createElement(FieldSprite, {
+  }, React.createElement(ExplorerWithCompanion, {
     student: student,
     direction: direction,
-    walking: walking,
-    selected: true
-  }), React.createElement(Companion, _extends({
-    student: student
-  }, companionSlot(student, 1, direction), {
-    direction: direction,
-    walking: walking
-  }))));
+    walking: walking && active,
+    selected: true,
+    animate: active
+  })));
 }
 function useSpriteStep(walking, period = 160) {
   const [step, setStep] = useState(0),
@@ -41818,6 +41906,18 @@ function Wardrobe({
     wardrobe: getWardrobe(s)
   }));
   const [tab, setTab] = useState('look');
+  const [preview, setPreview] = useState('field');
+  const wardrobeRef = useRef(null);
+  useEffect(() => {
+    const bar = document.querySelector('.topbar'),
+      room = wardrobeRef.current;
+    if (!bar || !room) return;
+    const update = () => room.style.setProperty('--wardrobe-top', `${bar.getBoundingClientRect().height + 8}px`);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, []);
   const appearance = draft.appearance || {};
   const base = PLAYER_CHAR_BY_ID[draft.avatar];
   const disguise = activeDisguise(draft);
@@ -41847,7 +41947,8 @@ function Wardrobe({
   };
   return React.createElement("div", {
     className: "stage wide wardrobe",
-    id: "wardrobe"
+    id: "wardrobe",
+    ref: wardrobeRef
   }, React.createElement("div", {
     className: "row between"
   }, React.createElement("button", {
@@ -41864,28 +41965,41 @@ function Wardrobe({
     className: "wardrobe-preview",
     "aria-label": "\u9020\u578B\u9810\u89BD"
   }, React.createElement("div", {
-    className: "wardrobe-orbit"
-  }), React.createElement("div", {
-    className: "wardrobe-star"
-  }, "\u2726"), React.createElement("div", {
-    className: "wardrobe-preview-heading"
-  }, React.createElement("span", null, "MY INVESTIGATOR"), React.createElement("h2", null, s.name), React.createElement("p", null, disguise ? `易容中 · ${disguise.name}` : '每次冒險，都可以是新的模樣。')), React.createElement("div", {
-    className: "wardrobe-figure"
+    className: "wardrobe-preview-switch",
+    role: "group",
+    "aria-label": "\u9810\u89BD\u65B9\u5F0F"
+  }, React.createElement("button", {
+    type: "button",
+    id: "preview-field",
+    "aria-pressed": preview === 'field',
+    onClick: () => setPreview('field')
+  }, "\u8D70\u52D5\u5C0F\u4EBA"), React.createElement("button", {
+    type: "button",
+    id: "preview-portrait",
+    "aria-pressed": preview === 'portrait',
+    onClick: () => setPreview('portrait')
+  }, "\u89D2\u8272\u7ACB\u7E6A"), React.createElement("span", null, disguise?.name || base?.name || s.name)), React.createElement("div", {
+    className: "wardrobe-field-view",
+    hidden: preview !== 'field'
+  }, React.createElement(FieldPreview, {
+    student: draft,
+    active: preview === 'field'
+  })), React.createElement("div", {
+    className: "wardrobe-figure",
+    hidden: preview !== 'portrait'
   }, React.createElement(CharacterIllustration, {
     id: playerArtId(draft),
     student: draft,
     fullPreview: true
-  })), React.createElement("div", {
-    className: "wardrobe-preview-foot"
-  }, React.createElement("b", null, disguise?.name || base?.name || '經典探險夥伴'), React.createElement("span", null, disguise ? '解除易容就會恢復你的造型' : '造型可以改變，冒險紀錄一直都在'))), React.createElement("section", {
+  })), React.createElement("p", {
+    className: "wardrobe-preview-note"
+  }, "\u8A66\u7A7F\u5373\u6642\u986F\u793A \xB7 \u5132\u5B58\u5F8C\u624D\u6703\u4FDD\u7559")), React.createElement("section", {
     className: "card wardrobe-controls"
   }, React.createElement("div", null, React.createElement("span", {
     className: "eyebrow"
   }, "\u8ABF\u67E5\u54E1\u7684\u8863\u6AE5"), React.createElement("h1", null, "\u4ECA\u5929\uFF0C\u60F3\u6210\u70BA\u4EC0\u9EBC\u6A21\u6A23\uFF1F"), React.createElement("p", {
     className: "muted small"
-  }, "\u81EA\u7531\u63DB\u9020\u578B\uFF0C\u4E0D\u5FC5\u91CD\u65B0\u5EFA\u7ACB\u89D2\u8272\u3002")), React.createElement(FieldPreview, {
-    student: draft
-  }), React.createElement("div", {
+  }, "\u81EA\u7531\u63DB\u9020\u578B\uFF0C\u4E0D\u5FC5\u91CD\u65B0\u5EFA\u7ACB\u89D2\u8272\u3002")), React.createElement("div", {
     className: "wardrobe-tabs",
     role: "tablist",
     "aria-label": "\u66F4\u8863\u5BA4\u5206\u985E"
@@ -41983,7 +42097,7 @@ function Wardrobe({
       color: draft.color
     }))), React.createElement("span", null, React.createElement("b", null, o.name), React.createElement("small", null, ok ? on ? '已穿戴 · 點一下脫下' : '已解鎖 · 點一下穿戴' : outfitRequirement(o))), React.createElement("span", null, ok ? on ? '✓' : '＋' : '🔒'));
   }))), tab === 'companion' && React.createElement(CompanionCollection, {
-    student: s,
+    student: draft,
     value: selectedCompanion(draft).id,
     onChange: companion => setDraft(d => ({
       ...d,
@@ -42015,15 +42129,19 @@ function Wardrobe({
     id: n.id,
     look: n.look,
     size: 72
-  }), React.createElement("b", null, n.name), React.createElement("small", null, n.role)))), disguiseUnlocked(s) && !availableDisguises(s).length && React.createElement(Notice, null, "\u5148\u53BB\u548C\u5CF6\u4E0A\u7684\u5C45\u6C11\u8AAA\u8AAA\u8A71\uFF0C\u8A8D\u8B58\u4ED6\u5011\u5F8C\u5C31\u80FD\u7DF4\u7FD2\u6613\u5BB9\u3002"))), React.createElement("div", {
+  }), React.createElement("b", null, n.name), React.createElement("small", null, n.role)))), disguiseUnlocked(s) && !availableDisguises(s).length && React.createElement(Notice, null, "\u5148\u53BB\u548C\u5CF6\u4E0A\u7684\u5C45\u6C11\u8AAA\u8AAA\u8A71\uFF0C\u8A8D\u8B58\u4ED6\u5011\u5F8C\u5C31\u80FD\u7DF4\u7FD2\u6613\u5BB9\u3002"))))), React.createElement("div", {
     className: "wardrobe-actions"
-  }, React.createElement("span", {
+  }, React.createElement("button", {
+    className: "btn ghost",
+    id: "wardrobe-discard",
+    onClick: onBack
+  }, "\u53D6\u6D88\u8A66\u7A7F"), React.createElement("span", {
     className: "small muted"
-  }, "\u9810\u89BD\u6EFF\u610F\u5F8C\u518D\u5132\u5B58"), React.createElement("button", {
+  }, "\u53EA\u63DB\u9020\u578B\uFF0C\u5B78\u7FD2\u9032\u5EA6\u4FDD\u7559"), React.createElement("button", {
     className: "btn primary",
     id: "wardrobe-save",
     onClick: save
-  }, "\u5132\u5B58\u9020\u578B\uFF0C\u7E7C\u7E8C\u5192\u96AA \u2192")))));
+  }, "\u5132\u5B58\u9020\u578B")));
 }
 const WARDROBE_SLOTS = [['outfit', '衣服'], ['shoes', '鞋子'], ['head', '頭飾']];
 const PET_SLOTS = [['head', '頭飾'], ['neck', '領巾']];
@@ -42182,7 +42300,7 @@ function WardrobeStylesPanel({
     }
   }, pet.name, "\u7684\u5C0F\u914D\u4EF6 ", React.createElement("span", {
     className: "small muted"
-  }, "\uFF08\u6BCF\u4F4D\u5925\u4F34\u5206\u958B\u8A18\uFF09")), React.createElement("div", {
+  }, "\uFF08\u6BCF\u4F4D\u5925\u4F34\u5206\u958B\u8A18\uFF09")), !WARDROBE_V1.pets[pet.id] ? React.createElement(Notice, null, "\u9019\u4F4D\u5925\u4F34\u7684\u5C08\u7528\u914D\u4EF6\u9084\u5728\u88FD\u4F5C\u4E2D\u3002\u6162\u6162\u3001\u80D6\u5B50\u548C\u5600\u55D2\u76EE\u524D\u53EF\u4EE5\u63DB\u88DD\u3002") : React.createElement("div", {
     className: "wv-grid pets"
   }, WARDROBE_V1.styles.map(st => React.createElement("div", {
     key: st.id,
@@ -42280,10 +42398,10 @@ function useTick(active, period) {
   return active ? i : 0;
 }
 const SHOULDER_DX = {
-  p_ari: 44,
-  p_cheng: 50,
-  p_leo: 46,
-  p_shuang: 46
+  p_ari: 48,
+  p_cheng: 48,
+  p_leo: 48,
+  p_shuang: 54
 };
 function heroShoulder(student, direction, step) {
   if (!student || typeof FIELD_ART === 'undefined' || typeof playerArtId !== 'function') return null;
@@ -42295,11 +42413,15 @@ function heroShoulder(student, direction, step) {
   const neck = art.anchors[frame]?.neck;
   if (!neck) return null;
   const size = id === 'ling' ? .85 : 1,
-    dx = SHOULDER_DX[id] || 40;
+    dx = SHOULDER_DX[id] || 56;
+  const styles = typeof wardrobeOutfitStyle === 'function' ? wardrobeOutfitStyle(student) : null;
+  const seat = styles && typeof COMPANION_SHOULDER_FIT !== 'undefined' ? COMPANION_SHOULDER_FIT[id]?.[styles.outfit]?.[frame] : null;
   return {
-    x: (back ? -dx : dx) * .5 * size,
-    y: (-235 + (neck[1] + 10) * .5) * size,
-    size
+    x: (seat ? (seat[0] - 160) * .5 : (neck[0] - 160 + (back ? -dx : dx)) * .5) * size,
+    y: (-235 + (seat ? seat[1] : neck[1] + 26) * .5) * size,
+    size,
+    frame,
+    style: styles?.outfit || 'base'
   };
 }
 function companionSlot(student, sc, direction) {
@@ -42319,6 +42441,57 @@ function companionSlot(student, sc, direction) {
     shoulder: false
   };
 }
+function ExplorerWithCompanion({
+  student,
+  scale = 1,
+  direction = 'front',
+  walking = false,
+  selected = false,
+  showCompanion = true,
+  cheer = 0,
+  animate = true
+}) {
+  const slot = companionSlot(student, scale, direction);
+  const behind = slot.shoulder && direction !== 'back';
+  const pet = showCompanion ? React.createElement(Companion, _extends({
+    key: "pet",
+    student: student
+  }, slot, {
+    direction: direction,
+    walking: walking,
+    cheer: cheer,
+    animate: animate
+  })) : null;
+  const hero = React.createElement(FieldSprite, {
+    key: "hero",
+    student: student,
+    scale: scale,
+    direction: direction,
+    walking: walking,
+    selected: selected
+  });
+  return React.createElement(React.Fragment, null, behind ? [pet, hero] : [hero, pet]);
+}
+function useCompanionVisible(ref) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let intersecting = false;
+    const update = () => setVisible(intersecting && !document.hidden);
+    const observer = new IntersectionObserver(entries => {
+      intersecting = entries[0].isIntersecting;
+      update();
+    });
+    observer.observe(el);
+    document.addEventListener('visibilitychange', update);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', update);
+    };
+  }, [ref]);
+  return visible;
+}
 function Companion({
   student,
   id,
@@ -42330,14 +42503,19 @@ function Companion({
   walking = false,
   direction = 'right',
   shoulder = false,
-  cheer = 0
+  cheer = 0,
+  animate = true
 }) {
   const c = id ? companionById(id) || COMPANIONS[0] : selectedCompanion(student);
   const [failed, setFailed] = useState(null);
   const reduced = useReducedMotion();
-  const step = useSpriteStep(walking, c.v2 ? c.frameMs || 240 : 240);
+  const motionRef = useRef(null),
+    visible = useCompanionVisible(motionRef);
+  const moving = animate && visible && !reduced;
+  const step = useSpriteStep(walking && moving, c.v2 ? c.frameMs || 240 : 240);
   const heroStep = useSpriteStep(walking, 160);
-  const idle = useTick(!!c.v2 && !walking && !reduced, 900);
+  const baseIdle = c.id === 'snail' || c.id === 'pig';
+  const idle = useTick((!!c.v2 || baseIdle) && !walking && moving, c.id === 'snail' ? 2400 : c.id === 'pig' ? 1800 : 900);
   const [excited, setExcited] = useState(false);
   useEffect(() => {
     if (!cheer || !c.special?.length) return;
@@ -42345,7 +42523,7 @@ function Companion({
     const t = setTimeout(() => setExcited(false), 1800);
     return () => clearTimeout(t);
   }, [cheer, c.id]);
-  const exTick = useTick(excited && !reduced, 320);
+  const exTick = useTick(excited && moving, 320);
   let frame, url;
   if (c.v2) {
     if (excited && c.special?.length) {
@@ -42356,7 +42534,7 @@ function Companion({
       url = c.frames[frame];
     }
   } else {
-    frame = (direction === 'back' ? 2 : 0) + step % 2;
+    frame = (direction === 'back' ? 2 : 0) + (walking ? step % 2 : baseIdle ? idle : 0);
     url = c.airborne ? c.art : `assets/companions/${c.id}/frame-${frame}.webp`;
   }
   const sh = shoulder && c.followMode === 'shoulder' ? heroShoulder(student, direction, heroStep) : null;
@@ -42369,7 +42547,7 @@ function Companion({
   const body = (() => {
     const pw = typeof petWardrobeActive === 'function' && student && !c.v2 && failed !== c.id ? petWardrobeActive(student, c.id) : null;
     if (pw) {
-      const pf = (direction === 'back' ? 2 : 0) + (walking ? step % 2 : 0);
+      const pf = frame;
       return React.createElement("svg", {
         x: "-47",
         y: g ? -84 + 88 - 78.3 : -54 + (88 - 78.3) / 2,
@@ -42411,6 +42589,7 @@ function Companion({
   })();
   if (sh) {
     return React.createElement("g", {
+      ref: motionRef,
       transform: `translate(${x},${y}) scale(${scale})`,
       "data-companion": c.id,
       "data-follow": "shoulder",
@@ -42418,17 +42597,21 @@ function Companion({
     }, React.createElement("g", {
       transform: mirror ? 'scale(-1,1)' : undefined
     }, React.createElement("g", {
-      transform: `translate(${sh.x},${sh.y}) scale(${.53 * sh.size})`,
+      transform: `translate(${sh.x},${sh.y}) scale(${.42 * sh.size})`,
       "data-shoulder-x": Math.round(sh.x),
-      "data-shoulder-y": Math.round(sh.y)
+      "data-shoulder-y": Math.round(sh.y),
+      "data-shoulder-frame": sh.frame,
+      "data-shoulder-style": sh.style
     }, body)));
   }
   return React.createElement("g", {
+    ref: motionRef,
     transform: `translate(${fx},${fy}) scale(${fscale})`,
     "data-companion": c.id,
     "data-follow": shoulderFallback ? 'shoulder-fallback' : c.followMode || (c.airborne ? 'hover' : 'ground'),
     "data-airborne": c.airborne ? 'true' : 'false',
-    "data-walking": walking ? 'true' : 'false'
+    "data-walking": walking ? 'true' : 'false',
+    "data-motion-active": moving ? 'true' : 'false'
   }, g && !c.airborne && React.createElement("ellipse", {
     cy: "1",
     rx: "29",
@@ -42438,13 +42621,14 @@ function Companion({
   }), React.createElement("g", {
     transform: mirror ? 'scale(-1,1)' : undefined
   }, React.createElement("g", {
-    className: c.airborne ? 'hover-bob' : walking ? `pet-walking pet-${c.id}` : ''
+    className: !moving ? '' : c.airborne ? 'hover-bob' : walking ? `pet-walking pet-${c.id}` : baseIdle ? `pet-idle pet-${c.id}` : ''
   }, body)));
 }
 function CompanionPortrait({
   student,
   id,
-  size = 72
+  size = 72,
+  animate = true
 }) {
   return React.createElement("svg", {
     width: size,
@@ -42453,7 +42637,8 @@ function CompanionPortrait({
     "aria-hidden": "true"
   }, React.createElement(Companion, {
     student: student,
-    id: id
+    id: id,
+    animate: animate
   }));
 }
 function CompanionPicker({
@@ -42632,6 +42817,7 @@ function CompanionCollection({
     }, React.createElement("span", {
       className: "companion-art"
     }, ok ? React.createElement(CompanionPortrait, {
+      student: student,
       id: c.id,
       size: 92
     }) : React.createElement("span", {
@@ -42639,7 +42825,8 @@ function CompanionCollection({
       "aria-hidden": "true"
     }, React.createElement(CompanionPortrait, {
       id: c.id,
-      size: 92
+      size: 92,
+      animate: false
     }))), React.createElement("b", null, ok ? c.name : '？？？', React.createElement("small", null, ok ? c.species : '還沒遇到')), React.createElement("span", null, ok ? c.desc : `取得方式：${companionRewardText(c.id)}`), on && React.createElement("em", {
       className: "tag"
     }, "\u8DDF\u8457\u4F60"));
@@ -42927,19 +43114,15 @@ function SceneView({
     key: "player",
     transform: `translate(${pos.x},${pos.y})`,
     pointerEvents: "none"
-  }, React.createElement(FieldSprite, {
+  }, React.createElement(ExplorerWithCompanion, {
     student: student,
     scale: sc,
     direction: motion.direction,
     walking: motion.walking,
-    selected: true
-  }), story.flags.has_tick && React.createElement(Companion, _extends({
-    student: student
-  }, companionSlot(student, sc, motion.direction), {
-    direction: motion.direction,
-    walking: motion.walking,
+    selected: true,
+    showCompanion: !!story.flags.has_tick,
     cheer: cheer
-  }))) : React.createElement(Hotspot, {
+  })) : React.createElement(Hotspot, {
     key: it.h.id,
     h: it.h,
     isMap: isMap,
@@ -47507,7 +47690,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.09-v31\uFF08\u5099\u4EFD\u8207\u9032\u5EA6\u4FDD\u8B77\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.09-v32\uFF08\u66F4\u8863\u5BA4\u8207\u5925\u4F34\u6539\u5584\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -48001,7 +48184,7 @@ function App() {
   });
   return React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.09-v31",
+    "data-build": "2026.11.09-v32",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
