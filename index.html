@@ -620,7 +620,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261109-g6">
+<meta name="game-release" content="playtest-20261109-backup">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -12354,6 +12354,7 @@ function createInitialState() {
   };
 }
 function loadState() {
+  if (typeof readStoredState === "function") return readStoredState();
   try {
     const raw = localStorage.getItem(STORE_KEY);
     if (!raw) return createInitialState();
@@ -12368,6 +12369,7 @@ function loadState() {
   }
 }
 function saveState(state) {
+  if (typeof persistStateSafely === "function") return persistStateSafely(state);
   try {
     localStorage.setItem(STORE_KEY, JSON.stringify(state));
     syncProfiles(state);
@@ -12382,9 +12384,12 @@ function loadProfiles() {
     const raw = localStorage.getItem(PROFILES_KEY);
     if (raw) {
       const p = JSON.parse(raw);
-      if (p && Array.isArray(p.list)) return p;
+      if (p && Array.isArray(p.list)) return typeof validateProfileIndex === "function" ? validateProfileIndex(p) : p;
+      throw new Error("角色清單格式異常");
     }
-  } catch (e) {}
+  } catch (e) {
+    if (typeof protectStorage === "function") protectStorage("角色清單無法讀取，已保留原始資料並停止儲存。");
+  }
   return {
     active: null,
     list: []
@@ -12407,6 +12412,7 @@ function profileMeta(state, id) {
   };
 }
 function syncProfiles(state) {
+  if (typeof STORAGE_SAFETY !== "undefined" && STORAGE_SAFETY.issue) return loadProfiles();
   const p = loadProfiles();
   if (!p.active) {
     const id = 'p' + now().toString(36);
@@ -12421,6 +12427,7 @@ function syncProfiles(state) {
   return p;
 }
 function switchProfile(current, targetId) {
+  if (typeof switchProfileSafely === "function") return switchProfileSafely(current, targetId);
   const p = syncProfiles(current);
   if (targetId === p.active) return current;
   try {
@@ -12446,6 +12453,7 @@ function switchProfile(current, targetId) {
   return next;
 }
 function createProfile(current) {
+  if (typeof switchProfileSafely === "function") return switchProfileSafely(current, null, true);
   const p = syncProfiles(current);
   const id = 'p' + now().toString(36) + Math.floor(Math.random() * 1e3);
   p.list.push({
@@ -12459,6 +12467,7 @@ function createProfile(current) {
   return switchProfile(current, id);
 }
 function deleteProfile(current, id) {
+  if (typeof deleteProfileSafely === "function") return deleteProfileSafely(current, id);
   const p = syncProfiles(current);
   if (id === p.active || !p.list.some(m => m.id === id)) return false;
   try {
@@ -12780,12 +12789,487 @@ function exportJSON(state) {
   return JSON.stringify(state, null, 2);
 }
 function importJSON(text) {
+  if (typeof validateBackupText === "function") return validateBackupText(text);
   const s = JSON.parse(text);
   if (!s || s.version !== 1 || !('missions' in s)) throw new Error('格式不符');
   return {
     ...createInitialState(),
     ...s
   };
+}
+const BACKUP_LIMITS = {
+  bytes: 3 * 1024 * 1024,
+  depth: 40,
+  nodes: 180000,
+  array: 20000,
+  text: 60000
+};
+const RECOVERY_KEY = 'kei_recovery_v1';
+const STORAGE_SAFETY = {
+  issue: null,
+  error: null,
+  expected: undefined
+};
+function backupError(message) {
+  throw new Error(message);
+}
+function backupObject(v) {
+  return v !== null && typeof v === 'object' && !Array.isArray(v);
+}
+function backupGraph(v) {
+  let nodes = 0;
+  function walk(x, depth) {
+    if (++nodes > BACKUP_LIMITS.nodes || depth > BACKUP_LIMITS.depth) backupError('備份結構過大或層數過深。');
+    if (x === null || typeof x === 'boolean') return;
+    if (typeof x === 'number') {
+      if (!Number.isFinite(x)) backupError('備份含有無效數字。');
+      return;
+    }
+    if (typeof x === 'string') {
+      if (x.length > BACKUP_LIMITS.text) backupError('備份內有過長的文字。');
+      return;
+    }
+    if (!backupObject(x) && !Array.isArray(x)) backupError('備份含有不支援的資料。');
+    if (Array.isArray(x) && x.length > BACKUP_LIMITS.array) backupError('備份內的清單過長。');
+    for (const k of Object.keys(x)) {
+      if (['__proto__', 'prototype', 'constructor'].includes(k)) backupError('備份含有不允許的欄位。');
+      walk(x[k], depth + 1);
+    }
+  }
+  walk(v, 0);
+}
+function validateBackupState(input) {
+  backupGraph(input);
+  const bad = p => backupError('備份欄位不正確：' + p + '。原進度尚未變更。');
+  const obj = (v, p) => {
+    if (!backupObject(v)) bad(p);
+    return v;
+  };
+  const arr = (v, p, test) => {
+    if (!Array.isArray(v)) bad(p);
+    if (test) v.forEach((x, i) => test(x, p + '[' + i + ']'));
+    return v;
+  };
+  const str = (v, p) => {
+    if (typeof v !== 'string') bad(p);
+  };
+  const num = (v, p) => {
+    if (typeof v !== 'number' || !Number.isFinite(v)) bad(p);
+  };
+  const opt = (v, k, test, p = '') => {
+    if (v[k] !== undefined && v[k] !== null) test(v[k], p + '.' + k);
+  };
+  const strs = (v, p) => arr(v, p, str),
+    records = (v, p) => arr(v, p, obj);
+  const map = (v, p, fn) => {
+    obj(v, p);
+    for (const [k, x] of Object.entries(v)) fn(x, p + '.' + k);
+  };
+  const scalarMap = (v, p) => map(v, p, (x, q) => {
+    if (!['string', 'number', 'boolean'].includes(typeof x) && x !== null) bad(q);
+  });
+  obj(input, '根目錄');
+  if (input.version !== 1) backupError('這不是支援的第 1 版備份，請保留原檔。');
+  arr(input.missions, 'missions');
+  const s = {
+    ...createInitialState(),
+    ...input
+  };
+  if (s.student !== null) {
+    obj(s.student, 'student');
+    const st = {
+      achievements: [],
+      outfits: [],
+      chapters: {},
+      log: [],
+      xp: 0,
+      ...s.student
+    };
+    str(st.name, 'student.name');
+    if (!st.name.trim() || st.name.length > 200) bad('student.name');
+    for (const k of ['avatar', 'color', 'companion', 'outfit', 'title']) opt(st, k, str);
+    num(st.xp, 'student.xp');
+    if (st.grade !== undefined && ![2, 6].includes(st.grade)) bad('student.grade');
+    strs(st.achievements, 'student.achievements');
+    strs(st.outfits, 'student.outfits');
+    records(st.log, 'student.log');
+    map(st.chapters, 'student.chapters', (c, p) => {
+      obj(c, p);
+      opt(c, 'rooms', (v, q) => map(v, q, obj), p);
+    });
+    opt(st, 'appearance', (v, p) => {
+      obj(v, p);
+      for (const k of ['hair', 'eye', 'skin', 'gender']) opt(v, k, str, p);
+    });
+    opt(st, 'story', (v, p) => {
+      obj(v, p);
+      for (const k of ['flags', 'solved']) opt(v, k, scalarMap, p);
+      for (const k of ['evidence', 'met', 'links', 'notes']) opt(v, k, strs, p);
+      opt(v, 'log', records, p);
+      opt(v, 'scene', str, p);
+      opt(v, 'pos', (x, q) => {
+        obj(x, q);
+        opt(x, 'x', num, q);
+        opt(x, 'y', num, q);
+      }, p);
+    });
+    if (st.story) st.story = {
+      flags: {},
+      evidence: [],
+      scene: 'agency',
+      met: [],
+      links: [],
+      solved: {},
+      notes: [],
+      log: [],
+      pos: null,
+      ...st.story
+    };
+    opt(st, 'wardrobe', (v, p) => {
+      obj(v, p);
+      opt(v, 'owned', strs, p);
+      opt(v, 'equipped', scalarMap, p);
+      opt(v, 'pets', (x, q) => map(x, q, scalarMap), p);
+      opt(v, 'log', records, p);
+    });
+    opt(st, 'companions', (v, p) => {
+      obj(v, p);
+      opt(v, 'owned', strs, p);
+      opt(v, 'met', obj, p);
+    });
+    opt(st, 'wallet', (v, p) => {
+      obj(v, p);
+      for (const k of ['coins', 'xpFromCases', 'fragments', 'chestsOpened', 'hintCards']) opt(v, k, num, p);
+      for (const k of ['badges', 'arrests', 'items', 'focus']) opt(v, k, scalarMap, p);
+      for (const k of ['kpRecent']) opt(v, k, strs, p);
+      for (const k of ['caseLog', 'purchases']) opt(v, k, records, p);
+      opt(v, 'offers', (a, q) => arr(a, q, (o, r) => {
+        obj(o, r);
+        str(o.id, r + '.id');
+        arr(o.steps, r + '.steps', obj);
+      }), p);
+      opt(v, 'active', (a, q) => {
+        obj(a, q);
+        arr(a.stages, q + '.stages', stage);
+        opt(a, 'results', records, q);
+      }, p);
+      opt(v, 'chests', (x, q) => map(x, q, (c, r) => {
+        obj(c, r);
+        arr(c.locks, r + '.locks', stage);
+      }), p);
+    });
+    s.student = st;
+  }
+  function stage(t, p) {
+    obj(t, p);
+    str(t.kind, p + '.kind');
+    obj(t.params, p + '.params');
+    if (typeof ALL_MECHS !== 'undefined' && !Object.prototype.hasOwnProperty.call(ALL_MECHS, t.kind)) bad(p + '.kind');
+    const r = t.params;
+    const required = {
+      pickone: ['items'],
+      problems: ['problems'],
+      step: ['steps'],
+      clue: ['passage', 'evidence'],
+      motive: ['lines', 'evidence', 'options'],
+      order: ['paragraphs'],
+      idiom: ['items', 'chips'],
+      rhetoric: ['sentences', 'devices'],
+      wordpair: ['pairs'],
+      inference: ['suspects', 'clues'],
+      mixer: ['names', 'target'],
+      ratiosort: ['target', 'cards'],
+      ribbon: ['total', 'piece'],
+      chart: ['cats'],
+      lock: ['constraints', 'answer']
+    };
+    for (const k of required[t.kind] || []) arr(r[k], p + '.params.' + k);
+    for (const k of ['story', 'title', 'question', 'problem']) opt(r, k, str, p + '.params');
+    opt(r, 'hints', strs, p + '.params');
+    if (t.kind === 'pickone') r.items.forEach((x, i) => {
+      obj(x, p);
+      str(x.q, p);
+      arr(x.options, p, (o, q) => {
+        obj(o, q);
+        str(o.text, q);
+        if (typeof o.correct !== 'boolean') bad(q + '.correct');
+      });
+    });
+    if (t.kind === 'problems') r.problems.forEach(x => {
+      obj(x, p);
+      str(x.q, p);
+      num(x.answer, p);
+    });
+    if (t.kind === 'step') r.steps.forEach(x => {
+      obj(x, p);
+      str(x.prompt, p);
+      str(x.op, p);
+      num(x.result, p);
+      for (const k of ['left', 'right']) if (!['string', 'number'].includes(typeof x[k])) bad(p + '.' + k);
+    });
+    if (t.kind === 'clue') {
+      strs(r.passage, p);
+      r.evidence.forEach(x => {
+        if (!Number.isInteger(x) || x < 0 || x >= r.passage.length) bad(p + '.evidence');
+      });
+      if (r.follow) {
+        obj(r.follow, p);
+        str(r.follow.question, p);
+        records(r.follow.options, p);
+      }
+    }
+    for (const k of ['attempts', 'hints', 'seed']) opt(t, k, num, p);
+  }
+  const unique = (xs, p) => {
+    const ids = new Set();
+    for (const x of xs) {
+      if (ids.has(x.id)) bad(p + ' 重複 id');
+      ids.add(x.id);
+    }
+  };
+  arr(s.missions, 'missions', (m, p) => {
+    obj(m, p);
+    str(m.id, p + '.id');
+    str(m.kpId, p + '.kpId');
+    str(m.status, p + '.status');
+    for (const k of ['title', 'subject', 'errorItemId']) opt(m, k, str, p);
+    arr(m.stages, p + '.stages', stage);
+    if (m.stages.length !== 3) bad(p + '.stages');
+    opt(m, 'diag', (a, q) => arr(a, q, stage), p);
+    opt(m, 'reviews', records, p);
+    opt(m, 'seed', num, p);
+    opt(m, 'cursor', num, p);
+  });
+  unique(s.missions, 'missions');
+  arr(s.errorItems, 'errorItems', (e, p) => {
+    obj(e, p);
+    str(e.id, p);
+    str(e.text, p);
+    strs(e.kpIds, p);
+    opt(e, 'reasonIds', strs, p);
+  });
+  unique(s.errorItems, 'errorItems');
+  records(s.practiceLog, 'practiceLog');
+  obj(s.meta, 'meta');
+  opt(s, 'settings', (v, p) => {
+    obj(v, p);
+    opt(v, 'practiceKps', strs, p);
+    opt(v, 'g6Semesters', strs, p);
+    if (v.difficulty !== undefined && !['easy', 'normal', 'hard'].includes(v.difficulty)) bad(p + '.difficulty');
+    for (const k of ['g6Prerequisites', 'g6ExpansionEnabled', 'g6AllowRepeat', 'zhuyin']) if (v[k] !== undefined && typeof v[k] !== 'boolean') bad(p + '.' + k);
+  });
+  opt(s, 'learning', (v, p) => {
+    obj(v, p);
+    for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli']) opt(v, k, strs, p);
+    opt(v, 'seen', records, p);
+    opt(v, 'archivedCases', records, p);
+    for (const k of ['storyTasks', 'reviewTasks']) opt(v, k, (x, q) => map(x, q, stage), p);
+  });
+  return s;
+}
+function validateBackupText(text) {
+  if (typeof text !== 'string' || !text.trim()) backupError('請先貼上完整的備份文字。');
+  if (text.length > BACKUP_LIMITS.bytes || new TextEncoder().encode(text).length > BACKUP_LIMITS.bytes) backupError('備份超過 3 MB，請保留原檔，先聯絡維護者協助。');
+  let data;
+  try {
+    data = JSON.parse(text.replace(/^\uFEFF/, ''));
+  } catch (e) {
+    backupError('備份不是完整的 JSON，請重新複製全部文字。');
+  }
+  return validateBackupState(data);
+}
+function backupSummary(s) {
+  return {
+    name: s.student?.name || '尚未建立角色',
+    grade: s.student?.grade || 6,
+    xp: s.student?.xp || 0,
+    missions: s.missions.length,
+    passed: s.missions.filter(m => m.status === 'passed').length,
+    records: s.practiceLog.length
+  };
+}
+function validateProfileIndex(p) {
+  if (!backupObject(p) || !Array.isArray(p.list) || p.list.length > 1000) backupError('角色清單格式異常。');
+  const ids = new Set();
+  if (p.active !== null && typeof p.active !== 'string') backupError('目前角色識別碼異常。');
+  for (const m of p.list) {
+    if (!backupObject(m) || typeof m.id !== 'string' || !/^[a-zA-Z0-9_-]{1,100}$/.test(m.id) || ids.has(m.id) || typeof m.name !== 'string') backupError('角色清單格式異常。');
+    ids.add(m.id);
+  }
+  if (p.active === null && p.list.length || p.active !== null && !ids.has(p.active)) backupError('找不到目前角色。');
+  return p;
+}
+function protectStorage(message) {
+  STORAGE_SAFETY.issue = message;
+  return createInitialState();
+}
+function readStoredState() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    STORAGE_SAFETY.expected = raw;
+    if (raw === null) return createInitialState();
+    return validateBackupText(raw);
+  } catch (e) {
+    return protectStorage('原存檔暫時無法讀取，已停止自動儲存，沒有清除原資料。' + e.message);
+  }
+}
+function loadPlayableState() {
+  const s = loadState();
+  if (STORAGE_SAFETY.issue) return s;
+  try {
+    return refreshBoard(s);
+  } catch (e) {
+    return protectStorage('原存檔暫時無法開啟，已停止自動儲存。請先保留原始備份，再復原或匯入。');
+  }
+}
+function writeStorageBatch(changes) {
+  const before = {};
+  for (const k of Object.keys(changes)) before[k] = localStorage.getItem(k);
+  try {
+    for (const [k, v] of Object.entries(changes)) {
+      if (v === null) localStorage.removeItem(k);else localStorage.setItem(k, v);
+      if (localStorage.getItem(k) !== v) throw Error('寫入核對失敗');
+    }
+  } catch (e) {
+    let rollback = true;
+    for (const [k, v] of Object.entries(before).reverse()) try {
+      if (localStorage.getItem(k) === v) continue;
+      if (v === null) localStorage.removeItem(k);else localStorage.setItem(k, v);
+      if (localStorage.getItem(k) !== v) rollback = false;
+    } catch (x) {
+      rollback = false;
+    }
+    if (!rollback) STORAGE_SAFETY.issue = '儲存中斷，請先保留備份再重新開啟；不要繼續覆蓋。';
+    backupError('儲存失敗，可能空間不足或瀏覽器禁止儲存。' + (rollback ? '原存檔已保留。' : '請使用復原備份。'));
+  }
+}
+function assertStorageCurrent() {
+  if (STORAGE_SAFETY.issue) backupError(STORAGE_SAFETY.issue);
+  const raw = localStorage.getItem(STORE_KEY);
+  if (STORAGE_SAFETY.expected !== undefined && raw !== STORAGE_SAFETY.expected) {
+    STORAGE_SAFETY.issue = '另一個分頁已變更存檔。此頁已停止儲存，請保留需要的備份後重新載入。';
+    backupError(STORAGE_SAFETY.issue);
+  }
+}
+function profileIndexFor(state, p = loadProfiles()) {
+  const id = p.active || 'p' + now().toString(36);
+  return {
+    ...p,
+    active: id,
+    list: p.active ? p.list.map(m => m.id === id ? profileMeta(state, id) : m) : [profileMeta(state, id)]
+  };
+}
+function persistStateSafely(state) {
+  try {
+    assertStorageCurrent();
+    const raw = JSON.stringify(state);
+    const p = profileIndexFor(state);
+    if (STORAGE_SAFETY.issue) backupError(STORAGE_SAFETY.issue);
+    writeStorageBatch({
+      [STORE_KEY]: raw,
+      [PROFILES_KEY]: JSON.stringify(p)
+    });
+    STORAGE_SAFETY.expected = raw;
+    STORAGE_SAFETY.error = null;
+    return true;
+  } catch (e) {
+    STORAGE_SAFETY.error = e.message;
+    return false;
+  }
+}
+function preserveRecovery(raw, reason) {
+  const text = JSON.stringify({
+    format: 'kei-recovery-1',
+    createdAt: now(),
+    reason,
+    raw
+  });
+  try {
+    localStorage.setItem(RECOVERY_KEY, text);
+    if (localStorage.getItem(RECOVERY_KEY) !== text) throw Error();
+  } catch (e) {
+    backupError('無法建立復原備份，已取消操作，原進度不變。請先匯出備份並確認儲存空間。');
+  }
+}
+function getRecoveryPoint() {
+  try {
+    const r = JSON.parse(localStorage.getItem(RECOVERY_KEY));
+    if (r?.format === 'kei-recovery-1' && typeof r.raw === 'string' && typeof r.reason === 'string' && Number.isFinite(r.createdAt)) return r;
+  } catch (e) {}
+  return null;
+}
+function commitBackupImport(text, current, mode = 'new', recovery = false, reason = '匯入前') {
+  const candidate = refreshBoard(validateBackupText(text));
+  validateBackupState(candidate);
+  if (!['new', 'replace'].includes(mode)) backupError('請選擇匯入方式。');
+  const blocked = STORAGE_SAFETY.issue;
+  if (!blocked) assertStorageCurrent();else if (!recovery) backupError(blocked);
+  const p = validateProfileIndex(loadProfiles());
+  if (blocked && p.list.length === 0 && localStorage.getItem(PROFILES_KEY)) backupError('角色清單異常，請先保留原始資料，交由維護者修復。');
+  const raw = JSON.stringify(candidate),
+    old = blocked ? localStorage.getItem(STORE_KEY) : JSON.stringify(current);
+  preserveRecovery(old === null ? JSON.stringify(createInitialState()) : old, reason);
+  let index,
+    changes = {};
+  if (mode === 'new') {
+    if (p.active && old !== null && (blocked || current.student)) changes['kei_p_' + p.active] = old;
+    const id = 'p' + uid();
+    index = {
+      ...p,
+      active: id,
+      list: [...p.list, profileMeta(candidate, id)]
+    };
+  } else index = profileIndexFor(candidate, p);
+  changes[STORE_KEY] = raw;
+  changes[PROFILES_KEY] = JSON.stringify(index);
+  writeStorageBatch(changes);
+  STORAGE_SAFETY.issue = null;
+  STORAGE_SAFETY.error = null;
+  STORAGE_SAFETY.expected = raw;
+  return candidate;
+}
+function switchProfileSafely(current, targetId, create = false) {
+  assertStorageCurrent();
+  const p = profileIndexFor(current);
+  if (!create && !p.list.some(m => m.id === targetId)) backupError('找不到要切換的角色。');
+  if (!create && targetId === p.active) return current;
+  const id = create ? 'p' + uid() : targetId;
+  const raw = create ? JSON.stringify(createInitialState()) : localStorage.getItem('kei_p_' + id);
+  if (raw === null) backupError('這個角色的存檔遺失，已保留目前角色。');
+  const next = refreshBoard(validateBackupText(raw)),
+    text = JSON.stringify(next);
+  const index = {
+    ...p,
+    active: id,
+    list: create ? [...p.list, profileMeta(next, id)] : p.list.map(m => m.id === id ? profileMeta(next, id) : m)
+  };
+  writeStorageBatch({
+    ['kei_p_' + p.active]: JSON.stringify(current),
+    [STORE_KEY]: text,
+    [PROFILES_KEY]: JSON.stringify(index)
+  });
+  STORAGE_SAFETY.expected = text;
+  STORAGE_SAFETY.error = null;
+  return next;
+}
+function deleteProfileSafely(current, id) {
+  assertStorageCurrent();
+  const p = loadProfiles();
+  if (id === p.active || !p.list.some(m => m.id === id)) return false;
+  const raw = localStorage.getItem('kei_p_' + id);
+  if (raw === null) backupError('角色存檔遺失，無法建立復原備份，已取消刪除。');
+  preserveRecovery(raw, '刪除角色前');
+  writeStorageBatch({
+    [PROFILES_KEY]: JSON.stringify({
+      ...p,
+      list: p.list.filter(m => m.id !== id)
+    }),
+    ['kei_p_' + id]: null
+  });
+  return true;
+}
+function clearCurrentSafely(current) {
+  return commitBackupImport(JSON.stringify(createInitialState()), current, 'replace', false, '清除目前角色前');
 }
 const {
   useState,
@@ -47015,14 +47499,15 @@ function DataPanel({
   toast
 }) {
   const [txt, setTxt] = useState('');
-  const [imp, setImp] = useState('');
+  const [pending, setPending] = useState(null);
+  const [storageError, setStorageError] = useState('');
   return React.createElement("div", {
     className: "col"
   }, React.createElement(Notice, null, "\u8CC7\u6599\u53EA\u4FDD\u5B58\u5728\u9019\u500B\u700F\u89BD\u5668\u7684 localStorage\u3002", storageAvailable() ? '目前可以正常儲存。' : '目前瀏覽器無法儲存（可能是無痕模式或封鎖了網站資料），關閉頁面後進度會消失。'), React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.09-v30\uFF08\u516D\u5E74\u7D1A 162 \u984C\u64F4\u5145\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.09-v31\uFF08\u5099\u4EFD\u8207\u9032\u5EA6\u4FDD\u8B77\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -47049,57 +47534,72 @@ function DataPanel({
       fontSize: 12
     },
     onFocus: e => e.target.select()
-  })), React.createElement("div", {
-    className: "card col"
-  }, React.createElement("h3", null, "\u532F\u5165\u5099\u4EFD"), React.createElement("textarea", {
-    value: imp,
-    onChange: e => setImp(e.target.value),
-    placeholder: "\u8CBC\u4E0A\u5099\u4EFD\u6587\u5B57",
-    style: {
-      minHeight: 90,
-      fontFamily: 'monospace',
-      fontSize: 12
-    }
-  }), React.createElement("div", null, React.createElement(Btn, {
-    onClick: () => {
-      try {
-        setState(refreshBoard(importJSON(imp)));
-        toast('已匯入');
-        setImp('');
-      } catch (e) {
-        toast('匯入失敗：格式不符');
-      }
-    }
-  }, "\u532F\u5165\uFF08\u6703\u8986\u84CB\u76EE\u524D\u8CC7\u6599\uFF09"))), loadProfiles().list.length > 1 && React.createElement("div", {
+  })), React.createElement(BackupImportCard, {
+    state: state,
+    setState: setState,
+    toast: toast
+  }), loadProfiles().list.length > 1 && React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u5176\u4ED6\u89D2\u8272"), React.createElement("p", {
     className: "small muted"
-  }, "\u522A\u9664\u300C\u4E0D\u662F\u76EE\u524D\u4F7F\u7528\u4E2D\u300D\u7684\u89D2\u8272\u5B58\u6A94\uFF08\u7121\u6CD5\u5FA9\u539F\uFF09\u3002"), loadProfiles().list.filter(m => m.id !== loadProfiles().active).map(m => React.createElement("div", {
+  }, "\u522A\u9664\u524D\u6703\u5148\u4FDD\u7559\u8A72\u89D2\u8272\u7684\u5FA9\u539F\u5099\u4EFD\u3002"), loadProfiles().list.filter(m => m.id !== loadProfiles().active).map(m => React.createElement("div", {
     key: m.id,
     className: "row between small"
   }, React.createElement("span", null, m.name, "\u30FB", m.grade === 2 ? '二' : '六', "\u5E74\u7D1A"), React.createElement(Btn, {
     small: true,
     kind: "ghost",
-    id: `pdel-${m.id}`,
+    id: 'pdel-' + m.id,
     onClick: () => {
-      if (deleteProfile(state, m.id)) {
-        setState({
-          ...state
-        });
-        toast('已刪除角色');
-      }
+      setPending({
+        type: 'delete',
+        id: m.id,
+        name: m.name
+      });
+      setStorageError('');
     }
   }, "\u522A\u9664")))), React.createElement("div", {
     className: "card col"
-  }, React.createElement("h3", null, "\u6E05\u9664\u6240\u6709\u8CC7\u6599"), React.createElement("p", {
+  }, React.createElement("h3", null, "\u6E05\u9664\u76EE\u524D\u89D2\u8272"), React.createElement("p", {
     className: "small muted"
-  }, "\u522A\u9664\u9019\u500B\u700F\u89BD\u5668\u4E2D\u7684\u89D2\u8272\u3001\u932F\u984C\u3001\u4EFB\u52D9\u8207\u6240\u6709\u7D00\u9304\u3002"), React.createElement("div", null, React.createElement(Btn, {
+  }, "\u53EA\u6E05\u9664\u76EE\u524D\u89D2\u8272\u7684\u9032\u5EA6\uFF1B\u5176\u4ED6\u89D2\u8272\u4FDD\u7559\u3002\u64CD\u4F5C\u524D\u6703\u5EFA\u7ACB\u5FA9\u539F\u5099\u4EFD\u3002"), React.createElement("div", null, React.createElement(Btn, {
     kind: "ghost",
+    id: "prepare-clear",
     onClick: () => {
-      setState(createInitialState());
-      toast('已清除');
+      setPending({
+        type: 'clear',
+        name: state.student?.name || '目前角色'
+      });
+      setStorageError('');
     }
-  }, "\u6E05\u9664\u5168\u90E8"))));
+  }, "\u6E96\u5099\u6E05\u9664\u76EE\u524D\u89D2\u8272"))), pending && React.createElement("div", {
+    className: "card col",
+    id: "storage-action-confirm"
+  }, React.createElement(Notice, {
+    kind: "warn"
+  }, "\u78BA\u5B9A\u8981", pending.type === 'clear' ? '清除' : '刪除', "\u300C", pending.name, "\u300D\u55CE\uFF1F\u53EA\u6709\u6210\u529F\u5EFA\u7ACB\u5FA9\u539F\u5099\u4EFD\u5F8C\u624D\u6703\u57F7\u884C\u3002"), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: "confirm-storage-action",
+    onClick: () => {
+      try {
+        if (pending.type === 'clear') setState(clearCurrentSafely(state));else if (deleteProfile(state, pending.id)) setState({
+          ...state
+        });
+        setPending(null);
+        setStorageError('');
+        toast('已完成，操作前的角色可由復原備份取回。');
+      } catch (e) {
+        setStorageError(e.message);
+      }
+    }
+  }, "\u78BA\u8A8D", pending.type === 'clear' ? '清除目前角色' : '刪除角色'), React.createElement(Btn, {
+    kind: "ghost",
+    onClick: () => setPending(null)
+  }, "\u53D6\u6D88"))), storageError && React.createElement(Notice, {
+    kind: "bad"
+  }, React.createElement("span", {
+    role: "alert"
+  }, storageError)));
 }
 function ParentApp({
   state,
@@ -47212,32 +47712,255 @@ function WardrobeParentCard({
     className: "muted"
   }, r.text)))));
 }
+function BackupSummary({
+  state
+}) {
+  const s = backupSummary(state);
+  return React.createElement("div", {
+    className: "card soft small",
+    id: "backup-summary"
+  }, React.createElement("b", null, s.name), "\u30FB", s.grade === 2 ? '二' : '六', "\u5E74\u7D1A\u30FB", s.xp, " XP", React.createElement("br", null), "\u59D4\u8A17 ", s.missions, " \u7B46\uFF08\u5DF2\u5B8C\u6210 ", s.passed, " \u7B46\uFF09\u30FB\u7DF4\u7FD2\u7D00\u9304 ", s.records, " \u7B46");
+}
+function BackupImportCard({
+  state,
+  setState,
+  toast,
+  recovery = false
+}) {
+  const [text, setText] = useState(''),
+    [preview, setPreview] = useState(null),
+    [mode, setMode] = useState('new'),
+    [error, setError] = useState('');
+  const point = getRecoveryPoint();
+  const change = t => {
+    setText(t);
+    setPreview(null);
+    setError('');
+    setMode('new');
+  };
+  const inspect = () => {
+    try {
+      setPreview(importJSON(text));
+      setError('');
+    } catch (e) {
+      setPreview(null);
+      setError(e.message);
+    }
+  };
+  const commit = () => {
+    try {
+      const next = commitBackupImport(text, state, mode, recovery);
+      setState(next);
+      setPreview(null);
+      setText('');
+      setError('');
+      toast(mode === 'new' ? '已另存為新角色，原角色保留。' : '已匯入，覆蓋前的角色已留存復原備份。');
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+  return React.createElement("div", {
+    className: "card col",
+    id: "backup-import"
+  }, React.createElement("h3", null, "\u532F\u5165\u8207\u5FA9\u539F\u5099\u4EFD"), React.createElement("p", {
+    className: "small muted"
+  }, "\u5148\u6AA2\u67E5\u5099\u4EFD\uFF0C\u518D\u78BA\u8A8D\u532F\u5165\u3002\u9810\u8A2D\u53E6\u5B58\u65B0\u89D2\u8272\uFF0C\u4FDD\u7559\u539F\u6709\u9032\u5EA6\uFF1B\u8ACB\u52FF\u532F\u5165\u4F86\u6E90\u4E0D\u660E\u7684\u5099\u4EFD\u3002"), React.createElement("textarea", {
+    id: "backup-input",
+    value: text,
+    onChange: e => change(e.target.value),
+    placeholder: "\u8CBC\u4E0A\u5099\u4EFD\u6587\u5B57",
+    style: {
+      minHeight: 90
+    }
+  }), React.createElement("div", null, React.createElement(Btn, {
+    id: "preview-backup",
+    onClick: inspect
+  }, "\u6AA2\u67E5\u4E26\u9810\u89BD\u5099\u4EFD")), error && React.createElement(Notice, {
+    kind: "bad"
+  }, React.createElement("span", {
+    role: "alert",
+    id: "backup-error"
+  }, error)), preview && React.createElement("div", {
+    className: "col",
+    id: "backup-preview"
+  }, React.createElement("h4", null, "\u5373\u5C07\u532F\u5165\u7684\u9032\u5EA6"), React.createElement(BackupSummary, {
+    state: preview
+  }), React.createElement("label", {
+    className: "row"
+  }, React.createElement("input", {
+    type: "radio",
+    name: "backup-mode",
+    id: "backup-mode-new",
+    checked: mode === 'new',
+    onChange: () => setMode('new')
+  }), "\u53E6\u5B58\u70BA\u65B0\u89D2\u8272\uFF08\u4FDD\u7559\u539F\u89D2\u8272\uFF09"), React.createElement("label", {
+    className: "row"
+  }, React.createElement("input", {
+    type: "radio",
+    name: "backup-mode",
+    id: "backup-mode-replace",
+    checked: mode === 'replace',
+    onChange: () => setMode('replace')
+  }), "\u53D6\u4EE3\u76EE\u524D\u89D2\u8272"), mode === 'replace' && React.createElement(Notice, null, "\u5C07\u53D6\u4EE3\u300C", state.student?.name || '目前角色', "\u300D\u7684\u9032\u5EA6\u3002\u5148\u6210\u529F\u4FDD\u5B58\u532F\u5165\u524D\u7684\u5FA9\u539F\u5099\u4EFD\uFF0C\u624D\u6703\u57F7\u884C\uFF1B\u5176\u4ED6\u89D2\u8272\u4E0D\u8B8A\u3002"), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    kind: "primary",
+    id: "confirm-backup-import",
+    onClick: commit
+  }, "\u78BA\u8A8D\u532F\u5165"), React.createElement(Btn, {
+    kind: "ghost",
+    onClick: () => setPreview(null)
+  }, "\u53D6\u6D88"))), React.createElement("div", {
+    className: "card soft col"
+  }, React.createElement("h4", null, "\u6700\u8FD1\u4E00\u6B21\u5FA9\u539F\u5099\u4EFD"), React.createElement("p", {
+    className: "small muted"
+  }, "\u4FDD\u7559\u6700\u8FD1\u4E00\u6B21\u532F\u5165\u3001\u6E05\u9664\u6216\u522A\u9664\u524D\u7684\u89D2\u8272\u3002\u4ECD\u5728\u540C\u4E00\u500B\u700F\u89BD\u5668\uFF0C\u6E05\u9664\u7DB2\u7AD9\u8CC7\u6599\u4E5F\u6703\u522A\u9664\u5B83\uFF1B\u91CD\u8981\u9032\u5EA6\u8ACB\u53E6\u5B58\u532F\u51FA\u6587\u5B57\u3002"), point ? React.createElement(React.Fragment, null, React.createElement("span", {
+    className: "small"
+  }, fmtDate(point.createdAt), "\u30FB", point.reason), React.createElement("div", null, React.createElement(Btn, {
+    id: "preview-recovery",
+    onClick: () => {
+      change(point.raw);
+      try {
+        setPreview(importJSON(point.raw));
+        setMode('new');
+      } catch (e) {
+        setError('已保留原始文字，但這份資料仍需修復。' + e.message);
+      }
+    }
+  }, "\u67E5\u770B\u4E26\u5FA9\u539F\u9019\u4EFD\u5099\u4EFD"))) : React.createElement("span", {
+    className: "small muted"
+  }, "\u5C1A\u672A\u5EFA\u7ACB\u5FA9\u539F\u5099\u4EFD\u3002")));
+}
+function StorageRecovery({
+  state,
+  onImported
+}) {
+  const [raw, setRaw] = useState(null),
+    [message, setMessage] = useState(''),
+    [memory, setMemory] = useState(''),
+    [rescue, setRescue] = useState('');
+  return React.createElement("div", {
+    className: "stage",
+    id: "storage-recovery"
+  }, React.createElement("div", {
+    className: "card col"
+  }, React.createElement("h2", null, "\u5148\u4FDD\u8B77\u539F\u672C\u7684\u9032\u5EA6"), React.createElement(Notice, {
+    kind: "warn"
+  }, STORAGE_SAFETY.issue), React.createElement("p", null, "\u76EE\u524D\u5DF2\u505C\u6B62\u81EA\u52D5\u5132\u5B58\u3002\u8ACB\u5148\u8907\u88FD\u4FDD\u7559\u539F\u59CB\u8CC7\u6599\uFF0C\u6216\u532F\u5165\u4F60\u4FDD\u7BA1\u7684\u6B63\u5E38\u5099\u4EFD\u3002\u6C92\u6709\u81EA\u52D5\u5EFA\u7ACB\u65B0\u904A\u6232\u8986\u84CB\u539F\u6A94\u3002"), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: "recovery-raw",
+    onClick: () => {
+      try {
+        setRaw(localStorage.getItem(STORE_KEY) || '');
+      } catch (e) {
+        setMessage('目前無法讀取瀏覽器儲存空間。');
+      }
+    }
+  }, "\u986F\u793A\u539F\u59CB\u5B58\u6A94\u6587\u5B57"), React.createElement(Btn, {
+    onClick: () => window.location.reload()
+  }, "\u91CD\u65B0\u8F09\u5165\u6700\u65B0\u5B58\u6A94")), raw !== null && React.createElement("textarea", {
+    id: "recovery-raw-text",
+    readOnly: true,
+    value: raw,
+    style: {
+      minHeight: 150
+    },
+    onFocus: e => e.target.select()
+  }), React.createElement("div", {
+    className: "col"
+  }, React.createElement(Btn, {
+    id: "recovery-all",
+    onClick: () => {
+      try {
+        const values = {};
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (/^kei_(v1|profiles|recovery_v1|p_[a-zA-Z0-9_-]+)$/.test(k)) values[k] = localStorage.getItem(k);
+        }
+        setRescue(JSON.stringify({
+          format: 'kei-storage-rescue-1',
+          savedAt: now(),
+          values
+        }));
+      } catch (e) {
+        setMessage('目前無法讀取瀏覽器儲存空間。');
+      }
+    }
+  }, "\u4FDD\u7559\u6240\u6709\u89D2\u8272\u7684\u539F\u59CB\u8CC7\u6599\uFF08\u4F9B\u4FEE\u5FA9\uFF09"), rescue && React.createElement(React.Fragment, null, React.createElement("p", {
+    className: "small muted"
+  }, "\u8ACB\u8907\u88FD\u5F8C\u53E6\u5B58\u6A94\u6848\uFF0C\u4EA4\u7D66\u7DAD\u8B77\u8005\u4FEE\u5FA9\u3002\u9019\u662F\u539F\u59CB\u8CC7\u6599\u5305\uFF0C\u4E0D\u80FD\u76F4\u63A5\u7576\u4F5C\u89D2\u8272\u5099\u4EFD\u532F\u5165\u3002"), React.createElement("textarea", {
+    id: "recovery-all-text",
+    readOnly: true,
+    value: rescue,
+    onFocus: e => e.target.select()
+  }))), state.student && React.createElement("div", {
+    className: "col"
+  }, React.createElement(Btn, {
+    id: "recovery-memory",
+    onClick: () => setMemory(exportJSON(state))
+  }, "\u4FDD\u7559\u6B64\u5206\u9801\u5C1A\u672A\u5132\u5B58\u7684\u9032\u5EA6\u6587\u5B57"), memory && React.createElement("textarea", {
+    id: "recovery-memory-text",
+    readOnly: true,
+    value: memory,
+    onFocus: e => e.target.select()
+  })), message && React.createElement(Notice, null, message), React.createElement(BackupImportCard, {
+    state: state,
+    setState: onImported,
+    toast: setMessage,
+    recovery: true
+  })));
+}
 function App() {
-  const [state, setStateRaw] = useState(() => refreshBoard(loadState()));
+  const [state, setStateRaw] = useState(() => loadPlayableState());
   const [mode, setMode] = useState('student');
   const [toast, toastEl] = useToast();
-  const saveOk = useRef(true);
+  const [storageWarning, setStorageWarning] = useState('');
+  const [unsavedText, setUnsavedText] = useState('');
   const setState = useCallback(s => {
     setStateRaw(s);
   }, []);
-  const [profiles, setProfiles] = useState(() => syncProfiles(loadState()));
+  const [profiles, setProfiles] = useState(() => loadProfiles());
   const switchTo = id => {
-    const next = switchProfile(state, id);
-    setStateRaw(refreshBoard(next));
-    setProfiles(loadProfiles());
-    setMode('student');
-    toast(`切換到 ${next.student?.name || '新角色'}`);
+    try {
+      const next = switchProfile(state, id);
+      setStateRaw(next);
+      setProfiles(loadProfiles());
+      setMode('student');
+      toast('切換到 ' + (next.student?.name || '新角色'));
+    } catch (e) {
+      toast(e.message);
+    }
   };
   const newProfile = () => {
-    const next = createProfile(state);
-    setStateRaw(next);
-    setProfiles(loadProfiles());
-    setMode('student');
+    try {
+      const next = createProfile(state);
+      setStateRaw(next);
+      setProfiles(loadProfiles());
+      setMode('student');
+    } catch (e) {
+      toast(e.message);
+    }
   };
   useEffect(() => {
-    saveOk.current = saveState(state);
-    setProfiles(loadProfiles());
+    if (STORAGE_SAFETY.issue) {
+      setStorageWarning(STORAGE_SAFETY.issue);
+      return;
+    }
+    const ok = saveState(state);
+    setStorageWarning(ok ? '' : STORAGE_SAFETY.error || '進度尚未儲存。');
+    if (ok) setProfiles(loadProfiles());
   }, [state]);
+  useEffect(() => {
+    const changed = e => {
+      if ([STORE_KEY, PROFILES_KEY].includes(e.key) || e.key === null) {
+        STORAGE_SAFETY.issue = '另一個分頁已變更存檔。此頁已停止儲存，請保留需要的備份後重新載入。';
+        setStorageWarning(STORAGE_SAFETY.issue);
+      }
+    };
+    window.addEventListener('storage', changed);
+    return () => window.removeEventListener('storage', changed);
+  }, []);
   useEffect(() => {
     if (!state.student || typeof grantWardrobeRewards !== 'function') return;
     const r = grantWardrobeRewards(state);
@@ -47268,9 +47991,17 @@ function App() {
     }
     previousRewards.current = rewards;
   }, [s]);
+  if (STORAGE_SAFETY.issue) return React.createElement(StorageRecovery, {
+    state: state,
+    onImported: next => {
+      setStateRaw(next);
+      setStorageWarning('');
+      setProfiles(loadProfiles());
+    }
+  });
   return React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.09-v29",
+    "data-build": "2026.11.09-v31",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
@@ -47288,7 +48019,24 @@ function App() {
   }, "\u5BB6\u9577\u5340") : React.createElement("button", {
     onClick: () => setMode('student'),
     id: "top-student"
-  }, "\u56DE\u5230\u904A\u6232")), mode === 'student' ? React.createElement(StudentApp, {
+  }, "\u56DE\u5230\u904A\u6232")), storageWarning && React.createElement("div", {
+    className: "card col",
+    role: "alert",
+    id: "storage-warning"
+  }, React.createElement("b", null, "\u76EE\u524D\u9032\u5EA6\u5C1A\u672A\u6210\u529F\u5132\u5B58"), React.createElement("span", null, storageWarning), React.createElement("div", {
+    className: "row"
+  }, React.createElement("button", {
+    onClick: () => setUnsavedText(exportJSON(state))
+  }, "\u4FDD\u7559\u76EE\u524D\u9032\u5EA6\u6587\u5B57"), React.createElement("button", {
+    onClick: () => {
+      const ok = saveState(state);
+      setStorageWarning(ok ? '' : STORAGE_SAFETY.error);
+    }
+  }, "\u91CD\u8A66\u5132\u5B58")), unsavedText && React.createElement("textarea", {
+    readOnly: true,
+    value: unsavedText,
+    onFocus: e => e.target.select()
+  })), mode === 'student' ? React.createElement(StudentApp, {
     key: 'student-' + profiles.active,
     state: state,
     setState: setState,
