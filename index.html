@@ -625,6 +625,15 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .junior-deduction :focus-visible { outline: 3px solid #ba790f; outline-offset: 3px; }
 @media (max-width: 640px) { .junior-evidence-options { grid-template-columns: 1fr; } .junior-route { padding: 10px 12px; } .junior .book { padding-bottom: 88px; } }
 
+.casebook-archive { border-top: 1px solid var(--line); padding-top: 14px; }
+.casebook-archive summary { cursor: pointer; padding: 10px 4px; font-weight: 700; }
+.casebook-archive summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.casebook-archive .archive-case { margin-top: 8px; padding: 8px 12px; border-radius: 12px; background: var(--surface); }
+.casebook-archive .archive-clue { border-top: 1px solid var(--line); }
+.casebook-archive .archive-clue summary { font-weight: 500; }
+.casebook-archive p { overflow-wrap: anywhere; }
+.book #link-btn { display: block; max-width: 100%; white-space: normal; }
+
 .paint-preview{color:#203b50;max-width:1240px;margin:auto}.paint-cover{background:linear-gradient(90deg,#123648ed,#1236488c),url('assets/scenes/workshop/background.webp') center/cover;color:#fff;padding:32px;border-radius:20px}.paint-cover h1{font-size:clamp(26px,4vw,42px);margin:8px 0}.paint-cover .eyebrow{color:#f2cd88}.paint-cover button{color:#203b50;background:#fff}.paint-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;margin-top:20px}.paint-evidence{position:sticky;top:12px;align-self:start;background:#eee7d9;padding:18px;border-radius:18px;max-height:calc(100vh - 24px);overflow:auto}.paint-evidence h2{font-size:20px}.paint-evidence details,.paint-learning{background:#fff9ed;color:#203b50;border:1px solid #d9cba9;padding:12px;border-radius:12px;margin:10px 0}.paint-evidence summary{cursor:pointer;font-weight:bold}.paint-progress{list-style:none;padding:0}.paint-progress li{padding:5px}.paint-progress .complete{color:#146553}.paint-art{object-fit:contain;max-width:100%;display:block}.paint-cans{width:100%}.paint-labels{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}.paint-form{background:#fffdf7;color:#203b50;border:1px solid #d8cdb5;border-radius:18px;padding:24px;margin-bottom:18px}.paint-form-head{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:18px;align-items:center}.paint-form-head .paint-art{max-height:180px;width:100%}.paint-form p{margin:8px 0}.paint-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px;margin:22px 0}.paint-field{display:flex;flex-direction:column;gap:8px;min-width:0}.paint-field input,.paint-field select,.paint-form>select{width:100%;max-width:100%;min-height:44px;color:#203b50;background:#fff;border:1px solid #8b9eaa;border-radius:8px;padding:10px}.paint-preview button{min-height:44px;padding:10px 16px;border:1px solid #8299a6;border-radius:10px;cursor:pointer}.paint-preview button:disabled{opacity:.55;cursor:default}.paint-preview .paint-primary{background:#176d77;color:white;border-color:#176d77}.paint-counter output{min-width:60px;text-align:center}.paint-count-visual{display:flex;flex-wrap:wrap;gap:4px;max-width:260px;min-height:22px;margin:8px 0}.paint-count-visual i{display:block;width:14px;height:18px;background:#226f96;border:1px solid #173d57;border-radius:0 0 4px 4px}.paint-hint,.paint-assist{padding:16px;border-radius:12px;background:#e8f2f0;color:#173f40;margin-top:14px}.paint-assist button{margin:4px}.paint-route{font-size:14px}.paint-art-fallback{padding:16px;border:2px dashed #9d946f;border-radius:12px;background:#f8f1df;color:#203b50}.paint-invoice{max-height:240px}.paint-demo-groups{display:flex;gap:16px;flex-wrap:wrap}.paint-demo-groups span{padding:8px;border:1px dashed #366981;animation:paintAppear 1.5s ease both}.paint-demo-groups span+span{animation-delay:.8s}.paint-halves{display:flex;width:180px}.paint-halves i{width:50%;background:#a9cee4;border:1px solid #315c74;text-align:center;padding:20px 4px}.paint-main{min-width:0}.paint-preview .wrap{flex-wrap:wrap}@keyframes paintAppear{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.paint-demo-groups span{animation:none}}@media(max-width:700px){.paint-cover{padding:20px}.paint-layout{grid-template-columns:1fr;gap:12px}.paint-evidence{position:static;max-height:none;padding:14px}.paint-evidence>.paint-art{max-height:140px}.paint-progress{display:flex;flex-wrap:wrap;gap:8px}.paint-form{padding:16px}.paint-form-head{grid-template-columns:1fr}.paint-form-head .paint-art{max-height:100px}.paint-fields{grid-template-columns:1fr}.paint-preview button{font-size:16px}}
 
 .paint-tenths{display:flex;max-width:360px;margin:16px 0}.paint-tenths i{flex:1;height:36px;border:1px solid #203b50}.paint-preview :focus-visible{outline:3px solid #bd7617;outline-offset:3px}
@@ -697,7 +706,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-step-inputs">
+<meta name="game-release" content="playtest-20261110-casebook-archive">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -45956,6 +45965,66 @@ NPC_TALK.mo.unshift(npcAfter('c3_done', 'd_mo_train_done'));
 NPC_TALK.aki.unshift(npcAfter('c4_done', 'd_aki_starmap_done'));
 npcBefore('captain', 'd_c4_captain_ch4_mid', [npcAfter('c4_done', 'd_captain_starmap_done')]);
 NPC_TALK.captain.unshift(npcAfter('c5_done', 'd_captain_photo_done'));
+const CASEBOOK_CASES = [{
+  id: 'ch1',
+  done: 'c1_done',
+  evidence: ['E0', 'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9', 'E10', 'E11', 'E12', 'EF']
+}, {
+  id: 'ch2',
+  done: 'c2_done',
+  evidence: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6']
+}, {
+  id: 'ch3',
+  done: 'c3_done',
+  evidence: ['G1', 'G2', 'G3', 'G4', 'G5']
+}, {
+  id: 'ch4',
+  done: 'c4_done',
+  evidence: ['E40', 'E41', 'E42', 'E43', 'E44', 'E45', 'E46']
+}, {
+  id: 'ch5',
+  done: 'c5_done',
+  evidence: ['E50', 'E51', 'E52', 'E53', 'E54', 'E55', 'E56']
+}];
+const CASEBOOK_CARRY = {
+  E11: 'ch3',
+  F6: 'ch3'
+};
+function casebookEntries(story, student) {
+  const flags = story.flags || {},
+    cases = CASEBOOK_CASES;
+  const owner = id => cases.find(c => c.evidence.includes(id));
+  const closed = id => !!flags[cases.find(c => c.id === id)?.done];
+  const linkChapter = link => link.chapter || cases.filter(c => link.pair.some(id => owner(id)?.id === c.id)).slice(-1)[0]?.id;
+  const needed = new Set(Object.keys(CASEBOOK_CARRY).filter(id => !closed(CASEBOOK_CARRY[id])));
+  for (const d of storyDeductions(student)) if (!closed(d.chapter)) {
+    for (const id of [...(d.requires || []), ...(d.pool || []), ...(d.after || []).filter(x => x.startsWith('ev:')).map(x => x.slice(3))]) needed.add(id);
+  }
+  for (const link of storyLinks(student)) if (!closed(linkChapter(link))) for (const id of link.pair) needed.add(id);
+  const groups = cases.map(c => ({
+      ...c,
+      evidence: [],
+      notes: []
+    })),
+    active = [],
+    notes = [];
+  for (const id of story.evidence || []) {
+    const e = storyEvidence(student, id);
+    if (!e) continue;
+    const c = owner(id);
+    if (c && closed(c.id) && !needed.has(id)) groups.find(g => g.id === c.id).evidence.push(e);else active.push(e);
+  }
+  for (const note of story.notes || []) {
+    const link = LINKS.find(l => l.text === note || JUNIOR_CH1_LINKS[l.set] === note);
+    const chapter = link && linkChapter(link);
+    if (chapter && closed(chapter)) groups.find(g => g.id === chapter).notes.push(note);else notes.push(note);
+  }
+  return {
+    active,
+    notes,
+    archives: groups.filter(g => g.evidence.length || g.notes.length)
+  };
+}
 const SUSPECTS = {
   fog: {
     id: 'fog',
@@ -68187,7 +68256,12 @@ function Casebook({
   const junior = isJuniorStory(student),
     deductions = storyDeductions(student);
   const evidence = id => storyEvidence(student, id);
-  const evs = story.evidence.map(id => evidence(id)).filter(Boolean);
+  const {
+    active: evs,
+    notes: activeNotes,
+    archives
+  } = casebookEntries(story, student);
+  const archivedCount = archives.reduce((n, g) => n + g.evidence.length, 0);
   const tryLink = () => {
     if (sel.length !== 2) return;
     const key = sel.slice().sort().join('+');
@@ -68263,7 +68337,7 @@ function Casebook({
     key: word
   }, React.createElement("dt", null, word), React.createElement("dd", null, meaning))))), tab === 'evidence' && React.createElement("div", {
     className: "col"
-  }, !evs.length && React.createElement(Notice, null, "\u9084\u6C92\u6709\u8B49\u64DA\u3002\u5230\u5404\u8655\u89C0\u5BDF\u3001\u548C\u4EBA\u8AC7\u8A71\uFF0C\u8B49\u64DA\u6703\u8A18\u5728\u9019\u88E1\u3002"), React.createElement("div", {
+  }, !evs.length && React.createElement(Notice, null, archivedCount ? '用完的線索已收進下方「已結案線索」。找到新線索時，會顯示在這裡。' : '還沒有證據。到各處觀察、和人談話，證據會記在這裡。'), !!evs.length && React.createElement("div", {
     className: "small muted"
   }, junior ? chapter === 'ch1' ? '點一張線索卡，讀讀內容。選兩張再按「放在一起看」，也可以到「想一想」一步一步試。' : '點一張線索卡，讀讀內容。選兩張再按「放在一起看」，看看它們有什麼關係。' : '點證據查看；選兩個證據再按「建立關聯」，看看它們合起來說了什麼。'), React.createElement("div", {
     className: "evgrid"
@@ -68278,25 +68352,45 @@ function Casebook({
   }, React.createElement("span", {
     className: "evid",
     "aria-hidden": junior ? true : undefined
-  }, junior ? '🔎' : e.id), React.createElement("b", null, e.name)))), openEv && React.createElement("div", {
+  }, junior ? '🔎' : e.id), React.createElement("b", null, e.name)))), openEv && evs.some(e => e.id === openEv) && React.createElement("div", {
     className: "card soft"
   }, junior && evidence(openEv).lines ? React.createElement(JuniorEvidenceDetail, {
     evidence: evidence(openEv)
-  }) : React.createElement(React.Fragment, null, React.createElement("b", null, evidence(openEv).name), React.createElement("p", null, evidence(openEv).desc))), React.createElement("div", {
+  }) : React.createElement(React.Fragment, null, React.createElement("b", null, evidence(openEv).name), React.createElement("p", null, evidence(openEv).desc))), !!evs.length && React.createElement("div", {
     className: "row"
   }, React.createElement(Btn, {
     kind: "teal",
     id: "link-btn",
     disabled: sel.length !== 2,
     onClick: tryLink
-  }, junior ? '放在一起看' : '建立關聯', "\uFF08\u5DF2\u9078 ", sel.length, "/2\uFF09")), story.notes.length > 0 && React.createElement("div", {
+  }, junior ? '放在一起看' : '建立關聯', "\uFF08\u5DF2\u9078 ", sel.length, "/2\uFF09")), activeNotes.length > 0 && React.createElement("div", {
     className: "col"
   }, React.createElement("span", {
     className: "eyebrow"
-  }, junior ? '我發現了' : '洞察'), story.notes.map((n, i) => React.createElement("div", {
+  }, junior ? '我發現了' : '洞察'), activeNotes.map((n, i) => React.createElement("div", {
     key: i,
     className: "notice good"
-  }, "\uD83D\uDD17 ", storyNote(student, n))))), tab === 'puzzles' && React.createElement("div", {
+  }, "\uD83D\uDD17 ", storyNote(student, n)))), archives.length > 0 && React.createElement("details", {
+    className: "casebook-archive",
+    id: "book-archive"
+  }, React.createElement("summary", null, "\u5DF2\u7D50\u6848\u7DDA\u7D22\uFF08", archivedCount, "\uFF09"), React.createElement("p", {
+    className: "small muted"
+  }, junior ? '用完的線索收在這裡。點章節，再點線索，就能重看。後面還要用的線索會留在上方。' : '已完成案件的線索與關聯保存在這裡，可隨時展開查閱。後續案件仍會用到的證據會留在上方。'), archives.map(g => React.createElement("details", {
+    key: g.id,
+    className: "archive-case",
+    id: `archive-${g.id}`
+  }, React.createElement("summary", null, CHAPTER_TITLES[g.id], "\uFF08", g.evidence.length, "\uFF09"), g.evidence.map(e => React.createElement("details", {
+    key: e.id,
+    className: "archive-clue",
+    id: `archive-ev-${e.id}`
+  }, React.createElement("summary", null, junior ? '🔎' : e.id, " ", e.name), junior ? React.createElement(JuniorEvidenceDetail, {
+    evidence: e
+  }) : React.createElement("p", null, e.desc), e.time && React.createElement("p", {
+    className: "small muted archive-time"
+  }, e.displayTime || e.time, "\uFF1A", e.tl))), g.notes.map((n, i) => React.createElement("div", {
+    key: i,
+    className: "notice good"
+  }, "\uD83D\uDD17 ", storyNote(student, n))))))), tab === 'puzzles' && React.createElement("div", {
     className: "col"
   }, storyObjectives(student).filter(o => o.chapter === chapter || condOk(story, o.done)).map(o => React.createElement("div", {
     key: o.id,
@@ -68348,12 +68442,13 @@ function Casebook({
     className: "ach"
   }, React.createElement("span", null, "\uD83D\uDCCD"), React.createElement("div", null, React.createElement("b", null, SCENES[id]?.name), React.createElement("div", {
     className: "small muted"
-  }, id === 'overworld' ? '島上的道路連接各地' : visibleHotspots(SCENES[id], story).filter(h => h.kind !== 'exit').map(h => h.kind === 'npc' ? NPCS[h.npc].name : h.label).join('、') || '—')))), evs.filter(e => e.id === 'E10').map(e => React.createElement("div", {
-    key: e.id,
+  }, id === 'overworld' ? '島上的道路連接各地' : visibleHotspots(SCENES[id], story).filter(h => h.kind !== 'exit').map(h => h.kind === 'npc' ? NPCS[h.npc].name : h.label).join('、') || '—')))), story.evidence.includes('E10') && React.createElement("div", {
     className: "notice"
-  }, e.desc))), tab === 'timeline' && React.createElement("div", {
+  }, evidence('E10').desc)), tab === 'timeline' && React.createElement("div", {
     className: "col"
-  }, !timeline.length && React.createElement(Notice, null, "\u9084\u6C92\u6709\u548C\u6642\u9593\u6709\u95DC\u7684\u8B49\u64DA\u3002"), timeline.map(e => React.createElement("div", {
+  }, archivedCount > 0 && React.createElement("p", {
+    className: "small muted"
+  }, "\u820A\u6848\u7684\u6642\u9593\u7D00\u9304\u5DF2\u6536\u5728\u300C", junior ? '線索' : '證據', "\u300D\u9801\u7684\u300C\u5DF2\u7D50\u6848\u7DDA\u7D22\u300D\u3002"), !timeline.length && React.createElement(Notice, null, "\u76EE\u524D\u6C92\u6709\u5F85\u67E5\u7684\u6642\u9593\u7D00\u9304\u3002"), timeline.map(e => React.createElement("div", {
     key: e.id,
     className: "row",
     style: {
@@ -68368,7 +68463,7 @@ function Casebook({
     }
   }, e.displayTime || e.time), React.createElement("div", null, React.createElement("b", null, e.tl), React.createElement("div", {
     className: "small muted"
-  }, junior ? '來自：' : '依據：', junior ? '' : e.id + ' ', e.name)))), story.flags.ins_time && React.createElement(Notice, {
+  }, junior ? '來自：' : '依據：', junior ? '' : e.id + ' ', e.name)))), story.flags.ins_time && !story.flags.c1_done && React.createElement(Notice, {
     kind: "good"
   }, junior ? JUNIOR_CH1_LINKS.ins_time : '洞察：鐘其實在 6 點過後不久就停了；6:40 是被撥出來的。')), tab === 'deduce' && React.createElement("div", {
     className: "col"
@@ -68669,7 +68764,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.10-v43',
+    build: '2026.11.10-v44',
     ...context,
     message
   };
@@ -73375,7 +73470,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v43\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v44\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -73881,7 +73976,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v43",
+    "data-build": "2026.11.10-v44",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
