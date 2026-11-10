@@ -685,7 +685,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-error-input-b">
+<meta name="game-release" content="playtest-20261110-lock-repair">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -34514,6 +34514,7 @@ function validateBackupState(input) {
     for (const k of required[t.kind] || []) arr(r[k], p + '.params.' + k);
     for (const k of ['story', 'title', 'question', 'problem']) opt(r, k, str, p + '.params');
     opt(r, 'hints', strs, p + '.params');
+    if (t.kind === 'lock' && typeof validateLockParams === 'function' && !validateLockParams(r, true)) bad(p + '.params.lock');
     if (t.kind === 'pickone') r.items.forEach((x, i) => {
       obj(x, p);
       str(x.q, p);
@@ -34623,7 +34624,7 @@ function validateBackupState(input) {
     opt(v, 'archivedCases', records, p);
     for (const k of ['storyTasks', 'reviewTasks']) opt(v, k, (x, q) => map(x, q, stage), p);
   });
-  return s;
+  return typeof repairSavedLocks === 'function' ? repairSavedLocks(s) : s;
 }
 function validateBackupText(text) {
   if (typeof text !== 'string' || !text.trim()) backupError('請先貼上完整的備份文字。');
@@ -35420,6 +35421,109 @@ function NumInput({
     disabled: disabled,
     onChange: e => onChange(e.target.value)
   });
+}
+function validLockRule(c, count, legacy = false) {
+  if (!c || typeof c !== 'object' || typeof c.text !== 'string') return false;
+  const index = i => Number.isInteger(i) && i >= 0 && i < count;
+  const finite = v => typeof v === 'number' && Number.isFinite(v);
+  if (!c.kind) return legacy && !Object.hasOwn(c, 'fn');
+  if (['sum', 'diff', 'times'].includes(c.kind)) return Array.isArray(c.dials) && c.dials.length === 2 && c.dials.every(index) && c.dials[0] !== c.dials[1] && finite(c.value) && (c.kind !== 'times' || c.value > 0);
+  if (!index(c.dial)) return false;
+  if (c.kind === 'multipleOf') return finite(c.n) && c.n > 0 && (c.positive === undefined || typeof c.positive === 'boolean');
+  if (c.kind === 'lessThan') return finite(c.value);
+  return c.kind === 'product' && finite(c.factor) && c.factor > 0 && finite(c.value);
+}
+function validateLockParams(p, legacy = false) {
+  return !!p && Array.isArray(p.dials) && p.dials.length > 0 && p.dials.length <= 4 && p.dials.every(d => typeof d === 'string') && Array.isArray(p.answer) && p.answer.length === p.dials.length && p.answer.every(n => Number.isInteger(n) && n >= 0 && n <= (p.max ?? 60)) && Number.isInteger(p.max ?? 60) && (p.max ?? 60) > 0 && (p.max ?? 60) <= 1000 && Array.isArray(p.constraints) && p.constraints.length > 0 && p.constraints.length <= 12 && p.constraints.every(c => validLockRule(c, p.dials.length, legacy));
+}
+function evaluateLockRule(c, v) {
+  if (!validLockRule(c, v.length)) throw new Error('LOCK_RULE_UNAVAILABLE');
+  switch (c.kind) {
+    case 'sum':
+      return v[c.dials[0]] + v[c.dials[1]] === c.value;
+    case 'diff':
+      return v[c.dials[0]] - v[c.dials[1]] === c.value;
+    case 'times':
+      return v[c.dials[0]] === v[c.dials[1]] * c.value;
+    case 'multipleOf':
+      return (!c.positive || v[c.dial] > 0) && v[c.dial] % c.n === 0;
+    case 'lessThan':
+      return v[c.dial] < c.value;
+    case 'product':
+      return v[c.dial] * c.factor === c.value;
+    default:
+      throw new Error('LOCK_RULE_UNAVAILABLE');
+  }
+}
+function legacyLockRule(c, p) {
+  if (c.kind) return c;
+  const t = c.text;
+  let m;
+  if (p.dials.length === 2) {
+    const [a, b] = p.dials;
+    if (t.startsWith(a + '和' + b + '的和是 ') && (m = t.match(/的和是 (\d+)$/))) return {
+      ...c,
+      kind: 'sum',
+      dials: [0, 1],
+      value: +m[1]
+    };
+    if (t.startsWith(a + '比' + b + '多 ') && (m = t.match(/多 (\d+)$/))) return {
+      ...c,
+      kind: 'diff',
+      dials: [0, 1],
+      value: +m[1]
+    };
+    if ((m = t.match(/^大箱的球數是小箱的 (\d+) 倍$/)) && a === '大箱' && b === '小箱' || (m = t.match(/^大抽屜的零件是小抽屜的 (\d+) 倍$/)) && a === '大抽屜' && b === '小抽屜') return {
+      ...c,
+      kind: 'times',
+      dials: [0, 1],
+      value: +m[1]
+    };
+    if ((m = t.match(/^兩箱一共 (\d+) 顆$/)) && a === '大箱' && b === '小箱') return {
+      ...c,
+      kind: 'sum',
+      dials: [0, 1],
+      value: +m[1]
+    };
+    if ((m = t.match(/^大抽屜比小抽屜多 (\d+) 個$/)) && a === '大抽屜' && b === '小抽屜') return {
+      ...c,
+      kind: 'diff',
+      dials: [0, 1],
+      value: +m[1]
+    };
+  }
+  if (p.dials.length === 1) {
+    if ((m = t.match(/^是 (\d+) 的倍數$/)) && p.dials[0] === '秒數') return {
+      ...c,
+      kind: 'multipleOf',
+      dial: 0,
+      n: +m[1],
+      positive: true
+    };
+    if ((m = t.match(/^小於 (\d+)$/)) && p.dials[0] === '秒數') return {
+      ...c,
+      kind: 'lessThan',
+      dial: 0,
+      value: +m[1]
+    };
+    if ((m = t.match(/^每分鐘轉 (\d+) 圈，轉了 (\d+) 圈$/)) && p.dials[0] === '第幾分鐘') return {
+      ...c,
+      kind: 'product',
+      dial: 0,
+      factor: +m[1],
+      value: +m[2]
+    };
+  }
+  return c;
+}
+function resolveLockParams(p) {
+  if (!validateLockParams(p, true)) throw new Error('LOCK_PARAMS_INVALID');
+  const next = validateLockParams(p) ? p : {
+    ...p,
+    constraints: p.constraints.map(c => legacyLockRule(c, p))
+  };
+  if (!validateLockParams(next) || !next.constraints.every(c => evaluateLockRule(c, next.answer))) throw new Error('LOCK_RULE_UNAVAILABLE');
+  return next;
 }
 function RatioMixer({
   params,
@@ -36271,14 +36375,14 @@ function NumberLock({
     constraints,
     answer,
     max = 60
-  } = params;
+  } = resolveLockParams(params);
   const [vals, setVals] = useState(dials.map(() => 10));
   const m = useMechanic({
     hintsAllowed,
     onDone,
     maxAttempts
   });
-  const lamps = constraints.map(c => c.fn(vals));
+  const lamps = constraints.map(c => evaluateLockRule(c, vals));
   const hintTexts = [`先滿足一個條件，再調整另一個轉盤，看兩個燈能不能同時亮。`, `想想看：${constraints.map(c => c.text).join('；')}。可以先猜一組數字，再依差距調整。`, `答案是 ${dials.map((d, i) => `${d}＝${answer[i]}`).join('、')}。`];
   const set = (i, d) => {
     if (m.done) return;
@@ -36716,7 +36820,7 @@ function ProblemSet({
   const {
     story,
     problems,
-    passNeed = 2
+    passNeed = Math.min(2, params.problems.length)
   } = params;
   const [ans, setAns] = useState(problems.map(() => ''));
   const [result, setResult] = useState(null);
@@ -39156,10 +39260,14 @@ const CHAPTERS = {
         dials: ['甲', '乙'],
         constraints: [{
           text: '甲和乙的和是 27',
-          fn: v => v[0] + v[1] === 27
+          kind: 'sum',
+          dials: [0, 1],
+          value: 27
         }, {
           text: '甲比乙多 5',
-          fn: v => v[0] - v[1] === 5
+          kind: 'diff',
+          dials: [0, 1],
+          value: 5
         }],
         answer: [16, 11],
         max: 40
@@ -47343,10 +47451,14 @@ const MATH_GEN = {
       dials: ['甲', '乙'],
       constraints: [{
         text: `甲和乙的和是 ${a + b}`,
-        fn: v => v[0] + v[1] === a + b
+        kind: 'sum',
+        dials: [0, 1],
+        value: a + b
       }, {
         text: `甲比乙多 ${d}`,
-        fn: v => v[0] - v[1] === d
+        kind: 'diff',
+        dials: [0, 1],
+        value: d
       }],
       answer: [a, b],
       max: 40
@@ -47355,10 +47467,14 @@ const MATH_GEN = {
       dials: ['大箱', '小箱'],
       constraints: [{
         text: `大箱的球數是小箱的 ${k} 倍`,
-        fn: v => v[0] === v[1] * k
+        kind: 'times',
+        dials: [0, 1],
+        value: k
       }, {
         text: `兩箱一共 ${x + y} 顆`,
-        fn: v => v[0] + v[1] === x + y
+        kind: 'sum',
+        dials: [0, 1],
+        value: x + y
       }],
       answer: [x, y],
       max: 50
@@ -47566,13 +47682,20 @@ const MATH_GEN = {
     dials: ['秒數'],
     constraints: [{
       text: '是 4 的倍數',
-      fn: v => v[0] % 4 === 0 && v[0] > 0
+      kind: 'multipleOf',
+      dial: 0,
+      n: 4,
+      positive: true
     }, {
       text: '是 6 的倍數',
-      fn: v => v[0] % 6 === 0
+      kind: 'multipleOf',
+      dial: 0,
+      n: 6
     }, {
       text: '小於 20',
-      fn: v => v[0] < 20
+      kind: 'lessThan',
+      dial: 0,
+      value: 20
     }],
     answer: [12],
     max: 60
@@ -47906,6 +48029,7 @@ MATH_GEN.m_area = () => [stage(0, 'step', {
 MATH_GEN.m_pattern = rng => {
   const stepSize = pick(rng, [3, 4, 5]);
   return [stage(0, 'problems', {
+    passNeed: 1,
     problems: [{
       q: `鐘聲次數依序是 ${stepSize}、${2 * stepSize}、${3 * stepSize}、${4 * stepSize}。每次增加多少？`,
       answer: stepSize,
@@ -49276,10 +49400,14 @@ addVariants('m_relation', [rng => {
     dials: ['大抽屜', '小抽屜'],
     constraints: [{
       text: `大抽屜的零件是小抽屜的 ${k} 倍`,
-      fn: v => v[0] === v[1] * k
+      kind: 'times',
+      dials: [0, 1],
+      value: k
     }, {
       text: `大抽屜比小抽屜多 ${d} 個`,
-      fn: v => v[0] - v[1] === d
+      kind: 'diff',
+      dials: [0, 1],
+      value: d
     }],
     answer: [y * k, y],
     max: 60
@@ -49435,7 +49563,10 @@ addVariants('m_pattern', [rng => {
     dials: ['第幾分鐘'],
     constraints: [{
       text: `每分鐘轉 ${a} 圈，轉了 ${a * n} 圈`,
-      fn: v => v[0] * a === a * n
+      kind: 'product',
+      dial: 0,
+      factor: a,
+      value: a * n
     }],
     answer: [n],
     max: 60
@@ -49695,13 +49826,20 @@ addVariants('m_gcd', [rng => {
     dials: ['秒數'],
     constraints: [{
       text: `是 ${c} 的倍數`,
-      fn: v => v[0] > 0 && v[0] % c === 0
+      kind: 'multipleOf',
+      dial: 0,
+      n: c,
+      positive: true
     }, {
       text: `是 ${d} 的倍數`,
-      fn: v => v[0] % d === 0
+      kind: 'multipleOf',
+      dial: 0,
+      n: d
     }, {
       text: `小於 ${lc + c}`,
-      fn: v => v[0] < lc + c
+      kind: 'lessThan',
+      dial: 0,
+      value: lc + c
     }],
     answer: [lc],
     max: 60
@@ -54240,7 +54378,7 @@ function g2Stage(stage, q, repeatPractice) {
     variantGroup: q.variantGroup,
     contentGrade: 2,
     semester: '2上',
-    questionTitle: q.title,
+    questionTitle: q.title || KP_BY_ID[q.kpId]?.name || '練習題',
     contentVersion: 'g2-upper-reviewed-1',
     repeatPractice
   };
@@ -54295,7 +54433,7 @@ function ch4SelectStage(state, eventId, kp, seed, difficulty) {
     allowHints: difficulty !== 'hard',
     bankId: 'ch4-20261110',
     questionId: q.id,
-    questionTitle: q.title,
+    questionTitle: q.title || KP_BY_ID[q.kpId]?.name || '練習題',
     contentKey: q.contentKey,
     contentVersion: 'ch4-reviewed-1',
     contentGrade: q.grade,
@@ -54540,6 +54678,109 @@ function waitingErrorText(state) {
     concept: c,
     count
   }) => `${c.name}｜${c.codes.join('／')}｜${count} 題`).join('\n');
+}
+function repairSavedLocks(state) {
+  const repair = (st, kp, seed, index, diagnostic = false) => {
+    if (!st || st.kind !== 'lock' || st.done || st.status === 'passed' || validateLockParams(st.params)) return st;
+    let params = null;
+    if (Number.isFinite(seed) && genFor(kp)) {
+      const same = p => JSON.stringify([p.dials, p.answer, p.constraints.map(c => c.text)]) === JSON.stringify([st.params.dials, st.params.answer, st.params.constraints.map(c => c.text)]);
+      for (let i = 0; i < 18 && !params; i++) try {
+        const rows = diagnostic ? buildDiagnostic(kp, makeRng(seed + 99)) : genFor(kp)(makeRng(seed + i * 104729));
+        const found = (rows || []).find((x, n) => (index == null || n === index) && x.kind === 'lock' && same(x.params));
+        if (found) params = {
+          ...st.params,
+          constraints: found.params.constraints
+        };
+      } catch (e) {}
+    }
+    try {
+      params = resolveLockParams(params || st.params);
+    } catch (e) {
+      return st;
+    }
+    return {
+      ...st,
+      params
+    };
+  };
+  const mapKeep = (xs, f) => {
+    const a = xs.map(f);
+    return a.some((x, i) => x !== xs[i]) ? a : xs;
+  };
+  const missions = mapKeep(state.missions || [], m => {
+    const stages = mapKeep(m.stages, (s, i) => repair(s, m.kpId, m.seed, i));
+    const diag = m.diag ? mapKeep(m.diag, (s, i) => repair(s, m.kpId, m.seed, i, true)) : m.diag;
+    return stages === m.stages && diag === m.diag ? m : {
+      ...m,
+      stages,
+      ...(diag ? {
+        diag
+      } : {})
+    };
+  });
+  let student = state.student,
+    learning = state.learning;
+  const w = student?.wallet;
+  if (w) {
+    let active = w.active,
+      chests = w.chests;
+    if (active) {
+      const stages = mapKeep(active.stages, (s, i) => repair(s, s.kpId, active.seed + i * 104729, active.stars <= 2 ? 0 : active.stars === 3 ? 1 : 2));
+      if (stages !== active.stages) active = {
+        ...active,
+        stages
+      };
+    }
+    if (chests) {
+      let changed = false;
+      const out = {};
+      for (const [id, c] of Object.entries(chests)) {
+        const locks = mapKeep(c.locks, (s, i) => repair(s, s.kpId, c.seed + i * 7919, null));
+        out[id] = locks === c.locks ? c : {
+          ...c,
+          locks
+        };
+        changed ||= out[id] !== c;
+      }
+      if (changed) chests = out;
+    }
+    if (active !== w.active || chests !== w.chests) student = {
+      ...student,
+      wallet: {
+        ...w,
+        ...(active ? {
+          active
+        } : {}),
+        ...(chests ? {
+          chests
+        } : {})
+      }
+    };
+  }
+  if (learning) for (const key of ['storyTasks', 'reviewTasks']) if (learning[key]) {
+    const out = {};
+    let changed = false;
+    for (const [id, t] of Object.entries(learning[key])) {
+      const mission = missions.find(m => m.id === id);
+      out[id] = repair(t, t.kpId || mission?.kpId, t.seed, null);
+      changed ||= out[id] !== t;
+    }
+    if (changed) learning = {
+      ...learning,
+      [key]: out
+    };
+  }
+  return missions === state.missions && student === state.student && learning === state.learning ? state : {
+    ...state,
+    missions,
+    ...(student ? {
+      student
+    } : {}),
+    ...(learning ? {
+      learning
+    } : {})
+  };
 }
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
@@ -67766,6 +68007,150 @@ function BankEmpty() {
   }, "\u9019\u500B\u55AE\u5143\u5728\u76EE\u524D\u96E3\u5EA6\u7684\u65B0\u984C\u5DF2\u7DF4\u7FD2\u5B8C\u3002\u53EF\u4EE5\u5148\u63DB\u4E00\u500B\u5DF2\u5B78\u55AE\u5143\uFF0C\u6216\u8ACB\u5BB6\u9577\u5728\u300C\u7DF4\u7FD2\u8A2D\u5B9A\u300D\u958B\u555F\u300C\u65B0\u984C\u7528\u5B8C\u5F8C\u91CD\u8907\u8907\u7FD2\u300D\u3002\u4F60\u7684\u9032\u5EA6\u5DF2\u4FDD\u7559\u3002");
 }
 ALL_MECHS.bankempty = BankEmpty;
+const MechanicSafetyContext = React.createContext(null);
+const MECHANIC_ERROR_KEY = 'kei_mechanic_errors_v1';
+function mechanicErrorRows() {
+  try {
+    const a = JSON.parse(localStorage.getItem(MECHANIC_ERROR_KEY) || '[]');
+    return Array.isArray(a) ? a.filter(x => x && typeof x.message === 'string').slice(-20) : [];
+  } catch (e) {
+    return [];
+  }
+}
+function mechanicErrorContext(state, kind, params) {
+  const rows = [];
+  for (const m of state?.missions || []) for (const t of [...(m.diag || []), ...m.stages]) rows.push({
+    t,
+    kp: m.kpId,
+    source: 'mission'
+  });
+  const w = state?.student?.wallet;
+  for (const t of w?.active?.stages || []) rows.push({
+    t,
+    kp: t.kpId,
+    source: 'wanted'
+  });
+  for (const c of Object.values(w?.chests || {})) for (const t of c.locks || []) rows.push({
+    t,
+    kp: t.kpId,
+    source: 'chest'
+  });
+  for (const name of ['storyTasks', 'reviewTasks']) for (const [id, t] of Object.entries(state?.learning?.[name] || {})) rows.push({
+    t,
+    kp: t.kpId || state?.missions.find(m => m.id === id)?.kpId,
+    source: name
+  });
+  const clean = p => JSON.stringify(p, (k, v) => k === 'story' ? undefined : v);
+  const row = rows.find(x => x.t.kind === kind && (x.t.params === params || clean(x.t.params) === clean(params)));
+  return {
+    kpId: row?.kp || 'unknown',
+    source: row?.source || 'mechanic',
+    kind
+  };
+}
+function recordMechanicError(error, context) {
+  const raw = String(error?.message || '');
+  const technical = /^(LOCK_[A-Z_]+|[\w.$]+ is not a function|Cannot read propert(?:y|ies) of (?:undefined|null).*|[\w.$]+ is not defined|Minified React error #[0-9]+.*)$/;
+  const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
+  const row = {
+    t: Date.now(),
+    build: '2026.11.10-v40',
+    ...context,
+    message
+  };
+  try {
+    const old = mechanicErrorRows(),
+      last = old[old.length - 1];
+    if (!last || last.message !== message || last.kind !== row.kind || row.t - last.t > 3000) localStorage.setItem(MECHANIC_ERROR_KEY, JSON.stringify([...old, row].slice(-20)));
+  } catch (e) {}
+  return row;
+}
+class MechanicErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null
+    };
+  }
+  static getDerivedStateFromError(error) {
+    return {
+      error
+    };
+  }
+  componentDidCatch(error) {
+    recordMechanicError(error, this.props.context);
+  }
+  fail(error) {
+    recordMechanicError(error, this.props.context);
+    this.setState({
+      error
+    });
+  }
+  render() {
+    return this.state.error ? React.createElement("div", {
+      className: "card col",
+      role: "alert",
+      id: "mechanic-error"
+    }, React.createElement("h3", null, "\u9019\u4E00\u95DC\u51FA\u4E86\u9EDE\u554F\u984C"), React.createElement("p", null, "\u539F\u672C\u7684\u9032\u5EA6\u5DF2\u4FDD\u7559\uFF0C\u9019\u6B21\u4E0D\u6703\u7B97\u6210\u7B54\u932F\u3002\u53EF\u4EE5\u5148\u505A\u5176\u4ED6\u59D4\u8A17\uFF0C\u8ACB\u5BB6\u9577\u5728\u300C\u8CC7\u6599\u8207\u7CFB\u7D71\u300D\u67E5\u770B\u554F\u984C\u7D00\u9304\u3002"), React.createElement(Btn, {
+      id: "mechanic-back",
+      onClick: () => window.dispatchEvent(new Event('kei-mechanic-back'))
+    }, "\u56DE\u5230\u59D4\u8A17\u677F")) : this.props.children;
+  }
+}
+function guardedMechanic(Component, kind) {
+  return function SafeMechanic(props) {
+    const state = React.useContext(MechanicSafetyContext),
+      ref = useRef(null);
+    const context = mechanicErrorContext(state, kind, props.params);
+    const done = result => {
+      try {
+        props.onDone?.(result);
+      } catch (e) {
+        ref.current?.fail(e);
+      }
+    };
+    return React.createElement(MechanicErrorBoundary, {
+      ref: ref,
+      context: context
+    }, React.createElement(Component, _extends({}, props, {
+      onDone: done
+    })));
+  };
+}
+for (const [kind, Component] of Object.entries(ALL_MECHS)) ALL_MECHS[kind] = guardedMechanic(Component, kind);
+function MechanicErrorReport() {
+  const rows = mechanicErrorRows(),
+    [copy, setCopy] = useState('');
+  return React.createElement("div", {
+    className: "card col",
+    id: "mechanic-errors"
+  }, React.createElement("h3", null, "\u6A5F\u95DC\u554F\u984C\u7D00\u9304"), React.createElement("p", {
+    className: "small muted"
+  }, "\u53EA\u7559\u5728\u9019\u500B\u700F\u89BD\u5668\uFF0C\u6700\u591A 20 \u7B46\u3002\u5305\u542B\u6642\u9593\u3001\u7248\u672C\u3001\u89C0\u5FF5\u3001\u6A5F\u95DC\u8207\u6280\u8853\u8A0A\u606F\uFF0C\u4E0D\u542B\u59D3\u540D\u3001\u984C\u76EE\u6216\u4F5C\u7B54\u5167\u5BB9\u3002"), rows.length ? React.createElement(React.Fragment, null, React.createElement("div", {
+    className: "col"
+  }, rows.slice().reverse().map((r, i) => React.createElement("div", {
+    className: "small",
+    key: i,
+    style: {
+      overflowWrap: 'anywhere'
+    }
+  }, fmtDate(r.t), "\u30FB", KP_BY_ID[r.kpId]?.name || r.kpId, "\u30FB", r.kind, "\u30FB", r.message))), React.createElement(Btn, {
+    id: "mechanic-copy",
+    onClick: async () => {
+      const text = JSON.stringify(rows, null, 2);
+      setCopy(text);
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (e) {}
+    }
+  }, "\u8907\u88FD\u554F\u984C\u7D00\u9304"), copy && React.createElement("textarea", {
+    id: "mechanic-error-text",
+    readOnly: true,
+    value: copy,
+    onFocus: e => e.target.select(),
+    "aria-label": "\u53EF\u8907\u88FD\u7684\u6A5F\u95DC\u554F\u984C\u7D00\u9304"
+  })) : React.createElement("span", null, "\u76EE\u524D\u6C92\u6709\u6A5F\u95DC\u554F\u984C\u7D00\u9304\u3002"));
+}
 function Dialog({
   who,
   text
@@ -69276,6 +69661,11 @@ function StudentApp({
     setArg(a);
     window.scrollTo(0, 0);
   };
+  useEffect(() => {
+    const back = () => go('repair');
+    window.addEventListener('kei-mechanic-back', back);
+    return () => window.removeEventListener('kei-mechanic-back', back);
+  }, []);
   const s = state.student;
   const createChar = ({
     name,
@@ -72359,7 +72749,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v39\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v40\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -72386,7 +72776,7 @@ function DataPanel({
       fontSize: 12
     },
     onFocus: e => e.target.select()
-  })), React.createElement(BackupImportCard, {
+  })), React.createElement(MechanicErrorReport, null), React.createElement(BackupImportCard, {
     state: state,
     setState: setState,
     toast: toast
@@ -72858,9 +73248,11 @@ function App() {
       setProfiles(loadProfiles());
     }
   });
-  return React.createElement("div", {
+  return React.createElement(MechanicSafetyContext.Provider, {
+    value: state
+  }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v39",
+    "data-build": "2026.11.10-v40",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
@@ -72920,7 +73312,7 @@ function App() {
     toast: toast,
     profiles: profiles,
     onSwitchProfile: switchTo
-  }), toastEl, junior && React.createElement(SpeakButton, null));
+  }), toastEl, junior && React.createElement(SpeakButton, null)));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App, null));
 </script>
