@@ -685,7 +685,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-lock-repair">
+<meta name="game-release" content="playtest-20261110-npc-epilogues">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -45605,6 +45605,54 @@ const _currentChapter4 = currentChapter;
 currentChapter = function (story) {
   return story?.flags?.c5_brief ? 'ch5' : _currentChapter4(story);
 };
+const NPC_EPILOGUES = {
+  d_tiesu_clock_done: ['tiesu', '鐘聲又準時響了，車站也恢復正常。謝謝你修好鐘塔；要查火車時間，隨時可以來翻我的紀錄。', ['鐘聲又準時響了！', '謝謝你幫忙修好鐘。', '想查火車時間，可以問我。']],
+  d_tiesu_train_done: ['tiesu', '午夜列車那件事，你已經查清楚了。鐘塔照常報時，我也會把每班車的紀錄寫清楚。', ['午夜列車的事查清楚了。', '鐘塔也照常報時。', '我會繼續寫好車站紀錄。']],
+  d_chiu_clock_done: ['chiu', '鐘塔恢復了，大家又能安心逛市集。那些信就留在島上吧，想看謎語，我會先問保管的人。', ['鐘塔修好了，真好。', '那些信就留在島上吧。', '想看時，我會先問一聲。']],
+  d_chiu_train_done: ['chiu', '信差的安排你已經弄清楚了。以後有人託我辦事，我會先問清楚，不再只看報酬。', ['信差的事已經弄清楚了。', '以後有人託我辦事，', '我會先問清楚。']],
+  d_chiu_photo_done: ['chiu', '照片已經歸回博物館了。收藏再吸引人，也要尊重館藏規定和照片裡的人。', ['照片回到博物館了。', '我會遵守收藏的規定。', '也要尊重照片裡的人。']],
+  d_mei_clock_done: ['mei', '鐘塔重新報時，這次的頭條有證據了！我會把已確認的經過寫清楚，還沒查明的事情就繼續查證。', ['鐘塔又會報時了！', '我會寫下已確認的事。', '還不清楚的，要繼續查證。']],
+  d_mei_train_done: ['mei', '午夜列車的調查已經結束。報導要分清楚親眼看見的事、受訪者的說法和自己的猜測。', ['午夜列車的調查結束了。', '寫新聞時，要分清楚', '看到的事和自己的猜想。']],
+  d_mei_photo_done: ['mei', '照片已經歸還。我正在照大家商量的方式更正預告，拿掉不必要的住址；要刊登阿海的故事，會先確認他願意分享的內容。', ['照片已經歸還了。', '我正在更正展覽預告。', '要寫阿海的故事，', '會先問他願意說哪些。']],
+  d_merchant_manuscript_done: ['merchant', '手稿和信都歸還了。我不該擅自把它們帶走；以後受人委託，也要先確認對方有沒有權利交付。', ['手稿和信都還回去了。', '我不該自己把它們拿走。', '以後做事要先問清楚。']],
+  d_mo_train_done: ['mo', '手稿已經修復，安排午夜列車的人也親自說明了。回頭讀那些文字，仍然能練習分辨說法和證據。', ['手稿已經修好了。', '安排任務的人也說明了。', '歡迎再來書院讀書。']],
+  d_aki_starmap_done: ['aki', '星圖找回來了，塔梯的夜燈也裝好了。暗格不必再撬，我們把工具收好，讓觀測台安全些。', ['星圖已經找回來了。', '塔梯的夜燈也裝好了。', '工具都收好了。']],
+  d_captain_starmap_done: ['captain', '星圖的去向已經查清楚了。往後借風向資料，我也會把來訪和歸還的時間記清楚。', ['星圖的事已經查清楚了。', '以後借資料，', '我會記清楚借還時間。']],
+  d_captain_photo_done: ['captain', '照片回到館裡，阿海也說了他願意分享的故事。老屋的回憶有了當事人的說明，現在更完整了。', ['照片回到館裡了。', '阿海也說了自己的故事。', '謝謝你願意聽他說。']]
+};
+for (const [id, [who, text, short]] of Object.entries(NPC_EPILOGUES)) {
+  DIALOGUES[id] = {
+    lines: [{
+      who,
+      text
+    }]
+  };
+  JUNIOR_CH1_TEXT[id] = {
+    lines: short.map(t => [who, t])
+  };
+}
+function npcBefore(npc, node, rows) {
+  const i = NPC_TALK[npc].findIndex(r => r.node === node);
+  if (i < 0) throw new Error('Missing NPC repeat node: ' + node);
+  NPC_TALK[npc].splice(i, 0, ...rows);
+}
+const npcAfter = (flag, node) => ({
+  when: [flag],
+  node
+});
+NPC_TALK.tiesu.unshift(npcAfter('c3_done', 'd_tiesu_train_done'));
+npcBefore('tiesu', 'd_tiesu_mid', [npcAfter('c1_done', 'd_tiesu_clock_done')]);
+npcBefore('chiu', 'd_chiu_scared', [npcAfter('c3_done', 'd_chiu_train_done')]);
+npcBefore('chiu', 'd_chiu_mid', [npcAfter('c1_done', 'd_chiu_clock_done')]);
+NPC_TALK.chiu.unshift(npcAfter('c5_done', 'd_chiu_photo_done'));
+npcBefore('mei', 'd_mei_news', [npcAfter('c3_done', 'd_mei_train_done')]);
+npcBefore('mei', 'd_mei_mid', [npcAfter('c1_done', 'd_mei_clock_done')]);
+NPC_TALK.mei.unshift(npcAfter('c5_done', 'd_mei_photo_done'));
+NPC_TALK.merchant.unshift(npcAfter('c2_done', 'd_merchant_manuscript_done'));
+NPC_TALK.mo.unshift(npcAfter('c3_done', 'd_mo_train_done'));
+NPC_TALK.aki.unshift(npcAfter('c4_done', 'd_aki_starmap_done'));
+npcBefore('captain', 'd_c4_captain_ch4_mid', [npcAfter('c4_done', 'd_captain_starmap_done')]);
+NPC_TALK.captain.unshift(npcAfter('c5_done', 'd_captain_photo_done'));
 const SUSPECTS = {
   fog: {
     id: 'fog',
@@ -68054,7 +68102,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.10-v40',
+    build: '2026.11.10-v41',
     ...context,
     message
   };
@@ -72749,7 +72797,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v40\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v41\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -73252,7 +73300,7 @@ function App() {
     value: state
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v40",
+    "data-build": "2026.11.10-v41",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
