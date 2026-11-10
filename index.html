@@ -706,7 +706,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-casebook-archive">
+<meta name="game-release" content="playtest-20261110-wardrobe-fit">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -64384,7 +64384,7 @@ function playerLook(student) {
     ...c.look,
     hairColor: a.hairColor || c.look.hairColor,
     eye: typeof EYE_TINT_ENABLED !== 'undefined' && EYE_TINT_ENABLED && a.eye || c.look.eye,
-    outfit: a.coat || c.look.outfit,
+    outfit: c.look.outfit,
     trim: student.color || '#b7791f'
   };
 }
@@ -64749,13 +64749,18 @@ function ArtAccessories({
   const [nx, ny] = l.neck || [fx + fw * .5, fy + fh * .98],
     [bx, by] = l.brow || [fx + fw * .5, fy + fh * .27],
     [px, py] = l.pin || [fx + fw * .85, fy + fh * 1.1];
-  return React.createElement("g", null, o.has('cape') && React.createElement("g", {
+  return React.createElement("g", null, o.has('cape') && (CAPE_FIT[id] ? React.createElement(FittedCapePart, {
+    id: id,
+    layer: "front",
+    color: color,
+    portrait: true
+  }) : React.createElement("g", {
     transform: `translate(${nx},${ny - 35}) scale(${fw / 75},${fw / 67})`
   }, React.createElement(ExplorerGear, {
     fine: true,
     kind: "cape",
     color: color
-  })), o.has('cape') && id === 'p_shuang' && React.createElement("g", null, React.createElement("defs", null, React.createElement("clipPath", {
+  }))), o.has('cape') && id === 'p_shuang' && React.createElement("g", null, React.createElement("defs", null, React.createElement("clipPath", {
     id: uid + 'hair'
   }, React.createElement("path", {
     d: l.hair + (l.hairExclude || ''),
@@ -64839,6 +64844,11 @@ function IllustratedArt({
     viewBox: portrait ? l.face : `0 0 ${l.w} ${l.h}`,
     preserveAspectRatio: portrait ? 'xMidYMid slice' : 'xMidYMin meet',
     "data-character-art": id
+  }), student && CAPE_FIT[id] && visibleEquipment(student).includes('cape') && React.createElement(FittedCapePart, {
+    id: id,
+    layer: "rear",
+    color: student.color,
+    portrait: true
   }), React.createElement("image", {
     href: url,
     width: l.w,
@@ -64871,18 +64881,6 @@ function IllustratedArt({
       rx: rx,
       ry: ry
     })))
-  }), React.createElement(ArtColorLayer, {
-    uid: uid,
-    suffix: "coat",
-    url: url,
-    layout: l,
-    base: base.outfit,
-    color: a.coat,
-    maskUrl: charMask(id, 'coat'),
-    exclude: l.hair + (l.coatExclude || ''),
-    region: React.createElement("path", {
-      d: l.coat
-    })
   }), id === 'p_cheng' && visibleEquipment(student).includes('goggles') && React.createElement(ArtColorLayer, {
     uid: uid,
     suffix: "lenses",
@@ -65978,7 +65976,13 @@ function FieldSprite(props) {
     className: walking && art.frames === 2 ? 'painted-npc-walk' : ''
   }, React.createElement("g", {
     transform: "translate(-80,-235) scale(.5)"
-  }, wstyles ? React.createElement(WardrobeFieldLayers, {
+  }, worn.includes('cape') && !back && CAPE_FIT[id] && React.createElement(FittedCapePart, {
+    id: id,
+    layer: "rear",
+    frame: frame,
+    anchor: anchor,
+    color: color
+  }), wstyles ? React.createElement(WardrobeFieldLayers, {
     id: id,
     frame: frame,
     styles: wstyles,
@@ -65991,7 +65995,7 @@ function FieldSprite(props) {
     height: "480",
     onError: () => setFailed(id),
     "data-sprite-frame": frame
-  }), base && [['hair', a.hairColor, base.hairColor], ['eyes', EYE_TINT_ENABLED ? a.eye : undefined, base.eye], ['coat', a.coat, base.outfit]].map(([part, color, original]) => React.createElement(PaintedTint, {
+  }), base && [['hair', a.hairColor, base.hairColor], ['eyes', EYE_TINT_ENABLED ? a.eye : undefined, base.eye]].map(([part, color, original]) => React.createElement(PaintedTint, {
     key: part,
     uid: uid,
     part: part,
@@ -65999,12 +66003,18 @@ function FieldSprite(props) {
     mask: `${art.path}/mask-${frame}-${part}.png`,
     color: color,
     base: original
-  }))), worn.includes('cape') && React.createElement(ExplorerGear, {
+  }))), worn.includes('cape') && (CAPE_FIT[id] ? React.createElement(FittedCapePart, {
+    id: id,
+    layer: back ? 'back' : 'front',
+    frame: frame,
+    anchor: anchor,
+    color: color
+  }) : React.createElement(ExplorerGear, {
     kind: "cape",
     placement: fit.cape,
     back: back,
     color: color
-  }), worn.includes('cape') && id === 'p_shuang' && React.createElement("g", null, React.createElement("defs", null, React.createElement("mask", {
+  })), worn.includes('cape') && id === 'p_shuang' && React.createElement("g", null, React.createElement("defs", null, React.createElement("mask", {
     id: uid + 'hair-over-cape',
     style: {
       maskType: 'alpha'
@@ -66552,6 +66562,224 @@ function RearGoggleBand({
     fill: "#a18b63"
   })));
 }
+const FITTED_CAPE_ART = {
+  front: [1684, 934, 'cape-front-layer', [168, 126, 1410, 720]],
+  rear: [1288, 1221, 'cape-rear-layer'],
+  back: [1222, 1287, 'cape-back-layer']
+};
+const SHUANG_CAPE_ART = [1774, 887, 'cape-shuang-layer', [108, 120, 1568, 656]];
+function fittedCapeArt(id, layer) {
+  return id === 'p_shuang' && layer === 'front' ? SHUANG_CAPE_ART : FITTED_CAPE_ART[layer];
+}
+const CAPE_FIT = {
+  p_ari: {
+    front: {
+      cx: 163,
+      top: 141,
+      width: 136,
+      rearTop: 150,
+      rearWidth: 211
+    },
+    back: {
+      cx: 162,
+      top: 118,
+      width: 220
+    },
+    portrait: {
+      cx: 540,
+      top: 466,
+      width: 650,
+      rearTop: 500,
+      rearWidth: 790
+    }
+  },
+  p_cheng: {
+    front: {
+      cx: 157,
+      top: 111,
+      width: 144,
+      rearTop: 125,
+      rearWidth: 233
+    },
+    back: {
+      cx: 157,
+      top: 109,
+      width: 225
+    },
+    portrait: {
+      cx: 510,
+      top: 451,
+      width: 740,
+      rearTop: 495,
+      rearWidth: 850
+    }
+  },
+  p_shuang: {
+    front: {
+      cx: 163,
+      top: 112,
+      width: 170,
+      rearTop: 126,
+      rearWidth: 233
+    },
+    back: {
+      cx: 158,
+      top: 117,
+      width: 219
+    },
+    portrait: {
+      cx: 550,
+      top: 443,
+      width: 800,
+      rearTop: 485,
+      rearWidth: 820
+    }
+  },
+  p_leo: {
+    front: {
+      cx: 161,
+      top: 108,
+      width: 142,
+      rearTop: 123,
+      rearWidth: 237
+    },
+    back: {
+      cx: 157,
+      top: 111,
+      width: 225
+    },
+    portrait: {
+      cx: 505,
+      top: 495,
+      width: 700,
+      rearTop: 530,
+      rearWidth: 900
+    }
+  }
+};
+function fittedCapeBox(id, layer, {
+  frame = 0,
+  anchor,
+  portrait = false
+} = {}) {
+  const spec = CAPE_FIT[id];
+  if (!spec) return null;
+  const c = portrait ? spec.portrait : layer === 'back' ? spec.back : spec.front;
+  const first = FIELD_ART[id]?.anchors[frame >= 3 ? 3 : 0],
+    dy = !portrait && anchor && first ? anchor.top - first.top : 0;
+  const [sw, sh,, view] = fittedCapeArt(id, layer),
+    [w, h] = view ? view.slice(2) : [sw, sh],
+    width = layer === 'rear' ? c.rearWidth : c.width;
+  return [c.cx - width * (layer === 'rear' ? .477 : .5), (layer === 'rear' ? c.rearTop : c.top) + dy, width, width * h / w];
+}
+function FittedCapePart({
+  id,
+  layer,
+  color = '#d9a441',
+  frame = 0,
+  anchor,
+  portrait = false
+}) {
+  const uid = 'cape' + React.useId().replaceAll(':', ''),
+    [failed, setFailed] = useState(0);
+  const box = fittedCapeBox(id, layer, {
+    frame,
+    anchor,
+    portrait
+  });
+  if (!box) return null;
+  const [sw, sh, key, view] = fittedCapeArt(id, layer),
+    vb = view || [0, 0, sw, sh],
+    url = `assets/field/gear/${key}.webp`,
+    [r, g, b] = [1, 3, 5].map(i => parseInt(color.slice(i, i + 2), 16) / 165);
+  return React.createElement("g", {
+    "data-equipment": layer === 'rear' ? undefined : 'cape',
+    "data-cape-layer": layer,
+    "data-cape-fit": id,
+    "data-equipment-art": failed ? 'fallback' : 'painted-layered',
+    "data-color": color
+  }, React.createElement("svg", {
+    x: box[0],
+    y: box[1],
+    width: box[2],
+    height: box[3],
+    viewBox: vb.join(' '),
+    preserveAspectRatio: "xMidYMid meet"
+  }, failed ? React.createElement("svg", {
+    x: vb[0],
+    y: vb[1],
+    width: vb[2],
+    height: vb[3],
+    viewBox: layer === 'front' ? '0 0 364 156' : '0 0 394 440',
+    preserveAspectRatio: "xMidYMid meet",
+    overflow: "hidden"
+  }, failed === 1 ? React.createElement("image", {
+    href: `assets/field/gear/${layer === 'front' ? 'cape' : 'cape-back'}.webp`,
+    width: layer === 'front' ? 364 : 394,
+    height: "440",
+    onError: () => setFailed(2)
+  }) : React.createElement("svg", {
+    width: layer === 'front' ? 364 : 394,
+    height: layer === 'front' ? 156 : 440,
+    viewBox: layer === 'front' ? '-45 -5 90 38' : '-45 -5 90 115'
+  }, React.createElement(VectorExplorerGear, {
+    kind: "cape",
+    color: color,
+    back: layer !== 'front'
+  }))) : React.createElement(React.Fragment, null, React.createElement("defs", null, React.createElement("filter", {
+    id: uid + 'gold',
+    colorInterpolationFilters: "sRGB"
+  }, React.createElement("feColorMatrix", {
+    type: "matrix",
+    values: "0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  6 0 -6 0 -.6"
+  }), React.createElement("feComposite", {
+    in2: "SourceGraphic",
+    operator: "in"
+  })), React.createElement("mask", {
+    id: uid + 'mask',
+    maskUnits: "userSpaceOnUse",
+    x: "0",
+    y: "0",
+    width: sw,
+    height: sh,
+    style: {
+      maskType: 'alpha'
+    }
+  }, React.createElement("image", {
+    href: url,
+    width: sw,
+    height: sh,
+    filter: `url(#${uid}gold)`
+  })), React.createElement("filter", {
+    id: uid + 'tint',
+    colorInterpolationFilters: "sRGB"
+  }, React.createElement("feColorMatrix", {
+    type: "saturate",
+    values: "0"
+  }), React.createElement("feComponentTransfer", null, React.createElement("feFuncR", {
+    type: "linear",
+    slope: r
+  }), React.createElement("feFuncG", {
+    type: "linear",
+    slope: g
+  }), React.createElement("feFuncB", {
+    type: "linear",
+    slope: b
+  })))), React.createElement("image", {
+    href: url,
+    width: sw,
+    height: sh,
+    preserveAspectRatio: "xMidYMid meet",
+    onError: () => setFailed(1)
+  }), React.createElement("image", {
+    href: url,
+    width: sw,
+    height: sh,
+    preserveAspectRatio: "xMidYMid meet",
+    mask: `url(#${uid}mask)`,
+    filter: `url(#${uid}tint)`
+  }))));
+}
 const HAIR_COLORS = [['栗棕', '#8a4b2a'], ['墨藍', '#1f2f4a'], ['銀白', '#cfd6e0'], ['紅棕', '#7a3a1f'], ['玫瑰', '#b75f83'], ['薰衣草', '#8972b5']];
 const EYE_COLORS = [['翡翠', '#3b7a57'], ['琥珀', '#b7791f'], ['紫羅蘭', '#7a4fa0'], ['湖藍', '#2f6f8f'], ['深棕', '#634331']];
 const COAT_COLORS = [['原色', ''], ['午夜藍', '#30476d'], ['森林綠', '#3c795d'], ['暮紫', '#765184'], ['暖金', '#c98a2a']];
@@ -66785,16 +67013,7 @@ function Wardrobe({
     draft: draft,
     setDraft: setDraft,
     student: s
-  }), tab === 'outfits' && React.createElement(React.Fragment, null, wardrobeOutfitStyle(draft) && React.createElement(Notice, null, "\u7A7F\u8457\u65B0\u8863\u670D\u6642\uFF0C\u9019\u88E1\u7684\u820A\u914D\u4EF6\u8207\u5916\u5957\u914D\u8272\u4E0D\u6703\u758A\u5728\u65B0\u8863\u670D\u4E0A\uFF1B\u812B\u4E0B\u65B0\u8863\u670D\u5C31\u6703\u6062\u5FA9\u3002"), base && React.createElement(ColorChoices, {
-    label: "\u5916\u5957\u914D\u8272",
-    prefix: "coat",
-    values: COAT_COLORS,
-    value: appearance.coat || '',
-    onChange: coat => patch({
-      coat,
-      disguise: null
-    })
-  }), React.createElement(ColorChoices, {
+  }), tab === 'outfits' && React.createElement(React.Fragment, null, wardrobeOutfitStyle(draft) && React.createElement(Notice, null, "\u7A7F\u8457\u65B0\u8863\u670D\u6642\uFF0C\u9019\u88E1\u7684\u820A\u914D\u4EF6\u6703\u5148\u6536\u8D77\uFF1B\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D\u5C31\u6703\u6062\u5FA9\u3002"), React.createElement(ColorChoices, {
     label: "\u914D\u4EF6\u914D\u8272",
     prefix: "accent",
     values: ACCENT_COLORS.map((c, i) => [['暖金', '紅', '青綠', '藍', '紫', '粉'][i], c]),
@@ -66978,11 +67197,36 @@ function WardrobeStylesPanel({
       }
     })),
     disabled: !anyOn
-  }, "\u5168\u90E8\u812B\u4E0B")), React.createElement("p", {
+  }, "\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D")), React.createElement("p", {
     className: "small muted"
   }, "\u8863\u670D\u3001\u978B\u5B50\u3001\u982D\u98FE\u53EF\u4EE5\u6DF7\u642D\uFF0C\u4E5F\u53EF\u4EE5\u4E00\u9375\u6574\u5957\u7A7F\u4E0A\u3002\u8863\u98FE\u90FD\u662F\u89E3\u8B0E\u7684\u734E\u52F5\uFF1A\u5B8C\u6210\u7AE0\u7BC0\u3001\u9054\u6210\u6210\u5C31\u3001\u628A\u7B54\u932F\u7684\u984C\u76EE\u8A02\u6B63\u6210\u529F\uFF0C\u5C31\u6703\u9001\u5230\u8863\u6AE5\u3002\u978B\u5B50\u548C\u982D\u98FE\u8981\u5148\u7A7F\u4E00\u5957\u65B0\u8863\u670D\u624D\u6703\u986F\u793A\uFF0C\u6C92\u9078\u978B\u5B50\u6642\u6703\u7A7F\u540C\u4E00\u5957\u7684\u978B\uFF1B\u5728\u300C\u5916\u8C8C\u300D\u9078\u7684\u9AEE\u8272\u4E5F\u6703\u5957\u5230\u65B0\u8863\u670D\u4E0A\u3002"), !base && React.createElement(Notice, null, "\u7D93\u5178\u52D5\u7269\u9020\u578B\u6C92\u6709\u65B0\u8863\u670D\uFF1B\u9078\u4E00\u4F4D\u8ABF\u67E5\u54E1\u5C31\u80FD\u63DB\u88DD\u3002"), base && React.createElement("div", {
     className: "wv-grid"
-  }, WARDROBE_V1.styles.map(st => {
+  }, React.createElement("div", {
+    className: `card col wv-style ${!w.equipped.outfit ? 'on' : ''}`,
+    id: "wv-style-original"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement("b", null, "\u539F\u672C\u7684\u8863\u670D"), React.createElement(Tag, {
+    kind: !w.equipped.outfit ? 'good' : undefined
+  }, !w.equipped.outfit ? '穿著中' : '已擁有')), React.createElement("p", {
+    className: "small"
+  }, base.name, "\u539F\u672C\u7684\u8863\u670D\uFF0C\u4E00\u76F4\u90FD\u5728\u8863\u6AE5\u88E1\u3002"), React.createElement(Btn, {
+    id: "wv-original",
+    small: true,
+    kind: !w.equipped.outfit ? 'ghost' : 'primary',
+    disabled: !anyOn,
+    onClick: () => setW(x => ({
+      ...x,
+      equipped: {
+        outfit: null,
+        shoes: null,
+        head: null
+      }
+    }))
+  }, "\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D"), !w.equipped.outfit && draft.appearance?.coat && React.createElement("p", {
+    className: "small muted",
+    id: "coat-original-note"
+  }, "\u5916\u5957\u66AB\u6642\u986F\u793A\u539F\u8272\u3002\u4F60\u539F\u5148\u9078\u7684\u984F\u8272\u5DF2\u4FDD\u7559\uFF0C\u8272\u6B3E\u6E96\u5099\u597D\u5F8C\u6703\u518D\u958B\u653E\u3002")), WARDROBE_V1.styles.map(st => {
     const ids = Object.fromEntries(WARDROBE_SLOTS.map(([slot]) => [slot, wardrobeItemId('player', st.id, slot)]));
     const canSet = owned.has(ids.outfit);
     const wornHere = WARDROBE_SLOTS.filter(([slot]) => w.equipped[slot] === ids[slot]).length;
@@ -68764,7 +69008,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.10-v44',
+    build: '2026.11.10-v45',
     ...context,
     message
   };
@@ -73470,7 +73714,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v44\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v45\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -73976,7 +74220,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v44",
+    "data-build": "2026.11.10-v45",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
