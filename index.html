@@ -685,12 +685,2038 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-error-input-a">
+<meta name="game-release" content="playtest-20261110-error-input-b">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const ERROR_CONCEPTS = [{
+  "id": "m_prime",
+  "name": "質數與質因數分解",
+  "subject": "math",
+  "codes": ["N-6-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "認識 20 以內的質數，將整數做質因數分解。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_gcd",
+  "name": "最大公因數與最小公倍數",
+  "subject": "math",
+  "codes": ["N-6-2"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "以短除法或質因數分解求兩數的最大公因數、最小公倍數並應用。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_fracdiv",
+  "name": "分數的除法",
+  "subject": "math",
+  "codes": ["N-6-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "理解分數除法的意義（包含除、等分除）並計算。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_decdiv",
+  "name": "小數的除法",
+  "subject": "math",
+  "codes": ["N-6-4"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "整數除以小數、小數除以小數的意義與計算；餘數問題不納入評量。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_mixed",
+  "name": "整數、分數、小數的四則應用",
+  "subject": "math",
+  "codes": ["N-6-5", "R-6-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }, {
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "在生活情境中解決混合整數、分數、小數的四則運算問題。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_ratio",
+  "name": "比與比值",
+  "subject": "math",
+  "codes": ["N-6-6"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "認識比的意義、比值，相等的比與最簡整數比，並應用於分配問題。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_speed",
+  "name": "速度",
+  "subject": "math",
+  "codes": ["N-6-7"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "速度、距離與時間的關係；單位換算由大單位到小單位，並理解分段行程的平均速度。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_base",
+  "name": "基準量與比較量",
+  "subject": "math",
+  "codes": ["N-6-8"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "分辨基準量（1 倍的量）與比較量，用倍數關係解題。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_relation",
+  "name": "數量關係與列式解題",
+  "subject": "math",
+  "codes": ["N-6-9", "R-6-4"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }, {
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "由問題中的數量關係列出恰當算式（和差、倍數、未知數）解題。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_pattern",
+  "name": "數量模式與關係表示",
+  "subject": "math",
+  "codes": ["R-6-2", "R-6-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }, {
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "觀察數列或圖形的規律，用數量關係推算。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_scale",
+  "name": "放大縮小與比例尺",
+  "subject": "math",
+  "codes": ["S-6-1", "S-6-2"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }, {
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "圖形的放大與縮小；地圖比例尺的意義與實際距離換算。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_circle",
+  "name": "圓周率、圓周長、圓面積與扇形",
+  "subject": "math",
+  "codes": ["S-6-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "以圓周率約 3.14 計算圓周長、圓面積；已知圓心角或占全圓的分數，直接求扇形弧長與面積。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_prism",
+  "name": "柱體體積與表面積",
+  "subject": "math",
+  "codes": ["S-6-4"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "角柱與圓柱的體積（底面積×高）與表面積。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_chart",
+  "name": "圓形圖與資料整理",
+  "subject": "math",
+  "codes": ["D-6-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "讀懂與製作圓形圖，由百分率推算數量；整理資料成統計圖表。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_chance",
+  "name": "可能性",
+  "subject": "math",
+  "codes": ["D-6-2"],
+  "levels": [{
+    "kind": "grade",
+    "value": 6
+  }],
+  "scope": "由統計資料的數量多寡，比較差異明顯的事件何者較可能；不做古典機率計算。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_frac_ops",
+  "name": "分數的加減與乘法",
+  "subject": "math",
+  "codes": ["N-5-4", "N-5-5"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }, {
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "異分母分數加減、分數乘法（五年級）。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_dec_ops",
+  "name": "小數的乘法",
+  "subject": "math",
+  "codes": ["N-5-8"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "理解整數乘以小數、小數乘以小數的意義與計算（五年級）。",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_area",
+  "name": "平面圖形面積",
+  "subject": "math",
+  "codes": ["S-5-2"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "三角形、平行四邊形、梯形面積（五年級）。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_word",
+  "name": "字詞與語意理解",
+  "subject": "chinese",
+  "codes": ["Ab-III-1", "Ab-III-4", "Ab-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "常用字詞的字義、多義字與語詞在句中的意思。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_idiom",
+  "name": "成語與詞語運用",
+  "subject": "chinese",
+  "codes": ["Ab-III-6"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "成語與常用語詞的正確理解與在情境中的運用。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_sentence",
+  "name": "句型與修辭",
+  "subject": "chinese",
+  "codes": ["Ac-III-2", "Ac-III-3", "Ac-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "基礎句型、複句關係、語氣，以及譬喻、擬人、誇飾、排比等修辭。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_structure",
+  "name": "段落結構與文章組織",
+  "subject": "chinese",
+  "codes": ["Ad-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "意義段與篇章結構、段落順序、文章的組織方式。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_main",
+  "name": "文章主旨與摘要",
+  "subject": "chinese",
+  "codes": ["Ad-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "擷取大意、歸納主旨。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_extract",
+  "name": "文本訊息擷取",
+  "subject": "chinese",
+  "codes": ["Ad-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "從文章中找出明確的訊息與細節。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_infer",
+  "name": "推論與比較",
+  "subject": "chinese",
+  "codes": ["Ad-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "運用自我提問、推論等策略，推測文本隱含的因果訊息或觀點；比較不同說法。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_author",
+  "name": "作者觀點與寫作目的",
+  "subject": "chinese",
+  "codes": ["Ad-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "辨識作者的立場、態度與寫作目的，提出自己的看法。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_express",
+  "name": "語文表達與邏輯思考",
+  "subject": "chinese",
+  "codes": ["Ac-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "清楚表達想法，句子之間有邏輯連貫。",
+  "availability": "runtime-partial"
+}, {
+  "id": "c_writing",
+  "name": "寫作與文章組織",
+  "subject": "chinese",
+  "codes": ["Ad-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "掌握寫作步驟，段落分明、符合主題；修改文章。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_heat",
+  "name": "熱的傳播與保溫",
+  "subject": "science",
+  "codes": ["INa-III-1", "INa-III-2", "INa-III-8"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "熱會以傳導、對流、輻射三種方式傳播；物體受熱膨脹、遇冷收縮；保溫是減少熱的傳播。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_weather",
+  "name": "天氣變化與天氣圖",
+  "subject": "science",
+  "codes": ["INd-III-7", "INd-III-12", "INf-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "水循環、雲霧雨露的形成，天氣圖上的高低氣壓與鋒面，颱風路徑與防災準備。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_earth",
+  "name": "大地的變動與岩石",
+  "subject": "science",
+  "codes": ["INc-III-11", "INd-III-9", "INf-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "風化、侵蝕、搬運、堆積改變地表；岩石與礦物的特徵；土壤的形成；地震防災。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_magnet",
+  "name": "電流與電磁鐵",
+  "subject": "science",
+  "codes": ["INe-III-9", "INe-III-10", "INf-III-6"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "指北針與地磁；電流通過導線會產生磁場；電磁鐵的強弱與線圈匝數、電池數量有關，磁極隨電流方向改變。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_circuit",
+  "name": "通路與斷路（先備）",
+  "subject": "science",
+  "codes": ["INe-II-8", "INe-II-9"],
+  "levels": [{
+    "kind": "stage",
+    "value": "II"
+  }, {
+    "kind": "stage",
+    "value": "II"
+  }],
+  "scope": "電池、燈泡、開關、導線接成通路燈才會亮；串聯與並聯的差異。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_lever",
+  "name": "槓桿與簡單機械",
+  "subject": "science",
+  "codes": ["INb-III-4", "INd-III-2", "INd-III-13"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "槓桿的支點、施力點、抗力點；施力臂越長越省力；兩邊「重量×到支點的距離」相等時平衡；輪軸、滑輪與齒輪的功能。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_sound",
+  "name": "聲音的產生與特性",
+  "subject": "science",
+  "codes": ["INe-III-6", "INd-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "物體振動發出聲音；音量和振動大小有關、音調和振動快慢有關；噪音的影響與防治。",
+  "availability": "runtime-partial"
+}, {
+  "id": "s_eco",
+  "name": "生態與永續",
+  "subject": "science",
+  "codes": ["INc-III-9", "INg-III-2", "INg-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "生物與環境互相影響；生態系中的生產者、消費者、分解者；外來種的威脅；可再生與不可再生資源；永續行動。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_postwar",
+  "name": "戰後經濟發展與轉型",
+  "subject": "social",
+  "codes": ["Cb-III-1", "Ce-III-1", "Ca-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "戰後土地改革與美援、重大建設、產業從農業到工業再到科技業的轉型，以及生活的變遷。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_consume",
+  "name": "消費選擇與理財",
+  "subject": "social",
+  "codes": ["Ad-III-1", "Da-III-1", "Db-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "分辨需要與想要，理性消費、消費者權益與儲蓄規劃。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_rules",
+  "name": "生活中的規範與法治",
+  "subject": "social",
+  "codes": ["Aa-III-2", "Ac-III-1", "Ac-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "習俗、道德、法律三種規範的差異，社會秩序、基本權利與義務、憲法與法治。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_tech",
+  "name": "科技發展與新規範",
+  "subject": "social",
+  "codes": ["Ae-III-1", "Ae-III-2", "Ae-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "資訊科技與個人資料保護、能源與生物科技的影響、科技倫理與相關規範。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_debate",
+  "name": "多元觀點與理性討論",
+  "subject": "social",
+  "codes": ["Aa-III-4", "Ba-III-1", "Dc-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "分辨證據與意見、聆聽與回應不同觀點、用理由支持主張、共同決定。立場不分對錯，評量的是理由與證據。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_economy",
+  "name": "經濟活動與永續發展",
+  "subject": "social",
+  "codes": ["Ce-III-1", "Ce-III-2", "Af-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "全球經濟與貿易、產業轉變、資源的價值與永續發展。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_society",
+  "name": "人權與國際參與",
+  "subject": "social",
+  "codes": ["Af-III-1", "Af-III-3", "Ac-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "人權保障、國際組織與世界公民、社會永續。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_environment",
+  "name": "環境問題與公民行動",
+  "subject": "social",
+  "codes": ["Af-III-1", "Af-III-3", "Ca-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "全球環境問題、國際合作與公民行動。",
+  "availability": "runtime-partial"
+}, {
+  "id": "o_action",
+  "name": "公共參與與行動規劃",
+  "subject": "social",
+  "codes": ["Aa-III-1", "Af-III-3", "Dc-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "發現公共問題、調查、規劃行動、合作討論與成果省思（探究實作）。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_addstep",
+  "name": "加減兩步驟",
+  "subject": "math",
+  "codes": ["N-2-8", "R-2-2"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "先算、再算；100以內連加、連減、加減與比較。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_area",
+  "name": "面的大小：覆蓋與數方格",
+  "subject": "math",
+  "codes": ["N-2-12", "S-2-5"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "用相同大小方片比較面，不教面積公式。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_num200",
+  "name": "200 以內的數",
+  "subject": "math",
+  "codes": ["N-2-1", "N-2-5"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "百、十、個位；數數；錢幣；比大小。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_add2",
+  "name": "二位數加減",
+  "subject": "math",
+  "codes": ["N-2-2", "R-2-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "二位數加法、減法、進位與退位。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_length",
+  "name": "認識公分",
+  "subject": "math",
+  "codes": ["N-2-11", "S-2-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "用直尺量長度、公分、長度加減。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_mult1",
+  "name": "乘法（一）：2、5、4、8",
+  "subject": "math",
+  "codes": ["N-2-6", "N-2-7"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "幾的幾倍；2、5、4、8 的乘法。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_time",
+  "name": "時間：鐘面報讀",
+  "subject": "math",
+  "codes": ["N-2-13"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "時針分針、幾時幾分、整時的經過時間（不含秒）。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_mult2",
+  "name": "乘法（二）：3、6、7、9",
+  "subject": "math",
+  "codes": ["N-2-6", "N-2-7"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "3、6、7、9 的乘法與生活應用。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_num1000",
+  "name": "1000 以內的數",
+  "subject": "math",
+  "codes": ["N-2-1", "N-2-5"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "數到 1000、位值、比大小。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_add3",
+  "name": "三位數加減",
+  "subject": "math",
+  "codes": ["N-2-2", "N-2-3", "N-2-4"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "三位數加法（可二次進位）、減法（限一次退位）、加減應用。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_shape",
+  "name": "平面圖形與立體形體",
+  "subject": "math",
+  "codes": ["S-2-1", "S-2-4"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }, {
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "三角形、四邊形、圓形；邊、角、頂點；正方體、長方體。以實物辨認。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_share",
+  "name": "分裝與平分",
+  "subject": "math",
+  "codes": ["N-2-9"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "幾個一袋可以裝幾袋、平分給幾個人每人幾個（除法前置，不列除式）。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_fraction",
+  "name": "認識分數",
+  "subject": "math",
+  "codes": ["N-2-10"],
+  "levels": [{
+    "kind": "grade",
+    "value": 2
+  }],
+  "scope": "把一個東西平分成幾份，一份是幾分之一（限連續量）。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_vocab_cur",
+  "name": "二上生字：認讀與注音",
+  "subject": "chinese",
+  "codes": ["Aa-I-5", "Ab-I-1", "Ab-I-3", "Ab-I-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }],
+  "scope": "看字選注音、看注音選字、部首與筆畫。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_vocab_g1",
+  "name": "一年級生字複習",
+  "subject": "chinese",
+  "codes": ["Aa-I-5", "Ab-I-1", "Ab-I-3", "Ab-I-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }],
+  "scope": "一年級學過的字再認一次。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_quake",
+  "name": "防震小達人",
+  "subject": "life",
+  "codes": ["C-I-4", "E-I-2", "F-I-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }],
+  "scope": "地震時趴下、掩護、穩住；安全的做法。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_plastic",
+  "name": "減塑行動家",
+  "subject": "life",
+  "codes": ["B-I-3", "E-I-3", "F-I-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }],
+  "scope": "哪些東西可以重複使用；減塑行動的步驟。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_seed",
+  "name": "奇妙的種子",
+  "subject": "life",
+  "codes": ["A-I-1", "C-I-1", "C-I-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }],
+  "scope": "種子發芽的順序、照顧植物需要什麼。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_magnet",
+  "name": "磁鐵真好玩",
+  "subject": "life",
+  "codes": ["C-I-1", "C-I-3", "C-I-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }],
+  "scope": "哪些東西會被磁鐵吸住；磁鐵的兩端；生活中的磁鐵。",
+  "availability": "runtime-partial"
+}, {
+  "id": "j_color",
+  "name": "彩色的世界",
+  "subject": "life",
+  "codes": ["C-I-1", "C-I-2", "C-I-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }, {
+    "kind": "stage",
+    "value": "I"
+  }],
+  "scope": "混色、顏色傳達的訊息。",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n51",
+  "name": "十進位的位值系統",
+  "subject": "math",
+  "codes": ["N-5-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "十進位的位值系統",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n52",
+  "name": "多步驟生活應用",
+  "subject": "math",
+  "codes": ["N-5-2"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "多步驟生活應用",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n53",
+  "name": "公因數和公倍數",
+  "subject": "math",
+  "codes": ["N-5-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "公因數和公倍數",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n56",
+  "name": "整數相除之分數表示",
+  "subject": "math",
+  "codes": ["N-5-6"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "整數相除之分數表示",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n57",
+  "name": "分數除以整數",
+  "subject": "math",
+  "codes": ["N-5-7"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "分數除以整數",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n59",
+  "name": "整數、小數除以整數(商為小數)",
+  "subject": "math",
+  "codes": ["N-5-9"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "整數、小數除以整數(商為小數)",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n510",
+  "name": "比率、百分率與折成",
+  "subject": "math",
+  "codes": ["N-5-10"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "比率、百分率與折成",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n511",
+  "name": "小數取概數",
+  "subject": "math",
+  "codes": ["N-5-11"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "小數取概數",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n512",
+  "name": "面積大單位換算",
+  "subject": "math",
+  "codes": ["N-5-12"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "面積大單位換算",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n513",
+  "name": "公噸與公斤",
+  "subject": "math",
+  "codes": ["N-5-13"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "公噸與公斤",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n514",
+  "name": "立方公尺",
+  "subject": "math",
+  "codes": ["N-5-14"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "立方公尺",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n515",
+  "name": "容積與容量",
+  "subject": "math",
+  "codes": ["N-5-15"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "容積與容量",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_n516",
+  "name": "時間乘除",
+  "subject": "math",
+  "codes": ["N-5-16"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "時間乘除",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_s51",
+  "name": "三角形與四邊形的性質",
+  "subject": "math",
+  "codes": ["S-5-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "三角形與四邊形的性質",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_s53",
+  "name": "扇形",
+  "subject": "math",
+  "codes": ["S-5-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "扇形",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_s54",
+  "name": "線對稱",
+  "subject": "math",
+  "codes": ["S-5-4"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "線對稱",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_s55",
+  "name": "正方體和長方體",
+  "subject": "math",
+  "codes": ["S-5-5"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "正方體和長方體",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_s56",
+  "name": "空間中面與面的關係",
+  "subject": "math",
+  "codes": ["S-5-6"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "空間中面與面的關係",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_s57",
+  "name": "球、柱體與錐體",
+  "subject": "math",
+  "codes": ["S-5-7"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "球、柱體與錐體",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_r51",
+  "name": "三步驟問題併式",
+  "subject": "math",
+  "codes": ["R-5-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "三步驟問題併式",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_r52",
+  "name": "四則計算規律(II)",
+  "subject": "math",
+  "codes": ["R-5-2"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "四則計算規律(II)",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_r53",
+  "name": "以符號表示數學公式",
+  "subject": "math",
+  "codes": ["R-5-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "以符號表示數學公式",
+  "availability": "runtime-partial"
+}, {
+  "id": "g5_d51",
+  "name": "製作折線圖",
+  "subject": "math",
+  "codes": ["D-5-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 5
+  }],
+  "scope": "製作折線圖",
+  "availability": "runtime-partial"
+}, {
+  "id": "m_mult_div_int",
+  "name": "整數乘除與兩步驟應用",
+  "subject": "math",
+  "codes": ["N-4-2", "N-4-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 4
+  }, {
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "m_frac_basic",
+  "name": "分數意義、等值與同分母加減",
+  "subject": "math",
+  "codes": ["N-3-9", "N-4-5"],
+  "levels": [{
+    "kind": "grade",
+    "value": 3
+  }, {
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "m_dec_addsub",
+  "name": "二位小數加減",
+  "subject": "math",
+  "codes": ["N-4-7"],
+  "levels": [{
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "m_angle",
+  "name": "角度與量角",
+  "subject": "math",
+  "codes": ["S-4-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "m_rect_area",
+  "name": "長方形與正方形面積",
+  "subject": "math",
+  "codes": ["S-4-3"],
+  "levels": [{
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "m_volume_basic",
+  "name": "體積與立方公分",
+  "subject": "math",
+  "codes": ["N-4-12"],
+  "levels": [{
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "m_time_units",
+  "name": "時分秒換算與加減",
+  "subject": "math",
+  "codes": ["N-4-13"],
+  "levels": [{
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "m_bar_line",
+  "name": "長條圖與折線圖報讀",
+  "subject": "math",
+  "codes": ["D-4-1"],
+  "levels": [{
+    "kind": "grade",
+    "value": 4
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inaiii3",
+  "name": "混合物是由不同的物質所混合,物質混合前後重量不會改變,性質可能會改變",
+  "subject": "science",
+  "codes": ["INa-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inaiii4",
+  "name": "空氣由各種不同氣體所組成,空氣具有熱脹冷縮的性質",
+  "subject": "science",
+  "codes": ["INa-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inaiii5",
+  "name": "不同形式的能量可以相互轉換,但總量不變",
+  "subject": "science",
+  "codes": ["INa-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inaiii6",
+  "name": "能量可藉由電流傳遞、轉換而後為人類所應用",
+  "subject": "science",
+  "codes": ["INa-III-6"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inaiii7",
+  "name": "運動的物體具有動能,對同一物體而言,速度越快動能越大",
+  "subject": "science",
+  "codes": ["INa-III-7"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inaiii9",
+  "name": "植物生長所需的養分是經由光合作用從太陽光獲得的",
+  "subject": "science",
+  "codes": ["INa-III-9"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inaiii10",
+  "name": "在生態系中,能量經由食物鏈在不同物種間流動與循環",
+  "subject": "science",
+  "codes": ["INa-III-10"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inbiii1",
+  "name": "物質有不同的結構與功能",
+  "subject": "science",
+  "codes": ["INb-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inbiii2",
+  "name": "應用性質的不同可分離物質或鑑別物質",
+  "subject": "science",
+  "codes": ["INb-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inbiii3",
+  "name": "物質表面的結構與性質不同,其可產生的摩擦力不同;摩擦力會影響物體運動的情形",
+  "subject": "science",
+  "codes": ["INb-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inbiii5",
+  "name": "生物體是由細胞所組成,具有由細胞、器官到個體等不同層次的構造",
+  "subject": "science",
+  "codes": ["INb-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inbiii6",
+  "name": "動物的形態特徵與行為相關,動物身體的構造不同,有不同的運動方式",
+  "subject": "science",
+  "codes": ["INb-III-6"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inbiii7",
+  "name": "植物各部位的構造和所具有的功能有關,有些植物產生特化的構造以適應環境",
+  "subject": "science",
+  "codes": ["INb-III-7"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inbiii8",
+  "name": "生物可依其形態特徵進行分類",
+  "subject": "science",
+  "codes": ["INb-III-8"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii1",
+  "name": "生活及探究中常用的測量工具和方法",
+  "subject": "science",
+  "codes": ["INc-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii2",
+  "name": "自然界或生活中有趣的最大或最小的事物(量),事物大小宜用適當的單位來表示",
+  "subject": "science",
+  "codes": ["INc-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii3",
+  "name": "本量與改變量不同,由兩者的比例可評估變化的程度",
+  "subject": "science",
+  "codes": ["INc-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii4",
+  "name": "對相同事物做多次測量,其結果間可能有差異,差異越大表示測量越不精確",
+  "subject": "science",
+  "codes": ["INc-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii5",
+  "name": "力的大小可由物體的形變或運動狀態的改變程度得知",
+  "subject": "science",
+  "codes": ["INc-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii6",
+  "name": "運用時間與距離可描述物體的速度與速度的變化",
+  "subject": "science",
+  "codes": ["INc-III-6"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii7",
+  "name": "動物體內的器官系統是由數個器官共同組合,以執行某種特定的生理作用",
+  "subject": "science",
+  "codes": ["INc-III-7"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii8",
+  "name": "在同一時期,特定區域上,相同物種所組成的群體稱為「族群」,而在特定區域由多個族群結合而組成「群集」",
+  "subject": "science",
+  "codes": ["INc-III-8"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii10",
+  "name": "地球是由空氣、陸地、海洋及生存於其中的生物所組成的",
+  "subject": "science",
+  "codes": ["INc-III-10"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii12",
+  "name": "地球上的水存在於大氣、海洋、湖泊與地下中",
+  "subject": "science",
+  "codes": ["INc-III-12"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii13",
+  "name": "日出日落時間與位置,在不同季節會不同",
+  "subject": "science",
+  "codes": ["INc-III-13"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii14",
+  "name": "四季星空會有所不同",
+  "subject": "science",
+  "codes": ["INc-III-14"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_inciii15",
+  "name": "除了地球外,還有其他行星環繞著太陽運行",
+  "subject": "science",
+  "codes": ["INc-III-15"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii1",
+  "name": "自然界中存在著各種的穩定狀態;當有新的外加因素時,可能造成改變,再達到新的穩定狀態",
+  "subject": "science",
+  "codes": ["INd-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii3",
+  "name": "地球上的物體(含生物和非生物)均會受地球引力的作用,地球對物體的引力就是物體的重量",
+  "subject": "science",
+  "codes": ["INd-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii4",
+  "name": "生物個體間的性狀具有差異性;子代與親代的性狀具有相似性和相異性",
+  "subject": "science",
+  "codes": ["INd-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii5",
+  "name": "生物體接受環境刺激會產生適當的反應,並自動調節生理作用以維持恆定",
+  "subject": "science",
+  "codes": ["INd-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii6",
+  "name": "生物種類具有多樣性;生物生存的環境亦具有多樣性",
+  "subject": "science",
+  "codes": ["INd-III-6"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii8",
+  "name": "土壤是由岩石風化成的碎屑及生物遺骸所組成",
+  "subject": "science",
+  "codes": ["INd-III-8"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii10",
+  "name": "流水及生物活動,對地表的改變會產生不同的影響",
+  "subject": "science",
+  "codes": ["INd-III-10"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_indiii11",
+  "name": "海水的流動會影響天氣與氣候的變化",
+  "subject": "science",
+  "codes": ["INd-III-11"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii1",
+  "name": "自然界的物體、生物與環境間的交互作用,常具有規則性",
+  "subject": "science",
+  "codes": ["INe-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii2",
+  "name": "物質的形態與性質可因燃燒、生鏽、發酵、酸鹼作用等而改變或形成新物質,這些改變有些會和溫度、水、空氣、光等有關",
+  "subject": "science",
+  "codes": ["INe-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii3",
+  "name": "燃燒是物質與氧劇烈作用的現象,燃燒必須同時具備可燃物、助燃物,並達到燃點等三個要素",
+  "subject": "science",
+  "codes": ["INe-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii4",
+  "name": "物質溶解、反應前後總重量不變",
+  "subject": "science",
+  "codes": ["INe-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii5",
+  "name": "常用酸鹼物質的特性,水溶液的酸鹼性質及其生活上的運用",
+  "subject": "science",
+  "codes": ["INe-III-5"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii7",
+  "name": "陽光是由不同色光組成",
+  "subject": "science",
+  "codes": ["INe-III-7"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii8",
+  "name": "光會有折射現象,放大鏡可聚光和成像",
+  "subject": "science",
+  "codes": ["INe-III-8"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii11",
+  "name": "動物有覓食、生殖、保護、訊息傳遞以及社會性的行為",
+  "subject": "science",
+  "codes": ["INe-III-11"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii12",
+  "name": "生物的分布和習性,會受環境因素的影響;環境改變也會影響生存於其中的生物種類",
+  "subject": "science",
+  "codes": ["INe-III-12"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ineiii13",
+  "name": "生態系中生物與生物彼此間的交互作用,有寄生、共生和競爭的關係",
+  "subject": "science",
+  "codes": ["INe-III-13"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_infiii1",
+  "name": "世界與本地不同性別科學家的事蹟與貢獻",
+  "subject": "science",
+  "codes": ["INf-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_infiii2",
+  "name": "科技在生活中的應用與對環境與人體的影響",
+  "subject": "science",
+  "codes": ["INf-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_infiii3",
+  "name": "自然界生物的特徵與原理在人類生活上的應用",
+  "subject": "science",
+  "codes": ["INf-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_infiii4",
+  "name": "人類日常生活中所依賴的經濟動植物及栽培養殖的方法",
+  "subject": "science",
+  "codes": ["INf-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ingiii1",
+  "name": "自然景觀和環境一旦被改變或破壞,極難恢復",
+  "subject": "science",
+  "codes": ["INg-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ingiii3",
+  "name": "生物多樣性對人類的重要性,而氣候變遷將對生物生存造成影響",
+  "subject": "science",
+  "codes": ["INg-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ingiii4",
+  "name": "人類的活動會造成氣候變遷,加劇對生態與環境的影響",
+  "subject": "science",
+  "codes": ["INg-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ingiii6",
+  "name": "碳足跡與水足跡所代表環境的意涵",
+  "subject": "science",
+  "codes": ["INg-III-6"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "s_ingiii7",
+  "name": "人類行為的改變可以減緩氣候變遷所造成的衝擊與影響",
+  "subject": "science",
+  "codes": ["INg-III-7"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_aaiii3",
+  "name": "個人的價值觀會影響其行為,也可能會影響人際關係",
+  "subject": "social",
+  "codes": ["Aa-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_abiii1",
+  "name": "臺灣的地理位置、自然環境,與歷史文化的發展有關聯性",
+  "subject": "social",
+  "codes": ["Ab-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_abiii2",
+  "name": "交通運輸與產業發展會影響城鄉與區域間的人口遷移及連結互動",
+  "subject": "social",
+  "codes": ["Ab-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_abiii3",
+  "name": "自然環境、自然災害及經濟活動,和生活空間的使用有關聯性",
+  "subject": "social",
+  "codes": ["Ab-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_aciii3",
+  "name": "我國政府組織可區分為中央及地方政府,各具有不同的功能,並依公權力管理公共事務",
+  "subject": "social",
+  "codes": ["Ac-III-3"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_aciii4",
+  "name": "國家權力的運用會維護國家安全及社會秩序,也可能會增進或傷害個人與群體的權益",
+  "subject": "social",
+  "codes": ["Ac-III-4"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_afiii2",
+  "name": "國際間因利益競爭而造成衝突、對立與結盟",
+  "subject": "social",
+  "codes": ["Af-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_bbiii1",
+  "name": "自然與人文環境的交互影響,造成生活空間型態的差異與多元",
+  "subject": "social",
+  "codes": ["Bb-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_bciii1",
+  "name": "族群或地區的文化特色,各有其產生的背景因素,因而形塑臺灣多元豐富的文化內涵",
+  "subject": "social",
+  "codes": ["Bc-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_bciii2",
+  "name": "權力不平等與資源分配不均,會造成個人或群體間的差別待遇",
+  "subject": "social",
+  "codes": ["Bc-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_cbiii2",
+  "name": "臺灣史前文化、原住民族文化、中華文化及世界其他文化隨著時代變遷,都在臺灣留下有形與無形的文化資產,並於生活中展現特色",
+  "subject": "social",
+  "codes": ["Cb-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_cciii1",
+  "name": "個人在團體中的角色會隨著社會變遷產生改變",
+  "subject": "social",
+  "codes": ["Cc-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_cciii2",
+  "name": "族群的遷徙、通婚及交流,與社會變遷互為因果",
+  "subject": "social",
+  "codes": ["Cc-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_cdiii1",
+  "name": "不同時空環境下,臺灣人民透過爭取權利與政治改革,使得政治逐漸走向民主",
+  "subject": "social",
+  "codes": ["Cd-III-1"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}, {
+  "id": "o_cdiii2",
+  "name": "臺灣人民的政治參與及公民團體的發展,為臺灣的民主政治奠定基礎",
+  "subject": "social",
+  "codes": ["Cd-III-2"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "",
+  "availability": "catalog-only"
+}];
 const CONCEPT_KEYWORDS = {
   "m_prime": ["質數", "質因數", "因數分解", "合數", "質數與質因數分解", "分解質因數", "質因數分解", "最小質數", "唯一的偶質數", "只有兩個因數", "因數個數", "1不是質數", "分解乘積", "質數表", "判斷質數", "樹狀分解", "合數分解"],
   "m_gcd": ["公因數", "公倍數", "最大公因數", "最小公倍數", "互質", "短除", "最大公因數與最小公倍數", "平均分組", "最多分成", "最少需要", "同時出現", "再次相遇", "恰好分完", "最大正方形", "短除法", "互質的兩數", "公倍數週期", "分配相同", "最小共同倍數"],
@@ -25979,7 +28005,7 @@ function practiceKpsFor(state) {
 }
 function kpAllowedForGrade(kp, grade) {
   const id = typeof kp === 'string' ? kp : kp?.id;
-  return grade === 5 ? G5_MATH_IDS.includes(id) || G5_SHARED_IDS.includes(id) : kpGrade(kp) === grade;
+  return grade === 5 ? G5_MATH_IDS.includes(id) || G5_SHARED_IDS.includes(id) : kpGrade(kp) === grade || grade === 6 && G5_KPS.some(k => k.id === id);
 }
 const JUNIOR_VOCAB = {
   "meta": {
@@ -29275,7 +31301,7 @@ function gradeName(g) {
   }[g] || '六';
 }
 function rangeGroup(k, grade) {
-  return grade === 5 ? k.subject === 'math' ? '五年級數學' : '第三學習階段' : k.semester;
+  return grade === 5 ? k.subject === 'math' ? '五年級數學' : '第三學習階段' : grade === 6 && kpGrade(k) === 5 ? '複習' : k.semester;
 }
 function changeLearningGrade(state, grade, settings) {
   if (![2, 5, 6].includes(grade)) throw Error('不支援的年級');
@@ -32566,6 +34592,11 @@ function validateBackupState(input) {
     str(e.text, p);
     strs(e.kpIds, p);
     opt(e, 'reasonIds', strs, p);
+    if (e.itemGrade !== undefined && (!Number.isInteger(e.itemGrade) || e.itemGrade < 1 || e.itemGrade > 6)) bad(p + '.itemGrade');
+    if (e.unitTitle !== undefined && (typeof e.unitTitle !== 'string' || e.unitTitle.length > 40)) bad(p + '.unitTitle');
+    if (e.noTask !== undefined && typeof e.noTask !== 'boolean') bad(p + '.noTask');
+    if (e.status !== undefined && !['confirmed', 'unclassified'].includes(e.status)) bad(p + '.status');
+    if (e.status === 'unclassified' && e.kpIds.length) bad(p + '.unclassified.kpIds');
   });
   unique(s.errorItems, 'errorItems');
   records(s.practiceLog, 'practiceLog');
@@ -52098,7 +54129,7 @@ function g6AllowsKp(state, kp) {
   if (studentGrade(state?.student) !== 6) return true;
   const settings = state?.settings || {},
     semesters = settings.g6Semesters || ['6上', '6下', '複習'];
-  return semesters.includes(KP_BY_ID[kp]?.semester) && (settings.g6Prerequisites !== false || !G6_PREREQUISITE_KPS.includes(kp));
+  return semesters.includes(rangeGroup(KP_BY_ID[kp], 6)) && (settings.g6Prerequisites !== false || !(G6_PREREQUISITE_KPS.includes(kp) || kpGrade(kp) === 5));
 }
 function g6PolicySuffix(state) {
   if (studentGrade(state?.student) !== 6) return '';
@@ -52284,6 +54315,9 @@ for (const kp of ['j_addstep', 'j_area']) {
     intro: '幫島上的夥伴核對紀錄。'
   };
 }
+function g5BankApplies(state, kp) {
+  return studentGrade(state?.student) === 5 && G5_MATH_IDS.includes(kp) || studentGrade(state?.student) === 6 && G5_KPS.some(k => k.id === kp);
+}
 function g5Pool(kp, difficulty) {
   const all = G5_EXPANSION_BANK.filter(q => q.kpId === kp),
     levels = {
@@ -52297,7 +54331,7 @@ function g5Pool(kp, difficulty) {
   return lower.length ? lower : all;
 }
 function g5Select(state, kp, seed, difficulty) {
-  if (studentGrade(state?.student) !== 5 || !G5_MATH_IDS.includes(kp)) return null;
+  if (!g5BankApplies(state, kp)) return null;
   const pool = learningAllows(state, kp) ? g5Pool(kp, difficulty) : [];
   if (!pool.length) return {
     question: null,
@@ -52331,7 +54365,7 @@ function g5Stage(base, q, repeatPractice, seed = 1) {
   };
 }
 function g5ApplyStages(stages, state, kp, seed, difficulty) {
-  if (studentGrade(state?.student) !== 5 || !G5_MATH_IDS.includes(kp)) return stages;
+  if (!g5BankApplies(state, kp)) return stages;
   let draft = state;
   return stages.map((s, i) => {
     const r = g5Select(draft, kp, seed + i * 97, difficulty);
@@ -52381,6 +54415,132 @@ if (skillOfBeforeGrade5) skillOf = function (state, subject) {
     max: hi == null
   };
 };
+const ERROR_CONCEPT_BY_ID = Object.fromEntries(ERROR_CONCEPTS.map(c => [c.id, c]));
+function errorConcept(id) {
+  return ERROR_CONCEPT_BY_ID[id] || {
+    id,
+    name: KP_BY_ID[id]?.name || id,
+    codes: [],
+    levels: []
+  };
+}
+function errorLevelLabel(c) {
+  return [...new Set(c.levels.map(l => l.kind === 'grade' ? `${l.value} 年級` : `第${l.value}學習階段`))].join('、');
+}
+function errorHasTask(id) {
+  return errorConcept(id).availability === 'runtime-partial' && missionSupported(id);
+}
+function errorCanJoin(state, id) {
+  return errorHasTask(id) && kpAllowedForGrade(id, studentGrade(state.student));
+}
+function errorBadge(state, id) {
+  return !errorHasTask(id) ? '遊戲還沒有這個觀念的練習' : learningAllows(state, id) ? '有練習' : '不在目前的練習範圍';
+}
+function errorItemGrade(item, state) {
+  return Number.isInteger(item.itemGrade) ? item.itemGrade : studentGrade(state.student);
+}
+function errorCandidates(subject, grade) {
+  const stage = Math.ceil(grade / 2),
+    stages = {
+      I: 1,
+      II: 2,
+      III: 3
+    };
+  return ERROR_CONCEPTS.filter(c => c.subject === subject && c.levels.some(l => subject === 'math' ? l.kind === 'grade' && Math.abs(l.value - grade) <= 1 : l.kind === 'stage' && [stage, stage - 1].includes(stages[l.value])));
+}
+function suggestErrorConcepts(f) {
+  const unit = normalizeConceptText(f.unitTitle),
+    whole = (text, words) => keywordScore(text, words).score;
+  return errorCandidates(f.subject, Number(f.itemGrade) || 6).map(c => {
+    const name = normalizeConceptText(c.name),
+      words = [c.name, ...conceptKeywords(c.id)];
+    const u = unit && name && (unit.includes(name) || name.includes(unit)) ? 1 : 0;
+    const q = whole(f.text, words),
+      e = whole(f.explanation, words),
+      scope = whole([f.text, f.explanation, f.unitTitle].join(' '), [c.scope || '']);
+    return {
+      kp: c,
+      rank: [u, q >= 1 ? q : 0, e >= 1 ? e : 0, scope >= 1 ? scope : 0, c.levels.some(l => l.kind === 'grade' && l.value === Number(f.itemGrade)) ? 1 : 0]
+    };
+  }).filter(x => x.rank.slice(0, 4).some(Boolean)).sort((a, b) => {
+    for (let i = 0; i < 5; i++) {
+      if (a.rank[i] !== b.rank[i]) return b.rank[i] - a.rank[i];
+    }
+    return a.kp.id.localeCompare(b.kp.id);
+  }).slice(0, 5);
+}
+function searchErrorConcepts(query, subject, grade) {
+  const text = normalizeConceptText(query);
+  if (!text) return [];
+  return ERROR_CONCEPTS.filter(c => c.subject === subject).map(c => ({
+    c,
+    score: keywordScore(query, [c.name, ...conceptKeywords(c.id)]).score + (normalizeConceptText(c.name).includes(text) ? 20 : 0),
+    exact: c.levels.some(l => l.kind === 'grade' && l.value === grade)
+  })).filter(x => x.score >= 1).sort((a, b) => b.score - a.score || Number(b.exact) - Number(a.exact) || a.c.id.localeCompare(b.c.id)).slice(0, 8).map(x => x.c);
+}
+function saveErrorItem(state, item, {
+  join = false,
+  unclassified = false
+} = {}) {
+  const ids = unclassified ? [] : [...new Set(item.kpIds)].filter(id => ERROR_CONCEPT_BY_ID[id] && errorConcept(id).subject === item.subject);
+  const saved = {
+    ...item,
+    itemGrade: errorItemGrade(item, state),
+    unitTitle: (item.unitTitle || '').trim().slice(0, 40),
+    kpIds: ids,
+    noTask: ids.some(id => !errorHasTask(id)),
+    status: unclassified ? 'unclassified' : 'confirmed'
+  };
+  let st = {
+    ...state,
+    errorItems: [...state.errorItems.filter(e => e.id !== saved.id), saved]
+  };
+  if (join) {
+    const eligible = ids.filter(id => errorCanJoin(st, id)),
+      settings = getSettings(st),
+      semesters = [...(settings.g6Semesters || ['6上', '6下', '複習'])];
+    eligible.forEach(id => {
+      const sem = rangeGroup(KP_BY_ID[id], studentGrade(st.student));
+      if (!semesters.includes(sem)) semesters.push(sem);
+    });
+    if (eligible.length) st = applyLearningSettings(st, {
+      practiceKps: [...new Set([...practiceKpsFor(st), ...eligible])],
+      g6Semesters: semesters,
+      g6Prerequisites: eligible.some(id => kpGrade(id) === 5 || G6_PREREQUISITE_KPS.includes(id)) ? true : settings.g6Prerequisites
+    });
+  }
+  let made = 0;
+  for (const id of ids) {
+    if (!errorHasTask(id) || !learningAllows(st, id) || st.missions.some(m => m.errorItemId === saved.id && m.kpId === id)) continue;
+    const mission = generateMission(saved, id, Math.floor(Math.random() * 1e9), !saved.reasonIds?.length || saved.reasonIds.includes('unknown'), getSettings(st).difficulty, st);
+    if (mission) {
+      st = upsertMission(st, mission);
+      made++;
+    }
+  }
+  const outside = ids.some(id => errorHasTask(id) && !learningAllows(st, id));
+  const message = unclassified ? '已存成待分類，之後可以回來補選。' : [made ? '已儲存錯題，建立了練習。練習會是同一個觀念的題目，不一定和這題是同一種題型。' : '已儲存錯題。', outside ? '這個觀念不在目前的練習範圍，所以還沒有建立練習。' : '', saved.noTask ? '遊戲還沒有這個觀念的練習。錯題已經存下來，之後補上練習時會提醒你。' : ''].filter(Boolean).join(' ');
+  return {
+    state: st,
+    item: saved,
+    made,
+    message
+  };
+}
+function waitingErrorConcepts(state) {
+  const counts = new Map();
+  for (const e of state.errorItems) if (e.noTask) for (const id of new Set(e.kpIds || [])) if (!errorHasTask(id)) counts.set(id, (counts.get(id) || 0) + 1);
+  return [...counts].map(([id, count]) => ({
+    concept: errorConcept(id),
+    count
+  }));
+}
+function waitingErrorText(state) {
+  return waitingErrorConcepts(state).map(({
+    concept: c,
+    count
+  }) => `${c.name}｜${c.codes.join('／')}｜${count} 題`).join('\n');
+}
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
     normal: `assets/chars/${id}/tachie_normal.webp`
@@ -68551,6 +70711,203 @@ function ChestOverlay({
     onClick: () => setLockIdx(null)
   }, "\u5148\u96E2\u958B\u9019\u9053\u9396")))));
 }
+function ErrorConceptLabel({
+  id,
+  state
+}) {
+  const c = errorConcept(id);
+  return React.createElement("div", {
+    style: {
+      minWidth: 0,
+      overflowWrap: 'anywhere'
+    }
+  }, React.createElement("b", null, c.name), React.createElement("div", {
+    className: "small muted"
+  }, c.codes.join('／'), " \xB7 ", errorLevelLabel(c)), React.createElement(Tag, {
+    kind: !errorHasTask(id) ? 'warn' : learningAllows(state, id) ? 'good' : 'accent'
+  }, errorBadge(state, id)));
+}
+function ErrorConceptSearch({
+  state,
+  subject,
+  grade,
+  onSelect,
+  prefix = 'kp'
+}) {
+  const [query, setQuery] = useState(''),
+    [active, setActive] = useState(0);
+  const results = searchErrorConcepts(query, subject, grade);
+  const choose = id => {
+    onSelect(id);
+    setQuery('');
+    setActive(0);
+  };
+  return React.createElement("div", {
+    className: "col",
+    style: {
+      minWidth: 0
+    }
+  }, React.createElement("label", {
+    htmlFor: prefix + '-search'
+  }, "\u6253\u5B57\u627E\u89C0\u5FF5"), React.createElement("input", {
+    id: prefix + '-search',
+    role: "combobox",
+    "aria-autocomplete": "list",
+    "aria-expanded": results.length > 0,
+    "aria-controls": prefix + '-results',
+    "aria-activedescendant": results[active] ? prefix + '-result-' + results[active].id : undefined,
+    value: query,
+    placeholder: "\u6253\u5E7E\u500B\u5B57\u627E\u89C0\u5FF5\uFF0C\u4F8B\u5982\uFF1A\u9593\u9694\u3001\u5206\u6578\u9664\u6CD5\u3001\u6BD4\u4F8B\u5C3A",
+    onChange: e => {
+      setQuery(e.target.value);
+      setActive(0);
+    },
+    onKeyDown: e => {
+      if (['ArrowDown', 'ArrowUp'].includes(e.key) && results.length) {
+        e.preventDefault();
+        setActive(i => (i + (e.key === 'ArrowDown' ? 1 : -1) + results.length) % results.length);
+      }
+      if (e.key === 'Enter' && results[active]) {
+        e.preventDefault();
+        choose(results[active].id);
+      }
+      if (e.key === 'Escape') setQuery('');
+    }
+  }), React.createElement("div", {
+    id: prefix + '-results',
+    role: "listbox",
+    "aria-label": "\u89C0\u5FF5\u641C\u5C0B\u7D50\u679C",
+    className: "col",
+    style: {
+      gap: 5
+    }
+  }, results.map((c, i) => React.createElement("button", {
+    type: "button",
+    role: "option",
+    "aria-selected": i === active,
+    id: prefix + '-result-' + c.id,
+    key: c.id,
+    onClick: () => choose(c.id),
+    className: 'kp-opt ' + (i === active ? 'sel' : ''),
+    style: {
+      textAlign: 'left',
+      width: '100%',
+      whiteSpace: 'normal'
+    }
+  }, React.createElement(ErrorConceptLabel, {
+    id: c.id,
+    state: state
+  }))), query && !results.length && React.createElement("p", {
+    className: "small muted"
+  }, "\u6C92\u6709\u627E\u5230\u76F8\u7B26\u89C0\u5FF5\u3002\u53EF\u4EE5\u63DB\u500B\u8A5E\uFF0C\u6216\u5148\u5B58\u6210\u5F85\u5206\u985E\u3002")));
+}
+function ErrorItemQueues({
+  state,
+  setState,
+  toast
+}) {
+  const [editing, setEditing] = useState(null),
+    [selected, setSelected] = useState([]),
+    [copyText, setCopyText] = useState('');
+  const waiting = waitingErrorConcepts(state),
+    unclassified = state.errorItems.filter(e => e.status === 'unclassified');
+  const available = state.errorItems.filter(e => e.status !== 'unclassified' && (e.kpIds || []).some(id => errorHasTask(id) && !state.missions.some(m => m.errorItemId === e.id && m.kpId === id)));
+  const finish = (e, join) => {
+    const r = saveErrorItem(state, {
+      ...e,
+      kpIds: selected.length ? selected : e.kpIds
+    }, {
+      join
+    });
+    setState(r.state);
+    toast(r.message);
+    setEditing(null);
+    setSelected([]);
+  };
+  return React.createElement(React.Fragment, null, !!unclassified.length && React.createElement("section", {
+    className: "card col",
+    id: "unclassified-errors"
+  }, React.createElement("h3", null, "\u5F85\u5206\u985E\uFF08", unclassified.length, "\uFF09"), unclassified.map(e => React.createElement("div", {
+    key: e.id,
+    className: "col"
+  }, React.createElement("p", null, e.text), React.createElement(Btn, {
+    small: true,
+    onClick: () => {
+      setEditing(e.id);
+      setSelected([]);
+    }
+  }, "\u88DC\u9078\u89C0\u5FF5"), editing === e.id && React.createElement(React.Fragment, null, React.createElement(ErrorConceptSearch, {
+    prefix: "classify",
+    state: state,
+    subject: e.subject,
+    grade: errorItemGrade(e, state),
+    onSelect: id => setSelected([id])
+  }), selected.map(id => React.createElement(ErrorConceptLabel, {
+    key: id,
+    id: id,
+    state: state
+  })), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: "classify-save",
+    disabled: !selected.length,
+    onClick: () => finish(e, false)
+  }, "\u4FDD\u5B58\u5206\u985E\u4E26\u5EFA\u7ACB\u7BC4\u570D\u5167\u7DF4\u7FD2"), selected.some(id => errorCanJoin(state, id) && !learningAllows(state, id)) && React.createElement(Btn, {
+    id: "classify-join",
+    onClick: () => finish(e, true)
+  }, "\u52A0\u5165\u7BC4\u570D\u4E26\u5EFA\u7ACB\u7DF4\u7FD2")))))), !!available.length && React.createElement("section", {
+    className: "card col",
+    id: "available-errors"
+  }, React.createElement("h3", null, "\u5DF2\u8A18\u9304\uFF0C\u5C1A\u672A\u5EFA\u7ACB\u7DF4\u7FD2"), React.createElement("p", {
+    className: "small muted"
+  }, "\u65B0\u88DC\u4E0A\u7684\u89C0\u5FF5\u6703\u5728\u9019\u88E1\u63D0\u9192\u3002\u7BC4\u570D\u5916\u7684\u89C0\u5FF5\u9700\u5148\u7531\u5BB6\u9577\u78BA\u8A8D\u52A0\u5165\uFF1B\u82E5\u5C6C\u5176\u4ED6\u5E74\u7D1A\uFF0C\u53EF\u5728\u7DF4\u7FD2\u8A2D\u5B9A\u8ABF\u6574\u5B78\u7FD2\u5E74\u7D1A\u3002"), available.map(e => React.createElement("div", {
+    key: e.id,
+    className: "col"
+  }, React.createElement("span", null, e.text.slice(0, 60)), (e.kpIds || []).filter(errorHasTask).map(id => React.createElement(ErrorConceptLabel, {
+    key: id,
+    id: id,
+    state: state
+  })), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    small: true,
+    disabled: !(e.kpIds || []).some(id => errorCanJoin(state, id)),
+    onClick: () => {
+      const r = saveErrorItem(state, e, {
+        join: true
+      });
+      setState(r.state);
+      toast(r.message);
+    }
+  }, "\u52A0\u5165\u7BC4\u570D\u4E26\u5EFA\u7ACB\u7DF4\u7FD2"), React.createElement("span", {
+    className: "small muted"
+  }, "\u53EA\u5B58\u932F\u984C\uFF1A\u5DF2\u4FDD\u5B58\uFF0C\u53EF\u7559\u5F85\u4E4B\u5F8C\u8655\u7406\u3002"))))), !!waiting.length && React.createElement("section", {
+    className: "card col",
+    id: "waiting-concepts"
+  }, React.createElement("h3", null, "\u7B49\u904A\u6232\u88DC\u4E0A\u7684\u89C0\u5FF5"), waiting.map(({
+    concept: c,
+    count
+  }) => React.createElement("div", {
+    key: c.id
+  }, c.name, " \xB7 ", c.codes.join('／'), " \xB7 ", count, " \u984C")), React.createElement(Btn, {
+    id: "copy-waiting",
+    onClick: async () => {
+      const text = waitingErrorText(state);
+      setCopyText(text);
+      try {
+        await navigator.clipboard.writeText(text);
+        toast('已複製觀念名稱、代碼與題數，不含題目原文。');
+      } catch (e) {
+        toast('請從下方複製清單。');
+      }
+    }
+  }, "\u8907\u88FD\u9019\u4EFD\u6E05\u55AE"), copyText && React.createElement("textarea", {
+    id: "waiting-copy-text",
+    readOnly: true,
+    value: copyText,
+    "aria-label": "\u53EF\u8907\u88FD\u7684\u89C0\u5FF5\u6E05\u55AE"
+  })));
+}
 function PaintArt({
   name,
   alt
@@ -69170,7 +71527,9 @@ function ErrorItemForm({
     childAnswer: '',
     correctAnswer: '',
     explanation: '',
-    note: ''
+    note: '',
+    itemGrade: studentGrade(state.student),
+    unitTitle: ''
   });
   const [pii, setPii] = useState(false);
   const [imgName, setImgName] = useState(null);
@@ -69182,8 +71541,8 @@ function ErrorItemForm({
     ...x,
     [k]: v
   }));
-  const suggestions = useMemo(() => suggestKnowledgePoints(f.text + ' ' + f.explanation, f.subject, practiceKpsFor(state)), [f.text, f.explanation, f.subject, state.settings, state.student?.grade]);
-  const piiFlags = detectPII(f.text + f.explanation + f.childAnswer);
+  const suggestions = useMemo(() => suggestErrorConcepts(f), [f.text, f.explanation, f.subject, f.unitTitle, f.itemGrade]);
+  const piiFlags = detectPII([f.text, f.explanation, f.childAnswer, f.correctAnswer, f.figure, f.note, f.unitTitle].join(' '));
   const onImage = e => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -69197,46 +71556,34 @@ function ErrorItemForm({
   };
   const canNext1 = f.text.trim().length >= 4 && f.correctAnswer.trim() && pii;
   const unclear = f.childAnswer.trim() === '' || /不清楚|看不懂|\?|？/.test(f.childAnswer);
-  const create = () => {
+  const create = (join = false, unclassified = false) => {
+    if (!canNext1 || piiFlags.length || !unclassified && !kps.length) return;
     const item = {
+      ...f,
       id: uid(),
-      subject: f.subject,
-      text: f.text.trim(),
-      figure: f.figure.trim(),
-      childAnswer: f.childAnswer.trim(),
-      correctAnswer: f.correctAnswer.trim(),
-      explanation: f.explanation.trim(),
-      note: f.note.trim(),
       kpIds: kps,
       reasonIds: reasons,
-      status: 'confirmed',
       createdAt: now(),
       piiConfirmed: true,
       source: imgName ? 'photo+manual' : 'text'
     };
-    let st = {
-      ...state,
-      errorItems: [...state.errorItems, item]
-    };
-    const needDiag = reasons.length === 0 || reasons.includes('unknown');
-    let made = 0;
-    kps.forEach(k => {
-      if (!learningAllows(state, k)) return;
-      const m = generateMission(item, k, Math.floor(Math.random() * 1e9), needDiag, getSettings(state).difficulty, st);
-      if (m) {
-        st = upsertMission(st, m);
-        made++;
-      }
+    const result = saveErrorItem(state, item, {
+      join,
+      unclassified
     });
-    setState(st);
-    toast(`已儲存錯題，建立 ${made} 個個人化任務`);
+    setState(result.state);
+    toast(result.message);
     onDone();
   };
   const grouped = useMemo(() => {
     const g = {};
-    KNOWLEDGE_POINTS.filter(k => k.subject === f.subject && learningAllows(state, k.id)).forEach(k => (g[k.semester] = g[k.semester] || []).push(k));
+    ERROR_CONCEPTS.filter(c => c.subject === f.subject).forEach(c => {
+      const sem = KP_BY_ID[c.id]?.semester || '依官方年級／學習階段';
+      (g[sem] || (g[sem] = [])).push(c);
+    });
     return g;
-  }, [f.subject, state.settings, state.student?.grade]);
+  }, [f.subject]);
+  const addKp = id => setKps(k => k.includes(id) ? k : [...k, id]);
   return React.createElement("div", {
     className: "col"
   }, React.createElement("div", {
@@ -69270,6 +71617,28 @@ function ErrorItemForm({
     key: id,
     value: id
   }, subjName(id))))), React.createElement("div", {
+    className: "field"
+  }, React.createElement("label", {
+    htmlFor: "item-grade"
+  }, "\u9019\u662F\u5E7E\u5E74\u7D1A\u7684\u984C\u76EE\uFF08\u9078\u586B\uFF09"), React.createElement("select", {
+    id: "item-grade",
+    value: f.itemGrade,
+    onChange: e => set('itemGrade', Number(e.target.value))
+  }, [1, 2, 3, 4, 5, 6].map(g => React.createElement("option", {
+    key: g,
+    value: g
+  }, g, " \u5E74\u7D1A")))), React.createElement("div", {
+    className: "field"
+  }, React.createElement("label", {
+    htmlFor: "unit-title"
+  }, "\u8A55\u91CF\u4E0A\u5370\u7684\u55AE\u5143\u540D\u7A31\uFF08\u9078\u586B\uFF09"), React.createElement("input", {
+    id: "unit-title",
+    maxLength: 40,
+    value: f.unitTitle,
+    onChange: e => set('unitTitle', e.target.value)
+  }), React.createElement("span", {
+    className: "small muted"
+  }, "\u7167\u8A55\u91CF\u4E0A\u5370\u7684\u5BEB\u5C31\u597D\uFF0C\u4E0D\u77E5\u9053\u53EF\u4EE5\u7A7A\u8457\u3002\u6700\u591A 40 \u5B57\u3002")), React.createElement("div", {
     className: "field"
   }, React.createElement("label", {
     htmlFor: "ei-text"
@@ -69406,25 +71775,38 @@ function ErrorItemForm({
     }
   }, suggestions.length === 0 && React.createElement("span", {
     className: "small muted"
-  }, "\u6C92\u6709\u627E\u5230\u76F8\u7B26\u7684\u95DC\u9375\u5B57\uFF0C\u8ACB\u5F9E\u4E0B\u65B9\u6E05\u55AE\u624B\u52D5\u9078\u64C7\u3002"), suggestions.map(s => React.createElement("label", {
-    key: s.kp.id,
-    className: `kp-opt ${kps.includes(s.kp.id) ? 'sel' : ''}`
+  }, "\u6C92\u6709\u627E\u5230\u76F8\u7B26\u7684\u95DC\u9375\u5B57\uFF0C\u8ACB\u5F9E\u4E0B\u65B9\u6E05\u55AE\u624B\u52D5\u9078\u64C7\u3002"), suggestions.map(({
+    kp: c
+  }) => React.createElement("label", {
+    key: c.id,
+    className: 'kp-opt ' + (kps.includes(c.id) ? 'sel' : '')
   }, React.createElement("input", {
+    id: 'kp-' + c.id,
     type: "checkbox",
-    id: `kp-${s.kp.id}`,
-    checked: kps.includes(s.kp.id),
-    onChange: e => setKps(k => e.target.checked ? [...k, s.kp.id] : k.filter(x => x !== s.kp.id))
-  }), React.createElement("div", null, React.createElement("b", null, s.kp.name), " ", React.createElement(Tag, null, s.kp.code), " ", React.createElement(Tag, null, s.kp.semester), React.createElement("div", {
-    className: "small muted"
-  }, s.kp.desc, "\u3000\u7B26\u5408\u95DC\u9375\u5B57\uFF1A", s.hits.join('、'))))), React.createElement("div", {
+    checked: kps.includes(c.id),
+    onChange: e => e.target.checked ? addKp(c.id) : setKps(k => k.filter(id => id !== c.id))
+  }), React.createElement(ErrorConceptLabel, {
+    id: c.id,
+    state: state
+  }))), React.createElement(ErrorConceptSearch, {
+    state: state,
+    subject: f.subject,
+    grade: f.itemGrade,
+    onSelect: addKp
+  }), React.createElement("label", {
+    htmlFor: "kp-manual"
+  }, "\u6216\u5F9E\u6E05\u55AE\u9078"), React.createElement("div", {
     className: "row"
   }, React.createElement("select", {
     id: "kp-manual",
     value: manualKp,
+    style: {
+      maxWidth: '100%',
+      minWidth: 0
+    },
     "aria-describedby": "kp-manual-help",
     onChange: e => {
-      const id = e.target.value;
-      if (id) setKps(k => k.includes(id) ? k : [...k, id]);
+      if (e.target.value) addKp(e.target.value);
       setManualKp('');
     }
   }, React.createElement("option", {
@@ -69432,24 +71814,33 @@ function ErrorItemForm({
   }, "\u2014 \u624B\u52D5\u52A0\u5165\u5176\u4ED6\u77E5\u8B58\u9EDE \u2014"), Object.entries(grouped).map(([sem, arr]) => React.createElement("optgroup", {
     key: sem,
     label: sem
-  }, arr.map(k => React.createElement("option", {
-    key: k.id,
-    value: k.id
-  }, k.name, "\uFF08", k.code, "\uFF09"))))), React.createElement(Btn, {
+  }, arr.map(c => React.createElement("option", {
+    key: c.id,
+    value: c.id
+  }, c.name, "\uFF08", errorLevelLabel(c), "\uFF09"))))), React.createElement(Btn, {
     id: "kp-manual-add",
     small: true,
     disabled: true
   }, "\u52A0\u5165")), React.createElement("span", {
     className: "small muted",
     id: "kp-manual-help"
-  }, "\u8ACB\u5148\u5F9E\u9078\u55AE\u9078\u4E00\u500B\u77E5\u8B58\u9EDE\uFF0C\u9078\u53D6\u5F8C\u6703\u76F4\u63A5\u52A0\u5165\u3002"), kps.filter(k => !suggestions.some(s => s.kp.id === k)).map(k => React.createElement("label", {
-    key: k,
+  }, "\u8ACB\u5148\u5F9E\u9078\u55AE\u9078\u4E00\u500B\u77E5\u8B58\u9EDE\uFF0C\u9078\u53D6\u5F8C\u6703\u76F4\u63A5\u52A0\u5165\u3002"), kps.filter(id => !suggestions.some(s => s.kp.id === id)).map(id => React.createElement("label", {
+    key: id,
     className: "kp-opt sel"
   }, React.createElement("input", {
     type: "checkbox",
     checked: true,
-    onChange: () => setKps(x => x.filter(y => y !== k))
-  }), React.createElement("div", null, React.createElement("b", null, KP_BY_ID[k].name), " ", React.createElement(Tag, null, KP_BY_ID[k].code)))), React.createElement("span", {
+    onChange: () => setKps(k => k.filter(x => x !== id))
+  }), React.createElement(ErrorConceptLabel, {
+    id: id,
+    state: state
+  }))), React.createElement(Btn, {
+    id: "kp-unsure",
+    disabled: !canNext1 || piiFlags.length > 0,
+    onClick: () => create(false, true)
+  }, "\u6211\u4E0D\u78BA\u5B9A\u662F\u54EA\u4E00\u500B"), piiFlags.length > 0 && React.createElement(Notice, {
+    kind: "bad"
+  }, piiFlags.join('；'), "\u3002\u8ACB\u5148\u79FB\u9664\u500B\u4EBA\u8CC7\u6599\u3002"), React.createElement("span", {
     className: "small muted"
   }, CURRICULUM_NOTE))), React.createElement("div", null, React.createElement("span", {
     className: "eyebrow"
@@ -69476,18 +71867,19 @@ function ErrorItemForm({
   }, "\u4E0A\u4E00\u6B65"), React.createElement(Btn, {
     kind: "primary",
     id: "ei-next2",
-    disabled: !kps.length,
+    disabled: !kps.length || !canNext1 || piiFlags.length > 0,
     onClick: () => setStep(3)
   }, "\u4E0B\u4E00\u6B65\uFF1A\u5EFA\u7ACB\u4EFB\u52D9"))), step === 3 && React.createElement("div", {
     className: "card col"
-  }, React.createElement("h3", null, "\u5C07\u5EFA\u7ACB\u7684\u500B\u4EBA\u5316\u4EFB\u52D9"), kps.map(k => {
-    const kp = KP_BY_ID[k];
-    const ok = missionSupported(k);
-    return React.createElement("div", {
-      key: k,
-      className: `notice ${ok ? 'good' : 'warn'}`
-    }, React.createElement("b", null, kp.name), "\uFF08", kp.code, "\uFF09\uFF1A", ok ? '將建立三階段任務（觀念重建 → 情境應用 → 遷移挑戰），題目數字與情境皆與原題不同。' : '此知識點目前尚無對應的遊戲機關模板，錯題會保存，但暫不建立任務。', (reasons.length === 0 || reasons.includes('unknown')) && ok && ' 因錯誤原因尚未確定，任務前會先加入簡短診斷題。');
-  }), React.createElement("div", {
+  }, React.createElement("h3", null, "\u5C07\u5EFA\u7ACB\u7684\u500B\u4EBA\u5316\u4EFB\u52D9"), kps.map(id => React.createElement("div", {
+    key: id,
+    className: "notice"
+  }, React.createElement(ErrorConceptLabel, {
+    id: id,
+    state: state
+  }), React.createElement("p", null, !errorHasTask(id) ? '遊戲還沒有這個觀念的練習。會保存錯題，補上練習後會在錯題清單提醒。' : !learningAllows(state, id) ? '這個觀念不在目前的練習範圍，所以還沒有建立練習。' : '會建立三階段練習；練習會是同一個觀念的題目，不一定和這題是同一種題型。'), errorHasTask(id) && !errorCanJoin(state, id) && React.createElement("p", {
+    className: "small"
+  }, "\u9019\u500B\u89C0\u5FF5\u76EE\u524D\u5C6C\u65BC\u5176\u4ED6\u5B78\u7FD2\u5E74\u7D1A\u3002\u5148\u5B58\u932F\u984C\uFF0C\u4E4B\u5F8C\u53EF\u5728\u7DF4\u7FD2\u8A2D\u5B9A\u8ABF\u6574\u5E74\u7D1A\u3002"))), React.createElement("div", {
     className: "card soft small"
   }, React.createElement("b", null, "\u932F\u984C\u6458\u8981\uFF1A"), f.text, React.createElement("br", null), React.createElement("b", null, "\u5B69\u5B50\u7B54\uFF1A"), f.childAnswer || '（未填）', "\u3000", React.createElement("b", null, "\u6B63\u89E3\uFF1A"), f.correctAnswer, React.createElement("br", null), React.createElement("b", null, "\u932F\u8AA4\u539F\u56E0\uFF1A"), reasons.length ? reasons.map(r => REASON_BY_ID[r].name).join('、') : '未選（交由診斷觀察）'), React.createElement("div", {
     className: "row"
@@ -69496,8 +71888,13 @@ function ErrorItemForm({
   }, "\u4E0A\u4E00\u6B65"), React.createElement(Btn, {
     kind: "primary",
     id: "ei-create",
-    onClick: create
-  }, "\u78BA\u8A8D\u5132\u5B58\u4E26\u5EFA\u7ACB\u4EFB\u52D9"))));
+    disabled: !canNext1 || piiFlags.length > 0,
+    onClick: () => create()
+  }, kps.some(id => errorHasTask(id) && !learningAllows(state, id)) ? '只存錯題' : '確認儲存並建立任務'), kps.some(id => errorCanJoin(state, id) && !learningAllows(state, id)) && React.createElement(Btn, {
+    id: "ei-join",
+    disabled: !canNext1 || piiFlags.length > 0,
+    onClick: () => create(true)
+  }, "\u52A0\u5165\u7BC4\u570D\u4E26\u5EFA\u7ACB\u7DF4\u7FD2"))));
 }
 function ParentOverview({
   state
@@ -69642,7 +72039,11 @@ function ErrorItemList({
   };
   return React.createElement("div", {
     className: "col"
-  }, !items.length && React.createElement(Notice, null, "\u5C1A\u672A\u8F38\u5165\u4EFB\u4F55\u932F\u984C\u3002"), React.createElement("div", {
+  }, React.createElement(ErrorItemQueues, {
+    state: state,
+    setState: setState,
+    toast: toast
+  }), !items.length && React.createElement(Notice, null, "\u5C1A\u672A\u8F38\u5165\u4EFB\u4F55\u932F\u984C\u3002"), React.createElement("div", {
     className: "tablewrap"
   }, React.createElement("table", {
     className: "table"
@@ -69660,7 +72061,7 @@ function ErrorItemList({
       }
     }, it.text.slice(0, 40), it.text.length > 40 ? '…' : ''), React.createElement("td", null, it.kpIds.map(k => React.createElement(Tag, {
       key: k
-    }, KP_BY_ID[k]?.name))), React.createElement("td", null, ms.length ? ms.map(m => {
+    }, errorConcept(k).name))), React.createElement("td", null, ms.length ? ms.map(m => {
       const logs = state.practiceLog.filter(l => l.missionId === m.id);
       const ok = logs.filter(l => l.passed).length;
       return React.createElement("div", {
@@ -69679,7 +72080,7 @@ function ErrorItemList({
       colSpan: 6
     }, React.createElement("div", {
       className: "col card soft"
-    }, React.createElement("div", null, React.createElement("b", null, "\u984C\u76EE\uFF1A"), it.text), it.figure && React.createElement("div", null, React.createElement("b", null, "\u5716\u8868\u8CC7\u8A0A\uFF1A"), it.figure), React.createElement("div", null, React.createElement("b", null, "\u5B69\u5B50\u7B54\uFF1A"), it.childAnswer || '（未填）', "\u3000", React.createElement("b", null, "\u6B63\u89E3\uFF1A"), it.correctAnswer), it.explanation && React.createElement("div", null, React.createElement("b", null, "\u8AAA\u660E\uFF1A"), it.explanation), it.note && React.createElement("div", null, React.createElement("b", null, "\u5099\u8A3B\uFF1A"), it.note), React.createElement("div", null, React.createElement("b", null, "\u5BB6\u9577\u5224\u65B7\u7684\u932F\u8AA4\u539F\u56E0\uFF1A"), it.reasonIds.length ? it.reasonIds.map(r => REASON_BY_ID[r]?.name).join('、') : '未選'), ms.map(m => {
+    }, React.createElement("div", null, React.createElement("b", null, "\u984C\u76EE\uFF1A"), it.text), it.figure && React.createElement("div", null, React.createElement("b", null, "\u5716\u8868\u8CC7\u8A0A\uFF1A"), it.figure), React.createElement("div", null, React.createElement("b", null, "\u5B69\u5B50\u7B54\uFF1A"), it.childAnswer || '（未填）', "\u3000", React.createElement("b", null, "\u6B63\u89E3\uFF1A"), it.correctAnswer), it.explanation && React.createElement("div", null, React.createElement("b", null, "\u8AAA\u660E\uFF1A"), it.explanation), it.note && React.createElement("div", null, React.createElement("b", null, "\u5099\u8A3B\uFF1A"), it.note), React.createElement("div", null, React.createElement("b", null, "\u5BB6\u9577\u5224\u65B7\u7684\u932F\u8AA4\u539F\u56E0\uFF1A"), it.reasonIds?.length ? it.reasonIds.map(r => REASON_BY_ID[r]?.name).join('、') : '未選'), ms.map(m => {
       const logs = state.practiceLog.filter(l => l.missionId === m.id);
       const s3 = m.stages[2];
       const transfer = logs.filter(l => l.stage === 's3');
@@ -69958,7 +72359,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v38\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v39\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -70063,6 +72464,7 @@ function ParentApp({
   const [ok, setOk] = useState(false);
   const [tab, setTab] = useState('overview');
   const [adding, setAdding] = useState(false);
+  setJuniorMode(ok && isJuniorState(state) && ['input', 'list'].includes(tab));
   if (!ok) return React.createElement(ParentGate, {
     onPass: () => setOk(true),
     onBack: goStudent
@@ -70458,7 +72860,7 @@ function App() {
   });
   return React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v38",
+    "data-build": "2026.11.10-v39",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
