@@ -613,6 +613,10 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .junior-deduction :focus-visible { outline: 3px solid #ba790f; outline-offset: 3px; }
 @media (max-width: 640px) { .junior-evidence-options { grid-template-columns: 1fr; } .junior-route { padding: 10px 12px; } .junior .book { padding-bottom: 88px; } }
 
+.paint-preview{color:#203b50;max-width:1240px;margin:auto}.paint-cover{background:linear-gradient(90deg,#123648ed,#1236488c),url('assets/scenes/workshop/background.webp') center/cover;color:#fff;padding:32px;border-radius:20px}.paint-cover h1{font-size:clamp(26px,4vw,42px);margin:8px 0}.paint-cover .eyebrow{color:#f2cd88}.paint-cover button{color:#203b50;background:#fff}.paint-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;margin-top:20px}.paint-evidence{position:sticky;top:12px;align-self:start;background:#eee7d9;padding:18px;border-radius:18px;max-height:calc(100vh - 24px);overflow:auto}.paint-evidence h2{font-size:20px}.paint-evidence details,.paint-learning{background:#fff9ed;color:#203b50;border:1px solid #d9cba9;padding:12px;border-radius:12px;margin:10px 0}.paint-evidence summary{cursor:pointer;font-weight:bold}.paint-progress{list-style:none;padding:0}.paint-progress li{padding:5px}.paint-progress .complete{color:#146553}.paint-art{object-fit:contain;max-width:100%;display:block}.paint-cans{width:100%}.paint-labels{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}.paint-form{background:#fffdf7;color:#203b50;border:1px solid #d8cdb5;border-radius:18px;padding:24px;margin-bottom:18px}.paint-form-head{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:18px;align-items:center}.paint-form-head .paint-art{max-height:180px;width:100%}.paint-form p{margin:8px 0}.paint-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px;margin:22px 0}.paint-field{display:flex;flex-direction:column;gap:8px;min-width:0}.paint-field input,.paint-field select,.paint-form>select{width:100%;max-width:100%;min-height:44px;color:#203b50;background:#fff;border:1px solid #8b9eaa;border-radius:8px;padding:10px}.paint-preview button{min-height:44px;padding:10px 16px;border:1px solid #8299a6;border-radius:10px;cursor:pointer}.paint-preview button:disabled{opacity:.55;cursor:default}.paint-preview .paint-primary{background:#176d77;color:white;border-color:#176d77}.paint-counter output{min-width:60px;text-align:center}.paint-count-visual{display:flex;flex-wrap:wrap;gap:4px;max-width:260px;min-height:22px;margin:8px 0}.paint-count-visual i{display:block;width:14px;height:18px;background:#226f96;border:1px solid #173d57;border-radius:0 0 4px 4px}.paint-hint,.paint-assist{padding:16px;border-radius:12px;background:#e8f2f0;color:#173f40;margin-top:14px}.paint-assist button{margin:4px}.paint-route{font-size:14px}.paint-art-fallback{padding:16px;border:2px dashed #9d946f;border-radius:12px;background:#f8f1df;color:#203b50}.paint-invoice{max-height:240px}.paint-demo-groups{display:flex;gap:16px;flex-wrap:wrap}.paint-demo-groups span{padding:8px;border:1px dashed #366981;animation:paintAppear 1.5s ease both}.paint-demo-groups span+span{animation-delay:.8s}.paint-halves{display:flex;width:180px}.paint-halves i{width:50%;background:#a9cee4;border:1px solid #315c74;text-align:center;padding:20px 4px}.paint-main{min-width:0}.paint-preview .wrap{flex-wrap:wrap}@keyframes paintAppear{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.paint-demo-groups span{animation:none}}@media(max-width:700px){.paint-cover{padding:20px}.paint-layout{grid-template-columns:1fr;gap:12px}.paint-evidence{position:static;max-height:none;padding:14px}.paint-evidence>.paint-art{max-height:140px}.paint-progress{display:flex;flex-wrap:wrap;gap:8px}.paint-form{padding:16px}.paint-form-head{grid-template-columns:1fr}.paint-form-head .paint-art{max-height:100px}.paint-fields{grid-template-columns:1fr}.paint-preview button{font-size:16px}}
+
+.paint-tenths{display:flex;max-width:360px;margin:16px 0}.paint-tenths i{flex:1;height:36px;border:1px solid #203b50}.paint-preview :focus-visible{outline:3px solid #bd7617;outline-offset:3px}
+
 /* One live preview stays visible while the outfit list scrolls. No save-data changes. */
 #wardrobe { --wardrobe-top:64px; padding-bottom:100px; }
 #wardrobe .wardrobe-layout { grid-template-columns:minmax(290px,.8fr) minmax(0,1.2fr); align-items:start; }
@@ -681,7 +685,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-grade5">
+<meta name="game-release" content="playtest-20261110-paint-preview">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -19950,6 +19954,5218 @@ const G5_EXPANSION_BANK = [{
   "title": "平行四邊形布片",
   "sourceQuestionId": "g6x_review_parallelogram_3"
 }];
+const PAINT_CASE = {
+  "id": "paint_swap",
+  "title": "被掉包的顏料",
+  "previewOnly": true,
+  "core": {
+    "t1_ratio": {
+      "id": "t1_ratio",
+      "kpId": "m_ratio",
+      "title": "核對罐底紀錄",
+      "body": ["四罐要用同一配方：藍色和黃色是2比1。", "A：藍2杯、黃1杯。B：藍6杯、黃3杯。", "C：預定藍4杯、黃2杯；實際藍2杯、黃2杯、水2杯。", "D：藍4杯、黃2杯。1杯是0.25公升。", "分別填最簡整數比，再算C少放了幾杯藍色。"],
+      "fields": [{
+        "label": "A 藍",
+        "answer": 2,
+        "control": "number"
+      }, {
+        "label": "A 黃",
+        "answer": 1,
+        "control": "number"
+      }, {
+        "label": "B 藍",
+        "answer": 2,
+        "control": "number"
+      }, {
+        "label": "B 黃",
+        "answer": 1,
+        "control": "number"
+      }, {
+        "label": "C 藍",
+        "answer": 1,
+        "control": "number"
+      }, {
+        "label": "C 黃",
+        "answer": 1,
+        "control": "number"
+      }, {
+        "label": "D 藍",
+        "answer": 2,
+        "control": "number"
+      }, {
+        "label": "D 黃",
+        "answer": 1,
+        "control": "number"
+      }, {
+        "label": "C比預定少了幾杯藍？",
+        "answer": 2,
+        "control": "number"
+      }],
+      "hint": "比較同一罐的兩種顏料，一起除以相同整數。水不當成黃色。",
+      "demo": "例：9杯紅、6杯白，同除以3可寫成3比2。少放的量用預定減實際。",
+      "art": "record-card"
+    },
+    "t1_decimal": {
+      "id": "t1_decimal",
+      "kpId": "m_dec_addsub",
+      "title": "查庫房簿",
+      "body": ["藍色進貨4.0公升。", "A用0.5，B用1.5，D用1.0公升。", "調C前，桶裡實際只剩0.5公升。"],
+      "fields": [{
+        "label": "照紀錄應該剩幾公升？",
+        "answer": 1,
+        "control": "number"
+      }, {
+        "label": "實際比應有的少幾公升？",
+        "answer": 0.5,
+        "control": "number"
+      }],
+      "hint": "先合計領用量，再算應有量與實際量的差。",
+      "demo": "例：有5.5公升，用掉1.2和2.1公升，先5.5−1.2−2.1。比較短少時再減實際量。",
+      "art": "ledger"
+    },
+    "t1_junior": {
+      "id": "t1_junior",
+      "kpId": "j_addstep",
+      "title": "數一數藍色杯子",
+      "body": ["原來有16杯藍色。", "A、B、D合計用12杯。", "桶裡實際只有2杯。"],
+      "fields": [{
+        "label": "照紀錄應該剩幾杯？",
+        "answer": 4,
+        "control": "number"
+      }, {
+        "label": "實際少了幾杯？",
+        "answer": 2,
+        "control": "number"
+      }],
+      "hint": "先算剩下的杯數。再和桶裡比較。",
+      "demo": "例：原有15杯，用掉8杯。先算15−8。再和實際杯數比較。",
+      "art": "ledger"
+    },
+    "t2_senior": {
+      "id": "t2_senior",
+      "kpId": "c_extract",
+      "title": "讀工坊記事",
+      "body": ["余館員：上午9點，我簽收邱老闆送來的顏料。他隨即離開。", "小鈴：上午10點半，我進工坊找藍色。", "阿岩：上午11點，我才開始調色。"],
+      "fields": [{
+        "label": "誰上午9點送貨？",
+        "answer": "邱老闆",
+        "control": "select",
+        "options": ["阿岩", "邱老闆", "小鈴"]
+      }, {
+        "label": "誰上午10點半進工坊？",
+        "answer": "小鈴",
+        "control": "select",
+        "options": ["阿岩", "邱老闆", "小鈴"]
+      }, {
+        "label": "誰上午11點開始調色？",
+        "answer": "阿岩",
+        "control": "select",
+        "options": ["阿岩", "邱老闆", "小鈴"]
+      }],
+      "hint": "把時間與同一句裡的人、事情連在一起。",
+      "demo": "先找時間詞，再回頭確認這段是誰說的。到訪紀錄只是求證方向。",
+      "art": "ledger"
+    },
+    "t2_junior": {
+      "id": "t2_junior",
+      "kpId": "j_time",
+      "title": "看時鐘找時間",
+      "body": ["邱老闆9點送貨。", "小鈴10點半進門。", "阿岩11點開始調色。"],
+      "fields": [{
+        "label": "邱老闆的鐘面",
+        "answer": "9:00",
+        "control": "select",
+        "options": ["11:00", "9:00", "10:30"]
+      }, {
+        "label": "小鈴的鐘面",
+        "answer": "10:30",
+        "control": "select",
+        "options": ["11:00", "9:00", "10:30"]
+      }, {
+        "label": "阿岩的鐘面",
+        "answer": "11:00",
+        "control": "select",
+        "options": ["11:00", "9:00", "10:30"]
+      }],
+      "hint": "短針看時，長針看分。",
+      "demo": "長針指12是整點，指6是半點。",
+      "art": "ledger",
+      "clocks": [[9, 0], [10, 30], [11, 0]]
+    },
+    "t3_ratio": {
+      "id": "t3_ratio",
+      "kpId": "m_ratio",
+      "title": "另外調一桶試色",
+      "body": ["取同批、沒有加水的顏料。", "配方藍2杯、黃1杯。", "新試色桶有10杯藍色。請加入黃色。"],
+      "fields": [{
+        "label": "要配幾杯黃？",
+        "answer": 5,
+        "control": "cups"
+      }, {
+        "label": "為什麼這樣配？",
+        "answer": "兩種顏料一起變成5倍",
+        "control": "select",
+        "options": ["只讓藍色變多", "兩種顏料一起變成5倍", "每種各加1杯"]
+      }],
+      "hint": "先看10杯藍是原來的幾倍。",
+      "demo": "示範另一個配方：3紅2白，紅變9杯，白也一起乘3。",
+      "art": "cups"
+    },
+    "t3_decimal": {
+      "id": "t3_decimal",
+      "kpId": "m_dec_addsub",
+      "title": "補足試色量",
+      "body": ["另取沒加水的同批顏料。", "新試色桶預計放1.6公升藍色。", "已量入0.8公升，請補足。"],
+      "fields": [{
+        "label": "還要幾公升藍色？",
+        "answer": 0.8,
+        "control": "tenths"
+      }],
+      "hint": "目標量減掉已經放入的量。",
+      "demo": "例：目標2.7公升，已放1.2公升，還需2.7−1.2公升。",
+      "art": "cups"
+    },
+    "t3_junior": {
+      "id": "t3_junior",
+      "kpId": "j_mult1",
+      "title": "排出五組顏料",
+      "body": ["每組放2杯藍、1杯黃。", "另拿沒加水的顏料。", "做5組，各要幾杯？"],
+      "fields": [{
+        "label": "藍色有幾杯？",
+        "answer": 10,
+        "control": "cups"
+      }, {
+        "label": "黃色有幾杯？",
+        "answer": 5,
+        "control": "cups"
+      }],
+      "hint": "每一組都一樣，數一數五組。",
+      "demo": "先排一組，再排第二組。每組的藍杯數和黃杯數分開數。",
+      "art": "cups"
+    },
+    "t4_senior": {
+      "id": "t4_senior",
+      "kpId": "o_debate",
+      "title": "把說法分清楚",
+      "body": ["紀錄要核對；說法不一定是真相。"],
+      "fields": [{
+        "label": "核對紀錄：C的藍色少於預定量。",
+        "answer": "已核對證據",
+        "control": "select",
+        "options": ["個人意見", "待核對說法", "已核對證據"]
+      }, {
+        "label": "門口記事：小鈴10點半進工坊。",
+        "answer": "已核對證據",
+        "control": "select",
+        "options": ["個人意見", "待核對說法", "已核對證據"]
+      }, {
+        "label": "我覺得便宜貨就是不好。",
+        "answer": "個人意見",
+        "control": "select",
+        "options": ["個人意見", "待核對說法", "已核對證據"]
+      }, {
+        "label": "阿岩說每罐都照配方，尚未核對。",
+        "answer": "待核對說法",
+        "control": "select",
+        "options": ["個人意見", "待核對說法", "已核對證據"]
+      }, {
+        "label": "同批未加水顏料，重調可配出標準色。",
+        "answer": "已核對證據",
+        "control": "select",
+        "options": ["個人意見", "待核對說法", "已核對證據"]
+      }, {
+        "label": "我覺得我的顏料最好。",
+        "answer": "個人意見",
+        "control": "select",
+        "options": ["個人意見", "待核對說法", "已核對證據"]
+      }],
+      "hint": "分清已核對的觀察、人的感受、仍待查證的說法。",
+      "demo": "「我覺得很好」是意見；「有人說發生了」還要查證。",
+      "art": "record-card"
+    },
+    "t4_junior": {
+      "id": "t4_junior",
+      "kpId": "j_time",
+      "title": "排好到訪時間",
+      "body": ["先看門口記事，再排時間。", "送貨9點、進門10點半、調色11點。"],
+      "fields": [{
+        "label": "最早",
+        "answer": "邱老闆",
+        "control": "select",
+        "options": ["阿岩", "小鈴", "邱老闆"]
+      }, {
+        "label": "接著",
+        "answer": "小鈴",
+        "control": "select",
+        "options": ["阿岩", "小鈴", "邱老闆"]
+      }, {
+        "label": "最後",
+        "answer": "阿岩",
+        "control": "select",
+        "options": ["阿岩", "小鈴", "邱老闆"]
+      }],
+      "hint": "由早到晚排，先看時針。",
+      "demo": "8點比9點早。半點在兩個整點中間。",
+      "art": "record-card"
+    },
+    "probe_ratio": {
+      "id": "probe_ratio",
+      "kpId": "m_ratio",
+      "title": "試試別種配方",
+      "body": ["白3杯、藍1杯調成天空藍。", "改用白6杯，要幾杯藍才同色？"],
+      "fields": [{
+        "label": "藍色幾杯？",
+        "answer": 2,
+        "control": "number"
+      }, {
+        "label": "理由",
+        "answer": "白和藍都乘2",
+        "control": "select",
+        "options": ["只多加白色", "白和藍都乘2", "白和藍各加3"]
+      }],
+      "hint": "兩種材料要一起按同樣倍數改變。",
+      "demo": "先排一組3白1藍，再把整組複製一次。",
+      "art": "cups"
+    },
+    "t5_ratio_guide": {
+      "id": "t5_ratio_guide",
+      "kpId": "m_ratio",
+      "title": "先排兩組",
+      "body": ["一組2藍1黃。兩組都要完整。"],
+      "fields": [{
+        "label": "兩組有幾杯黃？",
+        "answer": 2,
+        "control": "cups"
+      }],
+      "hint": "每組有一杯黃。",
+      "demo": "看兩組：藍藍黃｜藍藍黃。",
+      "art": "cups"
+    },
+    "t5_ratio": {
+      "id": "t5_ratio",
+      "kpId": "m_ratio",
+      "title": "換一桶自己試",
+      "body": ["配方：每2杯藍配1杯黃。", "新桶有12杯藍。"],
+      "fields": [{
+        "label": "要幾杯黃？",
+        "answer": 6,
+        "control": "cups"
+      }, {
+        "label": "理由",
+        "answer": "兩種材料都乘6",
+        "control": "select",
+        "options": ["只改藍色", "兩種材料都乘6", "兩種各加10"]
+      }],
+      "hint": "想想共有幾組完整配方。",
+      "demo": "把一組的藍、黃同時複製，不只加其中一種。",
+      "art": "cups"
+    },
+    "t5_half_guide": {
+      "id": "t5_half_guide",
+      "kpId": "j_fraction",
+      "title": "認識半杯",
+      "body": ["一杯分成兩份，每份一樣多。", "每份叫半杯。"],
+      "fields": [{
+        "label": "半杯有幾份？",
+        "answer": 1,
+        "control": "cups"
+      }],
+      "hint": "兩份一樣多，每份是半杯。",
+      "demo": "圖上把同一杯分成左右兩半，每半都是一份。",
+      "art": "cups"
+    },
+    "t5_half": {
+      "id": "t5_half",
+      "kpId": "j_fraction",
+      "title": "自己分一分",
+      "body": ["有2個一樣大的整杯。", "每杯都分成兩個半杯。"],
+      "fields": [{
+        "label": "一共有幾個半杯？",
+        "answer": 4,
+        "control": "cups"
+      }],
+      "hint": "每個整杯都可分成兩半。",
+      "demo": "先分第一杯，再分第二杯。",
+      "art": "cups"
+    },
+    "t5_chart_guide": {
+      "id": "t5_chart_guide",
+      "kpId": "m_chart",
+      "title": "先讀份額圖",
+      "body": ["進貨單的示意圓分成4份，每份一樣大。", "其中1份是黃色材料。"],
+      "fields": [{
+        "label": "黃色占百分之幾？",
+        "answer": 25,
+        "control": "number"
+      }],
+      "hint": "先看每一份代表多少，再對照需要的份數。",
+      "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+      "art": "invoice",
+      "pie": {
+        "parts": 4,
+        "selected": 1
+      }
+    },
+    "t5_chart": {
+      "id": "t5_chart",
+      "kpId": "m_chart",
+      "title": "自己讀另一張圖",
+      "body": ["另一張示意圓分成5份，每份一樣大。", "其中3份是藍色材料。"],
+      "fields": [{
+        "label": "藍色占百分之幾？",
+        "answer": 60,
+        "control": "number"
+      }],
+      "hint": "先看每一份代表多少，再對照需要的份數。",
+      "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+      "art": "invoice",
+      "pie": {
+        "parts": 5,
+        "selected": 3
+      }
+    }
+  },
+  "facts": {
+    "cupLitres": 0.25,
+    "stockBlueCups": 16,
+    "usedABD": [2, 6, 4],
+    "expectedC": [4, 2, 0],
+    "actualC": [2, 2, 2]
+  },
+  "reviewed": true,
+  "humanReviewed": false,
+  "reviewStatus": "ai-content-reviewed"
+};
+const PAINT_BANK = [{
+  "id": "paint_a_1",
+  "kpId": "m_ratio",
+  "title": "新委託：配方紀錄",
+  "body": ["紅色3杯、白色1杯是一組。", "新桶放了6杯紅色。"],
+  "fields": [{
+    "label": "同色要幾杯白色？",
+    "answer": 2,
+    "control": "number"
+  }, {
+    "label": "最簡比的紅色數",
+    "answer": 3,
+    "control": "number"
+  }, {
+    "label": "最簡比的白色數",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "整組同倍放大。",
+  "demo": "例：2紅1白，紅變4杯時，白也乘2。",
+  "art": "record-card",
+  "group": "T1A",
+  "proof": {
+    "type": "scale",
+    "a": 3,
+    "n": 2
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["紅色3杯、白色1杯是一組。", "新桶放了6杯紅色。"],
+    "fields": [{
+      "label": "同色要幾杯白色？",
+      "answer": 2,
+      "control": "number"
+    }, {
+      "label": "最簡比的紅色數",
+      "answer": 3,
+      "control": "number"
+    }, {
+      "label": "最簡比的白色數",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["整組同倍放大。", "例：2紅1白，紅變4杯時，白也乘2。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_b_1",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：查另一庫房",
+  "body": ["進貨5.8公升。先用1.3公升，再用2.1公升。", "實際剩1.4公升。"],
+  "fields": [{
+    "label": "帳上應剩多少？",
+    "answer": 2.4,
+    "control": "number"
+  }, {
+    "label": "實際短少多少？",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "先算應有量，再比較。",
+  "demo": "用減法分兩步記錄。",
+  "art": "record-card",
+  "group": "T1B",
+  "proof": {
+    "type": "stock",
+    "total": 5.8,
+    "used": [1.3, 2.1],
+    "actual": 1.4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["進貨5.8公升。先用1.3公升，再用2.1公升。", "實際剩1.4公升。"],
+    "fields": [{
+      "label": "帳上應剩多少？",
+      "answer": 2.4,
+      "control": "number"
+    }, {
+      "label": "實際短少多少？",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["先算應有量，再比較。", "用減法分兩步記錄。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_c_1",
+  "kpId": "j_addstep",
+  "title": "新委託：整理工具",
+  "body": ["原有25支畫筆。", "借出13支。", "盒裡實際有7支。"],
+  "fields": [{
+    "label": "應該剩幾支？",
+    "answer": 12,
+    "control": "number"
+  }, {
+    "label": "實際少幾支？",
+    "answer": 5,
+    "control": "number"
+  }],
+  "hint": "先算剩下多少，再比較。",
+  "demo": "把兩次計算分開寫。",
+  "art": "record-card",
+  "group": "T1C",
+  "proof": {
+    "type": "stock",
+    "total": 25,
+    "used": [13],
+    "actual": 7
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["原有25支畫筆。", "借出13支。", "盒裡實際有7支。"],
+    "fields": [{
+      "label": "應該剩幾支？",
+      "answer": 12,
+      "control": "number"
+    }, {
+      "label": "實際少幾支？",
+      "answer": 5,
+      "control": "number"
+    }],
+    "hints": ["先算剩下多少，再比較。", "把兩次計算分開寫。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_a_2",
+  "kpId": "m_ratio",
+  "title": "新委託：配方紀錄",
+  "body": ["紅色4杯、白色1杯是一組。", "新桶放了12杯紅色。"],
+  "fields": [{
+    "label": "同色要幾杯白色？",
+    "answer": 3,
+    "control": "number"
+  }, {
+    "label": "最簡比的紅色數",
+    "answer": 4,
+    "control": "number"
+  }, {
+    "label": "最簡比的白色數",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "整組同倍放大。",
+  "demo": "例：2紅1白，紅變4杯時，白也乘2。",
+  "art": "record-card",
+  "group": "T1A",
+  "proof": {
+    "type": "scale",
+    "a": 4,
+    "n": 3
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["紅色4杯、白色1杯是一組。", "新桶放了12杯紅色。"],
+    "fields": [{
+      "label": "同色要幾杯白色？",
+      "answer": 3,
+      "control": "number"
+    }, {
+      "label": "最簡比的紅色數",
+      "answer": 4,
+      "control": "number"
+    }, {
+      "label": "最簡比的白色數",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["整組同倍放大。", "例：2紅1白，紅變4杯時，白也乘2。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_b_2",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：查另一庫房",
+  "body": ["進貨6.0公升。先用1.3公升，再用2.1公升。", "實際剩1.6公升。"],
+  "fields": [{
+    "label": "帳上應剩多少？",
+    "answer": 2.6,
+    "control": "number"
+  }, {
+    "label": "實際短少多少？",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "先算應有量，再比較。",
+  "demo": "用減法分兩步記錄。",
+  "art": "record-card",
+  "group": "T1B",
+  "proof": {
+    "type": "stock",
+    "total": 6,
+    "used": [1.3, 2.1],
+    "actual": 1.6
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["進貨6.0公升。先用1.3公升，再用2.1公升。", "實際剩1.6公升。"],
+    "fields": [{
+      "label": "帳上應剩多少？",
+      "answer": 2.6,
+      "control": "number"
+    }, {
+      "label": "實際短少多少？",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["先算應有量，再比較。", "用減法分兩步記錄。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_c_2",
+  "kpId": "j_addstep",
+  "title": "新委託：整理工具",
+  "body": ["原有28支畫筆。", "借出14支。", "盒裡實際有8支。"],
+  "fields": [{
+    "label": "應該剩幾支？",
+    "answer": 14,
+    "control": "number"
+  }, {
+    "label": "實際少幾支？",
+    "answer": 6,
+    "control": "number"
+  }],
+  "hint": "先算剩下多少，再比較。",
+  "demo": "把兩次計算分開寫。",
+  "art": "record-card",
+  "group": "T1C",
+  "proof": {
+    "type": "stock",
+    "total": 28,
+    "used": [14],
+    "actual": 8
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["原有28支畫筆。", "借出14支。", "盒裡實際有8支。"],
+    "fields": [{
+      "label": "應該剩幾支？",
+      "answer": 14,
+      "control": "number"
+    }, {
+      "label": "實際少幾支？",
+      "answer": 6,
+      "control": "number"
+    }],
+    "hints": ["先算剩下多少，再比較。", "把兩次計算分開寫。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_a_3",
+  "kpId": "m_ratio",
+  "title": "新委託：配方紀錄",
+  "body": ["紅色5杯、白色1杯是一組。", "新桶放了20杯紅色。"],
+  "fields": [{
+    "label": "同色要幾杯白色？",
+    "answer": 4,
+    "control": "number"
+  }, {
+    "label": "最簡比的紅色數",
+    "answer": 5,
+    "control": "number"
+  }, {
+    "label": "最簡比的白色數",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "整組同倍放大。",
+  "demo": "例：2紅1白，紅變4杯時，白也乘2。",
+  "art": "record-card",
+  "group": "T1A",
+  "proof": {
+    "type": "scale",
+    "a": 5,
+    "n": 4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["紅色5杯、白色1杯是一組。", "新桶放了20杯紅色。"],
+    "fields": [{
+      "label": "同色要幾杯白色？",
+      "answer": 4,
+      "control": "number"
+    }, {
+      "label": "最簡比的紅色數",
+      "answer": 5,
+      "control": "number"
+    }, {
+      "label": "最簡比的白色數",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["整組同倍放大。", "例：2紅1白，紅變4杯時，白也乘2。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_b_3",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：查另一庫房",
+  "body": ["進貨6.2公升。先用1.3公升，再用2.1公升。", "實際剩1.8公升。"],
+  "fields": [{
+    "label": "帳上應剩多少？",
+    "answer": 2.8,
+    "control": "number"
+  }, {
+    "label": "實際短少多少？",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "先算應有量，再比較。",
+  "demo": "用減法分兩步記錄。",
+  "art": "record-card",
+  "group": "T1B",
+  "proof": {
+    "type": "stock",
+    "total": 6.2,
+    "used": [1.3, 2.1],
+    "actual": 1.8
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["進貨6.2公升。先用1.3公升，再用2.1公升。", "實際剩1.8公升。"],
+    "fields": [{
+      "label": "帳上應剩多少？",
+      "answer": 2.8,
+      "control": "number"
+    }, {
+      "label": "實際短少多少？",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["先算應有量，再比較。", "用減法分兩步記錄。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_c_3",
+  "kpId": "j_addstep",
+  "title": "新委託：整理工具",
+  "body": ["原有31支畫筆。", "借出15支。", "盒裡實際有9支。"],
+  "fields": [{
+    "label": "應該剩幾支？",
+    "answer": 16,
+    "control": "number"
+  }, {
+    "label": "實際少幾支？",
+    "answer": 7,
+    "control": "number"
+  }],
+  "hint": "先算剩下多少，再比較。",
+  "demo": "把兩次計算分開寫。",
+  "art": "record-card",
+  "group": "T1C",
+  "proof": {
+    "type": "stock",
+    "total": 31,
+    "used": [15],
+    "actual": 9
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["原有31支畫筆。", "借出15支。", "盒裡實際有9支。"],
+    "fields": [{
+      "label": "應該剩幾支？",
+      "answer": 16,
+      "control": "number"
+    }, {
+      "label": "實際少幾支？",
+      "answer": 7,
+      "control": "number"
+    }],
+    "hints": ["先算剩下多少，再比較。", "把兩次計算分開寫。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_a_4",
+  "kpId": "m_ratio",
+  "title": "新委託：配方紀錄",
+  "body": ["紅色6杯、白色1杯是一組。", "新桶放了30杯紅色。"],
+  "fields": [{
+    "label": "同色要幾杯白色？",
+    "answer": 5,
+    "control": "number"
+  }, {
+    "label": "最簡比的紅色數",
+    "answer": 6,
+    "control": "number"
+  }, {
+    "label": "最簡比的白色數",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "整組同倍放大。",
+  "demo": "例：2紅1白，紅變4杯時，白也乘2。",
+  "art": "record-card",
+  "group": "T1A",
+  "proof": {
+    "type": "scale",
+    "a": 6,
+    "n": 5
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["紅色6杯、白色1杯是一組。", "新桶放了30杯紅色。"],
+    "fields": [{
+      "label": "同色要幾杯白色？",
+      "answer": 5,
+      "control": "number"
+    }, {
+      "label": "最簡比的紅色數",
+      "answer": 6,
+      "control": "number"
+    }, {
+      "label": "最簡比的白色數",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["整組同倍放大。", "例：2紅1白，紅變4杯時，白也乘2。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_b_4",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：查另一庫房",
+  "body": ["進貨6.4公升。先用1.3公升，再用2.1公升。", "實際剩2.0公升。"],
+  "fields": [{
+    "label": "帳上應剩多少？",
+    "answer": 3,
+    "control": "number"
+  }, {
+    "label": "實際短少多少？",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "先算應有量，再比較。",
+  "demo": "用減法分兩步記錄。",
+  "art": "record-card",
+  "group": "T1B",
+  "proof": {
+    "type": "stock",
+    "total": 6.4,
+    "used": [1.3, 2.1],
+    "actual": 2
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["進貨6.4公升。先用1.3公升，再用2.1公升。", "實際剩2.0公升。"],
+    "fields": [{
+      "label": "帳上應剩多少？",
+      "answer": 3,
+      "control": "number"
+    }, {
+      "label": "實際短少多少？",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["先算應有量，再比較。", "用減法分兩步記錄。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_c_4",
+  "kpId": "j_addstep",
+  "title": "新委託：整理工具",
+  "body": ["原有34支畫筆。", "借出16支。", "盒裡實際有10支。"],
+  "fields": [{
+    "label": "應該剩幾支？",
+    "answer": 18,
+    "control": "number"
+  }, {
+    "label": "實際少幾支？",
+    "answer": 8,
+    "control": "number"
+  }],
+  "hint": "先算剩下多少，再比較。",
+  "demo": "把兩次計算分開寫。",
+  "art": "record-card",
+  "group": "T1C",
+  "proof": {
+    "type": "stock",
+    "total": 34,
+    "used": [16],
+    "actual": 10
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["原有34支畫筆。", "借出16支。", "盒裡實際有10支。"],
+    "fields": [{
+      "label": "應該剩幾支？",
+      "answer": 18,
+      "control": "number"
+    }, {
+      "label": "實際少幾支？",
+      "answer": 8,
+      "control": "number"
+    }],
+    "hints": ["先算剩下多少，再比較。", "把兩次計算分開寫。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_a_5",
+  "kpId": "m_ratio",
+  "title": "新委託：配方紀錄",
+  "body": ["紅色7杯、白色1杯是一組。", "新桶放了42杯紅色。"],
+  "fields": [{
+    "label": "同色要幾杯白色？",
+    "answer": 6,
+    "control": "number"
+  }, {
+    "label": "最簡比的紅色數",
+    "answer": 7,
+    "control": "number"
+  }, {
+    "label": "最簡比的白色數",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "整組同倍放大。",
+  "demo": "例：2紅1白，紅變4杯時，白也乘2。",
+  "art": "record-card",
+  "group": "T1A",
+  "proof": {
+    "type": "scale",
+    "a": 7,
+    "n": 6
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["紅色7杯、白色1杯是一組。", "新桶放了42杯紅色。"],
+    "fields": [{
+      "label": "同色要幾杯白色？",
+      "answer": 6,
+      "control": "number"
+    }, {
+      "label": "最簡比的紅色數",
+      "answer": 7,
+      "control": "number"
+    }, {
+      "label": "最簡比的白色數",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["整組同倍放大。", "例：2紅1白，紅變4杯時，白也乘2。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_b_5",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：查另一庫房",
+  "body": ["進貨6.6公升。先用1.3公升，再用2.1公升。", "實際剩2.2公升。"],
+  "fields": [{
+    "label": "帳上應剩多少？",
+    "answer": 3.2,
+    "control": "number"
+  }, {
+    "label": "實際短少多少？",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "先算應有量，再比較。",
+  "demo": "用減法分兩步記錄。",
+  "art": "record-card",
+  "group": "T1B",
+  "proof": {
+    "type": "stock",
+    "total": 6.6,
+    "used": [1.3, 2.1],
+    "actual": 2.2
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["進貨6.6公升。先用1.3公升，再用2.1公升。", "實際剩2.2公升。"],
+    "fields": [{
+      "label": "帳上應剩多少？",
+      "answer": 3.2,
+      "control": "number"
+    }, {
+      "label": "實際短少多少？",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["先算應有量，再比較。", "用減法分兩步記錄。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_c_5",
+  "kpId": "j_addstep",
+  "title": "新委託：整理工具",
+  "body": ["原有37支畫筆。", "借出17支。", "盒裡實際有11支。"],
+  "fields": [{
+    "label": "應該剩幾支？",
+    "answer": 20,
+    "control": "number"
+  }, {
+    "label": "實際少幾支？",
+    "answer": 9,
+    "control": "number"
+  }],
+  "hint": "先算剩下多少，再比較。",
+  "demo": "把兩次計算分開寫。",
+  "art": "record-card",
+  "group": "T1C",
+  "proof": {
+    "type": "stock",
+    "total": 37,
+    "used": [17],
+    "actual": 11
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["原有37支畫筆。", "借出17支。", "盒裡實際有11支。"],
+    "fields": [{
+      "label": "應該剩幾支？",
+      "answer": 20,
+      "control": "number"
+    }, {
+      "label": "實際少幾支？",
+      "answer": 9,
+      "control": "number"
+    }],
+    "hints": ["先算剩下多少，再比較。", "把兩次計算分開寫。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_a_6",
+  "kpId": "m_ratio",
+  "title": "新委託：配方紀錄",
+  "body": ["紅色8杯、白色1杯是一組。", "新桶放了56杯紅色。"],
+  "fields": [{
+    "label": "同色要幾杯白色？",
+    "answer": 7,
+    "control": "number"
+  }, {
+    "label": "最簡比的紅色數",
+    "answer": 8,
+    "control": "number"
+  }, {
+    "label": "最簡比的白色數",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "整組同倍放大。",
+  "demo": "例：2紅1白，紅變4杯時，白也乘2。",
+  "art": "record-card",
+  "group": "T1A",
+  "proof": {
+    "type": "scale",
+    "a": 8,
+    "n": 7
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["紅色8杯、白色1杯是一組。", "新桶放了56杯紅色。"],
+    "fields": [{
+      "label": "同色要幾杯白色？",
+      "answer": 7,
+      "control": "number"
+    }, {
+      "label": "最簡比的紅色數",
+      "answer": 8,
+      "control": "number"
+    }, {
+      "label": "最簡比的白色數",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["整組同倍放大。", "例：2紅1白，紅變4杯時，白也乘2。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_b_6",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：查另一庫房",
+  "body": ["進貨6.8公升。先用1.3公升，再用2.1公升。", "實際剩2.4公升。"],
+  "fields": [{
+    "label": "帳上應剩多少？",
+    "answer": 3.4,
+    "control": "number"
+  }, {
+    "label": "實際短少多少？",
+    "answer": 1,
+    "control": "number"
+  }],
+  "hint": "先算應有量，再比較。",
+  "demo": "用減法分兩步記錄。",
+  "art": "record-card",
+  "group": "T1B",
+  "proof": {
+    "type": "stock",
+    "total": 6.8,
+    "used": [1.3, 2.1],
+    "actual": 2.4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["進貨6.8公升。先用1.3公升，再用2.1公升。", "實際剩2.4公升。"],
+    "fields": [{
+      "label": "帳上應剩多少？",
+      "answer": 3.4,
+      "control": "number"
+    }, {
+      "label": "實際短少多少？",
+      "answer": 1,
+      "control": "number"
+    }],
+    "hints": ["先算應有量，再比較。", "用減法分兩步記錄。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_c_6",
+  "kpId": "j_addstep",
+  "title": "新委託：整理工具",
+  "body": ["原有40支畫筆。", "借出18支。", "盒裡實際有12支。"],
+  "fields": [{
+    "label": "應該剩幾支？",
+    "answer": 22,
+    "control": "number"
+  }, {
+    "label": "實際少幾支？",
+    "answer": 10,
+    "control": "number"
+  }],
+  "hint": "先算剩下多少，再比較。",
+  "demo": "把兩次計算分開寫。",
+  "art": "record-card",
+  "group": "T1C",
+  "proof": {
+    "type": "stock",
+    "total": 40,
+    "used": [18],
+    "actual": 12
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["原有40支畫筆。", "借出18支。", "盒裡實際有12支。"],
+    "fields": [{
+      "label": "應該剩幾支？",
+      "answer": 22,
+      "control": "number"
+    }, {
+      "label": "實際少幾支？",
+      "answer": 10,
+      "control": "number"
+    }],
+    "hints": ["先算剩下多少，再比較。", "把兩次計算分開寫。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3a_1",
+  "kpId": "m_ratio",
+  "title": "新委託：排色帶",
+  "body": ["每組3條紫帶、2條金帶。", "有21條紫帶，要多少金帶？"],
+  "fields": [{
+    "label": "金帶條數",
+    "answer": 14,
+    "control": "cups"
+  }],
+  "hint": "先找組數。",
+  "demo": "一整組的兩種色帶同倍增加。",
+  "art": "record-card",
+  "group": "T3A",
+  "proof": {
+    "type": "product",
+    "a": 2,
+    "b": 7
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3條紫帶、2條金帶。", "有21條紫帶，要多少金帶？"],
+    "fields": [{
+      "label": "金帶條數",
+      "answer": 14,
+      "control": "cups"
+    }],
+    "hints": ["先找組數。", "一整組的兩種色帶同倍增加。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3b_1",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：補充水站",
+  "body": ["目標4.7公升，已有1.4公升。"],
+  "fields": [{
+    "label": "還要補多少公升？",
+    "answer": 3.3,
+    "control": "number"
+  }],
+  "hint": "目標減已有。",
+  "demo": "先對齊小數點再減。",
+  "art": "record-card",
+  "group": "T3B",
+  "proof": {
+    "type": "difference",
+    "a": 4.7,
+    "b": 1.4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["目標4.7公升，已有1.4公升。"],
+    "fields": [{
+      "label": "還要補多少公升？",
+      "answer": 3.3,
+      "control": "number"
+    }],
+    "hints": ["目標減已有。", "先對齊小數點再減。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3c_1",
+  "kpId": "j_mult1",
+  "title": "新委託：排列貼紙",
+  "body": ["每組3張貼紙。", "有3組。"],
+  "fields": [{
+    "label": "共幾張？",
+    "answer": 9,
+    "control": "cups"
+  }],
+  "hint": "每組數量一樣。",
+  "demo": "可以先加一組，再加一組。",
+  "art": "record-card",
+  "group": "T3C",
+  "proof": {
+    "type": "product",
+    "a": 3,
+    "b": 3
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3張貼紙。", "有3組。"],
+    "fields": [{
+      "label": "共幾張？",
+      "answer": 9,
+      "control": "cups"
+    }],
+    "hints": ["每組數量一樣。", "可以先加一組，再加一組。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t4_1",
+  "kpId": "o_debate",
+  "title": "新委託：查證消息",
+  "body": ["分清查過的紀錄與人的說法。"],
+  "fields": [{
+    "label": "簽收簿與錄影核對：上午完成送貨。",
+    "answer": "已核對證據",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "我覺得這個顏色最好看。",
+    "answer": "個人意見",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "鄰居說有人來過，還沒核對。",
+    "answer": "待核對說法",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }],
+  "hint": "可核對不表示已核對。",
+  "demo": "感受是意見，傳聞仍待查。",
+  "art": "record-card",
+  "group": "T4",
+  "proof": {
+    "type": "classification"
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["分清查過的紀錄與人的說法。"],
+    "fields": [{
+      "label": "簽收簿與錄影核對：上午完成送貨。",
+      "answer": "已核對證據",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "我覺得這個顏色最好看。",
+      "answer": "個人意見",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "鄰居說有人來過，還沒核對。",
+      "answer": "待核對說法",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }],
+    "hints": ["可核對不表示已核對。", "感受是意見，傳聞仍待查。"]
+  },
+  "grade": 5,
+  "subject": "social",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["Aa-III-4", "Ba-III-1", "Dc-III-1"],
+  "sourceRefs": [{
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 18,
+    "printedPage": 14,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 19,
+    "printedPage": 15,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 21,
+    "printedPage": 17,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_ratio_1",
+  "kpId": "m_ratio",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每組旗帶：長2條、短1條。現有長8條。", "請排出需要的短旗帶。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 4,
+    "control": "cups"
+  }, {
+    "label": "理由",
+    "answer": "長和短用同樣組數",
+    "control": "select",
+    "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "ratio",
+    "values": [8, 4]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組旗帶：長2條、短1條。現有長8條。", "請排出需要的短旗帶。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 4,
+      "control": "cups"
+    }, {
+      "label": "理由",
+      "answer": "長和短用同樣組數",
+      "control": "select",
+      "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_decimal_1",
+  "kpId": "m_dec_addsub",
+  "title": "隔幾天再試：不同委託",
+  "body": ["水站有3.2公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 0.8,
+    "control": "tenths"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "decimal",
+    "values": [3.2, 1.5, 0.9]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["水站有3.2公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 0.8,
+      "control": "tenths"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_junior_1",
+  "kpId": "j_addstep",
+  "title": "隔幾天再試：不同委託",
+  "body": ["有34支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 23,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "junior",
+    "values": [34, 15, 4]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有34支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 23,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_multiply_1",
+  "kpId": "j_mult1",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每包3張卡片。", "有6包。請排出總張數。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 18,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "multiply",
+    "values": [3, 6]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每包3張卡片。", "有6包。請排出總張數。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 18,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3a_2",
+  "kpId": "m_ratio",
+  "title": "新委託：排色帶",
+  "body": ["每組3條紫帶、2條金帶。", "有24條紫帶，要多少金帶？"],
+  "fields": [{
+    "label": "金帶條數",
+    "answer": 16,
+    "control": "cups"
+  }],
+  "hint": "先找組數。",
+  "demo": "一整組的兩種色帶同倍增加。",
+  "art": "record-card",
+  "group": "T3A",
+  "proof": {
+    "type": "product",
+    "a": 2,
+    "b": 8
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3條紫帶、2條金帶。", "有24條紫帶，要多少金帶？"],
+    "fields": [{
+      "label": "金帶條數",
+      "answer": 16,
+      "control": "cups"
+    }],
+    "hints": ["先找組數。", "一整組的兩種色帶同倍增加。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3b_2",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：補充水站",
+  "body": ["目標4.9公升，已有1.4公升。"],
+  "fields": [{
+    "label": "還要補多少公升？",
+    "answer": 3.5,
+    "control": "number"
+  }],
+  "hint": "目標減已有。",
+  "demo": "先對齊小數點再減。",
+  "art": "record-card",
+  "group": "T3B",
+  "proof": {
+    "type": "difference",
+    "a": 4.9,
+    "b": 1.4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["目標4.9公升，已有1.4公升。"],
+    "fields": [{
+      "label": "還要補多少公升？",
+      "answer": 3.5,
+      "control": "number"
+    }],
+    "hints": ["目標減已有。", "先對齊小數點再減。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3c_2",
+  "kpId": "j_mult1",
+  "title": "新委託：排列貼紙",
+  "body": ["每組3張貼紙。", "有4組。"],
+  "fields": [{
+    "label": "共幾張？",
+    "answer": 12,
+    "control": "cups"
+  }],
+  "hint": "每組數量一樣。",
+  "demo": "可以先加一組，再加一組。",
+  "art": "record-card",
+  "group": "T3C",
+  "proof": {
+    "type": "product",
+    "a": 3,
+    "b": 4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3張貼紙。", "有4組。"],
+    "fields": [{
+      "label": "共幾張？",
+      "answer": 12,
+      "control": "cups"
+    }],
+    "hints": ["每組數量一樣。", "可以先加一組，再加一組。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t4_2",
+  "kpId": "o_debate",
+  "title": "新委託：查證消息",
+  "body": ["分清查過的紀錄與人的說法。"],
+  "fields": [{
+    "label": "我覺得這個顏色最好看。",
+    "answer": "個人意見",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "鄰居說有人來過，還沒核對。",
+    "answer": "待核對說法",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "簽收簿與錄影核對：上午完成送貨。",
+    "answer": "已核對證據",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }],
+  "hint": "可核對不表示已核對。",
+  "demo": "感受是意見，傳聞仍待查。",
+  "art": "record-card",
+  "group": "T4",
+  "proof": {
+    "type": "classification"
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["分清查過的紀錄與人的說法。"],
+    "fields": [{
+      "label": "我覺得這個顏色最好看。",
+      "answer": "個人意見",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "鄰居說有人來過，還沒核對。",
+      "answer": "待核對說法",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "簽收簿與錄影核對：上午完成送貨。",
+      "answer": "已核對證據",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }],
+    "hints": ["可核對不表示已核對。", "感受是意見，傳聞仍待查。"]
+  },
+  "grade": 5,
+  "subject": "social",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["Aa-III-4", "Ba-III-1", "Dc-III-1"],
+  "sourceRefs": [{
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 18,
+    "printedPage": 14,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 19,
+    "printedPage": 15,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 21,
+    "printedPage": 17,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_ratio_2",
+  "kpId": "m_ratio",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每組旗帶：長2條、短1條。現有長14條。", "請排出需要的短旗帶。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 7,
+    "control": "cups"
+  }, {
+    "label": "理由",
+    "answer": "長和短用同樣組數",
+    "control": "select",
+    "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "ratio",
+    "values": [14, 7]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組旗帶：長2條、短1條。現有長14條。", "請排出需要的短旗帶。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 7,
+      "control": "cups"
+    }, {
+      "label": "理由",
+      "answer": "長和短用同樣組數",
+      "control": "select",
+      "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_decimal_2",
+  "kpId": "m_dec_addsub",
+  "title": "隔幾天再試：不同委託",
+  "body": ["水站有3.5公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 1.1,
+    "control": "tenths"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "decimal",
+    "values": [3.5, 1.5, 0.9]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["水站有3.5公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 1.1,
+      "control": "tenths"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_junior_2",
+  "kpId": "j_addstep",
+  "title": "隔幾天再試：不同委託",
+  "body": ["有36支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 25,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "junior",
+    "values": [36, 15, 4]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有36支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 25,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_multiply_2",
+  "kpId": "j_mult1",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每包3張卡片。", "有7包。請排出總張數。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 21,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "multiply",
+    "values": [3, 7]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每包3張卡片。", "有7包。請排出總張數。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 21,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3a_3",
+  "kpId": "m_ratio",
+  "title": "新委託：排色帶",
+  "body": ["每組3條紫帶、2條金帶。", "有27條紫帶，要多少金帶？"],
+  "fields": [{
+    "label": "金帶條數",
+    "answer": 18,
+    "control": "cups"
+  }],
+  "hint": "先找組數。",
+  "demo": "一整組的兩種色帶同倍增加。",
+  "art": "record-card",
+  "group": "T3A",
+  "proof": {
+    "type": "product",
+    "a": 2,
+    "b": 9
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3條紫帶、2條金帶。", "有27條紫帶，要多少金帶？"],
+    "fields": [{
+      "label": "金帶條數",
+      "answer": 18,
+      "control": "cups"
+    }],
+    "hints": ["先找組數。", "一整組的兩種色帶同倍增加。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3b_3",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：補充水站",
+  "body": ["目標5.1公升，已有1.4公升。"],
+  "fields": [{
+    "label": "還要補多少公升？",
+    "answer": 3.7,
+    "control": "number"
+  }],
+  "hint": "目標減已有。",
+  "demo": "先對齊小數點再減。",
+  "art": "record-card",
+  "group": "T3B",
+  "proof": {
+    "type": "difference",
+    "a": 5.1,
+    "b": 1.4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["目標5.1公升，已有1.4公升。"],
+    "fields": [{
+      "label": "還要補多少公升？",
+      "answer": 3.7,
+      "control": "number"
+    }],
+    "hints": ["目標減已有。", "先對齊小數點再減。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3c_3",
+  "kpId": "j_mult1",
+  "title": "新委託：排列貼紙",
+  "body": ["每組3張貼紙。", "有5組。"],
+  "fields": [{
+    "label": "共幾張？",
+    "answer": 15,
+    "control": "cups"
+  }],
+  "hint": "每組數量一樣。",
+  "demo": "可以先加一組，再加一組。",
+  "art": "record-card",
+  "group": "T3C",
+  "proof": {
+    "type": "product",
+    "a": 3,
+    "b": 5
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3張貼紙。", "有5組。"],
+    "fields": [{
+      "label": "共幾張？",
+      "answer": 15,
+      "control": "cups"
+    }],
+    "hints": ["每組數量一樣。", "可以先加一組，再加一組。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t4_3",
+  "kpId": "o_debate",
+  "title": "新委託：查證消息",
+  "body": ["分清查過的紀錄與人的說法。"],
+  "fields": [{
+    "label": "鄰居說有人來過，還沒核對。",
+    "answer": "待核對說法",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "簽收簿與錄影核對：上午完成送貨。",
+    "answer": "已核對證據",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "我覺得這個顏色最好看。",
+    "answer": "個人意見",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }],
+  "hint": "可核對不表示已核對。",
+  "demo": "感受是意見，傳聞仍待查。",
+  "art": "record-card",
+  "group": "T4",
+  "proof": {
+    "type": "classification"
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["分清查過的紀錄與人的說法。"],
+    "fields": [{
+      "label": "鄰居說有人來過，還沒核對。",
+      "answer": "待核對說法",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "簽收簿與錄影核對：上午完成送貨。",
+      "answer": "已核對證據",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "我覺得這個顏色最好看。",
+      "answer": "個人意見",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }],
+    "hints": ["可核對不表示已核對。", "感受是意見，傳聞仍待查。"]
+  },
+  "grade": 5,
+  "subject": "social",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["Aa-III-4", "Ba-III-1", "Dc-III-1"],
+  "sourceRefs": [{
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 18,
+    "printedPage": 14,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 19,
+    "printedPage": 15,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 21,
+    "printedPage": 17,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_ratio_3",
+  "kpId": "m_ratio",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每組旗帶：長2條、短1條。現有長16條。", "請排出需要的短旗帶。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 8,
+    "control": "cups"
+  }, {
+    "label": "理由",
+    "answer": "長和短用同樣組數",
+    "control": "select",
+    "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "ratio",
+    "values": [16, 8]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組旗帶：長2條、短1條。現有長16條。", "請排出需要的短旗帶。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 8,
+      "control": "cups"
+    }, {
+      "label": "理由",
+      "answer": "長和短用同樣組數",
+      "control": "select",
+      "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_decimal_3",
+  "kpId": "m_dec_addsub",
+  "title": "隔幾天再試：不同委託",
+  "body": ["水站有3.8公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 1.4,
+    "control": "tenths"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "decimal",
+    "values": [3.8, 1.5, 0.9]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["水站有3.8公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 1.4,
+      "control": "tenths"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_junior_3",
+  "kpId": "j_addstep",
+  "title": "隔幾天再試：不同委託",
+  "body": ["有38支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 27,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "junior",
+    "values": [38, 15, 4]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有38支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 27,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_multiply_3",
+  "kpId": "j_mult1",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每包3張卡片。", "有8包。請排出總張數。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 24,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "multiply",
+    "values": [3, 8]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每包3張卡片。", "有8包。請排出總張數。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 24,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3a_4",
+  "kpId": "m_ratio",
+  "title": "新委託：排色帶",
+  "body": ["每組3條紫帶、2條金帶。", "有30條紫帶，要多少金帶？"],
+  "fields": [{
+    "label": "金帶條數",
+    "answer": 20,
+    "control": "cups"
+  }],
+  "hint": "先找組數。",
+  "demo": "一整組的兩種色帶同倍增加。",
+  "art": "record-card",
+  "group": "T3A",
+  "proof": {
+    "type": "product",
+    "a": 2,
+    "b": 10
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3條紫帶、2條金帶。", "有30條紫帶，要多少金帶？"],
+    "fields": [{
+      "label": "金帶條數",
+      "answer": 20,
+      "control": "cups"
+    }],
+    "hints": ["先找組數。", "一整組的兩種色帶同倍增加。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3b_4",
+  "kpId": "m_dec_addsub",
+  "title": "新委託：補充水站",
+  "body": ["目標5.3公升，已有1.4公升。"],
+  "fields": [{
+    "label": "還要補多少公升？",
+    "answer": 3.9,
+    "control": "number"
+  }],
+  "hint": "目標減已有。",
+  "demo": "先對齊小數點再減。",
+  "art": "record-card",
+  "group": "T3B",
+  "proof": {
+    "type": "difference",
+    "a": 5.3,
+    "b": 1.4
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["目標5.3公升，已有1.4公升。"],
+    "fields": [{
+      "label": "還要補多少公升？",
+      "answer": 3.9,
+      "control": "number"
+    }],
+    "hints": ["目標減已有。", "先對齊小數點再減。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t3c_4",
+  "kpId": "j_mult1",
+  "title": "新委託：排列貼紙",
+  "body": ["每組3張貼紙。", "有6組。"],
+  "fields": [{
+    "label": "共幾張？",
+    "answer": 18,
+    "control": "cups"
+  }],
+  "hint": "每組數量一樣。",
+  "demo": "可以先加一組，再加一組。",
+  "art": "record-card",
+  "group": "T3C",
+  "proof": {
+    "type": "product",
+    "a": 3,
+    "b": 6
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組3張貼紙。", "有6組。"],
+    "fields": [{
+      "label": "共幾張？",
+      "answer": 18,
+      "control": "cups"
+    }],
+    "hints": ["每組數量一樣。", "可以先加一組，再加一組。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_t4_4",
+  "kpId": "o_debate",
+  "title": "新委託：查證消息",
+  "body": ["分清查過的紀錄與人的說法。"],
+  "fields": [{
+    "label": "簽收簿與錄影核對：上午完成送貨。",
+    "answer": "已核對證據",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "我認為那支畫筆最好用。",
+    "answer": "個人意見",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }, {
+    "label": "鄰居說有人來過，還沒核對。",
+    "answer": "待核對說法",
+    "control": "select",
+    "options": ["待核對說法", "已核對證據", "個人意見"]
+  }],
+  "hint": "可核對不表示已核對。",
+  "demo": "感受是意見，傳聞仍待查。",
+  "art": "record-card",
+  "group": "T4",
+  "proof": {
+    "type": "classification"
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["分清查過的紀錄與人的說法。"],
+    "fields": [{
+      "label": "簽收簿與錄影核對：上午完成送貨。",
+      "answer": "已核對證據",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "我認為那支畫筆最好用。",
+      "answer": "個人意見",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }, {
+      "label": "鄰居說有人來過，還沒核對。",
+      "answer": "待核對說法",
+      "control": "select",
+      "options": ["待核對說法", "已核對證據", "個人意見"]
+    }],
+    "hints": ["可核對不表示已核對。", "感受是意見，傳聞仍待查。"]
+  },
+  "grade": 5,
+  "subject": "social",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["Aa-III-4", "Ba-III-1", "Dc-III-1"],
+  "sourceRefs": [{
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 18,
+    "printedPage": 14,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 19,
+    "printedPage": 15,
+    "checked": "2026-11-10"
+  }, {
+    "document": "social",
+    "title": "社會領域課程綱要",
+    "url": "https://stv.naer.edu.tw/data/course_outline/pta_18535_6408773_60398.pdf",
+    "pdfPage": 21,
+    "printedPage": 17,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_ratio_4",
+  "kpId": "m_ratio",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每組旗帶：長2條、短1條。現有長18條。", "請排出需要的短旗帶。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 9,
+    "control": "cups"
+  }, {
+    "label": "理由",
+    "answer": "長和短用同樣組數",
+    "control": "select",
+    "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "ratio",
+    "values": [18, 9]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每組旗帶：長2條、短1條。現有長18條。", "請排出需要的短旗帶。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 9,
+      "control": "cups"
+    }, {
+      "label": "理由",
+      "answer": "長和短用同樣組數",
+      "control": "select",
+      "options": ["只加短旗帶", "長和短用同樣組數", "長短各加1"]
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-6-6"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 35,
+    "printedPage": 33,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_decimal_4",
+  "kpId": "m_dec_addsub",
+  "title": "隔幾天再試：不同委託",
+  "body": ["水站有4.1公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 1.7,
+    "control": "tenths"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "decimal",
+    "values": [4.1, 1.5, 0.9]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["水站有4.1公升，用掉1.5和0.9公升。", "用圖條選出剩下的水量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 1.7,
+      "control": "tenths"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 4,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-4-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 29,
+    "printedPage": 27,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_junior_4",
+  "kpId": "j_addstep",
+  "title": "隔幾天再試：不同委託",
+  "body": ["有40支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 29,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "junior",
+    "values": [40, 15, 4]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有40支蠟筆，送出15支，又收到4支。", "移動數線，算現在的數量。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 29,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-8", "R-2-2"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 25,
+    "printedPage": 23,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_multiply_4",
+  "kpId": "j_mult1",
+  "title": "隔幾天再試：不同委託",
+  "body": ["每包3張卡片。", "有9包。請排出總張數。"],
+  "fields": [{
+    "label": "結果",
+    "answer": 27,
+    "control": "cups"
+  }],
+  "hint": "先找每組的量或數量的變化。",
+  "demo": "把問題分成可以自己做的小步驟。",
+  "art": "record-card",
+  "group": "delayed",
+  "proof": {
+    "type": "delayed",
+    "route": "multiply",
+    "values": [3, 9]
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["每包3張卡片。", "有9包。請排出總張數。"],
+    "fields": [{
+      "label": "結果",
+      "answer": 27,
+      "control": "cups"
+    }],
+    "hints": ["先找每組的量或數量的變化。", "把問題分成可以自己做的小步驟。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-6", "N-2-7"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }, {
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_half_1",
+  "kpId": "j_fraction",
+  "title": "隔幾天再試：半張餅",
+  "body": ["有3張一樣大的餅。", "每張都平均分成兩半。"],
+  "fields": [{
+    "label": "一共有幾片半張餅？",
+    "answer": 6,
+    "control": "cups"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 3,
+    "b": 2
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有3張一樣大的餅。", "每張都平均分成兩半。"],
+    "fields": [{
+      "label": "一共有幾片半張餅？",
+      "answer": 6,
+      "control": "cups"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-10"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_half_2",
+  "kpId": "j_fraction",
+  "title": "隔幾天再試：半張餅",
+  "body": ["有5張一樣大的餅。", "每張都平均分成兩半。"],
+  "fields": [{
+    "label": "一共有幾片半張餅？",
+    "answer": 10,
+    "control": "cups"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 5,
+    "b": 2
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有5張一樣大的餅。", "每張都平均分成兩半。"],
+    "fields": [{
+      "label": "一共有幾片半張餅？",
+      "answer": 10,
+      "control": "cups"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-10"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_half_3",
+  "kpId": "j_fraction",
+  "title": "隔幾天再試：半張餅",
+  "body": ["有7張一樣大的餅。", "每張都平均分成兩半。"],
+  "fields": [{
+    "label": "一共有幾片半張餅？",
+    "answer": 14,
+    "control": "cups"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 7,
+    "b": 2
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有7張一樣大的餅。", "每張都平均分成兩半。"],
+    "fields": [{
+      "label": "一共有幾片半張餅？",
+      "answer": 14,
+      "control": "cups"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-10"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_half_4",
+  "kpId": "j_fraction",
+  "title": "隔幾天再試：半張餅",
+  "body": ["有9張一樣大的餅。", "每張都平均分成兩半。"],
+  "fields": [{
+    "label": "一共有幾片半張餅？",
+    "answer": 18,
+    "control": "cups"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 9,
+    "b": 2
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["有9張一樣大的餅。", "每張都平均分成兩半。"],
+    "fields": [{
+      "label": "一共有幾片半張餅？",
+      "answer": 18,
+      "control": "cups"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 2,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["N-2-10"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 23,
+    "printedPage": 21,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_chart_1",
+  "kpId": "m_chart",
+  "title": "隔幾天再試：展覽投票",
+  "body": ["總共100張票，圖條分10格。", "每格票數相同，其中2格投給攝影。"],
+  "fields": [{
+    "label": "攝影得到百分之幾？",
+    "answer": 20,
+    "control": "number"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "bars": {
+    "parts": 10,
+    "selected": 2
+  },
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 2,
+    "b": 10
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["總共100張票，圖條分10格。", "每格票數相同，其中2格投給攝影。"],
+    "fields": [{
+      "label": "攝影得到百分之幾？",
+      "answer": 20,
+      "control": "number"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["D-6-1"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 37,
+    "printedPage": 35,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_chart_2",
+  "kpId": "m_chart",
+  "title": "隔幾天再試：展覽投票",
+  "body": ["總共100張票，圖條分10格。", "每格票數相同，其中4格投給攝影。"],
+  "fields": [{
+    "label": "攝影得到百分之幾？",
+    "answer": 40,
+    "control": "number"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "bars": {
+    "parts": 10,
+    "selected": 4
+  },
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 4,
+    "b": 10
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["總共100張票，圖條分10格。", "每格票數相同，其中4格投給攝影。"],
+    "fields": [{
+      "label": "攝影得到百分之幾？",
+      "answer": 40,
+      "control": "number"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["D-6-1"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 37,
+    "printedPage": 35,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_chart_3",
+  "kpId": "m_chart",
+  "title": "隔幾天再試：展覽投票",
+  "body": ["總共100張票，圖條分10格。", "每格票數相同，其中6格投給攝影。"],
+  "fields": [{
+    "label": "攝影得到百分之幾？",
+    "answer": 60,
+    "control": "number"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "bars": {
+    "parts": 10,
+    "selected": 6
+  },
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 6,
+    "b": 10
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["總共100張票，圖條分10格。", "每格票數相同，其中6格投給攝影。"],
+    "fields": [{
+      "label": "攝影得到百分之幾？",
+      "answer": 60,
+      "control": "number"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["D-6-1"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 37,
+    "printedPage": 35,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}, {
+  "id": "paint_delay_chart_4",
+  "kpId": "m_chart",
+  "title": "隔幾天再試：展覽投票",
+  "body": ["總共100張票，圖條分10格。", "每格票數相同，其中8格投給攝影。"],
+  "fields": [{
+    "label": "攝影得到百分之幾？",
+    "answer": 80,
+    "control": "number"
+  }],
+  "hint": "先看每一份代表多少，再對照需要的份數。",
+  "demo": "把一個整體平均分成相同大小的份，每份都要一樣大。",
+  "art": "invoice",
+  "bars": {
+    "parts": 10,
+    "selected": 8
+  },
+  "group": "delayed",
+  "proof": {
+    "type": "product",
+    "a": 8,
+    "b": 10
+  },
+  "kind": "paint",
+  "params": {
+    "body": ["總共100張票，圖條分10格。", "每格票數相同，其中8格投給攝影。"],
+    "fields": [{
+      "label": "攝影得到百分之幾？",
+      "answer": 80,
+      "control": "number"
+    }],
+    "hints": ["先看每一份代表多少，再對照需要的份數。", "把一個整體平均分成相同大小的份，每份都要一樣大。"]
+  },
+  "grade": 6,
+  "subject": "math",
+  "difficulty": "normal",
+  "reviewed": true,
+  "humanReviewed": false,
+  "curriculumCodes": ["D-6-1"],
+  "sourceRefs": [{
+    "document": "math",
+    "title": "數學領域課程綱要",
+    "url": "https://edu.law.moe.gov.tw/Download.ashx?FileID=31051&id=GL001788&type=LAW",
+    "pdfPage": 37,
+    "printedPage": 35,
+    "checked": "2026-11-10"
+  }],
+  "reviewNotes": "AI逐題檢查題意、答案、提示、官方層級；有理數獨立重算。非真人教師簽核。",
+  "reviewStatus": "ai-content-reviewed"
+}];
+const PAINT_CONCEPTS = {
+  "m_prime": {
+    "name": "質數與質因數分解",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["g5_n53"]
+  },
+  "m_gcd": {
+    "name": "最大公因數與最小公倍數",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_prime"]
+  },
+  "m_fracdiv": {
+    "name": "分數的除法",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_frac_ops", "g5_n57"]
+  },
+  "m_decdiv": {
+    "name": "小數的除法",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_dec_ops", "g5_n59"]
+  },
+  "m_mixed": {
+    "name": "整數、分數、小數的四則應用",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }, {
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_fracdiv", "m_decdiv", "g5_r52"]
+  },
+  "m_ratio": {
+    "name": "比與比值",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_mult_div_int", "g5_n510"]
+  },
+  "m_speed": {
+    "name": "速度",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_ratio", "m_time_units"]
+  },
+  "m_base": {
+    "name": "基準量與比較量",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["g5_n510"]
+  },
+  "m_relation": {
+    "name": "數量關係與列式解題",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }, {
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["g5_r53"]
+  },
+  "m_pattern": {
+    "name": "數量模式與關係表示",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }, {
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["j_add2"]
+  },
+  "m_scale": {
+    "name": "放大縮小與比例尺",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }, {
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_ratio"]
+  },
+  "m_circle": {
+    "name": "圓周率、圓周長、圓面積與扇形",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_area", "g5_s53"]
+  },
+  "m_prism": {
+    "name": "柱體體積與表面積",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["g5_s55", "g5_s57"]
+  },
+  "m_chart": {
+    "name": "圓形圖與資料整理",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["g5_d51", "g5_n510"]
+  },
+  "m_chance": {
+    "name": "可能性",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 6
+    }],
+    "prerequisites": ["m_bar_line"]
+  },
+  "m_frac_ops": {
+    "name": "分數的加減與乘法",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }, {
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_frac_basic", "g5_n53"]
+  },
+  "m_dec_ops": {
+    "name": "小數的乘法",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_dec_addsub", "g5_n51"]
+  },
+  "m_area": {
+    "name": "平面圖形面積",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_rect_area"]
+  },
+  "c_word": {
+    "name": "字詞與語意理解",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "c_idiom": {
+    "name": "成語與詞語運用",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "c_sentence": {
+    "name": "句型與修辭",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "c_structure": {
+    "name": "段落結構與文章組織",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": ["c_sentence"]
+  },
+  "c_main": {
+    "name": "文章主旨與摘要",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": ["c_structure"]
+  },
+  "c_extract": {
+    "name": "文本訊息擷取",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "c_infer": {
+    "name": "推論與比較",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": ["c_extract"]
+  },
+  "c_author": {
+    "name": "作者觀點與寫作目的",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": ["c_infer"]
+  },
+  "c_express": {
+    "name": "語文表達與邏輯思考",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "c_writing": {
+    "name": "寫作與文章組織",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": ["c_structure", "c_express"]
+  },
+  "s_heat": {
+    "name": "熱的傳播與保溫",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_weather": {
+    "name": "天氣變化與天氣圖",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_earth": {
+    "name": "大地的變動與岩石",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_magnet": {
+    "name": "電流與電磁鐵",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": ["s_circuit", "j_magnet"]
+  },
+  "s_circuit": {
+    "name": "通路與斷路（先備）",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "II"
+    }, {
+      "kind": "stage",
+      "value": "II"
+    }],
+    "prerequisites": []
+  },
+  "s_lever": {
+    "name": "槓桿與簡單機械",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": ["j_length"]
+  },
+  "s_sound": {
+    "name": "聲音的產生與特性",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_eco": {
+    "name": "生態與永續",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_postwar": {
+    "name": "戰後經濟發展與轉型",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_consume": {
+    "name": "消費選擇與理財",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_rules": {
+    "name": "生活中的規範與法治",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_tech": {
+    "name": "科技發展與新規範",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_debate": {
+    "name": "多元觀點與理性討論",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_economy": {
+    "name": "經濟活動與永續發展",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_society": {
+    "name": "人權與國際參與",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_environment": {
+    "name": "環境問題與公民行動",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_action": {
+    "name": "公共參與與行動規劃",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "j_addstep": {
+    "name": "加減兩步驟",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_add2"]
+  },
+  "j_area": {
+    "name": "面的大小：覆蓋與數方格",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_shape"]
+  },
+  "j_num200": {
+    "name": "200 以內的數",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": []
+  },
+  "j_add2": {
+    "name": "二位數加減",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_num200"]
+  },
+  "j_length": {
+    "name": "認識公分",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": []
+  },
+  "j_mult1": {
+    "name": "乘法（一）：2、5、4、8",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_add2"]
+  },
+  "j_time": {
+    "name": "時間：鐘面報讀",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": []
+  },
+  "j_mult2": {
+    "name": "乘法（二）：3、6、7、9",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_mult1"]
+  },
+  "j_num1000": {
+    "name": "1000 以內的數",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": []
+  },
+  "j_add3": {
+    "name": "三位數加減",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_add2", "j_num1000"]
+  },
+  "j_shape": {
+    "name": "平面圖形與立體形體",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }, {
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": []
+  },
+  "j_share": {
+    "name": "分裝與平分",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_mult1"]
+  },
+  "j_fraction": {
+    "name": "認識分數",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 2
+    }],
+    "prerequisites": ["j_share"]
+  },
+  "j_vocab_cur": {
+    "name": "二上生字：認讀與注音",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }],
+    "prerequisites": []
+  },
+  "j_vocab_g1": {
+    "name": "一年級生字複習",
+    "subject": "chinese",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }],
+    "prerequisites": []
+  },
+  "j_quake": {
+    "name": "防震小達人",
+    "subject": "life",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }],
+    "prerequisites": []
+  },
+  "j_plastic": {
+    "name": "減塑行動家",
+    "subject": "life",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }],
+    "prerequisites": []
+  },
+  "j_seed": {
+    "name": "奇妙的種子",
+    "subject": "life",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }],
+    "prerequisites": []
+  },
+  "j_magnet": {
+    "name": "磁鐵真好玩",
+    "subject": "life",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }],
+    "prerequisites": []
+  },
+  "j_color": {
+    "name": "彩色的世界",
+    "subject": "life",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }, {
+      "kind": "stage",
+      "value": "I"
+    }],
+    "prerequisites": []
+  },
+  "g5_n51": {
+    "name": "十進位的位值系統",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_dec_addsub"]
+  },
+  "g5_n52": {
+    "name": "多步驟生活應用",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_mult_div_int"]
+  },
+  "g5_n53": {
+    "name": "公因數和公倍數",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_mult_div_int"]
+  },
+  "g5_n56": {
+    "name": "整數相除之分數表示",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_frac_basic", "m_mult_div_int"]
+  },
+  "g5_n57": {
+    "name": "分數除以整數",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_frac_ops"]
+  },
+  "g5_n59": {
+    "name": "整數、小數除以整數(商為小數)",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_dec_addsub", "m_mult_div_int"]
+  },
+  "g5_n510": {
+    "name": "比率、百分率與折成",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["g5_n56"]
+  },
+  "g5_n511": {
+    "name": "小數取概數",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_dec_addsub"]
+  },
+  "g5_n512": {
+    "name": "面積大單位換算",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_rect_area"]
+  },
+  "g5_n513": {
+    "name": "公噸與公斤",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["j_num1000"]
+  },
+  "g5_n514": {
+    "name": "立方公尺",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_volume_basic"]
+  },
+  "g5_n515": {
+    "name": "容積與容量",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_volume_basic"]
+  },
+  "g5_n516": {
+    "name": "時間乘除",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_time_units", "m_frac_ops", "m_dec_ops"]
+  },
+  "g5_s51": {
+    "name": "三角形與四邊形的性質",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_angle"]
+  },
+  "g5_s53": {
+    "name": "扇形",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_angle", "m_frac_basic"]
+  },
+  "g5_s54": {
+    "name": "線對稱",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["j_shape"]
+  },
+  "g5_s55": {
+    "name": "正方體和長方體",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_volume_basic", "m_rect_area"]
+  },
+  "g5_s56": {
+    "name": "空間中面與面的關係",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["j_shape"]
+  },
+  "g5_s57": {
+    "name": "球、柱體與錐體",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["j_shape"]
+  },
+  "g5_r51": {
+    "name": "三步驟問題併式",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["g5_n52"]
+  },
+  "g5_r52": {
+    "name": "四則計算規律(II)",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_mult_div_int"]
+  },
+  "g5_r53": {
+    "name": "以符號表示數學公式",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_area"]
+  },
+  "g5_d51": {
+    "name": "製作折線圖",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 5
+    }],
+    "prerequisites": ["m_bar_line"]
+  },
+  "m_mult_div_int": {
+    "name": "整數乘除與兩步驟應用",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 4
+    }, {
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_mult1", "j_share"]
+  },
+  "m_frac_basic": {
+    "name": "分數意義、等值與同分母加減",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 3
+    }, {
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_fraction"]
+  },
+  "m_dec_addsub": {
+    "name": "二位小數加減",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_add2"]
+  },
+  "m_angle": {
+    "name": "角度與量角",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_shape"]
+  },
+  "m_rect_area": {
+    "name": "長方形與正方形面積",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_mult1"]
+  },
+  "m_volume_basic": {
+    "name": "體積與立方公分",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_shape"]
+  },
+  "m_time_units": {
+    "name": "時分秒換算與加減",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_time"]
+  },
+  "m_bar_line": {
+    "name": "長條圖與折線圖報讀",
+    "subject": "math",
+    "curriculum": [{
+      "kind": "grade",
+      "value": 4
+    }],
+    "prerequisites": ["j_num1000"]
+  },
+  "s_inaiii3": {
+    "name": "混合物是由不同的物質所混合,物質混合前後重量不會改變,性質可能會改變",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inaiii4": {
+    "name": "空氣由各種不同氣體所組成,空氣具有熱脹冷縮的性質",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inaiii5": {
+    "name": "不同形式的能量可以相互轉換,但總量不變",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inaiii6": {
+    "name": "能量可藉由電流傳遞、轉換而後為人類所應用",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inaiii7": {
+    "name": "運動的物體具有動能,對同一物體而言,速度越快動能越大",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inaiii9": {
+    "name": "植物生長所需的養分是經由光合作用從太陽光獲得的",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inaiii10": {
+    "name": "在生態系中,能量經由食物鏈在不同物種間流動與循環",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inbiii1": {
+    "name": "物質有不同的結構與功能",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inbiii2": {
+    "name": "應用性質的不同可分離物質或鑑別物質",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inbiii3": {
+    "name": "物質表面的結構與性質不同,其可產生的摩擦力不同;摩擦力會影響物體運動的情形",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inbiii5": {
+    "name": "生物體是由細胞所組成,具有由細胞、器官到個體等不同層次的構造",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inbiii6": {
+    "name": "動物的形態特徵與行為相關,動物身體的構造不同,有不同的運動方式",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inbiii7": {
+    "name": "植物各部位的構造和所具有的功能有關,有些植物產生特化的構造以適應環境",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inbiii8": {
+    "name": "生物可依其形態特徵進行分類",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii1": {
+    "name": "生活及探究中常用的測量工具和方法",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii2": {
+    "name": "自然界或生活中有趣的最大或最小的事物(量),事物大小宜用適當的單位來表示",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii3": {
+    "name": "本量與改變量不同,由兩者的比例可評估變化的程度",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii4": {
+    "name": "對相同事物做多次測量,其結果間可能有差異,差異越大表示測量越不精確",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii5": {
+    "name": "力的大小可由物體的形變或運動狀態的改變程度得知",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii6": {
+    "name": "運用時間與距離可描述物體的速度與速度的變化",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii7": {
+    "name": "動物體內的器官系統是由數個器官共同組合,以執行某種特定的生理作用",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii8": {
+    "name": "在同一時期,特定區域上,相同物種所組成的群體稱為「族群」,而在特定區域由多個族群結合而組成「群集」",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii10": {
+    "name": "地球是由空氣、陸地、海洋及生存於其中的生物所組成的",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii12": {
+    "name": "地球上的水存在於大氣、海洋、湖泊與地下中",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii13": {
+    "name": "日出日落時間與位置,在不同季節會不同",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii14": {
+    "name": "四季星空會有所不同",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_inciii15": {
+    "name": "除了地球外,還有其他行星環繞著太陽運行",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii1": {
+    "name": "自然界中存在著各種的穩定狀態;當有新的外加因素時,可能造成改變,再達到新的穩定狀態",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii3": {
+    "name": "地球上的物體(含生物和非生物)均會受地球引力的作用,地球對物體的引力就是物體的重量",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii4": {
+    "name": "生物個體間的性狀具有差異性;子代與親代的性狀具有相似性和相異性",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii5": {
+    "name": "生物體接受環境刺激會產生適當的反應,並自動調節生理作用以維持恆定",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii6": {
+    "name": "生物種類具有多樣性;生物生存的環境亦具有多樣性",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii8": {
+    "name": "土壤是由岩石風化成的碎屑及生物遺骸所組成",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii10": {
+    "name": "流水及生物活動,對地表的改變會產生不同的影響",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_indiii11": {
+    "name": "海水的流動會影響天氣與氣候的變化",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii1": {
+    "name": "自然界的物體、生物與環境間的交互作用,常具有規則性",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii2": {
+    "name": "物質的形態與性質可因燃燒、生鏽、發酵、酸鹼作用等而改變或形成新物質,這些改變有些會和溫度、水、空氣、光等有關",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii3": {
+    "name": "燃燒是物質與氧劇烈作用的現象,燃燒必須同時具備可燃物、助燃物,並達到燃點等三個要素",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii4": {
+    "name": "物質溶解、反應前後總重量不變",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii5": {
+    "name": "常用酸鹼物質的特性,水溶液的酸鹼性質及其生活上的運用",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii7": {
+    "name": "陽光是由不同色光組成",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii8": {
+    "name": "光會有折射現象,放大鏡可聚光和成像",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii11": {
+    "name": "動物有覓食、生殖、保護、訊息傳遞以及社會性的行為",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii12": {
+    "name": "生物的分布和習性,會受環境因素的影響;環境改變也會影響生存於其中的生物種類",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ineiii13": {
+    "name": "生態系中生物與生物彼此間的交互作用,有寄生、共生和競爭的關係",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_infiii1": {
+    "name": "世界與本地不同性別科學家的事蹟與貢獻",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_infiii2": {
+    "name": "科技在生活中的應用與對環境與人體的影響",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_infiii3": {
+    "name": "自然界生物的特徵與原理在人類生活上的應用",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_infiii4": {
+    "name": "人類日常生活中所依賴的經濟動植物及栽培養殖的方法",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ingiii1": {
+    "name": "自然景觀和環境一旦被改變或破壞,極難恢復",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ingiii3": {
+    "name": "生物多樣性對人類的重要性,而氣候變遷將對生物生存造成影響",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ingiii4": {
+    "name": "人類的活動會造成氣候變遷,加劇對生態與環境的影響",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ingiii6": {
+    "name": "碳足跡與水足跡所代表環境的意涵",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "s_ingiii7": {
+    "name": "人類行為的改變可以減緩氣候變遷所造成的衝擊與影響",
+    "subject": "science",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_aaiii3": {
+    "name": "個人的價值觀會影響其行為,也可能會影響人際關係",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_abiii1": {
+    "name": "臺灣的地理位置、自然環境,與歷史文化的發展有關聯性",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_abiii2": {
+    "name": "交通運輸與產業發展會影響城鄉與區域間的人口遷移及連結互動",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_abiii3": {
+    "name": "自然環境、自然災害及經濟活動,和生活空間的使用有關聯性",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_aciii3": {
+    "name": "我國政府組織可區分為中央及地方政府,各具有不同的功能,並依公權力管理公共事務",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_aciii4": {
+    "name": "國家權力的運用會維護國家安全及社會秩序,也可能會增進或傷害個人與群體的權益",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_afiii2": {
+    "name": "國際間因利益競爭而造成衝突、對立與結盟",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_bbiii1": {
+    "name": "自然與人文環境的交互影響,造成生活空間型態的差異與多元",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_bciii1": {
+    "name": "族群或地區的文化特色,各有其產生的背景因素,因而形塑臺灣多元豐富的文化內涵",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_bciii2": {
+    "name": "權力不平等與資源分配不均,會造成個人或群體間的差別待遇",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_cbiii2": {
+    "name": "臺灣史前文化、原住民族文化、中華文化及世界其他文化隨著時代變遷,都在臺灣留下有形與無形的文化資產,並於生活中展現特色",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_cciii1": {
+    "name": "個人在團體中的角色會隨著社會變遷產生改變",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_cciii2": {
+    "name": "族群的遷徙、通婚及交流,與社會變遷互為因果",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_cdiii1": {
+    "name": "不同時空環境下,臺灣人民透過爭取權利與政治改革,使得政治逐漸走向民主",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "o_cdiii2": {
+    "name": "臺灣人民的政治參與及公民團體的發展,為臺灣的民主政治奠定基礎",
+    "subject": "social",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  }
+};
 const CURRICULUM_NOTE = '學習內容代碼已核對教育部／國教院正式課綱（2026-11-06）。上下學期是本遊戲的建議分類，並非官方或各出版社的共同進度；可跨學期勾選。國語第三學習階段涵蓋五、六年級。';
 const KNOWLEDGE_POINTS = [{
   id: 'm_prime',
@@ -27224,6 +32440,14 @@ function validateBackupState(input) {
         arr(c.locks, r + '.locks', stage);
       }), p);
     });
+    opt(st, 'learning', (v, p) => {
+      if (typeof validateLearningV2 !== 'function') bad(p);
+      validateLearningV2(v, bad, p);
+    });
+    opt(st, 'cases', (v, p) => {
+      if (typeof validatePaintCases !== 'function') bad(p);
+      validatePaintCases(v, bad, p);
+    });
     s.student = st;
   }
   function stage(t, p) {
@@ -27284,6 +32508,23 @@ function validateBackupState(input) {
         records(r.follow.options, p);
       }
     }
+    if (t.kind === 'g5sector') {
+      num(r.target, p + '.target');
+      if (r.target < 0 || r.target > 360) bad(p + '.target');
+    }
+    if (t.kind === 'g5fold') {
+      if (!Number.isInteger(r.cols) || r.cols < 2 || r.cols > 20 || r.cols % 2 || !Number.isInteger(r.rows) || r.rows < 1 || r.rows > 20) bad(p + '.grid');
+      arr(r.left, p + '.left', (xy, q) => {
+        if (!Array.isArray(xy) || xy.length !== 2 || !xy.every(Number.isInteger) || xy[0] < 0 || xy[0] >= r.cols / 2 || xy[1] < 0 || xy[1] >= r.rows) bad(q);
+      });
+      if (!r.left.length || new Set(r.left.map(x => x.join(','))).size !== r.left.length) bad(p + '.left');
+    }
+    if (t.kind === 'g5line') {
+      strs(r.labels, p + '.labels');
+      arr(r.values, p + '.values', num);
+      if (r.labels.length < 2 || r.labels.length > 20 || r.values.length !== r.labels.length || !Number.isInteger(r.max) || r.max < 1 || r.max > 100 || r.values.some(v => !Number.isInteger(v) || v < 0 || v > r.max)) bad(p + '.plot');
+      opt(r, 'unit', str, p);
+    }
     for (const k of ['attempts', 'hints', 'seed']) opt(t, k, num, p);
   }
   const unique = (xs, p) => {
@@ -27321,6 +32562,14 @@ function validateBackupState(input) {
     obj(v, p);
     opt(v, 'practiceKps', strs, p);
     opt(v, 'g6Semesters', strs, p);
+    opt(v, 'paint', (x, q) => {
+      obj(x, q);
+      for (const k of ['t5Enabled', 'allowAdvanced']) if (x[k] !== undefined && typeof x[k] !== 'boolean') bad(q + '.' + k);
+      for (const k of ['disabled', 'taught']) opt(x, k, (a, r) => {
+        strs(a, r);
+        if (a.length > 200 || a.some(id => typeof PAINT_CONCEPTS === 'undefined' || !Object.hasOwn(PAINT_CONCEPTS, id))) bad(r);
+      }, q);
+    }, p);
     if (v.difficulty !== undefined && !['easy', 'normal', 'hard'].includes(v.difficulty)) bad(p + '.difficulty');
     for (const k of ['g6Prerequisites', 'g6ExpansionEnabled', 'g6AllowRepeat', 'g2AllowExtensions', 'zhuyin']) if (v[k] !== undefined && typeof v[k] !== 'boolean') bad(p + '.' + k);
   });
@@ -27536,6 +32785,124 @@ function deleteProfileSafely(current, id) {
 }
 function clearCurrentSafely(current) {
   return commitBackupImport(JSON.stringify(createInitialState()), current, 'replace', false, '清除目前角色前');
+}
+function learningV2(student) {
+  return {
+    concepts: {},
+    newConceptDays: {},
+    ...(student?.learning || {})
+  };
+}
+function v2Evidence(student, id) {
+  return {
+    status: 'untouched',
+    provisional: false,
+    presumed: false,
+    evidence: [],
+    ...(learningV2(student).concepts[id] || {})
+  };
+}
+function v2Prerequisite(student, id) {
+  const e = v2Evidence(student, id),
+    last = e.evidence.at(-1);
+  if (e.status === 'review' || e.status === 'exploring' && last?.correct === false && last.assisted !== 'solve') return 'negative';
+  if (e.status === 'mastered' || e.presumed) return 'positive';
+  return 'unknown';
+}
+function v2Eligibility(state, id, advanced = false) {
+  const c = PAINT_CONCEPTS[id];
+  if (!c) return 'blocked';
+  const ps = state.settings?.paint || {};
+  if ((ps.disabled || []).includes(id)) return 'blocked';
+  if (c.prerequisites.some(k => v2Prerequisite(state.student, k) === 'negative')) return 'blocked';
+  const grade = studentGrade(state.student),
+    stage = grade <= 2 ? 'I' : grade <= 4 ? 'II' : 'III';
+  const onGrade = c.curriculum.every(x => x.kind === 'grade' ? x.value <= grade : ['I', 'II', 'III'].indexOf(x.value) <= ['I', 'II', 'III'].indexOf(stage));
+  if (!onGrade && !(advanced && ps.allowAdvanced && ((ps.taught || []).includes(id) || c.prerequisites.every(k => v2Prerequisite(state.student, k) === 'positive')))) return 'blocked';
+  return v2Evidence(state.student, id).status === 'mastered' ? 'usable' : 'learnable';
+}
+function v2Record(state, id, correct, assisted, kind, taskId, t = now()) {
+  const learning = learningV2(state.student),
+    old = v2Evidence(state.student, id),
+    e = {
+      ...old,
+      evidence: [...old.evidence, {
+        t,
+        caseId: 'paint_swap',
+        taskId,
+        routeConcept: id,
+        correct,
+        assisted,
+        kind
+      }].slice(-100),
+      presumed: false
+    };
+  const independent = assisted !== 'solve';
+  if (kind === 'startcheck' && correct && independent) {
+    e.status = 'mastered';
+    e.provisional = true;
+  } else if (kind === 'delayed' && correct && independent) {
+    e.status = 'mastered';
+    e.provisional = false;
+  } else if (!correct && independent) {
+    e.status = old.status === 'mastered' && !old.provisional ? 'review' : 'exploring';
+    e.provisional = false;
+  } else if (old.status !== 'mastered') {
+    e.status = 'exploring';
+    e.provisional = false;
+  }
+  if (['m_ratio', 'm_dec_addsub', 'j_addstep', 'j_mult1', 'j_fraction', 'm_chart'].includes(id)) e.nextCheckAt = kind === 'delayed' ? t + (correct && independent ? 7 : 3) * DAY : old.nextCheckAt || t + 3 * DAY;
+  const concepts = {
+    ...learning.concepts,
+    [id]: e
+  };
+  if (kind === 'startcheck' && correct && independent) for (const key of PAINT_CONCEPTS[id].prerequisites) {
+    const p = v2Evidence(state.student, key);
+    if (!p.evidence.length && v2Prerequisite(state.student, key) !== 'negative') concepts[key] = {
+      ...p,
+      presumed: true
+    };
+  }
+  return {
+    ...state,
+    student: {
+      ...state.student,
+      learning: {
+        ...learning,
+        concepts
+      }
+    }
+  };
+}
+function validateLearningV2(v, bad, p) {
+  const object = x => backupObject(x),
+    bool = x => typeof x === 'boolean',
+    time = x => typeof x === 'number' && Number.isFinite(x) && x >= 0,
+    ids = x => Array.isArray(x) && x.length <= 200 && x.every(k => typeof k === 'string' && Object.hasOwn(PAINT_CONCEPTS, k));
+  if (!object(v) || !object(v.concepts) || Object.keys(v.concepts).length > 200) bad(p);
+  for (const [k, e] of Object.entries(v.concepts)) {
+    if (!Object.hasOwn(PAINT_CONCEPTS, k) || !object(e) || !['untouched', 'exploring', 'mastered', 'review'].includes(e.status) || !bool(e.provisional) || !bool(e.presumed) || !Array.isArray(e.evidence) || e.evidence.length > 100) bad(p + '.' + k);
+    if (e.nextCheckAt !== undefined && !time(e.nextCheckAt)) bad(p + '.nextCheckAt');
+    if (e.presumed && (e.evidence.length || e.status === 'mastered')) bad(p + '.presumed');
+    for (const x of e.evidence) if (!object(x) || !time(x.t) || !bool(x.correct) || !['none', 'read', 'solve'].includes(x.assisted) || !['task', 'startcheck', 'delayed', 'challenge', 'declared'].includes(x.kind) || x.routeConcept !== k || typeof x.caseId !== 'string' || typeof x.taskId !== 'string' || x.taskId.length > 100) bad(p + '.evidence');
+  }
+  if (v.newConceptDays !== undefined && (!object(v.newConceptDays) || Object.keys(v.newConceptDays).length > 120 || !Object.entries(v.newConceptDays).every(([d, k]) => /^\d{4}-\d{2}-\d{2}$/.test(d) && Object.hasOwn(PAINT_CONCEPTS, k)))) bad(p + '.newConceptDays');
+}
+function validatePaintCases(v, bad, p) {
+  if (!backupObject(v) || Object.keys(v).length > 100) bad(p);
+  for (const [id, c] of Object.entries(v)) {
+    if (!backupObject(c)) bad(p + '.' + id);
+    if (id !== 'paint_swap') continue;
+    if (typeof c.solved !== 'boolean' || !backupObject(c.tasks) || !Array.isArray(c.clues) || !c.clues.every(k => ['P1', 'P2', 'P3', 'P4', 'P_extra'].includes(k)) || !Array.isArray(c.usedConcepts) || !c.usedConcepts.every(k => Object.hasOwn(PAINT_CONCEPTS, k))) bad(p + '.paint_swap');
+    for (const [k, x] of Object.entries(c.tasks)) if (!['T1', 'T2', 'T3', 'T4'].includes(k) || typeof x !== 'boolean') bad(p + '.tasks');
+    if (!['new', 'skipped', 'guided', 'ready', 'done', 'stopped'].includes(c.t5) || !Number.isInteger(c.t5Errors) || c.t5Errors < 0 || c.t5Errors > 2) bad(p + '.t5');
+    if (c.t5Concept !== undefined && !['m_ratio', 'm_chart', 'j_fraction'].includes(c.t5Concept)) bad(p + '.t5Concept');
+    if (c.route !== null && !['ratio', 'decimal', 'junior'].includes(c.route)) bad(p + '.route');
+    for (const k of ['q1', 'q2', 'confession']) if (typeof c[k] !== 'boolean') bad(p + '.' + k);
+    for (const k of ['solvedAt', 't5StartedAt']) if (c[k] !== undefined && (typeof c[k] !== 'number' || !Number.isFinite(c[k]) || c[k] < 0)) bad(p + '.' + k);
+    if (c.seen !== undefined && (!Array.isArray(c.seen) || c.seen.length > 200 || !c.seen.every(x => typeof x === 'string'))) bad(p + '.seen');
+    if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
+  }
 }
 const {
   useState,
@@ -52228,6 +57595,221 @@ const G5_STORY_ALTERNATIVES = {
   f5: ['g5_d51']
 };
 for (const [id, pool] of Object.entries(G5_STORY_ALTERNATIVES)) if (STORY_LEARNING[id]) STORY_LEARNING[id].grade5 = pool;
+const PAINT_ROUTE_CONCEPT = {
+  ratio: 'm_ratio',
+  decimal: 'm_dec_addsub',
+  junior: 'j_addstep'
+};
+function paintCase(state) {
+  return {
+    solved: false,
+    tasks: {},
+    clues: [],
+    usedConcepts: [],
+    route: null,
+    q1: false,
+    q2: false,
+    confession: false,
+    t5: 'new',
+    t5Errors: 0,
+    seen: [],
+    help: {},
+    ...(state.student?.cases?.paint_swap || {})
+  };
+}
+function paintPatch(state, patch) {
+  return {
+    ...state,
+    student: {
+      ...state.student,
+      cases: {
+        ...state.student.cases,
+        paint_swap: {
+          ...paintCase(state),
+          ...patch
+        }
+      }
+    }
+  };
+}
+function paintAllowed(state, k, advanced = false) {
+  if (v2Eligibility(state, k, advanced) === 'blocked') return false;
+  const pool = practiceKpsFor(state),
+    subject = PAINT_CONCEPTS[k]?.subject;
+  if (['m_dec_addsub', 'j_addstep', 'j_mult1'].includes(k) && studentGrade(state.student) > 2) return pool.some(id => KP_BY_ID[id]?.subject === 'math');
+  if (advanced && (state.settings?.paint?.taught || []).includes(k)) return true;
+  return pool.includes(k) || k === 'j_fraction' && studentGrade(state.student) === 2 && state.settings?.paint?.t5Enabled && pool.some(id => KP_BY_ID[id]?.subject === 'math');
+}
+function paintRoute(state) {
+  const g = studentGrade(state.student),
+    saved = paintCase(state).route;
+  if (saved && paintAllowed(state, PAINT_ROUTE_CONCEPT[saved])) return saved;
+  const order = g === 2 ? ['junior'] : g === 5 ? ['decimal', 'junior'] : ['ratio', 'decimal', 'junior'];
+  return order.find(r => paintAllowed(state, PAINT_ROUTE_CONCEPT[r]) && v2Eligibility(state, PAINT_ROUTE_CONCEPT[r]) === 'usable') || order.find(r => paintAllowed(state, PAINT_ROUTE_CONCEPT[r])) || null;
+}
+function paintNeedsProbe(state) {
+  return studentGrade(state.student) === 6 && paintAllowed(state, 'm_ratio') && !v2Evidence(state.student, 'm_ratio').evidence.length && !paintCase(state).route;
+}
+function paintAnswerCorrect(q, values) {
+  return q.fields.length === values.length && q.fields.every((f, i) => typeof f.answer === 'number' ? numExact(parseNum(values[i]), f.answer) : values[i] === f.answer);
+}
+function paintHelp(state, id) {
+  return paintPatch(state, {
+    help: {
+      ...paintCase(state).help,
+      [id]: 'solve'
+    }
+  });
+}
+function paintProbe(state, mode, values = [], assist = 'none', t = now()) {
+  if (!paintNeedsProbe(state)) return state;
+  const correct = mode === 'try' && paintAnswerCorrect(PAINT_CASE.core.probe_ratio, values),
+    a = mode === 'try' ? assist : 'solve';
+  let s = v2Record(state, 'm_ratio', correct, a, 'startcheck', 'probe_ratio', t);
+  return paintPatch(s, {
+    route: correct && a !== 'solve' ? 'ratio' : paintAllowed(s, 'm_dec_addsub') ? 'decimal' : paintAllowed(s, 'j_addstep') ? 'junior' : null
+  });
+}
+function paintQuestion(state, task) {
+  const c = paintCase(state),
+    r = paintRoute(state),
+    junior = studentGrade(state.student) === 2;
+  if (task === 'T1' && r) return PAINT_CASE.core['t1_' + r];
+  if (task === 'T2' && c.tasks.T1) return PAINT_CASE.core['t2_' + (junior ? 'junior' : 'senior')];
+  if (task === 'T3' && c.tasks.T2 && r) return PAINT_CASE.core['t3_' + r];
+  if (task === 'T4' && c.tasks.T3) return PAINT_CASE.core['t4_' + (junior ? 'junior' : 'senior')];
+  return null;
+}
+function paintSubmit(state, task, values, assisted, t = now()) {
+  const c = paintCase(state),
+    q = paintQuestion(state, task);
+  if (!q || c.tasks[task] || paintNeedsProbe(state) || !paintAllowed(state, q.kpId)) return state;
+  const correct = paintAnswerCorrect(q, values),
+    a = c.help[q.id] ? 'solve' : assisted;
+  let s = v2Record(state, q.kpId, correct, a, 'task', q.id, t);
+  if (!correct) return s;
+  return paintPatch(s, {
+    route: paintRoute(state),
+    tasks: {
+      ...c.tasks,
+      [task]: true
+    },
+    clues: [...new Set([...c.clues, 'P' + task.slice(1)])],
+    usedConcepts: [...new Set([...c.usedConcepts, q.kpId])]
+  });
+}
+function paintDeduce(state, id, clues, claim) {
+  const c = paintCase(state),
+    required = id === 'q1' ? ['P1', 'P3'] : ['P2', 'P4'];
+  if (!['T1', 'T2', 'T3', 'T4'].every(k => c.tasks[k]) || id === 'q2' && !c.q1) return state;
+  if (!['q1', 'q2'].includes(id) || claim !== (id === 'q1' ? '材料份量改變，需要問清楚' : '向阿岩與小鈴求證') || clues.length !== 2 || !required.every(k => clues.includes(k) && c.clues.includes(k))) return state;
+  return paintPatch(state, {
+    [id]: true
+  });
+}
+function paintConfess(state) {
+  return paintCase(state).q2 ? paintPatch(state, {
+    confession: true
+  }) : state;
+}
+function paintSolve(state, t = now()) {
+  const c = paintCase(state);
+  if (c.solved || !c.q1 || !c.q2 || !c.confession) return state;
+  return paintPatch({
+    ...state,
+    student: {
+      ...state.student,
+      xp: state.student.xp + 30
+    }
+  }, {
+    solved: true,
+    solvedAt: t
+  });
+}
+function paintDay(t) {
+  const d = new Date(t);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+function paintChallengeConcept(state) {
+  const c = paintCase(state);
+  if (['guided', 'ready', 'done', 'stopped'].includes(c.t5) && c.t5Concept) return c.t5Concept;
+  const e = v2Evidence(state.student, 'm_ratio');
+  return studentGrade(state.student) === 2 ? 'j_fraction' : studentGrade(state.student) === 6 && e.status === 'mastered' && !e.provisional ? 'm_chart' : 'm_ratio';
+}
+function paintChallengeAllowed(state, t = now()) {
+  const c = paintCase(state),
+    k = paintChallengeConcept(state),
+    prefs = state.settings?.paint || {},
+    days = learningV2(state.student).newConceptDays;
+  if (studentGrade(state.student) === 2 && k !== 'j_fraction') return false;
+  if (studentGrade(state.student) === 5 && k === 'm_chart') return false;
+  return c.solved && prefs.t5Enabled === true && paintAllowed(state, k, true) && (!days[paintDay(t)] || days[paintDay(t)] === k) && !['done', 'stopped', 'skipped'].includes(c.t5);
+}
+function paintChallengeStart(state, t = now()) {
+  if (!paintChallengeAllowed(state, t)) return state;
+  const k = paintChallengeConcept(state),
+    l = learningV2(state.student),
+    days = {
+      ...l.newConceptDays,
+      [paintDay(t)]: k
+    };
+  const keep = Object.fromEntries(Object.entries(days).sort().slice(-120));
+  return paintPatch({
+    ...state,
+    student: {
+      ...state.student,
+      learning: {
+        ...l,
+        newConceptDays: keep
+      }
+    }
+  }, {
+    t5: 'guided',
+    t5StartedAt: t,
+    t5Concept: k
+  });
+}
+function paintChallengeQuestion(state) {
+  const c = paintCase(state),
+    k = paintChallengeConcept(state);
+  return PAINT_CASE.core['t5_' + (k === 'j_fraction' ? 'half' : k === 'm_chart' ? 'chart' : 'ratio') + (c.t5 === 'guided' ? '_guide' : '')];
+}
+function paintChallengeSubmit(state, values, assisted, t = now()) {
+  const c = paintCase(state);
+  if (!paintChallengeAllowed(state, t) || !['guided', 'ready'].includes(c.t5)) return state;
+  const q = paintChallengeQuestion(state),
+    correct = paintAnswerCorrect(q, values),
+    a = c.t5 === 'guided' || c.help[q.id] ? 'solve' : assisted;
+  let s = v2Record(state, q.kpId, correct, a, 'challenge', q.id, t);
+  const errors = correct ? 0 : c.t5Errors + 1;
+  return paintPatch(s, {
+    t5Errors: Math.min(errors, 2),
+    t5: errors >= 2 ? 'stopped' : correct ? c.t5 === 'guided' ? 'ready' : 'done' : c.t5,
+    clues: correct && c.t5 === 'ready' ? [...new Set([...c.clues, 'P_extra'])] : c.clues
+  });
+}
+function paintSkip(state) {
+  return paintPatch(state, {
+    t5: paintCase(state).t5 === 'done' ? 'done' : 'skipped'
+  });
+}
+function paintDelayed(state, id, t = now()) {
+  const e = v2Evidence(state.student, id);
+  if (!e.nextCheckAt || e.nextCheckAt > t || !paintAllowed(state, id, id === 'm_ratio' && studentGrade(state.student) === 5)) return null;
+  const pool = PAINT_BANK.filter(q => q.group === 'delayed' && q.kpId === id),
+    seen = paintCase(state).seen;
+  return pool.find(q => !seen.includes(q.id)) || pool[e.evidence.filter(x => x.kind === 'delayed').length % pool.length] || null;
+}
+function paintDelayedSubmit(state, id, values, assisted, t = now()) {
+  const q = paintDelayed(state, id, t);
+  if (!q) return state;
+  const c = paintCase(state),
+    correct = paintAnswerCorrect(q, values),
+    a = c.help[q.id] ? 'solve' : assisted;
+  return paintPatch(v2Record(state, id, correct, a, 'delayed', q.id, t), {
+    seen: [...c.seen.filter(k => k !== q.id), q.id].slice(-200)
+  });
+}
 const VP = {
   x: 640,
   y: 300
@@ -62957,6 +68539,559 @@ function ChestOverlay({
     onClick: () => setLockIdx(null)
   }, "\u5148\u96E2\u958B\u9019\u9053\u9396")))));
 }
+function PaintArt({
+  name,
+  alt
+}) {
+  const [failed, setFailed] = useState(false);
+  return failed ? React.createElement("div", {
+    className: "paint-art-fallback"
+  }, alt) : React.createElement("img", {
+    className: 'paint-art paint-' + name,
+    src: 'assets/props/paint/' + name + '.webp',
+    alt: alt,
+    onError: () => setFailed(true)
+  });
+}
+function PaintClock({
+  h,
+  m
+}) {
+  const hand = (angle, len) => [50 + Math.sin(angle * Math.PI / 180) * len, 50 - Math.cos(angle * Math.PI / 180) * len];
+  const a = hand(h % 12 * 30 + m / 2, 22),
+    b = hand(m * 6, 34);
+  return React.createElement("svg", {
+    viewBox: "0 0 100 100",
+    width: "112",
+    role: "img",
+    "aria-label": `${h}點${m === 30 ? '半' : '整'}`
+  }, React.createElement("circle", {
+    cx: "50",
+    cy: "50",
+    r: "46",
+    fill: "#fff",
+    stroke: "#294b60"
+  }), Array.from({
+    length: 12
+  }, (_, i) => {
+    const [x, y] = hand((i + 1) * 30, 38);
+    return React.createElement("text", {
+      key: i,
+      x: x,
+      y: y + 4,
+      fontSize: "10",
+      textAnchor: "middle",
+      fill: "#203b50"
+    }, i + 1);
+  }), React.createElement("line", {
+    x1: "50",
+    y1: "50",
+    x2: a[0],
+    y2: a[1],
+    stroke: "#203b50",
+    strokeWidth: "4"
+  }), React.createElement("line", {
+    x1: "50",
+    y1: "50",
+    x2: b[0],
+    y2: b[1],
+    stroke: "#b76514",
+    strokeWidth: "2"
+  }));
+}
+function PaintForm({
+  q,
+  state,
+  setState,
+  onSubmit,
+  initialHelp = 0,
+  label = '核對我的結果'
+}) {
+  const [values, setValues] = useState(q.fields.map(() => '')),
+    [pending, setPending] = useState(false),
+    [help, setHelp] = useState(initialHelp),
+    [feedback, setFeedback] = useState('');
+  const used = paintCase(state).help[q.id] || help > 0;
+  const change = (i, v) => setValues(a => a.map((x, j) => i === j ? v : x));
+  const submit = a => {
+    const good = paintAnswerCorrect(q, values);
+    onSubmit(values, used ? 'solve' : a);
+    setPending(false);
+    setFeedback(good ? '已核對，紀錄保存了。' : '還有不符合紀錄的地方。再對照材料，或看一點提示。');
+  };
+  return React.createElement("section", {
+    className: "paint-form",
+    "data-paint-question": q.id
+  }, React.createElement("div", {
+    className: "paint-form-head"
+  }, React.createElement("div", null, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u52D5\u624B\u8ABF\u67E5"), React.createElement("h2", null, q.title), q.body.map((line, i) => React.createElement("p", {
+    key: i
+  }, line))), React.createElement(PaintArt, {
+    name: q.art || 'record-card',
+    alt: q.art === 'cups' ? '藍、黃、綠三色量杯插畫（不代表題目份量）' : q.art === 'ledger' ? '庫房簿插畫' : '調查紀錄板插畫'
+  })), q.clocks && React.createElement("div", {
+    className: "row"
+  }, q.clocks.map(([h, m]) => React.createElement(PaintClock, {
+    key: h,
+    h: h,
+    m: m
+  }))), q.pie && React.createElement("svg", {
+    viewBox: "0 0 200 200",
+    width: "180",
+    role: "img",
+    "aria-label": `平均分${q.pie.parts}份，塗色${q.pie.selected}份的圓形圖`
+  }, Array.from({
+    length: q.pie.parts
+  }, (_, i) => {
+    const a = i * 2 * Math.PI / q.pie.parts - Math.PI / 2,
+      b = (i + 1) * 2 * Math.PI / q.pie.parts - Math.PI / 2;
+    return React.createElement("path", {
+      key: i,
+      d: `M100 100 L${100 + 85 * Math.cos(a)} ${100 + 85 * Math.sin(a)} A85 85 0 0 1 ${100 + 85 * Math.cos(b)} ${100 + 85 * Math.sin(b)} Z`,
+      stroke: "#203b50",
+      fill: i < q.pie.selected ? '#3091ad' : '#fff'
+    });
+  })), q.bars && React.createElement("div", {
+    className: "paint-tenths",
+    role: "img",
+    "aria-label": `平均分${q.bars.parts}格，其中${q.bars.selected}格塗色`
+  }, Array.from({
+    length: q.bars.parts
+  }, (_, i) => React.createElement("i", {
+    key: i,
+    style: {
+      background: i < q.bars.selected ? '#3091ad' : 'white'
+    }
+  }))), React.createElement("div", {
+    className: "paint-fields"
+  }, q.fields.map((f, i) => React.createElement("label", {
+    key: i,
+    className: "paint-field"
+  }, React.createElement("span", null, f.label), f.control === 'select' ? React.createElement("select", {
+    id: 'paint-input-' + i,
+    value: values[i],
+    disabled: pending,
+    onChange: e => change(i, e.target.value)
+  }, React.createElement("option", {
+    value: ""
+  }, "\u8ACB\u9078\u64C7"), f.options.map(v => React.createElement("option", {
+    key: v
+  }, v))) : ['cups', 'tenths'].includes(f.control) ? React.createElement("div", {
+    className: "paint-counter"
+  }, React.createElement("div", {
+    className: "row"
+  }, React.createElement("button", {
+    id: 'paint-dec-' + i,
+    disabled: pending,
+    "aria-label": f.label + '減少',
+    onClick: () => change(i, String(Math.max(0, Math.round((Number(values[i] || 0) - (f.control === 'tenths' ? .1 : 1)) * 10) / 10)))
+  }, "\u2212"), React.createElement("output", {
+    id: 'paint-value-' + i,
+    "aria-live": "polite"
+  }, values[i] === '' ? '尚未放入' : values[i]), React.createElement("button", {
+    id: 'paint-inc-' + i,
+    disabled: pending,
+    "aria-label": f.label + '增加',
+    onClick: () => change(i, String(Math.min(60, Math.round((Number(values[i] || 0) + (f.control === 'tenths' ? .1 : 1)) * 10) / 10)))
+  }, "\uFF0B")), React.createElement("div", {
+    className: "paint-count-visual",
+    "aria-hidden": "true"
+  }, Array.from({
+    length: Math.min(60, Math.round(Number(values[i] || 0) * (f.control === 'tenths' ? 10 : 1)))
+  }, (_, j) => React.createElement("i", {
+    key: j
+  }))), React.createElement("small", null, f.control === 'tenths' ? '每一小格代表0.1公升。' : '每一小格代表一份。')) : React.createElement("input", {
+    id: 'paint-input-' + i,
+    inputMode: "decimal",
+    value: values[i],
+    disabled: pending,
+    onChange: e => change(i, e.target.value)
+  })))), !pending ? React.createElement("div", {
+    className: "row wrap"
+  }, React.createElement("button", {
+    id: "paint-check",
+    className: "paint-primary",
+    onClick: () => setPending(true)
+  }, label), React.createElement("button", {
+    id: "paint-hint",
+    onClick: () => {
+      setHelp(h => Math.min(2, h + 1));
+      setState(paintHelp(state, q.id));
+    }
+  }, "\u7D66\u6211\u4E00\u9EDE\u63D0\u793A"), React.createElement("button", {
+    id: "paint-demo",
+    onClick: () => {
+      setHelp(2);
+      setState(paintHelp(state, q.id));
+    }
+  }, "\u5148\u770B\u793A\u7BC4")) : React.createElement("div", {
+    className: "paint-assist",
+    role: "group",
+    "aria-label": "\u9019\u6B21\u600E\u9EBC\u5B8C\u6210"
+  }, React.createElement("p", null, "\u9019\u6B21\u6709\u8AB0\u5E6B\u5FD9\u55CE\uFF1F"), React.createElement("button", {
+    id: "paint-assist-none",
+    disabled: !!used,
+    onClick: () => submit('none')
+  }, "\u6211\u81EA\u5DF1\u60F3\u7684"), React.createElement("button", {
+    id: "paint-assist-read",
+    disabled: !!used,
+    onClick: () => submit('read')
+  }, "\u53EA\u5E6B\u5FD9\u5FF5\u984C"), React.createElement("button", {
+    id: "paint-assist-solve",
+    onClick: () => submit('solve')
+  }, "\u63D0\u793A\u4E86\u89E3\u6CD5"), React.createElement("button", {
+    onClick: () => setPending(false)
+  }, "\u56DE\u53BB\u6539\u7B54\u6848"), used && React.createElement("p", null, "\u5DF2\u770B\u63D0\u793A\u6216\u793A\u7BC4\uFF0C\u9019\u984C\u6703\u8A18\u6210\u53D7\u52A9\u3002")), (help > 0 || used) && React.createElement("aside", {
+    className: "paint-hint"
+  }, React.createElement("b", null, help === 2 ? '示範' : '提示'), React.createElement("p", null, help === 2 ? q.demo : q.hint), q.id.startsWith('t5_ratio') && React.createElement("div", {
+    className: "paint-demo-groups",
+    "aria-label": "\u5169\u7D44\u5B8C\u6574\u914D\u65B9\u4E00\u8D77\u589E\u52A0"
+  }, React.createElement("span", null, "\uD83D\uDD35\uD83D\uDD35\uD83D\uDFE1"), React.createElement("span", null, "\uD83D\uDD35\uD83D\uDD35\uD83D\uDFE1")), q.kpId === 'j_fraction' && React.createElement("div", {
+    className: "paint-halves",
+    "aria-label": "\u4E00\u500B\u5B8C\u6574\u676F\u5206\u6210\u5169\u4EFD\u4E00\u6A23\u591A"
+  }, React.createElement("i", null, "\u534A\u676F"), React.createElement("i", null, "\u534A\u676F"))), feedback && React.createElement("p", {
+    role: "status",
+    className: "paint-hint"
+  }, feedback));
+}
+function PaintParentSettings({
+  state,
+  setState,
+  onBack
+}) {
+  const [ok, setOk] = useState(false);
+  if (!ok) return React.createElement(ParentGate, {
+    onPass: () => setOk(true),
+    onBack: onBack
+  });
+  const p = {
+    t5Enabled: false,
+    allowAdvanced: false,
+    disabled: [],
+    taught: [],
+    ...state.settings?.paint
+  };
+  const put = x => setState({
+    ...state,
+    settings: {
+      ...state.settings,
+      paint: {
+        ...p,
+        ...x
+      }
+    }
+  });
+  return React.createElement("section", {
+    className: "card col"
+  }, React.createElement("h2", null, "\u9019\u500B\u9810\u89BD\u7684\u5BB6\u9577\u8A2D\u5B9A"), React.createElement("p", null, "\u53EA\u63A7\u5236\u984F\u6599\u6848\u4EF6\u3002\u539F\u672C\u7684\u79D1\u76EE\u7BC4\u570D\u8207\u5B78\u7FD2\u7D00\u9304\u4ECD\u4FDD\u7559\u3002"), React.createElement("label", null, React.createElement("input", {
+    id: "paint-parent-t5",
+    type: "checkbox",
+    checked: p.t5Enabled,
+    onChange: e => put({
+      t5Enabled: e.target.checked
+    })
+  }), "\u958B\u653E\u7834\u6848\u5F8C\u7684\u81EA\u7531\u6311\u6230"), React.createElement("label", null, React.createElement("input", {
+    id: "paint-parent-advanced",
+    type: "checkbox",
+    checked: p.allowAdvanced,
+    onChange: e => put({
+      allowAdvanced: e.target.checked
+    })
+  }), "\u5141\u8A31\u4E94\u5E74\u7D1A\u5728\u81EA\u7531\u6311\u6230\u5B78\u6BD4"), React.createElement("label", null, React.createElement("input", {
+    id: "paint-parent-taught",
+    type: "checkbox",
+    checked: p.taught.includes('m_ratio'),
+    onChange: e => put({
+      taught: e.target.checked ? ['m_ratio'] : []
+    })
+  }), "\u78BA\u8A8D\u6BD4\u7684\u5148\u5099\u5DF2\u5728\u5B78\u6821\u5B78\u904E\uFF08\u4ECD\u9700\u5BE6\u969B\u9A57\u8B49\uFF09"), React.createElement("p", null, "\u8D85\u524D\u5E74\u7D1A\u7684\u4E3B\u7DDA\u984C\u4ECD\u4E0D\u958B\u653E\u3002\u672A\u77E5\u5148\u5099\u4E0D\u6703\u81EA\u52D5\u5224\u70BA\u4E0D\u8DB3\uFF1B\u5DF2\u89C0\u5BDF\u5230\u7684\u56F0\u96E3\u4ECD\u8981\u5148\u8655\u7406\u3002"), Object.keys(PAINT_ROUTE_CONCEPT).map(r => {
+    const k = PAINT_ROUTE_CONCEPT[r];
+    return React.createElement("label", {
+      key: k
+    }, React.createElement("input", {
+      id: 'paint-parent-off-' + r,
+      type: "checkbox",
+      checked: p.disabled.includes(k),
+      onChange: e => put({
+        disabled: e.target.checked ? [...p.disabled, k] : p.disabled.filter(x => x !== k)
+      })
+    }), "\u66AB\u6642\u4E0D\u4F7F\u7528", PAINT_CONCEPTS[k].name);
+  }), React.createElement("button", {
+    onClick: onBack
+  }, "\u56DE\u5230\u984F\u6599\u6848"));
+}
+function PaintDeduction({
+  id,
+  state,
+  setState
+}) {
+  const c = paintCase(state),
+    [chosen, setChosen] = useState([]),
+    [claim, setClaim] = useState(''),
+    [message, setMessage] = useState('');
+  const first = id === 'q1',
+    claims = first ? ['一定是邱老闆的顏料不好', '材料份量改變，需要問清楚', '只要罐子一樣大就會同色'] : ['向阿岩與小鈴求證', '直接宣布小鈴偷竊', '看價格就能證明品質'];
+  return React.createElement("section", {
+    className: "paint-form"
+  }, React.createElement("h2", null, first ? '推理一：顏色為什麼不同？' : '推理二：下一步問誰？'), React.createElement("p", null, "\u9078\u5169\u5F35\u6709\u7528\u7684\u8B49\u64DA\uFF0C\u518D\u63D0\u51FA\u8AAA\u6CD5\u3002"), React.createElement("div", {
+    className: "row wrap"
+  }, c.clues.filter(k => k !== 'P_extra').map(k => React.createElement("label", {
+    key: k
+  }, React.createElement("input", {
+    id: 'paint-clue-' + k,
+    type: "checkbox",
+    checked: chosen.includes(k),
+    onChange: e => setChosen(a => e.target.checked ? [...a, k] : a.filter(x => x !== k))
+  }), k, " ", PAINT_CLUES[k].title))), React.createElement("select", {
+    id: "paint-claim",
+    value: claim,
+    onChange: e => setClaim(e.target.value)
+  }, React.createElement("option", {
+    value: ""
+  }, "\u9078\u64C7\u8AAA\u6CD5"), claims.map(x => React.createElement("option", {
+    key: x
+  }, x))), React.createElement("button", {
+    id: "paint-deduce",
+    className: "paint-primary",
+    onClick: () => {
+      const next = paintDeduce(state, id, chosen, claim);
+      setState(next);
+      setMessage(paintCase(next)[id] ? '可以，接著求證。' : '證據還不支持這個結論。');
+    }
+  }, "\u63D0\u51FA\u63A8\u7406"), message && React.createElement("p", {
+    role: "status"
+  }, message));
+}
+const PAINT_CLUES = {
+  P1: {
+    title: '份量紀錄',
+    text: 'C的預定藍色量比實際多2杯（0.5公升）。這證明帳物或調配有差異，尚不能判斷所有原料的品質。',
+    junior: 'C的藍色少了2杯。'
+  },
+  P2: {
+    title: '門口記事',
+    text: '邱老闆9點送貨；小鈴10點半進門；阿岩11點開始調色。這些時間需要和當事人核對。',
+    junior: '先送貨，再進門，最後調色。'
+  },
+  P3: {
+    title: '重新試色',
+    text: '用同批未加水顏料，按標準份量另調，在同一紙面與光線比較，能配出留存的標準色。這次試驗不代表所有批次都沒有品質問題。',
+    junior: '用原本顏料，另外調一桶。顏色和樣本一樣。'
+  },
+  P4: {
+    title: '先查再說',
+    text: '份量紀錄、到訪記事、重調觀察可以核對。便宜等於品質差是意見；阿岩的說法還要查。',
+    junior: '先看紀錄，再問清楚。'
+  },
+  P_extra: {
+    title: '進貨單',
+    text: '單據批次與工坊原料相符，只能核對來源與交易；價格不能單獨證明品質。',
+    junior: '單子可以查來源。價格不能證明好壞。'
+  }
+};
+function PaintPreview({
+  state,
+  setState,
+  onExit
+}) {
+  const c = paintCase(state),
+    junior = studentGrade(state.student) === 2,
+    [parent, setParent] = useState(false),
+    [activity, setActivity] = useState(null),
+    [probeMode, setProbeMode] = useState(false),
+    [notice, setNotice] = useState('');
+  const route = paintRoute(state),
+    task = ['T1', 'T2', 'T3', 'T4'].find(k => !c.tasks[k]),
+    q = task ? paintQuestion(state, task) : null;
+  const put = s => {
+    setState(s);
+  };
+  const done = fn => {
+    put(fn());
+    setActivity(null);
+  };
+  const due = Object.keys(learningV2(state.student).concepts).filter(k => paintDelayed(state, k));
+  if (parent) return React.createElement(PaintParentSettings, {
+    state: state,
+    setState: setState,
+    onBack: () => setParent(false)
+  });
+  let form = null;
+  if (activity?.type === 'delay') {
+    const d = paintDelayed(state, activity.id);
+    if (d) form = React.createElement(PaintForm, {
+      key: d.id,
+      q: d,
+      state: state,
+      setState: setState,
+      onSubmit: (v, a) => done(() => paintDelayedSubmit(state, activity.id, v, a))
+    });
+  }
+  if (activity?.type === 'practice') {
+    const d = PAINT_BANK.find(x => x.id === activity.id);
+    if (d && paintAllowed(state, d.kpId)) form = React.createElement(PaintForm, {
+      key: d.id,
+      q: d,
+      state: state,
+      setState: setState,
+      onSubmit: (v, a) => {
+        const correct = paintAnswerCorrect(d, v);
+        let s = v2Record(state, d.kpId, correct, paintCase(state).help[d.id] ? 'solve' : a, 'task', d.id);
+        if (correct) {
+          s = paintPatch(s, {
+            seen: [...new Set([...c.seen, d.id])].slice(-200)
+          });
+          setActivity(null);
+        }
+        put(s);
+      }
+    });
+  }
+  return React.createElement("main", {
+    className: "paint-preview",
+    id: "paint-preview"
+  }, React.createElement("div", {
+    className: "paint-cover"
+  }, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u8001\u8857\u756A\u5916\u59D4\u8A17 \xB7 \u8A66\u73A9\u9810\u89BD"), React.createElement("h1", null, "\u88AB\u6389\u5305\u7684\u984F\u6599"), React.createElement("p", null, junior ? '壁畫的顏色不一樣。一起查清楚。' : '四罐原本要調成同一個顏色，送到老街卻有一罐較淡。是原料出了問題，還是調配發生了變化？'), React.createElement("div", {
+    className: "row wrap"
+  }, React.createElement("button", {
+    id: "paint-exit",
+    onClick: onExit
+  }, "\u56DE\u5230\u5192\u96AA"), React.createElement("button", {
+    id: "paint-parent",
+    onClick: () => setParent(true)
+  }, "\u9810\u89BD\u5BB6\u9577\u8A2D\u5B9A"), React.createElement("span", null, "\u9032\u5EA6\u81EA\u52D5\u4FDD\u5B58"))), React.createElement("div", {
+    className: "paint-layout"
+  }, React.createElement("aside", {
+    className: "paint-evidence"
+  }, React.createElement(PaintArt, {
+    name: "cans",
+    alt: "\u7531\u5DE6\u5230\u53F3A\u5C0F\u7F50\u3001B\u5927\u7F50\u3001C\u4E2D\u7F50\u8F03\u6DE1\u3001D\u4E2D\u7F50\uFF1B\u63D2\u756B\u53EA\u4F5C\u5916\u89C0\u53C3\u8003"
+  }), React.createElement("div", {
+    className: "paint-labels"
+  }, React.createElement("b", null, "A"), React.createElement("b", null, "B"), React.createElement("b", null, "C"), React.createElement("b", null, "D")), React.createElement("ol", {
+    className: "paint-progress"
+  }, [['T1', '查份量'], ['T2', '查時間'], ['T3', '重新試色'], ['T4', '整理證據']].map(([k, t]) => React.createElement("li", {
+    key: k,
+    className: c.tasks[k] ? 'complete' : ''
+  }, c.tasks[k] ? '✓' : '○', " ", t))), React.createElement("h2", null, "\u8ABF\u67E5\u624B\u518A"), c.clues.length === 0 ? React.createElement("p", null, "\u52D5\u624B\u6838\u5C0D\u5F8C\uFF0C\u7DDA\u7D22\u6703\u6536\u9032\u9019\u88E1\u3002") : c.clues.map(k => React.createElement("details", {
+    key: k
+  }, React.createElement("summary", null, k, " ", PAINT_CLUES[k].title), React.createElement("p", null, junior ? PAINT_CLUES[k].junior : PAINT_CLUES[k].text))), React.createElement("details", null, React.createElement("summary", null, "\u8A5E\u8A9E\u5C0F\u5E6B\u624B"), React.createElement("p", null, "\u914D\u65B9\uFF1A\u8981\u7528\u54EA\u4E9B\u6750\u6599\u3001\u5404\u7528\u591A\u5C11\u3002"), React.createElement("p", null, "\u9818\u7528\uFF1A\u62FF\u6750\u6599\u4F86\u4F7F\u7528\u3002"), React.createElement("p", null, "\u767B\u8A18\uFF1A\u628A\u4E8B\u60C5\u8A18\u4E0B\u4F86\u3002"), React.createElement("p", null, "\u8B49\u64DA\uFF1A\u80FD\u6AA2\u67E5\u8AAA\u6CD5\u7684\u7D00\u9304\u6216\u89C0\u5BDF\u3002"), React.createElement("p", null, "\u610F\u898B\uFF1A\u4E00\u500B\u4EBA\u7684\u60F3\u6CD5\u6216\u611F\u53D7\u3002"))), React.createElement("div", {
+    className: "paint-main"
+  }, form || React.createElement(React.Fragment, null, paintNeedsProbe(state) ? React.createElement("section", {
+    className: "paint-form"
+  }, React.createElement("h2", null, "\u5148\u8A66\u4E00\u5F35\u914D\u65B9\u5361"), React.createElement("p", null, "\u4F59\u9928\u54E1\uFF1A\u5148\u770B\u770B\u4F60\u7FD2\u6163\u600E\u9EBC\u505A\u3002"), !probeMode ? React.createElement("div", {
+    className: "row wrap"
+  }, React.createElement("button", {
+    id: "paint-probe-try",
+    onClick: () => setProbeMode('try')
+  }, "\u6211\u6703\uFF0C\u76F4\u63A5\u8A66"), React.createElement("button", {
+    id: "paint-probe-hint",
+    onClick: () => {
+      put(paintHelp(state, 'probe_ratio'));
+      setProbeMode('hint');
+    }
+  }, "\u7D66\u6211\u4E00\u9EDE\u63D0\u793A"), React.createElement("button", {
+    id: "paint-probe-demo",
+    onClick: () => {
+      put(paintHelp(state, 'probe_ratio'));
+      setProbeMode('demo');
+    }
+  }, "\u5148\u770B\u793A\u7BC4")) : React.createElement(PaintForm, {
+    initialHelp: probeMode === 'demo' ? 2 : probeMode === 'hint' ? 1 : 0,
+    q: PAINT_CASE.core.probe_ratio,
+    state: state,
+    setState: setState,
+    onSubmit: (v, a) => {
+      put(paintProbe(state, 'try', v, paintCase(state).help.probe_ratio ? 'solve' : a));
+      setProbeMode(false);
+    }
+  })) : task ? React.createElement(React.Fragment, null, q && paintAllowed(state, q.kpId) ? React.createElement(React.Fragment, null, React.createElement("p", {
+    className: "paint-route"
+  }, junior ? '我們一步一步來' : '這條路線使用：' + PAINT_CONCEPTS[q.kpId].name, "\u3002\u9700\u8981\u5E6B\u5FD9\u4E5F\u80FD\u7E7C\u7E8C\u8ABF\u67E5\u3002"), React.createElement(PaintForm, {
+    key: q.id,
+    q: q,
+    state: state,
+    setState: setState,
+    onSubmit: (v, a) => put(paintSubmit(state, task, v, a))
+  })) : React.createElement("section", {
+    className: "paint-form"
+  }, React.createElement("h2", null, "\u5148\u8ABF\u6574\u9019\u500B\u6848\u4EF6\u7684\u7DF4\u7FD2\u7BC4\u570D"), React.createElement("p", null, "\u76EE\u524D\u95DC\u9589\u4E86\u9019\u4E00\u6B65\u9700\u8981\u7684\u89C0\u5FF5\uFF0C\u6216\u5DF2\u6709\u5148\u5099\u56F0\u96E3\u7D00\u9304\u3002\u5DF2\u627E\u5230\u7684\u7DDA\u7D22\u6703\u4FDD\u7559\u3002"), React.createElement("button", {
+    onClick: () => setParent(true)
+  }, "\u8ACB\u5BB6\u9577\u770B\u770B"))) : !c.q1 ? React.createElement(PaintDeduction, {
+    key: "q1",
+    id: "q1",
+    state: state,
+    setState: setState
+  }) : !c.q2 ? React.createElement(PaintDeduction, {
+    key: "q2",
+    id: "q2",
+    state: state,
+    setState: setState
+  }) : !c.solved ? React.createElement("section", {
+    className: "paint-form"
+  }, React.createElement("h2", null, "\u4E00\u8D77\u628A\u4E8B\u60C5\u8AAA\u6E05\u695A"), !c.confession ? React.createElement(React.Fragment, null, React.createElement("p", null, junior ? '先請兩人說明。' : '記事與材料紀錄提供了求證方向，但還不能直接斷定誰做了什麼。阿岩和小鈴同意說明。'), React.createElement("button", {
+    id: "paint-confess",
+    onClick: () => put(paintConfess(state))
+  }, "\u807D\u5169\u4EBA\u8AAA\u660E")) : React.createElement(React.Fragment, null, React.createElement("p", null, "\u5C0F\u9234\uFF1A\u6211\u501F\u4E862\u676F\u85CD\u8272\uFF0C\u5FD8\u4E86\u767B\u8A18\u3002"), React.createElement("p", null, "\u963F\u5CA9\uFF1A\u85CD\u8272\u4E0D\u5920\uFF0C\u6211\u88DC\u4E86\u6C34\u3002\u6211\u6C92\u6709\u8AAA\u3002"), React.createElement("p", null, junior ? '兩人看了紀錄，確認沒有記錯。' : '兩人一起核對領用與罐底紀錄，和已找到的線索相符。'), React.createElement("button", {
+    id: "paint-solve",
+    className: "paint-primary",
+    onClick: () => put(paintSolve(state))
+  }, "\u6574\u7406\u771F\u76F8\uFF0C\u5B8C\u6210\u59D4\u8A17"))) : React.createElement("section", {
+    className: "paint-form",
+    id: "paint-ending"
+  }, React.createElement("h2", null, "\u4E8B\u60C5\u67E5\u6E05\u695A\u4E86"), React.createElement("p", null, junior ? '借走顏料沒登記。缺了顏料又加水。大家一起重新調色。' : '沒有找到掉包證據。小鈴借用未登記、阿岩補水未說明，造成配方改變。兩人一起重調顏料，也補上領用紀錄。'), React.createElement("p", null, "\u5927\u5BB6\u5411\u90B1\u8001\u95C6\u9053\u6B49\uFF1A\u4E0D\u80FD\u53EA\u56E0\u50F9\u683C\u5C31\u6307\u8CAC\u54C1\u8CEA\u3002"), React.createElement("p", null, "\u59D4\u8A17\u5B8C\u6210 \xB7 30 XP\uFF08\u53EA\u9818\u4E00\u6B21\uFF09\u3002\u81EA\u7531\u6311\u6230\u53EF\u8DF3\u904E\u3002"), React.createElement("p", null, "\u5B8C\u6210\u6848\u4EF6\u4E0D\u7B49\u65BC\u5DF2\u638C\u63E1\u3002\u9694\u5E7E\u5929\u518D\u7528\u65B0\u984C\u78BA\u8A8D\u3002"), ['new', 'guided', 'ready'].includes(c.t5) && React.createElement("button", {
+    id: "paint-t5-skip",
+    onClick: () => put(paintSkip(state))
+  }, "\u4ECA\u5929\u5230\u9019\u88E1\uFF0C\u8DF3\u904E\u81EA\u7531\u6311\u6230"), paintChallengeAllowed(state) ? c.t5 === 'new' ? React.createElement("button", {
+    id: "paint-t5-start",
+    onClick: () => put(paintChallengeStart(state))
+  }, "\u81EA\u7531\u6311\u6230\uFF1A\u5148\u770B\u5716\u89E3") : React.createElement(PaintForm, {
+    initialHelp: c.t5 === 'guided' ? 2 : 0,
+    key: paintChallengeQuestion(state).id,
+    q: paintChallengeQuestion(state),
+    state: state,
+    setState: setState,
+    onSubmit: (v, a) => put(paintChallengeSubmit(state, v, a))
+  }) : React.createElement("p", null, c.t5 === 'done' ? '額外委託完成，進貨單已收進手冊。' : c.t5 === 'stopped' ? '今天先到這裡。下次再學，不扣任何東西。' : c.t5 === 'skipped' ? '已跳過自由挑戰；破案和獎勵都保留。' : '自由挑戰尚未開放，或今天已學了另一個新觀念。'), c.t5 === 'done' && React.createElement(PaintArt, {
+    name: "invoice",
+    alt: "\u9032\u8CA8\u55AE\uFF1A\u53EF\u6838\u5C0D\u6279\u6B21\u53CA\u4F86\u6E90\uFF0C\u4E0D\u80FD\u53EA\u9760\u50F9\u683C\u8B49\u660E\u54C1\u8CEA"
+  }), React.createElement("details", null, React.createElement("summary", null, "\u65B0\u59D4\u8A17\u7DF4\u7FD2\uFF08\u4E0D\u6539\u539F\u6848\u7DDA\u7D22\uFF09"), React.createElement("p", null, "\u63DB\u500B\u60C5\u5883\u7DF4\u7FD2\uFF0C\u5148\u51FA\u9084\u6C92\u505A\u904E\u7684\u984C\u3002"), React.createElement("button", {
+    id: "paint-practice",
+    onClick: () => {
+      const pool = PAINT_BANK.filter(x => x.group !== 'delayed' && paintAllowed(state, x.kpId));
+      const next = pool.find(x => !c.seen.includes(x.id)) || pool[0];
+      if (next) {
+        setActivity({
+          type: 'practice',
+          id: next.id
+        });
+        setNotice(c.seen.includes(next.id) ? '這個範圍的新題已做完，現在複習。' : '新的委託，不影響原案。');
+      }
+    }
+  }, "\u63A5\u4E00\u500B\u65B0\u59D4\u8A17")))), activity && React.createElement("button", {
+    onClick: () => setActivity(null)
+  }, "\u5148\u56DE\u8ABF\u67E5\u624B\u518A"), notice && React.createElement("p", {
+    role: "status"
+  }, notice), due.length > 0 && React.createElement("section", {
+    className: "paint-form"
+  }, React.createElement("h2", null, "\u9694\u5E7E\u5929\uFF0C\u518D\u8A66\u65B0\u984C"), due.map(k => React.createElement("button", {
+    id: 'paint-due-' + k,
+    key: k,
+    onClick: () => setActivity({
+      type: 'delay',
+      id: k
+    })
+  }, PAINT_CONCEPTS[k].name))), React.createElement("details", {
+    className: "paint-learning"
+  }, React.createElement("summary", null, "\u672C\u6B21\u5B78\u7FD2\u7D00\u9304"), Object.entries(learningV2(state.student).concepts).map(([k, e]) => React.createElement("p", {
+    key: k
+  }, PAINT_CONCEPTS[k].name, "\uFF1A", e.presumed ? '推定，尚未確認' : e.status === 'mastered' ? e.provisional ? '暫定，待延後驗證' : '已掌握本次評量部分' : e.status === 'review' ? '需複習' : '探索中', e.nextCheckAt && ' · 下次 ' + fmtDay(e.nextCheckAt))), React.createElement("p", null, "\u672C\u6B21\u53EA\u8A55\u91CF\u89C0\u5FF5\u7684\u4E00\u90E8\u5206\uFF0C\u4E0D\u4EE3\u8868\u6574\u689D\u8AB2\u7DB1\u90FD\u6703\u3002")))));
+}
 const AI_STATUS = {
   image: false,
   reason: false,
@@ -63805,7 +69940,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v36\uFF08\u4E94\u5E74\u7D1A\u4F9D\u8AB2\u7DB1\u5192\u96AA\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v37\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -64212,6 +70347,12 @@ function StorageRecovery({
 function App() {
   const [state, setStateRaw] = useState(() => loadPlayableState());
   const [mode, setMode] = useState('student');
+  const [paintPreview, setPaintPreview] = useState(() => location.hash === '#paint');
+  useEffect(() => {
+    const h = () => setPaintPreview(location.hash === '#paint');
+    window.addEventListener('hashchange', h);
+    return () => window.removeEventListener('hashchange', h);
+  }, []);
   const [toast, toastEl] = useToast();
   const [storageWarning, setStorageWarning] = useState('');
   const [unsavedText, setUnsavedText] = useState('');
@@ -64299,7 +70440,7 @@ function App() {
   });
   return React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v36",
+    "data-build": "2026.11.10-v37",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
@@ -64334,7 +70475,15 @@ function App() {
     readOnly: true,
     value: unsavedText,
     onFocus: e => e.target.select()
-  })), mode === 'student' ? React.createElement(StudentApp, {
+  })), mode === 'student' && paintPreview && s ? React.createElement(PaintPreview, {
+    key: 'paint-' + profiles.active,
+    state: state,
+    setState: setState,
+    onExit: () => {
+      location.hash = '';
+      setPaintPreview(false);
+    }
+  }) : mode === 'student' ? React.createElement(StudentApp, {
     key: 'student-' + profiles.active,
     state: state,
     setState: setState,
