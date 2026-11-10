@@ -713,7 +713,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-pet-care">
+<meta name="game-release" content="playtest-20261110-pet-care-b">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -68620,14 +68620,14 @@ function CareNeutral({
     const r = careNeutralVisit(state, where);
     if (r.state !== state) setState(r.state);
     setLine(r.line);
-  }, [where, c?.enabled, c?.out?.[0]]);
+  }, [where, c?.enabled, c?.selfCare, c?.out?.[0]]);
   if (!c?.enabled) return null;
   const id = c.out[0],
     p = c.pets[id];
   return React.createElement("div", {
     className: "care-neutral",
     id: "care-neutral"
-  }, React.createElement("span", null, selectedCompanion(state.student).name, " ", c.selfCare ? '會自己照顧自己' : `${carePetKind(id) === 'machine' ? '能源' : '飽足'} ${Math.round(p?.sat || 0)}`), line && React.createElement("span", {
+  }, React.createElement("span", null, selectedCompanion(state.student).name, " ", c.selfCare ? '會自己照顧自己' : `${carePetKind(id) === 'machine' ? '能源' : '飽足'} ${Math.round(p?.sat || 0)}`), !c.selfCare && line && React.createElement("span", {
     role: "status"
   }, line), onOpen && React.createElement(Btn, {
     small: true,
@@ -70078,7 +70078,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.10-v46',
+    build: '2026.11.10-v46b',
     ...context,
     message
   };
@@ -74942,7 +74942,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v46\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v46b\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -75455,7 +75455,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v46",
+    "data-build": "2026.11.10-v46b",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
