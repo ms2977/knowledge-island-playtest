@@ -681,7 +681,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-reviewed-banks">
+<meta name="game-release" content="playtest-20261110-grade5">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -16037,6 +16037,3919 @@ const CH4_QUESTION_BANK = [{
   },
   "contentKey": "ch4:6efccb5f68d3cdab0f1b549e"
 }];
+const G5_EXPANSION_BANK = [{
+  "id": "g5x_n51_place_1",
+  "kpId": "g5_n51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "電表顯示 46.372。數字 7 代表的數值是多少？",
+      "answer": 0.07,
+      "answerExact": "7/100",
+      "unit": "",
+      "explain": "7 在百分位，代表 7 個 0.01，即 0.07。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:a0a7ad9179d2f12489a8cc2d",
+  "variantGroup": "g5:g5_n51:place",
+  "title": "十進位的位值系統調查"
+}, {
+  "id": "g5x_n51_place_2",
+  "kpId": "g5_n51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "編號板上有 3 個兆、2 個億、5 個萬和 6 個一。請寫出這個數。",
+      "answer": 3000200050006,
+      "answerExact": "3000200050006",
+      "unit": "",
+      "explain": "各位值相加：3,000,200,050,006。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:fb6923f64e5e98ac8593bffa",
+  "variantGroup": "g5:g5_n51:place",
+  "title": "十進位的位值系統調查"
+}, {
+  "id": "g5x_n51_shift_1",
+  "kpId": "g5_n51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一小格液體是 0.036 公升，10 小格共幾公升？",
+      "answer": 0.36,
+      "answerExact": "9/25",
+      "unit": "公升",
+      "explain": "乘以10，每個數字的位值變為原來的10倍，得0.36。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:25afd7fd6a0af7ce5ecd9ac6",
+  "variantGroup": "g5:g5_n51:shift",
+  "title": "十進位的位值系統調查"
+}, {
+  "id": "g5x_n51_shift_2",
+  "kpId": "g5_n51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "600000 枚零件，每箱裝 4000 枚，能裝幾箱？",
+      "answer": 150,
+      "answerExact": "150",
+      "unit": "箱",
+      "explain": "同除以1000，600÷4＝150。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:411f4906cf09db4aa362c5e4",
+  "variantGroup": "g5:g5_n51:shift",
+  "title": "十進位的位值系統調查"
+}, {
+  "id": "g5x_n51_shift_3",
+  "kpId": "g5_n51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "300 盒零件，每盒有 1200 枚，共有幾枚？",
+      "answer": 360000,
+      "answerExact": "360000",
+      "unit": "枚",
+      "explain": "3×12＝36，再依位值補4個0，得360000。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:7ef3ced6ebc607fbde0527d9",
+  "variantGroup": "g5:g5_n51:shift",
+  "title": "十進位的位值系統調查"
+}, {
+  "id": "g5x_n51_compare_1",
+  "kpId": "g5_n51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "精密秤的三筆重量是 5.06、5.006、5.6 公斤。由小到大的排列是哪個？",
+      "options": [{
+        "text": "5.006 ＜ 5.06 ＜ 5.6",
+        "correct": true,
+        "why": "可補成5.006、5.060、5.600比較。"
+      }, {
+        "text": "5.6 ＜ 5.06 ＜ 5.006",
+        "correct": false,
+        "why": "小數位數多不表示較大。"
+      }, {
+        "text": "5.06 ＜ 5.006 ＜ 5.6",
+        "correct": false,
+        "why": "對齊個位、十分位、百分位逐位比較。"
+      }],
+      "hint": "可補成5.006、5.060、5.600比較。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:08f2967cbebb02b30c8a541f",
+  "variantGroup": "g5:g5_n51:compare",
+  "title": "十進位的位值系統調查"
+}, {
+  "id": "g5x_n52_supply",
+  "kpId": "g5_n52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "庫房有8箱燈芯，每箱12條；再收到15條，用掉27條，還有幾條？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "8 × 12 ＋ 15 − 27",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "8 × (12 ＋ 15) − 27",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "8 × 12 − 15 − 27",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "84",
+        "correct": true,
+        "why": "8 × 12 ＋ 15 − 27＝84"
+      }, {
+        "text": "85",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "94",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:2e5488f6a45f4678fb2e20bb",
+  "variantGroup": "g5:g5_n52:supply",
+  "title": "多步驟生活應用調查"
+}, {
+  "id": "g5x_n52_packs",
+  "kpId": "g5_n52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "3個工作站各有18支刷子和12支鉛筆。合在一起，每袋裝6支，可裝幾袋？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(18 ＋ 12) × 3 ÷ 6",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "18 ＋ 12 × 3 ÷ 6",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "(18 ＋ 12) ÷ 3 ÷ 6",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "15",
+        "correct": true,
+        "why": "(18 ＋ 12) × 3 ÷ 6＝15"
+      }, {
+        "text": "16",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "25",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:e594e7272fd122b592cc207d",
+  "variantGroup": "g5:g5_n52:packs",
+  "title": "多步驟生活應用調查"
+}, {
+  "id": "g5x_n52_tickets",
+  "kpId": "g5_n52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "4個小隊各買7張參觀券，每張25元；共付1000元，找回多少元？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "1000 − 4 × 7 × 25",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "(1000 − 4) × 7 × 25",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "1000 − 4 × (7 ＋ 25)",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "300",
+        "correct": true,
+        "why": "1000 − 4 × 7 × 25＝300"
+      }, {
+        "text": "301",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "310",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:abe4f6f56a616862800f4d41",
+  "variantGroup": "g5:g5_n52:tickets",
+  "title": "多步驟生活應用調查"
+}, {
+  "id": "g5x_n52_repair",
+  "kpId": "g5_n52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "4條步道各要補15塊新磚和9塊舊磚。每車運8塊，一共要運幾車？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "4 × (15 ＋ 9) ÷ 8",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "(4 × 15 ＋ 9) ÷ 8",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "4 × (15 − 9) ÷ 8",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "12",
+        "correct": true,
+        "why": "4 × (15 ＋ 9) ÷ 8＝12"
+      }, {
+        "text": "13",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "22",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:a60b082a17f2eb00f253b962",
+  "variantGroup": "g5:g5_n52:repair",
+  "title": "多步驟生活應用調查"
+}, {
+  "id": "g5x_n52_remain",
+  "kpId": "g5_n52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "10箱標籤，每箱24張；分給6組，每組18張，剩下幾張？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "10 × 24 − 6 × 18",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "(10 × 24 − 6) × 18",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "10 × (24 − 18) × 6",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "132",
+        "correct": true,
+        "why": "10 × 24 − 6 × 18＝132"
+      }, {
+        "text": "133",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "142",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:982d3bfd8a9f9621a5f19ead",
+  "variantGroup": "g5:g5_n52:remain",
+  "title": "多步驟生活應用調查"
+}, {
+  "id": "g5x_n52_average",
+  "kpId": "g5_n52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "3天分別修好18、24、30盞路燈，平均一天修好幾盞？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(18 ＋ 24 ＋ 30) ÷ 3",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "18 ＋ 24 ＋ 30 ÷ 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "(18 ＋ 24 ＋ 30) × 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "24",
+        "correct": true,
+        "why": "(18 ＋ 24 ＋ 30) ÷ 3＝24"
+      }, {
+        "text": "25",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "34",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:a1dd5097fd3714def7084f40",
+  "variantGroup": "g5:g5_n52:average",
+  "title": "多步驟生活應用調查"
+}, {
+  "id": "g5x_r51_mean",
+  "kpId": "g5_r51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "4次量得繩長12、16、20、16公分，平均每次幾公分？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(12 ＋ 16 ＋ 20 ＋ 16) ÷ 4",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "12 ＋ 16 ＋ 20 ＋ 16 ÷ 4",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "(12 ＋ 16 ＋ 20 ＋ 16) ÷ 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "16",
+        "correct": true,
+        "why": "(12 ＋ 16 ＋ 20 ＋ 16) ÷ 4＝16"
+      }, {
+        "text": "17",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "26",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:fa0adf81aca3fc5c59321649",
+  "variantGroup": "g5:g5_r51:mean",
+  "title": "三步驟問題併式調查"
+}, {
+  "id": "g5x_r51_boxes",
+  "kpId": "g5_r51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "6箱各20片木板，另有18片。每3片做一個架子，可做幾個？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(6 × 20 ＋ 18) ÷ 3",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "6 × (20 ＋ 18) ÷ 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "6 × 20 ＋ 18 ÷ 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "46",
+        "correct": true,
+        "why": "(6 × 20 ＋ 18) ÷ 3＝46"
+      }, {
+        "text": "47",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "56",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:fc4a28557c1239b5084715f0",
+  "variantGroup": "g5:g5_r51:boxes",
+  "title": "三步驟問題併式調查"
+}, {
+  "id": "g5x_r51_tickets",
+  "kpId": "g5_r51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "每張票40元，12張票收款後退回3張的票錢，再付80元材料費，剩幾元？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(12 − 3) × 40 − 80",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "12 − 3 × 40 − 80",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "(12 − 3) × (40 − 80)",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "280",
+        "correct": true,
+        "why": "(12 − 3) × 40 − 80＝280"
+      }, {
+        "text": "281",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "290",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:87e2c58c8e7c40bd17a4d664",
+  "variantGroup": "g5:g5_r51:tickets",
+  "title": "三步驟問題併式調查"
+}, {
+  "id": "g5x_r51_split",
+  "kpId": "g5_r51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "每組需要9張藍卡和6張黃卡，5組的卡片平均分到3箱，每箱幾張？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(9 ＋ 6) × 5 ÷ 3",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "9 ＋ 6 × 5 ÷ 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "(9 ＋ 6) ÷ 5 × 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "25",
+        "correct": true,
+        "why": "(9 ＋ 6) × 5 ÷ 3＝25"
+      }, {
+        "text": "26",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "35",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:0f3a94cf7343b6a3c76d1a81",
+  "variantGroup": "g5:g5_r51:split",
+  "title": "三步驟問題併式調查"
+}, {
+  "id": "g5x_r51_return",
+  "kpId": "g5_r51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "收進7袋種子，每袋30顆。送出45顆後，把其餘平均分給5個花圃，每個幾顆？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(7 × 30 − 45) ÷ 5",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "7 × (30 − 45) ÷ 5",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "7 × 30 − 45 ÷ 5",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "33",
+        "correct": true,
+        "why": "(7 × 30 − 45) ÷ 5＝33"
+      }, {
+        "text": "34",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "43",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:80df38d45215173b47605aab",
+  "variantGroup": "g5:g5_r51:return",
+  "title": "三步驟問題併式調查"
+}, {
+  "id": "g5x_r51_mean2",
+  "kpId": "g5_r51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "先列出調查算式，再核對結果。",
+    "items": [{
+      "q": "展覽前兩天各來36人，第三天來48人，平均每天幾人？ 哪個算式完整表示這件事？",
+      "options": [{
+        "text": "(36 × 2 ＋ 48) ÷ 3",
+        "correct": true,
+        "why": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+      }, {
+        "text": "36 × 2 ＋ 48 ÷ 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }, {
+        "text": "(36 ＋ 48) ÷ 3",
+        "correct": false,
+        "why": "逐步對照題目，檢查被分組、增加與扣除的數量。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }, {
+      "q": "依剛才的情境，最後的數量是多少？",
+      "options": [{
+        "text": "40",
+        "correct": true,
+        "why": "(36 × 2 ＋ 48) ÷ 3＝40"
+      }, {
+        "text": "41",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }, {
+        "text": "50",
+        "correct": false,
+        "why": "先完成括號內的運算，再檢查其他步驟。"
+      }],
+      "hint": "先把情境中的數量關係寫在同一個算式，再依括號及先乘除後加減計算。"
+    }],
+    "passNeed": 2
+  },
+  "contentKey": "g5:3ce9afa52cd1b4a486b8db0f",
+  "variantGroup": "g5:g5_r51:mean2",
+  "title": "三步驟問題併式調查"
+}, {
+  "id": "g5x_n53_factor_1",
+  "kpId": "g5_n53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "12張藍卡和18張黃卡要分成一樣多張的同色小包，每包張數相同且沒有剩下。每包最多幾張？",
+      "answer": 6,
+      "answerExact": "6",
+      "unit": "張",
+      "explain": "列出兩數的因數，最大的共同因數是6；不使用短除法。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:d1b350389926692a009831a6",
+  "variantGroup": "g5:g5_n53:factor",
+  "title": "公因數和公倍數調查"
+}, {
+  "id": "g5x_n53_multiple_1",
+  "kpId": "g5_n53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "兩盞訊號燈現在一起亮，一盞每12秒亮一次，另一盞每18秒亮一次。至少再過幾秒會一起亮？",
+      "answer": 36,
+      "answerExact": "36",
+      "unit": "秒",
+      "explain": "依次列出12與18的倍數，第一個正的共同倍數是36。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:dd94882c2233c73dad9a0522",
+  "variantGroup": "g5:g5_n53:multiple",
+  "title": "公因數和公倍數調查"
+}, {
+  "id": "g5x_n53_factor_2",
+  "kpId": "g5_n53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "16張藍卡和24張黃卡要分成一樣多張的同色小包，每包張數相同且沒有剩下。每包最多幾張？",
+      "answer": 8,
+      "answerExact": "8",
+      "unit": "張",
+      "explain": "列出兩數的因數，最大的共同因數是8；不使用短除法。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:337afc59c6c8ed5cd12eae7c",
+  "variantGroup": "g5:g5_n53:factor",
+  "title": "公因數和公倍數調查"
+}, {
+  "id": "g5x_n53_multiple_2",
+  "kpId": "g5_n53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "兩盞訊號燈現在一起亮，一盞每16秒亮一次，另一盞每24秒亮一次。至少再過幾秒會一起亮？",
+      "answer": 48,
+      "answerExact": "48",
+      "unit": "秒",
+      "explain": "依次列出16與24的倍數，第一個正的共同倍數是48。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:99e7e8f4da25ef61181a4858",
+  "variantGroup": "g5:g5_n53:multiple",
+  "title": "公因數和公倍數調查"
+}, {
+  "id": "g5x_n53_factor_3",
+  "kpId": "g5_n53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "18張藍卡和30張黃卡要分成一樣多張的同色小包，每包張數相同且沒有剩下。每包最多幾張？",
+      "answer": 6,
+      "answerExact": "6",
+      "unit": "張",
+      "explain": "列出兩數的因數，最大的共同因數是6；不使用短除法。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:9b60c725a72d4bacd2335c1e",
+  "variantGroup": "g5:g5_n53:factor",
+  "title": "公因數和公倍數調查"
+}, {
+  "id": "g5x_n53_multiple_3",
+  "kpId": "g5_n53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "兩盞訊號燈現在一起亮，一盞每18秒亮一次，另一盞每30秒亮一次。至少再過幾秒會一起亮？",
+      "answer": 90,
+      "answerExact": "90",
+      "unit": "秒",
+      "explain": "依次列出18與30的倍數，第一個正的共同倍數是90。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:527d979ea6e32425dea62611",
+  "variantGroup": "g5:g5_n53:multiple",
+  "title": "公因數和公倍數調查"
+}, {
+  "id": "g5x_n56_share_1",
+  "kpId": "g5_n56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "3公尺緞帶平均分給4組，每份是多少？可用分數作答。",
+      "answer": 0.75,
+      "answerExact": "3/4",
+      "unit": "公尺",
+      "explain": "3÷4＝3/4，有剩下的整份仍可再等分，不能只寫整數商。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:09b34b82d20a7e7846b8146d",
+  "variantGroup": "g5:g5_n56:share",
+  "title": "整數相除之分數表示調查"
+}, {
+  "id": "g5x_n56_share_2",
+  "kpId": "g5_n56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "5公升果汁平均裝進8個瓶子，每份是多少？可用分數作答。",
+      "answer": 0.625,
+      "answerExact": "5/8",
+      "unit": "公升",
+      "explain": "5÷8＝5/8，有剩下的整份仍可再等分，不能只寫整數商。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:3d269ca4bb4d8392d720c93c",
+  "variantGroup": "g5:g5_n56:share",
+  "title": "整數相除之分數表示調查"
+}, {
+  "id": "g5x_n56_share_3",
+  "kpId": "g5_n56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "7張同樣大的圖卡平均分給3人（可以剪開），每份是多少？可用分數作答。",
+      "answer": 2.3333333333333335,
+      "answerExact": "7/3",
+      "unit": "張",
+      "explain": "7÷3＝7/3，有剩下的整份仍可再等分，不能只寫整數商。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:1ecd1110ced6c36ab7d4cd8f",
+  "variantGroup": "g5:g5_n56:share",
+  "title": "整數相除之分數表示調查"
+}, {
+  "id": "g5x_n56_share_4",
+  "kpId": "g5_n56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "2公斤黏土平均分給5組，每份是多少？可用分數作答。",
+      "answer": 0.4,
+      "answerExact": "2/5",
+      "unit": "公斤",
+      "explain": "2÷5＝2/5，有剩下的整份仍可再等分，不能只寫整數商。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:511a5313d3084958230482ac",
+  "variantGroup": "g5:g5_n56:share",
+  "title": "整數相除之分數表示調查"
+}, {
+  "id": "g5x_n56_share_5",
+  "kpId": "g5_n56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "9公尺繩子平均剪成4段，每份是多少？可用分數作答。",
+      "answer": 2.25,
+      "answerExact": "9/4",
+      "unit": "公尺",
+      "explain": "9÷4＝9/4，有剩下的整份仍可再等分，不能只寫整數商。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:93e76ce2046a00a4bfde84d3",
+  "variantGroup": "g5:g5_n56:share",
+  "title": "整數相除之分數表示調查"
+}, {
+  "id": "g5x_n56_share_6",
+  "kpId": "g5_n56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "11公升水平均倒進6個水桶，每份是多少？可用分數作答。",
+      "answer": 1.8333333333333333,
+      "answerExact": "11/6",
+      "unit": "公升",
+      "explain": "11÷6＝11/6，有剩下的整份仍可再等分，不能只寫整數商。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:743ddda4b4f23f96faf0deac",
+  "variantGroup": "g5:g5_n56:share",
+  "title": "整數相除之分數表示調查"
+}, {
+  "id": "g5x_n57_equal_1",
+  "kpId": "g5_n57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "3/4公尺緞帶平均分成3份，每份多少公尺？",
+      "answer": 0.25,
+      "answerExact": "1/4",
+      "unit": "公尺",
+      "explain": "3/4÷3＝3/4×1/3＝1/4。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:44399ca00bd4aa4cf98c97e1",
+  "variantGroup": "g5:g5_n57:equal",
+  "title": "分數除以整數調查"
+}, {
+  "id": "g5x_n57_equal_2",
+  "kpId": "g5_n57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "5/6公升果汁平均分成5份，每份多少公升？",
+      "answer": 0.16666666666666666,
+      "answerExact": "1/6",
+      "unit": "公升",
+      "explain": "5/6÷5＝5/6×1/5＝1/6。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:f78c652b0508a44e2360d118",
+  "variantGroup": "g5:g5_n57:equal",
+  "title": "分數除以整數調查"
+}, {
+  "id": "g5x_n57_equal_3",
+  "kpId": "g5_n57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "7/8公斤黏土平均分成2份，每份多少公斤？",
+      "answer": 0.4375,
+      "answerExact": "7/16",
+      "unit": "公斤",
+      "explain": "7/8÷2＝7/8×1/2＝7/16。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:a31164890da693e9325373c3",
+  "variantGroup": "g5:g5_n57:equal",
+  "title": "分數除以整數調查"
+}, {
+  "id": "g5x_n57_equal_4",
+  "kpId": "g5_n57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "4/5張紙張平均分成4份，每份多少張？",
+      "answer": 0.2,
+      "answerExact": "1/5",
+      "unit": "張",
+      "explain": "4/5÷4＝4/5×1/4＝1/5。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:e11e21b65cd892ee1cfa9698",
+  "variantGroup": "g5:g5_n57:equal",
+  "title": "分數除以整數調查"
+}, {
+  "id": "g5x_n57_equal_5",
+  "kpId": "g5_n57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "9/4公尺繩子平均分成3份，每份多少公尺？",
+      "answer": 0.75,
+      "answerExact": "3/4",
+      "unit": "公尺",
+      "explain": "9/4÷3＝9/4×1/3＝3/4。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:2525d4bdd9c746520520b4e9",
+  "variantGroup": "g5:g5_n57:equal",
+  "title": "分數除以整數調查"
+}, {
+  "id": "g5x_n57_equal_6",
+  "kpId": "g5_n57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "5/3公升清水平均分成5份，每份多少公升？",
+      "answer": 0.3333333333333333,
+      "answerExact": "1/3",
+      "unit": "公升",
+      "explain": "5/3÷5＝5/3×1/5＝1/3。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:af8ea7c89e2ab3f23c56384a",
+  "variantGroup": "g5:g5_n57:equal",
+  "title": "分數除以整數調查"
+}, {
+  "id": "g5x_n59_divide_1",
+  "kpId": "g5_n59",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "7公尺繩子平均分成2份，每份多少公尺？請用小數表示。",
+      "answer": 3.5,
+      "answerExact": "7/2",
+      "unit": "公尺",
+      "explain": "7÷2＝3.5；除數是整數。",
+      "answerFormat": "decimal"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:4e1de4a1da8bf57e0d597149",
+  "variantGroup": "g5:g5_n59:divide",
+  "title": "整數、小數除以整數(商為小數)調查"
+}, {
+  "id": "g5x_n59_divide_2",
+  "kpId": "g5_n59",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "9公升水平均分成4份，每份多少公升？請用小數表示。",
+      "answer": 2.25,
+      "answerExact": "9/4",
+      "unit": "公升",
+      "explain": "9÷4＝2.25；除數是整數。",
+      "answerFormat": "decimal"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:1321879bc0e050157f346e5f",
+  "variantGroup": "g5:g5_n59:divide",
+  "title": "整數、小數除以整數(商為小數)調查"
+}, {
+  "id": "g5x_n59_divide_3",
+  "kpId": "g5_n59",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "6.3公斤麵粉平均分成3份，每份多少公斤？請用小數表示。",
+      "answer": 2.1,
+      "answerExact": "21/10",
+      "unit": "公斤",
+      "explain": "6.3÷3＝2.1；除數是整數。",
+      "answerFormat": "decimal"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:ddee05ab5c4ec5b710656306",
+  "variantGroup": "g5:g5_n59:divide",
+  "title": "整數、小數除以整數(商為小數)調查"
+}, {
+  "id": "g5x_n59_divide_4",
+  "kpId": "g5_n59",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "4.8公升顏料平均分成8份，每份多少公升？請用小數表示。",
+      "answer": 0.6,
+      "answerExact": "3/5",
+      "unit": "公升",
+      "explain": "4.8÷8＝0.6；除數是整數。",
+      "answerFormat": "decimal"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:c449fd10273320f7a7877bcd",
+  "variantGroup": "g5:g5_n59:divide",
+  "title": "整數、小數除以整數(商為小數)調查"
+}, {
+  "id": "g5x_n59_divide_5",
+  "kpId": "g5_n59",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "13公尺標示帶平均分成8份，每份多少公尺？請用小數表示。",
+      "answer": 1.625,
+      "answerExact": "13/8",
+      "unit": "公尺",
+      "explain": "13÷8＝1.625；除數是整數。",
+      "answerFormat": "decimal"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:b931f8532748254bffd14ec1",
+  "variantGroup": "g5:g5_n59:divide",
+  "title": "整數、小數除以整數(商為小數)調查"
+}, {
+  "id": "g5x_n59_divide_6",
+  "kpId": "g5_n59",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "12.48公斤土平均分成6份，每份多少公斤？請用小數表示。",
+      "answer": 2.08,
+      "answerExact": "52/25",
+      "unit": "公斤",
+      "explain": "12.48÷6＝2.08；除數是整數。",
+      "answerFormat": "decimal"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:3f71ec09f5d7df960c815d31",
+  "variantGroup": "g5:g5_n59:divide",
+  "title": "整數、小數除以整數(商為小數)調查"
+}, {
+  "id": "g5x_n510_percent",
+  "kpId": "g5_n510",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "花圃有40盆花，其中10盆開花。開花盆數占全部的百分之幾？",
+      "answer": 25,
+      "answerExact": "25",
+      "unit": "%",
+      "explain": "10÷40＝0.25＝25%。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:fbc83b4ed4564e5168833d56",
+  "variantGroup": "g5:g5_n510:percent",
+  "title": "比率、百分率與折成調查"
+}, {
+  "id": "g5x_n510_part",
+  "kpId": "g5_n510",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一箱50張卡片，有60%是藍卡。藍卡有幾張？",
+      "answer": 30,
+      "answerExact": "30",
+      "unit": "張",
+      "explain": "全部50張乘0.6，得30張。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:ff7fd5213b66ccc32abba39c",
+  "variantGroup": "g5:g5_n510:part",
+  "title": "比率、百分率與折成調查"
+}, {
+  "id": "g5x_n510_discount",
+  "kpId": "g5_n510",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "工具原價200元，打八折，售價幾元？",
+      "answer": 160,
+      "answerExact": "160",
+      "unit": "元",
+      "explain": "八折是原價的80%，200×0.8＝160。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:dcfc61d98a04864aa3af6a63",
+  "variantGroup": "g5:g5_n510:discount",
+  "title": "比率、百分率與折成調查"
+}, {
+  "id": "g5x_n510_rate",
+  "kpId": "g5_n510",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一批80顆種子有72顆發芽，發芽率是多少百分率？",
+      "answer": 90,
+      "answerExact": "90",
+      "unit": "%",
+      "explain": "72÷80＝0.9＝90%。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:94d06fb984cbf7b53ef2d777",
+  "variantGroup": "g5:g5_n510:rate",
+  "title": "比率、百分率與折成調查"
+}, {
+  "id": "g5x_n510_tenths",
+  "kpId": "g5_n510",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "工程完成七成，全程有60塊拼板，已完成幾塊？",
+      "answer": 42,
+      "answerExact": "42",
+      "unit": "塊",
+      "explain": "七成是全部的7/10，60×0.7＝42。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:298cfb2fefd13ea0beea9f76",
+  "variantGroup": "g5:g5_n510:tenths",
+  "title": "比率、百分率與折成調查"
+}, {
+  "id": "g5x_n510_save",
+  "kpId": "g5_n510",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一本圖冊原價300元，打九折後，比原價便宜幾元？",
+      "answer": 30,
+      "answerExact": "30",
+      "unit": "元",
+      "explain": "九折售價270元，300−270＝30元。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:5d1d61b23fd17ff6821c54b2",
+  "variantGroup": "g5:g5_n510:save",
+  "title": "比率、百分率與折成調查"
+}, {
+  "id": "g5x_n511_round_1",
+  "kpId": "g5_n511",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "木條量得3.46公尺。用四捨五入法取到小數第一位，約多少公尺？",
+      "answer": 3.5,
+      "answerExact": "7/2",
+      "unit": "公尺",
+      "explain": "看指定位置的下一位，小於5捨去，5以上進1，得到3.5。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:b1cfdc67fe6fb6dd3143f759",
+  "variantGroup": "g5:g5_n511:round",
+  "title": "小數取概數調查"
+}, {
+  "id": "g5x_n511_round_2",
+  "kpId": "g5_n511",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "砂石量得7.84公斤。用四捨五入法取到個位，約多少公斤？",
+      "answer": 8,
+      "answerExact": "8",
+      "unit": "公斤",
+      "explain": "看指定位置的下一位，小於5捨去，5以上進1，得到8。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:062dca7670a841de9db5efc1",
+  "variantGroup": "g5:g5_n511:round",
+  "title": "小數取概數調查"
+}, {
+  "id": "g5x_n511_round_3",
+  "kpId": "g5_n511",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "水量得6.275公升。用四捨五入法取到小數第二位，約多少公升？",
+      "answer": 6.28,
+      "answerExact": "157/25",
+      "unit": "公升",
+      "explain": "看指定位置的下一位，小於5捨去，5以上進1，得到6.28。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:0ee43af2d294737168302e53",
+  "variantGroup": "g5:g5_n511:round",
+  "title": "小數取概數調查"
+}, {
+  "id": "g5x_n511_round_4",
+  "kpId": "g5_n511",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "貨物量得9.96公斤。用四捨五入法取到小數第一位，約多少公斤？",
+      "answer": 10,
+      "answerExact": "10",
+      "unit": "公斤",
+      "explain": "看指定位置的下一位，小於5捨去，5以上進1，得到10.0。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:01f23dbe800438ba93c1ace2",
+  "variantGroup": "g5:g5_n511:round",
+  "title": "小數取概數調查"
+}, {
+  "id": "g5x_n511_round_5",
+  "kpId": "g5_n511",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "繩子量得12.345公尺。用四捨五入法取到小數第二位，約多少公尺？",
+      "answer": 12.35,
+      "answerExact": "247/20",
+      "unit": "公尺",
+      "explain": "看指定位置的下一位，小於5捨去，5以上進1，得到12.35。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:a20782f309ee08ed70c57ded",
+  "variantGroup": "g5:g5_n511:round",
+  "title": "小數取概數調查"
+}, {
+  "id": "g5x_n511_round_6",
+  "kpId": "g5_n511",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "顏料量得0.968公升。用四捨五入法取到小數第二位，約多少公升？",
+      "answer": 0.97,
+      "answerExact": "97/100",
+      "unit": "公升",
+      "explain": "看指定位置的下一位，小於5捨去，5以上進1，得到0.97。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:37c298b62fd3d3964a334a75",
+  "variantGroup": "g5:g5_n511:round",
+  "title": "小數取概數調查"
+}, {
+  "id": "g5x_n512_land_1",
+  "kpId": "g5_n512",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "苗圃面積3公畝，是多少平方公尺？",
+      "answer": 300,
+      "answerExact": "300",
+      "unit": "平方公尺",
+      "explain": "1公畝＝100平方公尺，3×100＝300。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:58fca3677a4ccfd468d9736f",
+  "variantGroup": "g5:g5_n512:land",
+  "title": "面積大單位換算調查"
+}, {
+  "id": "g5x_n512_land_2",
+  "kpId": "g5_n512",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "保育區面積2公頃，是多少公畝？",
+      "answer": 200,
+      "answerExact": "200",
+      "unit": "公畝",
+      "explain": "1公頃＝100公畝，所以2公頃＝200公畝。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:f211cf60dc179b91d0528c6f",
+  "variantGroup": "g5:g5_n512:land",
+  "title": "面積大單位換算調查"
+}, {
+  "id": "g5x_n512_land_3",
+  "kpId": "g5_n512",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "森林範圍1.5平方公里，是多少公頃？",
+      "answer": 150,
+      "answerExact": "150",
+      "unit": "公頃",
+      "explain": "1平方公里＝100公頃，1.5×100＝150。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:d029e341c93955b55c742755",
+  "variantGroup": "g5:g5_n512:land",
+  "title": "面積大單位換算調查"
+}, {
+  "id": "g5x_n512_land_4",
+  "kpId": "g5_n512",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "果園面積25000平方公尺，是多少公頃？",
+      "answer": 2.5,
+      "answerExact": "5/2",
+      "unit": "公頃",
+      "explain": "1公頃＝10000平方公尺，25000÷10000＝2.5。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:c86ab4cc0a8d3e1d71f62d0a",
+  "variantGroup": "g5:g5_n512:land",
+  "title": "面積大單位換算調查"
+}, {
+  "id": "g5x_n512_land_5",
+  "kpId": "g5_n512",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "種子田0.8公頃，其中2000平方公尺做步道，可種植的面積是多少平方公尺？",
+      "answer": 6000,
+      "answerExact": "6000",
+      "unit": "平方公尺",
+      "explain": "先換成8000平方公尺，再扣2000，得6000。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:3240a4ed92f2440723773795",
+  "variantGroup": "g5:g5_n512:land",
+  "title": "面積大單位換算調查"
+}, {
+  "id": "g5x_n512_land_6",
+  "kpId": "g5_n512",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一塊地有1.2公頃，另有0.3公頃，總共幾公畝？",
+      "answer": 150,
+      "answerExact": "150",
+      "unit": "公畝",
+      "explain": "合計1.5公頃，每公頃100公畝，得150公畝。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:bb9a16d380cdc14928f177b8",
+  "variantGroup": "g5:g5_n512:land",
+  "title": "面積大單位換算調查"
+}, {
+  "id": "g5x_n513_mass_1",
+  "kpId": "g5_n513",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "貨船載重3公噸，相當於幾公斤？",
+      "answer": 3000,
+      "answerExact": "3000",
+      "unit": "公斤",
+      "explain": "1公噸＝1000公斤。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:e7e9242df1b2b49c0bdfe446",
+  "variantGroup": "g5:g5_n513:mass",
+  "title": "公噸與公斤調查"
+}, {
+  "id": "g5x_n513_mass_2",
+  "kpId": "g5_n513",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "2500公斤的貨物是多少公噸？",
+      "answer": 2.5,
+      "answerExact": "5/2",
+      "unit": "公噸",
+      "explain": "2500÷1000＝2.5公噸。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:82d57dc7ff51d7d002618d2a",
+  "variantGroup": "g5:g5_n513:mass",
+  "title": "公噸與公斤調查"
+}, {
+  "id": "g5x_n513_mass_3",
+  "kpId": "g5_n513",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "兩批貨各1.6公噸和0.9公噸，共幾公斤？",
+      "answer": 2500,
+      "answerExact": "2500",
+      "unit": "公斤",
+      "explain": "先合成2.5公噸，再換成2500公斤。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:17c3b1cf4b9945a7048522ee",
+  "variantGroup": "g5:g5_n513:mass",
+  "title": "公噸與公斤調查"
+}, {
+  "id": "g5x_n513_mass_4",
+  "kpId": "g5_n513",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "貨車限載4公噸，已放2800公斤，最多還能放幾公斤？",
+      "answer": 1200,
+      "answerExact": "1200",
+      "unit": "公斤",
+      "explain": "4公噸＝4000公斤；4000−2800＝1200。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:d608e93f85e2fe0f7d4a2cfb",
+  "variantGroup": "g5:g5_n513:mass",
+  "title": "公噸與公斤調查"
+}, {
+  "id": "g5x_n513_mass_5",
+  "kpId": "g5_n513",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "36袋礦石，每袋25公斤，總重幾公噸？",
+      "answer": 0.9,
+      "answerExact": "9/10",
+      "unit": "公噸",
+      "explain": "36×25＝900公斤，900÷1000＝0.9公噸。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:79b8b27a17e5fd22592ee3f4",
+  "variantGroup": "g5:g5_n513:mass",
+  "title": "公噸與公斤調查"
+}, {
+  "id": "g5x_n513_mass_6",
+  "kpId": "g5_n513",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "3.5公噸沙平均分成5堆，每堆幾公斤？",
+      "answer": 700,
+      "answerExact": "700",
+      "unit": "公斤",
+      "explain": "3500÷5＝700公斤。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:109d310aa357bea9ef7e8a2d",
+  "variantGroup": "g5:g5_n513:mass",
+  "title": "公噸與公斤調查"
+}, {
+  "id": "g5x_n514_space_1",
+  "kpId": "g5_n514",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "倉庫內部長4公尺、寬3公尺、高2公尺，長方體空間是多少立方公尺？",
+      "answer": 24,
+      "answerExact": "24",
+      "unit": "立方公尺",
+      "explain": "長×寬×高＝4×3×2＝24。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:15628c6cca0c51fad203d662",
+  "variantGroup": "g5:g5_n514:space",
+  "title": "立方公尺調查"
+}, {
+  "id": "g5x_n514_space_2",
+  "kpId": "g5_n514",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "正方體展示台邊長2公尺，體積是多少立方公尺？",
+      "answer": 8,
+      "answerExact": "8",
+      "unit": "立方公尺",
+      "explain": "2×2×2＝8。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:8d74b0dca49307836685bdfa",
+  "variantGroup": "g5:g5_n514:space",
+  "title": "立方公尺調查"
+}, {
+  "id": "g5x_n514_space_3",
+  "kpId": "g5_n514",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方體水池內長2.5公尺、寬2公尺，水深0.6公尺，水的體積是多少立方公尺？",
+      "answer": 3,
+      "answerExact": "3",
+      "unit": "立方公尺",
+      "explain": "2.5×2×0.6＝3，不換成立方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:bf4f3204527b513b51d47be0",
+  "variantGroup": "g5:g5_n514:space",
+  "title": "立方公尺調查"
+}, {
+  "id": "g5x_n514_space_4",
+  "kpId": "g5_n514",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "3個相同儲物空間，各長3公尺、寬2公尺、高2公尺，合計幾立方公尺？",
+      "answer": 36,
+      "answerExact": "36",
+      "unit": "立方公尺",
+      "explain": "每個12立方公尺，3個共36。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:d743d7cb3ec2314f7f40bb38",
+  "variantGroup": "g5:g5_n514:space",
+  "title": "立方公尺調查"
+}, {
+  "id": "g5x_n514_space_5",
+  "kpId": "g5_n514",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一排放4個1立方公尺積木，放3排、疊2層，體積是多少立方公尺？",
+      "answer": 24,
+      "answerExact": "24",
+      "unit": "立方公尺",
+      "explain": "每層12個、兩層24個，每個1立方公尺。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:0dd73709a0ccf6a831b925f6",
+  "variantGroup": "g5:g5_n514:space",
+  "title": "立方公尺調查"
+}, {
+  "id": "g5x_n514_space_6",
+  "kpId": "g5_n514",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方體沙堆長5公尺、寬2公尺、高0.4公尺，體積是多少立方公尺？",
+      "answer": 4,
+      "answerExact": "4",
+      "unit": "立方公尺",
+      "explain": "5×2×0.4＝4。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:6af23e4749b79bb344ffb71e",
+  "variantGroup": "g5:g5_n514:space",
+  "title": "立方公尺調查"
+}, {
+  "id": "g5x_n515_water_1",
+  "kpId": "g5_n515",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "盒子內部長10公分、寬5公分、高4公分，可裝滿幾毫升水？",
+      "answer": 200,
+      "answerExact": "200",
+      "unit": "毫升",
+      "explain": "內部容積200立方公分，1立方公分＝1毫升。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:c7ce154c94e40c4a41507c3a",
+  "variantGroup": "g5:g5_n515:water",
+  "title": "容積與容量調查"
+}, {
+  "id": "g5x_n515_water_2",
+  "kpId": "g5_n515",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "容器可裝2公升水，等於幾立方公分的水？",
+      "answer": 2000,
+      "answerExact": "2000",
+      "unit": "立方公分",
+      "explain": "1公升＝1000毫升＝1000立方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:ba7140a43659891e7c4b94cb",
+  "variantGroup": "g5:g5_n515:water",
+  "title": "容積與容量調查"
+}, {
+  "id": "g5x_n515_water_3",
+  "kpId": "g5_n515",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "量杯中有150毫升水，石頭完全浸入後讀數210毫升。沒有水溢出、石頭不吸水，石頭體積幾立方公分？",
+      "answer": 60,
+      "answerExact": "60",
+      "unit": "立方公分",
+      "explain": "排開的水量60毫升，即石頭體積60立方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:062bccd3f60258fe199667ed",
+  "variantGroup": "g5:g5_n515:water",
+  "title": "容積與容量調查"
+}, {
+  "id": "g5x_n515_water_4",
+  "kpId": "g5_n515",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方體魚缸內底面長20公分、寬10公分，水深從3公分升到5公分。一件不吸水的物品完全浸入且無溢水，物品體積幾立方公分？",
+      "answer": 400,
+      "answerExact": "400",
+      "unit": "立方公分",
+      "explain": "底面積200平方公分，水升高2公分，排開400立方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:93eda5b5a4b23141579f69c8",
+  "variantGroup": "g5:g5_n515:water",
+  "title": "容積與容量調查"
+}, {
+  "id": "g5x_n515_water_5",
+  "kpId": "g5_n515",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "量筒中80毫升水，放入3顆同樣大的玻璃珠並完全浸沒，讀數110毫升，沒有溢水。每顆體積幾立方公分？",
+      "answer": 10,
+      "answerExact": "10",
+      "unit": "立方公分",
+      "explain": "總排水30毫升，平均每顆10立方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:89253e58ed1fde61c94b9ffd",
+  "variantGroup": "g5:g5_n515:water",
+  "title": "容積與容量調查"
+}, {
+  "id": "g5x_n515_water_6",
+  "kpId": "g5_n515",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "水箱內部容積3000立方公分，已裝1.8公升水，還能裝幾毫升才滿？",
+      "answer": 1200,
+      "answerExact": "1200",
+      "unit": "毫升",
+      "explain": "容量3000毫升，已有1800毫升，差1200毫升。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:613baddab822c92b5479981d",
+  "variantGroup": "g5:g5_n515:water",
+  "title": "容積與容量調查"
+}, {
+  "id": "g5x_n516_duration_1",
+  "kpId": "g5_n516",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "裝好一盞燈要12分鐘，連續裝5盞要幾分鐘？",
+      "answer": 60,
+      "answerExact": "60",
+      "unit": "分鐘",
+      "explain": "12×5＝60分鐘。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:9e52e023498a836f77e291ef",
+  "variantGroup": "g5:g5_n516:duration",
+  "title": "時間乘除調查"
+}, {
+  "id": "g5x_n516_duration_2",
+  "kpId": "g5_n516",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "整理4架書共80分鐘，每架花同樣時間，每架幾分鐘？",
+      "answer": 20,
+      "answerExact": "20",
+      "unit": "分鐘",
+      "explain": "80÷4＝20分鐘。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:313e453c0f576027af20e7c0",
+  "variantGroup": "g5:g5_n516:duration",
+  "title": "時間乘除調查"
+}, {
+  "id": "g5x_n516_duration_3",
+  "kpId": "g5_n516",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "船行1.5小時，等於幾分鐘？",
+      "answer": 90,
+      "answerExact": "90",
+      "unit": "分鐘",
+      "explain": "1.5×60＝90分鐘。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:fa0070c74d6eb942e63dc835",
+  "variantGroup": "g5:g5_n516:duration",
+  "title": "時間乘除調查"
+}, {
+  "id": "g5x_n516_duration_4",
+  "kpId": "g5_n516",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "檢查一部機器要1/4小時，連續檢查3部共幾分鐘？",
+      "answer": 45,
+      "answerExact": "45",
+      "unit": "分鐘",
+      "explain": "1/4小時是15分鐘，3部共45分鐘。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:ccfc38089d0b2024ccb08d68",
+  "variantGroup": "g5:g5_n516:duration",
+  "title": "時間乘除調查"
+}, {
+  "id": "g5x_n516_duration_5",
+  "kpId": "g5_n516",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "2.4小時平均分成6段工作，每段幾分鐘？",
+      "answer": 24,
+      "answerExact": "24",
+      "unit": "分鐘",
+      "explain": "每段0.4小時，乘60得到24分鐘。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:19cda185b01e03e816ceeed2",
+  "variantGroup": "g5:g5_n516:duration",
+  "title": "時間乘除調查"
+}, {
+  "id": "g5x_n516_duration_6",
+  "kpId": "g5_n516",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一天用1/5小時練習，5天總共用幾分鐘？",
+      "answer": 60,
+      "answerExact": "60",
+      "unit": "分鐘",
+      "explain": "每天12分鐘，5天共60分鐘。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:37f6addb8db2767bd24f528d",
+  "variantGroup": "g5:g5_n516:duration",
+  "title": "時間乘除調查"
+}, {
+  "id": "g5x_s51_angle_1",
+  "kpId": "g5_s51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "三角旗的兩個內角是50度和60度，第三個內角幾度？",
+      "answer": 70,
+      "answerExact": "70",
+      "unit": "度",
+      "explain": "三內角和180度，180−50−60＝70。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:d99f49ce0eb185609845307a",
+  "variantGroup": "g5:g5_s51:angle",
+  "title": "三角形與四邊形的性質調查"
+}, {
+  "id": "g5x_s51_angle_2",
+  "kpId": "g5_s51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "平行四邊形圖卡的一個內角是65度，與它相鄰的內角幾度？",
+      "answer": 115,
+      "answerExact": "115",
+      "unit": "度",
+      "explain": "相鄰兩角合成180度，因此為115度。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:0ae7a6a39e440c540c666637",
+  "variantGroup": "g5:g5_s51:angle",
+  "title": "三角形與四邊形的性質調查"
+}, {
+  "id": "g5x_s51_sides_1",
+  "kpId": "g5_s51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "哪一組木條長度能圍成三角形？",
+      "options": [{
+        "text": "4、5、7公分",
+        "correct": true,
+        "why": "最短兩邊的和必須大於最長邊；4＋5＞7。"
+      }, {
+        "text": "2、3、5公分",
+        "correct": false,
+        "why": "2＋3等於5，只會排成一直線。"
+      }, {
+        "text": "3、4、8公分",
+        "correct": false,
+        "why": "3＋4小於8，兩條短邊接不到長邊兩端。"
+      }],
+      "hint": "先把兩條最短木條接起來，和最長木條比較。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:8bd9c29e89025ff3d34a5a2e",
+  "variantGroup": "g5:g5_s51:sides",
+  "title": "三角形與四邊形的性質調查"
+}, {
+  "id": "g5x_s51_angles_1",
+  "kpId": "g5_s51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "三角形設計卡上有兩個角都是100度。這張卡是否可能正確？",
+      "options": [{
+        "text": "不可能，兩角已超過180度",
+        "correct": true,
+        "why": "100＋100＝200，超過三角形內角和180度。"
+      }, {
+        "text": "可能，只要第三角很小",
+        "correct": false,
+        "why": "兩角已合計200度。"
+      }, {
+        "text": "可能，三角形可以有兩個鈍角",
+        "correct": false,
+        "why": "三內角和是180度。"
+      }],
+      "hint": "先合計已知的兩個角，再和三角形內角和比較。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:32c5b1e82b4aaf9aafc54cc1",
+  "variantGroup": "g5:g5_s51:angles",
+  "title": "三角形與四邊形的性質調查"
+}, {
+  "id": "g5x_s51_quad_1",
+  "kpId": "g5_s51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "四邊形地墊的三個內角是80、95、100度，第四個內角幾度？",
+      "answer": 85,
+      "answerExact": "85",
+      "unit": "度",
+      "explain": "沿對角線分成兩個三角形，內角和360度，剩85度。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:4bed26c66aaa16300d22000b",
+  "variantGroup": "g5:g5_s51:quad",
+  "title": "三角形與四邊形的性質調查"
+}, {
+  "id": "g5x_s51_parallel_1",
+  "kpId": "g5_s51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "平行四邊形花圃的相鄰兩邊長7公尺和11公尺，周長幾公尺？",
+      "answer": 36,
+      "answerExact": "36",
+      "unit": "公尺",
+      "explain": "對邊相等，有兩條7與兩條11，合計36公尺。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:66752d542ddd3cb8659f7a81",
+  "variantGroup": "g5:g5_s51:parallel",
+  "title": "三角形與四邊形的性質調查"
+}, {
+  "id": "g5x_s53_draw_1",
+  "kpId": "g5_s53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "g5sector",
+  "params": {
+    "story": "調整燈罩的扇形開口。圖示以同一個圓為準。",
+    "prompt": "做出整個圓的1/4。先算圓心角，再把旋鈕調到正確角度。",
+    "fraction": [1, 4],
+    "target": 90,
+    "hints": ["完整一圈是360度。", "360÷4×1＝90度。"]
+  },
+  "contentKey": "g5:770cbad2e1b7177fa7f1de52",
+  "variantGroup": "g5:g5_s53:draw",
+  "title": "扇形調查"
+}, {
+  "id": "g5x_s53_draw_2",
+  "kpId": "g5_s53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "g5sector",
+  "params": {
+    "story": "調整燈罩的扇形開口。圖示以同一個圓為準。",
+    "prompt": "做出整個圓的1/2。先算圓心角，再把旋鈕調到正確角度。",
+    "fraction": [1, 2],
+    "target": 180,
+    "hints": ["完整一圈是360度。", "360÷2×1＝180度。"]
+  },
+  "contentKey": "g5:edd89d25d1970e031dc9d84a",
+  "variantGroup": "g5:g5_s53:draw",
+  "title": "扇形調查"
+}, {
+  "id": "g5x_s53_draw_3",
+  "kpId": "g5_s53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "g5sector",
+  "params": {
+    "story": "調整燈罩的扇形開口。圖示以同一個圓為準。",
+    "prompt": "做出整個圓的1/3。先算圓心角，再把旋鈕調到正確角度。",
+    "fraction": [1, 3],
+    "target": 120,
+    "hints": ["完整一圈是360度。", "360÷3×1＝120度。"]
+  },
+  "contentKey": "g5:30f7ec7454595f8555fe9638",
+  "variantGroup": "g5:g5_s53:draw",
+  "title": "扇形調查"
+}, {
+  "id": "g5x_s53_draw_4",
+  "kpId": "g5_s53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "g5sector",
+  "params": {
+    "story": "調整燈罩的扇形開口。圖示以同一個圓為準。",
+    "prompt": "做出整個圓的1/6。先算圓心角，再把旋鈕調到正確角度。",
+    "fraction": [1, 6],
+    "target": 60,
+    "hints": ["完整一圈是360度。", "360÷6×1＝60度。"]
+  },
+  "contentKey": "g5:dfbe1682e4232ffca41a7e75",
+  "variantGroup": "g5:g5_s53:draw",
+  "title": "扇形調查"
+}, {
+  "id": "g5x_s53_draw_5",
+  "kpId": "g5_s53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "g5sector",
+  "params": {
+    "story": "調整燈罩的扇形開口。圖示以同一個圓為準。",
+    "prompt": "做出整個圓的3/4。先算圓心角，再把旋鈕調到正確角度。",
+    "fraction": [3, 4],
+    "target": 270,
+    "hints": ["完整一圈是360度。", "360÷4×3＝270度。"]
+  },
+  "contentKey": "g5:f7db5db12df1b0cc2f2ff3b5",
+  "variantGroup": "g5:g5_s53:draw",
+  "title": "扇形調查"
+}, {
+  "id": "g5x_s53_draw_6",
+  "kpId": "g5_s53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "g5sector",
+  "params": {
+    "story": "調整燈罩的扇形開口。圖示以同一個圓為準。",
+    "prompt": "做出整個圓的5/6。先算圓心角，再把旋鈕調到正確角度。",
+    "fraction": [5, 6],
+    "target": 300,
+    "hints": ["完整一圈是360度。", "360÷6×5＝300度。"]
+  },
+  "contentKey": "g5:c277df1d7fc07b117f60cca2",
+  "variantGroup": "g5:g5_s53:draw",
+  "title": "扇形調查"
+}, {
+  "id": "g5x_s54_mirror_1",
+  "kpId": "g5_s54",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "g5fold",
+  "params": {
+    "story": "幫裁縫補好紙上的對稱圖案。",
+    "prompt": "紅色直線是對稱軸。左邊已塗好，請點右邊格子，補成線對稱圖形。",
+    "left": [[0, 1], [1, 1], [2, 1]],
+    "cols": 6,
+    "rows": 3,
+    "hints": ["對稱點到對稱軸的距離相同。", "同一橫排，軸旁第1格對第1格，第2格對第2格。"]
+  },
+  "contentKey": "g5:168cfc160ec129ecc16f93ee",
+  "variantGroup": "g5:g5_s54:mirror",
+  "title": "線對稱調查"
+}, {
+  "id": "g5x_s54_mirror_2",
+  "kpId": "g5_s54",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "g5fold",
+  "params": {
+    "story": "幫裁縫補好紙上的對稱圖案。",
+    "prompt": "紅色直線是對稱軸。左邊已塗好，請點右邊格子，補成線對稱圖形。",
+    "left": [[0, 0], [1, 0], [1, 1]],
+    "cols": 6,
+    "rows": 3,
+    "hints": ["對稱點到對稱軸的距離相同。", "同一橫排，軸旁第1格對第1格，第2格對第2格。"]
+  },
+  "contentKey": "g5:1686546ce8b041728596e046",
+  "variantGroup": "g5:g5_s54:mirror",
+  "title": "線對稱調查"
+}, {
+  "id": "g5x_s54_mirror_3",
+  "kpId": "g5_s54",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "g5fold",
+  "params": {
+    "story": "幫裁縫補好紙上的對稱圖案。",
+    "prompt": "紅色直線是對稱軸。左邊已塗好，請點右邊格子，補成線對稱圖形。",
+    "left": [[0, 2], [1, 1], [2, 0]],
+    "cols": 6,
+    "rows": 3,
+    "hints": ["對稱點到對稱軸的距離相同。", "同一橫排，軸旁第1格對第1格，第2格對第2格。"]
+  },
+  "contentKey": "g5:b69808b373268d73a8ad7e53",
+  "variantGroup": "g5:g5_s54:mirror",
+  "title": "線對稱調查"
+}, {
+  "id": "g5x_s54_mirror_4",
+  "kpId": "g5_s54",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "g5fold",
+  "params": {
+    "story": "幫裁縫補好紙上的對稱圖案。",
+    "prompt": "紅色直線是對稱軸。左邊已塗好，請點右邊格子，補成線對稱圖形。",
+    "left": [[0, 0], [0, 1], [2, 2]],
+    "cols": 6,
+    "rows": 3,
+    "hints": ["對稱點到對稱軸的距離相同。", "同一橫排，軸旁第1格對第1格，第2格對第2格。"]
+  },
+  "contentKey": "g5:acbf96e849888e98efeff998",
+  "variantGroup": "g5:g5_s54:mirror",
+  "title": "線對稱調查"
+}, {
+  "id": "g5x_s54_mirror_5",
+  "kpId": "g5_s54",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "g5fold",
+  "params": {
+    "story": "幫裁縫補好紙上的對稱圖案。",
+    "prompt": "紅色直線是對稱軸。左邊已塗好，請點右邊格子，補成線對稱圖形。",
+    "left": [[0, 0], [1, 0], [2, 0], [2, 1]],
+    "cols": 6,
+    "rows": 3,
+    "hints": ["對稱點到對稱軸的距離相同。", "同一橫排，軸旁第1格對第1格，第2格對第2格。"]
+  },
+  "contentKey": "g5:b84e31d2e528e114ca4b9857",
+  "variantGroup": "g5:g5_s54:mirror",
+  "title": "線對稱調查"
+}, {
+  "id": "g5x_s54_mirror_6",
+  "kpId": "g5_s54",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "g5fold",
+  "params": {
+    "story": "幫裁縫補好紙上的對稱圖案。",
+    "prompt": "紅色直線是對稱軸。左邊已塗好，請點右邊格子，補成線對稱圖形。",
+    "left": [[0, 2], [1, 0], [1, 2], [2, 1]],
+    "cols": 6,
+    "rows": 3,
+    "hints": ["對稱點到對稱軸的距離相同。", "同一橫排，軸旁第1格對第1格，第2格對第2格。"]
+  },
+  "contentKey": "g5:b41db49e50c117fe6f91cce7",
+  "variantGroup": "g5:g5_s54:mirror",
+  "title": "線對稱調查"
+}, {
+  "id": "g5x_s55_box_1",
+  "kpId": "g5_s55",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "正方體盒子邊長4公分，體積幾立方公分？",
+      "answer": 64,
+      "answerExact": "64",
+      "unit": "立方公分",
+      "explain": "4×4×4＝64。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:901a294da3cf0a6b0dee4cf5",
+  "variantGroup": "g5:g5_s55:box",
+  "title": "正方體和長方體調查"
+}, {
+  "id": "g5x_s55_box_2",
+  "kpId": "g5_s55",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方體模型長8公分、寬3公分、高2公分，體積幾立方公分？",
+      "answer": 48,
+      "answerExact": "48",
+      "unit": "立方公分",
+      "explain": "8×3×2＝48。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:604e7a59a810a18cfe065ac1",
+  "variantGroup": "g5:g5_s55:box",
+  "title": "正方體和長方體調查"
+}, {
+  "id": "g5x_s55_box_3",
+  "kpId": "g5_s55",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "正方體禮盒邊長5公分，六個面都貼紙，共需多少平方公分紙？忽略接縫。",
+      "answer": 150,
+      "answerExact": "150",
+      "unit": "平方公分",
+      "explain": "每面25平方公分，六面共150。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:5aa4cd44c57c068af8daf875",
+  "variantGroup": "g5:g5_s55:box",
+  "title": "正方體和長方體調查"
+}, {
+  "id": "g5x_s55_box_4",
+  "kpId": "g5_s55",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方體盒子長6公分、寬4公分、高3公分，六面都塗色，總面積幾平方公分？",
+      "answer": 108,
+      "answerExact": "108",
+      "unit": "平方公分",
+      "explain": "三對面分別是24、18、12平方公分，各兩個，合計108。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:178e677b8a2ae30a3fafff70",
+  "variantGroup": "g5:g5_s55:box",
+  "title": "正方體和長方體調查"
+}, {
+  "id": "g5x_s55_box_5",
+  "kpId": "g5_s55",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "沒有蓋子的長方體盒子，內部長5公分、寬4公分、高3公分。要鋪底面與四個內側面，共需多少平方公分紙？忽略厚度與接縫。",
+      "answer": 74,
+      "answerExact": "74",
+      "unit": "平方公分",
+      "explain": "底面20，長側面15各2，短側面12各2，合計74。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:39a9c68a91ad3eed6952708a",
+  "variantGroup": "g5:g5_s55:box",
+  "title": "正方體和長方體調查"
+}, {
+  "id": "g5x_s55_box_6",
+  "kpId": "g5_s55",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方體收納盒的內部體積120立方公分，底面長6公分、寬5公分，內部高幾公分？",
+      "answer": 4,
+      "answerExact": "4",
+      "unit": "公分",
+      "explain": "一層30立方公分，120÷30＝4。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:0c30a6e0bef9af784dfad939",
+  "variantGroup": "g5:g5_s55:box",
+  "title": "正方體和長方體調查"
+}, {
+  "id": "g5x_s56_faces_1",
+  "kpId": "g5_s56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "長方體盒子的上面和下面有什麼關係？",
+      "options": [{
+        "text": "互相平行",
+        "correct": true,
+        "why": "上下是相對的兩個面，彼此平行。"
+      }, {
+        "text": "互相垂直",
+        "correct": false,
+        "why": "上下是相對的兩個面，彼此平行。"
+      }, {
+        "text": "在盒角相交",
+        "correct": false,
+        "why": "上下是相對的兩個面，彼此平行。"
+      }],
+      "hint": "拿一個紙盒來看：相對的面不相交，相鄰的面沿一條邊相接。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:2dc0d68e45812061d47bcb36",
+  "variantGroup": "g5:g5_s56:faces",
+  "title": "空間中面與面的關係調查"
+}, {
+  "id": "g5x_s56_faces_2",
+  "kpId": "g5_s56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "長方體盒子的前面和右面有什麼關係？",
+      "options": [{
+        "text": "互相垂直",
+        "correct": true,
+        "why": "前面和右面沿共同的邊相接，夾角是直角。"
+      }, {
+        "text": "互相平行",
+        "correct": false,
+        "why": "前面和右面沿共同的邊相接，夾角是直角。"
+      }, {
+        "text": "是同一個面",
+        "correct": false,
+        "why": "前面和右面沿共同的邊相接，夾角是直角。"
+      }],
+      "hint": "拿一個紙盒來看：相對的面不相交，相鄰的面沿一條邊相接。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:6ea9be1e18e05f2c86cefb6f",
+  "variantGroup": "g5:g5_s56:faces",
+  "title": "空間中面與面的關係調查"
+}, {
+  "id": "g5x_s56_faces_3",
+  "kpId": "g5_s56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "把正方體轉一個方向，原本互相平行的兩個面會怎樣？",
+      "options": [{
+        "text": "仍互相平行",
+        "correct": true,
+        "why": "整個物體轉動不改變面與面的關係。"
+      }, {
+        "text": "變成垂直",
+        "correct": false,
+        "why": "整個物體轉動不改變面與面的關係。"
+      }, {
+        "text": "不一定，看放在哪裡",
+        "correct": false,
+        "why": "整個物體轉動不改變面與面的關係。"
+      }],
+      "hint": "拿一個紙盒來看：相對的面不相交，相鄰的面沿一條邊相接。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:43f66bc797e44e14c01f78e0",
+  "variantGroup": "g5:g5_s56:faces",
+  "title": "空間中面與面的關係調查"
+}, {
+  "id": "g5x_s56_faces_4",
+  "kpId": "g5_s56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "長方體盒子的六個面，兩個相對面算一對，一共有幾對平行的面？",
+      "options": [{
+        "text": "3對",
+        "correct": true,
+        "why": "上與下、左與右、前與後，共3對。"
+      }, {
+        "text": "2對",
+        "correct": false,
+        "why": "上與下、左與右、前與後，共3對。"
+      }, {
+        "text": "6對",
+        "correct": false,
+        "why": "上與下、左與右、前與後，共3對。"
+      }],
+      "hint": "拿一個紙盒來看：相對的面不相交，相鄰的面沿一條邊相接。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:7ae9b48c412bcc08e8a388f3",
+  "variantGroup": "g5:g5_s56:faces",
+  "title": "空間中面與面的關係調查"
+}, {
+  "id": "g5x_s56_faces_5",
+  "kpId": "g5_s56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "以正方體的底面為準，有幾個面與底面垂直？",
+      "options": [{
+        "text": "4個",
+        "correct": true,
+        "why": "四個側面都與底面垂直，上面則與底面平行。"
+      }, {
+        "text": "1個",
+        "correct": false,
+        "why": "四個側面都與底面垂直，上面則與底面平行。"
+      }, {
+        "text": "5個",
+        "correct": false,
+        "why": "四個側面都與底面垂直，上面則與底面平行。"
+      }],
+      "hint": "拿一個紙盒來看：相對的面不相交，相鄰的面沿一條邊相接。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:9a0cf7c305559987ce5745e6",
+  "variantGroup": "g5:g5_s56:faces",
+  "title": "空間中面與面的關係調查"
+}, {
+  "id": "g5x_s56_faces_6",
+  "kpId": "g5_s56",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "長方體紙盒的右面和哪個面平行？",
+      "options": [{
+        "text": "左面",
+        "correct": true,
+        "why": "左、右是相對面；前面和上面都與右面垂直。"
+      }, {
+        "text": "前面",
+        "correct": false,
+        "why": "左、右是相對面；前面和上面都與右面垂直。"
+      }, {
+        "text": "上面",
+        "correct": false,
+        "why": "左、右是相對面；前面和上面都與右面垂直。"
+      }],
+      "hint": "拿一個紙盒來看：相對的面不相交，相鄰的面沿一條邊相接。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:4fb011bee1aaad7afa31e058",
+  "variantGroup": "g5:g5_s56:faces",
+  "title": "空間中面與面的關係調查"
+}, {
+  "id": "g5x_s57_solid_1",
+  "kpId": "g5_s57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "球形黏土用平直刀面切過中心，切出的平面圖形是什麼？",
+      "options": [{
+        "text": "圓形",
+        "correct": true,
+        "why": "球被平直地切開，切出的面是圓形；此題切過中心。"
+      }, {
+        "text": "三角形",
+        "correct": false,
+        "why": "球被平直地切開，切出的面是圓形；此題切過中心。"
+      }, {
+        "text": "正方形",
+        "correct": false,
+        "why": "球被平直地切開，切出的面是圓形；此題切過中心。"
+      }],
+      "hint": "想像把模型慢慢轉動或沿邊展開，分別觀察底面和側面。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:ce8928471fb8369cd4e9b94e",
+  "variantGroup": "g5:g5_s57:solid",
+  "title": "球、柱體與錐體調查"
+}, {
+  "id": "g5x_s57_solid_2",
+  "kpId": "g5_s57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "圓柱的兩個底面有什麼關係？",
+      "options": [{
+        "text": "相同大小的圓，互相平行",
+        "correct": true,
+        "why": "圓柱有兩個相同大小且互相平行的圓形底面。"
+      }, {
+        "text": "一大一小，互相平行",
+        "correct": false,
+        "why": "圓柱有兩個相同大小且互相平行的圓形底面。"
+      }, {
+        "text": "兩個三角形，互相垂直",
+        "correct": false,
+        "why": "圓柱有兩個相同大小且互相平行的圓形底面。"
+      }],
+      "hint": "想像把模型慢慢轉動或沿邊展開，分別觀察底面和側面。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:ebdaa5bb2e07fe5139625928",
+  "variantGroup": "g5:g5_s57:solid",
+  "title": "球、柱體與錐體調查"
+}, {
+  "id": "g5x_s57_solid_3",
+  "kpId": "g5_s57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "三角柱有兩個三角形底面，還有幾個長方形側面？",
+      "options": [{
+        "text": "3個",
+        "correct": true,
+        "why": "三角形有3條邊，各連接出一個長方形側面。"
+      }, {
+        "text": "2個",
+        "correct": false,
+        "why": "三角形有3條邊，各連接出一個長方形側面。"
+      }, {
+        "text": "4個",
+        "correct": false,
+        "why": "三角形有3條邊，各連接出一個長方形側面。"
+      }],
+      "hint": "想像把模型慢慢轉動或沿邊展開，分別觀察底面和側面。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:ba4ba9421ed3b0ac5f267710",
+  "variantGroup": "g5:g5_s57:solid",
+  "title": "球、柱體與錐體調查"
+}, {
+  "id": "g5x_s57_solid_4",
+  "kpId": "g5_s57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "四角錐有一個四邊形底面，還有幾個三角形側面？",
+      "options": [{
+        "text": "4個",
+        "correct": true,
+        "why": "底面4條邊，各連接一個三角形側面。"
+      }, {
+        "text": "3個",
+        "correct": false,
+        "why": "底面4條邊，各連接一個三角形側面。"
+      }, {
+        "text": "5個",
+        "correct": false,
+        "why": "底面4條邊，各連接一個三角形側面。"
+      }],
+      "hint": "想像把模型慢慢轉動或沿邊展開，分別觀察底面和側面。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:b8e4f28c1f6dbe8535d535d5",
+  "variantGroup": "g5:g5_s57:solid",
+  "title": "球、柱體與錐體調查"
+}, {
+  "id": "g5x_s57_solid_5",
+  "kpId": "g5_s57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "把圓錐的側面沿一條從尖頂到底邊的線剪開並攤平，得到什麼圖形？",
+      "options": [{
+        "text": "扇形",
+        "correct": true,
+        "why": "圓錐側面攤平是扇形；底面另外是一個圓。"
+      }, {
+        "text": "長方形",
+        "correct": false,
+        "why": "圓錐側面攤平是扇形；底面另外是一個圓。"
+      }, {
+        "text": "三角形",
+        "correct": false,
+        "why": "圓錐側面攤平是扇形；底面另外是一個圓。"
+      }],
+      "hint": "想像把模型慢慢轉動或沿邊展開，分別觀察底面和側面。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:441914b4008cbea28da02162",
+  "variantGroup": "g5:g5_s57:solid",
+  "title": "球、柱體與錐體調查"
+}, {
+  "id": "g5x_s57_solid_6",
+  "kpId": "g5_s57",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "有一個紙模型的展開圖由兩個同樣大的圓和一個長方形組成。長方形的一邊恰好繞圓一圈。可以組成什麼？",
+      "options": [{
+        "text": "圓柱",
+        "correct": true,
+        "why": "長方形繞成側面，兩個圓封住上下，得到圓柱。"
+      }, {
+        "text": "圓錐",
+        "correct": false,
+        "why": "長方形繞成側面，兩個圓封住上下，得到圓柱。"
+      }, {
+        "text": "三角柱",
+        "correct": false,
+        "why": "長方形繞成側面，兩個圓封住上下，得到圓柱。"
+      }],
+      "hint": "想像把模型慢慢轉動或沿邊展開，分別觀察底面和側面。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:9fcf26ada59d563df36e9d44",
+  "variantGroup": "g5:g5_s57:solid",
+  "title": "球、柱體與錐體調查"
+}, {
+  "id": "g5x_r52_rule_1",
+  "kpId": "g5_r52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "工坊每組用18顆小釘與2顆大釘，共有7組。哪個算式與(18＋2)×7相等？",
+      "options": [{
+        "text": "18 × 7 ＋ 2 × 7",
+        "correct": true,
+        "why": "兩種釘子都要準備7組。"
+      }, {
+        "text": "18 × 7 ＋ 2",
+        "correct": false,
+        "why": "兩種釘子都要準備7組。"
+      }, {
+        "text": "18 ＋ 2 × 7",
+        "correct": false,
+        "why": "兩種釘子都要準備7組。"
+      }],
+      "hint": "兩種釘子都要準備7組。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:f0e22b267c8fdbbed3210a1a",
+  "variantGroup": "g5:g5_r52:rule",
+  "title": "四則計算規律(II)調查"
+}, {
+  "id": "g5x_r52_rule_2",
+  "kpId": "g5_r52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "每箱原有24張紙，取出4張；有6箱。哪個算式與(24−4)×6相等？",
+      "options": [{
+        "text": "24 × 6 − 4 × 6",
+        "correct": true,
+        "why": "每箱取出的4張也要算6次。"
+      }, {
+        "text": "24 × 6 − 4",
+        "correct": false,
+        "why": "每箱取出的4張也要算6次。"
+      }, {
+        "text": "24 − 4 × 6",
+        "correct": false,
+        "why": "每箱取出的4張也要算6次。"
+      }],
+      "hint": "每箱取出的4張也要算6次。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:841753c306f3fd1ae68c3899",
+  "variantGroup": "g5:g5_r52:rule",
+  "title": "四則計算規律(II)調查"
+}, {
+  "id": "g5x_r52_rule_3",
+  "kpId": "g5_r52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "144枚卡片平均分到6盒，每盒再分成4小袋。哪個算式可求每小袋枚數？",
+      "options": [{
+        "text": "144 ÷ (6 × 4)",
+        "correct": true,
+        "why": "連續除以6和4，等於除以6×4。"
+      }, {
+        "text": "144 ÷ (6 ÷ 4)",
+        "correct": false,
+        "why": "連續除以6和4，等於除以6×4。"
+      }, {
+        "text": "144 ÷ 6 × 4",
+        "correct": false,
+        "why": "連續除以6和4，等於除以6×4。"
+      }],
+      "hint": "連續除以6和4，等於除以6×4。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:c508dd2a33c46808facfd34c",
+  "variantGroup": "g5:g5_r52:rule",
+  "title": "四則計算規律(II)調查"
+}, {
+  "id": "g5x_r52_rule_4",
+  "kpId": "g5_r52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "要心算99×8，哪個改寫正確？",
+      "options": [{
+        "text": "100 × 8 − 8",
+        "correct": true,
+        "why": "99是100少1，少的1也要乘8。"
+      }, {
+        "text": "100 × 8 − 1",
+        "correct": false,
+        "why": "99是100少1，少的1也要乘8。"
+      }, {
+        "text": "100 × (8 − 1)",
+        "correct": false,
+        "why": "99是100少1，少的1也要乘8。"
+      }],
+      "hint": "99是100少1，少的1也要乘8。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:2b6c51835160e1b5e87cbd64",
+  "variantGroup": "g5:g5_r52:rule",
+  "title": "四則計算規律(II)調查"
+}, {
+  "id": "g5x_r52_rule_5",
+  "kpId": "g5_r52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "將12×25×4改寫成12×(25×4)，為什麼可行？",
+      "options": [{
+        "text": "改變乘法分組，積不變",
+        "correct": true,
+        "why": "乘法結合律可先算25×4＝100。"
+      }, {
+        "text": "乘法都能隨意改成加法",
+        "correct": false,
+        "why": "乘法結合律可先算25×4＝100。"
+      }, {
+        "text": "括號可以改變任何答案",
+        "correct": false,
+        "why": "乘法結合律可先算25×4＝100。"
+      }],
+      "hint": "乘法結合律可先算25×4＝100。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:cc9fd54080c67c16b2cb2199",
+  "variantGroup": "g5:g5_r52:rule",
+  "title": "四則計算規律(II)調查"
+}, {
+  "id": "g5x_r52_rule_6",
+  "kpId": "g5_r52",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "pickone",
+  "params": {
+    "story": "檢查工坊裡的設計與記錄。",
+    "items": [{
+      "q": "240÷8×3要依序計算，哪個結果正確？",
+      "options": [{
+        "text": "90",
+        "correct": true,
+        "why": "同級乘除由左到右，240÷8＝30，再乘3＝90。"
+      }, {
+        "text": "10",
+        "correct": false,
+        "why": "同級乘除由左到右，240÷8＝30，再乘3＝90。"
+      }, {
+        "text": "240",
+        "correct": false,
+        "why": "同級乘除由左到右，240÷8＝30，再乘3＝90。"
+      }],
+      "hint": "乘和除同級，沒有括號時由左到右計算。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:1d0083a8a271f07ea33a4e2e",
+  "variantGroup": "g5:g5_r52:rule",
+  "title": "四則計算規律(II)調查"
+}, {
+  "id": "g5x_r53_formula_1",
+  "kpId": "g5_r53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方形面積用 A＝a×b 表示，a 是長、b 是寬。a＝7公分、b＝4公分，A 是多少平方公分？",
+      "answer": 28,
+      "answerExact": "28",
+      "unit": "平方公分",
+      "explain": "將a與b換成7、4，A＝28。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:fad8e1d772d11f03349dcbdb",
+  "variantGroup": "g5:g5_r53:formula",
+  "title": "以符號表示數學公式調查"
+}, {
+  "id": "g5x_r53_formula_2",
+  "kpId": "g5_r53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "正方體體積用 V＝s×s×s，s 是邊長。s＝3公分，V 是多少立方公分？",
+      "answer": 27,
+      "answerExact": "27",
+      "unit": "立方公分",
+      "explain": "用3代入每一個s，得27。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:3efd0e5341e28105a8ad29e2",
+  "variantGroup": "g5:g5_r53:formula",
+  "title": "以符號表示數學公式調查"
+}, {
+  "id": "g5x_r53_formula_3",
+  "kpId": "g5_r53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "三角形面積用 A＝b×h÷2，b 是底、h 是對應的高。b＝12公分、h＝5公分，A 是多少平方公分？",
+      "answer": 30,
+      "answerExact": "30",
+      "unit": "平方公分",
+      "explain": "12×5÷2＝30。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:3733a146016b433fd6038d2d",
+  "variantGroup": "g5:g5_r53:formula",
+  "title": "以符號表示數學公式調查"
+}, {
+  "id": "g5x_r53_formula_4",
+  "kpId": "g5_r53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "長方體體積用 V＝a×b×h，三個符號是長、寬、高。a＝8、b＝4、h＝3（公分），V 是多少立方公分？",
+      "answer": 96,
+      "answerExact": "96",
+      "unit": "立方公分",
+      "explain": "8×4×3＝96。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:8a06a3932b7a6cb7e46c1351",
+  "variantGroup": "g5:g5_r53:formula",
+  "title": "以符號表示數學公式調查"
+}, {
+  "id": "g5x_r53_formula_5",
+  "kpId": "g5_r53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "平行四邊形面積 A＝b×h。底 b＝6.5公分，垂直高 h＝4公分，A 是多少平方公分？",
+      "answer": 26,
+      "answerExact": "26",
+      "unit": "平方公分",
+      "explain": "6.5×4＝26。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:5622b9e93fa308535462af6b",
+  "variantGroup": "g5:g5_r53:formula",
+  "title": "以符號表示數學公式調查"
+}, {
+  "id": "g5x_r53_formula_6",
+  "kpId": "g5_r53",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "梯形面積 A＝(a＋b)×h÷2，a、b是上底、下底，h是垂直高。a＝4、b＝8、h＝5（公分），A 是多少平方公分？",
+      "answer": 30,
+      "answerExact": "30",
+      "unit": "平方公分",
+      "explain": "(4＋8)×5÷2＝30。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:43ebb95e1c68581655e0faad",
+  "variantGroup": "g5:g5_r53:formula",
+  "title": "以符號表示數學公式調查"
+}, {
+  "id": "g5x_d51_plot_1",
+  "kpId": "g5_d51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "g5line",
+  "params": {
+    "story": "替觀測站補上折線圖。資料為虛構島嶼紀錄。",
+    "caption": "同一水槽每天固定時間的水深",
+    "labels": ["一", "二", "三", "四"],
+    "values": [2, 4, 3, 5],
+    "unit": "公分",
+    "max": 10,
+    "hints": ["橫軸照時間先後，縱軸照每次量得的值。", "逐一選好高度後，連線呈現同一筆資料隨時間的變化。"]
+  },
+  "contentKey": "g5:969f35d821584f9573852923",
+  "variantGroup": "g5:g5_d51:plot",
+  "title": "製作折線圖調查"
+}, {
+  "id": "g5x_d51_plot_2",
+  "kpId": "g5_d51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "g5line",
+  "params": {
+    "story": "替觀測站補上折線圖。資料為虛構島嶼紀錄。",
+    "caption": "同一水箱每小時的水量",
+    "labels": ["8時", "9時", "10時", "11時"],
+    "values": [3, 6, 4, 8],
+    "unit": "杯",
+    "max": 10,
+    "hints": ["橫軸照時間先後，縱軸照每次量得的值。", "逐一選好高度後，連線呈現同一筆資料隨時間的變化。"]
+  },
+  "contentKey": "g5:701a424c0812486be62f7cb3",
+  "variantGroup": "g5:g5_d51:plot",
+  "title": "製作折線圖調查"
+}, {
+  "id": "g5x_d51_plot_3",
+  "kpId": "g5_d51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "g5line",
+  "params": {
+    "story": "替觀測站補上折線圖。資料為虛構島嶼紀錄。",
+    "caption": "同一株新芽的高度",
+    "labels": ["第1天", "第2天", "第3天", "第4天"],
+    "values": [4, 4, 7, 9],
+    "unit": "公分",
+    "max": 10,
+    "hints": ["橫軸照時間先後，縱軸照每次量得的值。", "逐一選好高度後，連線呈現同一筆資料隨時間的變化。"]
+  },
+  "contentKey": "g5:319b1c6d9c6f5fedbf4fa2e3",
+  "variantGroup": "g5:g5_d51:plot",
+  "title": "製作折線圖調查"
+}, {
+  "id": "g5x_d51_plot_4",
+  "kpId": "g5_d51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "g5line",
+  "params": {
+    "story": "替觀測站補上折線圖。資料為虛構島嶼紀錄。",
+    "caption": "工坊每週需維修的次數",
+    "labels": ["第1週", "第2週", "第3週", "第4週"],
+    "values": [8, 6, 7, 3],
+    "unit": "次",
+    "max": 10,
+    "hints": ["橫軸照時間先後，縱軸照每次量得的值。", "逐一選好高度後，連線呈現同一筆資料隨時間的變化。"]
+  },
+  "contentKey": "g5:069712d0cea252e0809abebf",
+  "variantGroup": "g5:g5_d51:plot",
+  "title": "製作折線圖調查"
+}, {
+  "id": "g5x_d51_plot_5",
+  "kpId": "g5_d51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "g5line",
+  "params": {
+    "story": "替觀測站補上折線圖。資料為虛構島嶼紀錄。",
+    "caption": "同一台感測器的讀值",
+    "labels": ["8時", "10時", "12時", "14時"],
+    "values": [5, 8, 6, 10],
+    "unit": "格",
+    "max": 10,
+    "hints": ["橫軸照時間先後，縱軸照每次量得的值。", "逐一選好高度後，連線呈現同一筆資料隨時間的變化。"]
+  },
+  "contentKey": "g5:439ef4dc5b878a5edb2e2bd5",
+  "variantGroup": "g5:g5_d51:plot",
+  "title": "製作折線圖調查"
+}, {
+  "id": "g5x_d51_plot_6",
+  "kpId": "g5_d51",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "g5line",
+  "params": {
+    "story": "替觀測站補上折線圖。資料為虛構島嶼紀錄。",
+    "caption": "同一水槽每天固定時間的水深",
+    "labels": ["第1日", "第2日", "第3日", "第4日", "第5日"],
+    "values": [3, 7, 5, 5, 8],
+    "unit": "公分",
+    "max": 10,
+    "hints": ["橫軸照時間先後，縱軸照每次量得的值。", "逐一選好高度後，連線呈現同一筆資料隨時間的變化。"]
+  },
+  "contentKey": "g5:498173874567aa4781208164",
+  "variantGroup": "g5:g5_d51:plot",
+  "title": "製作折線圖調查"
+}, {
+  "id": "g5x_m_dec_ops_small_1",
+  "kpId": "m_dec_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "油漆每公尺需要0.75公升，0.8公尺要幾公升？",
+      "answer": 0.6,
+      "answerExact": "3/5",
+      "unit": "公升",
+      "explain": "0.75×0.8＝0.6；乘以小於1的正數，結果比0.75小。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:b4658dcf841a0871cb1c1eae",
+  "variantGroup": "g5:m_dec_ops:small",
+  "title": "小數的乘法調查"
+}, {
+  "id": "g5x_m_dec_ops_grid_1",
+  "kpId": "m_dec_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "每片布寬1.25公尺，8片不重疊並排，總寬幾公尺？",
+      "answer": 10,
+      "answerExact": "10",
+      "unit": "公尺",
+      "explain": "1.25×8＝10公尺。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:e665a9d6eb9b2d2b11f0d5c4",
+  "variantGroup": "g5:m_dec_ops:grid",
+  "title": "小數的乘法調查"
+}, {
+  "id": "g5x_m_dec_ops_length_1",
+  "kpId": "m_dec_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "hard",
+  "kind": "problems",
+  "params": {
+    "story": "把調查紀錄核對清楚，讓島上的工作繼續。",
+    "problems": [{
+      "q": "一段繩重0.36公斤，取這段的0.5倍，重量幾公斤？",
+      "answer": 0.18,
+      "answerExact": "9/50",
+      "unit": "公斤",
+      "explain": "0.36×0.5＝0.18；0.5倍是原來的一半。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "g5:e78246ecc7f4247431e25d9c",
+  "variantGroup": "g5:m_dec_ops:length",
+  "title": "小數的乘法調查"
+}, {
+  "id": "g6x_review_fraction_add_1",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "step",
+  "params": {
+    "story": "鐘塔的調查委託：請留下推算過程。",
+    "problem": "上午修好 1/2 公尺護欄，下午修好 1/4 公尺，共修好幾公尺？",
+    "steps": [{
+      "left": "1/2",
+      "right": "1/4",
+      "op": "＋",
+      "result": 0.75,
+      "prompt": "先通分，再把分子相加。",
+      "hint": "先通分，再把分子相加。",
+      "answerExact": "3/4"
+    }],
+    "unit": "公尺"
+  },
+  "contentKey": "16738f5d72b2bdfdf0040b03",
+  "variantGroup": "g6x:review_fraction_add",
+  "title": "合計護欄修復量",
+  "sourceQuestionId": "g6x_review_fraction_add_1"
+}, {
+  "id": "g6x_review_fraction_sub_1",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "step",
+  "params": {
+    "story": "鐘塔的調查委託：請留下推算過程。",
+    "problem": "一張紀錄紙已用掉 1/2 張，其中 1/4 張是草稿，其餘是正式紀錄。正式紀錄用了幾張？",
+    "steps": [{
+      "left": "1/2",
+      "right": "1/4",
+      "op": "−",
+      "result": 0.25,
+      "prompt": "從已用量扣掉草稿量。",
+      "hint": "從已用量扣掉草稿量。",
+      "answerExact": "1/4"
+    }],
+    "unit": "張"
+  },
+  "contentKey": "ff7e1b729272e2aab4a35f5c",
+  "variantGroup": "g6x:review_fraction_sub",
+  "title": "分清草稿與正式紀錄",
+  "sourceQuestionId": "g6x_review_fraction_sub_1"
+}, {
+  "id": "g6x_review_fraction_multiply_1",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "step",
+  "params": {
+    "story": "鐘塔的調查委託：請留下推算過程。",
+    "problem": "標示帶長 1/2 公尺，把整條標示帶的 1/3 塗成金色。金色部分長幾公尺？",
+    "steps": [{
+      "left": "1/2",
+      "right": "1/3",
+      "op": "×",
+      "result": 0.166667,
+      "prompt": "求一個量的幾分之幾，用乘法。",
+      "hint": "求一個量的幾分之幾，用乘法。",
+      "answerExact": "1/6"
+    }],
+    "unit": "公尺"
+  },
+  "contentKey": "1486d7cfcc0037cd1cbcf53f",
+  "variantGroup": "g6x:review_fraction_multiply",
+  "title": "金色標示帶",
+  "sourceQuestionId": "g6x_review_fraction_multiply_1"
+}, {
+  "id": "g6x_review_decimal_multiply_1",
+  "kpId": "m_dec_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "鐘塔的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "每公尺裝飾繩重 0.4 公斤，1.5 公尺重幾公斤？",
+      "answer": 0.6,
+      "unit": "公斤",
+      "explain": "每公尺重量×公尺數；乘數可以不是整數。 本題答案：0.6 公斤。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "88099a66dc713c2aa663cd54",
+  "variantGroup": "g6x:review_decimal_multiply",
+  "title": "裝飾繩的重量",
+  "sourceQuestionId": "g6x_review_decimal_multiply_1"
+}, {
+  "id": "g6x_review_triangle_1",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "鐘塔的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "三角形旗幟底長 8 公分，這條底的垂直高 5 公分，面積是多少平方公分？",
+      "answer": 20,
+      "unit": "平方公分",
+      "explain": "三角形面積＝底×垂直高÷2。 本題答案：20 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "7dd38a5706d220e6e0b44f5e",
+  "variantGroup": "g6x:review_triangle",
+  "title": "三角旗幟的面積",
+  "sourceQuestionId": "g6x_review_triangle_1"
+}, {
+  "id": "g6x_review_trapezoid_1",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "鐘塔的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "梯形桌墊上底 4 公分、下底 10 公分，垂直高 6 公分。面積是多少平方公分？",
+      "answer": 42,
+      "unit": "平方公分",
+      "explain": "梯形面積＝（上底＋下底）×垂直高÷2。 本題答案：42 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "4aeb28c3c6c2ef4f88ed8e8c",
+  "variantGroup": "g6x:review_trapezoid",
+  "title": "梯形桌墊的面積",
+  "sourceQuestionId": "g6x_review_trapezoid_1"
+}, {
+  "id": "g6x_review_parallelogram_1",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "鐘塔的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "平行四邊形布片的底 7 公分，對應的垂直高 4 公分。面積是多少平方公分？",
+      "answer": 28,
+      "unit": "平方公分",
+      "explain": "平行四邊形面積＝底×垂直高，不是乘斜邊。 本題答案：28 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "8432073c63cc65b55599313c",
+  "variantGroup": "g6x:review_parallelogram",
+  "title": "平行四邊形布片",
+  "sourceQuestionId": "g6x_review_parallelogram_1"
+}, {
+  "id": "g6x_review_fraction_add_2",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "step",
+  "params": {
+    "story": "港口的調查委託：請留下推算過程。",
+    "problem": "上午修好 2/3 公尺護欄，下午修好 1/6 公尺，共修好幾公尺？",
+    "steps": [{
+      "left": "2/3",
+      "right": "1/6",
+      "op": "＋",
+      "result": 0.833333,
+      "prompt": "先通分，再把分子相加。",
+      "hint": "先通分，再把分子相加。",
+      "answerExact": "5/6"
+    }],
+    "unit": "公尺"
+  },
+  "contentKey": "ef61ccdfc7320f295b4057a6",
+  "variantGroup": "g6x:review_fraction_add",
+  "title": "合計護欄修復量",
+  "sourceQuestionId": "g6x_review_fraction_add_2"
+}, {
+  "id": "g6x_review_fraction_sub_2",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "step",
+  "params": {
+    "story": "港口的調查委託：請留下推算過程。",
+    "problem": "一張紀錄紙已用掉 2/3 張，其中 1/6 張是草稿，其餘是正式紀錄。正式紀錄用了幾張？",
+    "steps": [{
+      "left": "2/3",
+      "right": "1/6",
+      "op": "−",
+      "result": 0.5,
+      "prompt": "從已用量扣掉草稿量。",
+      "hint": "從已用量扣掉草稿量。",
+      "answerExact": "1/2"
+    }],
+    "unit": "張"
+  },
+  "contentKey": "0384a97682afee0409827374",
+  "variantGroup": "g6x:review_fraction_sub",
+  "title": "分清草稿與正式紀錄",
+  "sourceQuestionId": "g6x_review_fraction_sub_2"
+}, {
+  "id": "g6x_review_fraction_multiply_2",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "step",
+  "params": {
+    "story": "港口的調查委託：請留下推算過程。",
+    "problem": "標示帶長 2/3 公尺，把整條標示帶的 3/4 塗成金色。金色部分長幾公尺？",
+    "steps": [{
+      "left": "2/3",
+      "right": "3/4",
+      "op": "×",
+      "result": 0.5,
+      "prompt": "求一個量的幾分之幾，用乘法。",
+      "hint": "求一個量的幾分之幾，用乘法。",
+      "answerExact": "1/2"
+    }],
+    "unit": "公尺"
+  },
+  "contentKey": "73d54ced9a55f5c2ac448890",
+  "variantGroup": "g6x:review_fraction_multiply",
+  "title": "金色標示帶",
+  "sourceQuestionId": "g6x_review_fraction_multiply_2"
+}, {
+  "id": "g6x_review_decimal_multiply_2",
+  "kpId": "m_dec_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "港口的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "每公尺裝飾繩重 0.6 公斤，2.5 公尺重幾公斤？",
+      "answer": 1.5,
+      "unit": "公斤",
+      "explain": "每公尺重量×公尺數；乘數可以不是整數。 本題答案：1.5 公斤。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "79b1daca593a6c2b093e33ff",
+  "variantGroup": "g6x:review_decimal_multiply",
+  "title": "裝飾繩的重量",
+  "sourceQuestionId": "g6x_review_decimal_multiply_2"
+}, {
+  "id": "g6x_review_triangle_2",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "港口的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "三角形旗幟底長 10 公分，這條底的垂直高 7 公分，面積是多少平方公分？",
+      "answer": 35,
+      "unit": "平方公分",
+      "explain": "三角形面積＝底×垂直高÷2。 本題答案：35 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "b5a2ea6e57f676e043104f47",
+  "variantGroup": "g6x:review_triangle",
+  "title": "三角旗幟的面積",
+  "sourceQuestionId": "g6x_review_triangle_2"
+}, {
+  "id": "g6x_review_trapezoid_2",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "港口的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "梯形桌墊上底 6 公分、下底 12 公分，垂直高 8 公分。面積是多少平方公分？",
+      "answer": 72,
+      "unit": "平方公分",
+      "explain": "梯形面積＝（上底＋下底）×垂直高÷2。 本題答案：72 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "bb5b4149797111d0336ebe83",
+  "variantGroup": "g6x:review_trapezoid",
+  "title": "梯形桌墊的面積",
+  "sourceQuestionId": "g6x_review_trapezoid_2"
+}, {
+  "id": "g6x_review_parallelogram_2",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "港口的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "平行四邊形布片的底 9 公分，對應的垂直高 6 公分。面積是多少平方公分？",
+      "answer": 54,
+      "unit": "平方公分",
+      "explain": "平行四邊形面積＝底×垂直高，不是乘斜邊。 本題答案：54 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "aead11532f5a37dfe901228b",
+  "variantGroup": "g6x:review_parallelogram",
+  "title": "平行四邊形布片",
+  "sourceQuestionId": "g6x_review_parallelogram_2"
+}, {
+  "id": "g6x_review_fraction_add_3",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "step",
+  "params": {
+    "story": "書院的調查委託：請留下推算過程。",
+    "problem": "上午修好 3/4 公尺護欄，下午修好 1/8 公尺，共修好幾公尺？",
+    "steps": [{
+      "left": "3/4",
+      "right": "1/8",
+      "op": "＋",
+      "result": 0.875,
+      "prompt": "先通分，再把分子相加。",
+      "hint": "先通分，再把分子相加。",
+      "answerExact": "7/8"
+    }],
+    "unit": "公尺"
+  },
+  "contentKey": "63a3415178cba081c25a6d05",
+  "variantGroup": "g6x:review_fraction_add",
+  "title": "合計護欄修復量",
+  "sourceQuestionId": "g6x_review_fraction_add_3"
+}, {
+  "id": "g6x_review_fraction_sub_3",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "step",
+  "params": {
+    "story": "書院的調查委託：請留下推算過程。",
+    "problem": "一張紀錄紙已用掉 3/4 張，其中 1/8 張是草稿，其餘是正式紀錄。正式紀錄用了幾張？",
+    "steps": [{
+      "left": "3/4",
+      "right": "1/8",
+      "op": "−",
+      "result": 0.625,
+      "prompt": "從已用量扣掉草稿量。",
+      "hint": "從已用量扣掉草稿量。",
+      "answerExact": "5/8"
+    }],
+    "unit": "張"
+  },
+  "contentKey": "1b6bc8a5d6c0d4c0dbea8186",
+  "variantGroup": "g6x:review_fraction_sub",
+  "title": "分清草稿與正式紀錄",
+  "sourceQuestionId": "g6x_review_fraction_sub_3"
+}, {
+  "id": "g6x_review_fraction_multiply_3",
+  "kpId": "m_frac_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "step",
+  "params": {
+    "story": "書院的調查委託：請留下推算過程。",
+    "problem": "標示帶長 3/4 公尺，把整條標示帶的 2/3 塗成金色。金色部分長幾公尺？",
+    "steps": [{
+      "left": "3/4",
+      "right": "2/3",
+      "op": "×",
+      "result": 0.5,
+      "prompt": "求一個量的幾分之幾，用乘法。",
+      "hint": "求一個量的幾分之幾，用乘法。",
+      "answerExact": "1/2"
+    }],
+    "unit": "公尺"
+  },
+  "contentKey": "721141828729d942be92059d",
+  "variantGroup": "g6x:review_fraction_multiply",
+  "title": "金色標示帶",
+  "sourceQuestionId": "g6x_review_fraction_multiply_3"
+}, {
+  "id": "g6x_review_decimal_multiply_3",
+  "kpId": "m_dec_ops",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "書院的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "每公尺裝飾繩重 0.8 公斤，3.5 公尺重幾公斤？",
+      "answer": 2.8,
+      "unit": "公斤",
+      "explain": "每公尺重量×公尺數；乘數可以不是整數。 本題答案：2.8 公斤。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "7ff7621b1de3a669be0253c1",
+  "variantGroup": "g6x:review_decimal_multiply",
+  "title": "裝飾繩的重量",
+  "sourceQuestionId": "g6x_review_decimal_multiply_3"
+}, {
+  "id": "g6x_review_triangle_3",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "書院的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "三角形旗幟底長 12 公分，這條底的垂直高 9 公分，面積是多少平方公分？",
+      "answer": 54,
+      "unit": "平方公分",
+      "explain": "三角形面積＝底×垂直高÷2。 本題答案：54 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "0ef6f736a683c9ba469ac955",
+  "variantGroup": "g6x:review_triangle",
+  "title": "三角旗幟的面積",
+  "sourceQuestionId": "g6x_review_triangle_3"
+}, {
+  "id": "g6x_review_trapezoid_3",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "normal",
+  "kind": "problems",
+  "params": {
+    "story": "書院的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "梯形桌墊上底 8 公分、下底 14 公分，垂直高 10 公分。面積是多少平方公分？",
+      "answer": 110,
+      "unit": "平方公分",
+      "explain": "梯形面積＝（上底＋下底）×垂直高÷2。 本題答案：110 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "146993d10d5c22ed04a7c93b",
+  "variantGroup": "g6x:review_trapezoid",
+  "title": "梯形桌墊的面積",
+  "sourceQuestionId": "g6x_review_trapezoid_3"
+}, {
+  "id": "g6x_review_parallelogram_3",
+  "kpId": "m_area",
+  "grade": 5,
+  "contentGrade": 5,
+  "difficulty": "easy",
+  "kind": "problems",
+  "params": {
+    "story": "書院的獨立調查：把新線索換成數學資料。",
+    "problems": [{
+      "q": "平行四邊形布片的底 11 公分，對應的垂直高 8 公分。面積是多少平方公分？",
+      "answer": 88,
+      "unit": "平方公分",
+      "explain": "平行四邊形面積＝底×垂直高，不是乘斜邊。 本題答案：88 平方公分。"
+    }],
+    "passNeed": 1
+  },
+  "contentKey": "d2316d6d9f738eaf14181e5b",
+  "variantGroup": "g6x:review_parallelogram",
+  "title": "平行四邊形布片",
+  "sourceQuestionId": "g6x_review_parallelogram_3"
+}];
 const CURRICULUM_NOTE = '學習內容代碼已核對教育部／國教院正式課綱（2026-11-06）。上下學期是本遊戲的建議分類，並非官方或各出版社的共同進度；可跨學期勾選。國語第三學習階段涵蓋五、六年級。';
 const KNOWLEDGE_POINTS = [{
   id: 'm_prime',
@@ -16508,7 +20421,7 @@ function subjColor(id) {
 }
 function activeSubjects(grade = 6) {
   const g = typeof kpGrade === 'function' ? kpGrade : () => 6;
-  return SUBJECT_ORDER.filter(id => KNOWLEDGE_POINTS.some(k => k.subject === id && g(k) === grade && (typeof missionSupported !== 'function' || missionSupported(k.id))));
+  return SUBJECT_ORDER.filter(id => KNOWLEDGE_POINTS.some(k => k.subject === id && (typeof kpAllowedForGrade === 'function' ? kpAllowedForGrade(k, grade) : g(k) === grade) && (typeof missionSupported !== 'function' || missionSupported(k.id))));
 }
 const ERROR_REASONS = [{
   id: 'concept',
@@ -16808,7 +20721,7 @@ function studentGrade(student) {
   return student?.grade || 6;
 }
 function kpsForGrade(grade) {
-  return KNOWLEDGE_POINTS.filter(k => kpGrade(k) === grade);
+  return KNOWLEDGE_POINTS.filter(k => kpAllowedForGrade(k, grade));
 }
 function kpIdsForGrade(grade) {
   return kpsForGrade(grade).map(k => k.id);
@@ -16817,19 +20730,28 @@ function juniorSubject(sub) {
   return sub === 'science' || sub === 'social' ? 'life' : sub;
 }
 function resolvePool(state, pool, subject) {
+  if (studentGrade(state?.student) === 5) {
+    const allowed = kpsForGrade(5).filter(k => k.subject === (subject || KP_BY_ID[pool?.[0]]?.subject || 'math')).map(k => k.id);
+    const exact = (pool || []).filter(k => allowed.includes(k));
+    return exact.length ? exact : allowed;
+  }
   if (studentGrade(state?.student) !== 2) return pool;
   const sub = juniorSubject(subject || KP_BY_ID[pool?.[0]]?.subject || 'math');
   const ids = kpsForGrade(2).filter(k => k.subject === sub).map(k => k.id);
   return ids.length ? ids : kpIdsForGrade(2);
 }
 function seedQuestsFor(grade) {
-  return grade === 2 ? typeof JUNIOR_SEED_QUESTS !== 'undefined' ? JUNIOR_SEED_QUESTS : kpIdsForGrade(2) : SEED_QUESTS;
+  return grade === 2 ? typeof JUNIOR_SEED_QUESTS !== 'undefined' ? JUNIOR_SEED_QUESTS : kpIdsForGrade(2) : grade === 5 ? G5_SEED_QUESTS : SEED_QUESTS;
 }
 function practiceKpsFor(state) {
   const g = studentGrade(state?.student);
   const chosen = state?.settings?.practiceKps;
   const raw = chosen?.length ? chosen : seedQuestsFor(g);
-  return [...new Set(raw)].filter(id => KP_BY_ID[id] && kpGrade(id) === g && (typeof g6AllowsKp !== 'function' || g6AllowsKp(state, id)) && (typeof missionSupported !== 'function' || missionSupported(id)));
+  return [...new Set(raw)].filter(id => KP_BY_ID[id] && kpAllowedForGrade(id, g) && (typeof g6AllowsKp !== 'function' || g6AllowsKp(state, id)) && (typeof missionSupported !== 'function' || missionSupported(id)));
+}
+function kpAllowedForGrade(kp, grade) {
+  const id = typeof kp === 'string' ? kp : kp?.id;
+  return grade === 5 ? G5_MATH_IDS.includes(id) || G5_SHARED_IDS.includes(id) : kpGrade(kp) === grade;
 }
 const JUNIOR_VOCAB = {
   "meta": {
@@ -19881,6 +23803,285 @@ const JUNIOR_VOCAB = {
     }
   }
 };
+const G5_KPS = [{
+  "id": "g5_n51",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-1",
+  "unit": "五年級數學",
+  "name": "十進位的位值系統",
+  "semester": "依課綱",
+  "mech": ["pickone", "problems"],
+  "desc": "十進位的位值系統",
+  "keywords": ["十進位的位值系統"]
+}, {
+  "id": "g5_n52",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-2",
+  "unit": "五年級數學",
+  "name": "多步驟生活應用",
+  "semester": "依課綱",
+  "mech": ["pickone"],
+  "desc": "多步驟生活應用",
+  "keywords": ["多步驟生活應用"]
+}, {
+  "id": "g5_n53",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-3",
+  "unit": "五年級數學",
+  "name": "公因數和公倍數",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "公因數和公倍數",
+  "keywords": ["公因數和公倍數"]
+}, {
+  "id": "g5_n56",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-6",
+  "unit": "五年級數學",
+  "name": "整數相除之分數表示",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "整數相除之分數表示",
+  "keywords": ["整數相除之分數表示"]
+}, {
+  "id": "g5_n57",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-7",
+  "unit": "五年級數學",
+  "name": "分數除以整數",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "分數除以整數",
+  "keywords": ["分數除以整數"]
+}, {
+  "id": "g5_n59",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-9",
+  "unit": "五年級數學",
+  "name": "整數、小數除以整數(商為小數)",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "整數、小數除以整數(商為小數)",
+  "keywords": ["整數、小數除以整數(商為小數)"]
+}, {
+  "id": "g5_n510",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-10",
+  "unit": "五年級數學",
+  "name": "比率、百分率與折成",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "比率、百分率與折成",
+  "keywords": ["比率、百分率與折成"]
+}, {
+  "id": "g5_n511",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-11",
+  "unit": "五年級數學",
+  "name": "小數取概數",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "小數取概數",
+  "keywords": ["小數取概數"]
+}, {
+  "id": "g5_n512",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-12",
+  "unit": "五年級數學",
+  "name": "面積大單位換算",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "面積大單位換算",
+  "keywords": ["面積大單位換算"]
+}, {
+  "id": "g5_n513",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-13",
+  "unit": "五年級數學",
+  "name": "公噸與公斤",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "公噸與公斤",
+  "keywords": ["公噸與公斤"]
+}, {
+  "id": "g5_n514",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-14",
+  "unit": "五年級數學",
+  "name": "立方公尺",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "立方公尺",
+  "keywords": ["立方公尺"]
+}, {
+  "id": "g5_n515",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-15",
+  "unit": "五年級數學",
+  "name": "容積與容量",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "容積與容量",
+  "keywords": ["容積與容量"]
+}, {
+  "id": "g5_n516",
+  "grade": 5,
+  "subject": "math",
+  "code": "N-5-16",
+  "unit": "五年級數學",
+  "name": "時間乘除",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "時間乘除",
+  "keywords": ["時間乘除"]
+}, {
+  "id": "g5_s51",
+  "grade": 5,
+  "subject": "math",
+  "code": "S-5-1",
+  "unit": "五年級數學",
+  "name": "三角形與四邊形的性質",
+  "semester": "依課綱",
+  "mech": ["pickone", "problems"],
+  "desc": "三角形與四邊形的性質",
+  "keywords": ["三角形與四邊形的性質"]
+}, {
+  "id": "g5_s53",
+  "grade": 5,
+  "subject": "math",
+  "code": "S-5-3",
+  "unit": "五年級數學",
+  "name": "扇形",
+  "semester": "依課綱",
+  "mech": ["g5sector"],
+  "desc": "扇形",
+  "keywords": ["扇形"]
+}, {
+  "id": "g5_s54",
+  "grade": 5,
+  "subject": "math",
+  "code": "S-5-4",
+  "unit": "五年級數學",
+  "name": "線對稱",
+  "semester": "依課綱",
+  "mech": ["g5fold"],
+  "desc": "線對稱",
+  "keywords": ["線對稱"]
+}, {
+  "id": "g5_s55",
+  "grade": 5,
+  "subject": "math",
+  "code": "S-5-5",
+  "unit": "五年級數學",
+  "name": "正方體和長方體",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "正方體和長方體",
+  "keywords": ["正方體和長方體"]
+}, {
+  "id": "g5_s56",
+  "grade": 5,
+  "subject": "math",
+  "code": "S-5-6",
+  "unit": "五年級數學",
+  "name": "空間中面與面的關係",
+  "semester": "依課綱",
+  "mech": ["pickone"],
+  "desc": "空間中面與面的關係",
+  "keywords": ["空間中面與面的關係"]
+}, {
+  "id": "g5_s57",
+  "grade": 5,
+  "subject": "math",
+  "code": "S-5-7",
+  "unit": "五年級數學",
+  "name": "球、柱體與錐體",
+  "semester": "依課綱",
+  "mech": ["pickone"],
+  "desc": "球、柱體與錐體",
+  "keywords": ["球、柱體與錐體"]
+}, {
+  "id": "g5_r51",
+  "grade": 5,
+  "subject": "math",
+  "code": "R-5-1",
+  "unit": "五年級數學",
+  "name": "三步驟問題併式",
+  "semester": "依課綱",
+  "mech": ["pickone"],
+  "desc": "三步驟問題併式",
+  "keywords": ["三步驟問題併式"]
+}, {
+  "id": "g5_r52",
+  "grade": 5,
+  "subject": "math",
+  "code": "R-5-2",
+  "unit": "五年級數學",
+  "name": "四則計算規律(II)",
+  "semester": "依課綱",
+  "mech": ["pickone"],
+  "desc": "四則計算規律(II)",
+  "keywords": ["四則計算規律(II)"]
+}, {
+  "id": "g5_r53",
+  "grade": 5,
+  "subject": "math",
+  "code": "R-5-3",
+  "unit": "五年級數學",
+  "name": "以符號表示數學公式",
+  "semester": "依課綱",
+  "mech": ["problems"],
+  "desc": "以符號表示數學公式",
+  "keywords": ["以符號表示數學公式"]
+}, {
+  "id": "g5_d51",
+  "grade": 5,
+  "subject": "math",
+  "code": "D-5-1",
+  "unit": "五年級數學",
+  "name": "製作折線圖",
+  "semester": "依課綱",
+  "mech": ["g5line"],
+  "desc": "製作折線圖",
+  "keywords": ["製作折線圖"]
+}];
+KNOWLEDGE_POINTS.push(...G5_KPS);
+Object.assign(KP_BY_ID, Object.fromEntries(G5_KPS.map(k => [k.id, k])));
+const G5_MATH_IDS = [...G5_KPS.map(k => k.id), 'm_frac_ops', 'm_dec_ops', 'm_area'];
+const G5_SHARED_IDS = ["c_word", "c_idiom", "c_sentence", "c_structure", "c_main", "c_extract", "c_infer", "c_author", "c_express", "c_writing", "s_heat", "s_weather", "s_earth", "s_magnet", "s_lever", "s_sound", "s_eco", "o_postwar", "o_consume", "o_rules", "o_tech", "o_debate", "o_economy", "o_society", "o_environment", "o_action"];
+const G5_SEED_QUESTS = [...G5_MATH_IDS, 'c_infer', 'c_idiom', 'c_word', 'c_structure', 's_magnet', 's_lever', 'o_debate', 'o_consume'];
+function gradeName(g) {
+  return {
+    2: '二',
+    5: '五',
+    6: '六'
+  }[g] || '六';
+}
+function rangeGroup(k, grade) {
+  return grade === 5 ? k.subject === 'math' ? '五年級數學' : '第三學習階段' : k.semester;
+}
+function changeLearningGrade(state, grade, settings) {
+  if (![2, 5, 6].includes(grade)) throw Error('不支援的年級');
+  return applyLearningSettings({
+    ...state,
+    student: {
+      ...state.student,
+      grade
+    }
+  }, settings);
+}
 const ZY_CJK = /[㐀-䶿一-鿿]/;
 const ZY_MAX_WORD = 4;
 let JUNIOR_MODE = false;
@@ -22954,7 +27155,7 @@ function validateBackupState(input) {
     if (!st.name.trim() || st.name.length > 200) bad('student.name');
     for (const k of ['avatar', 'color', 'companion', 'outfit', 'title']) opt(st, k, str);
     num(st.xp, 'student.xp');
-    if (st.grade !== undefined && ![2, 6].includes(st.grade)) bad('student.grade');
+    if (st.grade !== undefined && ![2, 5, 6].includes(st.grade)) bad('student.grade');
     strs(st.achievements, 'student.achievements');
     strs(st.outfits, 'student.outfits');
     records(st.log, 'student.log');
@@ -23125,7 +27326,7 @@ function validateBackupState(input) {
   });
   opt(s, 'learning', (v, p) => {
     obj(v, p);
-    for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli', 'g2Seen', 'g2Families', 'ch4Seen']) opt(v, k, strs, p);
+    for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli', 'g2Seen', 'g2Families', 'ch4Seen', 'g5Seen', 'g5Families']) opt(v, k, strs, p);
     opt(v, 'seen', records, p);
     opt(v, 'archivedCases', records, p);
     for (const k of ['storyTasks', 'reviewTasks']) opt(v, k, (x, q) => map(x, q, stage), p);
@@ -25110,7 +29311,7 @@ function ProblemSet({
   const [ans, setAns] = useState(problems.map(() => ''));
   const [result, setResult] = useState(null);
   const submit = () => {
-    const r = problems.map((p, i) => numExact(parseNum(ans[i]), p.answer));
+    const r = problems.map((p, i) => numExact(parseNum(ans[i]), p.answer) && (p.answerFormat !== 'decimal' || !/[\/／]/.test(ans[i])));
     setResult(r);
     const n = r.filter(Boolean).length;
     onDone && onDone({
@@ -27183,6 +31384,289 @@ const ALL_MECHS = {
   ...MATH_MECHS,
   ...CN_MECHS
 };
+function G5Sector({
+  params: p,
+  hintsAllowed = true,
+  onDone,
+  maxAttempts
+}) {
+  const [angle, setAngle] = useState('');
+  const m = useMechanic({
+    hintsAllowed,
+    onDone,
+    maxAttempts
+  });
+  const a = Math.max(0, Math.min(360, Number(angle) || 0)),
+    rad = (a - 90) * Math.PI / 180;
+  const end = [130 + 100 * Math.cos(rad), 130 + 100 * Math.sin(rad)];
+  return React.createElement("div", {
+    className: "col"
+  }, React.createElement("p", {
+    className: "story"
+  }, p.story), React.createElement("b", null, p.prompt), React.createElement("svg", {
+    viewBox: "0 0 260 260",
+    role: "img",
+    "aria-label": `目前扇形圓心角${a}度`,
+    style: {
+      width: '100%',
+      maxWidth: 320,
+      alignSelf: 'center',
+      background: '#f4f7f9',
+      borderRadius: 16
+    }
+  }, React.createElement("circle", {
+    cx: "130",
+    cy: "130",
+    r: "100",
+    fill: "#fff",
+    stroke: "#25465d",
+    strokeWidth: "2"
+  }), a === 360 ? React.createElement("circle", {
+    cx: "130",
+    cy: "130",
+    r: "100",
+    fill: "#e8b34d"
+  }) : a > 0 && React.createElement("path", {
+    d: `M130 130 L130 30 A100 100 0 ${a > 180 ? 1 : 0} 1 ${end.join(' ')} Z`,
+    fill: "#e8b34d",
+    stroke: "#25465d"
+  }), React.createElement("circle", {
+    cx: "130",
+    cy: "130",
+    r: "3",
+    fill: "#25465d"
+  }), React.createElement("text", {
+    x: "130",
+    y: "248",
+    textAnchor: "middle",
+    fill: "#17354a"
+  }, "\u4E00\u6574\u5708 360\xB0")), React.createElement("label", {
+    htmlFor: "g5-angle"
+  }, "\u5713\u5FC3\u89D2\uFF08\u5EA6\uFF09"), React.createElement("input", {
+    id: "g5-angle",
+    inputMode: "numeric",
+    value: angle,
+    disabled: m.done,
+    onChange: e => setAngle(e.target.value)
+  }), React.createElement("input", {
+    "aria-label": "\u89D2\u5EA6\u65CB\u9215",
+    type: "range",
+    min: "0",
+    max: "360",
+    step: "1",
+    value: a,
+    disabled: m.done,
+    onChange: e => setAngle(e.target.value)
+  }), React.createElement(Btn, {
+    id: "g5-check",
+    kind: "primary",
+    disabled: m.done,
+    onClick: () => numExact(parseNum(angle), p.target) ? m.pass('扇形開口完成了。', {
+      angle
+    }) : m.fail('先用360度除以等分的份數，再乘要取的份數。', {
+      angle
+    })
+  }, "\u78BA\u8A8D\u6247\u5F62"), React.createElement(MechHUD, {
+    m: m,
+    hintsAllowed: hintsAllowed,
+    hintTexts: p.hints
+  }));
+}
+function G5Fold({
+  params: p,
+  hintsAllowed = true,
+  onDone,
+  maxAttempts
+}) {
+  const [chosen, setChosen] = useState([]);
+  const m = useMechanic({
+    hintsAllowed,
+    onDone,
+    maxAttempts
+  });
+  const key = (x, y) => `${x},${y}`,
+    left = p.left.map(([x, y]) => key(x, y)),
+    target = p.left.map(([x, y]) => key(p.cols - 1 - x, y));
+  return React.createElement("div", {
+    className: "col"
+  }, React.createElement("p", {
+    className: "story"
+  }, p.story), React.createElement("b", null, p.prompt), React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: `repeat(${p.cols},1fr)`,
+      gap: 0,
+      width: '100%',
+      maxWidth: 420,
+      alignSelf: 'center'
+    }
+  }, Array.from({
+    length: p.rows * p.cols
+  }, (_, i) => {
+    const x = i % p.cols,
+      y = Math.floor(i / p.cols),
+      locked = x < p.cols / 2,
+      filled = locked ? left.includes(key(x, y)) : chosen.includes(key(x, y));
+    return React.createElement("button", {
+      key: i,
+      id: `g5-cell-${x}-${y}`,
+      type: "button",
+      disabled: locked || m.done,
+      "aria-label": `第${y + 1}排第${x + 1}格${locked ? '，範本' : ''}`,
+      "aria-pressed": filled,
+      onClick: () => setChosen(v => v.includes(key(x, y)) ? v.filter(k => k !== key(x, y)) : [...v, key(x, y)]),
+      style: {
+        aspectRatio: '1',
+        minHeight: 44,
+        padding: 0,
+        border: '1px solid #537185',
+        borderLeft: x === p.cols / 2 ? '4px dashed #c13535' : undefined,
+        borderRadius: 0,
+        background: filled ? '#218a99' : '#f5f7f9',
+        color: filled ? '#fff' : '#17354a',
+        opacity: 1
+      }
+    }, filled ? '●' : '');
+  })), React.createElement("span", {
+    className: "small muted"
+  }, "\u7D05\u8272\u865B\u7DDA\u662F\u5C0D\u7A31\u8EF8\uFF1B\u518D\u9EDE\u5DF2\u9078\u7684\u683C\u5B50\u53EF\u4EE5\u53D6\u6D88\u3002"), React.createElement(Btn, {
+    id: "g5-check",
+    kind: "primary",
+    disabled: m.done,
+    onClick: () => chosen.length === target.length && target.every(k => chosen.includes(k)) ? m.pass('兩邊對摺後可以重合。', {
+      chosen
+    }) : m.fail('請逐排檢查：對稱的格子離軸一樣遠，不能多塗或少塗。', {
+      chosen
+    })
+  }, "\u5C0D\u647A\u6838\u5C0D"), React.createElement(MechHUD, {
+    m: m,
+    hintsAllowed: hintsAllowed,
+    hintTexts: p.hints
+  }));
+}
+function G5Line({
+  params: p,
+  hintsAllowed = true,
+  onDone,
+  maxAttempts
+}) {
+  const [values, setValues] = useState(p.values.map(() => ''));
+  const m = useMechanic({
+    hintsAllowed,
+    onDone,
+    maxAttempts
+  });
+  const x = i => 55 + i * 270 / (p.labels.length - 1),
+    y = v => 215 - Number(v) * 170 / p.max;
+  return React.createElement("div", {
+    className: "col"
+  }, React.createElement("p", {
+    className: "story"
+  }, p.story), React.createElement("b", null, p.caption), React.createElement("div", {
+    className: "row",
+    style: {
+      flexWrap: 'wrap'
+    }
+  }, p.labels.map((t, i) => React.createElement("span", {
+    key: t
+  }, t, "\uFF1A", p.values[i], p.unit))), React.createElement("svg", {
+    viewBox: "0 0 365 265",
+    role: "img",
+    "aria-label": "\u4F9D\u7D00\u9304\u4F5C\u51FA\u7684\u6298\u7DDA\u5716\uFF0C\u6A6B\u8EF8\u662F\u6642\u9593\uFF0C\u7E31\u8EF8\u662F\u6578\u91CF",
+    style: {
+      width: '100%',
+      maxWidth: 500,
+      background: '#f5f7f9',
+      borderRadius: 14,
+      alignSelf: 'center'
+    }
+  }, React.createElement("text", {
+    x: "8",
+    y: "22",
+    fill: "#17354a"
+  }, p.unit), Array.from({
+    length: p.max + 1
+  }, (_, n) => React.createElement("g", {
+    key: n
+  }, React.createElement("line", {
+    x1: "55",
+    x2: "325",
+    y1: y(n),
+    y2: y(n),
+    stroke: "#ccd5dc"
+  }), React.createElement("text", {
+    x: "45",
+    y: y(n) + 5,
+    textAnchor: "end",
+    fill: "#17354a",
+    fontSize: "12"
+  }, n))), React.createElement("path", {
+    d: "M55 40 V215 H330",
+    fill: "none",
+    stroke: "#17354a",
+    strokeWidth: "2"
+  }), p.labels.map((t, i) => React.createElement("g", {
+    key: t
+  }, React.createElement("text", {
+    x: x(i),
+    y: "239",
+    textAnchor: "middle",
+    fill: "#17354a",
+    fontSize: "12"
+  }, t), values[i] !== '' && React.createElement("circle", {
+    cx: x(i),
+    cy: y(values[i]),
+    r: "4",
+    fill: "#087f8c"
+  }), i > 0 && values[i] !== '' && values[i - 1] !== '' && React.createElement("line", {
+    x1: x(i - 1),
+    y1: y(values[i - 1]),
+    x2: x(i),
+    y2: y(values[i]),
+    stroke: "#087f8c",
+    strokeWidth: "3"
+  })))), React.createElement("div", {
+    className: "row",
+    style: {
+      flexWrap: 'wrap'
+    }
+  }, p.labels.map((t, i) => React.createElement("label", {
+    key: t
+  }, t, "\u4F5C\u9EDE\u9AD8\u5EA6", React.createElement("select", {
+    id: `g5-point-${i}`,
+    value: values[i],
+    disabled: m.done,
+    onChange: e => {
+      const value = e.target.value;
+      setValues(v => v.map((z, j) => i === j ? value : z));
+    }
+  }, React.createElement("option", {
+    value: ""
+  }, "\u8ACB\u9078\u64C7"), Array.from({
+    length: p.max + 1
+  }, (_, n) => React.createElement("option", {
+    key: n,
+    value: n
+  }, n, p.unit)))))), React.createElement(Btn, {
+    id: "g5-check",
+    kind: "primary",
+    disabled: m.done,
+    onClick: () => p.values.every((v, i) => values[i] !== '' && numExact(parseNum(values[i]), v)) ? m.pass('依時間作點，折線圖完成了。', {
+      values
+    }) : m.fail('逐一對照紀錄與縱軸，所有時段都要作點。', {
+      values
+    })
+  }, "\u78BA\u8A8D\u6298\u7DDA\u5716"), React.createElement(MechHUD, {
+    m: m,
+    hintsAllowed: hintsAllowed,
+    hintTexts: p.hints
+  }));
+}
+Object.assign(ALL_MECHS, {
+  g5sector: G5Sector,
+  g5fold: G5Fold,
+  g5line: G5Line
+});
 const CHAPTERS = {
   math_ch1: {
     id: 'math_ch1',
@@ -36820,6 +41304,7 @@ function generateMission(errorItem, kpId, seed, withDiagnostic, difficulty = 'no
   }));
   if (typeof g6ApplyStages === 'function') stages = g6ApplyStages(stages, context, kpId, seed, difficulty);
   if (context && typeof g2ApplyStages === "function") stages = g2ApplyStages(stages, context, kpId, seed, difficulty);
+  if (context && typeof g5ApplyStages === 'function') stages = g5ApplyStages(stages, context, kpId, seed, difficulty);
   if (difficulty === 'hard') {
     stages[1].allowHints = false;
     if (stages[2].kind === 'problems') stages[2].params = {
@@ -36827,7 +41312,15 @@ function generateMission(errorItem, kpId, seed, withDiagnostic, difficulty = 'no
       passNeed: stages[2].params.problems.length
     };
   }
-  const diag = withDiagnostic ? (buildDiagnostic(kpId, makeRng(seed + 99)) || []).map((s, i) => ({
+  const diag = withDiagnostic ? ((context && studentGrade(context.student) === 5 && G5_MATH_IDS.includes(kpId) ? [{
+    ...stages[0],
+    key: 'd1',
+    name: '診斷・觀察',
+    short: '診斷',
+    allowHints: false,
+    probe: 'strategy',
+    maxAttempts: 1
+  }] : buildDiagnostic(kpId, makeRng(seed + 99))) || []).map((s, i) => ({
     ...s,
     id: `diag_${i}`
   })) : [];
@@ -42096,7 +46589,7 @@ function storyRoom(id) {
 }
 function storyAlternative(state, id) {
   const room = storyRoom(id);
-  return room && (studentGrade(state.student) !== kpGrade(room.kp) || !learningAllows(state, room.kp) || getSettings(state).difficulty !== 'normal' || typeof g6Select === 'function' && g6Select(state, room.kp, 1, getSettings(state).difficulty)?.reason !== 'no-eligible-reviewed-question' && g6Enabled(state));
+  return room && (!kpAllowedForGrade(room.kp, studentGrade(state.student)) || studentGrade(state.student) === 5 && KP_BY_ID[room.kp]?.subject === 'math' || !learningAllows(state, room.kp) || getSettings(state).difficulty !== 'normal' || typeof g6Select === 'function' && g6Select(state, room.kp, 1, getSettings(state).difficulty)?.reason !== 'no-eligible-reviewed-question' && g6Enabled(state));
 }
 function beginStoryTask(state, id) {
   const room = storyRoom(id);
@@ -42107,7 +46600,7 @@ function beginStoryTask(state, id) {
   if (old && !old.done && old.policy === policy && learningAllows(state, old.kpId)) return state;
   const meta = STORY_LEARNING[id],
     subject = KP_BY_ID[room.kp]?.subject;
-  const pool = learningPool(state, studentGrade(state.student) === 2 ? meta.junior : [room.kp], subject);
+  const pool = learningPool(state, studentGrade(state.student) === 2 ? meta.junior : studentGrade(state.student) === 5 ? meta.grade5 || [room.kp] : [room.kp], subject);
   if (!pool.length) return {
     ...state,
     learning: {
@@ -42289,7 +46782,7 @@ function g6Remember(learning, stage) {
 }
 function ch5SelectStage(state, eventId, kp, seed, difficulty) {
   if (!/^f[1-6]$/.test(eventId) || typeof CH5_QUESTION_BANK === 'undefined' || !CH5_BANK_REVIEWED || !learningAllows(state, kp)) return null;
-  const pool = CH5_QUESTION_BANK.filter(q => q.grade === studentGrade(state.student) && q.kpId === kp);
+  const pool = CH5_QUESTION_BANK.filter(q => (q.grade === studentGrade(state.student) || studentGrade(state.student) === 5 && q.grade === 6 && G5_SHARED_IDS.includes(q.kpId)) && q.kpId === kp);
   if (!pool.length) return null;
   const history = [...(state.learning?.seen || []).map(x => x.key), ...(state.learning?.g6Seen || []), ...(state.practiceLog || []).map(x => x.contentKey)].filter(Boolean);
   const unseen = pool.filter(q => !history.includes(q.contentKey));
@@ -42358,6 +46851,11 @@ function g2ApplyStages(stages, state, kp, seed, difficulty) {
 }
 function reviewedBankRemember(learning, stage) {
   const push = (key, value, max) => [...(learning[key] || []).filter(x => x !== value), value].slice(-max);
+  if (stage.bankId === 'g5-20261110') return {
+    ...learning,
+    g5Seen: push('g5Seen', stage.contentKey, 1000),
+    g5Families: push('g5Families', stage.variantGroup, 30)
+  };
   if (stage.bankId === 'g2-upper-20261110') return {
     ...learning,
     g2Seen: push('g2Seen', stage.contentKey, 1000),
@@ -42371,7 +46869,7 @@ function reviewedBankRemember(learning, stage) {
 }
 function ch4SelectStage(state, eventId, kp, seed, difficulty) {
   if (!/^e[1-6]$/.test(eventId) || typeof CH4_QUESTION_BANK === 'undefined' || !learningAllows(state, kp)) return null;
-  const pool = CH4_QUESTION_BANK.filter(q => q.grade === studentGrade(state.student) && q.kpId === kp);
+  const pool = CH4_QUESTION_BANK.filter(q => (q.grade === studentGrade(state.student) || studentGrade(state.student) === 5 && q.grade === 6 && G5_SHARED_IDS.includes(q.kpId)) && q.kpId === kp);
   if (!pool.length) return null;
   const seen = [...(state.learning?.ch4Seen || []), ...(state.learning?.seen || []).map(x => x.key), ...(state.practiceLog || []).map(x => x.contentKey)];
   const fresh = pool.filter(q => !seen.includes(q.contentKey));
@@ -42407,6 +46905,103 @@ for (const kp of ['j_addstep', 'j_area']) {
     intro: '幫島上的夥伴核對紀錄。'
   };
 }
+function g5Pool(kp, difficulty) {
+  const all = G5_EXPANSION_BANK.filter(q => q.kpId === kp),
+    levels = {
+      easy: 0,
+      normal: 1,
+      hard: 2
+    };
+  const exact = all.filter(q => q.difficulty === difficulty);
+  if (exact.length) return exact;
+  const lower = all.filter(q => levels[q.difficulty] <= levels[difficulty]);
+  return lower.length ? lower : all;
+}
+function g5Select(state, kp, seed, difficulty) {
+  if (studentGrade(state?.student) !== 5 || !G5_MATH_IDS.includes(kp)) return null;
+  const pool = learningAllows(state, kp) ? g5Pool(kp, difficulty) : [];
+  if (!pool.length) return {
+    question: null,
+    reason: 'no-eligible-reviewed-question'
+  };
+  const seen = [...(state.learning?.g5Seen || []), ...(state.learning?.g6Seen || []), ...(state.practiceLog || []).map(x => x.contentKey)];
+  const fresh = pool.filter(q => !seen.includes(q.contentKey));
+  const choices = fresh.length ? fresh : [...pool].sort((a, b) => seen.lastIndexOf(a.contentKey) - seen.lastIndexOf(b.contentKey)).slice(0, 1);
+  return {
+    question: choices[(seed >>> 0) % choices.length],
+    repeatPractice: !fresh.length
+  };
+}
+function g5Stage(base, q, repeatPractice, seed = 1) {
+  const params = JSON.parse(JSON.stringify(q.params)),
+    rng = makeRng(seed);
+  for (const item of [...(params.items || []), ...(params.questions || [])]) if (item.options) item.options = shuffle(rng, item.options);
+  return {
+    ...base,
+    kind: q.kind,
+    params,
+    bankId: 'g5-20261110',
+    questionId: q.id,
+    contentKey: q.contentKey,
+    variantGroup: q.variantGroup,
+    contentGrade: 5,
+    semester: '依課綱',
+    questionTitle: q.title,
+    contentVersion: 'g5-reviewed-1',
+    repeatPractice
+  };
+}
+function g5ApplyStages(stages, state, kp, seed, difficulty) {
+  if (studentGrade(state?.student) !== 5 || !G5_MATH_IDS.includes(kp)) return stages;
+  let draft = state;
+  return stages.map((s, i) => {
+    const r = g5Select(draft, kp, seed + i * 97, difficulty);
+    if (!r.question) return {
+      ...s,
+      kind: 'bankempty',
+      params: {},
+      bankBlocked: true
+    };
+    const st = g5Stage(s, r.question, r.repeatPractice, seed + i);
+    draft = {
+      ...draft,
+      learning: reviewedBankRemember(draft.learning || {}, st)
+    };
+    return st;
+  });
+}
+for (const kp of G5_KPS.map(k => k.id)) {
+  MATH_GEN[kp] = (rng, difficulty = 'normal') => {
+    const pool = g5Pool(kp, difficulty),
+      q = pool[Math.floor(rng() * pool.length)];
+    return [0, 1, 2].map(i => g5Stage(stage(i, q.kind, q.params), q, false, Math.floor(rng() * 1e9)));
+  };
+  QUEST_FRAMES[kp] = {
+    title: KP_BY_ID[kp].name + '調查',
+    client: '嘀嗒',
+    intro: '用數學核對島上的紀錄。'
+  };
+}
+const skillOfBeforeGrade5 = typeof skillOf === 'function' ? skillOf : null;
+if (skillOfBeforeGrade5) skillOf = function (state, subject) {
+  if (studentGrade(state.student) !== 5) return skillOfBeforeGrade5(state, subject);
+  const passes = (state.practiceLog || []).filter(l => l.passed && KP_BY_ID[l.kpId]?.subject === subject && kpAllowedForGrade(l.kpId, 5)).length;
+  let level = 1;
+  for (let i = 1; i < SKILL_THRESHOLDS.length; i++) if (passes >= SKILL_THRESHOLDS[i]) level = i + 1;
+  const lo = SKILL_THRESHOLDS[level - 1],
+    hi = SKILL_THRESHOLDS[level] ?? null,
+    sub = SKILL_SUBJECTS[subject];
+  return {
+    subject,
+    level,
+    passes,
+    lo,
+    hi,
+    pct: hi ? Math.round((passes - lo) / (hi - lo) * 100) : 100,
+    title: sub.titles[Math.min(sub.titles.length - 1, level - 1)],
+    max: hi == null
+  };
+};
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
     normal: `assets/chars/${id}/tachie_normal.webp`
@@ -47620,6 +52215,19 @@ const CH5_ENABLED = !!(SCENE_ART.archive && SCENE_ART.oldstreet && typeof CH5_BA
 SCENES.archive.art = SCENE_ART.archive ? 'archive' : 'museum';
 SCENES.oldstreet.art = SCENE_ART.oldstreet ? 'oldstreet' : 'market';
 if (!CH5_ENABLED) NPC_TALK.grayraven = NPC_TALK.grayraven.filter(t => t.node !== 'd_c5_gr_ch5');
+const G5_STORY_ALTERNATIVES = {
+  r1: ['g5_n52', 'g5_r51'],
+  r2: ['g5_n516'],
+  r3: ['g5_s54'],
+  r4: ['g5_s53'],
+  r5: ['g5_r52', 'g5_r53'],
+  r6: ['g5_n510', 'm_frac_ops'],
+  t2: ['g5_n516', 'g5_n52'],
+  t4: ['g5_n516'],
+  e6: ['g5_s54', 'm_area'],
+  f5: ['g5_d51']
+};
+for (const [id, pool] of Object.entries(G5_STORY_ALTERNATIVES)) if (STORY_LEARNING[id]) STORY_LEARNING[id].grade5 = pool;
 const VP = {
   x: 640,
   y: 300
@@ -55507,7 +60115,7 @@ function MainMenu({
     id: `profile-${m.id}`,
     className: `chip ${m.id === profiles.active ? 'sel' : ''}`,
     onClick: () => m.id !== profiles.active && onSwitchProfile(m.id)
-  }, m.name, m.grade ? `・${m.grade === 2 ? '二' : '六'}年級` : '')), React.createElement("button", {
+  }, m.name, m.grade ? `・${gradeName(m.grade)}年級` : '')), React.createElement("button", {
     className: "chip",
     id: "profile-new",
     onClick: onNewProfile
@@ -55545,10 +60153,10 @@ function PracticeRangePicker({
   setDiff,
   grade = 6
 }) {
-  const groups = grade === 2 ? [['2上', '二年級上學期'], ['2下', '二年級下學期'], ['複習', '一年級複習']] : [['6上', '六年級上學期'], ['6下', '六年級下學期'], ['複習', '先備知識與高年級基礎複習']];
+  const groups = grade === 5 ? [['五年級數學', '五年級數學（依課綱）'], ['第三學習階段', '第三學習階段（五、六年級共用）']] : grade === 2 ? [['2上', '二年級上學期'], ['2下', '二年級下學期'], ['複習', '一年級複習']] : [['6上', '六年級上學期'], ['6下', '六年級下學期'], ['複習', '先備知識與高年級基礎複習']];
   const toggle = id => setKps(k => k.includes(id) ? k.filter(x => x !== id) : [...k, id]);
   const setGroup = (subject, sem, on) => {
-    const ids = KNOWLEDGE_POINTS.filter(k => k.subject === subject && k.semester === sem && kpGrade(k) === grade && missionSupported(k.id)).map(k => k.id);
+    const ids = KNOWLEDGE_POINTS.filter(k => k.subject === subject && rangeGroup(k, grade) === sem && kpAllowedForGrade(k, grade) && missionSupported(k.id)).map(k => k.id);
     setKps(k => on ? [...new Set([...k, ...ids])] : k.filter(x => !ids.includes(x)));
   };
   return React.createElement("div", {
@@ -55557,7 +60165,9 @@ function PracticeRangePicker({
     className: "small muted"
   }, CURRICULUM_NOTE, " \u8ACB\u4F9D\u5B69\u5B50\u76EE\u524D\u7684\u9032\u5EA6\u52FE\u9078\u8981\u7DF4\u7FD2\u7684\u4E3B\u984C\uFF1B\u4E0D\u540C\u51FA\u7248\u793E\u7684\u55AE\u5143\u7DE8\u865F\u4E0D\u540C\uFF0C\u6240\u4EE5\u9019\u88E1\u4EE5\u4E3B\u984C\uFF08\u77E5\u8B58\u9EDE\uFF09\u9078\u64C7\u3002"), grade === 2 && React.createElement("div", {
     className: "small muted"
-  }, "\u4E8C\u5E74\u7D1A\uFF1A\u6578\u5B78\uFF08\u7FF0\u6797\uFF09\u3001\u570B\u8A9E\u751F\u5B57\uFF08\u5EB7\u8ED2\uFF0C\u542B\u4E00\u5E74\u7D1A\u8907\u7FD2\uFF09\u3001\u751F\u6D3B\uFF08\u5EB7\u8ED2\uFF09\u3002\u5168\u7A0B\u6709\u6CE8\u97F3\uFF0C\u984C\u76EE\u4EE5\u9EDE\u9078\u70BA\u4E3B\u3002"), activeSubjects(grade).map(sub => React.createElement("div", {
+  }, "\u4F9D 108 \u8AB2\u7DB1\uFF1A\u4E8C\u5E74\u7D1A\u6578\u5B78\u3001\u570B\u8A9E\u8207\u751F\u6D3B\uFF0C\u542B\u4E00\u5E74\u7D1A\u8907\u7FD2\uFF1B\u63D0\u4F9B\u6CE8\u97F3\u8207\u6717\u8B80\u3002\u751F\u5B57\u4F86\u6E90\u53E6\u6A19\u65BC\u5BB6\u9577\u5340\u3002"), grade === 5 && React.createElement("div", {
+    className: "small muted"
+  }, "\u4F9D 108 \u8AB2\u7DB1\uFF1A\u6578\u5B78\u9650\u4E94\u5E74\u7D1A\u8207\u5148\u5099\uFF0C\u570B\u8A9E\u3001\u81EA\u7136\u3001\u793E\u6703\u70BA\u7B2C\u4E09\u5B78\u7FD2\u968E\u6BB5\u5171\u7528\u5167\u5BB9\u3002\u8ACB\u53D6\u6D88\u5B78\u6821\u5C1A\u672A\u6559\u7684\u89C0\u5FF5\uFF1B\u672C\u7248\u5C1A\u672A\u958B\u653E\u516D\u5E74\u7D1A\u6578\u5B78\u8D85\u524D\u3002"), activeSubjects(grade).map(sub => React.createElement("div", {
     key: sub,
     className: "card col",
     style: {
@@ -55567,7 +60177,7 @@ function PracticeRangePicker({
   }, React.createElement("b", null, React.createElement(Tag, {
     kind: subjTag(sub)
   }, subjName(sub))), groups.map(([sem, label]) => {
-    const list = KNOWLEDGE_POINTS.filter(k => k.subject === sub && k.semester === sem && kpGrade(k) === grade && missionSupported(k.id));
+    const list = KNOWLEDGE_POINTS.filter(k => k.subject === sub && rangeGroup(k, grade) === sem && kpAllowedForGrade(k, grade) && missionSupported(k.id));
     if (!list.length) return null;
     return React.createElement("div", {
       key: sem,
@@ -55744,12 +60354,17 @@ function CharacterCreate({
     onClick: () => pickGrade(6)
   }, "\u516D\u5E74\u7D1A"), React.createElement("button", {
     type: "button",
+    className: `chip ${grade === 5 ? 'sel' : ''}`,
+    id: "grade-5",
+    onClick: () => pickGrade(5)
+  }, "\u4E94\u5E74\u7D1A"), React.createElement("button", {
+    type: "button",
     className: `chip ${grade === 2 ? 'sel' : ''}`,
     id: "grade-2",
     onClick: () => pickGrade(2)
   }, "\u4E8C\u5E74\u7D1A\uFF08\u6CE8\u97F3\u7248\uFF09")), React.createElement("span", {
     className: "small muted"
-  }, grade === 2 ? '二年級：全部文字都有注音，有「念給我聽」按鈕；題目是二年級的數學、生字和生活課。' : '六年級：數學、國語、自然、社會。')), React.createElement(CompanionPicker, {
+  }, grade === 2 ? '二年級：全部文字都有注音，有「念給我聽」按鈕；題目是二年級的數學、生字和生活課。' : grade === 5 ? '五年級：依108課綱選擇已學範圍，與六年級共用高年級語文、自然、社會。' : '六年級：數學、國語、自然、社會。')), React.createElement(CompanionPicker, {
     value: companion,
     onChange: setCompanion,
     prefix: "create-companion"
@@ -58735,7 +63350,7 @@ function ParentOverview({
   state
 }) {
   const s = state.student;
-  const ms = state.missions.filter(m => m.status !== 'paused_scope' && kpGrade(m.kpId) === studentGrade(s));
+  const ms = state.missions.filter(m => m.status !== 'paused_scope' && kpAllowedForGrade(m.kpId, studentGrade(s)));
   const counts = {
     solid: 0,
     initial: 0,
@@ -58756,7 +63371,7 @@ function ParentOverview({
       done: rooms.filter(x => x.p?.done).length,
       struggled: rooms.flatMap(x => Object.entries(x.p?.kpStats || {
         [x.r.kp]: x.p || {}
-      }).filter(([kp, p]) => kpGrade(kp) === studentGrade(s) && ((p.fails || 0) >= 2 || (p.hints || 0) >= 2)).map(([kp, p]) => ({
+      }).filter(([kp, p]) => kpAllowedForGrade(kp, studentGrade(s)) && ((p.fails || 0) >= 2 || (p.hints || 0) >= 2)).map(([kp, p]) => ({
         r: {
           ...x.r,
           kp
@@ -59032,6 +63647,7 @@ function SettingsPanel({
   toast
 }) {
   const cur = getSettings(state);
+  const [grade, setGrade] = useState(studentGrade(state.student));
   const [kps, setKps] = useState(cur.practiceKps);
   const [diff, setDiff] = useState(cur.difficulty);
   const [focus, setFocus] = useState(cur.focusMax ?? 5);
@@ -59047,7 +63663,7 @@ function SettingsPanel({
       return;
     }
     try {
-      setState(applyLearningSettings(state, {
+      setState(changeLearningGrade(state, grade, {
         practiceKps: kps,
         difficulty: diff,
         g6Semesters: semesters,
@@ -59065,13 +63681,30 @@ function SettingsPanel({
   };
   return React.createElement("div", {
     className: "col"
-  }, React.createElement(Notice, null, "\u8A2D\u5B9A\u6703\u5957\u7528\u5230\u65B0\u7684\u4E3B\u7DDA\u6A5F\u95DC\u3001\u59D4\u8A17\u3001\u901A\u7DDD\u8207\u5BF6\u7BB1\u3002\u5DF2\u5B8C\u6210\u7684\u5287\u60C5\u8207\u734E\u52F5\u4FDD\u7559\uFF1B\u9032\u884C\u4E2D\u7684\u5408\u9069\u984C\u76EE\u7DAD\u6301\u539F\u96E3\u5EA6\uFF0C\u8D85\u51FA\u65B0\u7BC4\u570D\u7684\u59D4\u8A17\u6703\u66AB\u5B58\uFF0C\u8FFD\u6355\u6703\u7121\u61F2\u7F70\u53D6\u6D88\u4E26\u9000\u9084\u7576\u65E5\u5C08\u6CE8\u529B\u3002"), React.createElement(PracticeRangePicker, {
+  }, React.createElement(Notice, null, "\u8A2D\u5B9A\u6703\u5957\u7528\u5230\u65B0\u7684\u4E3B\u7DDA\u6A5F\u95DC\u3001\u59D4\u8A17\u3001\u901A\u7DDD\u8207\u5BF6\u7BB1\u3002\u5DF2\u5B8C\u6210\u7684\u5287\u60C5\u8207\u734E\u52F5\u4FDD\u7559\uFF1B\u9032\u884C\u4E2D\u7684\u5408\u9069\u984C\u76EE\u7DAD\u6301\u539F\u96E3\u5EA6\uFF0C\u8D85\u51FA\u65B0\u7BC4\u570D\u7684\u59D4\u8A17\u6703\u66AB\u5B58\uFF0C\u8FFD\u6355\u6703\u7121\u61F2\u7F70\u53D6\u6D88\u4E26\u9000\u9084\u7576\u65E5\u5C08\u6CE8\u529B\u3002"), React.createElement("div", {
+    className: "card col"
+  }, React.createElement("label", {
+    htmlFor: "parent-grade"
+  }, "\u5B78\u7FD2\u5E74\u7D1A"), React.createElement("select", {
+    id: "parent-grade",
+    value: grade,
+    onChange: e => {
+      const g = Number(e.target.value);
+      setGrade(g);
+      setKps(seedQuestsFor(g));
+    }
+  }, [2, 5, 6].map(g => React.createElement("option", {
+    key: g,
+    value: g
+  }, gradeName(g), "\u5E74\u7D1A"))), React.createElement("span", {
+    className: "small muted"
+  }, "\u63DB\u5E74\u7D1A\u6703\u63DB\u6210\u8A72\u5E74\u7D1A\u9810\u8A2D\u7DF4\u7FD2\u7BC4\u570D\uFF0C\u53EF\u5728\u4E0B\u65B9\u8ABF\u6574\u3002\u89D2\u8272\u3001\u88DD\u5099\u3001\u5287\u60C5\u8207\u6B77\u53F2\u5B78\u7FD2\u7D00\u9304\u4FDD\u7559\uFF1B\u5132\u5B58\u5F8C\u624D\u751F\u6548\u3002")), React.createElement(PracticeRangePicker, {
     kps: kps,
     setKps: setKps,
     diff: diff,
     setDiff: setDiff,
-    grade: studentGrade(state.student)
-  }), studentGrade(state.student) === 6 && React.createElement("div", {
+    grade: grade
+  }), grade === 6 && React.createElement("div", {
     className: "card col",
     id: "g6-settings"
   }, React.createElement("h3", null, "\u516D\u5E74\u7D1A\uFF1A\u7DF4\u7FD2\u5167\u5BB9"), React.createElement("p", {
@@ -59105,7 +63738,7 @@ function SettingsPanel({
     onChange: e => setRepeats(e.target.checked)
   }), " \u65B0\u984C\u7528\u5B8C\u5F8C\u91CD\u8907\u8907\u7FD2"), React.createElement("p", {
     className: "small muted"
-  }, "\u91CD\u8907\u8907\u7FD2\u9810\u8A2D\u95DC\u9589\u3002\u65B0\u589E\u984C\u5C1A\u672A\u6DB5\u84CB\u6240\u6709\u55AE\u5143\u7684\u6BCF\u500B\u96E3\u5EA6\uFF1B\u6C92\u6709\u5C0D\u61C9\u65B0\u589E\u984C\u6642\uFF0C\u4FDD\u7559\u539F\u6709\u7684\u540C\u55AE\u5143\u7DF4\u7FD2\u3002\u65B0\u589E\u984C\u5DF2\u7528\u5B8C\u6642\u6703\u63D0\u793A\u8ABF\u6574\u7BC4\u570D\uFF0C\u4E0D\u6703\u5077\u5077\u91CD\u62BD\u3002")), studentGrade(state.student) === 2 && React.createElement("div", {
+  }, "\u91CD\u8907\u8907\u7FD2\u9810\u8A2D\u95DC\u9589\u3002\u65B0\u589E\u984C\u5C1A\u672A\u6DB5\u84CB\u6240\u6709\u55AE\u5143\u7684\u6BCF\u500B\u96E3\u5EA6\uFF1B\u6C92\u6709\u5C0D\u61C9\u65B0\u589E\u984C\u6642\uFF0C\u4FDD\u7559\u539F\u6709\u7684\u540C\u55AE\u5143\u7DF4\u7FD2\u3002\u65B0\u589E\u984C\u5DF2\u7528\u5B8C\u6642\u6703\u63D0\u793A\u8ABF\u6574\u7BC4\u570D\uFF0C\u4E0D\u6703\u5077\u5077\u91CD\u62BD\u3002")), grade === 2 && React.createElement("div", {
     className: "card col",
     id: "g2-settings"
   }, React.createElement("h3", null, "\u4E8C\u5E74\u7D1A\uFF1A\u65B0\u589E\u60C5\u5883\u7DF4\u7FD2"), React.createElement("p", {
@@ -59117,7 +63750,7 @@ function SettingsPanel({
     onChange: e => setG2Extensions(e.target.checked)
   }), " \u52A0\u5165\u6642\u9593\u5EF6\u4F38\u984C\uFF08\u5206\u9418\u63A8\u79FB\u3001\u958B\u95DC\u9580\u6642\u6BB5\uFF1B\u50C5\u6311\u6230\u96E3\u5EA6\u4F7F\u7528\uFF09"), React.createElement("p", {
     className: "small muted"
-  }, "\u9810\u8A2D\u95DC\u9589\u3002\u8ACB\u78BA\u8A8D\u5B69\u5B50\u5DF2\u5B78\u904E\uFF0C\u518D\u52A0\u5165\u9019 8 \u984C\u3002")), studentGrade(state.student) === 2 && React.createElement("div", {
+  }, "\u9810\u8A2D\u95DC\u9589\u3002\u8ACB\u78BA\u8A8D\u5B69\u5B50\u5DF2\u5B78\u904E\uFF0C\u518D\u52A0\u5165\u9019 8 \u984C\u3002")), grade === 2 && React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u4E8C\u5E74\u7D1A\uFF1A\u6CE8\u97F3"), React.createElement("p", {
     className: "small muted"
@@ -59172,7 +63805,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v35\uFF08\u4E8C\u4E0A\u60C5\u5883\u7DF4\u7FD2\u30FB\u7B2C\u56DB\u7AE0\u8B8A\u5316\u984C\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v36\uFF08\u4E94\u5E74\u7D1A\u4F9D\u8AB2\u7DB1\u5192\u96AA\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -59210,7 +63843,7 @@ function DataPanel({
   }, "\u522A\u9664\u524D\u6703\u5148\u4FDD\u7559\u8A72\u89D2\u8272\u7684\u5FA9\u539F\u5099\u4EFD\u3002"), loadProfiles().list.filter(m => m.id !== loadProfiles().active).map(m => React.createElement("div", {
     key: m.id,
     className: "row between small"
-  }, React.createElement("span", null, m.name, "\u30FB", m.grade === 2 ? '二' : '六', "\u5E74\u7D1A"), React.createElement(Btn, {
+  }, React.createElement("span", null, m.name, "\u30FB", gradeName(m.grade), "\u5E74\u7D1A"), React.createElement(Btn, {
     small: true,
     kind: "ghost",
     id: 'pdel-' + m.id,
@@ -59305,7 +63938,7 @@ function ParentApp({
     id: `pprofile-${m.id}`,
     className: `chip ${m.id === profiles.active ? 'sel' : ''}`,
     onClick: () => m.id !== profiles.active && onSwitchProfile(m.id)
-  }, m.name, m.grade ? `・${m.grade === 2 ? '二' : '六'}年級` : '')), React.createElement("span", {
+  }, m.name, m.grade ? `・${gradeName(m.grade)}年級` : '')), React.createElement("span", {
     className: "small muted"
   }, "\uFF08\u5207\u63DB\u89D2\u8272\u6703\u540C\u6642\u5207\u63DB\u904A\u6232\u756B\u9762\u7684\u89D2\u8272\uFF09")), React.createElement("div", {
     className: "tabs"
@@ -59384,7 +64017,7 @@ function BackupSummary({
   return React.createElement("div", {
     className: "card soft small",
     id: "backup-summary"
-  }, React.createElement("b", null, s.name), "\u30FB", s.grade === 2 ? '二' : '六', "\u5E74\u7D1A\u30FB", s.xp, " XP", React.createElement("br", null), "\u59D4\u8A17 ", s.missions, " \u7B46\uFF08\u5DF2\u5B8C\u6210 ", s.passed, " \u7B46\uFF09\u30FB\u7DF4\u7FD2\u7D00\u9304 ", s.records, " \u7B46");
+  }, React.createElement("b", null, s.name), "\u30FB", gradeName(s.grade), "\u5E74\u7D1A\u30FB", s.xp, " XP", React.createElement("br", null), "\u59D4\u8A17 ", s.missions, " \u7B46\uFF08\u5DF2\u5B8C\u6210 ", s.passed, " \u7B46\uFF09\u30FB\u7DF4\u7FD2\u7D00\u9304 ", s.records, " \u7B46");
 }
 function BackupImportCard({
   state,
@@ -59666,7 +64299,7 @@ function App() {
   });
   return React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v34",
+    "data-build": "2026.11.10-v36",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
