@@ -501,6 +501,18 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media(max-width:600px) { .field-preview { padding:12px;gap:4px; }.field-preview>svg{width:96px;height:206px}.field-directions button{padding:6px 7px}.field-preview-copy>span{font-size:.7rem} }
 @media(prefers-reduced-motion:reduce) { .field-character * { animation:none!important; } }
 
+.step-solver .steprow { display:flex;flex-direction:column;align-items:stretch;gap:12px;min-width:0; }
+.step-goal { width:100%;font-size:15px; }
+.step-equation { display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-width:0; }
+.step-number { display:inline-flex;min-width:0; }
+.step-number .numin { width:86px;min-width:0;max-width:100%; }
+.step-ops { display:grid;grid-template-columns:repeat(4,40px);gap:4px; }
+.step-ops .opbtn { width:40px;min-height:44px;margin:0;padding:4px; }
+.step-result { display:inline-flex;align-items:center;gap:8px; }
+.step-message,.step-hints { width:100%;overflow-wrap:anywhere; }
+.step-hints .btn { align-self:flex-start;max-width:100%;white-space:normal;text-align:left; }
+@media(max-width:520px){.step-number .numin { width:76px; }.step-ops { grid-template-columns:repeat(2,40px); }.step-equation { gap:6px; }.step-goal { font-size:14px; }}
+
 .companion-picker {border:0;padding:0;margin:0;min-width:0;}
 .companion-picker legend {font-weight:700;color:#254658;margin-bottom:4px;}
 .companion-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
@@ -685,7 +697,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-gear-directions">
+<meta name="game-release" content="playtest-20261110-step-inputs">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -2947,19 +2959,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/8",
       "op": "÷",
       "result": 6,
-      "prompt": "求總長裡有幾段指定的長度。",
-      "hint": "總量除以每個用量；除以分數可乘以它的倒數。",
+      "prompt": "剛好可以裝幾個小盒？",
+      "hint": "封邊條的總長，以及每個小盒需要的長度。",
       "answerExact": "6"
     }],
-    "unit": "個"
+    "unit": "個",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:fraction_measure",
   "stimulusGroup": null,
   "title": "封邊條能裝幾盒",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "c3e25de740ae1cf9f940c881",
+  "contentKey": "ce10c8248c051dca58eaa278",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_fraction_share_1",
   "kpId": "m_fracdiv",
@@ -2979,19 +2992,20 @@ const G6_EXPANSION_BANK = [{
       "right": "2/3",
       "op": "÷",
       "result": 6,
-      "prompt": "把部分用量換成一整份。",
-      "hint": "把部分用量換成一整份。",
+      "prompt": "完成一整面布景需要幾公尺布？",
+      "hint": "已使用的布長，以及這些布能完成的布景比例。",
       "answerExact": "6"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:fraction_share",
   "stimulusGroup": null,
   "title": "補齊整面布景",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "2cefcceae6b3f5a2d4cea581",
+  "contentKey": "103c397dde1cc2be52f92120",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_quotient_compare_1",
   "kpId": "m_fracdiv",
@@ -3054,19 +3068,20 @@ const G6_EXPANSION_BANK = [{
       "right": 0.4,
       "op": "÷",
       "result": 8,
-      "prompt": "用總容量除以一盒容量。",
-      "hint": "用總容量除以一盒容量。",
+      "prompt": "能剛好裝滿幾盒？",
+      "hint": "清潔液總量，以及每盒容量。",
       "answerExact": "8"
     }],
-    "unit": "盒"
+    "unit": "盒",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:decimal_portions",
   "stimulusGroup": null,
   "title": "清潔液分裝",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "2b1f9e1e7728c2ac0f731059",
+  "contentKey": "76c3ce18e5b39bf576cd7f25",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_decimal_unit_1",
   "kpId": "m_decdiv",
@@ -3086,19 +3101,20 @@ const G6_EXPANSION_BANK = [{
       "right": 1.5,
       "op": "÷",
       "result": 36,
-      "prompt": "總價除以總長，得到每公尺的價格。",
-      "hint": "總價除以總長，得到每公尺的價格。",
+      "prompt": "每公尺多少元？",
+      "hint": "織帶的總價，以及織帶的總長。",
       "answerExact": "36"
     }],
-    "unit": "元"
+    "unit": "元",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:decimal_unit",
   "stimulusGroup": null,
   "title": "織帶的單價",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "9f67552d086f4b476eec960b",
+  "contentKey": "a5d275b0ea9b4f4875512268",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_mixed_budget_1",
   "kpId": "m_mixed",
@@ -3118,27 +3134,28 @@ const G6_EXPANSION_BANK = [{
       "right": 2,
       "op": "×",
       "result": 28,
-      "prompt": "先算兩盒標籤的總價。",
-      "hint": "先算兩盒標籤的總價。",
+      "prompt": "兩盒標籤共要幾元？",
+      "hint": "每盒標籤的價格，以及盒數。",
       "answerExact": "28"
     }, {
       "left": 28,
       "right": 5.5,
       "op": "＋",
       "result": 33.5,
-      "prompt": "再加上細繩的價格。",
-      "hint": "再加上細繩的價格。",
+      "prompt": "標籤和細繩共要幾元？",
+      "hint": "前一步算出的標籤總價，以及細繩的價格。",
       "answerExact": "67/2"
     }],
-    "unit": "元"
+    "unit": "元",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:mixed_budget",
   "stimulusGroup": null,
   "title": "調查用品預算",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "21e80b78a994a728d6bae68f",
+  "contentKey": "da7da49b12b8b86baaf9ba98",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_mixed_stock_1",
   "kpId": "m_mixed",
@@ -3158,27 +3175,28 @@ const G6_EXPANSION_BANK = [{
       "right": 2,
       "op": "×",
       "result": 2.5,
-      "prompt": "先求模型一共用掉多少陶土。",
-      "hint": "先求模型一共用掉多少陶土。",
+      "prompt": "製作模型共需要幾公斤陶土？",
+      "hint": "每件模型的陶土用量，以及模型件數。",
       "answerExact": "5/2"
     }, {
       "left": 12,
       "right": 2.5,
       "op": "−",
       "result": 9.5,
-      "prompt": "原有量減去使用量。",
-      "hint": "原有量減去使用量。",
+      "prompt": "還剩下幾公斤陶土？",
+      "hint": "原有陶土量，以及前一步算出的用量。",
       "answerExact": "19/2"
     }],
-    "unit": "公斤"
+    "unit": "公斤",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:mixed_stock",
   "stimulusGroup": null,
   "title": "陶土庫存簿",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "8aeacd8b7a1a2ec515d9dc14",
+  "contentKey": "e3dbc2e01eb629f3f9b86688",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_recipe_mix_1",
   "kpId": "m_ratio",
@@ -3246,27 +3264,28 @@ const G6_EXPANSION_BANK = [{
       "right": 7,
       "op": "÷",
       "result": 4,
-      "prompt": "先求一份是多少張。",
-      "hint": "先求一份是多少張。",
+      "prompt": "一份是幾張地圖？",
+      "hint": "地圖總張數，以及北隊和南隊合計的份數。",
       "answerExact": "4"
     }, {
       "left": 4,
       "right": 5,
       "op": "×",
       "result": 20,
-      "prompt": "南隊有後項所代表的份數。",
-      "hint": "南隊有後項所代表的份數。",
+      "prompt": "南隊可以拿幾張地圖？",
+      "hint": "前一步算出的一份張數，以及南隊的份數。",
       "answerExact": "20"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:ratio_allocation",
   "stimulusGroup": null,
   "title": "巡查隊分地圖",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "63db5c8301d5a26c913f3a10",
+  "contentKey": "3dafe762ad22ff1d0c2b7b33",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_speed_distance_1",
   "kpId": "m_speed",
@@ -3314,35 +3333,36 @@ const G6_EXPANSION_BANK = [{
       "right": 240,
       "op": "＋",
       "result": 360,
-      "prompt": "先合計全程距離。",
-      "hint": "先合計全程距離。",
+      "prompt": "全程行進幾公尺？",
+      "hint": "第一段和第二段各自的距離。",
       "answerExact": "360"
     }, {
       "left": 2,
       "right": 3,
       "op": "＋",
       "result": 5,
-      "prompt": "再合計全程時間。",
-      "hint": "再合計全程時間。",
+      "prompt": "全程花了幾分鐘？",
+      "hint": "第一段和第二段各自花的時間。",
       "answerExact": "5"
     }, {
       "left": 360,
       "right": 5,
       "op": "÷",
       "result": 72,
-      "prompt": "總距離除以總時間。",
-      "hint": "總距離除以總時間。",
+      "prompt": "全程平均每分鐘行進幾公尺？",
+      "hint": "前面算出的全程距離，以及全程時間。",
       "answerExact": "72"
     }],
-    "unit": "公尺／分鐘"
+    "unit": "公尺／分鐘",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:average_speed",
   "stimulusGroup": null,
   "title": "送件車全程速度",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "1997bc4a30723ca83710bb6c",
+  "contentKey": "9b908603e7caa8ae82dcddbb",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_speed_units_1",
   "kpId": "m_speed",
@@ -3390,19 +3410,20 @@ const G6_EXPANSION_BANK = [{
       "right": 1.5,
       "op": "×",
       "result": 36,
-      "prompt": "小梅的張數是 1 倍，乘上倍數。",
-      "hint": "小梅的張數是 1 倍，乘上倍數。",
+      "prompt": "阿嵐有幾張紀錄卡？",
+      "hint": "小梅的張數，以及阿嵐張數是小梅的幾倍。",
       "answerExact": "36"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:base_forward",
   "stimulusGroup": null,
   "title": "兩位調查員的卡片",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "91e6676e5a6c096a265a6191",
+  "contentKey": "86f5a542f71505fd4160ab34",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_base_inverse_1",
   "kpId": "m_base",
@@ -3422,19 +3443,20 @@ const G6_EXPANSION_BANK = [{
       "right": 1.5,
       "op": "÷",
       "result": 24,
-      "prompt": "已知比較量，除以倍數找基準量。",
-      "hint": "已知比較量，除以倍數找基準量。",
+      "prompt": "小箱裝幾顆零件？",
+      "hint": "大箱的顆數，以及大箱是小箱的幾倍。",
       "answerExact": "24"
     }],
-    "unit": "顆"
+    "unit": "顆",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:base_inverse",
   "stimulusGroup": null,
   "title": "還原小箱零件數",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "1adf773cf372e536554955df",
+  "contentKey": "d6d7f73272f281d052d65c8d",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_sum_difference_1",
   "kpId": "m_relation",
@@ -3454,27 +3476,28 @@ const G6_EXPANSION_BANK = [{
       "right": 10,
       "op": "−",
       "result": 44,
-      "prompt": "先去掉東庫多出的部分。",
-      "hint": "先去掉東庫多出的部分。",
+      "prompt": "兩份西庫的數量共有幾把鑰匙？",
+      "hint": "兩庫總數，以及東庫比西庫多的數量。",
       "answerExact": "44"
     }, {
       "left": 44,
       "right": 2,
       "op": "÷",
       "result": 22,
-      "prompt": "剩下的是兩份一樣的西庫數量。",
-      "hint": "剩下的是兩份一樣的西庫數量。",
+      "prompt": "西庫有幾把鑰匙？",
+      "hint": "前一步算出的兩份西庫數量，以及其中包含的份數。",
       "answerExact": "22"
     }],
-    "unit": "把"
+    "unit": "把",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:sum_difference",
   "stimulusGroup": null,
   "title": "東西庫房的鑰匙",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "d9bacb7823a18be7c4bb5a91",
+  "contentKey": "196871ae6b12a091abba5293",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_tile_growth_1",
   "kpId": "m_pattern",
@@ -3760,19 +3783,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/4",
       "op": "＋",
       "result": 0.75,
-      "prompt": "先通分，再把分子相加。",
-      "hint": "先通分，再把分子相加。",
+      "prompt": "上下午共修好幾公尺護欄？",
+      "hint": "上午和下午各修好的長度。",
       "answerExact": "3/4"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_add",
   "stimulusGroup": null,
   "title": "合計護欄修復量",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "16738f5d72b2bdfdf0040b03",
+  "contentKey": "f5bcbcf6b44183aa737fd4d0",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_fraction_sub_1",
   "kpId": "m_frac_ops",
@@ -3792,19 +3816,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/4",
       "op": "−",
       "result": 0.25,
-      "prompt": "從已用量扣掉草稿量。",
-      "hint": "從已用量扣掉草稿量。",
+      "prompt": "正式紀錄用了幾張紙？",
+      "hint": "已用掉的總紙量，以及其中草稿的紙量。",
       "answerExact": "1/4"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_sub",
   "stimulusGroup": null,
   "title": "分清草稿與正式紀錄",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "ff7e1b729272e2aab4a35f5c",
+  "contentKey": "1f307d787bbee3b65c370d8a",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_fraction_multiply_1",
   "kpId": "m_frac_ops",
@@ -3824,19 +3849,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/3",
       "op": "×",
       "result": 0.166667,
-      "prompt": "求一個量的幾分之幾，用乘法。",
-      "hint": "求一個量的幾分之幾，用乘法。",
+      "prompt": "金色部分長幾公尺？",
+      "hint": "整條標示帶的長度，以及塗成金色的比例。",
       "answerExact": "1/6"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_multiply",
   "stimulusGroup": null,
   "title": "金色標示帶",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "1486d7cfcc0037cd1cbcf53f",
+  "contentKey": "30b913eb3ccb0ddf4572353e",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_decimal_multiply_1",
   "kpId": "m_dec_ops",
@@ -4089,19 +4115,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/12",
       "op": "÷",
       "result": 10,
-      "prompt": "求總長裡有幾段指定的長度。",
-      "hint": "總量除以每個用量；除以分數可乘以它的倒數。",
+      "prompt": "剛好可以裝幾個小盒？",
+      "hint": "封邊條的總長，以及每個小盒需要的長度。",
       "answerExact": "10"
     }],
-    "unit": "個"
+    "unit": "個",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:fraction_measure",
   "stimulusGroup": null,
   "title": "封邊條能裝幾盒",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "015649be7964a5018b33cdc2",
+  "contentKey": "b902e218bec8e08c39e39254",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_fraction_share_2",
   "kpId": "m_fracdiv",
@@ -4121,19 +4148,20 @@ const G6_EXPANSION_BANK = [{
       "right": "3/4",
       "op": "÷",
       "result": 8,
-      "prompt": "把部分用量換成一整份。",
-      "hint": "把部分用量換成一整份。",
+      "prompt": "完成一整面布景需要幾公尺布？",
+      "hint": "已使用的布長，以及這些布能完成的布景比例。",
       "answerExact": "8"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:fraction_share",
   "stimulusGroup": null,
   "title": "補齊整面布景",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "9e1ea6af2a83ff3c8d8b0577",
+  "contentKey": "9d2fd5fdfa3cf06c75cdad9a",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_quotient_compare_2",
   "kpId": "m_fracdiv",
@@ -4196,19 +4224,20 @@ const G6_EXPANSION_BANK = [{
       "right": 0.25,
       "op": "÷",
       "result": 18,
-      "prompt": "用總容量除以一盒容量。",
-      "hint": "用總容量除以一盒容量。",
+      "prompt": "能剛好裝滿幾盒？",
+      "hint": "清潔液總量，以及每盒容量。",
       "answerExact": "18"
     }],
-    "unit": "盒"
+    "unit": "盒",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:decimal_portions",
   "stimulusGroup": null,
   "title": "清潔液分裝",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "6f518ff1208a66234e6fbb10",
+  "contentKey": "996a1362cc36a64230007395",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_decimal_unit_2",
   "kpId": "m_decdiv",
@@ -4228,19 +4257,20 @@ const G6_EXPANSION_BANK = [{
       "right": 2.4,
       "op": "÷",
       "result": 35,
-      "prompt": "總價除以總長，得到每公尺的價格。",
-      "hint": "總價除以總長，得到每公尺的價格。",
+      "prompt": "每公尺多少元？",
+      "hint": "織帶的總價，以及織帶的總長。",
       "answerExact": "35"
     }],
-    "unit": "元"
+    "unit": "元",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:decimal_unit",
   "stimulusGroup": null,
   "title": "織帶的單價",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "4450384ce1967c3b046d0aa4",
+  "contentKey": "10e2d01b5722f4f4507fc92f",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_mixed_budget_2",
   "kpId": "m_mixed",
@@ -4260,27 +4290,28 @@ const G6_EXPANSION_BANK = [{
       "right": 2,
       "op": "×",
       "result": 30,
-      "prompt": "先算兩盒標籤的總價。",
-      "hint": "先算兩盒標籤的總價。",
+      "prompt": "兩盒標籤共要幾元？",
+      "hint": "每盒標籤的價格，以及盒數。",
       "answerExact": "30"
     }, {
       "left": 30,
       "right": 6.5,
       "op": "＋",
       "result": 36.5,
-      "prompt": "再加上細繩的價格。",
-      "hint": "再加上細繩的價格。",
+      "prompt": "標籤和細繩共要幾元？",
+      "hint": "前一步算出的標籤總價，以及細繩的價格。",
       "answerExact": "73/2"
     }],
-    "unit": "元"
+    "unit": "元",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:mixed_budget",
   "stimulusGroup": null,
   "title": "調查用品預算",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "bcfa781a1a5be665f6348366",
+  "contentKey": "fe2cf4482c06961ac55a1ed3",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_mixed_stock_2",
   "kpId": "m_mixed",
@@ -4300,27 +4331,28 @@ const G6_EXPANSION_BANK = [{
       "right": 3,
       "op": "×",
       "result": 3.75,
-      "prompt": "先求模型一共用掉多少陶土。",
-      "hint": "先求模型一共用掉多少陶土。",
+      "prompt": "製作模型共需要幾公斤陶土？",
+      "hint": "每件模型的陶土用量，以及模型件數。",
       "answerExact": "15/4"
     }, {
       "left": 13,
       "right": 3.75,
       "op": "−",
       "result": 9.25,
-      "prompt": "原有量減去使用量。",
-      "hint": "原有量減去使用量。",
+      "prompt": "還剩下幾公斤陶土？",
+      "hint": "原有陶土量，以及前一步算出的用量。",
       "answerExact": "37/4"
     }],
-    "unit": "公斤"
+    "unit": "公斤",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:mixed_stock",
   "stimulusGroup": null,
   "title": "陶土庫存簿",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "d8da1541e47fa7d7095bc0af",
+  "contentKey": "23425a13943f7c7e27252622",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_recipe_mix_2",
   "kpId": "m_ratio",
@@ -4388,27 +4420,28 @@ const G6_EXPANSION_BANK = [{
       "right": 7,
       "op": "÷",
       "result": 5,
-      "prompt": "先求一份是多少張。",
-      "hint": "先求一份是多少張。",
+      "prompt": "一份是幾張地圖？",
+      "hint": "地圖總張數，以及北隊和南隊合計的份數。",
       "answerExact": "5"
     }, {
       "left": 5,
       "right": 4,
       "op": "×",
       "result": 20,
-      "prompt": "南隊有後項所代表的份數。",
-      "hint": "南隊有後項所代表的份數。",
+      "prompt": "南隊可以拿幾張地圖？",
+      "hint": "前一步算出的一份張數，以及南隊的份數。",
       "answerExact": "20"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:ratio_allocation",
   "stimulusGroup": null,
   "title": "巡查隊分地圖",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "ab5ec6b61df2b919e018d2f3",
+  "contentKey": "f5342cb8edde4127b6c1ff61",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_speed_distance_2",
   "kpId": "m_speed",
@@ -4456,35 +4489,36 @@ const G6_EXPANSION_BANK = [{
       "right": 420,
       "op": "＋",
       "result": 600,
-      "prompt": "先合計全程距離。",
-      "hint": "先合計全程距離。",
+      "prompt": "全程行進幾公尺？",
+      "hint": "第一段和第二段各自的距離。",
       "answerExact": "600"
     }, {
       "left": 3,
       "right": 5,
       "op": "＋",
       "result": 8,
-      "prompt": "再合計全程時間。",
-      "hint": "再合計全程時間。",
+      "prompt": "全程花了幾分鐘？",
+      "hint": "第一段和第二段各自花的時間。",
       "answerExact": "8"
     }, {
       "left": 600,
       "right": 8,
       "op": "÷",
       "result": 75,
-      "prompt": "總距離除以總時間。",
-      "hint": "總距離除以總時間。",
+      "prompt": "全程平均每分鐘行進幾公尺？",
+      "hint": "前面算出的全程距離，以及全程時間。",
       "answerExact": "75"
     }],
-    "unit": "公尺／分鐘"
+    "unit": "公尺／分鐘",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:average_speed",
   "stimulusGroup": null,
   "title": "送件車全程速度",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "0b92e8a260dfde6ecef5cdda",
+  "contentKey": "a6ab7a22e74cd6b833d9a07d",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_speed_units_2",
   "kpId": "m_speed",
@@ -4532,19 +4566,20 @@ const G6_EXPANSION_BANK = [{
       "right": 1.25,
       "op": "×",
       "result": 40,
-      "prompt": "小梅的張數是 1 倍，乘上倍數。",
-      "hint": "小梅的張數是 1 倍，乘上倍數。",
+      "prompt": "阿嵐有幾張紀錄卡？",
+      "hint": "小梅的張數，以及阿嵐張數是小梅的幾倍。",
       "answerExact": "40"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:base_forward",
   "stimulusGroup": null,
   "title": "兩位調查員的卡片",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "1caaa4c83ba1cd0af1e1b8a6",
+  "contentKey": "86652385b8fe4cd617d22ade",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_base_inverse_2",
   "kpId": "m_base",
@@ -4564,19 +4599,20 @@ const G6_EXPANSION_BANK = [{
       "right": 1.25,
       "op": "÷",
       "result": 36,
-      "prompt": "已知比較量，除以倍數找基準量。",
-      "hint": "已知比較量，除以倍數找基準量。",
+      "prompt": "小箱裝幾顆零件？",
+      "hint": "大箱的顆數，以及大箱是小箱的幾倍。",
       "answerExact": "36"
     }],
-    "unit": "顆"
+    "unit": "顆",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:base_inverse",
   "stimulusGroup": null,
   "title": "還原小箱零件數",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "6f9783911c936ea961f04ec6",
+  "contentKey": "820f922ee293330895c1e829",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_sum_difference_2",
   "kpId": "m_relation",
@@ -4596,27 +4632,28 @@ const G6_EXPANSION_BANK = [{
       "right": 16,
       "op": "−",
       "result": 60,
-      "prompt": "先去掉東庫多出的部分。",
-      "hint": "先去掉東庫多出的部分。",
+      "prompt": "兩份西庫的數量共有幾把鑰匙？",
+      "hint": "兩庫總數，以及東庫比西庫多的數量。",
       "answerExact": "60"
     }, {
       "left": 60,
       "right": 2,
       "op": "÷",
       "result": 30,
-      "prompt": "剩下的是兩份一樣的西庫數量。",
-      "hint": "剩下的是兩份一樣的西庫數量。",
+      "prompt": "西庫有幾把鑰匙？",
+      "hint": "前一步算出的兩份西庫數量，以及其中包含的份數。",
       "answerExact": "30"
     }],
-    "unit": "把"
+    "unit": "把",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:sum_difference",
   "stimulusGroup": null,
   "title": "東西庫房的鑰匙",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "d3bdf65f48f59c833d989360",
+  "contentKey": "cf3cb45c36678514c897b3b2",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_tile_growth_2",
   "kpId": "m_pattern",
@@ -4902,19 +4939,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/6",
       "op": "＋",
       "result": 0.833333,
-      "prompt": "先通分，再把分子相加。",
-      "hint": "先通分，再把分子相加。",
+      "prompt": "上下午共修好幾公尺護欄？",
+      "hint": "上午和下午各修好的長度。",
       "answerExact": "5/6"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_add",
   "stimulusGroup": null,
   "title": "合計護欄修復量",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "ef61ccdfc7320f295b4057a6",
+  "contentKey": "6325e18214724dbacac80ca3",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_fraction_sub_2",
   "kpId": "m_frac_ops",
@@ -4934,19 +4972,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/6",
       "op": "−",
       "result": 0.5,
-      "prompt": "從已用量扣掉草稿量。",
-      "hint": "從已用量扣掉草稿量。",
+      "prompt": "正式紀錄用了幾張紙？",
+      "hint": "已用掉的總紙量，以及其中草稿的紙量。",
       "answerExact": "1/2"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_sub",
   "stimulusGroup": null,
   "title": "分清草稿與正式紀錄",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "0384a97682afee0409827374",
+  "contentKey": "44d23ce9255660856f6dca38",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_fraction_multiply_2",
   "kpId": "m_frac_ops",
@@ -4966,19 +5005,20 @@ const G6_EXPANSION_BANK = [{
       "right": "3/4",
       "op": "×",
       "result": 0.5,
-      "prompt": "求一個量的幾分之幾，用乘法。",
-      "hint": "求一個量的幾分之幾，用乘法。",
+      "prompt": "金色部分長幾公尺？",
+      "hint": "整條標示帶的長度，以及塗成金色的比例。",
       "answerExact": "1/2"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_multiply",
   "stimulusGroup": null,
   "title": "金色標示帶",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "73d54ced9a55f5c2ac448890",
+  "contentKey": "29dc99e86b627d33fd6948e1",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_decimal_multiply_2",
   "kpId": "m_dec_ops",
@@ -5231,19 +5271,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/16",
       "op": "÷",
       "result": 14,
-      "prompt": "求總長裡有幾段指定的長度。",
-      "hint": "總量除以每個用量；除以分數可乘以它的倒數。",
+      "prompt": "剛好可以裝幾個小盒？",
+      "hint": "封邊條的總長，以及每個小盒需要的長度。",
       "answerExact": "14"
     }],
-    "unit": "個"
+    "unit": "個",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:fraction_measure",
   "stimulusGroup": null,
   "title": "封邊條能裝幾盒",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "a1408e3869c66c8c32464e97",
+  "contentKey": "c2e701543892dfb2a5b542bc",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_fraction_share_3",
   "kpId": "m_fracdiv",
@@ -5263,19 +5304,20 @@ const G6_EXPANSION_BANK = [{
       "right": "4/5",
       "op": "÷",
       "result": 10,
-      "prompt": "把部分用量換成一整份。",
-      "hint": "把部分用量換成一整份。",
+      "prompt": "完成一整面布景需要幾公尺布？",
+      "hint": "已使用的布長，以及這些布能完成的布景比例。",
       "answerExact": "10"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:fraction_share",
   "stimulusGroup": null,
   "title": "補齊整面布景",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "6b40b10b04c2cb786d840b8c",
+  "contentKey": "c35a37a30ff759820a692583",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_quotient_compare_3",
   "kpId": "m_fracdiv",
@@ -5338,19 +5380,20 @@ const G6_EXPANSION_BANK = [{
       "right": 0.15,
       "op": "÷",
       "result": 18,
-      "prompt": "用總容量除以一盒容量。",
-      "hint": "用總容量除以一盒容量。",
+      "prompt": "能剛好裝滿幾盒？",
+      "hint": "清潔液總量，以及每盒容量。",
       "answerExact": "18"
     }],
-    "unit": "盒"
+    "unit": "盒",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:decimal_portions",
   "stimulusGroup": null,
   "title": "清潔液分裝",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "da05a06b6b897cb146fb0a67",
+  "contentKey": "c11e2b23dc8d7a4b3ae2e320",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_decimal_unit_3",
   "kpId": "m_decdiv",
@@ -5370,19 +5413,20 @@ const G6_EXPANSION_BANK = [{
       "right": 3.6,
       "op": "÷",
       "result": 35,
-      "prompt": "總價除以總長，得到每公尺的價格。",
-      "hint": "總價除以總長，得到每公尺的價格。",
+      "prompt": "每公尺多少元？",
+      "hint": "織帶的總價，以及織帶的總長。",
       "answerExact": "35"
     }],
-    "unit": "元"
+    "unit": "元",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:decimal_unit",
   "stimulusGroup": null,
   "title": "織帶的單價",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "7998997858a37c0898bbab0c",
+  "contentKey": "5f9c05ad7f467382afe32547",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_mixed_budget_3",
   "kpId": "m_mixed",
@@ -5402,27 +5446,28 @@ const G6_EXPANSION_BANK = [{
       "right": 2,
       "op": "×",
       "result": 32,
-      "prompt": "先算兩盒標籤的總價。",
-      "hint": "先算兩盒標籤的總價。",
+      "prompt": "兩盒標籤共要幾元？",
+      "hint": "每盒標籤的價格，以及盒數。",
       "answerExact": "32"
     }, {
       "left": 32,
       "right": 7.5,
       "op": "＋",
       "result": 39.5,
-      "prompt": "再加上細繩的價格。",
-      "hint": "再加上細繩的價格。",
+      "prompt": "標籤和細繩共要幾元？",
+      "hint": "前一步算出的標籤總價，以及細繩的價格。",
       "answerExact": "79/2"
     }],
-    "unit": "元"
+    "unit": "元",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:mixed_budget",
   "stimulusGroup": null,
   "title": "調查用品預算",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "347aef452f961933404b6179",
+  "contentKey": "e809cf5269c2123c24982299",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_mixed_stock_3",
   "kpId": "m_mixed",
@@ -5442,27 +5487,28 @@ const G6_EXPANSION_BANK = [{
       "right": 4,
       "op": "×",
       "result": 5,
-      "prompt": "先求模型一共用掉多少陶土。",
-      "hint": "先求模型一共用掉多少陶土。",
+      "prompt": "製作模型共需要幾公斤陶土？",
+      "hint": "每件模型的陶土用量，以及模型件數。",
       "answerExact": "5"
     }, {
       "left": 14,
       "right": 5,
       "op": "−",
       "result": 9,
-      "prompt": "原有量減去使用量。",
-      "hint": "原有量減去使用量。",
+      "prompt": "還剩下幾公斤陶土？",
+      "hint": "原有陶土量，以及前一步算出的用量。",
       "answerExact": "9"
     }],
-    "unit": "公斤"
+    "unit": "公斤",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:mixed_stock",
   "stimulusGroup": null,
   "title": "陶土庫存簿",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "07f9e62d20d57e13dafec14d",
+  "contentKey": "8e35fa5644e69d2f9112a6a8",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_recipe_mix_3",
   "kpId": "m_ratio",
@@ -5530,27 +5576,28 @@ const G6_EXPANSION_BANK = [{
       "right": 11,
       "op": "÷",
       "result": 6,
-      "prompt": "先求一份是多少張。",
-      "hint": "先求一份是多少張。",
+      "prompt": "一份是幾張地圖？",
+      "hint": "地圖總張數，以及北隊和南隊合計的份數。",
       "answerExact": "6"
     }, {
       "left": 6,
       "right": 7,
       "op": "×",
       "result": 42,
-      "prompt": "南隊有後項所代表的份數。",
-      "hint": "南隊有後項所代表的份數。",
+      "prompt": "南隊可以拿幾張地圖？",
+      "hint": "前一步算出的一份張數，以及南隊的份數。",
       "answerExact": "42"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:ratio_allocation",
   "stimulusGroup": null,
   "title": "巡查隊分地圖",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "adec0ecd61f9c683de429a4a",
+  "contentKey": "4c684c6a33679506e0d2127d",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_speed_distance_3",
   "kpId": "m_speed",
@@ -5598,35 +5645,36 @@ const G6_EXPANSION_BANK = [{
       "right": 600,
       "op": "＋",
       "result": 840,
-      "prompt": "先合計全程距離。",
-      "hint": "先合計全程距離。",
+      "prompt": "全程行進幾公尺？",
+      "hint": "第一段和第二段各自的距離。",
       "answerExact": "840"
     }, {
       "left": 4,
       "right": 6,
       "op": "＋",
       "result": 10,
-      "prompt": "再合計全程時間。",
-      "hint": "再合計全程時間。",
+      "prompt": "全程花了幾分鐘？",
+      "hint": "第一段和第二段各自花的時間。",
       "answerExact": "10"
     }, {
       "left": 840,
       "right": 10,
       "op": "÷",
       "result": 84,
-      "prompt": "總距離除以總時間。",
-      "hint": "總距離除以總時間。",
+      "prompt": "全程平均每分鐘行進幾公尺？",
+      "hint": "前面算出的全程距離，以及全程時間。",
       "answerExact": "84"
     }],
-    "unit": "公尺／分鐘"
+    "unit": "公尺／分鐘",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:average_speed",
   "stimulusGroup": null,
   "title": "送件車全程速度",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "2b201016ab44f2b782a0ae80",
+  "contentKey": "ac85dfbf934bbd502612019a",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_speed_units_3",
   "kpId": "m_speed",
@@ -5674,19 +5722,20 @@ const G6_EXPANSION_BANK = [{
       "right": 1.75,
       "op": "×",
       "result": 70,
-      "prompt": "小梅的張數是 1 倍，乘上倍數。",
-      "hint": "小梅的張數是 1 倍，乘上倍數。",
+      "prompt": "阿嵐有幾張紀錄卡？",
+      "hint": "小梅的張數，以及阿嵐張數是小梅的幾倍。",
       "answerExact": "70"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:base_forward",
   "stimulusGroup": null,
   "title": "兩位調查員的卡片",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "ad75c9bf18108486baccec47",
+  "contentKey": "fe26375bd400fde908be868b",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_base_inverse_3",
   "kpId": "m_base",
@@ -5706,19 +5755,20 @@ const G6_EXPANSION_BANK = [{
       "right": 1.75,
       "op": "÷",
       "result": 36,
-      "prompt": "已知比較量，除以倍數找基準量。",
-      "hint": "已知比較量，除以倍數找基準量。",
+      "prompt": "小箱裝幾顆零件？",
+      "hint": "大箱的顆數，以及大箱是小箱的幾倍。",
       "answerExact": "36"
     }],
-    "unit": "顆"
+    "unit": "顆",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:base_inverse",
   "stimulusGroup": null,
   "title": "還原小箱零件數",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "9162b19bd7ba2e23b3155e40",
+  "contentKey": "fe4ffb3c1f457bb25fd9e6d8",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_sum_difference_3",
   "kpId": "m_relation",
@@ -5738,27 +5788,28 @@ const G6_EXPANSION_BANK = [{
       "right": 18,
       "op": "−",
       "result": 74,
-      "prompt": "先去掉東庫多出的部分。",
-      "hint": "先去掉東庫多出的部分。",
+      "prompt": "兩份西庫的數量共有幾把鑰匙？",
+      "hint": "兩庫總數，以及東庫比西庫多的數量。",
       "answerExact": "74"
     }, {
       "left": 74,
       "right": 2,
       "op": "÷",
       "result": 37,
-      "prompt": "剩下的是兩份一樣的西庫數量。",
-      "hint": "剩下的是兩份一樣的西庫數量。",
+      "prompt": "西庫有幾把鑰匙？",
+      "hint": "前一步算出的兩份西庫數量，以及其中包含的份數。",
       "answerExact": "37"
     }],
-    "unit": "把"
+    "unit": "把",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:sum_difference",
   "stimulusGroup": null,
   "title": "東西庫房的鑰匙",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "de751f7cff8fbfd32d09e66b",
+  "contentKey": "96406fcc24c7afd3d90524ef",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_tile_growth_3",
   "kpId": "m_pattern",
@@ -6044,19 +6095,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/8",
       "op": "＋",
       "result": 0.875,
-      "prompt": "先通分，再把分子相加。",
-      "hint": "先通分，再把分子相加。",
+      "prompt": "上下午共修好幾公尺護欄？",
+      "hint": "上午和下午各修好的長度。",
       "answerExact": "7/8"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_add",
   "stimulusGroup": null,
   "title": "合計護欄修復量",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "63a3415178cba081c25a6d05",
+  "contentKey": "99b280aadbe75b374003b3a8",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_fraction_sub_3",
   "kpId": "m_frac_ops",
@@ -6076,19 +6128,20 @@ const G6_EXPANSION_BANK = [{
       "right": "1/8",
       "op": "−",
       "result": 0.625,
-      "prompt": "從已用量扣掉草稿量。",
-      "hint": "從已用量扣掉草稿量。",
+      "prompt": "正式紀錄用了幾張紙？",
+      "hint": "已用掉的總紙量，以及其中草稿的紙量。",
       "answerExact": "5/8"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_sub",
   "stimulusGroup": null,
   "title": "分清草稿與正式紀錄",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "1b6bc8a5d6c0d4c0dbea8186",
+  "contentKey": "d62065de96074583624f4343",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_fraction_multiply_3",
   "kpId": "m_frac_ops",
@@ -6108,19 +6161,20 @@ const G6_EXPANSION_BANK = [{
       "right": "2/3",
       "op": "×",
       "result": 0.5,
-      "prompt": "求一個量的幾分之幾，用乘法。",
-      "hint": "求一個量的幾分之幾，用乘法。",
+      "prompt": "金色部分長幾公尺？",
+      "hint": "整條標示帶的長度，以及塗成金色的比例。",
       "answerExact": "1/2"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
   "variantGroup": "g6x:review_fraction_multiply",
   "stimulusGroup": null,
   "title": "金色標示帶",
   "runtimeRequirements": ["step", "g6-strict-numeric"],
-  "contentKey": "721141828729d942be92059d",
+  "contentKey": "5fec68a3b64305637b7f4ece",
   "reviewed": true,
-  "contentRevision": 2
+  "contentRevision": 3
 }, {
   "id": "g6x_review_decimal_multiply_3",
   "kpId": "m_dec_ops",
@@ -21607,13 +21661,14 @@ const G5_EXPANSION_BANK = [{
       "right": "1/4",
       "op": "＋",
       "result": 0.75,
-      "prompt": "先通分，再把分子相加。",
-      "hint": "先通分，再把分子相加。",
+      "prompt": "上下午共修好幾公尺護欄？",
+      "hint": "上午和下午各修好的長度。",
       "answerExact": "3/4"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "16738f5d72b2bdfdf0040b03",
+  "contentKey": "f5bcbcf6b44183aa737fd4d0",
   "variantGroup": "g6x:review_fraction_add",
   "title": "合計護欄修復量",
   "sourceQuestionId": "g6x_review_fraction_add_1"
@@ -21632,13 +21687,14 @@ const G5_EXPANSION_BANK = [{
       "right": "1/4",
       "op": "−",
       "result": 0.25,
-      "prompt": "從已用量扣掉草稿量。",
-      "hint": "從已用量扣掉草稿量。",
+      "prompt": "正式紀錄用了幾張紙？",
+      "hint": "已用掉的總紙量，以及其中草稿的紙量。",
       "answerExact": "1/4"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "ff7e1b729272e2aab4a35f5c",
+  "contentKey": "1f307d787bbee3b65c370d8a",
   "variantGroup": "g6x:review_fraction_sub",
   "title": "分清草稿與正式紀錄",
   "sourceQuestionId": "g6x_review_fraction_sub_1"
@@ -21657,13 +21713,14 @@ const G5_EXPANSION_BANK = [{
       "right": "1/3",
       "op": "×",
       "result": 0.166667,
-      "prompt": "求一個量的幾分之幾，用乘法。",
-      "hint": "求一個量的幾分之幾，用乘法。",
+      "prompt": "金色部分長幾公尺？",
+      "hint": "整條標示帶的長度，以及塗成金色的比例。",
       "answerExact": "1/6"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "1486d7cfcc0037cd1cbcf53f",
+  "contentKey": "30b913eb3ccb0ddf4572353e",
   "variantGroup": "g6x:review_fraction_multiply",
   "title": "金色標示帶",
   "sourceQuestionId": "g6x_review_fraction_multiply_1"
@@ -21766,13 +21823,14 @@ const G5_EXPANSION_BANK = [{
       "right": "1/6",
       "op": "＋",
       "result": 0.833333,
-      "prompt": "先通分，再把分子相加。",
-      "hint": "先通分，再把分子相加。",
+      "prompt": "上下午共修好幾公尺護欄？",
+      "hint": "上午和下午各修好的長度。",
       "answerExact": "5/6"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "ef61ccdfc7320f295b4057a6",
+  "contentKey": "6325e18214724dbacac80ca3",
   "variantGroup": "g6x:review_fraction_add",
   "title": "合計護欄修復量",
   "sourceQuestionId": "g6x_review_fraction_add_2"
@@ -21791,13 +21849,14 @@ const G5_EXPANSION_BANK = [{
       "right": "1/6",
       "op": "−",
       "result": 0.5,
-      "prompt": "從已用量扣掉草稿量。",
-      "hint": "從已用量扣掉草稿量。",
+      "prompt": "正式紀錄用了幾張紙？",
+      "hint": "已用掉的總紙量，以及其中草稿的紙量。",
       "answerExact": "1/2"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "0384a97682afee0409827374",
+  "contentKey": "44d23ce9255660856f6dca38",
   "variantGroup": "g6x:review_fraction_sub",
   "title": "分清草稿與正式紀錄",
   "sourceQuestionId": "g6x_review_fraction_sub_2"
@@ -21816,13 +21875,14 @@ const G5_EXPANSION_BANK = [{
       "right": "3/4",
       "op": "×",
       "result": 0.5,
-      "prompt": "求一個量的幾分之幾，用乘法。",
-      "hint": "求一個量的幾分之幾，用乘法。",
+      "prompt": "金色部分長幾公尺？",
+      "hint": "整條標示帶的長度，以及塗成金色的比例。",
       "answerExact": "1/2"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "73d54ced9a55f5c2ac448890",
+  "contentKey": "29dc99e86b627d33fd6948e1",
   "variantGroup": "g6x:review_fraction_multiply",
   "title": "金色標示帶",
   "sourceQuestionId": "g6x_review_fraction_multiply_2"
@@ -21925,13 +21985,14 @@ const G5_EXPANSION_BANK = [{
       "right": "1/8",
       "op": "＋",
       "result": 0.875,
-      "prompt": "先通分，再把分子相加。",
-      "hint": "先通分，再把分子相加。",
+      "prompt": "上下午共修好幾公尺護欄？",
+      "hint": "上午和下午各修好的長度。",
       "answerExact": "7/8"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "63a3415178cba081c25a6d05",
+  "contentKey": "99b280aadbe75b374003b3a8",
   "variantGroup": "g6x:review_fraction_add",
   "title": "合計護欄修復量",
   "sourceQuestionId": "g6x_review_fraction_add_3"
@@ -21950,13 +22011,14 @@ const G5_EXPANSION_BANK = [{
       "right": "1/8",
       "op": "−",
       "result": 0.625,
-      "prompt": "從已用量扣掉草稿量。",
-      "hint": "從已用量扣掉草稿量。",
+      "prompt": "正式紀錄用了幾張紙？",
+      "hint": "已用掉的總紙量，以及其中草稿的紙量。",
       "answerExact": "5/8"
     }],
-    "unit": "張"
+    "unit": "張",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "1b6bc8a5d6c0d4c0dbea8186",
+  "contentKey": "d62065de96074583624f4343",
   "variantGroup": "g6x:review_fraction_sub",
   "title": "分清草稿與正式紀錄",
   "sourceQuestionId": "g6x_review_fraction_sub_3"
@@ -21975,13 +22037,14 @@ const G5_EXPANSION_BANK = [{
       "right": "2/3",
       "op": "×",
       "result": 0.5,
-      "prompt": "求一個量的幾分之幾，用乘法。",
-      "hint": "求一個量的幾分之幾，用乘法。",
+      "prompt": "金色部分長幾公尺？",
+      "hint": "整條標示帶的長度，以及塗成金色的比例。",
       "answerExact": "1/2"
     }],
-    "unit": "公尺"
+    "unit": "公尺",
+    "stepPedagogyVersion": 1
   },
-  "contentKey": "721141828729d942be92059d",
+  "contentKey": "5fec68a3b64305637b7f4ece",
   "variantGroup": "g6x:review_fraction_multiply",
   "title": "金色標示帶",
   "sourceQuestionId": "g6x_review_fraction_multiply_3"
@@ -34564,6 +34627,7 @@ function validateBackupState(input) {
       if (r.labels.length < 2 || r.labels.length > 20 || r.values.length !== r.labels.length || !Number.isInteger(r.max) || r.max < 1 || r.max > 100 || r.values.some(v => !Number.isInteger(v) || v < 0 || v > r.max)) bad(p + '.plot');
       opt(r, 'unit', str, p);
     }
+    if (t.stepDraft !== undefined && (t.kind !== 'step' || !validStepDraft(t.stepDraft, r.steps.length))) bad(p + '.stepDraft');
     for (const k of ['attempts', 'hints', 'seed']) opt(t, k, num, p);
   }
   const unique = (xs, p) => {
@@ -35291,15 +35355,16 @@ const MechOptions = React.createContext({});
 function useMechanic({
   hintsAllowed = true,
   maxAttempts,
-  onDone
+  onDone,
+  initialProgress
 }) {
   maxAttempts = maxAttempts || 3;
   const {
     maxHints = Infinity
   } = useContext(MechOptions) || {};
-  const [attempts, setAttempts] = useState(0);
-  const [hints, setHints] = useState(0);
-  const [hintLevel, setHintLevel] = useState(0);
+  const [attempts, setAttempts] = useState(initialProgress?.attempts || 0);
+  const [hints, setHints] = useState(initialProgress?.hints || 0);
+  const [hintLevel, setHintLevel] = useState(initialProgress?.hints || 0);
   const [feedback, setFeedback] = useState(null);
   const [done, setDone] = useState(false);
   const finish = (passed, detail) => {
@@ -35393,7 +35458,7 @@ function MechHUD({
     small: true,
     kind: "teal",
     onClick: m.useHint
-  }, "\u9700\u8981\u63D0\u793A\uFF08", m.hintLevel + 1, "/", Math.min(hintTexts.length, m.maxHints ?? Infinity), "\uFF09")), hintsAllowed && m.hintLevel > 0 && React.createElement("div", {
+  }, "\u9700\u8981\u63D0\u793A\uFF08", m.hintLevel + 1, "/", Math.min(hintTexts.length, m.maxHints ?? Infinity), "\uFF09")), hintsAllowed && m.hintLevel > 0 && hintTexts.length > 0 && React.createElement("div", {
     className: "notice"
   }, hintTexts.slice(0, m.hintLevel).map((h, i) => React.createElement("div", {
     key: i
@@ -35524,6 +35589,144 @@ function resolveLockParams(p) {
   };
   if (!validateLockParams(next) || !next.constraints.every(c => evaluateLockRule(c, next.answer))) throw new Error('LOCK_RULE_UNAVAILABLE');
   return next;
+}
+const STEP_PEDAGOGY = {
+  "#＝#×#×#，#＝#×#×#，共同的質因數相乘。": ["最多可以分成幾袋？", "兩個數共同的質因數；先在心中分解，找出各取一次的兩個質因數。"],
+  "最多袋數＝# 和 # 的最大公因數，先用 #÷最大公因數 # 算每袋螺絲。": ["每袋有幾顆螺絲？", "螺絲總數，以及最多能分的袋數；袋數要同時讓兩種零件都不剩。"],
+  "分數除法：除以一個分數等於乘以它的倒數，先把 # 寫成 # 等分（#）。": ["以八分之一公升為單位，可以裝幾杯？", "果汁總量包含幾個八分之一公升，以及每杯包含幾個八分之一公升。"],
+  "求總長裡有幾段指定的長度。": ["剛好可以裝幾個小盒？", "封邊條的總長，以及每個小盒需要的長度。"],
+  "分數除以整數 #：分母乘 #（也就是乘以 #）。": ["每人可以分到幾公升？", "果汁總量，以及平分的人數。"],
+  "把部分用量換成一整份。": ["完成一整面布景需要幾公尺布？", "已使用的布長，以及這些布能完成的布景比例。"],
+  "總價÷個數＝單價。": ["一個螺絲幾元？", "螺絲的總價，以及螺絲個數。"],
+  "用總容量除以一盒容量。": ["能剛好裝滿幾盒？", "清潔液總量，以及每盒容量。"],
+  "把除數變整數：#→#，被除數也乘 #：#→#。": ["以十分之一公升為單位，可以裝幾瓶？", "總油量有幾個十分之一公升，以及每瓶容量有幾個十分之一公升。"],
+  "總價除以總長，得到每公尺的價格。": ["每公尺多少元？", "織帶的總價，以及織帶的總長。"],
+  "先算 # 盒多少錢。": ["買這些釘子一共要多少元？", "每盒釘子的價格，以及購買的盒數。"],
+  "再算找回的錢。": ["可以找回多少元？", "付出的金額，以及前一步算出的總價。"],
+  "先算喝掉多少。": ["喝掉幾公升果汁？", "原有果汁量，以及喝掉的比例。"],
+  "再算剩下的。": ["還剩下幾公升果汁？", "原有果汁量，以及前一步算出的喝掉量。"],
+  "先算兩盒標籤的總價。": ["兩盒標籤共要幾元？", "每盒標籤的價格，以及盒數。"],
+  "再加上細繩的價格。": ["標籤和細繩共要幾元？", "前一步算出的標籤總價，以及細繩的價格。"],
+  "先求模型一共用掉多少陶土。": ["製作模型共需要幾公斤陶土？", "每件模型的陶土用量，以及模型件數。"],
+  "原有量減去使用量。": ["還剩下幾公斤陶土？", "原有陶土量，以及前一步算出的用量。"],
+  "先算總共幾份。": ["兩人合計有幾份？", "比例中第一人和第二人各有的份數。"],
+  "一份幾顆？": ["一份是幾顆糖？", "糖的總顆數，以及前一步算出的總份數。"],
+  "第一人幾顆？": ["第一人可以拿幾顆糖？", "前一步算出的一份顆數，以及第一人的份數。"],
+  "一共幾份？": ["兩色合計有幾份？", "比例中紅色和藍色各有的份數。"],
+  "一份幾格？": ["一份是幾格顏料？", "顏料總格數，以及前一步算出的總份數。"],
+  "藍色幾份就乘幾。": ["藍色需要幾格顏料？", "前一步算出的一份格數，以及藍色的份數。"],
+  "先求一份是多少張。": ["一份是幾張地圖？", "地圖總張數，以及北隊和南隊合計的份數。"],
+  "南隊有後項所代表的份數。": ["南隊可以拿幾張地圖？", "前一步算出的一份張數，以及南隊的份數。"],
+  "速度＝距離÷時間。": ["每分鐘可以跑幾公尺？", "跑一圈的距離，以及跑一圈花的分鐘數。"],
+  "先算速度（每小時幾公里）。": ["每小時可以跑幾公里？", "已跑的距離，以及已花的時數。"],
+  "再算 # 小時跑的距離。": ["接下來指定的時數內，能跑幾公里？", "前一步算出的每小時距離，以及接下來要跑的時數。"],
+  "先把公里換成公尺。": ["火車每小時行進幾公尺？", "每小時行進的公里數，以及每公里的公尺數。"],
+  "# 小時＝# 分，除以 #。": ["火車每分鐘行進幾公尺？", "前一步算出的每小時公尺數，以及一小時的分鐘數。"],
+  "兩車每小時一共接近多少公里？": ["兩車每小時一共接近多少公里？", "甲車和乙車每小時各行進的距離。"],
+  "距離÷合速度＝時間。": ["幾小時後兩車會相遇？", "兩地的距離，以及前一步算出的每小時接近距離。"],
+  "先合計全程距離。": ["全程行進幾公尺？", "第一段和第二段各自的距離。"],
+  "再合計全程時間。": ["全程花了幾分鐘？", "第一段和第二段各自花的時間。"],
+  "總距離除以總時間。": ["全程平均每分鐘行進幾公尺？", "前面算出的全程距離，以及全程時間。"],
+  "八折表示原價的 # 倍，基準量是原價。": ["折扣後要付多少元？", "原價，以及折扣後價格占原價的比例。"],
+  "# 折表示原價的 # 倍，基準量是原價。": ["折扣後要付多少元？", "原價，以及折扣後價格占原價的比例。"],
+  "小梅的張數是 # 倍，乘上倍數。": ["阿嵐有幾張紀錄卡？", "小梅的張數，以及阿嵐張數是小梅的幾倍。"],
+  "便宜的錢＝原價−售價。": ["比原價便宜幾元？", "原價，以及前一步算出的售價。"],
+  "已知比較量，除以倍數找基準量。": ["小箱裝幾顆零件？", "大箱的顆數，以及大箱是小箱的幾倍。"],
+  "先把「加上 #」還原（減掉）。": ["某數的指定倍數是多少？", "等式最後的數，以及後來增加的數。"],
+  "再把「# 倍」還原（除以 #）。": ["某數是多少？", "前一步得到的量，以及題目指定的倍數。"],
+  "先去掉東庫多出的部分。": ["兩份西庫的數量共有幾把鑰匙？", "兩庫總數，以及東庫比西庫多的數量。"],
+  "剩下的是兩份一樣的西庫數量。": ["西庫有幾把鑰匙？", "前一步算出的兩份西庫數量，以及其中包含的份數。"],
+  "相鄰兩項的差。": ["每多一個圖形，多幾根火柴棒？", "第二個圖形和第一個圖形各自的火柴棒根數。"],
+  "第 # 個：先算 #×每次增加的數。": ["指定圖形中，規律重複的部分有幾根？", "指定圖形的序號，以及前一步算出的每次增加根數。"],
+  "再加上固定的 # 根。": ["指定圖形一共有幾根火柴棒？", "前一步算出的重複部分根數，以及每個圖形都保留的固定根數。"],
+  "把第幾次代入關係式。": ["指定的那一次，鐘會敲幾下？", "題目指定的次序，以及每一次序對應的鐘聲次數。"],
+  "先算實際有幾公分。": ["兩村的實際距離是幾公分？", "圖上的距離，以及圖上一公分代表的實際公分數。"],
+  "把公分換成公里（# 公里＝# 公分）。": ["兩村的實際距離是幾公里？", "前一步算出的實際公分數，以及每公里的公分數。"],
+  "長邊放大。": ["放大後的長邊是幾公分？", "原圖長邊，以及放大的倍數。"],
+  "短邊放大。": ["放大後的短邊是幾公分？", "原圖短邊，以及放大的倍數。"],
+  "周長＝(長＋寬)×#，先算長＋寬。": ["放大後，相鄰兩邊合計幾公分？", "前面算出的放大後長邊和短邊。"],
+  "再乘 # 得周長。": ["放大後的周長是幾公分？", "前一步算出的相鄰兩邊長度，以及四邊中有幾組這樣的長度。"],
+  "先把公里換成公分。": ["鐘塔到車站的實際距離是幾公分？", "實際的公里數，以及每公里的公分數。"],
+  "除以比例尺的分母。": ["地圖上的距離是幾公分？", "前一步算出的實際公分數，以及圖上一公分代表的實際公分數。"],
+  "圓周長＝直徑×#。": ["圍欄繞一圈需要幾公尺？", "圓的直徑，以及題目提供的圓周率。"],
+  "先算半徑。": ["圓的半徑是多少？", "圓的直徑，以及一條直徑包含幾條半徑。"],
+  "題目給的是直徑，先算半徑。": ["圓的半徑是多少？", "圓的直徑，以及一條直徑包含幾條半徑。"],
+  "半徑×半徑。": ["邊長等於半徑的正方形，面積是多少？", "這個正方形的兩條邊長；它們都和圓的半徑一樣長。"],
+  "底面積＝半徑×半徑×#，先算半徑×半徑。": ["邊長等於半徑的正方形，面積是多少？", "這個正方形的兩條邊長；它們都和圓的半徑一樣長。"],
+  "再乘 #。": ["噴水池面積是幾平方公尺？", "前一步算出的正方形面積，以及題目提供的圓周率。"],
+  "先算底面積（長×寬）。": ["長方體的底面積是多少？", "長方體底面的長，以及寬。"],
+  "先算體積（長×寬×高），先算長×寬。": ["長方體的底面積是多少？", "長方體底面的長，以及寬。"],
+  "先算底面積。": ["長方體的底面積是多少？", "長方體底面的長，以及寬。"],
+  "柱體體積＝底面積×高。": ["柱體的體積是多少？", "前一步算出的底面積，以及柱體的高。"],
+  "再乘高。": ["柱體的體積是多少？", "前一步算出的底面積，以及柱體的高。"],
+  "底面積×高。": ["柱體的體積是多少？", "前一步算出的底面積，以及柱體的高。"],
+  "立方公分換成公升。": ["水箱容積是幾公升？", "前一步算出的立方公分數，以及每公升的立方公分數。"],
+  "乘 # 得底面積。": ["圓柱的底面積是多少？", "邊長等於半徑的正方形面積，以及題目提供的圓周率。"],
+  "再乘圓周率。": ["圓柱的底面積是多少？", "邊長等於半徑的正方形面積，以及題目提供的圓周率。"],
+  "底面積＝半徑×半徑×#。": ["圓柱的底面積是多少？", "邊長等於半徑的正方形面積，以及題目提供的圓周率。"],
+  "先算百分率：#÷#。": ["漫畫占全部借書量的比例是多少（用小數）？", "漫畫的圓心角，以及整個圓的角度。"],
+  "全部×百分率。": ["漫畫有幾本？", "全部借書的本數，以及前一步算出的漫畫比例。"],
+  "先算占全部的幾分之幾（小數）。": ["選遊行的人占全部多少（用小數）？", "選遊行的人數，以及投票總人數。"],
+  "換算成百分率（×#）。": ["這一項的百分率是多少？", "前一步算出的比例小數，以及百分率的每百分基準。"],
+  "圓心角＝#×比率。": ["這一項的圓心角是幾度？", "整個圓的角度，以及前面算出的比例小數。"],
+  "甲店：點熱飲人數÷客人數。": ["甲店點熱飲的比例是多少（用小數）？", "甲店點熱飲的人數，以及甲店的客人總數。"],
+  "乙店：#÷#。": ["乙店點熱飲的比例是多少（用小數）？", "乙店點熱飲的人數，以及乙店的客人總數。"],
+  "通分後相加：#＝#。": ["兩段合起來是幾公尺？", "兩段各自的長度；相同的量可用等值分數表示。"],
+  "先通分，再把分子相加。": ["上下午共修好幾公尺護欄？", "上午和下午各修好的長度。"],
+  "從已用量扣掉草稿量。": ["正式紀錄用了幾張紙？", "已用掉的總紙量，以及其中草稿的紙量。"],
+  "一個量的幾分之幾，用乘法。": ["用掉幾公尺緞帶？", "整條緞帶的長度，以及用掉的比例。"],
+  "求一個量的幾分之幾，用乘法。": ["金色部分長幾公尺？", "整條標示帶的長度，以及塗成金色的比例。"],
+  "每包重量乘包數。": ["這些包裝共重幾公斤？", "每包重量，以及包數。"],
+  "面積＝長×寬。乘以 #，乘積小於 #。": ["桌布面積是幾平方公尺？", "桌布的長，以及寬。"],
+  "先算底×高。": ["同底同高的平行四邊形面積是多少？", "三角形的底和高，也是這個平行四邊形的底和高。"],
+  "兩個相同三角形才能拼成平行四邊形，因此除以 #。": ["三角形面積是多少？", "前一步算出的平行四邊形面積，以及它包含幾個相同三角形。"],
+  "上底加下底。": ["梯形的兩個底合計多長？", "梯形的上底，以及下底。"],
+  "乘高。": ["兩個相同梯形拼成的平行四邊形，面積是多少？", "前一步算出的兩底合計長度，以及梯形的高。"],
+  "除以 #。": ["一個梯形的面積是多少？", "前一步算出的平行四邊形面積，以及其中相同梯形的個數。"],
+  "先算總共有幾「份」。": ["兩位守衛合計有幾份？", "兩位守衛在比例中各自的份數。"],
+  "算出一份是幾顆。": ["一份是幾顆寶石？", "寶石總顆數，以及前一步算出的總份數。"],
+  "第二位守衛有 # 份，算出他拿到的顆數。": ["第二位守衛拿到幾顆寶石？", "前一步算出的一份顆數，以及第二位守衛的份數。"],
+  "先算第 # 個數和第 # 個數之間差了幾「格」。": ["從第一個到指定的數，一共經過幾格？", "指定項的序號，以及第一項的序號。"],
+  "每一格都加 #，算出一共加了多少。": ["指定的數比第一個數多多少？", "前一步算出的格數，以及每格增加的數。"],
+  "從第 # 個數 # 開始加上去，得到第 # 個數。": ["指定的那個數是多少？", "第一個數，以及前一步算出的增加量。"],
+  "先算 # 小時裡有幾個 # 小時。": ["這段時間共有幾個走慢的週期？", "總共經過的時數，以及每次走慢的週期時數。"],
+  "每個 # 小時慢 # 分鐘，算出一共慢了幾分鐘。": ["懷錶一共慢了幾分鐘？", "前一步算出的週期數，以及每個週期走慢的分鐘數。"]
+};
+function stepPromptKey(text) {
+  return String(text || '').replace(/\d+(?:\.\d+)?(?:\/\d+)?/g, '#');
+}
+function prepareStepParams(params, strict = false) {
+  if (params.stepPedagogyVersion === 1) return params;
+  return {
+    ...params,
+    stepPedagogyVersion: 1,
+    steps: params.steps.map(s => {
+      const row = STEP_PEDAGOGY[stepPromptKey(s.prompt)];
+      if (!row && strict) throw new Error('Unreviewed step goal: ' + s.prompt);
+      const [prompt, hint] = row || [s.prompt && s.prompt.endsWith('？') ? s.prompt : params.problem || '這一步的目標數量是多少？', `找出 ${s.left} 和 ${s.right} 各代表哪個量，再決定它們的關係。`];
+      return {
+        ...s,
+        prompt,
+        hint
+      };
+    })
+  };
+}
+function stepJudgment(s, left, right, op, result) {
+  const a = parseNum(left),
+    b = parseNum(right),
+    x = parseNum(s.left),
+    y = parseNum(s.right);
+  const direct = numExact(a, x) && numExact(b, y),
+    swapped = numExact(a, y) && numExact(b, x);
+  return {
+    operand: direct || ['＋', '×'].includes(s.op) && swapped,
+    strategy: op === s.op,
+    calc: numExact(parseNum(result), s.result)
+  };
+}
+function stepEquation(s) {
+  return `${s.left} ${s.op} ${s.right} ＝ ${s.answerExact || s.result}`;
 }
 function RatioMixer({
   params,
@@ -36455,88 +36658,188 @@ function StepSolver({
   params,
   hintsAllowed = true,
   onDone,
-  maxAttempts
+  maxAttempts,
+  draft,
+  onDraft
 }) {
   const {
     story,
     problem,
     steps,
     unit = ''
-  } = params;
-  const [ops, setOps] = useState(steps.map(() => null));
-  const [res, setRes] = useState(steps.map(() => ''));
+  } = prepareStepParams(params);
+  const initial = validStepDraft(draft, steps.length) ? draft : null;
+  const [left, setLeft] = useState(() => initial?.left || steps.map(() => ''));
+  const [right, setRight] = useState(() => initial?.right || steps.map(() => ''));
+  const [ops, setOps] = useState(() => initial?.ops || steps.map(() => null));
+  const [res, setRes] = useState(() => initial?.res || steps.map(() => ''));
+  const [levels, setLevels] = useState(() => initial?.levels || steps.map(() => 0));
   const [status, setStatus] = useState(steps.map(() => null));
-  const [errs, setErrs] = useState({
+  const [errs, setErrs] = useState(() => initial?.errs || {
+    operand: 0,
     strategy: 0,
     calc: 0
   });
+  const [focus, setFocus] = useState(null),
+    inputRefs = useRef({});
   const m = useMechanic({
     hintsAllowed,
     onDone,
-    maxAttempts
+    maxAttempts,
+    initialProgress: initial
   });
-  const hintTexts = steps.map((s, i) => `第 ${i + 1} 步：${s.hint}`);
+  const snapshot = {
+    left,
+    right,
+    ops,
+    res,
+    levels,
+    errs,
+    attempts: m.attempts,
+    hints: m.hints
+  };
+  const snapshotKey = JSON.stringify(snapshot);
+  useEffect(() => {
+    if (!m.done) onDraft?.(snapshot);
+  }, [snapshotKey, m.done, onDraft]);
+  const set = (setter, i, v) => {
+    if (!m.done) setter(a => a.map((x, j) => j === i ? v : x));
+  };
+  const hint = i => {
+    if (m.done || !hintsAllowed || m.hints >= m.maxHints || levels[i] >= 3) return;
+    const next = levels[i] + 1;
+    m.useHint();
+    set(setLevels, i, next);
+    if (next === 2) {
+      set(setLeft, i, String(steps[i].left));
+      set(setRight, i, String(steps[i].right));
+      set(setOps, i, steps[i].op);
+    }
+  };
   const check = () => {
-    const st = [];
-    let strategy = 0,
-      calc = 0;
-    steps.forEach((s, i) => {
-      const opOk = ops[i] === s.op;
-      const vOk = numExact(parseNum(res[i]), s.result);
-      if (!opOk) strategy++;else if (!vOk) calc++;
-      st.push(opOk && vOk ? 'ok' : 'no');
-    });
-    setStatus(st);
+    if (m.done) return;
+    const checks = steps.map((s, i) => stepJudgment(s, left[i], right[i], ops[i], res[i]));
     const e = {
-      strategy: errs.strategy + strategy,
-      calc: errs.calc + calc
+      ...errs
     };
+    for (const c of checks) for (const k of ['operand', 'strategy', 'calc']) if (!c[k]) e[k]++;
     setErrs(e);
-    if (st.every(x => x === 'ok')) m.pass(`全部正確！答案是 ${steps[steps.length - 1].result}${unit}。`, {
+    setStatus(checks);
+    if (checks.every(c => c.operand && c.strategy && c.calc)) m.pass(`全部正確！答案是 ${steps[steps.length - 1].answerExact || steps[steps.length - 1].result}${unit}。`, {
       errs: e
-    });else m.fail(strategy > 0 ? '有步驟選錯運算方式了，想想這一步要算出什麼。' : '運算方式對了，但有數字算錯，再算一次。', {
-      errs: e,
-      kind: strategy > 0 ? 'strategy' : 'calc'
-    });
+    });else {
+      const kinds = ['operand', 'strategy', 'calc'].filter(k => checks.some(c => !c[k]));
+      m.fail('請看每一步下方的提醒，檢查數字、運算和結果。', {
+        errs: e,
+        kind: kinds[0],
+        kinds
+      });
+    }
+  };
+  const field = (i, k, value, setter, label) => React.createElement("label", {
+    className: "step-number"
+  }, React.createElement("span", {
+    className: "sr-only"
+  }, "\u7B2C", i + 1, "\u6B65", label), React.createElement("input", {
+    ref: el => inputRefs.current[i + '-' + k] = el,
+    id: k === 'res' ? `step-${i}` : `step-${k}-${i}`,
+    className: "numin",
+    inputMode: "decimal",
+    autoComplete: "off",
+    value: value,
+    placeholder: "\uFF1F",
+    maxLength: 64,
+    disabled: m.done,
+    onFocus: () => setFocus({
+      i,
+      k
+    }),
+    onChange: e => set(setter, i, e.target.value)
+  }));
+  const fraction = () => {
+    if (!focus || m.done) return;
+    const {
+        i,
+        k
+      } = focus,
+      el = inputRefs.current[i + '-' + k],
+      setter = {
+        left: setLeft,
+        right: setRight,
+        res: setRes
+      }[k];
+    const value = el.value,
+      start = el.selectionStart ?? value.length,
+      end = el.selectionEnd ?? start;
+    set(setter, i, value.slice(0, start) + '/' + value.slice(end));
+    el.focus();
+    requestAnimationFrame(() => el.setSelectionRange(start + 1, start + 1));
   };
   return React.createElement("div", {
-    className: "col"
+    className: "col step-solver"
   }, story && React.createElement("p", {
     className: "story"
   }, story), React.createElement("div", {
     className: "card soft"
-  }, React.createElement("b", null, "\u984C\u76EE\uFF1A"), problem), React.createElement("div", {
+  }, React.createElement("b", null, "\u984C\u76EE\uFF1A"), problem), React.createElement("p", {
+    className: "small muted"
+  }, "\u81EA\u5DF1\u586B\u5165\u5169\u500B\u6578\u5B57\uFF0C\u9078\u904B\u7B97\uFF0C\u518D\u586B\u7D50\u679C\u3002\u53EF\u586B\u5C0F\u6578\u6216\u5206\u6578\uFF0C\u4F8B\u5982 1/2\u3002"), React.createElement("div", {
     className: "stepper"
-  }, steps.map((s, i) => React.createElement("div", {
-    key: i,
-    className: `steprow ${status[i] || ''}`
-  }, React.createElement("span", {
-    style: {
-      flexBasis: '100%'
-    },
-    className: "small"
-  }, i + 1, ". ", s.prompt), React.createElement("span", {
-    className: "chip",
-    style: {
-      cursor: 'default'
-    }
-  }, s.left), ['＋', '−', '×', '÷'].map(o => React.createElement("button", {
-    key: o,
-    className: `opbtn ${ops[i] === o ? 'sel' : ''}`,
-    onClick: () => !m.done && setOps(v => v.map((x, j) => j === i ? o : x)),
-    "aria-label": `第${i + 1}步選擇${o}`
-  }, o)), React.createElement("span", {
-    className: "chip",
-    style: {
-      cursor: 'default'
-    }
-  }, s.right), React.createElement("span", null, "\uFF1D"), React.createElement(NumInput, {
-    id: `step-${i}`,
-    value: res[i],
-    onChange: v => setRes(r => r.map((x, j) => j === i ? v : x)),
-    disabled: m.done,
-    width: 100
-  })))), React.createElement("div", null, React.createElement(Btn, {
+  }, steps.map((s, i) => {
+    const c = status[i],
+      ok = c && c.operand && c.strategy && c.calc;
+    return React.createElement("div", {
+      key: i,
+      className: `steprow ${c ? ok ? 'ok' : 'no' : ''}`
+    }, React.createElement("b", {
+      className: "step-goal"
+    }, i + 1, ". ", s.prompt), React.createElement("div", {
+      className: "step-equation"
+    }, field(i, 'left', left[i], setLeft, '左邊數字'), React.createElement("div", {
+      className: "step-ops",
+      role: "group",
+      "aria-label": `第${i + 1}步運算方式`
+    }, ['＋', '−', '×', '÷'].map(o => React.createElement("button", {
+      key: o,
+      className: `opbtn ${ops[i] === o ? 'sel' : ''}`,
+      "aria-pressed": ops[i] === o,
+      disabled: m.done,
+      onClick: () => set(setOps, i, o),
+      "aria-label": `第${i + 1}步選擇${o}`
+    }, o))), field(i, 'right', right[i], setRight, '右邊數字'), React.createElement("span", {
+      className: "step-result"
+    }, React.createElement("span", {
+      "aria-hidden": "true"
+    }, "\uFF1D"), field(i, 'res', res[i], setRes, '結果'))), c && React.createElement("div", {
+      className: "step-message small",
+      role: "status"
+    }, ok ? '這一步正確。' : React.createElement(React.Fragment, null, !c.operand && React.createElement("div", {
+      "data-step-error": "operand"
+    }, "\u6578\u5B57\uFF1A\u518D\u627E\u9019\u4E00\u6B65\u8981\u7528\u7684\u5169\u500B\u91CF\uFF1B\u6E1B\u6CD5\u548C\u9664\u6CD5\u4E5F\u8981\u6838\u5C0D\u5148\u5F8C\u9806\u5E8F\u3002"), !c.strategy && React.createElement("div", {
+      "data-step-error": "strategy"
+    }, "\u904B\u7B97\uFF1A\u60F3\u60F3\u8981\u7B97\u51FA\u7684\u91CF\u548C\u9019\u5169\u500B\u91CF\u6709\u4EC0\u9EBC\u95DC\u4FC2\u3002"), !c.calc && React.createElement("div", {
+      "data-step-error": "calc"
+    }, "\u7D50\u679C\uFF1A\u518D\u6AA2\u67E5\u8A08\u7B97\u503C\uFF0C\u5206\u6578\u53EF\u4EE5\u5BEB\u6210 1/2\u3002"))), hintsAllowed && React.createElement("div", {
+      className: "step-hints col"
+    }, levels[i] > 0 && React.createElement("div", {
+      className: "notice small"
+    }, levels[i] === 1 ? s.hint : levels[i] === 2 ? '已填好這一步的兩個數字與運算，請自己算出結果。' : stepEquation(s)), !m.done && levels[i] < 3 && m.hints < m.maxHints && React.createElement(Btn, {
+      small: true,
+      kind: "teal",
+      id: `step-hint-${i}`,
+      onClick: () => hint(i)
+    }, "\u7B2C", i + 1, "\u6B65\u63D0\u793A ", levels[i] + 1, "/3\uFF1A", ['找兩個量', '填數字與運算', '看完整算式'][levels[i]])));
+  })), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: "step-fraction",
+    small: true,
+    disabled: m.done || !focus,
+    onMouseDown: e => e.preventDefault(),
+    onClick: fraction
+  }, "\u8F38\u5165\u5206\u6578\u7DDA /"), React.createElement("span", {
+    className: "small muted"
+  }, "\u5148\u9EDE\u6578\u5B57\u6846\uFF0C\u518D\u6309\u5206\u6578\u7DDA\u3002")), React.createElement("div", null, React.createElement(Btn, {
     kind: "primary",
     id: "step-check",
     onClick: check,
@@ -36544,7 +36847,7 @@ function StepSolver({
   }, "\u6AA2\u67E5\u6B65\u9A5F")), React.createElement(MechHUD, {
     m: m,
     hintsAllowed: hintsAllowed,
-    hintTexts: hintTexts
+    hintTexts: []
   }));
 }
 function FactorLock({
@@ -48948,13 +49251,14 @@ function summarizeDiagnosis(mission) {
     if (d.probe === 'concept') obs.push(d.status === 'passed' ? '診斷題中能正確說出比值，基礎觀念可能沒有問題。' : '診斷題中比值的意義回答有誤，可能是基礎觀念不清楚。');
     if (d.probe === 'strategy') {
       const e = d.detail?.errs;
-      if (!e) obs.push(d.status === 'passed' ? '分步解題全部正確。' : '分步解題未通過。');else if (e.strategy > 0) obs.push('分步解題時選錯運算方式，較可能是解題策略不正確。');else if (e.calc > 0) obs.push('運算方式都選對，但數字算錯，較可能是計算失誤。');else obs.push('分步解題全部正確。');
+      if (!e) obs.push(d.status === 'passed' ? '分步解題全部正確。' : '分步解題未通過。');else if (e.operand > 0) obs.push('分步解題時選用的數字或先後順序有誤，建議先確認題目中各數量的意義。');else if (e.strategy > 0) obs.push('分步解題時選錯運算方式，較可能是解題策略不正確。');else if (e.calc > 0) obs.push('運算方式都選對，但數字算錯，較可能是計算失誤。');else obs.push('分步解題全部正確。');
     }
     if (d.probe === 'inference') obs.push(d.status === 'passed' ? '診斷題中能找到證據並推論，閱讀推論表現正常。' : d.detail?.kind === 'missing' || d.detail?.kind === 'extra' ? '找證據時有遺漏或選到無關句子，可能是訊息擷取不完整。' : '證據找對了但結論判斷錯誤，可能是推論時沒有連結證據。');
   });
   const stepFails = mission.stages.filter(s => s.kind === 'step' && s.detail?.errs);
   stepFails.forEach(s => {
     const e = s.detail.errs;
+    if (e.operand > 0) obs.push(`${s.short}：有 ${e.operand} 次選用數字或順序錯誤。`);
     if (e.strategy > 0) obs.push(`${s.short}：有 ${e.strategy} 次選錯運算方式（策略）。`);
     if (e.calc > 0) obs.push(`${s.short}：有 ${e.calc} 次計算錯誤。`);
   });
@@ -54829,6 +55133,83 @@ function repairSavedLocks(state) {
       learning
     } : {})
   };
+}
+function prepareStepStage(t) {
+  return t?.kind === 'step' ? {
+    ...t,
+    params: prepareStepParams(t.params, true)
+  } : t;
+}
+for (const table of Object.values(GENERATORS)) for (const [id, gen] of Object.entries(table)) table[id] = (...args) => gen(...args).map(prepareStepStage);
+const buildDiagnosticBeforeStep = buildDiagnostic;
+buildDiagnostic = (...args) => buildDiagnosticBeforeStep(...args)?.map(prepareStepStage);
+for (const chapter of Object.values(CHAPTERS)) for (const room of chapter.rooms || []) if (room.mech === 'step') room.params = prepareStepParams(room.params, true);
+function validStepDraft(d, n) {
+  if (!d || typeof d !== 'object') return false;
+  const count = v => Number.isInteger(v) && v >= 0 && v <= 1000000;
+  if (!['left', 'right', 'res'].every(k => Array.isArray(d[k]) && d[k].length === n && d[k].every(v => typeof v === 'string' && v.length <= 64))) return false;
+  if (!Array.isArray(d.ops) || d.ops.length !== n || !d.ops.every(v => v === null || ['＋', '−', '×', '÷'].includes(v))) return false;
+  if (!Array.isArray(d.levels) || d.levels.length !== n || !d.levels.every(v => Number.isInteger(v) && v >= 0 && v <= 3)) return false;
+  return !!d.errs && ['operand', 'strategy', 'calc'].every(k => count(d.errs[k])) && count(d.attempts) && count(d.hints) && d.hints >= d.levels.reduce((a, b) => a + b, 0);
+}
+function stepTaskSignature(p) {
+  return JSON.stringify([p.problem, p.steps?.map(s => [String(s.left), String(s.right), s.op, s.result])]);
+}
+function stepTaskRows(state) {
+  const rows = [],
+    add = (t, path) => {
+      if (t?.kind === 'step') rows.push({
+        task: t,
+        path
+      });
+    };
+  (state?.missions || []).forEach((m, i) => {
+    for (const k of ['diag', 'stages']) (m[k] || []).forEach((t, j) => add(t, ['missions', i, k, j]));
+  });
+  const w = state?.student?.wallet;
+  (w?.active?.stages || []).forEach((t, j) => add(t, ['student', 'wallet', 'active', 'stages', j]));
+  for (const [id, c] of Object.entries(w?.chests || {})) (c.locks || []).forEach((t, j) => add(t, ['student', 'wallet', 'chests', id, 'locks', j]));
+  for (const k of ['storyTasks', 'reviewTasks']) for (const [id, t] of Object.entries(state?.learning?.[k] || {})) add(t, ['learning', k, id]);
+  return rows;
+}
+function findStepTask(state, params) {
+  const rows = stepTaskRows(state),
+    exact = rows.find(r => r.task.params === params);
+  if (exact) return exact;
+  const sig = stepTaskSignature(params),
+    matches = rows.filter(r => !r.task.done && r.task.status !== 'passed' && stepTaskSignature(r.task.params) === sig);
+  return matches.length === 1 ? matches[0] : null;
+}
+function saveStepDraft(state, path, signature, draft) {
+  const task = path.reduce((o, k) => o?.[k], state);
+  if (!task || task.done || task.status === 'passed' || stepTaskSignature(task.params) !== signature || !validStepDraft(draft, task.params.steps.length) || JSON.stringify(task.stepDraft) === JSON.stringify(draft)) return state;
+  const put = (obj, i) => {
+    const copy = Array.isArray(obj) ? obj.slice() : {
+      ...obj
+    };
+    copy[path[i]] = i === path.length - 1 ? {
+      ...task,
+      stepDraft: draft
+    } : put(obj[path[i]], i + 1);
+    return copy;
+  };
+  return put(state, 0);
+}
+function clearStepDraft(state, path, signature) {
+  const task = path.reduce((o, k) => o?.[k], state);
+  if (!task?.stepDraft || stepTaskSignature(task.params) !== signature) return state;
+  const {
+    stepDraft,
+    ...finished
+  } = task;
+  const put = (obj, i) => {
+    const copy = Array.isArray(obj) ? obj.slice() : {
+      ...obj
+    };
+    copy[path[i]] = i === path.length - 1 ? finished : put(obj[path[i]], i + 1);
+    return copy;
+  };
+  return put(state, 0);
 }
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
@@ -68288,7 +68669,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.10-v42',
+    build: '2026.11.10-v43',
     ...context,
     message
   };
@@ -68333,12 +68714,20 @@ class MechanicErrorBoundary extends React.Component {
 }
 function guardedMechanic(Component, kind) {
   return function SafeMechanic(props) {
-    const state = React.useContext(MechanicSafetyContext),
+    const shared = React.useContext(MechanicSafetyContext),
+      state = shared?.state || shared,
       ref = useRef(null);
+    const binding = kind === 'step' ? findStepTask(state, props.params) : null;
+    const pathKey = JSON.stringify(binding?.path || []),
+      signature = kind === 'step' ? stepTaskSignature(props.params) : '';
+    const onDraft = useCallback(draft => {
+      if (shared?.setState && pathKey !== '[]') shared.setState(prev => saveStepDraft(prev, JSON.parse(pathKey), signature, draft));
+    }, [shared?.setState, pathKey, signature]);
     const context = mechanicErrorContext(state, kind, props.params);
     const done = result => {
       try {
         props.onDone?.(result);
+        if (kind === 'step' && shared?.setState && pathKey !== '[]') shared.setState(prev => clearStepDraft(prev, JSON.parse(pathKey), signature));
       } catch (e) {
         ref.current?.fail(e);
       }
@@ -68347,6 +68736,9 @@ function guardedMechanic(Component, kind) {
       ref: ref,
       context: context
     }, React.createElement(Component, _extends({}, props, {
+      key: kind + pathKey + signature,
+      draft: binding?.task.stepDraft,
+      onDraft: onDraft,
       onDone: done
     })));
   };
@@ -72983,7 +73375,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v42\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v43\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -73483,10 +73875,13 @@ function App() {
     }
   });
   return React.createElement(MechanicSafetyContext.Provider, {
-    value: state
+    value: {
+      state,
+      setState
+    }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v42",
+    "data-build": "2026.11.10-v43",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
