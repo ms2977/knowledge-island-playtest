@@ -634,6 +634,13 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .casebook-archive p { overflow-wrap: anywhere; }
 .book #link-btn { display: block; max-width: 100%; white-space: normal; }
 
+.care-neutral{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px}.care-profile{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.care-actions{flex-wrap:wrap}.care-actions button,.care-result button{min-height:46px}.care-result{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:12px auto;padding:12px;max-width:960px;border-left:4px solid var(--teal);background:var(--surface)}.care-retry-overlay{position:fixed;inset:0;background:#172b36b3;z-index:150;overflow:auto;padding:24px}.care-retry-overlay>.card{max-width:900px;margin:auto}.care-table{overflow-x:auto}.care-table table{border-collapse:collapse;white-space:nowrap;width:100%}.care-table td,.care-table th{padding:8px;border-bottom:1px solid var(--line);text-align:right}.badge-row{display:flex;align-items:center;gap:12px;min-width:0;border-bottom:1px solid var(--line);padding:12px 0}.badge-label{flex:0 0 100px;text-align:left;border:0;background:none;display:flex;flex-direction:column;gap:6px}.badge-strip{display:flex;gap:10px;overflow-x:auto;min-width:0;padding:5px;align-items:center}.memorial-badge{flex:0 0 66px;width:66px;height:66px;border-radius:50%;border:4px double #906b44;background:#f4dfbd;color:#493a27;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;box-shadow:0 2px 4px #0002}.memorial-badge span{font-size:23px;line-height:1}.memorial-badge small{font-size:12px}.memorial-badge.tier-1{border-color:#7b8792;background:#e2e7ed}.memorial-badge.tier-2{border-color:#a58325;background:#fff0b6}.memorial-badge.unknown{border:2px dashed #777;background:transparent;color:var(--text)}.memorial-stamp{font-size:30px;color:var(--teal)}#care-cap{width:70px}#care-page select{max-width:100%;min-height:44px}#care-page .care-profile svg{flex-shrink:0}@media(max-width:500px){.care-profile{gap:8px}.care-profile svg{width:120px;height:130px}.care-retry-overlay{padding:10px}.badge-label{flex-basis:112px}.memorial-badge{flex-basis:58px;width:58px;height:58px}.care-result{margin:8px}#memorial-book{padding:14px}}
+
+#records-page button{max-width:100%;white-space:normal;overflow-wrap:anywhere}#records-page .row{flex-wrap:wrap}
+#records-page .btn,#records-page .chip{display:inline-block}
+
+.care-cheer{animation:care-greeting .65s ease-out;transform-origin:center bottom}@keyframes care-greeting{25%{transform:translateY(-5px) rotate(-3deg)}65%{transform:rotate(3deg)}}@media(prefers-reduced-motion:reduce){.care-cheer{animation:none}}
+
 .paint-preview{color:#203b50;max-width:1240px;margin:auto}.paint-cover{background:linear-gradient(90deg,#123648ed,#1236488c),url('assets/scenes/workshop/background.webp') center/cover;color:#fff;padding:32px;border-radius:20px}.paint-cover h1{font-size:clamp(26px,4vw,42px);margin:8px 0}.paint-cover .eyebrow{color:#f2cd88}.paint-cover button{color:#203b50;background:#fff}.paint-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;margin-top:20px}.paint-evidence{position:sticky;top:12px;align-self:start;background:#eee7d9;padding:18px;border-radius:18px;max-height:calc(100vh - 24px);overflow:auto}.paint-evidence h2{font-size:20px}.paint-evidence details,.paint-learning{background:#fff9ed;color:#203b50;border:1px solid #d9cba9;padding:12px;border-radius:12px;margin:10px 0}.paint-evidence summary{cursor:pointer;font-weight:bold}.paint-progress{list-style:none;padding:0}.paint-progress li{padding:5px}.paint-progress .complete{color:#146553}.paint-art{object-fit:contain;max-width:100%;display:block}.paint-cans{width:100%}.paint-labels{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}.paint-form{background:#fffdf7;color:#203b50;border:1px solid #d8cdb5;border-radius:18px;padding:24px;margin-bottom:18px}.paint-form-head{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:18px;align-items:center}.paint-form-head .paint-art{max-height:180px;width:100%}.paint-form p{margin:8px 0}.paint-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px;margin:22px 0}.paint-field{display:flex;flex-direction:column;gap:8px;min-width:0}.paint-field input,.paint-field select,.paint-form>select{width:100%;max-width:100%;min-height:44px;color:#203b50;background:#fff;border:1px solid #8b9eaa;border-radius:8px;padding:10px}.paint-preview button{min-height:44px;padding:10px 16px;border:1px solid #8299a6;border-radius:10px;cursor:pointer}.paint-preview button:disabled{opacity:.55;cursor:default}.paint-preview .paint-primary{background:#176d77;color:white;border-color:#176d77}.paint-counter output{min-width:60px;text-align:center}.paint-count-visual{display:flex;flex-wrap:wrap;gap:4px;max-width:260px;min-height:22px;margin:8px 0}.paint-count-visual i{display:block;width:14px;height:18px;background:#226f96;border:1px solid #173d57;border-radius:0 0 4px 4px}.paint-hint,.paint-assist{padding:16px;border-radius:12px;background:#e8f2f0;color:#173f40;margin-top:14px}.paint-assist button{margin:4px}.paint-route{font-size:14px}.paint-art-fallback{padding:16px;border:2px dashed #9d946f;border-radius:12px;background:#f8f1df;color:#203b50}.paint-invoice{max-height:240px}.paint-demo-groups{display:flex;gap:16px;flex-wrap:wrap}.paint-demo-groups span{padding:8px;border:1px dashed #366981;animation:paintAppear 1.5s ease both}.paint-demo-groups span+span{animation-delay:.8s}.paint-halves{display:flex;width:180px}.paint-halves i{width:50%;background:#a9cee4;border:1px solid #315c74;text-align:center;padding:20px 4px}.paint-main{min-width:0}.paint-preview .wrap{flex-wrap:wrap}@keyframes paintAppear{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.paint-demo-groups span{animation:none}}@media(max-width:700px){.paint-cover{padding:20px}.paint-layout{grid-template-columns:1fr;gap:12px}.paint-evidence{position:static;max-height:none;padding:14px}.paint-evidence>.paint-art{max-height:140px}.paint-progress{display:flex;flex-wrap:wrap;gap:8px}.paint-form{padding:16px}.paint-form-head{grid-template-columns:1fr}.paint-form-head .paint-art{max-height:100px}.paint-fields{grid-template-columns:1fr}.paint-preview button{font-size:16px}}
 
 .paint-tenths{display:flex;max-width:360px;margin:16px 0}.paint-tenths i{flex:1;height:36px;border:1px solid #203b50}.paint-preview :focus-visible{outline:3px solid #bd7617;outline-offset:3px}
@@ -706,7 +713,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-wardrobe-fit">
+<meta name="game-release" content="playtest-20261110-pet-care">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -34140,6 +34147,10 @@ const ACHIEVEMENTS = [{
   name: '首次逮捕',
   desc: '解開一張通緝令的所有線索。'
 }, {
+  id: 'three_arrests',
+  name: '追捕好夥伴',
+  desc: '逮捕怪盜三次。'
+}, {
   id: 'clean_arrest',
   name: '滴水不漏',
   desc: '不用提示逮捕一位怪盜。'
@@ -34531,6 +34542,7 @@ function validateBackupState(input) {
     });
     opt(st, 'wallet', (v, p) => {
       obj(v, p);
+      if (v.companionRefunded !== undefined && typeof v.companionRefunded !== 'boolean') bad(p + '.companionRefunded');
       for (const k of ['coins', 'xpFromCases', 'fragments', 'chestsOpened', 'hintCards']) opt(v, k, num, p);
       for (const k of ['badges', 'arrests', 'items', 'focus']) opt(v, k, scalarMap, p);
       for (const k of ['kpRecent']) opt(v, k, strs, p);
@@ -34550,6 +34562,8 @@ function validateBackupState(input) {
         arr(c.locks, r + '.locks', stage);
       }), p);
     });
+    opt(st, 'care', (v, p) => validateCare(v, bad, p));
+    opt(st, 'keepsakes', (v, p) => validateKeepsakes(v, bad, p));
     opt(st, 'learning', (v, p) => {
       if (typeof validateLearningV2 !== 'function') bad(p);
       validateLearningV2(v, bad, p);
@@ -34677,6 +34691,7 @@ function validateBackupState(input) {
   obj(s.meta, 'meta');
   opt(s, 'settings', (v, p) => {
     obj(v, p);
+    opt(v, 'care', (x, q) => validateCareSettings(x, bad, q), p);
     opt(v, 'practiceKps', strs, p);
     opt(v, 'g6Semesters', strs, p);
     opt(v, 'paint', (x, q) => {
@@ -36735,13 +36750,17 @@ function StepSolver({
     setErrs(e);
     setStatus(checks);
     if (checks.every(c => c.operand && c.strategy && c.calc)) m.pass(`全部正確！答案是 ${steps[steps.length - 1].answerExact || steps[steps.length - 1].result}${unit}。`, {
-      errs: e
+      errs: e,
+      fullReveal: levels.some(n => n >= 3),
+      revealKnown: true
     });else {
       const kinds = ['operand', 'strategy', 'calc'].filter(k => checks.some(c => !c[k]));
       m.fail('請看每一步下方的提醒，檢查數字、運算和結果。', {
         errs: e,
         kind: kinds[0],
-        kinds
+        kinds,
+        fullReveal: levels.some(n => n >= 3),
+        revealKnown: true
       });
     }
   };
@@ -46554,7 +46573,8 @@ function settleCase(state) {
     const stepInfo = a.steps.find(x => x.kpId === s.kpId);
     if (stepInfo?.bounty) mult *= 1.5;
     if (!allPassed) mult *= 0.5;
-    const c = Math.round(base * mult);
+    const coinMult = mult * (s.hints && !s.freeHint ? 1.5 : 1);
+    const c = Math.round(base * coinMult);
     coins += c;
     xp += Math.round(8 * a.stars * mult);
     breakdown.push({
@@ -46832,7 +46852,7 @@ const SHOP_ITEMS = [{
   effect: '答錯仍會記錄，只是比較容易追回來。'
 }, {
   id: 'companion_up',
-  kind: 'tool',
+  kind: 'builtin',
   name: '夥伴的偵探課',
   price: 150,
   icon: 'star',
@@ -46956,6 +46976,11 @@ function buyItem(state, id) {
     state,
     ok: false,
     reason: '沒有這個商品'
+  };
+  if (item.kind === 'builtin') return {
+    state,
+    ok: false,
+    reason: '已內建，所有夥伴都會提供策略'
   };
   const lock = itemLocked(state, item);
   if (lock) return {
@@ -47199,7 +47224,8 @@ function openChest(state, chestId) {
           ...w.chests,
           [chestId]: {
             ...c,
-            opened: true
+            opened: true,
+            openedAt: now()
           }
         }
       }
@@ -47303,12 +47329,12 @@ const WARDROBE_REWARD_RULES = [{
   text: '在推論中指出真相並附上完整證據'
 }, {
   id: 'wardrobe_v1_player_home_outfit',
-  ach: 'clean_arrest',
-  text: '不用提示逮捕一位怪盜'
+  anyAch: ['three_arrests', 'clean_arrest'],
+  text: '逮捕怪盜三次'
 }, {
   id: 'wardrobe_v1_pet_home_neck',
-  ach: 'clean_arrest',
-  text: '不用提示逮捕一位怪盜'
+  anyAch: ['three_arrests', 'clean_arrest'],
+  text: '逮捕怪盜三次'
 }, {
   id: 'wardrobe_v1_player_cute_outfit',
   ach: 'skill3',
@@ -47585,6 +47611,711 @@ function setActiveCompanion(student, id) {
     ...student,
     companion: id
   } : student;
+}
+const CARE_PARAMS = Object.freeze({
+  stipendPerStage: 15,
+  stipendDailyCap: 4,
+  stipendPerConceptPerDay: 3,
+  fullRevealNeedsRetry: true,
+  basicCost: 5,
+  basicRestore: 50,
+  snackCost: 12,
+  snackRestore: 50,
+  satStart: 80,
+  satFloor: 20,
+  hungryBelow: 30,
+  decayPerActiveMin: 1,
+  idleTimeoutSec: 60,
+  bondPerCare: 2,
+  bondPerLearn: 3,
+  bondLevels: [0, 10, 30, 60, 100],
+  hungerLinePerDay: 1,
+  hungerLineAtHint: 'off',
+  dailyFreeRation: false,
+  maxOut: 1
+});
+const CARE_SUPPLIES = {
+  care_basic: {
+    name: '基礎補給',
+    cost: 5,
+    restore: 50
+  },
+  care_snack: {
+    name: '偏好點心',
+    cost: 12,
+    restore: 50
+  }
+};
+const CARE_COPY_REVIEWED = false;
+function careParams(state) {
+  const s = state.settings?.care || {};
+  return {
+    ...CARE_PARAMS,
+    stipendDailyCap: Math.max(2, Math.min(8, Math.round(Number(s.stipendDailyCap)) || 4)),
+    dailyFreeRation: !!s.dailyFreeRation
+  };
+}
+function careEvents(state) {
+  const rows = (state.practiceLog || []).filter(e => ['mission', 'review', 'wanted', 'mission_retry'].includes(e.source)).map(e => ({
+    ...e,
+    eventId: 'p:' + e.id
+  }));
+  for (const [kpId, c] of Object.entries(state.student?.learning?.concepts || {})) for (const e of c.evidence || []) if (e.kind === 'delayed') rows.push({
+    eventId: `v:${kpId}:${e.taskId}:${e.t}`,
+    t: e.t,
+    kpId,
+    source: 'delayed',
+    passed: e.correct,
+    hints: e.assisted === 'solve' ? 1 : 0,
+    attempts: 1,
+    careStageId: `v:${kpId}:${e.taskId}:${e.t}`,
+    detail: {
+      fullReveal: false,
+      revealKnown: false
+    }
+  });
+  return rows.sort((a, b) => a.t - b.t);
+}
+function ensureCare(state, t = now()) {
+  if (!state.student) return state;
+  const s = state.student,
+    pet = selectedCompanion(s).id,
+    owned = getCompanions(s).owned;
+  let c = s.care;
+  if (!c) {
+    const old = careEvents(state),
+      latest = Math.max(t, ...old.map(e => e.t));
+    c = {
+      v: 1,
+      since: t,
+      enabled: true,
+      selfCare: false,
+      out: [pet],
+      pets: {},
+      inv: {},
+      stipend: {
+        day: todayKey(t),
+        count: 0,
+        perKp: {},
+        settled: [],
+        pendingRetry: {},
+        cursor: {
+          t: latest,
+          ids: old.filter(e => e.t === latest).map(e => e.eventId)
+        }
+      },
+      lines: {
+        day: todayKey(t),
+        hunger: 0
+      },
+      log: []
+    };
+  }
+  const pets = {
+    ...c.pets
+  };
+  let changed = c !== s.care || c.out[0] !== pet || c.out.length !== 1;
+  for (const id of owned) if (!pets[id]) {
+    pets[id] = {
+      sat: 80,
+      bond: 0,
+      day: todayKey(t),
+      done: {}
+    };
+    changed = true;
+  }
+  return changed ? {
+    ...state,
+    student: {
+      ...s,
+      care: {
+        ...c,
+        pets,
+        out: [pet]
+      }
+    }
+  } : state;
+}
+function careLog(c, event) {
+  return {
+    ...c,
+    log: [...c.log, event].slice(-300)
+  };
+}
+function careBond(c, id, n, t) {
+  if (!id || !c.pets[id]) return c;
+  const p = c.pets[id],
+    bond = p.bond + n;
+  let next = {
+    ...c,
+    pets: {
+      ...c.pets,
+      [id]: {
+        ...p,
+        bond
+      }
+    }
+  };
+  if (CARE_PARAMS.bondLevels.some(l => l > p.bond && l <= bond)) next = careLog(next, {
+    type: 'bond_level',
+    t,
+    pet: id,
+    level: careLevel(bond)
+  });
+  return next;
+}
+function careLevel(bond) {
+  return CARE_PARAMS.bondLevels.filter(n => bond >= n).length;
+}
+function careEventKey(e) {
+  return e.careStageId || `${e.source}:${e.missionId || e.caseId || e.id}:${e.stage || e.id}`;
+}
+function settleCareStipend(state, t = now()) {
+  let st = ensureCare(state, t);
+  if (!st.student) return st;
+  let c = st.student.care,
+    w = getWallet(st.student),
+    changed = false;
+  const params = careParams(st),
+    cursor = c.stipend.cursor || {
+      t: c.since,
+      ids: []
+    };
+  const fresh = careEvents(st).filter(e => e.t >= c.since && (e.t > cursor.t || e.t === cursor.t && !cursor.ids.includes(e.eventId)));
+  for (const e of fresh) {
+    changed = true;
+    const prev = c.stipend.cursor,
+      ids = e.t === prev.t ? [...prev.ids, e.eventId] : [e.eventId];
+    c = {
+      ...c,
+      stipend: {
+        ...c.stipend,
+        cursor: {
+          t: e.t,
+          ids: ids.slice(-2400)
+        }
+      }
+    };
+    if (!c.enabled) continue;
+    const day = todayKey(e.t),
+      key = careEventKey(e),
+      fullReveal = !!e.detail?.fullReveal;
+    if (c.stipend.day !== day) c = {
+      ...c,
+      stipend: {
+        ...c.stipend,
+        day,
+        count: 0,
+        perKp: {}
+      }
+    };
+    const diagnostic = !!e.careDiagnostic;
+    if (diagnostic && !e.careDiagnosticComplete) continue;
+    const eligible = !e.gaveUp && (e.passed || ['review', 'delayed'].includes(e.source) || diagnostic);
+    let reason = !eligible ? 'not_passed' : e.careReplay ? 'not_due' : c.stipend.settled.includes(key) ? 'duplicate' : null;
+    if (e.source === 'mission_retry' && !c.stipend.pendingRetry[key]) reason = 'duplicate';
+    if (!reason && fullReveal && ['mission', 'mission_retry'].includes(e.source) && !diagnostic) {
+      reason = 'full_reveal';
+      c = {
+        ...c,
+        stipend: {
+          ...c.stipend,
+          pendingRetry: {
+            ...c.stipend.pendingRetry,
+            [key]: {
+              kpId: e.kpId,
+              missionId: e.missionId,
+              stage: e.stage,
+              questionKeys: e.questionKeys || []
+            }
+          }
+        }
+      };
+    }
+    if (!reason && c.stipend.count >= params.stipendDailyCap) reason = 'daily_cap';
+    if (!reason && (c.stipend.perKp[e.kpId] || 0) >= params.stipendPerConceptPerDay) reason = 'concept_cap';
+    const prior = (st.practiceLog || []).slice(0, (st.practiceLog || []).findIndex(x => 'p:' + x.id === e.eventId)).reverse().find(x => x.source === e.source && x.missionId === e.missionId && x.caseId === e.caseId && x.stage === e.stage);
+    const event = {
+      retriedAfterWrong: (e.attempts || 0) > 1 || !!(prior && !prior.passed),
+      t: e.t,
+      eventId: e.eventId,
+      key,
+      source: e.source,
+      kpId: e.kpId,
+      hints: e.hints || 0,
+      attempts: e.attempts || 0,
+      fullReveal,
+      revealKnown: e.detail?.revealKnown === true,
+      due: ['review', 'delayed'].includes(e.source),
+      passed: !!e.passed
+    };
+    if (reason) c = careLog(c, {
+      ...event,
+      type: 'stipend_skipped',
+      reason
+    });else {
+      w = {
+        ...w,
+        coins: w.coins + params.stipendPerStage
+      };
+      c = {
+        ...c,
+        stipend: {
+          ...c.stipend,
+          count: c.stipend.count + 1,
+          perKp: {
+            ...c.stipend.perKp,
+            [e.kpId]: (c.stipend.perKp[e.kpId] || 0) + 1
+          }
+        }
+      };
+      c = careLog(c, {
+        ...event,
+        type: 'stipend_granted',
+        amount: params.stipendPerStage
+      });
+      c = careBond(c, c.out[0], params.bondPerLearn, e.t);
+    }
+    if (reason === 'daily_cap') c = careLog(c, {
+      ...event,
+      type: 'after_cap_stage'
+    });
+    if (eligible && !['full_reveal', 'duplicate', 'not_due'].includes(reason)) {
+      const pending = {
+        ...c.stipend.pendingRetry
+      };
+      delete pending[key];
+      c = {
+        ...c,
+        stipend: {
+          ...c.stipend,
+          pendingRetry: pending,
+          settled: [...c.stipend.settled, key].slice(-400)
+        }
+      };
+    }
+  }
+  return changed ? {
+    ...st,
+    student: {
+      ...st.student,
+      care: c,
+      wallet: w
+    }
+  } : st;
+}
+function carePurchase(state, id, t = now()) {
+  const st = ensureCare(state, t),
+    c = st.student?.care,
+    it = CARE_SUPPLIES[id],
+    w = getWallet(st.student);
+  if (!c?.enabled || !it || w.coins < it.cost) return st;
+  const next = careLog({
+    ...c,
+    inv: {
+      ...c.inv,
+      [id]: (c.inv[id] || 0) + 1
+    }
+  }, {
+    type: 'purchase_supply',
+    t,
+    id,
+    amount: it.cost
+  });
+  return {
+    ...st,
+    student: {
+      ...st.student,
+      care: next,
+      wallet: {
+        ...w,
+        coins: w.coins - it.cost,
+        purchases: [{
+          t,
+          id,
+          price: it.cost
+        }, ...(w.purchases || [])].slice(0, 200)
+      }
+    }
+  };
+}
+function careAction(state, action, supply = 'care_basic', t = now(), petId) {
+  const st = ensureCare(state, t),
+    c = st.student?.care,
+    id = petId || c?.out[0];
+  if (!c?.enabled || !c.pets[id] || !['feed', 'clean', 'groom'].includes(action)) return st;
+  const p = c.pets[id],
+    day = todayKey(t),
+    done = p.day === day ? p.done : {};
+  if (action === 'feed' && (p.sat >= 100 || !CARE_SUPPLIES[supply] || !(c.inv[supply] > 0))) return st;
+  let next = {
+    ...c,
+    pets: {
+      ...c.pets,
+      [id]: {
+        ...p,
+        day,
+        done: {
+          ...done,
+          [action]: true
+        },
+        sat: action === 'feed' ? Math.min(100, p.sat + CARE_SUPPLIES[supply].restore) : p.sat
+      }
+    },
+    inv: action === 'feed' ? {
+      ...c.inv,
+      [supply]: c.inv[supply] - 1
+    } : c.inv
+  };
+  if (!done[action]) next = careBond(next, id, CARE_PARAMS.bondPerCare, t);
+  next = careLog(next, {
+    type: 'care_action',
+    t,
+    pet: id,
+    action,
+    bond: done[action] ? 0 : CARE_PARAMS.bondPerCare
+  });
+  return {
+    ...st,
+    student: {
+      ...st.student,
+      care: next
+    }
+  };
+}
+function careToggle(state, key, value, t = now()) {
+  const st = ensureCare(state, t);
+  if (!st.student || !['enabled', 'selfCare'].includes(key)) return st;
+  return {
+    ...st,
+    student: {
+      ...st.student,
+      care: careLog({
+        ...st.student.care,
+        [key]: !!value
+      }, {
+        type: key === 'selfCare' ? 'selfcare_toggle' : 'enabled_toggle',
+        t,
+        value: !!value
+      })
+    }
+  };
+}
+function careTick(state, seconds) {
+  const c = state.student?.care;
+  if (!c?.enabled || c.selfCare || !(seconds > 0) || seconds > 60) return state;
+  const pets = {
+    ...c.pets
+  };
+  for (const id of c.out) {
+    if (pets[id]) pets[id] = {
+      ...pets[id],
+      sat: Math.max(CARE_PARAMS.satFloor, pets[id].sat - seconds / 60 * CARE_PARAMS.decayPerActiveMin)
+    };
+  }
+  return {
+    ...state,
+    student: {
+      ...state.student,
+      care: {
+        ...c,
+        pets
+      }
+    }
+  };
+}
+function careActiveSeconds(previous, current, lastInput, visible) {
+  const dt = (current - previous) / 1000;
+  return visible && dt > 0 && dt <= 15 ? Math.max(0, Math.min(current, lastInput + 60000) - previous) / 1000 : 0;
+}
+function careNeutralVisit(state, where, t = now()) {
+  let st = ensureCare(state, t),
+    c = st.student?.care;
+  if (!c?.enabled) return {
+    state: st,
+    line: ''
+  };
+  const day = todayKey(t),
+    id = c.out[0];
+  if (where === 'agency' && careParams(st).dailyFreeRation && c.freeDay !== day) {
+    c = {
+      ...c,
+      freeDay: day,
+      inv: {
+        ...c.inv,
+        care_basic: (c.inv.care_basic || 0) + 1
+      }
+    };
+    st = {
+      ...st,
+      student: {
+        ...st.student,
+        care: c
+      }
+    };
+    st = careAction(st, 'feed', 'care_basic', t);
+    c = st.student.care;
+  }
+  if (c.lines.day !== day) c = {
+    ...c,
+    lines: {
+      day,
+      hunger: 0
+    }
+  };
+  let line = '';
+  if (!c.selfCare && c.pets[id]?.sat < 30 && c.lines.hunger < 1) {
+    line = carePetKind(id) === 'machine' ? '能源少了，等等補給吧。' : '有點餓了，等等吃點心吧。';
+    c = careLog({
+      ...c,
+      lines: {
+        day,
+        hunger: 1
+      }
+    }, {
+      type: 'hunger_line',
+      t,
+      where
+    });
+  }
+  return {
+    state: c !== st.student.care ? {
+      ...st,
+      student: {
+        ...st.student,
+        care: c
+      }
+    } : st,
+    line
+  };
+}
+function carePetKind(id) {
+  return ['tick', 'mechapple', 'fishbowl'].includes(id) ? 'machine' : ['trimonster', 'emberlizard', 'salamander'].includes(id) ? 'fantasy' : 'animal';
+}
+function carePurchaseName(p) {
+  return CARE_SUPPLIES[p.id]?.name || SHOP_BY_ID[p.id]?.name || p.id;
+}
+function carePurchaseAmount(p) {
+  return (p.type === 'refund' ? '+' : '−') + p.price;
+}
+function reconcileCareLegacy(state, t = now()) {
+  if (!state.student) return state;
+  let st = state,
+    w = getWallet(st.student);
+  if (!w.companionRefunded && (hasItem(w, 'companion_up') || (w.purchases || []).some(p => p.id === 'companion_up' && p.type !== 'refund'))) {
+    w = {
+      ...w,
+      coins: w.coins + 150,
+      companionRefunded: true,
+      purchases: [{
+        t,
+        id: 'companion_up',
+        price: 150,
+        type: 'refund'
+      }, ...(w.purchases || [])]
+    };
+    st = {
+      ...st,
+      student: {
+        ...st.student,
+        wallet: w
+      }
+    };
+  }
+  if (Object.values(w.arrests).reduce((a, b) => a + b, 0) >= 3) st = grantAch(st, 'three_arrests');
+  return st;
+}
+function validateCare(c, bad, p = 'student.care') {
+  const obj = x => x && typeof x === 'object' && !Array.isArray(x),
+    num = (x, a, b) => Number.isFinite(x) && x >= a && x <= b,
+    ids = COMPANIONS.map(c => c.id),
+    date = x => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(x),
+    arr = (x, n) => Array.isArray(x) && x.length <= n;
+  if (!obj(c) || c.v !== 1 || !num(c.since, 0, 9e15) || typeof c.enabled !== 'boolean' || typeof c.selfCare !== 'boolean' || !arr(c.out, 2) || c.out.some(x => !ids.includes(x)) || !obj(c.pets) || !obj(c.inv) || !arr(c.log, 300)) bad(p);
+  for (const [id, v] of Object.entries(c.pets)) if (!ids.includes(id) || !obj(v) || !num(v.sat, 0, 100) || !num(v.bond, 0, Number.MAX_SAFE_INTEGER) || !date(v.day) || !obj(v.done) || Object.entries(v.done).some(([k, x]) => !['feed', 'clean', 'groom'].includes(k) || typeof x !== 'boolean')) bad(p + '.pets');
+  for (const [id, n] of Object.entries(c.inv)) if (!CARE_SUPPLIES[id] || !Number.isInteger(n) || n < 0) bad(p + '.inv');
+  const s = c.stipend;
+  if (!obj(s) || !date(s.day) || !num(s.count, 0, 8) || !obj(s.perKp) || !arr(s.settled, 400) || s.settled.some(x => typeof x !== 'string') || !obj(s.pendingRetry) || Object.keys(s.pendingRetry).length > 2000 || !obj(s.cursor) || !num(s.cursor.t, 0, 9e15) || !arr(s.cursor.ids, 2400) || s.cursor.ids.some(x => typeof x !== 'string')) bad(p + '.stipend');
+  if (Object.entries(s.perKp).some(([k, n]) => !KP_BY_ID[k] || !Number.isInteger(n) || n < 0 || n > 3)) bad(p + '.perKp');
+  for (const x of Object.values(s.pendingRetry)) if (!obj(x) || !KP_BY_ID[x.kpId] || typeof x.missionId !== 'string' || typeof x.stage !== 'string' || !arr(x.questionKeys, 100) || x.questionKeys.some(k => typeof k !== 'string')) bad(p + '.pendingRetry');
+  if (!obj(c.lines) || !date(c.lines.day) || !num(c.lines.hunger, 0, 1) || c.log.some(e => !obj(e) || typeof e.type !== 'string' || !num(e.t, 0, 9e15))) bad(p + '.log');
+  if (c.freeDay !== undefined && !date(c.freeDay)) bad(p + '.freeDay');
+}
+function validateCareSettings(s, bad, p) {
+  if (!s || typeof s !== 'object' || Array.isArray(s) || s.stipendDailyCap !== undefined && (!Number.isInteger(s.stipendDailyCap) || s.stipendDailyCap < 2 || s.stipendDailyCap > 8) || s.dailyFreeRation !== undefined && typeof s.dailyFreeRation !== 'boolean') bad(p);
+}
+function careDailyMoney(state, day) {
+  const w = getWallet(state.student),
+    same = t => t && todayKey(t) === day;
+  const stipend = (state.student?.care?.log || []).filter(e => e.type === 'stipend_granted' && same(e.t)).reduce((n, e) => n + e.amount, 0);
+  const bounty = w.caseLog.filter(e => same(e.t)).reduce((n, e) => n + (e.coins || 0), 0),
+    chests = Object.values(w.chests || {}).filter(c => c.opened && same(c.openedAt)).reduce((n, c) => n + 5 * c.locks.length, 0);
+  const purchases = (w.purchases || []).filter(p => same(p.t));
+  return {
+    income: stipend + bounty + chests + purchases.filter(p => p.type === 'refund').reduce((n, p) => n + p.price, 0),
+    spend: purchases.filter(p => p.type !== 'refund').reduce((n, p) => n + p.price, 0)
+  };
+}
+function settleKeepsakes(state, t = now()) {
+  if (!state.student) return state;
+  const old = state.student.keepsakes || {
+      stamps: {},
+      seen: {}
+    },
+    stamps = {
+      ...old.stamps
+    };
+  let changed = !state.student.keepsakes;
+  for (const m of state.missions) {
+    const earned = m.status === 'passed' || stamps[m.id];
+    if (!earned) continue;
+    const reviews = (m.reviews || []).filter(r => r.passed).length,
+      n = Math.max(stamps[m.id]?.n || 0, reviews);
+    if (!stamps[m.id] || n !== stamps[m.id].n) {
+      stamps[m.id] = {
+        t: stamps[m.id]?.t || Math.max(0, ...m.stages.map(s => s.finishedAt || 0)) || t,
+        n
+      };
+      changed = true;
+    }
+  }
+  let next = changed ? {
+    ...state,
+    student: {
+      ...state.student,
+      keepsakes: {
+        ...old,
+        stamps
+      }
+    }
+  } : state;
+  if (!state.student.keepsakes) next = markMemorialSeen(next);
+  return next;
+}
+function memorialStamps(state) {
+  const missions = Object.entries(state.student?.keepsakes?.stamps || {}).map(([id, s]) => {
+    const m = state.missions.find(m => m.id === id),
+      q = QUEST_FRAMES[m?.kpId];
+    return {
+      id: 'm:' + id,
+      ...s,
+      title: q?.title || m?.title || '居民的委託',
+      client: q?.client?.replace(/\n/g, '') || '島上的居民',
+      focus: KP_BY_ID[m?.kpId]?.name || '',
+      kind: 'mission'
+    };
+  });
+  const cases = getWallet(state.student).caseLog.filter(x => x.result === 'arrest').map((x, i) => ({
+    id: 'c:' + x.t + ':' + i,
+    t: x.t,
+    n: 0,
+    title: x.title,
+    client: '灰鴉夫人',
+    focus: '追捕與調查',
+    kind: 'wanted'
+  }));
+  const chapters = COMPANION_REWARD_RULES.filter(r => r.ach && state.student.achievements.includes(r.ach)).map(r => ({
+    id: r.ach,
+    t: state.student.log?.find(x => x.type === 'ach' && x.id === r.ach)?.t || state.student.chapters?.[r.ach]?.completedAt || 0,
+    n: 0,
+    title: ACHIEVEMENTS.find(a => a.id === r.ach)?.name || r.text,
+    client: '島上的居民',
+    focus: '主線破案',
+    kind: 'chapter'
+  }));
+  return [...missions, ...cases, ...chapters].sort((a, b) => b.t - a.t);
+}
+function memorialRows(state) {
+  const rows = [];
+  for (const subject of skillSubjectsActive(state)) {
+    const sk = skillOf(state, subject),
+      solid = new Set(state.missions.filter(m => KP_BY_ID[m.kpId]?.subject === subject && kpGrade(m.kpId) === studentGrade(state.student) && (masteryOf(m).key === 'solid' || m.status === 'needs_review' && masteryOf({
+        ...m,
+        status: 'passed'
+      }).key === 'solid')).map(m => m.kpId)).size;
+    rows.push({
+      id: 'skill-' + subject,
+      label: subjName(subject) + '解題',
+      icon: '✎',
+      count: sk.passes,
+      thresholds: SKILL_THRESHOLDS,
+      titles: SKILL_SUBJECTS[subject].titles,
+      unit: '關',
+      detail: '每次通過累積一次。'
+    });
+    rows.push({
+      id: 'solid-' + subject,
+      label: subjName(subject) + '學會',
+      icon: '✦',
+      count: solid,
+      thresholds: [1, 3, 6, 10, 15],
+      unit: '個觀念',
+      detail: '通過兩次無提示複習。'
+    });
+  }
+  rows.push({
+    id: 'repair',
+    label: '訂正',
+    icon: '↻',
+    count: countRepairSuccesses(state),
+    thresholds: [3, 9, 18, 30],
+    unit: '次',
+    detail: '先沒過，後來通過。'
+  }, {
+    id: 'review',
+    label: '回來複習',
+    icon: '◷',
+    count: state.missions.reduce((n, m) => n + (m.reviews || []).filter(r => r.passed).length, 0),
+    thresholds: [1, 5, 12, 25],
+    unit: '次',
+    detail: '回來完成到期複習。'
+  }, {
+    id: 'help',
+    label: '幫忙居民',
+    icon: '♡',
+    count: Object.keys(state.student.keepsakes?.stamps || {}).length,
+    thresholds: [1, 5, 12, 25],
+    unit: '件委託',
+    detail: '完成委託的三個階段。'
+  }, {
+    id: 'arrests',
+    label: '追捕',
+    icon: '⌕',
+    count: Object.values(getWallet(state.student).arrests).reduce((a, b) => a + b, 0),
+    thresholds: [1, 3, 6, 10],
+    unit: '次',
+    detail: '每次逮捕都留作紀念。'
+  });
+  return rows.map(r => ({
+    ...r,
+    level: r.thresholds.filter(n => r.count >= n).length
+  }));
+}
+function memorialSeen(state) {
+  return Object.fromEntries([...memorialRows(state).map(r => [r.id, r.level]), ['stamps', memorialStamps(state).length], ['achievements', state.student.achievements.length]]);
+}
+function memorialUnread(state) {
+  const seen = state.student?.keepsakes?.seen;
+  if (!seen || !Object.keys(seen).length) return false;
+  return Object.entries(memorialSeen(state)).some(([k, n]) => n > (seen[k] || 0));
+}
+function markMemorialSeen(state) {
+  const seen = memorialSeen(state);
+  if (JSON.stringify(seen) === JSON.stringify(state.student.keepsakes?.seen)) return state;
+  return {
+    ...state,
+    student: {
+      ...state.student,
+      keepsakes: {
+        stamps: {},
+        ...state.student.keepsakes,
+        seen
+      }
+    }
+  };
+}
+function validateKeepsakes(k, bad, p) {
+  if (!backupObject(k) || !backupObject(k.stamps) || Object.values(k.stamps).some(s => !backupObject(s) || !Number.isFinite(s.t) || s.t < 0 || !Number.isInteger(s.n) || s.n < 0) || k.seen !== undefined && (!backupObject(k.seen) || Object.values(k.seen).some(n => !Number.isInteger(n) || n < 0))) bad(p);
 }
 const STAGE_META = [{
   key: 's1',
@@ -54253,7 +54984,11 @@ function rememberLearningStage(state, kp, stage, source, presentation) {
   };
 }
 function learningLogFields(state, kp, stage) {
+  const a = state.student?.wallet?.active;
+  const careStageId = a?.stages?.includes(stage) ? `wanted:${a.id}:${a.stepIdx}` : stage?.presentationId;
   return {
+    careStageId,
+    careReplay: stage?.status === 'passed',
     bankId: stage?.bankId,
     questionId: stage?.questionId,
     contentKey: stage?.contentKey,
@@ -66857,7 +67592,8 @@ function Wardrobe({
   state,
   setState,
   onBack,
-  toast
+  toast,
+  onCare
 }) {
   const s = state.student;
   const [draft, setDraft] = useState(() => ({
@@ -67050,7 +67786,13 @@ function Wardrobe({
       kind: o.id,
       color: draft.color
     }))), React.createElement("span", null, React.createElement("b", null, o.name), React.createElement("small", null, ok ? on ? '已穿戴 · 點一下脫下' : '已解鎖 · 點一下穿戴' : outfitRequirement(o))), React.createElement("span", null, ok ? on ? '✓' : '＋' : '🔒'));
-  }))), tab === 'companion' && React.createElement(CompanionCollection, {
+  }))), tab === 'companion' && state.student.care?.enabled && onCare && React.createElement(Btn, {
+    id: "wardrobe-care",
+    onClick: () => {
+      setState(current => applyAppearance(current, draft));
+      onCare();
+    }
+  }, "\u5132\u5B58\u4E26\u7167\u9867\u5925\u4F34"), tab === 'companion' && React.createElement(CompanionCollection, {
     student: draft,
     value: selectedCompanion(draft).id,
     onChange: companion => setDraft(d => ({
@@ -67832,6 +68574,334 @@ function CompanionParentCard({
   }, React.createElement("span", null, owned.has(c.id) ? '✓' : '○', " ", c.name, "\uFF08", c.species, "\uFF09"), React.createElement("span", {
     className: "muted"
   }, companionRewardText(c.id))))));
+}
+function useCareRuntime(state, setState, profile, active) {
+  useEffect(() => {
+    setState(s => settleKeepsakes(settleCareStipend(reconcileCareLegacy(s))));
+  }, [state.practiceLog, state.missions, state.student?.learning, state.student?.companion, state.student?.companions, state.student?.wallet?.arrests, profile]);
+  useEffect(() => {
+    if (!active) return;
+    let last = performance.now(),
+      input = -Infinity;
+    const touched = () => {
+        input = performance.now();
+      },
+      visibility = () => {
+        last = performance.now();
+        input = -Infinity;
+      };
+    for (const e of ['pointerdown', 'keydown', 'wheel', 'touchstart']) window.addEventListener(e, touched, {
+      passive: true
+    });
+    document.addEventListener('visibilitychange', visibility);
+    const timer = setInterval(() => {
+      const current = performance.now(),
+        seconds = careActiveSeconds(last, current, input, document.visibilityState === 'visible');
+      last = current;
+      if (seconds) setState(s => careTick(s, seconds));
+    }, 10000);
+    return () => {
+      clearInterval(timer);
+      for (const e of ['pointerdown', 'keydown', 'wheel', 'touchstart']) window.removeEventListener(e, touched);
+      document.removeEventListener('visibilitychange', visibility);
+    };
+  }, [profile, active]);
+}
+function CareNeutral({
+  state,
+  setState,
+  where,
+  onOpen
+}) {
+  const [line, setLine] = useState(''),
+    c = state.student?.care;
+  useEffect(() => {
+    if (!c?.enabled) return;
+    const r = careNeutralVisit(state, where);
+    if (r.state !== state) setState(r.state);
+    setLine(r.line);
+  }, [where, c?.enabled, c?.out?.[0]]);
+  if (!c?.enabled) return null;
+  const id = c.out[0],
+    p = c.pets[id];
+  return React.createElement("div", {
+    className: "care-neutral",
+    id: "care-neutral"
+  }, React.createElement("span", null, selectedCompanion(state.student).name, " ", c.selfCare ? '會自己照顧自己' : `${carePetKind(id) === 'machine' ? '能源' : '飽足'} ${Math.round(p?.sat || 0)}`), line && React.createElement("span", {
+    role: "status"
+  }, line), onOpen && React.createElement(Btn, {
+    small: true,
+    onClick: onOpen
+  }, "\u7167\u9867\u5925\u4F34"));
+}
+function CarePanel({
+  state,
+  setState,
+  go,
+  onBack
+}) {
+  const c = state.student.care,
+    id = c?.out[0],
+    p = c?.pets[id],
+    pet = selectedCompanion(state.student),
+    [cheer, setCheer] = useState(0),
+    [message, setMessage] = useState(''),
+    [supply, setSupply] = useState('care_basic'),
+    [retry, setRetry] = useState(null);
+  if (!c?.enabled) return React.createElement("div", {
+    className: "stage"
+  }, React.createElement(Btn, {
+    onClick: onBack
+  }, "\u56DE\u5230\u5192\u96AA"), React.createElement(Notice, null, "\u7167\u9867\u529F\u80FD\u5DF2\u95DC\u9589\u3002"));
+  const level = careLevel(p.bond),
+    kind = carePetKind(id),
+    labels = kind === 'machine' ? ['補充能源', '擦拭', '上油'] : kind === 'fantasy' ? ['補給', '清潔', '整理'] : ['餵食', '洗澡', '梳理'];
+  const act = a => {
+    if (a === 'feed' && p.sat >= 100) {
+      setMessage(kind === 'machine' ? '能源滿了，謝謝你。' : '吃飽了，謝謝你。');
+      return;
+    }
+    if (a === 'feed' && !(c.inv[supply] > 0)) {
+      setMessage('可以到櫃台換補給。');
+      return;
+    }
+    setState(s => careAction(s, a, supply));
+    setCheer(n => n + 1);
+    setMessage(a === 'feed' && supply === 'care_snack' ? '喜歡這個味道！' : '和你在一起很開心。');
+  };
+  return React.createElement("div", {
+    className: "stage",
+    id: "care-page"
+  }, React.createElement(Btn, {
+    onClick: onBack
+  }, "\u2190 \u56DE\u5230\u5192\u96AA"), React.createElement("div", {
+    className: "card raised col"
+  }, React.createElement("h2", null, "\u7167\u9867\u5925\u4F34"), React.createElement(CareNeutral, {
+    state: state,
+    setState: setState,
+    where: "care"
+  }), React.createElement("div", {
+    className: "care-profile"
+  }, React.createElement("svg", {
+    key: cheer,
+    className: cheer ? 'care-cheer' : '',
+    width: "160",
+    height: "170",
+    viewBox: "-60 -70 120 130",
+    "aria-label": pet.name
+  }, React.createElement(Companion, {
+    student: state.student,
+    cheer: cheer,
+    ground: true
+  })), React.createElement("div", {
+    className: "col"
+  }, React.createElement("h3", null, pet.name), !c.selfCare && React.createElement(React.Fragment, null, React.createElement("label", null, kind === 'machine' ? '能源' : '飽足', " ", Math.round(p.sat), React.createElement(Progress, {
+    value: p.sat
+  })), React.createElement("span", {
+    className: "small muted"
+  }, "\u4F11\u606F\u548C\u96E2\u7DDA\u90FD\u4E0D\u6703\u4E0B\u964D\u3002")), React.createElement("b", null, "\u89AA\u5BC6\u5EA6\u7B2C ", level, " \u7D1A"), React.createElement("span", null, p.bond, " \u9EDE", level < 5 ? `／下一級 ${CARE_PARAMS.bondLevels[level]} 點` : ''), React.createElement("span", null, level < 5 ? '下一級：新的故事短句' : '一起走過好多地方了。'))), React.createElement("label", null, React.createElement("input", {
+    id: "care-self",
+    type: "checkbox",
+    checked: c.selfCare,
+    onChange: e => setState(s => careToggle(s, 'selfCare', e.target.checked))
+  }), " \u81EA\u5DF1\u7167\u9867\u81EA\u5DF1"), React.createElement("div", {
+    className: "row care-actions"
+  }, ['feed', 'clean', 'groom'].map((a, i) => React.createElement(Btn, {
+    key: a,
+    id: 'care-' + a,
+    onClick: () => act(a)
+  }, ['◒', '◇', '✧'][i], " ", labels[i]))), React.createElement("div", {
+    className: "row"
+  }, React.createElement("label", null, "\u4F7F\u7528\u88DC\u7D66 ", React.createElement("select", {
+    id: "care-supply",
+    value: supply,
+    onChange: e => setSupply(e.target.value)
+  }, Object.entries(CARE_SUPPLIES).map(([k, s]) => React.createElement("option", {
+    key: k,
+    value: k
+  }, s.name, "\uFF1A", c.inv[k] || 0, " \u4EFD")))), React.createElement(Btn, {
+    id: "care-shop",
+    onClick: () => go('wanted', 'shop')
+  }, "\u53BB\u6AC3\u53F0")), React.createElement("p", {
+    className: "small muted"
+  }, "\u6E05\u6F54\u548C\u6574\u7406\u7684\u5DE5\u5177\u514D\u8CBB\u3002"), message && React.createElement(Notice, null, message), React.createElement("details", {
+    id: "care-story"
+  }, React.createElement("summary", null, "\u6211\u5011\u7684\u5C0F\u6545\u4E8B"), ['今天一起出發吧。', '一起看看島上的小路。', '你停下來觀察，我也跟著看。', '每次發現，都想和你分享。', '走過的地方，都成了回憶。'].slice(0, level).map((s, i) => React.createElement("p", {
+    key: i
+  }, "\u7B2C ", i + 1, " \u7D1A\uFF1A", s)), React.createElement("small", {
+    className: "muted"
+  }, "\u6545\u4E8B\u77ED\u53E5\u6703\u6301\u7E8C\u66F4\u65B0\u3002"))), Object.entries(c.stipend.pendingRetry).length > 0 && React.createElement("div", {
+    className: "card col"
+  }, React.createElement("h3", null, "\u63DB\u4E00\u984C\u4F86\u8A66\u8A66"), Object.entries(c.stipend.pendingRetry).map(([key, v]) => React.createElement(Btn, {
+    key: key,
+    onClick: () => setRetry(key)
+  }, KP_BY_ID[v.kpId]?.name))), retry && React.createElement(CareRetryPractice, {
+    state: state,
+    setState: setState,
+    stageKey: retry,
+    onClose: () => setRetry(null)
+  }));
+}
+function CareResultLine({
+  state,
+  eventId,
+  stageKey,
+  onRetry
+}) {
+  if (!state.student?.care?.enabled) return null;
+  const e = state.student.care.log.slice().reverse().find(e => ['stipend_granted', 'stipend_skipped'].includes(e.type) && (eventId ? e.eventId === eventId : stageKey && e.key === stageKey));
+  if (!e) return null;
+  const text = e.type === 'stipend_granted' ? '補給金 ＋15' : e.reason === 'daily_cap' ? '今天領滿了，明天還有。' : e.reason === 'concept_cap' ? '這個觀念今天領滿了。' : e.reason === 'full_reveal' ? '一起看完解法，換一題試試。' : '';
+  return text ? React.createElement("div", {
+    className: "care-result",
+    role: "status"
+  }, text, e.reason === 'full_reveal' && onRetry && React.createElement(Btn, {
+    small: true,
+    id: "care-retry",
+    onClick: onRetry
+  }, "\u63DB\u4E00\u984C\u8A66\u8A66")) : null;
+}
+function CareRetryPractice({
+  state,
+  setState,
+  stageKey,
+  onClose
+}) {
+  const spec = state.student.care.stipend.pendingRetry[stageKey],
+    saved = useRef(spec),
+    meta = saved.current;
+  const [task, setTask] = useState(() => careRetryTask(state, meta)),
+    [result, setResult] = useState(null),
+    finished = useRef(false);
+  if (!meta) return null;
+  const retry = () => {
+    setTask(careRetryTask(state, {
+      ...meta,
+      questionKeys: [...meta.questionKeys, ...(task ? learningKeys(meta.kpId, task) : [])]
+    }));
+    setResult(null);
+    finished.current = false;
+  };
+  const done = res => {
+    if (finished.current) return;
+    finished.current = true;
+    const entry = {
+      ...learningLogFields(state, meta.kpId, task),
+      source: 'mission_retry',
+      missionId: meta.missionId,
+      kpId: meta.kpId,
+      stage: meta.stage,
+      kind: task.kind,
+      careStageId: stageKey,
+      careReplay: false,
+      ...res
+    };
+    setState(s => settleCareStipend(logPractice(s, entry)));
+    setResult(res);
+  };
+  const Mech = ALL_MECHS[task?.kind];
+  return React.createElement("div", {
+    className: "care-retry-overlay",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": "\u63DB\u4E00\u984C\u7DF4\u7FD2"
+  }, React.createElement("div", {
+    className: "card col"
+  }, React.createElement("h3", null, "\u63DB\u4E00\u984C\u4F86\u8A66\u8A66"), React.createElement("p", null, "\u539F\u672C\u901A\u904E\u7684\u9032\u5EA6\u6703\u4FDD\u7559\u3002"), task ? React.createElement(Mech, {
+    key: task.presentationId,
+    params: task.params,
+    hintsAllowed: !!task.allowHints,
+    onDone: done
+  }) : React.createElement(Notice, null, "\u76EE\u524D\u6C92\u6709\u4E0D\u540C\u7684\u984C\u76EE\u3002\u5148\u9078\u5225\u7684\u59D4\u8A17\u5427\u3002"), result && React.createElement(React.Fragment, null, React.createElement(CareResultLine, {
+    state: state,
+    stageKey: stageKey
+  }), (!result.passed || result.detail?.fullReveal) && React.createElement(Btn, {
+    onClick: retry
+  }, "\u518D\u63DB\u4E00\u984C")), React.createElement(Btn, {
+    onClick: onClose
+  }, "\u56DE\u5230\u539F\u4F86\u7684\u756B\u9762")));
+}
+function careRetryTask(state, spec) {
+  if (!spec) return null;
+  const idx = Math.max(0, ['s1', 's2', 's3'].indexOf(spec.stage));
+  for (let i = 0; i < 24; i++) {
+    const task = generateMission(null, spec.kpId, Math.floor(Math.random() * 1e9), false, getSettings(state).difficulty, state).stages[idx];
+    if (!task.bankBlocked && !learningKeys(spec.kpId, task).some(k => spec.questionKeys.includes(k))) return {
+      ...task,
+      presentationId: uid()
+    };
+  }
+  return null;
+}
+function CareParentPanel({
+  state,
+  setState
+}) {
+  const c = state.student?.care,
+    p = careParams(state);
+  if (!c) return null;
+  const rows = Array.from({
+    length: 7
+  }, (_, i) => {
+    const day = todayKey(now() - (6 - i) * DAY),
+      events = c.log.filter(e => todayKey(e.t) === day),
+      stages = events.filter(e => e.type === 'stipend_granted' || e.type === 'stipend_skipped' && !['duplicate', 'not_due'].includes(e.reason)),
+      known = stages.filter(e => e.revealKnown);
+    return {
+      day,
+      n: stages.length,
+      after: events.filter(e => e.type === 'after_cap_stage').length,
+      hints: stages.length ? (stages.reduce((n, e) => n + e.hints, 0) / stages.length).toFixed(1) : '—',
+      retry: stages.length ? Math.round(stages.filter(e => e.retriedAfterWrong).length / stages.length * 100) + '%' : '—',
+      reveal: known.length ? Math.round(known.filter(e => e.fullReveal).length / known.length * 100) + '%' : '—',
+      income: careDailyMoney(state, day).income,
+      spend: careDailyMoney(state, day).spend,
+      actions: events.filter(e => e.type === 'care_action').length
+    };
+  });
+  const setting = (key, value) => setState(s => ({
+    ...s,
+    settings: {
+      ...s.settings,
+      care: {
+        ...s.settings?.care,
+        [key]: value
+      }
+    }
+  }));
+  return React.createElement("section", {
+    className: "card col",
+    id: "parent-care"
+  }, React.createElement("h3", null, "\u5925\u4F34\u7167\u9867"), React.createElement("label", null, React.createElement("input", {
+    id: "care-enabled",
+    type: "checkbox",
+    checked: c.enabled,
+    onChange: e => setState(s => careToggle(s, 'enabled', e.target.checked))
+  }), " \u958B\u555F\u7167\u9867\u8207\u88DC\u7D66\u91D1"), React.createElement("label", null, "\u6BCF\u65E5\u88DC\u7D66\u95DC\u6578 ", React.createElement("input", {
+    id: "care-cap",
+    type: "number",
+    min: "2",
+    max: "8",
+    value: p.stipendDailyCap,
+    onChange: e => setting('stipendDailyCap', Math.max(2, Math.min(8, Math.round(Number(e.target.value)) || 4)))
+  })), React.createElement("label", null, React.createElement("input", {
+    id: "care-free",
+    type: "checkbox",
+    checked: p.dailyFreeRation,
+    onChange: e => setting('dailyFreeRation', e.target.checked)
+  }), " \u6BCF\u65E5\u5E38\u5099\u7CE7"), React.createElement("p", {
+    className: "small muted"
+  }, "\u63D0\u793A\u4E0D\u53D7\u7167\u9867\u72C0\u614B\u5F71\u97FF\u3002\u98E2\u9913\u8A0A\u606F\u4E0D\u51FA\u73FE\u5728\u4F5C\u7B54\u4E2D\u3002"), React.createElement("div", {
+    className: "care-table"
+  }, React.createElement("table", null, React.createElement("thead", null, React.createElement("tr", null, ['日期', '完成', '領滿後', '平均提示', '答錯後再試', '完整解答', '金幣收入', '金幣支出', '照顧'].map(s => React.createElement("th", {
+    key: s
+  }, s)))), React.createElement("tbody", null, rows.map(r => React.createElement("tr", {
+    key: r.day
+  }, Object.values(r).map((v, i) => React.createElement("td", {
+    key: i
+  }, v))))))), React.createElement("p", {
+    className: "small muted"
+  }, "\u7167\u9867\u7D71\u8A08\u4FDD\u7559\u6700\u8FD1 300 \u7B46\uFF1B\u5B8C\u6574\u89E3\u7B54\u53EA\u8FA8\u8B58\u7B97\u5F0F\u6B65\u9A5F\u984C\uFF0C\u5176\u9918\u672A\u77E5\u3002\u518D\u8A66\u5305\u542B\u540C\u6B21\u7B54\u932F\u8207\u4E0A\u4E00\u7B46\u672A\u901A\u904E\uFF0C\u4E0D\u4EE3\u8868\u81EA\u9858\u53C3\u8207\u3002\u6536\u652F\u4F9D\u4FDD\u7559\u7684\u88DC\u7D66\u3001\u8FFD\u6355\u3001\u8CFC\u8CB7\u8207\u9000\u8CBB\u7D00\u9304\u8A08\u7B97\uFF1B\u820A\u5BF6\u7BB1\u6C92\u6709\u65E5\u671F\uFF0C\u4E0D\u56DE\u63A8\u3002\u95DC\u9589\u671F\u9593\u4E0D\u7D71\u8A08\u7167\u9867\u3002"));
 }
 const PLAYER_SPEED = 300;
 function visibleHotspots(scene, story) {
@@ -69008,7 +70078,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.10-v45',
+    build: '2026.11.10-v46',
     ...context,
     message
   };
@@ -69608,7 +70678,10 @@ function MissionPlayer({
   toast
 }) {
   const mission = state.missions.find(m => m.id === missionId);
-  const isReview = missionDueForReview(mission);
+  const [isReview] = useState(() => missionDueForReview(mission));
+  const [careEvent, setCareEvent] = useState(null),
+    [careRetry, setCareRetry] = useState(null);
+  const doneOnce = useRef(false);
   const seq = [...(mission.diag || []), ...mission.stages];
   const [reviewStage] = useState(() => isReview ? prepareReviewStage(state, mission) : null);
   const current = isReview ? reviewStage : seq.find(s => s.status === 'pending' || s.status === 'failed' && !s.probe);
@@ -69639,15 +70712,23 @@ function MissionPlayer({
   }, [step, local?.id, key]);
   const update = patchMission => setState(upsertMission(state, patchMission));
   const advance = () => {
+    doneOnce.current = false;
+    setCareEvent(null);
     setLocal(current);
     setStep('intro');
     setResult(null);
     setKey(k => k + 1);
   };
   const onDone = res => {
+    if (doneOnce.current) return;
+    doneOnce.current = true;
     setResult(res);
     let st = logPractice(state, {
       ...learningLogFields(state, mission.kpId, local),
+      careStageId: isReview ? 'review:' + mission.id + ':' + local.presentationId : local.probe ? 'diagnostic:' + mission.id : `mission:${mission.id}:${local.id}:${learningKeys(mission.kpId, local).join('|')}`,
+      careDiagnostic: !!local.probe,
+      careDiagnosticComplete: !!local.probe && (mission.diag || []).every(s => s.id === local.id || s.status !== 'pending' && !s.gaveUp),
+      gaveUp: !!res.gaveUp,
       source: isReview ? 'review' : 'mission',
       missionId: mission.id,
       kpId: mission.kpId,
@@ -69699,7 +70780,8 @@ function MissionPlayer({
         attempts: s.attempts + res.attempts,
         hints: s.hints + res.hints,
         detail: res.detail,
-        finishedAt: now()
+        finishedAt: now(),
+        gaveUp: !!res.gaveUp
       } : s);
       m.diag = apply(m.diag || []);
       m.stages = apply(m.stages);
@@ -69734,10 +70816,14 @@ function MissionPlayer({
       }
     }
     st = upsertMission(st, m);
+    setCareEvent('p:' + st.practiceLog.at(-1).id);
+    st = settleKeepsakes(settleCareStipend(st));
     setState(st);
     setStep('result');
   };
   const retryNew = () => {
+    doneOnce.current = false;
+    setCareEvent(null);
     if (local.key === 's3') {
       advance();
       return;
@@ -69834,6 +70920,15 @@ function MissionPlayer({
     maxAttempts: local.maxAttempts,
     onDone: onDone,
     seed: mission.seed + key
+  }), step === 'result' && React.createElement(CareResultLine, {
+    state: state,
+    eventId: careEvent,
+    onRetry: () => setCareRetry(state.student.care?.log.find(e => e.eventId === careEvent)?.key)
+  }), careRetry && React.createElement(CareRetryPractice, {
+    state: state,
+    setState: setState,
+    stageKey: careRetry,
+    onClose: () => setCareRetry(null)
   }), step === 'result' && result && React.createElement("div", {
     className: "row"
   }, result.passed || local.probe ? React.createElement(Btn, {
@@ -69895,12 +70990,9 @@ function QuestsScreen({
     className: "small muted"
   }, q.desc))))), React.createElement("div", {
     className: "card col"
-  }, React.createElement("h2", null, "\u6210\u5C31"), ACHIEVEMENTS.map(a => React.createElement("div", {
-    key: a.id,
-    className: `ach ${s.achievements.includes(a.id) ? '' : 'locked'}`
-  }, React.createElement("span", null, s.achievements.includes(a.id) ? '🏅' : '🔒'), React.createElement("div", null, React.createElement("b", null, a.name), React.createElement("div", {
-    className: "small muted"
-  }, a.desc)))))));
+  }, React.createElement("h2", null, "\u5192\u96AA\u7D00\u5FF5\u518A"), React.createElement("p", null, "\u4F60\u5B8C\u6210\u7684\u4E8B\uFF0C\u90FD\u6536\u5728\u9019\u88E1\u3002"), React.createElement(Btn, {
+    onClick: () => go('records')
+  }, "\u67E5\u770B\u7D00\u5FF5\u518A"))));
 }
 function RecordsScreen({
   state,
@@ -69928,11 +71020,15 @@ function RecordsScreen({
     if (l.passed) k.ok++;
   });
   return React.createElement("div", {
-    className: "stage"
+    className: "stage",
+    id: "records-page"
   }, React.createElement("div", null, React.createElement(Btn, {
     small: true,
     onClick: () => go('adventure')
-  }, "\u2190 \u56DE\u5230\u5192\u96AA")), React.createElement("div", {
+  }, "\u2190 \u56DE\u5230\u5192\u96AA")), React.createElement(MemorialBook, {
+    state: state,
+    setState: setState
+  }), React.createElement("div", {
     className: "grid two"
   }, React.createElement("div", {
     className: "card col"
@@ -70084,7 +71180,8 @@ function Adventure({
   onOpenShop,
   onOpenRecords,
   onOpenQuests,
-  onOpenWardrobe
+  onOpenWardrobe,
+  onOpenCare
 }) {
   const student = state.student;
   const story = student.story || createStory();
@@ -70529,7 +71626,13 @@ function Adventure({
     id: "hud-records",
     onClick: onOpenRecords,
     disabled: busy
-  }, "\u6210\u9577")), React.createElement("div", {
+  }, "\u7D00\u5FF5\u518A", memorialUnread(state) && React.createElement("span", {
+    className: "badge"
+  }, "\u25CF")), student.care?.enabled && React.createElement("button", {
+    id: "hud-care",
+    onClick: onOpenCare,
+    disabled: busy
+  }, "\u5925\u4F34")), React.createElement("div", {
     className: "scene-wrap"
   }, React.createElement(SceneView, {
     key: scene.id,
@@ -70552,7 +71655,12 @@ function Adventure({
     student: student,
     onChoice: onChoice,
     onEnd: () => finishNode(node, story)
-  }))), !busy && React.createElement("div", {
+  }))), !busy && scene.id === 'agency' && React.createElement(CareNeutral, {
+    state: state,
+    setState: setState,
+    where: "agency",
+    onOpen: onOpenCare
+  }), !busy && React.createElement("div", {
     className: "explore-actions",
     "aria-label": "\u53EF\u524D\u5F80\u8207\u8ABF\u67E5\u7684\u5730\u9EDE"
   }, React.createElement("span", null, scene.kind === 'map' ? '選擇目的地' : '附近可調查'), (scene.kind === 'map' ? scene.hotspots : visibleHotspots(scene, story)).map(h => {
@@ -70690,7 +71798,15 @@ function StudentApp({
         onOpenShop: () => go('wanted', 'shop'),
         onOpenRecords: () => go('records'),
         onOpenQuests: () => go('quests'),
-        onOpenWardrobe: () => go('wardrobe')
+        onOpenWardrobe: () => go('wardrobe'),
+        onOpenCare: () => go('care')
+      });
+    case 'care':
+      return React.createElement(CarePanel, {
+        state: state,
+        setState: setState,
+        go: go,
+        onBack: () => go('adventure')
       });
     case 'repair':
       return React.createElement(RepairHub, {
@@ -70733,7 +71849,8 @@ function StudentApp({
         state: state,
         setState: setState,
         toast: toast,
-        onBack: () => go('adventure')
+        onBack: () => go('adventure'),
+        onCare: () => go('care')
       });
     case 'records':
       return React.createElement(RecordsScreen, {
@@ -70751,7 +71868,8 @@ function StudentApp({
         onOpenShop: () => go('wanted', 'shop'),
         onOpenRecords: () => go('records'),
         onOpenQuests: () => go('quests'),
-        onOpenWardrobe: () => go('wardrobe')
+        onOpenWardrobe: () => go('wardrobe'),
+        onOpenCare: () => go('care')
       });
   }
 }
@@ -71203,7 +72321,7 @@ function CasePlayer({
       className: "small"
     }, s.breakdown.map((b, i) => React.createElement("div", {
       key: i
-    }, KP_BY_ID[b.kpId]?.name, "\uFF1A", b.coins, " \u91D1\u5E63", b.hints ? b.freeHint ? '（放大鏡：提示免費 ×1.5）' : '（用了提示）' : '（無提示 ×1.5）', b.bounty ? '（懸賞加成 ×1.5）' : '')), React.createElement("div", {
+    }, KP_BY_ID[b.kpId]?.name, "\uFF1A", b.coins, " \u91D1\u5E63", '（通過 ×1.5）', b.bounty ? '（懸賞加成 ×1.5）' : '')), React.createElement("div", {
       className: "muted"
     }, "\u540C\u4E00\u4E3B\u984C\u9023\u7E8C\u63A5\u6848\u6703\u905E\u6E1B\uFF1B\u661F\u7D1A\u8D8A\u9AD8\u3001\u8D8A\u662F\u4F60\u7684\u5F31\u9EDE\uFF0C\u734E\u52F5\u8D8A\u9AD8\u3002"))))), React.createElement("div", {
       className: "row"
@@ -71331,7 +72449,7 @@ function CasePlayer({
     style: {
       fontSize: '1rem'
     }
-  }, result.passed ? result.hints ? st.freeHint ? '解開了！放大鏡幫你把這次提示算成免費的，包圍圈照樣縮小。' : '解開了！用了提示也算解開，包圍圈縮小了。' : '漂亮，一次就解開，包圍圈縮小了一大圈！' : pick(makeRng(a.seed + a.stepIdx + 1), suspect.escape))), !result.passed && hasItem(wallet, 'companion_up') && React.createElement("div", {
+  }, result.passed ? result.hints ? st.freeHint ? '解開了！放大鏡幫你把這次提示算成免費的，包圍圈照樣縮小。' : '解開了！用了提示也算解開，包圍圈縮小了。' : '漂亮，一次就解開，包圍圈縮小了一大圈！' : pick(makeRng(a.seed + a.stepIdx + 1), suspect.escape))), !result.passed && React.createElement("div", {
     className: "dialog",
     id: "companion-guide"
   }, React.createElement("div", {
@@ -71660,8 +72778,46 @@ function ShopPanel({
   }, "\u9084\u6C92\u6709\u63DB\u904E\u6771\u897F\u3002"), (wallet.purchases || []).slice(0, 8).map((p, i) => React.createElement("div", {
     key: i,
     className: "row between small"
-  }, React.createElement("span", null, fmtDate(p.t), "\u30FB", SHOP_BY_ID[p.id]?.name || p.id), React.createElement("span", null, "\u2212", p.price, " \u91D1\u5E63")))));
+  }, React.createElement("span", null, fmtDate(p.t), "\u30FB", carePurchaseName(p), p.type === 'refund' ? '（退還）' : ''), React.createElement("span", null, carePurchaseAmount(p), " \u91D1\u5E63")))));
 }
+const ShopPanelBeforeCare = ShopPanel;
+ShopPanel = function CareShop(props) {
+  const [tab, setTab] = useState('items'),
+    c = props.state.student?.care;
+  if (!c?.enabled) return React.createElement(ShopPanelBeforeCare, props);
+  const w = getWallet(props.state.student);
+  return React.createElement(React.Fragment, null, React.createElement("div", {
+    className: "tabs"
+  }, React.createElement("button", {
+    id: "shop-tab-items",
+    className: tab === 'items' ? 'active' : '',
+    onClick: () => setTab('items')
+  }, "\u4E8B\u52D9\u6240\u7528\u54C1"), React.createElement("button", {
+    id: "shop-tab-care",
+    className: tab === 'care' ? 'active' : '',
+    onClick: () => setTab('care')
+  }, "\u5925\u4F34\u88DC\u7D66")), tab === 'items' ? React.createElement(ShopPanelBeforeCare, props) : React.createElement("section", {
+    className: "card col",
+    id: "care-supplies"
+  }, React.createElement("h2", null, "\u5925\u4F34\u88DC\u7D66"), React.createElement("span", null, "\u91D1\u5E63 ", w.coins), React.createElement("p", null, "\u57FA\u790E\u88DC\u7D66\u5C31\u80FD\u8B93\u5925\u4F34\u958B\u5FC3\u3002"), Object.entries(CARE_SUPPLIES).map(([id, it]) => React.createElement("div", {
+    className: "card soft col",
+    key: id
+  }, React.createElement("h3", null, id === 'care_basic' ? '◒' : '✦', " ", it.name), React.createElement("span", null, it.cost, " \u91D1\u5E63\u30FB\u6062\u5FA9 ", it.restore), React.createElement("span", null, "\u76EE\u524D\u6709 ", c.inv[id] || 0, " \u4EFD"), React.createElement("span", null, id === 'care_snack' ? '多一句開心的反應。' : '動物和機械都能使用。'), React.createElement(Btn, {
+    id: 'buy-' + id,
+    disabled: w.coins < it.cost,
+    onClick: () => props.setState(s => carePurchase(s, id))
+  }, "\u63DB\u4E00\u4EFD")))));
+};
+const CasePlayerBeforeCare = CasePlayer;
+CasePlayer = function CareCasePlayer(props) {
+  const a = getWallet(props.state.student).active,
+    step = a?.stages[a.stepIdx],
+    key = a && `wanted:${a.id}:${a.stepIdx}`;
+  return React.createElement(React.Fragment, null, React.createElement(CasePlayerBeforeCare, props), step && step.status !== 'pending' && React.createElement(CareResultLine, {
+    state: props.state,
+    stageKey: key
+  }));
+};
 const SECURITY_LEVELS = [{
   min: 0,
   name: '風聲鶴唳',
@@ -71768,6 +72924,78 @@ function Newspaper({
     id: "news-close",
     onClick: onClose
   }, "\u6536\u8D77\u665A\u5831"))));
+}
+function MemorialBook({
+  state,
+  setState
+}) {
+  const [tab, setTab] = useState('wall'),
+    [selected, setSelected] = useState(null),
+    rows = memorialRows(state),
+    stamps = memorialStamps(state),
+    ach = state.student.achievements;
+  useEffect(() => {
+    setState(s => markMemorialSeen(s));
+  }, [state.student.keepsakes?.stamps, state.student.achievements, state.practiceLog, state.missions]);
+  return React.createElement("section", {
+    className: "card col",
+    id: "memorial-book"
+  }, React.createElement("h2", null, "\u5192\u96AA\u7D00\u5FF5\u518A"), React.createElement("div", {
+    className: "tabs"
+  }, [['wall', '徽章牆'], ['done', '我做過的事'], ['records', '其他紀念']].map(([k, n]) => React.createElement("button", {
+    key: k,
+    id: 'memorial-' + k,
+    className: tab === k ? 'active' : '',
+    onClick: () => setTab(k)
+  }, n))), tab === 'wall' && React.createElement(React.Fragment, null, React.createElement("p", {
+    className: "small muted"
+  }, "\u6BCF\u4E00\u6B21\u7DF4\u7FD2\uFF0C\u90FD\u7559\u4E0B\u8DB3\u8DE1\u3002"), rows.map(r => React.createElement("div", {
+    className: "badge-row",
+    key: r.id,
+    "data-badge-row": r.id
+  }, React.createElement("button", {
+    className: "badge-label",
+    onClick: () => setSelected(r)
+  }, React.createElement("b", null, r.label), React.createElement("small", null, r.count, " ", r.unit)), React.createElement("div", {
+    className: "badge-strip"
+  }, r.thresholds.slice(0, Math.min(r.thresholds.length, r.level + 1)).map((n, i) => React.createElement("button", {
+    key: n,
+    className: 'memorial-badge tier-' + Math.min(i, 2) + (i >= r.level ? ' unknown' : ''),
+    "data-earned": i < r.level,
+    "aria-label": r.label + '第' + (i + 1) + '階' + (i < r.level ? '已取得' : '條件'),
+    onClick: () => setSelected({
+      ...r,
+      target: n,
+      tier: i
+    })
+  }, React.createElement("span", null, i < r.level ? r.icon : '？'), React.createElement("small", null, i + 1)))))), selected && React.createElement("div", {
+    className: "notice",
+    id: "badge-detail"
+  }, React.createElement("b", null, selected.label), React.createElement("p", null, selected.detail), React.createElement("p", null, selected.target === undefined ? `目前 ${selected.count} ${selected.unit}` : `第 ${selected.tier + 1} 階：${selected.target} ${selected.unit}`), selected.titles && selected.tier !== undefined && React.createElement("p", null, selected.titles[selected.tier]), React.createElement(Btn, {
+    small: true,
+    onClick: () => setSelected(null)
+  }, "\u6536\u8D77")), React.createElement("div", {
+    className: "badge-row"
+  }, React.createElement("b", null, "\u4E3B\u7DDA"), React.createElement("div", {
+    className: "badge-strip"
+  }, stamps.filter(s => s.kind === 'chapter').map(s => React.createElement("button", {
+    className: "memorial-badge tier-2",
+    key: s.id,
+    onClick: () => setTab('done'),
+    "aria-label": s.title
+  }, React.createElement("span", null, "\u2726"), React.createElement("small", null, "\u5B8C\u6210")))))), tab === 'done' && React.createElement("div", {
+    className: "grid two"
+  }, !stamps.length && React.createElement("p", null, "\u5B8C\u6210\u59D4\u8A17\uFF0C\u5C31\u6703\u7559\u4E0B\u7D00\u5FF5\u3002"), stamps.map(s => React.createElement("article", {
+    className: "card soft col",
+    key: s.id
+  }, React.createElement("span", {
+    className: "memorial-stamp"
+  }, "\u2726"), React.createElement("h3", null, s.title), React.createElement("small", null, fmtDay(s.t), "\u30FB", s.focus), React.createElement("p", null, "\u8B1D\u8B1D\u4F60\uFF0C\u8ABF\u67E5\u54E1\u3002", React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))), tab === 'records' && React.createElement("div", {
+    className: "grid two"
+  }, ACHIEVEMENTS.filter(a => ach.includes(a.id)).map(a => React.createElement("div", {
+    className: "ach",
+    key: a.id
+  }, React.createElement("span", null, "\u2726"), React.createElement("div", null, React.createElement("b", null, a.name), React.createElement("p", null, a.desc)))), !ach.length && React.createElement("p", null, "\u4F60\u7684\u5192\u96AA\uFF0C\u5F9E\u9019\u88E1\u958B\u59CB\u3002")));
 }
 function ChestArt({
   locks,
@@ -73548,7 +74776,7 @@ function WantedParentCard({
   }, "\u91D1\u5E63\u6D88\u8CBB\uFF08\u6AC3\u53F0\u53EA\u6709\u5B78\u7FD2\u652F\u63F4\u9053\u5177\u8207\u88DD\u98FE\uFF0C\u6C92\u6709\u89E3\u984C\u9053\u5177\uFF09"), w.purchases.slice(0, 8).map((p, i) => React.createElement("div", {
     key: i,
     className: "row between small"
-  }, React.createElement("span", null, fmtDate(p.t), "\u30FB", SHOP_BY_ID[p.id]?.name || p.id), React.createElement("span", null, "\u2212", p.price)))));
+  }, React.createElement("span", null, fmtDate(p.t), "\u30FB", carePurchaseName(p), p.type === 'refund' ? '（退還）' : ''), React.createElement("span", null, carePurchaseAmount(p))))));
 }
 function SettingsPanel({
   state,
@@ -73714,7 +74942,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v45\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.10-v46\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -73860,9 +75088,12 @@ function ParentApp({
       setTab(k);
       setAdding(k === 'input');
     }
-  }, n))), tab === 'overview' && React.createElement(ParentOverview, {
+  }, n))), tab === 'overview' && React.createElement(React.Fragment, null, React.createElement(ParentOverview, {
     state: state
-  }), tab === 'input' && (adding ? React.createElement(ErrorItemForm, {
+  }), React.createElement(CareParentPanel, {
+    state: state,
+    setState: setState
+  })), tab === 'input' && (adding ? React.createElement(ErrorItemForm, {
     state: state,
     setState: setState,
     toast: toast,
@@ -73877,11 +75108,14 @@ function ParentApp({
     state: state,
     setState: setState,
     toast: toast
-  }), tab === 'settings' && React.createElement(SettingsPanel, {
+  }), tab === 'settings' && React.createElement(React.Fragment, null, React.createElement(SettingsPanel, {
     state: state,
     setState: setState,
     toast: toast
-  }), tab === 'data' && React.createElement(DataPanel, {
+  }), React.createElement(CareParentPanel, {
+    state: state,
+    setState: setState
+  })), tab === 'data' && React.createElement(DataPanel, {
     state: state,
     setState: setState,
     toast: toast
@@ -74188,6 +75422,7 @@ function App() {
     const r = grantCompanionRewards(state);
     if (r.gained.length) setStateRaw(cur => grantCompanionRewards(cur).state);
   }, [state.student?.achievements?.length, profiles.active]);
+  useCareRuntime(state, setState, profiles.active, mode === 'student');
   const s = state.student;
   const lp = s ? levelProgress(s.xp) : null;
   const junior = isJuniorState(state) && mode === 'student';
@@ -74220,7 +75455,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v45",
+    "data-build": "2026.11.10-v46",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
