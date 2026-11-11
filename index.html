@@ -775,7 +775,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261111-claude-next">
+<meta name="game-release" content="playtest-20261112-memorial-badges">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -69779,58 +69779,447 @@ function TrainRouteNotice({
     onClick: onAction
   }, r.button)));
 }
-const SUBJECT_BADGE_ATLAS = {
-  subjects: ['math', 'chinese', 'science', 'social', 'life'],
-  x: [215, 397, 585, 775, 968, 1166, 1367],
-  width: [174, 180, 184, 190, 200, 190, 212],
-  y: [228, 410, 590, 768, 948],
-  height: [184, 180, 180, 180, 180]
-};
+const MEMORIAL_BADGE_ART = [{
+  "id": "subject-mastery.math.lv01",
+  "rowId": "solid-math",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "數學學會",
+  "title": "數學學會第 1 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.math.lv01.art-v1.png"
+}, {
+  "id": "subject-mastery.math.lv02",
+  "rowId": "solid-math",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "數學學會",
+  "title": "數學學會第 2 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.math.lv02.art-v1.png"
+}, {
+  "id": "subject-mastery.math.lv03",
+  "rowId": "solid-math",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "數學學會",
+  "title": "數學學會第 3 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.math.lv03.art-v1.png"
+}, {
+  "id": "subject-mastery.math.lv04",
+  "rowId": "solid-math",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "數學學會",
+  "title": "數學學會第 4 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.math.lv04.art-v1.png"
+}, {
+  "id": "subject-mastery.math.lv05",
+  "rowId": "solid-math",
+  "level": 5,
+  "outlineTier": 4,
+  "label": "數學學會",
+  "title": "數學學會第 5 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.math.lv05.art-v1.png"
+}, {
+  "id": "subject-mastery.chinese.lv01",
+  "rowId": "solid-chinese",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "國語學會",
+  "title": "國語學會第 1 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.chinese.lv01.art-v1.png"
+}, {
+  "id": "subject-mastery.chinese.lv02",
+  "rowId": "solid-chinese",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "國語學會",
+  "title": "國語學會第 2 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.chinese.lv02.art-v1.png"
+}, {
+  "id": "subject-mastery.chinese.lv03",
+  "rowId": "solid-chinese",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "國語學會",
+  "title": "國語學會第 3 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.chinese.lv03.art-v1.png"
+}, {
+  "id": "subject-mastery.chinese.lv04",
+  "rowId": "solid-chinese",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "國語學會",
+  "title": "國語學會第 4 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.chinese.lv04.art-v1.png"
+}, {
+  "id": "subject-mastery.chinese.lv05",
+  "rowId": "solid-chinese",
+  "level": 5,
+  "outlineTier": 4,
+  "label": "國語學會",
+  "title": "國語學會第 5 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.chinese.lv05.art-v1.png"
+}, {
+  "id": "subject-mastery.science.lv01",
+  "rowId": "solid-science",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "自然學會",
+  "title": "自然學會第 1 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.science.lv01.art-v1.png"
+}, {
+  "id": "subject-mastery.science.lv02",
+  "rowId": "solid-science",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "自然學會",
+  "title": "自然學會第 2 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.science.lv02.art-v1.png"
+}, {
+  "id": "subject-mastery.science.lv03",
+  "rowId": "solid-science",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "自然學會",
+  "title": "自然學會第 3 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.science.lv03.art-v1.png"
+}, {
+  "id": "subject-mastery.science.lv04",
+  "rowId": "solid-science",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "自然學會",
+  "title": "自然學會第 4 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.science.lv04.art-v1.png"
+}, {
+  "id": "subject-mastery.science.lv05",
+  "rowId": "solid-science",
+  "level": 5,
+  "outlineTier": 4,
+  "label": "自然學會",
+  "title": "自然學會第 5 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.science.lv05.art-v1.png"
+}, {
+  "id": "subject-mastery.social.lv01",
+  "rowId": "solid-social",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "社會學會",
+  "title": "社會學會第 1 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.social.lv01.art-v1.png"
+}, {
+  "id": "subject-mastery.social.lv02",
+  "rowId": "solid-social",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "社會學會",
+  "title": "社會學會第 2 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.social.lv02.art-v1.png"
+}, {
+  "id": "subject-mastery.social.lv03",
+  "rowId": "solid-social",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "社會學會",
+  "title": "社會學會第 3 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.social.lv03.art-v1.png"
+}, {
+  "id": "subject-mastery.social.lv04",
+  "rowId": "solid-social",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "社會學會",
+  "title": "社會學會第 4 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.social.lv04.art-v1.png"
+}, {
+  "id": "subject-mastery.social.lv05",
+  "rowId": "solid-social",
+  "level": 5,
+  "outlineTier": 4,
+  "label": "社會學會",
+  "title": "社會學會第 5 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.social.lv05.art-v1.png"
+}, {
+  "id": "subject-mastery.life.lv01",
+  "rowId": "solid-life",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "生活學會",
+  "title": "生活學會第 1 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.life.lv01.art-v1.png"
+}, {
+  "id": "subject-mastery.life.lv02",
+  "rowId": "solid-life",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "生活學會",
+  "title": "生活學會第 2 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.life.lv02.art-v1.png"
+}, {
+  "id": "subject-mastery.life.lv03",
+  "rowId": "solid-life",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "生活學會",
+  "title": "生活學會第 3 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.life.lv03.art-v1.png"
+}, {
+  "id": "subject-mastery.life.lv04",
+  "rowId": "solid-life",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "生活學會",
+  "title": "生活學會第 4 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.life.lv04.art-v1.png"
+}, {
+  "id": "subject-mastery.life.lv05",
+  "rowId": "solid-life",
+  "level": 5,
+  "outlineTier": 4,
+  "label": "生活學會",
+  "title": "生活學會第 5 階",
+  "asset": "assets/badges/enamel-island-v1/subject-mastery.life.lv05.art-v1.png"
+}, {
+  "id": "memorial.repair.lv01",
+  "rowId": "repair",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "訂正",
+  "title": "訂正第 1 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.repair.lv01.art-v1.png"
+}, {
+  "id": "memorial.repair.lv02",
+  "rowId": "repair",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "訂正",
+  "title": "訂正第 2 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.repair.lv02.art-v1.png"
+}, {
+  "id": "memorial.repair.lv03",
+  "rowId": "repair",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "訂正",
+  "title": "訂正第 3 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.repair.lv03.art-v1.png"
+}, {
+  "id": "memorial.repair.lv04",
+  "rowId": "repair",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "訂正",
+  "title": "訂正第 4 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.repair.lv04.art-v1.png"
+}, {
+  "id": "memorial.review.lv01",
+  "rowId": "review",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "回來複習",
+  "title": "回來複習第 1 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.review.lv01.art-v1.png"
+}, {
+  "id": "memorial.review.lv02",
+  "rowId": "review",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "回來複習",
+  "title": "回來複習第 2 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.review.lv02.art-v1.png"
+}, {
+  "id": "memorial.review.lv03",
+  "rowId": "review",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "回來複習",
+  "title": "回來複習第 3 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.review.lv03.art-v1.png"
+}, {
+  "id": "memorial.review.lv04",
+  "rowId": "review",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "回來複習",
+  "title": "回來複習第 4 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.review.lv04.art-v1.png"
+}, {
+  "id": "memorial.help.lv01",
+  "rowId": "help",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "幫忙居民",
+  "title": "幫忙居民第 1 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.help.lv01.art-v1.png"
+}, {
+  "id": "memorial.help.lv02",
+  "rowId": "help",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "幫忙居民",
+  "title": "幫忙居民第 2 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.help.lv02.art-v1.png"
+}, {
+  "id": "memorial.help.lv03",
+  "rowId": "help",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "幫忙居民",
+  "title": "幫忙居民第 3 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.help.lv03.art-v1.png"
+}, {
+  "id": "memorial.help.lv04",
+  "rowId": "help",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "幫忙居民",
+  "title": "幫忙居民第 4 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.help.lv04.art-v1.png"
+}, {
+  "id": "memorial.arrests.lv01",
+  "rowId": "arrests",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "追捕",
+  "title": "追捕第 1 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.arrests.lv01.art-v1.png"
+}, {
+  "id": "memorial.arrests.lv02",
+  "rowId": "arrests",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "追捕",
+  "title": "追捕第 2 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.arrests.lv02.art-v1.png"
+}, {
+  "id": "memorial.arrests.lv03",
+  "rowId": "arrests",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "追捕",
+  "title": "追捕第 3 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.arrests.lv03.art-v1.png"
+}, {
+  "id": "memorial.arrests.lv04",
+  "rowId": "arrests",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "追捕",
+  "title": "追捕第 4 階",
+  "asset": "assets/badges/enamel-island-v1/memorial.arrests.lv04.art-v1.png"
+}, {
+  "id": "story.chapter01",
+  "rowId": "story",
+  "level": 1,
+  "outlineTier": 0,
+  "label": "主線紀念",
+  "title": "時鐘塔的秘密",
+  "achievement": "math_ch1",
+  "asset": "assets/badges/enamel-island-v1/story.chapter01.art-v1.png"
+}, {
+  "id": "story.chapter02",
+  "rowId": "story",
+  "level": 2,
+  "outlineTier": 1,
+  "label": "主線紀念",
+  "title": "失落的手稿",
+  "achievement": "cn_ch1",
+  "asset": "assets/badges/enamel-island-v1/story.chapter02.art-v1.png"
+}, {
+  "id": "story.chapter03",
+  "rowId": "story",
+  "level": 3,
+  "outlineTier": 2,
+  "label": "主線紀念",
+  "title": "午夜列車",
+  "achievement": "train_ch3",
+  "asset": "assets/badges/enamel-island-v1/story.chapter03.art-v1.png"
+}, {
+  "id": "story.chapter04",
+  "rowId": "story",
+  "level": 4,
+  "outlineTier": 3,
+  "label": "主線紀念",
+  "title": "星圖失竊案",
+  "achievement": "starmap_ch4",
+  "asset": "assets/badges/enamel-island-v1/story.chapter04.art-v1.png"
+}, {
+  "id": "story.chapter05",
+  "rowId": "story",
+  "level": 5,
+  "outlineTier": 6,
+  "label": "主線紀念",
+  "title": "老照片裡的島",
+  "achievement": "island_ch5",
+  "asset": "assets/badges/enamel-island-v1/story.chapter05.art-v1.png"
+}];
+function memorialBadgeArt(row, tier) {
+  if (row.id.startsWith('skill-')) {
+    const subject = row.id.slice(6);
+    if (!SKILL_SUBJECTS[subject] || tier < 0 || tier >= SKILL_THRESHOLDS.length) return null;
+    const id = `subject-growth.${subject}.lv${String(tier + 1).padStart(2, '0')}`;
+    return {
+      id,
+      outlineTier: tier,
+      asset: `assets/badges/enamel-island-v1/${id}.art-v2.png`
+    };
+  }
+  return MEMORIAL_BADGE_ART.find(x => x.rowId === row.id && x.level === tier + 1) || null;
+}
+function storyBadgeEntries(state) {
+  return MEMORIAL_BADGE_ART.filter(x => x.rowId === 'story').map(x => ({
+    ...x,
+    earned: state.student.achievements.includes(x.achievement),
+    t: state.student.log?.find(l => l.type === 'ach' && l.id === x.achievement)?.t || state.student.chapters?.[x.achievement]?.completedAt || 0
+  }));
+}
+function visibleStoryBadges(state) {
+  const entries = storyBadgeEntries(state),
+    next = entries.find(x => !x.earned);
+  return entries.filter(x => x.earned || x === next);
+}
 function SubjectBadge({
   row,
   tier,
   earned = true,
   size = 44
 }) {
-  const [failed, setFailed] = useState(false),
+  const [failedAsset, setFailedAsset] = useState(null),
+    art = memorialBadgeArt(row, tier),
     subject = row.id.replace(/^(skill|solid)-/, ''),
-    sy = SUBJECT_BADGE_ATLAS.subjects.indexOf(subject),
-    mastery = row.id.startsWith('solid-'),
-    i = Math.min(tier, 6),
-    a = SUBJECT_BADGE_ATLAS;
+    mastery = row.id.startsWith('solid-');
   const icon = {
-    math: '⚙',
-    chinese: '書',
-    science: '葉',
-    social: '圖',
-    life: '芽'
-  }[subject] || row.icon;
-  const clip = 'badge' + React.useId().replaceAll(':', ''),
-    x = a.x[i] - a.width[i] / 2,
-    y = i === 6 ? [136, 326, 506, 686, 866][sy] : a.y[sy] - a.height[sy] / 2,
-    h = i === 6 ? sy === 0 ? 184 : 174 : a.height[sy];
+      math: '⚙',
+      chinese: '書',
+      science: '葉',
+      social: '圖',
+      life: '芽'
+    }[subject] || row.icon || '✦',
+    failed = !!art && failedAsset === art.asset;
   return React.createElement("span", {
     className: 'subject-badge' + (mastery ? ' mastery' : '') + (!earned ? ' unknown' : ''),
     style: {
       width: size,
       height: size
     },
-    "data-art-id": sy >= 0 ? `subject-growth.${subject}.lv${String(i + 1).padStart(2, '0')}` : undefined,
-    "data-earned": earned
+    "data-art-id": art?.id,
+    "data-earned": earned,
+    role: "img",
+    "aria-label": `${row.label}第 ${tier + 1} 階${earned ? '，已取得' : '，尚未取得'}`
   }, !earned ? React.createElement(BadgeOutline, {
-    tier: i
-  }) : sy >= 0 && !failed ? React.createElement("img", {
+    tier: art?.outlineTier ?? Math.min(tier, 6)
+  }) : art && !failed ? React.createElement("img", {
     width: size,
     height: size,
-    src: `assets/badges/enamel-island-v1/subject-growth.${subject}.lv${String(i + 1).padStart(2, '0')}.art-v2.png`,
-    alt: `${row.label}第 ${tier + 1} 階`,
-    onError: () => setFailed(true)
+    src: art.asset,
+    alt: "",
+    onError: () => setFailedAsset(art.asset)
   }) : React.createElement("span", {
     className: "badge-fallback",
-    "data-badge-fallback": failed ? 'true' : undefined
-  }, icon), earned && mastery && React.createElement("b", {
+    "data-badge-fallback": "true"
+  }, icon), earned && mastery && (!art || failed) && React.createElement("b", {
     className: "mastery-gem",
-    "aria-label": "\u5B78\u6703\u5FBD\u7AE0"
+    "aria-hidden": "true"
   }, "\u2726"));
 }
 function BadgeOutline({
@@ -71977,7 +72366,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.11-v52',
+    build: '2026.11.12-v53',
     ...context,
     message
   };
@@ -75035,7 +75424,13 @@ function MemorialBook({
   const [page, setPage] = useState('wall'),
     rows = memorialRows(state),
     stamps = memorialStamps(state),
-    selected = rows.find(r => r.id === page);
+    selected = rows.find(r => r.id === page),
+    storyBadges = storyBadgeEntries(state),
+    storyRow = {
+      id: 'story',
+      label: '主線紀念',
+      icon: '✉'
+    };
   useEffect(() => {
     setState(s => markMemorialSeen(s));
   }, [state.student.keepsakes?.stamps, state.student.achievements, state.practiceLog, state.missions]);
@@ -75052,7 +75447,24 @@ function MemorialBook({
   }, "\u6210\u9577\u7D00\u9304")), React.createElement("section", {
     className: "card col",
     id: "memorial-book"
-  }, selected ? React.createElement(React.Fragment, null, React.createElement(Btn, {
+  }, page === 'story' ? React.createElement(React.Fragment, null, React.createElement(Btn, {
+    id: "badge-back",
+    onClick: () => setPage('wall')
+  }, "\u2190 \u56DE\u5230\u5FBD\u7AE0\u7246"), React.createElement("h1", null, "\u4E3B\u7DDA\u7D00\u5FF5"), React.createElement("p", null, "\u6BCF\u5B8C\u6210\u4E00\u7AE0\uFF0C\u7559\u4E0B\u9019\u6BB5\u5192\u96AA\u7684\u7D00\u5FF5\u3002"), React.createElement("div", {
+    className: "badge-detail-grid",
+    id: "story-badge-detail"
+  }, visibleStoryBadges(state).map(b => React.createElement("article", {
+    className: "card col badge-detail-card",
+    key: b.id
+  }, React.createElement(SubjectBadge, {
+    row: storyRow,
+    tier: b.level - 1,
+    earned: b.earned,
+    size: 160
+  }), React.createElement("h3", null, b.earned ? b.title : '下一章的紀念'), React.createElement("p", null, "\u7B2C ", b.level, " \u7AE0"), b.earned ? React.createElement("time", null, b.t ? fmtDay(b.t) : '較早取得・日期未保存') : React.createElement("p", null, "\u5B8C\u6210\u9019\u4E00\u7AE0\uFF0C\u5C31\u80FD\u7559\u4E0B\u7D00\u5FF5\u3002")))), React.createElement(Btn, {
+    id: "story-memories",
+    onClick: () => setPage('done')
+  }, "\u67E5\u770B\u6211\u505A\u904E\u7684\u4E8B")) : selected ? React.createElement(React.Fragment, null, React.createElement(Btn, {
     id: "badge-back",
     onClick: () => setPage('wall')
   }, "\u2190 \u56DE\u5230\u5FBD\u7AE0\u7246"), React.createElement("h1", null, selected.label), React.createElement("p", null, selected.detail, " \u76EE\u524D\u7D2F\u7A4D ", selected.count, " ", selected.unit, "\u3002"), React.createElement("div", {
@@ -75093,15 +75505,47 @@ function MemorialBook({
     "aria-hidden": "true"
   }, "\u203A"))), React.createElement("button", {
     className: "badge-row badge-row-link",
-    onClick: () => setPage('done')
-  }, React.createElement("b", null, "\u4E3B\u7DDA\u7D00\u5FF5"), React.createElement("span", null, stamps.filter(s => s.kind === 'chapter').length, " \u7AE0 \xB7 \u67E5\u770B\u6211\u505A\u904E\u7684\u4E8B \u203A"))) : React.createElement("div", {
+    "data-badge-row": "story",
+    onClick: () => setPage('story')
+  }, React.createElement("span", {
+    className: "badge-label"
+  }, React.createElement("b", null, "\u4E3B\u7DDA\u7D00\u5FF5"), React.createElement("small", null, storyBadges.filter(b => b.earned).length, " \u7AE0")), React.createElement("span", {
+    className: "badge-strip"
+  }, visibleStoryBadges(state).map(b => React.createElement(SubjectBadge, {
+    key: b.id,
+    row: storyRow,
+    tier: b.level - 1,
+    earned: b.earned
+  }))), React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\u203A"))) : React.createElement("div", {
     className: "grid two"
   }, !stamps.length && React.createElement("p", null, "\u5B8C\u6210\u59D4\u8A17\uFF0C\u5C31\u6703\u7559\u4E0B\u7D00\u5FF5\u3002"), stamps.map(s => React.createElement("article", {
     className: "card soft col",
     key: s.id
   }, React.createElement("span", {
     className: "memorial-stamp"
-  }, "\u2726"), React.createElement("h3", null, s.title), React.createElement("small", null, s.t ? fmtDay(s.t) : '較早的紀錄', "\u30FB", s.focus), React.createElement("p", null, state.student.keepsakes?.quotes?.[s.id] || '謝謝你，調查員。', React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))))));
+  }, s.kind === 'chapter' && storyBadges.some(b => b.achievement === s.id) ? React.createElement(SubjectBadge, {
+    row: storyRow,
+    tier: storyBadges.find(b => b.achievement === s.id).level - 1,
+    size: 64
+  }) : s.kind === 'wanted' ? React.createElement(SubjectBadge, {
+    row: {
+      id: 'arrests',
+      label: '追捕',
+      icon: '⌕'
+    },
+    tier: 0,
+    size: 64
+  }) : React.createElement(SubjectBadge, {
+    row: {
+      id: 'help',
+      label: '幫忙居民',
+      icon: '♡'
+    },
+    tier: 0,
+    size: 64
+  })), React.createElement("h3", null, s.title), React.createElement("small", null, s.t ? fmtDay(s.t) : '較早的紀錄', "\u30FB", s.focus), React.createElement("p", null, state.student.keepsakes?.quotes?.[s.id] || '謝謝你，調查員。', React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))))));
 }
 function ChestArt({
   locks,
@@ -77157,7 +77601,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.11-v52\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.12-v53\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -77687,7 +78131,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.11-v52",
+    "data-build": "2026.11.12-v53",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
