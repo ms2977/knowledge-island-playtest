@@ -714,6 +714,35 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 }
 @media(prefers-reduced-motion:reduce) { .pet-idle { animation:none!important; } }
 
+/* Collection pages keep their own scrolling; only the adventure canvas fits the viewport. */
+.subject-badge{position:relative;display:inline-flex;flex:none;align-items:center;justify-content:center;vertical-align:middle;border-radius:12px;overflow:hidden;background:#fff2de}
+.subject-badge svg{display:block;width:100%;height:100%}.subject-badge.unknown{border:2px dashed #8f836f;background:transparent;color:var(--fg)}
+.badge-fallback{display:flex;width:88%;height:88%;align-items:center;justify-content:center;border:3px double #b99a53;border-radius:50%;font-size:1.5em;background:#fff0d0;color:#594424}
+.unknown .badge-fallback{border:0;background:none}.mastery-gem{position:absolute;right:0;top:0;background:#223d62;color:#fff3a6;border:1px solid #e2c269;border-radius:4px;line-height:1.1;padding:1px 3px;font-size:16px}.badge-detail-card .mastery-gem{font-size:30px}
+.badge-row-link{width:100%;background:transparent;color:var(--fg);text-align:left;border:0;border-bottom:1px solid var(--line);border-radius:0;cursor:pointer}.badge-row-link:hover{background:#e4d8bd55}.badge-row-link>.badge-strip{flex:1;flex-wrap:wrap;overflow:visible;gap:8px}.badge-row-link>.badge-label{flex:0 0 95px;padding:0}.badge-detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.badge-detail-card{align-items:center;text-align:center}.badge-detail-card h3,.badge-detail-card p{margin:0}.pet-closeup{width:100%;display:grid;place-items:center;min-height:200px}.pet-closeup>svg{width:min(100%,320px);height:300px}.keepsake-choice{display:flex;align-items:center;flex-direction:column;gap:8px}.keepsake-choice>svg{width:110px;height:110px}.gift-progress{display:flex;gap:16px;flex-wrap:wrap}.gift-choice{align-items:center;min-height:150px}.gift-choice>span:first-child{font-size:36px}.office-collection{max-width:760px}.goal-detail{position:absolute;z-index:15;top:10px;left:10px;max-width:450px;width:calc(100% - 20px);max-height:calc(100% - 20px);overflow:auto}.goal-detail p{font-size:16px}.goal-dots{display:flex;gap:4px}.goal-dots i{display:block;width:6px;height:6px;border:1px solid #bdb59d;border-radius:50%}.goal-dots .filled{background:#f1d375;border-color:#f1d375}
+#current-objective-slot:empty,#adventure-tools-slot:empty{display:none}
+@media(min-width:768px){
+ body:has(.adventure-active){margin:0}
+ .adventure-tools{display:flex;align-items:center;gap:4px;min-width:0}.adventure-tools>.gamehud{flex:1;min-width:0}.adventure-tools>button{padding:4px 8px;font-size:24px!important}
+ .scene .hot .label.always{pointer-events:auto}
+ .adventure-stage .scene-title small,.adventure-stage .scene-title span,.adventure-stage .dlg .small,.adventure-stage .dlg-role,.adventure-stage .overlay-panel.book .small{font-size:14px}
+ .app.adventure-active>.topbar{flex-wrap:nowrap;padding:6px 12px;gap:8px;min-height:56px;max-width:100vw}
+ .adventure-active>.topbar>.brand,.adventure-active>.topbar>.spacer{display:none}
+ #current-objective-slot{flex:0 1 310px;min-width:170px}#current-objective{width:100%;text-align:left;display:flex;flex-direction:column;gap:3px;border-radius:8px;min-height:44px;font-size:14px;padding:4px 8px}#current-objective>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+ #adventure-tools-slot{flex:1;min-width:40px}#adventure-tools-slot .gamehud{flex-wrap:nowrap;border:0;padding:2px;background:none;overflow-x:auto;scrollbar-width:thin;border-radius:0;gap:6px}
+ #adventure-tools-slot .gamehud>.loc,#adventure-tools-slot .gamehud>.small,#adventure-tools-slot .gamehud>.spacer{display:none}
+ .adventure-active .topbar button{flex-shrink:0;min-height:40px;font-size:14px;white-space:nowrap}
+ .adventure-stage{max-width:none!important;padding:10px 12px!important;align-items:center;gap:0}
+ .adventure-stage>.game{max-width:100%;flex:none;margin:0 auto;border-radius:12px}
+ .adventure-stage .scene-wrap{border-radius:0}.adventure-stage .scene{width:100%;height:auto;min-height:0;max-height:none}
+ .scene-wrap>.explore-actions{position:absolute;z-index:9;bottom:0;left:0;right:0;display:flex;flex-wrap:nowrap;overflow-x:auto;align-items:center;gap:8px;background:#10252de8;padding:6px 8px;margin:0;max-width:100%;border-radius:0;scrollbar-width:thin}
+ .scene-wrap>.explore-actions>span{display:none}.scene-wrap>.explore-actions button{min-height:40px;flex:none;font-size:14px;white-space:nowrap;padding:6px 12px}.scene-wrap>.explore-actions button small{display:inline;margin-left:6px;font-size:14px}
+ .adventure-stage .dlg{max-height:85%;min-height:150px;overflow:auto;font-size:16px}.adventure-stage .dlg button{min-height:40px;font-size:14px}.adventure-stage .toastbar{z-index:12;max-width:min(560px,80%);max-height:45%;overflow:auto;font-size:16px;pointer-events:none}
+ .adventure-stage .scene-title{pointer-events:none}.adventure-stage .floor-help{pointer-events:none}
+ .adventure-stage .overlay:has(.book){overflow:hidden}.adventure-stage .overlay-panel.book,.office-collection,#ch5-review{max-height:calc(100dvh - 32px);overflow:auto}
+}
+@media(max-width:767px){.badge-row-link{gap:8px}.badge-row-link>.badge-label{flex-basis:76px;font-size:14px}.badge-row-link>.badge-strip{gap:6px}.badge-detail-grid{grid-template-columns:1fr}.pet-closeup{min-height:150px}.pet-closeup>svg{height:210px}.wardrobe-preview-switch{flex-wrap:wrap}.goal-detail{display:none}.junior .explore-actions #open-review-desk,.junior .explore-actions #office-keepsakes,.junior .explore-actions #office-gift-open{margin-right:110px}}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -721,7 +750,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261111-train-guide">
+<meta name="game-release" content="playtest-20261111-collections-b">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -34328,6 +34357,7 @@ function completeChapter(state, chapterId) {
   };
 }
 function logPractice(state, entry) {
+  state = settleGiftProgress(state);
   return {
     ...state,
     practiceLog: [...state.practiceLog, {
@@ -34571,6 +34601,14 @@ function validateBackupState(input) {
       }), p);
     });
     opt(st, 'care', (v, p) => validateCare(v, bad, p));
+    opt(st, 'gifts', (v, p) => validateGifts(v, bad, p));
+    opt(st, 'adventureUI', (v, p) => {
+      obj(v, p);
+      opt(v, 'goals', strs, p);
+      opt(v, 'scenes', strs, p);
+      opt(v, 'hiddenKeepsakes', strs, p);
+      if (v.keepsakesNotified !== undefined && typeof v.keepsakesNotified !== 'boolean') bad(p);
+    });
     opt(st, 'keepsakes', (v, p) => validateKeepsakes(v, bad, p));
     opt(st, 'learning', (v, p) => {
       if (typeof validateLearningV2 !== 'function') bad(p);
@@ -35247,7 +35285,7 @@ function Avatar({
     size: size,
     mood: mood
   });
-  const o = new Set(outfits);
+  const o = new Set();
   return React.createElement("svg", {
     width: size,
     height: size,
@@ -47526,6 +47564,7 @@ function wardrobeItem(id) {
   return typeof WARDROBE_V1 !== 'undefined' && WARDROBE_V1.items[id] || null;
 }
 function wardrobeRewardText(id) {
+  if (wardrobeItem(id)?.slot !== 'outfit') return '下一份禮物可以選';
   const r = WARDROBE_REWARD_RULES.find(x => x.id === id);
   if (r) return r.text;
   const i = WARDROBE_REPAIR_CYCLE.indexOf(id);
@@ -47537,9 +47576,7 @@ function earnedWardrobe(state) {
   if (!s) return [];
   const ach = new Set(s.achievements || []);
   const out = [];
-  for (const r of WARDROBE_REWARD_RULES) if ((r.anyAch || [r.ach]).some(a => a && ach.has(a))) out.push(r.id);
-  const n = Math.floor(countRepairSuccesses(state) / WARDROBE_REPAIR_EVERY);
-  for (let i = 0; i < Math.min(n, WARDROBE_REPAIR_CYCLE.length); i++) out.push(WARDROBE_REPAIR_CYCLE[i]);
+  for (const r of WARDROBE_REWARD_RULES) if (r.id.endsWith('_outfit') && (r.anyAch || [r.ach]).some(a => a && ach.has(a))) out.push(r.id);
   return out;
 }
 function grantWardrobeRewards(state) {
@@ -48385,7 +48422,7 @@ function memorialRows(state) {
       label: subjName(subject) + '解題',
       icon: '✎',
       count: sk.passes,
-      thresholds: SKILL_THRESHOLDS,
+      thresholds: [1, ...SKILL_THRESHOLDS.slice(1)],
       titles: SKILL_SUBJECTS[subject].titles,
       unit: '關',
       detail: '每次通過累積一次。'
@@ -48463,6 +48500,125 @@ function markMemorialSeen(state) {
 }
 function validateKeepsakes(k, bad, p) {
   if (!backupObject(k) || !backupObject(k.stamps) || Object.values(k.stamps).some(s => !backupObject(s) || !Number.isFinite(s.t) || s.t < 0 || !Number.isInteger(s.n) || s.n < 0) || k.seen !== undefined && (!backupObject(k.seen) || Object.values(k.seen).some(n => !Number.isInteger(n) || n < 0))) bad(p);
+}
+function giftMissionIds(state) {
+  return [...new Set([...Object.keys(state.student?.keepsakes?.stamps || {}), ...state.missions.filter(m => m.status === 'passed').map(m => m.id)])];
+}
+function settleGiftProgress(state) {
+  if (!state.student) return state;
+  const old = state.student.gifts,
+    logs = state.practiceLog || [],
+    missions = giftMissionIds(state);
+  if (!old) {
+    const pending = new Set();
+    for (const l of logs) {
+      if (!l.kpId) continue;
+      l.passed ? pending.delete(l.kpId) : pending.add(l.kpId);
+    }
+    return {
+      ...state,
+      student: {
+        ...state.student,
+        gifts: {
+          version: 1,
+          startedAt: now(),
+          missions,
+          seen: logs.map(l => l.id),
+          pending: [...pending],
+          counts: {
+            mission: 0,
+            review: 0,
+            repair: 0
+          },
+          claimed: 0,
+          history: [],
+          seenOffer: ''
+        }
+      }
+    };
+  }
+  const seen = new Set(old.seen),
+    previousMissions = new Set(old.missions),
+    pending = new Set(old.pending),
+    counts = {
+      ...old.counts
+    };
+  counts.mission += missions.filter(id => !previousMissions.has(id)).length;
+  for (const l of logs) {
+    if (seen.has(l.id) || !l.kpId) continue;
+    seen.add(l.id);
+    if (l.passed) {
+      if (pending.delete(l.kpId)) counts.repair++;
+      if (l.source === 'review' && l.giftDue === true) counts.review++;
+    } else pending.add(l.kpId);
+  }
+  const gifts = {
+    ...old,
+    missions: [...new Set([...old.missions, ...missions])],
+    seen: logs.map(l => l.id),
+    pending: [...pending],
+    counts
+  };
+  return JSON.stringify(gifts) === JSON.stringify(old) ? state : {
+    ...state,
+    student: {
+      ...state.student,
+      gifts
+    }
+  };
+}
+function giftChoices(state) {
+  const g = state.student?.gifts;
+  if (!g) return [];
+  const credits = Object.values(g.counts).reduce((n, v) => n + Math.floor(v / 3), 0) - g.claimed;
+  if (credits <= 0) return [];
+  const owned = new Set(getWardrobe(state.student).owned);
+  return Object.keys(WARDROBE_V1.items).filter(id => wardrobeItem(id).slot !== 'outfit' && !owned.has(id)).sort().slice(0, 2);
+}
+function giftOfferKey(state) {
+  const ids = giftChoices(state);
+  return ids.length ? `${state.student.gifts.claimed}:${ids.join('|')}` : '';
+}
+function claimGift(state, id, offerKey) {
+  state = settleGiftProgress(state);
+  if (!offerKey || giftOfferKey(state) !== offerKey || !giftChoices(state).includes(id)) return state;
+  const s = state.student,
+    w = getWardrobe(s),
+    g = s.gifts,
+    t = now();
+  return {
+    ...state,
+    student: {
+      ...s,
+      wardrobe: {
+        ...w,
+        owned: [...w.owned, id],
+        log: [...w.log, {
+          t,
+          id,
+          from: 'gift-choice'
+        }].slice(-200)
+      },
+      gifts: {
+        ...g,
+        claimed: g.claimed + 1,
+        history: [...g.history, {
+          t,
+          id
+        }],
+        seenOffer: ''
+      }
+    }
+  };
+}
+function officeKeepsakes(student) {
+  const ids = new Set([...unlockedOutfits(student).map(o => o.id), ...(student?.outfits || [])]);
+  return OUTFITS.filter(o => ids.has(o.id));
+}
+function validateGifts(g, bad, p) {
+  const strings = v => Array.isArray(v) && v.every(x => typeof x === 'string');
+  if (!backupObject(g) || g.version !== 1 || !Number.isFinite(g.startedAt) || !strings(g.missions) || !strings(g.seen) || !strings(g.pending) || !backupObject(g.counts) || !['mission', 'review', 'repair'].every(k => Number.isInteger(g.counts[k]) && g.counts[k] >= 0) || !Number.isInteger(g.claimed) || g.claimed < 0 || !Array.isArray(g.history) || g.history.some(h => !backupObject(h) || typeof h.id !== 'string' || !Number.isFinite(h.t)) || typeof g.seenOffer !== 'string') bad(p);
+  if (g.claimed > Object.values(g.counts).reduce((n, v) => n + Math.floor(v / 3), 0)) bad(p + '.claimed');
 }
 const STAGE_META = [{
   key: 's1',
@@ -65296,7 +65452,7 @@ function Portrait({
       ...look,
       small: false
     },
-    outfits: student?.outfits,
+    outfits: [],
     x: 0,
     y: 0,
     scale: 1,
@@ -65333,7 +65489,7 @@ function Tachie({
     height: 310
   }, player ? pl ? React.createElement(Person, {
     look: pl,
-    outfits: student.outfits,
+    outfits: [],
     x: 0,
     y: 0,
     scale: 1,
@@ -65362,7 +65518,7 @@ function PlayerSprite({
   const pl = playerLook(student);
   if (pl) return React.createElement(Person, {
     look: pl,
-    outfits: student.outfits,
+    outfits: [],
     x: 0,
     y: 0,
     scale: scale,
@@ -65428,7 +65584,7 @@ function PlayerSprite({
   }, React.createElement(Avatar, {
     avatar: student.avatar,
     color: c,
-    outfits: student.outfits,
+    outfits: [],
     size: 100
   })));
 }
@@ -65813,7 +65969,7 @@ function CharacterIllustration({
     look: look,
     x: 0,
     y: 0,
-    outfits: student?.outfits,
+    outfits: [],
     mood: mood
   }) : student ? React.createElement(PlayerSprite, {
     student: student
@@ -65986,8 +66142,7 @@ const FIELD_PROFILES = {
   }
 };
 function visibleEquipment(student) {
-  const allowed = new Set(unlockedOutfits(student).map(o => o.id));
-  return (student?.outfits || []).filter(id => allowed.has(id));
+  return [];
 }
 function VectorExplorerGear({
   kind,
@@ -67689,9 +67844,10 @@ function applyAppearance(state, draft) {
   const a = draft.appearance || {};
   const pick = (colors, value) => colors.some(c => c[1] === value) ? value : undefined;
   const appearance = {
+    ...s.appearance,
     hairColor: pick(HAIR_COLORS, a.hairColor),
     eye: pick(EYE_COLORS, a.eye),
-    coat: pick(COAT_COLORS, a.coat),
+    coat: s.appearance?.coat,
     disguise: availableDisguises(s).some(n => n.id === a.disguise) ? a.disguise : null
   };
   return {
@@ -67699,13 +67855,13 @@ function applyAppearance(state, draft) {
     student: {
       ...s,
       avatar,
-      color: ACCENT_COLORS.includes(draft.color) ? draft.color : s.color,
+      color: s.color,
       companion: selectedCompanion({
         ...draft,
         companions: s.companions
       }).id,
       appearance,
-      outfits: [...new Set((draft.outfits || []).filter(id => allowed.includes(id)))],
+      outfits: s.outfits,
       wardrobe: typeof sanitizeWardrobe === 'function' ? sanitizeWardrobe(s, draft.wardrobe) : s.wardrobe
     }
   };
@@ -67782,7 +67938,6 @@ function Wardrobe({
       ...d.appearance,
       hairColor: undefined,
       eye: undefined,
-      coat: '',
       disguise: null
     }
   }));
@@ -67824,7 +67979,12 @@ function Wardrobe({
     id: "preview-portrait",
     "aria-pressed": preview === 'portrait',
     onClick: () => setPreview('portrait')
-  }, "\u89D2\u8272\u7ACB\u7E6A"), React.createElement("span", null, disguise?.name || base?.name || s.name)), React.createElement("div", {
+  }, "\u89D2\u8272\u7ACB\u7E6A"), React.createElement("button", {
+    type: "button",
+    id: "preview-pet",
+    "aria-pressed": preview === 'pet',
+    onClick: () => setPreview('pet')
+  }, "\u5925\u4F34"), React.createElement("span", null, preview === 'pet' ? selectedCompanion(draft).name : disguise?.name || base?.name || s.name)), React.createElement("div", {
     className: "wardrobe-field-view",
     hidden: preview !== 'field'
   }, React.createElement(FieldPreview, {
@@ -67837,7 +67997,9 @@ function Wardrobe({
     id: playerArtId(draft),
     student: draft,
     fullPreview: true
-  })), React.createElement("p", {
+  })), preview === 'pet' && React.createElement(PetCloseup, {
+    student: draft
+  }), React.createElement("p", {
     className: "wardrobe-preview-note"
   }, "\u8A66\u7A7F\u5373\u6642\u986F\u793A \xB7 \u5132\u5B58\u5F8C\u624D\u6703\u4FDD\u7559")), React.createElement("section", {
     className: "card wardrobe-controls"
@@ -67849,13 +68011,16 @@ function Wardrobe({
     className: "wardrobe-tabs",
     role: "tablist",
     "aria-label": "\u66F4\u8863\u5BA4\u5206\u985E"
-  }, [['look', '外貌'], ['styles', '衣櫥'], ['outfits', '配件'], ['disguise', '易容術'], ['companion', '夥伴']].map(([id, name]) => React.createElement("button", {
+  }, [['look', '外貌'], ['styles', '衣櫥'], ['disguise', '易容術'], ['companion', '夥伴']].map(([id, name]) => React.createElement("button", {
     role: "tab",
     key: id,
     id: `wardrobe-tab-${id}`,
     "aria-controls": `wardrobe-panel-${id}`,
     "aria-selected": tab === id,
-    onClick: () => setTab(id)
+    onClick: () => {
+      setTab(id);
+      setPreview(id === 'companion' ? 'pet' : 'field');
+    }
   }, name, id === 'disguise' && !disguiseUnlocked(s) && ' · 未解鎖'))), React.createElement("div", {
     role: "tabpanel",
     id: `wardrobe-panel-${tab}`,
@@ -67895,45 +68060,10 @@ function Wardrobe({
   }))), tab === 'styles' && React.createElement(WardrobeStylesPanel, {
     draft: draft,
     setDraft: setDraft,
-    student: s
-  }), tab === 'outfits' && React.createElement(React.Fragment, null, wardrobeOutfitStyle(draft) && React.createElement(Notice, null, "\u7A7F\u8457\u65B0\u8863\u670D\u6642\uFF0C\u9019\u88E1\u7684\u820A\u914D\u4EF6\u6703\u5148\u6536\u8D77\uFF1B\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D\u5C31\u6703\u6062\u5FA9\u3002"), React.createElement(ColorChoices, {
-    label: "\u914D\u4EF6\u914D\u8272",
-    prefix: "accent",
-    values: ACCENT_COLORS.map((c, i) => [['暖金', '紅', '青綠', '藍', '紫', '粉'][i], c]),
-    value: draft.color,
-    onChange: color => setDraft(d => ({
-      ...d,
-      color
-    }))
-  }), React.createElement("h3", null, "\u89E3\u984C\u6536\u96C6\u7684\u88DD\u626E ", React.createElement("span", {
-    className: "small muted"
-  }, unlocked.length, " / ", OUTFITS.length)), React.createElement("p", {
-    className: "small muted"
-  }, "\u5B8C\u6210\u6311\u6230\u5C31\u80FD\u6C38\u4E45\u89E3\u9396\uFF0C\u7A7F\u4E0A\u6216\u812B\u4E0B\u90FD\u4E0D\u6703\u6D88\u8017\u734E\u52F5\u3002"), React.createElement("div", {
-    className: "wardrobe-rewards"
-  }, OUTFITS.map((o, i) => {
-    const ok = unlocked.includes(o.id),
-      on = draft.outfits.includes(o.id);
-    return React.createElement("button", {
-      key: o.id,
-      id: `outfit-${o.id}`,
-      disabled: !ok,
-      "aria-pressed": on,
-      className: `wardrobe-reward ${on ? 'selected' : ''}`,
-      onClick: () => setDraft(d => ({
-        ...d,
-        outfits: on ? d.outfits.filter(x => x !== o.id) : [...d.outfits, o.id]
-      }))
-    }, React.createElement("span", {
-      className: "reward-icon"
-    }, React.createElement("svg", {
-      viewBox: o.id === 'cape' ? '-45 -8 90 120' : o.id === 'scarf' ? '-32 -10 64 68' : '-34 -34 68 68',
-      "aria-hidden": "true"
-    }, React.createElement(ExplorerGear, {
-      kind: o.id,
-      color: draft.color
-    }))), React.createElement("span", null, React.createElement("b", null, o.name), React.createElement("small", null, ok ? on ? '已穿戴 · 點一下脫下' : '已解鎖 · 點一下穿戴' : outfitRequirement(o))), React.createElement("span", null, ok ? on ? '✓' : '＋' : '🔒'));
-  }))), tab === 'companion' && state.student.care?.enabled && onCare && React.createElement(Btn, {
+    student: s,
+    onPetFocus: () => setPreview('pet'),
+    onPlayerFocus: () => setPreview('field')
+  }), tab === 'companion' && state.student.care?.enabled && onCare && React.createElement(Btn, {
     id: "wardrobe-care",
     onClick: () => {
       setState(current => applyAppearance(current, draft));
@@ -68015,8 +68145,11 @@ function sanitizeWardrobe(student, draftW) {
 function WardrobeStylesPanel({
   draft,
   setDraft,
-  student
+  student,
+  onPetFocus,
+  onPlayerFocus
 }) {
+  const [section, setSection] = useState('player');
   const w = getWardrobe(draft);
   const owned = new Set(getWardrobe(student).owned);
   const base = PLAYER_CHAR_BY_ID[draft.avatar];
@@ -68086,10 +68219,28 @@ function WardrobeStylesPanel({
       }
     })),
     disabled: !anyOn
-  }, "\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D")), React.createElement("p", {
+  }, "\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D")), React.createElement("div", {
+    className: "tabs"
+  }, React.createElement("button", {
+    id: "styles-player",
+    className: section === 'player' ? 'active' : '',
+    onClick: () => {
+      setSection('player');
+      onPlayerFocus?.();
+    }
+  }, "\u4E3B\u89D2\u8863\u98FE"), React.createElement("button", {
+    id: "styles-pet",
+    className: section === 'pet' ? 'active' : '',
+    onClick: () => {
+      setSection('pet');
+      onPetFocus?.();
+    }
+  }, "\u5925\u4F34\u7684\u5C0F\u914D\u4EF6")), React.createElement("p", {
     className: "small muted"
-  }, "\u8863\u670D\u3001\u978B\u5B50\u3001\u982D\u98FE\u53EF\u4EE5\u6DF7\u642D\uFF0C\u4E5F\u53EF\u4EE5\u4E00\u9375\u6574\u5957\u7A7F\u4E0A\u3002\u8863\u98FE\u90FD\u662F\u89E3\u8B0E\u7684\u734E\u52F5\uFF1A\u5B8C\u6210\u7AE0\u7BC0\u3001\u9054\u6210\u6210\u5C31\u3001\u628A\u7B54\u932F\u7684\u984C\u76EE\u8A02\u6B63\u6210\u529F\uFF0C\u5C31\u6703\u9001\u5230\u8863\u6AE5\u3002\u978B\u5B50\u548C\u982D\u98FE\u8981\u5148\u7A7F\u4E00\u5957\u65B0\u8863\u670D\u624D\u6703\u986F\u793A\uFF0C\u6C92\u9078\u978B\u5B50\u6642\u6703\u7A7F\u540C\u4E00\u5957\u7684\u978B\uFF1B\u5728\u300C\u5916\u8C8C\u300D\u9078\u7684\u9AEE\u8272\u4E5F\u6703\u5957\u5230\u65B0\u8863\u670D\u4E0A\u3002"), !base && React.createElement(Notice, null, "\u7D93\u5178\u52D5\u7269\u9020\u578B\u6C92\u6709\u65B0\u8863\u670D\uFF1B\u9078\u4E00\u4F4D\u8ABF\u67E5\u54E1\u5C31\u80FD\u63DB\u88DD\u3002"), base && React.createElement("div", {
-    className: "wv-grid"
+  }, "\u8863\u670D\u3001\u978B\u5B50\u3001\u982D\u98FE\u53EF\u4EE5\u6DF7\u642D\uFF0C\u4E5F\u53EF\u4EE5\u4E00\u9375\u6574\u5957\u7A7F\u4E0A\u3002\u8863\u670D\u4F9D\u539F\u672C\u7684\u6210\u5C31\u89E3\u9396\uFF1B\u978B\u5B50\u3001\u982D\u98FE\u548C\u5925\u4F34\u914D\u4EF6\u7531\u7070\u9D09\u592B\u4EBA\u7684\u79AE\u7269\u4E8C\u9078\u4E00\u9818\u53D6\u3002\u978B\u5B50\u548C\u982D\u98FE\u8981\u5148\u7A7F\u4E00\u5957\u65B0\u8863\u670D\u624D\u6703\u986F\u793A\uFF0C\u6C92\u9078\u978B\u5B50\u6642\u6703\u7A7F\u540C\u4E00\u5957\u7684\u978B\uFF1B\u5728\u300C\u5916\u8C8C\u300D\u9078\u7684\u9AEE\u8272\u4E5F\u6703\u5957\u5230\u65B0\u8863\u670D\u4E0A\u3002"), !base && React.createElement(Notice, null, "\u7D93\u5178\u52D5\u7269\u9020\u578B\u6C92\u6709\u65B0\u8863\u670D\uFF1B\u9078\u4E00\u4F4D\u8ABF\u67E5\u54E1\u5C31\u80FD\u63DB\u88DD\u3002"), section === 'player' && base && React.createElement("div", {
+    className: "wv-grid",
+    onPointerDown: onPlayerFocus,
+    onFocus: onPlayerFocus
   }, React.createElement("div", {
     className: `card col wv-style ${!w.equipped.outfit ? 'on' : ''}`,
     id: "wv-style-original"
@@ -68112,10 +68263,7 @@ function WardrobeStylesPanel({
         head: null
       }
     }))
-  }, "\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D"), !w.equipped.outfit && draft.appearance?.coat && React.createElement("p", {
-    className: "small muted",
-    id: "coat-original-note"
-  }, "\u5916\u5957\u66AB\u6642\u986F\u793A\u539F\u8272\u3002\u4F60\u539F\u5148\u9078\u7684\u984F\u8272\u5DF2\u4FDD\u7559\uFF0C\u8272\u6B3E\u6E96\u5099\u597D\u5F8C\u6703\u518D\u958B\u653E\u3002")), WARDROBE_V1.styles.map(st => {
+  }, "\u63DB\u56DE\u539F\u672C\u7684\u8863\u670D")), WARDROBE_V1.styles.map(st => {
     const ids = Object.fromEntries(WARDROBE_SLOTS.map(([slot]) => [slot, wardrobeItemId('player', st.id, slot)]));
     const canSet = owned.has(ids.outfit);
     const wornHere = WARDROBE_SLOTS.filter(([slot]) => w.equipped[slot] === ids[slot]).length;
@@ -68162,14 +68310,19 @@ function WardrobeStylesPanel({
         }
       }, "\u8981\u5148\u7A7F\u4E00\u5957\u8863\u670D\u624D\u770B\u5F97\u5230"));
     })));
-  })), React.createElement("h3", {
+  })), section === 'pet' && React.createElement(React.Fragment, null, React.createElement("h3", {
     style: {
       marginBottom: 0
     }
-  }, pet.name, "\u7684\u5C0F\u914D\u4EF6 ", React.createElement("span", {
+  }, React.createElement("button", {
+    className: "btn ghost",
+    onClick: onPetFocus
+  }, "\u5925\u4F34\u7279\u5BEB"), " ", pet.name, "\u7684\u5C0F\u914D\u4EF6 ", React.createElement("span", {
     className: "small muted"
   }, "\uFF08\u6BCF\u4F4D\u5925\u4F34\u5206\u958B\u8A18\uFF09")), !WARDROBE_V1.pets[pet.id] ? React.createElement(Notice, null, "\u9019\u4F4D\u5925\u4F34\u7684\u5C08\u7528\u914D\u4EF6\u9084\u5728\u88FD\u4F5C\u4E2D\u3002\u6162\u6162\u3001\u80D6\u5B50\u548C\u5600\u55D2\u76EE\u524D\u53EF\u4EE5\u63DB\u88DD\u3002") : React.createElement("div", {
-    className: "wv-grid pets"
+    className: "wv-grid pets",
+    onPointerDown: onPetFocus,
+    onFocus: onPetFocus
   }, WARDROBE_V1.styles.map(st => React.createElement("div", {
     key: st.id,
     className: "card col wv-style",
@@ -68191,7 +68344,7 @@ function WardrobeStylesPanel({
     }, label), React.createElement("span", {
       className: "wv-name"
     }, has ? on ? '已戴上 · 點一下拿下' : '已擁有 · 點一下戴上' : `🔒 ${wardrobeRewardText(id)}`));
-  })))));
+  }))))));
 }
 const COMPANIONS_BASE = [{
   id: 'tick',
@@ -68724,7 +68877,7 @@ function CompanionParentCard({
 }
 function useCareRuntime(state, setState, profile, active) {
   useEffect(() => {
-    setState(s => settleKeepsakes(settleCareStipend(reconcileCareLegacy(s))));
+    setState(s => settleGiftProgress(settleKeepsakes(settleCareStipend(reconcileCareLegacy(s)))));
   }, [state.practiceLog, state.missions, state.student?.learning, state.student?.companion, state.student?.companions, state.student?.wallet?.arrests, profile]);
   useEffect(() => {
     if (!active) return;
@@ -68834,7 +68987,7 @@ function CarePanel({
     className: cheer ? 'care-cheer' : '',
     width: "160",
     height: "170",
-    viewBox: "-60 -70 120 130",
+    viewBox: "-60 -96 120 112",
     "aria-label": pet.name
   }, React.createElement(Companion, {
     student: state.student,
@@ -69087,6 +69240,527 @@ function TrainRouteNotice({
     onClick: onAction
   }, r.button)));
 }
+const SUBJECT_BADGE_ATLAS = {
+  subjects: ['math', 'chinese', 'science', 'social', 'life'],
+  x: [215, 397, 585, 775, 968, 1166, 1367],
+  width: [174, 180, 184, 190, 200, 190, 212],
+  y: [228, 410, 590, 768, 948],
+  height: [184, 180, 180, 180, 180]
+};
+function SubjectBadge({
+  row,
+  tier,
+  earned = true,
+  size = 44
+}) {
+  const [failed, setFailed] = useState(false),
+    subject = row.id.replace(/^(skill|solid)-/, ''),
+    sy = SUBJECT_BADGE_ATLAS.subjects.indexOf(subject),
+    mastery = row.id.startsWith('solid-'),
+    i = Math.min(tier, 6),
+    a = SUBJECT_BADGE_ATLAS;
+  const icon = {
+    math: '⚙',
+    chinese: '書',
+    science: '葉',
+    social: '圖',
+    life: '芽'
+  }[subject] || row.icon;
+  const clip = 'badge' + React.useId().replaceAll(':', ''),
+    x = a.x[i] - a.width[i] / 2,
+    y = i === 6 ? [136, 326, 506, 686, 866][sy] : a.y[sy] - a.height[sy] / 2,
+    h = i === 6 ? sy === 0 ? 184 : 174 : a.height[sy];
+  return React.createElement("span", {
+    className: 'subject-badge' + (mastery ? ' mastery' : '') + (!earned ? ' unknown' : ''),
+    style: {
+      width: size,
+      height: size
+    },
+    "data-art-id": sy >= 0 ? `subject-growth.${subject}.lv${String(i + 1).padStart(2, '0')}` : undefined,
+    "data-earned": earned
+  }, !earned ? React.createElement(BadgeOutline, {
+    tier: i
+  }) : sy >= 0 && !failed ? React.createElement("svg", {
+    width: size,
+    height: size,
+    viewBox: `${x} ${y} ${a.width[i]} ${h}`,
+    role: "img",
+    "aria-label": `${row.label}第 ${tier + 1} 階`
+  }, React.createElement("defs", null, React.createElement("clipPath", {
+    id: clip
+  }, React.createElement("rect", {
+    x: x,
+    y: y,
+    width: a.width[i],
+    height: h
+  }))), React.createElement("image", {
+    clipPath: `url(#${clip})`,
+    href: "assets/badges/enamel-island-v1/board.png",
+    width: "1484",
+    height: "1060",
+    onError: () => setFailed(true)
+  })) : React.createElement("span", {
+    className: "badge-fallback",
+    "data-badge-fallback": failed ? 'true' : undefined
+  }, icon), earned && mastery && React.createElement("b", {
+    className: "mastery-gem",
+    "aria-label": "\u5B78\u6703\u5FBD\u7AE0"
+  }, "\u2726"));
+}
+function BadgeOutline({
+  tier
+}) {
+  const shapes = ['M50 5 A45 45 0 1 1 49.9 5Z', 'M50 5 Q62 0 70 13 Q87 8 88 27 Q105 35 92 50 Q105 68 87 75 Q88 94 70 88 Q60 105 50 94 Q34 106 27 88 Q9 96 12 75 Q-4 66 8 50 Q-4 33 13 26 Q10 9 29 12 Q37 0 50 5Z', 'M50 5 Q65 16 90 16 L87 62 Q80 83 50 96 Q20 83 13 62 L10 16 Q35 16 50 5Z', 'M50 4 L96 50 L50 96 L4 50Z', 'M50 7 A40 40 0 1 1 49.9 7Z M8 48 Q-3 82 40 94 M92 48 Q103 82 60 94', 'M50 4 Q65 4 68 20 Q96 14 95 40 Q99 56 82 63 Q91 89 65 88 Q50 110 35 88 Q8 92 18 65 Q-6 57 7 34 Q9 15 31 20 Q35 3 50 4Z', 'M50 3 L64 19 L85 12 L85 35 L98 50 L82 64 L87 86 L64 82 L50 98 L35 82 L14 89 L17 65 L2 50 L18 35 L13 14 L36 18Z'];
+  return React.createElement("svg", {
+    viewBox: "0 0 100 100",
+    "aria-label": "\u4E0B\u4E00\u679A\u672A\u77E5\u5FBD\u7AE0"
+  }, React.createElement("path", {
+    d: shapes[tier],
+    fill: "none",
+    stroke: "#887758",
+    strokeWidth: "3",
+    strokeDasharray: "4 3"
+  }), React.createElement("text", {
+    x: "50",
+    y: "65",
+    textAnchor: "middle",
+    fill: "#665a47",
+    fontSize: "42"
+  }, "\uFF1F"));
+}
+function PetCloseup({
+  student
+}) {
+  return React.createElement("div", {
+    className: "pet-closeup"
+  }, React.createElement("svg", {
+    viewBox: "-50 -58 100 94",
+    role: "img",
+    "aria-label": selectedCompanion(student).name + '配件特寫'
+  }, React.createElement(Companion, {
+    student: student,
+    animate: false
+  })));
+}
+const OFFICE_KEEPSAKE_PLACES = {
+  goggles: {
+    x: 100,
+    y: 230,
+    label: '書櫃上層'
+  },
+  quill: {
+    x: 175,
+    y: 230,
+    label: '書櫃上層'
+  },
+  crown: {
+    x: 250,
+    y: 230,
+    label: '書櫃上層'
+  },
+  scarf: {
+    x: 115,
+    y: 355,
+    label: '門邊掛架'
+  },
+  cape: {
+    x: 175,
+    y: 355,
+    label: '門邊掛架'
+  }
+};
+function KeepsakePicture({
+  id
+}) {
+  if (id === 'cape') return React.createElement("svg", {
+    viewBox: "35 108 255 245"
+  }, React.createElement(FittedCapePart, {
+    id: "p_leo",
+    layer: "rear"
+  }), React.createElement(FittedCapePart, {
+    id: "p_leo",
+    layer: "front"
+  }));
+  return React.createElement("svg", {
+    viewBox: id === 'scarf' ? '-35 -12 70 75' : '-37 -38 74 76'
+  }, React.createElement(ExplorerGear, {
+    kind: id
+  }));
+}
+function OfficeKeepsakesArt({
+  student
+}) {
+  return React.createElement("g", {
+    className: "office-keepsakes",
+    pointerEvents: "none"
+  }, officeKeepsakes(student).filter(o => !student.adventureUI?.hiddenKeepsakes?.includes(o.id)).map(o => {
+    const p = OFFICE_KEEPSAKE_PLACES[o.id];
+    return React.createElement("g", {
+      key: o.id,
+      "data-office-keepsake": o.id,
+      transform: `translate(${p.x - 28},${p.y - 50})`
+    }, React.createElement("rect", {
+      x: "-4",
+      y: "-4",
+      width: "64",
+      height: "74",
+      rx: "6",
+      fill: "#172a30bb",
+      stroke: "#c8a66a"
+    }), React.createElement("svg", {
+      width: "56",
+      height: "66"
+    }, React.createElement(KeepsakePicture, {
+      id: o.id
+    })));
+  }));
+}
+function OfficeCollection({
+  state,
+  setState,
+  onClose,
+  initial = 'keepsakes'
+}) {
+  const [tab, setTab] = useState(initial),
+    choices = giftChoices(state),
+    offer = giftOfferKey(state),
+    g = state.student.gifts;
+  return React.createElement("div", {
+    className: "overlay",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": "\u4E8B\u52D9\u6240\u6536\u85CF"
+  }, React.createElement("section", {
+    className: "overlay-panel col office-collection"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement("h2", null, "\u7070\u9D09\u592B\u4EBA\u7684\u6536\u85CF\u6AC3"), React.createElement(Btn, {
+    id: "office-close",
+    onClick: onClose
+  }, "\u95DC\u9589")), React.createElement("div", {
+    className: "tabs"
+  }, React.createElement("button", {
+    onClick: () => setTab('keepsakes'),
+    className: tab === 'keepsakes' ? 'active' : ''
+  }, "\u7D00\u5FF5\u64FA\u8A2D"), React.createElement("button", {
+    id: "office-gifts",
+    onClick: () => setTab('gifts'),
+    className: tab === 'gifts' ? 'active' : ''
+  }, "\u6211\u7684\u79AE\u7269", choices.length ? ' ●' : '')), tab === 'keepsakes' ? React.createElement(React.Fragment, null, React.createElement("p", null, "\u5192\u96AA\u5F97\u5230\u7684\u7D00\u5FF5\uFF0C\u90FD\u597D\u597D\u6536\u5728\u9019\u88E1\u3002\u53EF\u4EE5\u9078\u64C7\u8981\u4E0D\u8981\u64FA\u51FA\u4F86\u3002"), React.createElement("div", {
+    className: "grid two"
+  }, officeKeepsakes(state.student).map(o => React.createElement("label", {
+    className: "card keepsake-choice",
+    key: o.id
+  }, React.createElement(KeepsakePicture, {
+    id: o.id
+  }), React.createElement("b", null, o.name), React.createElement("span", null, OFFICE_KEEPSAKE_PLACES[o.id].label), React.createElement("span", null, React.createElement("input", {
+    type: "checkbox",
+    checked: !state.student.adventureUI?.hiddenKeepsakes?.includes(o.id),
+    onChange: e => {
+      const shown = e.target.checked;
+      setState(s => {
+        const ui = s.student.adventureUI || {},
+          hidden = new Set(ui.hiddenKeepsakes || []);
+        shown ? hidden.delete(o.id) : hidden.add(o.id);
+        return {
+          ...s,
+          student: {
+            ...s.student,
+            adventureUI: {
+              ...ui,
+              hiddenKeepsakes: [...hidden]
+            }
+          }
+        };
+      });
+    }
+  }), " \u64FA\u51FA\u4F86")))), !officeKeepsakes(state.student).length && React.createElement("p", null, "\u5B8C\u6210\u5192\u96AA\uFF0C\u5C31\u6703\u7559\u4E0B\u7B2C\u4E00\u4EF6\u7D00\u5FF5\u3002")) : React.createElement(React.Fragment, null, React.createElement("p", null, "\u7070\u9D09\u592B\u4EBA\uFF1A\u6BCF\u4EFD\u79AE\u7269\u6311\u4E00\u4EF6\u559C\u6B61\u7684\uFF0C\u53E6\u4E00\u4EF6\u4E0B\u6B21\u9084\u6709\u6A5F\u6703\u9078\u3002"), React.createElement("div", {
+    className: "gift-progress"
+  }, [['mission', '新委託'], ['review', '到期複習'], ['repair', '訂正成功']].map(([k, n]) => React.createElement("span", {
+    key: k
+  }, n, " ", g?.counts[k] % 3 || 0, "\uFF0F3"))), React.createElement("div", {
+    className: "grid two"
+  }, choices.map(id => React.createElement("button", {
+    className: "card col gift-choice",
+    key: id,
+    id: 'gift-' + id,
+    onClick: () => {
+      setState(s => claimGift(s, id, offer));
+      onClose();
+    }
+  }, React.createElement("span", null, "\uD83C\uDF81"), React.createElement("b", null, wardrobeItem(id)?.name), React.createElement("span", null, "\u9078\u9019\u4E00\u4EF6")))), choices.length === 1 && React.createElement("p", null, "\u6536\u85CF\u5FEB\u9F4A\u4E86\uFF01\u9019\u662F\u6700\u5F8C\u4E00\u4EF6\u9084\u6C92\u62FF\u5230\u7684\u914D\u4EF6\u3002"), !choices.length && React.createElement("p", null, "\u6BCF\u5B8C\u6210 3 \u4EF6\u65B0\u59D4\u8A17\u30013 \u6B21\u5230\u671F\u8907\u7FD2\uFF0C\u6216 3 \u6B21\u8A02\u6B63\u6210\u529F\uFF0C\u5C31\u80FD\u518D\u9078\u4E00\u4EFD\u79AE\u7269\u3002"))));
+}
+function useAdventureDesktop() {
+  const [desktop, setDesktop] = useState(() => innerWidth >= 768);
+  useEffect(() => {
+    const update = () => setDesktop(innerWidth >= 768);
+    addEventListener('resize', update);
+    return () => removeEventListener('resize', update);
+  }, []);
+  return desktop;
+}
+const ADVENTURE_TIP_ROUTES = {
+  '': ['agency', 'npc_grayraven'],
+  'c1_brief|!r1_done': ['tower_hall', 'npc_aki'],
+  'r1_done|!r2_done': ['tower_hall', 'railcar'],
+  'r2_done|!r4_done': ['tower_top', 'clockface'],
+  'r4_done|!ev:E6': ['tower_top', 'chimelog'],
+  'ev:EF|!ev:E3': ['forest', 'dig'],
+  'ev:E3|!ev:E8': ['tower_hall', 'safe'],
+  'ev:E8|!ev:E9': ['workshop', 'blackboard'],
+  'q2_solved|!confessed': ['tower_hall', 'npc_ling'],
+  'confessed|!c1_done': ['tower_top', 'core'],
+  'c1_done|!ch2_open': ['agency', 'new_letter'],
+  'c1_done|!met_astronomer|ch2_open': ['observatory', 'npc_astronomer'],
+  'ch2_open|!c2_brief': ['agency', 'npc_grayraven'],
+  'c2_brief|!ev:F1': ['library', 'notebook'],
+  'ev:F1|!ev:F2': ['academy', 'npc_merchant'],
+  'ev:F2|!ev:F3': ['library', 'manuscript'],
+  'ev:F3|!ev:F4': ['academy', 'gate'],
+  'ev:F4|!ev:F5': ['corridor', 'wall'],
+  'q3_solved|!c2_done': ['corridor', 'truth'],
+  'c3_done': ['agency', 'npc_grayraven'],
+  'c3_done|c3_epilogue|!c4_brief': ['agency', 'npc_grayraven'],
+  'c4_brief|!ev:E41': ['observatory', 'npc_astronomer'],
+  'ev:E41|!ev:E42': ['lab', 'lens_bench'],
+  'q41_solved|!ev:E43': ['lab', 'coil_bench'],
+  'ev:E43|!c4_e4': ['observatory', 'floor_hatch'],
+  'c4_e4|!ev:E45': ['starroom', 'rock_wall'],
+  'q42_solved|!c4_confess': ['starroom', 'npc_apprentice_s'],
+  'c4_confess|!ev:E46': ['hill', 'signpost'],
+  'c4_done': ['agency', 'npc_grayraven'],
+  'c5_brief|!c5_f1': ['museum', 'c5_photo_box'],
+  'c5_f1|!c5_f2': ['archive', 'c5_display_card'],
+  'q51_solved|!c5_chiu': ['market', 'npc_chiu'],
+  'q51_solved|!c5_f4': ['market', 'npc_mei'],
+  'q51_solved|!c5_f3': ['harbor', 'npc_captain'],
+  'q52_solved|!c5_f5': ['oldstreet', 'c5_old_wall'],
+  'c5_f5|!c5_done': ['oldstreet', 'npc_elder'],
+  'c5_done': ['agency', 'npc_grayraven']
+};
+function adventureGoal(student, story) {
+  const train = trainRouteHint(student, story);
+  if (train) return {
+    ...train,
+    key: 'train:' + train.title,
+    short: !train.ready ? `線索碎片 ${train.count}／9・去通緝板` : train.title
+  };
+  const tip = COMPANION_TIPS.find(t => condOk(story, t.when)),
+    text = storyCompanionTip(student, story, tip?.text || '到島上看看，幫居民解決難題。');
+  const objectives = storyObjectives(student).filter(o => o.chapter === currentChapter(story)),
+    progress = objectives.length ? `${objectives.filter(o => condOk(story, o.done)).length}／${objectives.length}` : '';
+  const base = {
+    key: currentChapter(story) + ':' + text,
+    title: '目前目標',
+    short: text.split(/[，。！]/)[0],
+    text,
+    progress
+  };
+  const route = ADVENTURE_TIP_ROUTES[tip?.when.join('|')];
+  if (route) return {
+    ...base,
+    scene: route[0],
+    hotspot: route[1]
+  };
+  if (/手冊|推論/.test(text)) return {
+    ...base,
+    action: 'book'
+  };
+  const candidates = [];
+  for (const scene of Object.values(SCENES)) for (const h of visibleHotspots(scene, story)) {
+    const name = h.kind === 'npc' ? NPCS[h.npc]?.name : h.label,
+      sceneName = scene.name.replace(/^.*·/, '').trim();
+    const score = (name && text.includes(name) ? name.length + 10 : 0) + (sceneName && text.includes(sceneName) ? sceneName.length : 0);
+    if (score) candidates.push({
+      score,
+      scene: scene.id,
+      hotspot: h.id
+    });
+  }
+  candidates.sort((a, b) => b.score - a.score);
+  return {
+    ...base,
+    ...(candidates[0] || {
+      scene: 'agency',
+      hotspot: 'npc_grayraven'
+    })
+  };
+}
+function GoalButton({
+  goal,
+  onClick
+}) {
+  return React.createElement("button", {
+    id: "current-objective",
+    onClick: onClick,
+    "aria-label": '目前目標：' + goal.short,
+    "aria-haspopup": "dialog"
+  }, React.createElement("span", null, "\u25C9 ", React.createElement("b", null, "\u76EE\u524D\u76EE\u6A19"), " \xB7 ", goal.short, goal.progress && ' · ' + goal.progress), goal.count !== undefined && React.createElement("span", {
+    className: "goal-dots",
+    "aria-label": `線索 ${Math.min(9, goal.count)}／9`
+  }, Array.from({
+    length: 9
+  }, (_, i) => React.createElement("i", {
+    key: i,
+    className: i < goal.count ? 'filled' : ''
+  }))));
+}
+function AdventureTools({
+  children
+}) {
+  const ref = useRef(null),
+    [overflow, setOverflow] = useState(false);
+  useEffect(() => {
+    const el = ref.current?.querySelector('.gamehud');
+    if (!el) return;
+    const measure = () => setOverflow(el.scrollWidth > el.clientWidth + 2);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [children]);
+  const move = x => ref.current?.querySelector('.gamehud')?.scrollBy({
+    left: x,
+    behavior: 'smooth'
+  });
+  return React.createElement("div", {
+    className: "adventure-tools",
+    ref: ref
+  }, overflow && React.createElement("button", {
+    "aria-label": "\u5411\u5DE6\u79FB\u52D5\u5DE5\u5177\u5217",
+    onClick: () => move(-200)
+  }, "\u2039"), children, overflow && React.createElement("button", {
+    "aria-label": "\u5411\u53F3\u79FB\u52D5\u5DE5\u5177\u5217",
+    onClick: () => move(200)
+  }, "\u203A"));
+}
+function useAdventureNotices(state, setState, scene, goal, busy, notify) {
+  const s = state.student,
+    offer = giftOfferKey(state);
+  useEffect(() => {
+    if (busy) return;
+    const ui = s.adventureUI || {};
+    if (scene.id === 'agency' && officeKeepsakes(s).length && !ui.keepsakesNotified) {
+      notify('你的裝備收進事務所當紀念了！書櫃上層與門邊掛架都能看到。點「紀念擺設」看看。');
+      setState(st => ({
+        ...st,
+        student: {
+          ...st.student,
+          adventureUI: {
+            ...st.student.adventureUI,
+            keepsakesNotified: true
+          }
+        }
+      }));
+      return;
+    }
+    if (scene.id === 'agency' && offer && s.gifts?.seenOffer !== offer) {
+      notify('灰鴉夫人：有一份禮物送給你！點「領取禮物」，選一件喜歡的。');
+      setState(st => ({
+        ...st,
+        student: {
+          ...st.student,
+          gifts: {
+            ...st.student.gifts,
+            seenOffer: offer
+          }
+        }
+      }));
+      return;
+    }
+    if (!(ui.goals || []).includes(goal.key)) {
+      notify(selectedCompanion(s).name + '：' + goal.text);
+      setState(st => ({
+        ...st,
+        student: {
+          ...st.student,
+          adventureUI: {
+            ...st.student.adventureUI,
+            goals: [...(st.student.adventureUI?.goals || []), goal.key].slice(-150)
+          }
+        }
+      }));
+    }
+  }, [scene.id, goal.key, busy, offer, s.adventureUI?.keepsakesNotified, s.gifts?.seenOffer]);
+}
+function sceneLabelPlacements(scene, story, scale) {
+  const isMap = scene.kind === 'map',
+    labels = [],
+    out = {};
+  for (const h of isMap ? scene.hotspots : visibleHotspots(scene, story)) {
+    const npc = h.kind === 'npc' ? NPCS[h.npc] : null,
+      sc = isMap ? .6 : depthScale(h.y),
+      locked = isMap && !condOk(story, h.requires),
+      name = npc ? npc.name : h.label;
+    const dy = npc ? FIELD_ART[npc.id] ? 30 - 225 * sc * (npc.id === 'ling' ? .85 : 1) - 38 : 30 - (npc.look.hat === 'tophat' ? 280 : 242) * sc : isMap ? 40 : -70 * sc - 10;
+    const w = locked ? Math.max(176, (MAP_LOCK_HINT[h.to]?.length || 0) * 14 + 16) : Math.max(152, [...name].length * 16 + 20),
+      height = locked ? 56 : 40;
+    labels.push({
+      id: h.id,
+      x: Math.max((w / 2 + 3) * scale, Math.min(1280 - (w / 2 + 3) * scale, h.x)),
+      y: Math.max(3, Math.min(720 - 90 * scale, h.y + dy)),
+      w,
+      height
+    });
+  }
+  labels.sort((a, b) => a.y - b.y || a.x - b.x);
+  const placed = [],
+    overlap = (a, b) => Math.abs(a.x - b.x) < (a.w + b.w) * scale / 2 + 3 && a.y < b.y + b.height * scale + 3 && a.y + a.height * scale + 3 > b.y;
+  for (const label of labels) {
+    const original = label.y;
+    let n = 0;
+    while (placed.some(p => overlap(label, p)) && n++ < 25) {
+      label.y = original - n * 44 * scale;
+      if (label.y < 3) label.y = original + n * 44 * scale;
+      label.y = Math.max(3, Math.min(720 - 90 * scale, label.y));
+    }
+    placed.push(label);
+    out[label.id] = label;
+  }
+  return out;
+}
+function LockedSceneHotspot({
+  h,
+  place,
+  scale
+}) {
+  return React.createElement("g", {
+    className: "map-locked",
+    role: "img",
+    "aria-label": `${h.label}，${MAP_LOCK_HINT[h.to]}`
+  }, React.createElement("title", null, MAP_LOCK_HINT[h.to]), React.createElement("g", {
+    transform: `translate(${h.x},${h.y}) scale(${scale})`
+  }, React.createElement("circle", {
+    r: "26",
+    fill: "#172c35",
+    stroke: "#a9b3ad",
+    strokeWidth: "2"
+  }), React.createElement("text", {
+    textAnchor: "middle",
+    y: "7",
+    fontSize: "20",
+    fill: "#d9ddd5"
+  }, "\u25C7")), React.createElement("g", {
+    className: "map-locked-label",
+    transform: `translate(${place.x},${place.y}) scale(${scale})`
+  }, React.createElement("rect", {
+    x: -place.w / 2,
+    width: place.w,
+    height: "56",
+    rx: "8",
+    fill: "#17212bea"
+  }), React.createElement("text", {
+    textAnchor: "middle",
+    y: "22",
+    fill: "#e5e0d2",
+    fontSize: "16"
+  }, h.label), React.createElement("text", {
+    textAnchor: "middle",
+    y: "44",
+    fill: "#bebaa9",
+    fontSize: "14"
+  }, MAP_LOCK_HINT[h.to])));
+}
 const PLAYER_SPEED = 300;
 function visibleHotspots(scene, story) {
   return scene.hotspots.filter(h => condOk(story, h.requires));
@@ -69101,7 +69775,20 @@ function SceneView({
   onHover,
   cheer
 }) {
-  const svgRef = useRef(null);
+  const svgRef = useRef(null),
+    desktop = useAdventureDesktop();
+  const [labelScale, setLabelScale] = useState(1),
+    [floorHelp, setFloorHelp] = useState(() => !story.log.some(l => l.type === 'scene' && l.scene === scene.id));
+  useEffect(() => {
+    const timer = setTimeout(() => setFloorHelp(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
+  useEffect(() => {
+    const el = svgRef.current;
+    const ro = new ResizeObserver(() => setLabelScale(innerWidth >= 768 ? 1280 / el.getBoundingClientRect().width : 1));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const [pos, setPos] = useState(() => story.pos && story.pos.scene === scene.id ? {
     x: story.pos.x,
     y: story.pos.y
@@ -69119,6 +69806,7 @@ function SceneView({
   const posRef = useRef(pos);
   posRef.current = pos;
   const hotspots = visibleHotspots(scene, story);
+  const labelPlaces = sceneLabelPlacements(scene, story, labelScale);
   const isMap = scene.kind === 'map';
   const onInteractRef = useRef(onInteract);
   onInteractRef.current = onInteract;
@@ -69269,6 +69957,8 @@ function SceneView({
   }, React.createElement(SceneArt, {
     art: scene.art,
     story: story
+  }), scene.id === 'agency' && React.createElement(OfficeKeepsakesArt, {
+    student: student
   }), scene.props && React.createElement("g", {
     className: "scene-props",
     pointerEvents: "none",
@@ -69311,40 +70001,12 @@ function SceneView({
       preserveAspectRatio: "xMidYMid meet",
       "data-decor": it.id
     });
-  })), isMap && scene.hotspots.filter(h => !condOk(story, h.requires)).map(h => React.createElement("g", {
+  })), isMap && scene.hotspots.filter(h => !condOk(story, h.requires)).map(h => React.createElement(LockedSceneHotspot, {
     key: h.id,
-    className: "map-locked",
-    transform: `translate(${h.x},${h.y})`,
-    role: "img",
-    "aria-label": `${h.label}，${MAP_LOCK_HINT[h.to]}`
-  }, React.createElement("title", null, MAP_LOCK_HINT[h.to]), React.createElement("circle", {
-    r: "26",
-    fill: "#172c35",
-    stroke: "#a9b3ad",
-    strokeWidth: "2"
-  }), React.createElement("text", {
-    textAnchor: "middle",
-    y: "7",
-    fontSize: "20",
-    fill: "#d9ddd5"
-  }, "\u25C7"), React.createElement("rect", {
-    x: "-86",
-    y: "36",
-    width: "172",
-    height: "52",
-    rx: "8",
-    fill: "#17212bea"
-  }), React.createElement("text", {
-    textAnchor: "middle",
-    y: "56",
-    fill: "#e5e0d2",
-    fontSize: "16"
-  }, h.label), React.createElement("text", {
-    textAnchor: "middle",
-    y: "75",
-    fill: "#bebaa9",
-    fontSize: "12"
-  }, MAP_LOCK_HINT[h.to]))), React.createElement("g", {
+    h: h,
+    place: labelPlaces[h.id],
+    scale: labelScale
+  })), React.createElement("g", {
     className: "scene-actors"
   }, items.map((it, i) => it.t === 'p' ? React.createElement("g", {
     key: "player",
@@ -69359,17 +70021,20 @@ function SceneView({
     showCompanion: !!story.flags.has_tick,
     cheer: cheer
   })) : React.createElement(Hotspot, {
+    place: labelPlaces[it.h.id],
+    labelScale: labelScale,
     key: it.h.id,
     h: it.h,
     isMap: isMap,
     busy: busy,
     onClick: e => clickHot(e, it.h),
     near: !busy && nearest()?.id === it.h.id
-  }))), !busy && React.createElement("text", {
+  }))), !busy && (!desktop || floorHelp) && React.createElement("text", {
+    className: "floor-help",
     x: "640",
-    y: "708",
+    y: desktop ? 625 : 708,
     textAnchor: "middle",
-    fontSize: "16",
+    fontSize: 16 * labelScale,
     fill: "rgba(255,255,255,0.75)"
   }, "\u9EDE\u5730\u9762\u79FB\u52D5\u30FB\u9EDE\u4EBA\u7269\u6216\u7269\u4EF6\u4E92\u52D5\uFF08\u4E5F\u53EF\u7528\u65B9\u5411\u9375\u8207 Enter\uFF09"));
 }
@@ -69398,11 +70063,16 @@ function Hotspot({
   isMap,
   busy,
   onClick,
-  near
+  near,
+  labelScale = 1,
+  place
 }) {
   const sc = isMap ? 0.6 : depthScale(h.y);
   const npc = h.kind === 'npc' ? NPCS[h.npc] : null;
   const nameY = npc ? FIELD_ART[npc.id] ? 30 - 225 * sc * (npc.id === 'ling' ? .85 : 1) - 38 : 30 - (npc.look.hat === 'tophat' ? 280 : 242) * sc : isMap ? 40 : -70 * sc - 10;
+  const w = place?.w || 152,
+    lx = place ? place.x - h.x : 0,
+    ly = place ? place.y - h.y : nameY;
   return React.createElement("g", {
     className: `hot ${near ? 'near' : ''} ${isMap ? 'map-hot' : ''}`,
     transform: `translate(${h.x},${h.y})`,
@@ -69446,23 +70116,24 @@ function Hotspot({
     r: 6 * sc,
     fill: "#4fb3c9"
   })), React.createElement("rect", {
-    x: "-60",
-    y: npc ? 30 - 270 * sc : -40,
-    width: "120",
-    height: npc ? 270 * sc : 80,
+    x: -60 * labelScale,
+    y: npc ? 30 - 270 * sc : -40 * labelScale,
+    width: 120 * labelScale,
+    height: npc ? Math.max(270 * sc, 40 * labelScale) : 80 * labelScale,
     fill: "transparent"
   }), React.createElement("g", {
-    className: "label always"
+    className: "label always",
+    transform: `translate(${lx},${ly}) scale(${labelScale})`
   }, React.createElement("rect", {
-    x: "-76",
-    y: nameY,
-    width: "152",
-    height: "30",
+    x: -w / 2,
+    y: "0",
+    width: w,
+    height: "40",
     rx: "6",
     fill: "#14232dea",
     stroke: npc ? '#87d3c9' : '#c6a16b'
   }), React.createElement("text", {
-    y: nameY + 20,
+    y: "26",
     textAnchor: "middle",
     fontSize: "16",
     fill: "#fff5df",
@@ -69980,6 +70651,7 @@ function Casebook({
     });
     const solved = !!story.flags[d.set];
     const open = condOk(story, d.after);
+    const deductionEvs = [...new Set([...evs.map(e => e.id), ...(d.requires || [])])].filter(id => story.evidence.includes(id)).map(evidence).filter(Boolean);
     return React.createElement("div", {
       key: d.id,
       className: "card col",
@@ -70018,7 +70690,7 @@ function Casebook({
       className: "eyebrow"
     }, "\u4F9D\u64DA\u7684\u8B49\u64DA\uFF08\u9EDE\u9078\uFF09"), React.createElement("div", {
       className: "row"
-    }, evs.map(e => React.createElement("button", {
+    }, deductionEvs.map(e => React.createElement("button", {
       key: e.id,
       id: `dev-${e.id}`,
       className: `chip ${dEv.includes(e.id) ? 'sel' : ''}`,
@@ -70262,7 +70934,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.11-v47',
+    build: '2026.11.11-v48',
     ...context,
     message
   };
@@ -70913,6 +71585,7 @@ function MissionPlayer({
       careDiagnostic: !!local.probe,
       careDiagnosticComplete: !!local.probe && (mission.diag || []).every(s => s.id === local.id || s.status !== 'pending' && !s.gaveUp),
       gaveUp: !!res.gaveUp,
+      giftDue: isReview && !!mission.nextReviewAt && now() >= mission.nextReviewAt,
       source: isReview ? 'review' : 'mission',
       missionId: mission.id,
       kpId: mission.kpId,
@@ -71178,7 +71851,7 @@ function QuestsScreen({
     onClick: () => go('records')
   }, "\u67E5\u770B\u7D00\u5FF5\u518A"))));
 }
-function RecordsScreen({
+function GrowthScreen({
   state,
   setState,
   go
@@ -71209,10 +71882,10 @@ function RecordsScreen({
   }, React.createElement("div", null, React.createElement(Btn, {
     small: true,
     onClick: () => go('adventure')
-  }, "\u2190 \u56DE\u5230\u5192\u96AA")), React.createElement(MemorialBook, {
-    state: state,
-    setState: setState
-  }), React.createElement("div", {
+  }, "\u2190 \u56DE\u5230\u5192\u96AA")), React.createElement("h1", null, "\u6210\u9577\u7D00\u9304"), React.createElement(Btn, {
+    id: "growth-book",
+    onClick: () => go('records')
+  }, "\u67E5\u770B\u7D00\u5FF5\u518A"), React.createElement("div", {
     className: "grid two"
   }, React.createElement("div", {
     className: "card col"
@@ -71235,7 +71908,7 @@ function RecordsScreen({
     }
   }, React.createElement("span", {
     className: "eyebrow"
-  }, "\u5169\u79D1\u6280\u80FD\u7B49\u7D1A"), React.createElement(SkillBars, {
+  }, "\u5404\u79D1\u6280\u80FD\u7B49\u7D1A"), React.createElement(SkillBars, {
     state: state
   }), React.createElement("span", {
     className: "small muted"
@@ -71243,25 +71916,7 @@ function RecordsScreen({
     className: "btn primary",
     id: "records-wardrobe",
     onClick: () => go('wardrobe')
-  }, "\u524D\u5F80\u66F4\u8863\u5BA4 \xB7 \u5916\u8C8C\u8207\u6613\u5BB9"), React.createElement("span", {
-    className: "eyebrow"
-  }, " \u5DF2\u6536\u96C6\u88DD\u626E"), React.createElement("div", {
-    className: "row",
-    style: {
-      marginTop: 6
-    }
-  }, OUTFITS.map(o => {
-    const u = unlocked.some(x => x.id === o.id);
-    return React.createElement("button", {
-      key: o.id,
-      className: `chip ${s.outfits.includes(o.id) ? 'sel' : ''}`,
-      disabled: !u,
-      onClick: () => toggleOutfit(o.id),
-      style: {
-        opacity: u ? 1 : 0.45
-      }
-    }, o.name, !u && `（${o.unlockLevel ? `Lv.${o.unlockLevel}` : '成就'}解鎖）`);
-  })))), React.createElement("div", {
+  }, "\u524D\u5F80\u66F4\u8863\u5BA4 \xB7 \u5916\u8C8C\u8207\u6613\u5BB9"))), React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u6211\u7684\u80FD\u529B\u5730\u5716"), !Object.keys(byKp).length && React.createElement("span", {
     className: "muted small"
@@ -71283,7 +71938,13 @@ function RecordsScreen({
     style: {
       fontVariantNumeric: 'tabular-nums'
     }
-  }, v.ok, "/", v.n)))))), React.createElement("div", {
+  }, v.ok, "/", v.n)))))), React.createElement("section", {
+    className: "card col",
+    id: "growth-achievements"
+  }, React.createElement("h3", null, "\u5176\u4ED6\u7D00\u5FF5"), ACHIEVEMENTS.filter(a => s.achievements.includes(a.id)).map(a => React.createElement("div", {
+    className: "ach",
+    key: a.id
+  }, React.createElement("span", null, "\u2726"), React.createElement("div", null, React.createElement("b", null, a.name), React.createElement("p", null, a.desc))))), React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u6700\u8FD1\u7684\u7DF4\u7FD2"), !logs.length && React.createElement("span", {
     className: "muted small"
@@ -71388,13 +72049,37 @@ function Adventure({
   const [cheer, setCheer] = useState(0);
   const [note, setNote] = useState(null);
   const [newEv, setNewEv] = useState(0);
+  const desktop = useAdventureDesktop(),
+    [goalOpen, setGoalOpen] = useState(false),
+    [collection, setCollection] = useState(null),
+    [reviewDesk, setReviewDesk] = useState(false),
+    [gameWidth, setGameWidth] = useState(null),
+    stageRef = useRef(null);
+  useEffect(() => {
+    const app = document.querySelector('.app');
+    app?.classList.add('adventure-active');
+    const measure = () => {
+      const top = document.querySelector('.topbar')?.getBoundingClientRect().bottom || 0;
+      setGameWidth(innerWidth >= 768 && innerHeight >= 560 ? Math.floor(Math.min(innerWidth - 24, (innerHeight - top - 24) * 1280 / 720)) : null);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    const bar = document.querySelector('.topbar');
+    if (bar) ro.observe(bar);
+    addEventListener('resize', measure);
+    return () => {
+      app?.classList.remove('adventure-active');
+      ro.disconnect();
+      removeEventListener('resize', measure);
+    };
+  }, []);
   const pendingPet = typeof pendingCompanionEncounter === 'function' ? pendingCompanionEncounter(student) : null;
   const [encounterOpen, setEncounterOpen] = useState(false);
   const encounter = pendingPet && !node && !mech && (encounterOpen || companionAutoEncounter(student, pendingPet)) ? pendingPet : null;
-  const busy = !!node || !!mech || book || news || !!chest || !!encounter;
+  const busy = !!node || !!mech || book || news || !!chest || !!encounter || !!collection || reviewDesk;
   const notify = t => {
     setNote(t);
-    setTimeout(() => setNote(null), 2600);
+    setTimeout(() => setNote(null), 6500);
   };
   const [titleKey, setTitleKey] = useState(0);
   useEffect(() => {
@@ -71552,6 +72237,10 @@ function Adventure({
         setStory(st2);
       }
       startNode(pick.node, st2);
+      return;
+    }
+    if (h.action === 'keepsakes') {
+      setCollection('keepsakes');
       return;
     }
     if (h.action === 'board') {
@@ -71767,24 +72456,23 @@ function Adventure({
     if (h && condOk(story, h.requires)) interact(h);
   };
   const objectivesOpen = storyObjectives(student).filter(o => o.chapter === currentChapter(story) && !condOk(story, o.done));
-  return React.createElement("div", {
-    className: "stage wide",
-    style: {
-      paddingBlock: 10
-    }
-  }, React.createElement(TrainRouteNotice, {
-    student: student,
-    story: story,
-    onAction: followTrainRoute,
-    disabled: busy
-  }), route && React.createElement("aside", {
-    className: "junior-route",
-    id: "junior-route",
-    "aria-label": "\u4E0B\u4E00\u6B65\u63D0\u793A"
-  }, React.createElement("b", null, route.title), React.createElement("p", null, route.text)), React.createElement("div", {
-    className: "game"
-  }, React.createElement("div", {
-    className: "gamehud"
+  const goal = adventureGoal(student, story);
+  useAdventureNotices(state, setState, scene, goal, busy || !!note, notify);
+  const followGoal = () => {
+    setGoalOpen(false);
+    if (busy) return;
+    if (goal.action === 'wanted') return onOpenWanted();
+    if (goal.action === 'book') return setBook(true);
+    if (goal.scene && story.scene !== goal.scene) return interact({
+      kind: 'exit',
+      to: goal.scene
+    });
+    const h = scene.hotspots.find(h => h.id === goal.hotspot);
+    if (h) interact(h);else askTick();
+  };
+  const toolbar = React.createElement("div", {
+    className: "gamehud",
+    "aria-label": "\u5192\u96AA\u5DE5\u5177"
   }, React.createElement("span", {
     className: "loc"
   }, "\uD83D\uDCCD ", scene.name), !trainRoute && objectivesOpen[0] && React.createElement("span", {
@@ -71844,9 +72532,67 @@ function Adventure({
     id: "hud-care",
     onClick: onOpenCare,
     disabled: busy
-  }, "\u5925\u4F34")), React.createElement("div", {
+  }, student.care && !student.care.selfCare && (student.care.pets?.[student.care.out?.[0]]?.sat || 0) < 30 ? '🍽 ' : '', "\u5925\u4F34"));
+  const nearby = !busy && React.createElement("div", {
+    className: "explore-actions",
+    "aria-label": "\u53EF\u524D\u5F80\u8207\u8ABF\u67E5\u7684\u5730\u9EDE"
+  }, React.createElement("span", null, scene.kind === 'map' ? '選擇目的地' : '附近可調查'), (scene.kind === 'map' ? scene.hotspots : visibleHotspots(scene, story)).map(h => {
+    const open = condOk(story, h.requires);
+    return React.createElement("button", {
+      key: h.id,
+      disabled: !open,
+      title: !open ? MAP_LOCK_HINT[h.to] : undefined,
+      onClick: () => interact(h)
+    }, h.kind === 'npc' ? NPCS[h.npc].name : h.label, !open && React.createElement("small", null, MAP_LOCK_HINT[h.to]));
+  }), scene.id === 'archive' && story.flags.c5_done && React.createElement("button", {
+    id: "open-review-desk",
+    onClick: () => setReviewDesk(true)
+  }, "\u8001\u7167\u7247\u7DF4\u7FD2\u684C"), scene.id === 'agency' && React.createElement(React.Fragment, null, React.createElement("button", {
+    id: "office-keepsakes",
+    onClick: () => setCollection('keepsakes')
+  }, "\u7D00\u5FF5\u64FA\u8A2D"), React.createElement("button", {
+    id: "office-gift-open",
+    onClick: () => setCollection('gifts')
+  }, giftChoices(state).length ? '🎁 領取禮物' : '我的禮物')));
+  return React.createElement("div", {
+    ref: stageRef,
+    className: "stage wide adventure-stage",
+    style: {
+      paddingBlock: 10
+    }
+  }, desktop && document.getElementById('current-objective-slot') && ReactDOM.createPortal(React.createElement(GoalButton, {
+    goal: goal,
+    onClick: () => setGoalOpen(x => !x)
+  }), document.getElementById('current-objective-slot')), !desktop && React.createElement(TrainRouteNotice, {
+    student: student,
+    story: story,
+    onAction: followTrainRoute,
+    disabled: busy
+  }), !desktop && route && React.createElement("aside", {
+    className: "junior-route",
+    id: "junior-route",
+    "aria-label": "\u4E0B\u4E00\u6B65\u63D0\u793A"
+  }, React.createElement("b", null, route.title), React.createElement("p", null, route.text)), React.createElement("div", {
+    className: "game",
+    style: gameWidth ? {
+      width: gameWidth
+    } : undefined
+  }, desktop && document.getElementById('adventure-tools-slot') ? ReactDOM.createPortal(React.createElement(AdventureTools, null, toolbar), document.getElementById('adventure-tools-slot')) : toolbar, React.createElement("div", {
     className: "scene-wrap"
-  }, React.createElement(SceneView, {
+  }, desktop && nearby, goalOpen && React.createElement("section", {
+    className: "goal-detail card col",
+    role: "dialog",
+    "aria-label": "\u76EE\u524D\u76EE\u6A19\u8A73\u60C5"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement("b", null, goal.title), React.createElement(Btn, {
+    small: true,
+    onClick: () => setGoalOpen(false)
+  }, "\u95DC\u9589")), React.createElement("p", null, goal.text), React.createElement(Btn, {
+    id: "goal-go",
+    onClick: followGoal,
+    disabled: busy
+  }, "\u5E36\u6211\u53BB")), React.createElement(SceneView, {
     key: scene.id,
     scene: scene,
     story: story,
@@ -71867,26 +72613,21 @@ function Adventure({
     student: student,
     onChoice: onChoice,
     onEnd: () => finishNode(node, story)
-  }))), !busy && scene.id === 'agency' && React.createElement(CareNeutral, {
+  }))), !desktop && !busy && scene.id === 'agency' && React.createElement(CareNeutral, {
     state: state,
     setState: setState,
     where: "agency",
     onOpen: onOpenCare
-  }), !busy && React.createElement("div", {
-    className: "explore-actions",
-    "aria-label": "\u53EF\u524D\u5F80\u8207\u8ABF\u67E5\u7684\u5730\u9EDE"
-  }, React.createElement("span", null, scene.kind === 'map' ? '選擇目的地' : '附近可調查'), (scene.kind === 'map' ? scene.hotspots : visibleHotspots(scene, story)).map(h => {
-    const open = condOk(story, h.requires);
-    return React.createElement("button", {
-      key: h.id,
-      disabled: !open,
-      title: !open ? MAP_LOCK_HINT[h.to] : undefined,
-      onClick: () => interact(h)
-    }, h.kind === 'npc' ? NPCS[h.npc].name : h.label, !open && React.createElement("small", null, MAP_LOCK_HINT[h.to]));
-  })), !busy && scene.id === 'archive' && story.flags.c5_done && React.createElement("div", {
-    className: "card col",
+  }), !desktop && nearby, reviewDesk && React.createElement("div", {
+    className: "overlay",
+    role: "dialog",
+    "aria-label": "\u8001\u7167\u7247\u7DF4\u7FD2\u684C"
+  }, React.createElement("div", {
+    className: "overlay-panel col",
     id: "ch5-review"
-  }, React.createElement("h3", null, "\u8001\u7167\u7247\u7DF4\u7FD2\u684C"), React.createElement("p", null, "\u9078\u4E00\u500B\u5C0F\u4EFB\u52D9\uFF0C\u518D\u7DF4\u4E00\u6B21\u3002\u984C\u76EE\u6703\u4F9D\u5BB6\u9577\u8A2D\u5B9A\u7684\u5DF2\u5B78\u7BC4\u570D\u8ABF\u6574\u3002"), React.createElement("div", {
+  }, React.createElement(Btn, {
+    onClick: () => setReviewDesk(false)
+  }, "\u95DC\u9589\u7DF4\u7FD2\u684C"), React.createElement("h3", null, "\u8001\u7167\u7247\u7DF4\u7FD2\u684C"), React.createElement("p", null, "\u9078\u4E00\u500B\u5C0F\u4EFB\u52D9\uFF0C\u518D\u7DF4\u4E00\u6B21\u3002\u984C\u76EE\u6703\u4F9D\u5BB6\u9577\u8A2D\u5B9A\u7684\u5DF2\u5B78\u7BC4\u570D\u8ABF\u6574\u3002"), React.createElement("div", {
     className: "row",
     style: {
       flexWrap: 'wrap'
@@ -71894,8 +72635,16 @@ function Adventure({
   }, ['f1', 'f2', 'f3', 'f4', 'f5', 'f6'].map((id, i) => React.createElement(Btn, {
     key: id,
     id: 'ch5-review-' + id,
-    onClick: () => openMech(id)
-  }, studentGrade(student) === 2 ? ['照片編號', '展示詞語', '貨物清單', '看鐘面', '圖案分類', '少用塑膠'][i] : storyRoom(id).title)))), mech && React.createElement(MechOverlay, {
+    onClick: () => {
+      setReviewDesk(false);
+      openMech(id);
+    }
+  }, studentGrade(student) === 2 ? ['照片編號', '展示詞語', '貨物清單', '看鐘面', '圖案分類', '少用塑膠'][i] : storyRoom(id).title))))), collection && React.createElement(OfficeCollection, {
+    state: state,
+    setState: setState,
+    initial: collection,
+    onClose: () => setCollection(null)
+  }), mech && React.createElement(MechOverlay, {
     key: mech,
     mechId: mech,
     state: state,
@@ -71950,6 +72699,11 @@ function StudentApp({
     const back = () => go('repair');
     window.addEventListener('kei-mechanic-back', back);
     return () => window.removeEventListener('kei-mechanic-back', back);
+  }, []);
+  useEffect(() => {
+    const open = () => go('growth');
+    window.addEventListener('kei-growth', open);
+    return () => window.removeEventListener('kei-growth', open);
   }, []);
   const s = state.student;
   const createChar = ({
@@ -72064,8 +72818,14 @@ function StudentApp({
         onBack: () => go('adventure'),
         onCare: () => go('care')
       });
+    case 'growth':
+      return React.createElement(GrowthScreen, {
+        state: state,
+        setState: setState,
+        go: go
+      });
     case 'records':
-      return React.createElement(RecordsScreen, {
+      return React.createElement(MemorialBook, {
         state: state,
         setState: setState,
         go: go
@@ -73139,77 +73899,103 @@ function Newspaper({
     onClick: onClose
   }, "\u6536\u8D77\u665A\u5831"))));
 }
+function badgeEarnedDate(state, row, tier) {
+  const need = row.thresholds[tier];
+  let events = [];
+  if (row.id.startsWith('skill-')) events = state.practiceLog.filter(l => l.passed && KP_BY_ID[l.kpId]?.subject === row.id.slice(6) && kpGrade(l.kpId) === studentGrade(state.student));else if (row.id === 'help') events = Object.values(state.student.keepsakes?.stamps || {});else if (row.id === 'review') events = state.missions.flatMap(m => (m.reviews || []).filter(r => r.passed));else if (row.id === 'arrests') events = getWallet(state.student).caseLog.filter(l => l.result === 'arrest');else if (row.id === 'repair') {
+    const pending = new Set();
+    for (const l of state.practiceLog) {
+      if (l.passed) {
+        if (pending.delete(l.kpId)) events.push(l);
+      } else pending.add(l.kpId);
+    }
+  } else if (row.id.startsWith('solid-')) {
+    const byKp = new Map();
+    for (const m of state.missions) {
+      if (KP_BY_ID[m.kpId]?.subject !== row.id.slice(6) || kpGrade(m.kpId) !== studentGrade(state.student)) continue;
+      const reviews = (m.reviews || []).filter(r => r.passed && !r.hints).sort((a, b) => a.t - b.t);
+      if (reviews[1] && !byKp.has(m.kpId)) byKp.set(m.kpId, reviews[1]);
+    }
+    events = [...byKp.values()];
+  }
+  const e = events.slice().sort((a, b) => a.t - b.t)[need - 1];
+  return e?.t ? fmtDay(e.t) : '較早取得・日期未保存';
+}
 function MemorialBook({
   state,
-  setState
+  setState,
+  go
 }) {
-  const [tab, setTab] = useState('wall'),
-    [selected, setSelected] = useState(null),
+  const [page, setPage] = useState('wall'),
     rows = memorialRows(state),
     stamps = memorialStamps(state),
-    ach = state.student.achievements;
+    selected = rows.find(r => r.id === page);
   useEffect(() => {
     setState(s => markMemorialSeen(s));
   }, [state.student.keepsakes?.stamps, state.student.achievements, state.practiceLog, state.missions]);
-  return React.createElement("section", {
+  return React.createElement("div", {
+    className: "stage",
+    id: "records-page"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement(Btn, {
+    onClick: () => go('adventure')
+  }, "\u2190 \u56DE\u5230\u5192\u96AA"), React.createElement(Btn, {
+    id: "memorial-growth",
+    onClick: () => go('growth')
+  }, "\u6210\u9577\u7D00\u9304")), React.createElement("section", {
     className: "card col",
     id: "memorial-book"
-  }, React.createElement("h2", null, "\u5192\u96AA\u7D00\u5FF5\u518A"), React.createElement("div", {
+  }, selected ? React.createElement(React.Fragment, null, React.createElement(Btn, {
+    id: "badge-back",
+    onClick: () => setPage('wall')
+  }, "\u2190 \u56DE\u5230\u5FBD\u7AE0\u7246"), React.createElement("h1", null, selected.label), React.createElement("p", null, selected.detail, " \u76EE\u524D\u7D2F\u7A4D ", selected.count, " ", selected.unit, "\u3002"), React.createElement("div", {
+    className: "badge-detail-grid",
+    id: "badge-detail"
+  }, selected.thresholds.slice(0, Math.min(selected.level + 1, selected.thresholds.length)).map((n, i) => React.createElement("article", {
+    className: "card col badge-detail-card",
+    key: n
+  }, React.createElement(SubjectBadge, {
+    row: selected,
+    tier: i,
+    earned: i < selected.level,
+    size: 160
+  }), React.createElement("h3", null, i < selected.level ? selected.titles?.[i] || selected.label + '第 ' + (i + 1) + ' 階' : '下一枚未知徽章'), React.createElement("p", null, n, " ", selected.unit), i < selected.level ? React.createElement("time", null, badgeEarnedDate(state, selected, i)) : React.createElement("p", null, "\u518D\u7D2F\u7A4D ", Math.max(0, n - selected.count), " ", selected.unit, "\uFF0C\u5C31\u80FD\u53D6\u5F97\u3002"))))) : React.createElement(React.Fragment, null, React.createElement("h1", null, "\u5192\u96AA\u7D00\u5FF5\u518A"), React.createElement("div", {
     className: "tabs"
-  }, [['wall', '徽章牆'], ['done', '我做過的事'], ['records', '其他紀念']].map(([k, n]) => React.createElement("button", {
+  }, [['wall', '徽章牆'], ['done', '我做過的事']].map(([k, n]) => React.createElement("button", {
     key: k,
     id: 'memorial-' + k,
-    className: tab === k ? 'active' : '',
-    onClick: () => setTab(k)
-  }, n))), tab === 'wall' && React.createElement(React.Fragment, null, React.createElement("p", {
+    className: page === k ? 'active' : '',
+    onClick: () => setPage(k)
+  }, n))), page === 'wall' ? React.createElement(React.Fragment, null, React.createElement("p", {
     className: "small muted"
-  }, "\u6BCF\u4E00\u6B21\u7DF4\u7FD2\uFF0C\u90FD\u7559\u4E0B\u8DB3\u8DE1\u3002"), rows.map(r => React.createElement("div", {
-    className: "badge-row",
+  }, "\u6BCF\u4E00\u6B21\u7DF4\u7FD2\uFF0C\u90FD\u7559\u4E0B\u8DB3\u8DE1\u3002\u9EDE\u4E00\u5217\uFF0C\u770B\u770B\u4F60\u7684\u6536\u85CF\u3002"), rows.map(r => React.createElement("button", {
+    className: "badge-row badge-row-link",
     key: r.id,
-    "data-badge-row": r.id
-  }, React.createElement("button", {
-    className: "badge-label",
-    onClick: () => setSelected(r)
-  }, React.createElement("b", null, r.label), React.createElement("small", null, r.count, " ", r.unit)), React.createElement("div", {
+    "data-badge-row": r.id,
+    onClick: () => setPage(r.id)
+  }, React.createElement("span", {
+    className: "badge-label"
+  }, React.createElement("b", null, r.label), React.createElement("small", null, r.count, " ", r.unit)), React.createElement("span", {
     className: "badge-strip"
-  }, r.thresholds.slice(0, Math.min(r.thresholds.length, r.level + 1)).map((n, i) => React.createElement("button", {
+  }, r.thresholds.slice(0, Math.min(r.thresholds.length, r.level + 1)).map((n, i) => React.createElement(SubjectBadge, {
     key: n,
-    className: 'memorial-badge tier-' + Math.min(i, 2) + (i >= r.level ? ' unknown' : ''),
-    "data-earned": i < r.level,
-    "aria-label": r.label + '第' + (i + 1) + '階' + (i < r.level ? '已取得' : '條件'),
-    onClick: () => setSelected({
-      ...r,
-      target: n,
-      tier: i
-    })
-  }, React.createElement("span", null, i < r.level ? r.icon : '？'), React.createElement("small", null, i + 1)))))), selected && React.createElement("div", {
-    className: "notice",
-    id: "badge-detail"
-  }, React.createElement("b", null, selected.label), React.createElement("p", null, selected.detail), React.createElement("p", null, selected.target === undefined ? `目前 ${selected.count} ${selected.unit}` : `第 ${selected.tier + 1} 階：${selected.target} ${selected.unit}`), selected.titles && selected.tier !== undefined && React.createElement("p", null, selected.titles[selected.tier]), React.createElement(Btn, {
-    small: true,
-    onClick: () => setSelected(null)
-  }, "\u6536\u8D77")), React.createElement("div", {
-    className: "badge-row"
-  }, React.createElement("b", null, "\u4E3B\u7DDA"), React.createElement("div", {
-    className: "badge-strip"
-  }, stamps.filter(s => s.kind === 'chapter').map(s => React.createElement("button", {
-    className: "memorial-badge tier-2",
-    key: s.id,
-    onClick: () => setTab('done'),
-    "aria-label": s.title
-  }, React.createElement("span", null, "\u2726"), React.createElement("small", null, "\u5B8C\u6210")))))), tab === 'done' && React.createElement("div", {
+    row: r,
+    tier: i,
+    earned: i < r.level
+  }))), React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\u203A"))), React.createElement("button", {
+    className: "badge-row badge-row-link",
+    onClick: () => setPage('done')
+  }, React.createElement("b", null, "\u4E3B\u7DDA\u7D00\u5FF5"), React.createElement("span", null, stamps.filter(s => s.kind === 'chapter').length, " \u7AE0 \xB7 \u67E5\u770B\u6211\u505A\u904E\u7684\u4E8B \u203A"))) : React.createElement("div", {
     className: "grid two"
   }, !stamps.length && React.createElement("p", null, "\u5B8C\u6210\u59D4\u8A17\uFF0C\u5C31\u6703\u7559\u4E0B\u7D00\u5FF5\u3002"), stamps.map(s => React.createElement("article", {
     className: "card soft col",
     key: s.id
   }, React.createElement("span", {
     className: "memorial-stamp"
-  }, "\u2726"), React.createElement("h3", null, s.title), React.createElement("small", null, fmtDay(s.t), "\u30FB", s.focus), React.createElement("p", null, "\u8B1D\u8B1D\u4F60\uFF0C\u8ABF\u67E5\u54E1\u3002", React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))), tab === 'records' && React.createElement("div", {
-    className: "grid two"
-  }, ACHIEVEMENTS.filter(a => ach.includes(a.id)).map(a => React.createElement("div", {
-    className: "ach",
-    key: a.id
-  }, React.createElement("span", null, "\u2726"), React.createElement("div", null, React.createElement("b", null, a.name), React.createElement("p", null, a.desc)))), !ach.length && React.createElement("p", null, "\u4F60\u7684\u5192\u96AA\uFF0C\u5F9E\u9019\u88E1\u958B\u59CB\u3002")));
+  }, "\u2726"), React.createElement("h3", null, s.title), React.createElement("small", null, s.t ? fmtDay(s.t) : '較早的紀錄', "\u30FB", s.focus), React.createElement("p", null, "\u8B1D\u8B1D\u4F60\uFF0C\u8ABF\u67E5\u54E1\u3002", React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))))));
 }
 function ChestArt({
   locks,
@@ -75156,7 +75942,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.11-v47\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.11-v48\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -75647,7 +76433,7 @@ function App() {
       previousRewards.current = null;
       return;
     }
-    const rewards = [...unlockedOutfits(s).map(o => o.name), ...(disguiseUnlocked(s) ? ['易容術'] : [])];
+    const rewards = disguiseUnlocked(s) ? ['易容術'] : [];
     if (previousRewards.current) {
       const added = rewards.filter(name => !previousRewards.current.includes(name));
       if (added.length) toast(`新解鎖：${added.join('、')}！到更衣室試試吧。`);
@@ -75669,17 +76455,21 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.11-v47",
+    "data-build": "2026.11.11-v48",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
   }, React.createElement("span", {
     className: "brand"
-  }, "\u77E5\u8B58\u63A2\u7D22\u5CF6"), s && mode === 'student' && React.createElement(React.Fragment, null, React.createElement("span", {
-    className: "stat"
-  }, "Lv.", lp.l), React.createElement("span", {
-    className: "stat"
-  }, s.xp, " XP")), React.createElement("span", {
+  }, "\u77E5\u8B58\u63A2\u7D22\u5CF6"), React.createElement("div", {
+    id: "current-objective-slot"
+  }), s && mode === 'student' && React.createElement("button", {
+    id: "top-growth",
+    "aria-label": "\u67E5\u770B\u6210\u9577\u7D00\u9304",
+    onClick: () => window.dispatchEvent(new Event('kei-growth'))
+  }, "Lv.", lp.l, " \xB7 ", s.xp, " XP"), React.createElement("div", {
+    id: "adventure-tools-slot"
+  }), React.createElement("span", {
     className: "spacer"
   }), mode === 'student' ? React.createElement("button", {
     onClick: () => setMode('parent'),
