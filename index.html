@@ -717,8 +717,8 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 @media(prefers-reduced-motion:reduce) { .pet-idle { animation:none!important; } }
 
 /* Collection pages keep their own scrolling; only the adventure canvas fits the viewport. */
-.subject-badge{position:relative;display:inline-flex;flex:none;align-items:center;justify-content:center;vertical-align:middle;border-radius:12px;overflow:hidden;background:#fff2de}
-.subject-badge svg{display:block;width:100%;height:100%}.subject-badge.unknown{border:2px dashed #8f836f;background:transparent;color:var(--fg)}
+.subject-badge{position:relative;display:inline-flex;flex:none;align-items:center;justify-content:center;vertical-align:middle;border-radius:12px;overflow:hidden;background:transparent}
+.subject-badge svg,.subject-badge img{object-fit:contain;display:block;width:100%;height:100%}.subject-badge.unknown{border:2px dashed #8f836f;background:transparent;color:var(--fg)}
 .badge-fallback{display:flex;width:88%;height:88%;align-items:center;justify-content:center;border:3px double #b99a53;border-radius:50%;font-size:1.5em;background:#fff0d0;color:#594424}
 .unknown .badge-fallback{border:0;background:none}.mastery-gem{position:absolute;right:0;top:0;background:#223d62;color:#fff3a6;border:1px solid #e2c269;border-radius:4px;line-height:1.1;padding:1px 3px;font-size:16px}.badge-detail-card .mastery-gem{font-size:30px}
 .badge-row-link{width:100%;background:transparent;color:var(--fg);text-align:left;border:0;border-bottom:1px solid var(--line);border-radius:0;cursor:pointer}.badge-row-link:hover{background:#e4d8bd55}.badge-row-link>.badge-strip{flex:1;flex-wrap:wrap;overflow:visible;gap:8px}.badge-row-link>.badge-label{flex:0 0 95px;padding:0}.badge-detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.badge-detail-card{align-items:center;text-align:center}.badge-detail-card h3,.badge-detail-card p{margin:0}.pet-closeup{width:100%;display:grid;place-items:center;min-height:200px}.pet-closeup>svg{width:min(100%,320px);height:300px}.keepsake-choice{display:flex;align-items:center;flex-direction:column;gap:8px}.keepsake-choice>svg{width:110px;height:110px}.gift-progress{display:flex;gap:16px;flex-wrap:wrap}.gift-choice{align-items:center;min-height:150px}.gift-choice>span:first-child{font-size:36px}.office-collection{max-width:760px}.goal-detail{position:absolute;z-index:15;top:10px;left:10px;max-width:450px;width:calc(100% - 20px);max-height:calc(100% - 20px);overflow:auto}.goal-detail p{font-size:16px}.goal-dots{display:flex;gap:4px}.goal-dots i{display:block;width:6px;height:6px;border:1px solid #bdb59d;border-radius:50%}.goal-dots .filled{background:#f1d375;border-color:#f1d375}
@@ -745,6 +745,11 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 }
 @media(max-width:767px){.badge-row-link{gap:8px}.badge-row-link>.badge-label{flex-basis:76px;font-size:14px}.badge-row-link>.badge-strip{gap:6px}.badge-detail-grid{grid-template-columns:1fr}.pet-closeup{min-height:150px}.pet-closeup>svg{height:210px}.wardrobe-preview-switch{flex-wrap:wrap}.goal-detail{display:none}.junior .explore-actions #open-review-desk,.junior .explore-actions #office-keepsakes,.junior .explore-actions #office-gift-open{margin-right:110px}}
 
+@media(min-width:900px){#memorial-book:has(#memorial-wall.active){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}#memorial-book>h1,#memorial-book>.tabs,#memorial-book>p{grid-column:1/-1}}
+.care-copy-line{margin:3px 0}.mechanic-controls{border:0;padding:0;margin:0;min-width:0}.mechanic-controls:disabled{opacity:1}.office-cabinet{cursor:pointer}.office-cabinet:focus-visible>rect:last-of-type{stroke:#fff;stroke-width:4}
+
+.keepsake-choice[data-stored="true"]>svg{opacity:.25;filter:grayscale(1)}
+
 /* v49: illustrated inventory, readable resources and building-anchored world map. */
 .item-art{display:inline-flex;align-items:center;justify-content:center;flex:none;vertical-align:middle}.item-art img{width:100%;height:100%;object-fit:contain}.item-art-fallback{display:grid;place-items:center;width:75%;height:75%;border:2px solid #b28b43;border-radius:24%;background:#f9e5ae;color:#283f44;font-size:1.6em;font-weight:800}
 .coin-amount{display:inline-flex;align-items:center;gap:6px;flex:none;color:#493915}.coin-amount>span:last-child{display:flex;flex-direction:column;line-height:1.3}.coin-amount small{font-size:13px}.coin-amount b{font:800 24px/1.2 var(--font-body);font-variant-numeric:tabular-nums}
@@ -770,7 +775,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261111-pickone">
+<meta name="game-release" content="playtest-20261111-claude-next">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -33977,6 +33982,75 @@ Object.assign(ZHUYIN_DATA.words, {
   '重算': ['ㄔㄨㄥˊ', 'ㄙㄨㄢˋ'],
   '空格': ['ㄎㄨㄥˋ', 'ㄍㄜˊ']
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  "囉": "˙ㄌㄨㄛ",
+  "奏": "ㄗㄡˋ",
+  "嫩": "ㄋㄣˋ",
+  "肚": "ㄉㄨˋ",
+  "澡": "ㄗㄠˇ",
+  "鼻": "ㄅㄧˊ",
+  "皺": "ㄓㄡˋ",
+  "眉": "ㄇㄟˊ",
+  "葵": "ㄎㄨㄟˊ",
+  "籽": "ㄗˇ",
+  "浴": "ㄩˋ",
+  "梳": "ㄕㄨ",
+  "榮": "ㄖㄨㄥˊ",
+  "禮": "ㄌㄧˇ",
+  "拭": "ㄕˋ",
+  "桂": "ㄍㄨㄟˋ",
+  "閃": "ㄕㄢˇ",
+  "邁": "ㄇㄞˋ",
+  "凍": "ㄉㄨㄥˋ",
+  "軟": "ㄖㄨㄢˇ",
+  "鱗": "ㄌㄧㄣˊ",
+  "辣": "ㄌㄚˋ",
+  "藻": "ㄗㄠˇ",
+  "脆": "ㄘㄨㄟˋ",
+  "啵": "ㄅㄛ",
+  "蕉": "ㄐㄧㄠ",
+  "蝦": "ㄒㄧㄚ",
+  "苔": "ㄊㄞˊ",
+  "蘚": "ㄒㄧㄢˇ",
+  "虧": "ㄎㄨㄟ",
+  "概": "ㄍㄞˋ",
+  "畝": "ㄇㄨˇ",
+  "頃": "ㄑㄧㄥˇ",
+  "噸": "ㄉㄨㄣˋ",
+  "錐": "ㄓㄨㄟ"
+});
+Object.assign(ZHUYIN_DATA.words, {
+  "公噸": ["ㄍㄨㄥ", "ㄉㄨㄣˋ"],
+  "公畝": ["ㄍㄨㄥ", "ㄇㄨˇ"],
+  "多虧": ["ㄉㄨㄛ", "ㄎㄨㄟ"],
+  "把鼻": ["ㄅㄚˇ", "ㄅㄧˊ"],
+  "擦拭": ["ㄘㄚ", "ㄕˋ"],
+  "星星": ["ㄒㄧㄥ", "˙ㄒㄧㄥ"],
+  "果凍": ["ㄍㄨㄛˇ", "ㄉㄨㄥˋ"],
+  "梳理": ["ㄕㄨ", "ㄌㄧˇ"],
+  "概數": ["ㄍㄞˋ", "ㄕㄨˋ"],
+  "榮幸": ["ㄖㄨㄥˊ", "ㄒㄧㄥˋ"],
+  "泡泡": ["ㄆㄠˋ", "ㄆㄠˋ"],
+  "海藻": ["ㄏㄞˇ", "ㄗㄠˇ"],
+  "發條": ["ㄈㄚ", "ㄊㄧㄠˊ"],
+  "皺眉": ["ㄓㄡˋ", "ㄇㄟˊ"],
+  "禮帽": ["ㄌㄧˇ", "ㄇㄠˋ"],
+  "節奏": ["ㄐㄧㄝˊ", "ㄗㄡˋ"],
+  "肉桂": ["ㄖㄡˋ", "ㄍㄨㄟˋ"],
+  "肚子": ["ㄉㄨˋ", "˙ㄗ"],
+  "苔蘚": ["ㄊㄞˊ", "ㄒㄧㄢˇ"],
+  "葵花": ["ㄎㄨㄟˊ", "ㄏㄨㄚ"],
+  "薄片": ["ㄅㄛˊ", "ㄆㄧㄢˋ"],
+  "軟糖": ["ㄖㄨㄢˇ", "ㄊㄤˊ"],
+  "辣味": ["ㄌㄚˋ", "ㄨㄟˋ"],
+  "錐體": ["ㄓㄨㄟ", "ㄊㄧˇ"],
+  "香蕉": ["ㄒㄧㄤ", "ㄐㄧㄠ"],
+  "鱗片": ["ㄌㄧㄣˊ", "ㄆㄧㄢˋ"],
+  "數對": ["ㄕㄨˇ", "ㄉㄨㄟˋ"],
+  "轉緊": ["ㄓㄨㄢˇ", "ㄐㄧㄣˇ"],
+  "分不出": ["ㄈㄣ", "ㄅㄨˋ", "ㄔㄨ"],
+  "暖石": ["ㄋㄨㄢˇ", "ㄕˊ"]
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -34600,6 +34674,7 @@ function validateBackupState(input) {
     });
     opt(st, 'wallet', (v, p) => {
       obj(v, p);
+      if (v.magnifierRefunded !== undefined && typeof v.magnifierRefunded !== 'boolean') bad(p + '.magnifierRefunded');
       if (v.companionRefunded !== undefined && typeof v.companionRefunded !== 'boolean') bad(p + '.companionRefunded');
       for (const k of ['coins', 'xpFromCases', 'fragments', 'chestsOpened', 'hintCards']) opt(v, k, num, p);
       for (const k of ['badges', 'arrests', 'items', 'focus']) opt(v, k, scalarMap, p);
@@ -35457,57 +35532,71 @@ function useMechanic({
   const [hintLevel, setHintLevel] = useState(initialProgress?.hints || 0);
   const [feedback, setFeedback] = useState(null);
   const [done, setDone] = useState(false);
-  const finish = (passed, detail) => {
-    if (done) return;
+  const live = useRef({
+      attempts: initialProgress?.attempts || 0,
+      hints: initialProgress?.hints || 0,
+      done: false,
+      fullReveal: false
+    }),
+    busy = useRef(false);
+  const details = detail => ({
+    firstAttemptCorrect: live.current.attempts === 0,
+    fullReveal: live.current.fullReveal,
+    revealKnown: live.current.hints === 0 || live.current.fullReveal,
+    ...detail
+  });
+  const finish = (passed, detail, gaveUp = false) => {
+    const r = live.current;
+    if (r.done) return;
+    r.done = true;
     setDone(true);
-    onDone && onDone({
+    onDone?.({
       passed,
-      attempts: attempts + (passed ? 1 : 0),
-      hints,
-      detail
+      attempts: r.attempts + (passed ? 1 : 0),
+      hints: r.hints,
+      detail: details(detail),
+      ...(gaveUp ? {
+        gaveUp: true
+      } : {})
     });
   };
   const fail = (text, detail) => {
-    const n = attempts + 1;
+    if (live.current.done || busy.current) return;
+    busy.current = true;
+    queueMicrotask(() => {
+      busy.current = false;
+    });
+    const n = ++live.current.attempts;
     setAttempts(n);
     if (!hintsAllowed && n >= maxAttempts) {
       setFeedback({
         kind: 'bad',
         text: `${text} 這一題先到這裡，我們把它記下來，之後再練習。`
       });
-      setDone(true);
-      onDone && onDone({
-        passed: false,
-        attempts: n,
-        hints,
-        detail
-      });
+      finish(false, detail);
     } else setFeedback({
       kind: 'bad',
       text
     });
   };
   const pass = (text, detail) => {
+    if (live.current.done) return;
     setFeedback({
       kind: 'good',
       text
     });
     finish(true, detail);
   };
-  const useHint = () => {
-    setHints(h => h + 1);
-    setHintLevel(l => l + 1);
+  const useHint = (options = {}) => {
+    const r = live.current;
+    if (r.done || !hintsAllowed || r.hints >= maxHints) return false;
+    r.hints++;
+    r.fullReveal ||= options.fullReveal === true;
+    setHints(r.hints);
+    setHintLevel(r.hints);
+    return true;
   };
-  const giveUp = detail => {
-    setDone(true);
-    onDone && onDone({
-      passed: false,
-      attempts,
-      hints,
-      detail,
-      gaveUp: true
-    });
-  };
+  const giveUp = detail => finish(false, detail, true);
   return {
     attempts,
     hints,
@@ -35526,8 +35615,12 @@ function MechHUD({
   m,
   hintsAllowed,
   hintTexts = [],
-  extra
+  extra,
+  fullRevealAt = Infinity
 }) {
+  const shared = useContext(MechanicSafetyContext),
+    student = (shared?.state || shared)?.student;
+  const support = student && (m.hints > 0 || m.feedback?.kind === 'bad') ? careCopyPick(carePetCopy(selectedCompanion(student).id).support, m.attempts + m.hints) : '';
   return React.createElement("div", {
     className: "col",
     style: {
@@ -35547,14 +35640,18 @@ function MechHUD({
   }, "\u7121\u63D0\u793A\u6311\u6230"), extra), hintsAllowed && !m.done && hintTexts.length > 0 && m.hintLevel < Math.min(hintTexts.length, m.maxHints ?? Infinity) && React.createElement(Btn, {
     small: true,
     kind: "teal",
-    onClick: m.useHint
+    onClick: () => m.useHint({
+      fullReveal: m.hintLevel + 1 >= fullRevealAt
+    })
   }, "\u9700\u8981\u63D0\u793A\uFF08", m.hintLevel + 1, "/", Math.min(hintTexts.length, m.maxHints ?? Infinity), "\uFF09")), hintsAllowed && m.hintLevel > 0 && hintTexts.length > 0 && React.createElement("div", {
     className: "notice"
   }, hintTexts.slice(0, m.hintLevel).map((h, i) => React.createElement("div", {
     key: i
   }, "\uD83D\uDCA1 ", h))), m.feedback && React.createElement("div", {
     className: `feedback notice ${m.feedback.kind}`
-  }, m.feedback.text));
+  }, m.feedback.text), support && React.createElement("p", {
+    className: "care-support"
+  }, selectedCompanion(student).name, "\uFF1A", support));
 }
 function NumInput({
   value,
@@ -36798,13 +36895,10 @@ function StepSolver({
   const hint = i => {
     if (m.done || !hintsAllowed || m.hints >= m.maxHints || levels[i] >= 3) return;
     const next = levels[i] + 1;
-    m.useHint();
+    m.useHint({
+      fullReveal: next >= 3
+    });
     set(setLevels, i, next);
-    if (next === 2) {
-      set(setLeft, i, String(steps[i].left));
-      set(setRight, i, String(steps[i].right));
-      set(setOps, i, steps[i].op);
-    }
   };
   const check = () => {
     if (m.done) return;
@@ -36917,12 +37011,12 @@ function StepSolver({
       className: "step-hints col"
     }, levels[i] > 0 && React.createElement("div", {
       className: "notice small"
-    }, levels[i] === 1 ? s.hint : levels[i] === 2 ? '已填好這一步的兩個數字與運算，請自己算出結果。' : stepEquation(s)), !m.done && levels[i] < 3 && m.hints < m.maxHints && React.createElement(Btn, {
+    }, levels[i] === 1 ? s.hint : levels[i] === 2 ? `${s.left} ${s.op} ${s.right} ＝？請自己填入數字、選運算，再算出結果。` : stepEquation(s)), !m.done && levels[i] < 3 && m.hints < m.maxHints && React.createElement(Btn, {
       small: true,
       kind: "teal",
       id: `step-hint-${i}`,
       onClick: () => hint(i)
-    }, "\u7B2C", i + 1, "\u6B65\u63D0\u793A ", levels[i] + 1, "/3\uFF1A", ['找兩個量', '填數字與運算', '看完整算式'][levels[i]])));
+    }, "\u7B2C", i + 1, "\u6B65\u63D0\u793A ", levels[i] + 1, "/3\uFF1A", ['找兩個量', '看數字與運算', '看完整算式'][levels[i]])));
   })), React.createElement("div", {
     className: "row"
   }, React.createElement(Btn, {
@@ -37212,7 +37306,8 @@ function PieAdjust({
 function ProblemSet({
   params,
   hintsAllowed = false,
-  onDone
+  onDone,
+  maxAttempts
 }) {
   const {
     story,
@@ -37221,20 +37316,26 @@ function ProblemSet({
   } = params;
   const [ans, setAns] = useState(problems.map(() => ''));
   const [result, setResult] = useState(null);
+  const first = useRef(null),
+    m = useMechanic({
+      hintsAllowed,
+      onDone,
+      maxAttempts
+    });
   const submit = () => {
+    if (m.done || ans.some(a => a === '')) return;
     const r = problems.map((p, i) => numExact(parseNum(ans[i]), p.answer) && (p.answerFormat !== 'decimal' || !/[\/／]/.test(ans[i])));
     setResult(r);
+    if (!first.current) first.current = r;
     const n = r.filter(Boolean).length;
-    onDone && onDone({
-      passed: n >= passNeed,
-      attempts: 1,
-      hints: 0,
-      detail: {
-        correct: n,
-        total: problems.length,
-        answers: ans
-      }
-    });
+    const detail = {
+      correct: n,
+      total: problems.length,
+      answers: ans,
+      firstTryCorrect: first.current.filter(Boolean).length,
+      log: first.current
+    };
+    if (n >= passNeed) m.pass(`答對 ${n}/${problems.length} 題，通過挑戰！`, detail);else m.fail('還有需要訂正的答案。檢查題目中的數字與單位，再確認一次。', detail);
   };
   return React.createElement("div", {
     className: "col"
@@ -37242,7 +37343,7 @@ function ProblemSet({
     className: "story"
   }, story), React.createElement(Notice, {
     kind: "warn"
-  }, "\u9019\u662F\u9077\u79FB\u6311\u6230\uFF1A\u6C92\u6709\u63D0\u793A\uFF0C\u7528\u4F60\u5B78\u5230\u7684\u65B9\u6CD5\u89E3\u6C7A\u65B0\u7684\u554F\u984C\u3002\u7B54\u5C0D ", passNeed, "/", problems.length, " \u984C\u4EE5\u4E0A\u5373\u901A\u904E\u3002"), problems.map((p, i) => React.createElement("div", {
+  }, hintsAllowed ? '先作答，可以訂正再確認。' : '這是無提示挑戰，用你學到的方法解決新的問題。', "\u7B54\u5C0D ", passNeed, "/", problems.length, " \u984C\u4EE5\u4E0A\u5373\u901A\u904E\u3002"), problems.map((p, i) => React.createElement("div", {
     key: i,
     className: `card ${result ? result[i] ? 'soft' : '' : ''}`,
     style: {
@@ -37256,21 +37357,27 @@ function ProblemSet({
   }, "\u7B54\uFF1A", React.createElement(NumInput, {
     id: `ps-${i}`,
     value: ans[i],
-    onChange: v => setAns(a => a.map((x, j) => j === i ? v : x)),
-    disabled: !!result
+    onChange: v => {
+      setAns(a => a.map((x, j) => j === i ? v : x));
+      setResult(null);
+      m.setFeedback(null);
+    },
+    disabled: m.done
   }), " ", p.unit), result && !result[i] && React.createElement("p", {
     className: "small",
     style: {
       marginTop: 6
     }
-  }, "\u6B63\u78BA\u7B54\u6848\uFF1A", p.answer, " ", p.unit, "\u3002", p.explain))), !result ? React.createElement("div", null, React.createElement(Btn, {
+  }, m.done ? `正確答案：${p.answer} ${p.unit}。${p.explain || ''}` : '這一題還需要檢查。'))), !m.done && React.createElement("div", null, React.createElement(Btn, {
     kind: "primary",
     id: "ps-submit",
     onClick: submit,
     disabled: ans.some(a => a === '')
-  }, "\u9001\u51FA\u5168\u90E8\u7B54\u6848")) : React.createElement(Notice, {
-    kind: result.filter(Boolean).length >= passNeed ? 'good' : 'bad'
-  }, "\u7B54\u5C0D ", result.filter(Boolean).length, "/", problems.length, " \u984C\uFF0C", result.filter(Boolean).length >= passNeed ? '通過遷移挑戰！' : '還沒通過，先看看說明，之後再挑戰一次。'));
+  }, "\u78BA\u8A8D\u5168\u90E8\u7B54\u6848")), React.createElement(MechHUD, {
+    m: m,
+    hintsAllowed: hintsAllowed,
+    hintTexts: ['先圈出數字和單位，再想題目問的是哪一個量。']
+  }));
 }
 const MATH_MECHS = {
   mixer: RatioMixer,
@@ -38402,7 +38509,9 @@ function PickOne({
     total: items.length,
     firstTryCorrect: rows.filter(a => a.firstTryCorrect).length,
     log: rows.map(a => a.firstTryCorrect),
-    answers: rows
+    answers: rows,
+    fullReveal: rows.some(a => a.answerShown),
+    revealKnown: true
   });
   const choose = j => {
     if (m.done || finished.current || checked === 'correct') return;
@@ -46726,9 +46835,9 @@ function applyStepResult(state, res) {
     ...res,
     hints: 1
   };
-  const freeHint = !!res.hints && hasItem(w, 'magnifier') && !a.freeHintUsed && !st.freeHint;
+  const freeHint = false;
   const failPenalty = hasItem(w, 'watch') ? -5 : -10;
-  const gain = res.passed ? TRACK_STEP(n) - (res.hints && !freeHint ? 4 : 0) : failPenalty;
+  const gain = res.passed ? TRACK_STEP(n) : failPenalty;
   const stages = a.stages.map((s, i) => i === a.stepIdx ? {
     ...s,
     status: res.passed ? 'passed' : 'failed',
@@ -46809,11 +46918,11 @@ function settleCase(state) {
     if (s.status !== 'passed') return;
     const base = 10 * a.stars;
     let mult = diminish(w, s.kpId);
-    if (!s.hints || s.freeHint) mult *= 1.5;
+    mult *= 1.5;
     const stepInfo = a.steps.find(x => x.kpId === s.kpId);
     if (stepInfo?.bounty) mult *= 1.5;
     if (!allPassed) mult *= 0.5;
-    const coinMult = mult * (s.hints && !s.freeHint ? 1.5 : 1);
+    const coinMult = mult;
     const c = Math.round(base * coinMult);
     coins += c;
     xp += Math.round(8 * a.stars * mult);
@@ -46825,7 +46934,7 @@ function settleCase(state) {
       bounty: !!stepInfo?.bounty
     });
   });
-  const badge = allPassed ? noHint ? 'gold' : 'silver' : passedSteps.length * 2 >= a.stages.length ? 'bronze' : null;
+  const badge = allPassed ? 'gold' : passedSteps.length * 2 >= a.stages.length ? 'silver' : passedSteps.length ? 'bronze' : null;
   const suspect = SUSPECTS[a.suspect];
   const arrests = {
     ...w.arrests,
@@ -47076,12 +47185,12 @@ const SHOP_ITEMS = [{
   effect: '不算提示，家長紀錄會標示「翻過筆記」。'
 }, {
   id: 'magnifier',
-  kind: 'tool',
+  kind: 'builtin',
   name: '黃銅放大鏡',
   price: 120,
   icon: 'lens',
-  desc: '每張通緝令有一次「免費提示」：第一個用提示的線索不扣追蹤值，也不影響金徽章。',
-  effect: '只對允許提示的通緝令有效（3 星以下）。'
+  desc: '提示不影響賞金、經驗值、追蹤值與通緝徽章，所有調查員都能使用。',
+  effect: '已內建；原購買者退還 120 金幣一次。'
 }, {
   id: 'watch',
   kind: 'tool',
@@ -47220,7 +47329,7 @@ function buyItem(state, id) {
   if (item.kind === 'builtin') return {
     state,
     ok: false,
-    reason: '已內建，所有夥伴都會提供策略'
+    reason: item.id === 'magnifier' ? '已內建，提示不影響通緝獎勵' : '已內建，所有夥伴都會提供策略'
   };
   const lock = itemLocked(state, item);
   if (lock) return {
@@ -47851,6 +47960,299 @@ function setActiveCompanion(student, id) {
     companion: id
   } : student;
 }
+const CARE_COPY = {
+  "source": "docs/PET_CARE_COPY.md",
+  "humanReviewed": false,
+  "common": {
+    "afterTask": {
+      "passedNoHint": ["這一題你自己想出來了。", "從頭到尾都是你做的。"],
+      "passedWithHint": ["卡住時會找方法，然後自己做完。", "看懂之後，後面是你自己走完的。"],
+      "passedAfterRetry": ["第一次沒過，你又試了一次。", "換個做法就通了。"],
+      "reviewPassed": ["隔了幾天還記得，真的學進去了。", "這次沒有人幫，你也做出來了。"],
+      "reviewFailed": ["忘了一點沒關係，今天又想起來一些。", "下次再碰到，會更熟。"],
+      "diagnosticDone": ["謝謝你讓我看到你怎麼想。"],
+      "fullRevealRetry": ["這題我們一起看完解法了，換一題你來試試。"],
+      "capReached": ["今天的補給金領滿了，明天還有。"],
+      "badgeFull": ["隔了幾天、換了題目，你還是做得出來。"],
+      "badgeHalf": ["會了！過幾天再做一次，就會整顆亮起來。"]
+    },
+    "care": {
+      "alreadyFull": ["吃飽了，謝謝你。", "現在很飽，等一下再說。"],
+      "selfCareOn": ["我會自己照顧自己，你放心去冒險。"],
+      "selfCareOff": ["那就拜託你囉。"],
+      "noCoins": ["金幣不夠也沒關係，我們慢慢來。"],
+      "repeatSameDay": ["今天做過了，再一次也很舒服。"]
+    }
+  },
+  "pets": {
+    "tick": {
+      "name": "嘀嗒",
+      "type": "機械",
+      "supply": "發條油",
+      "clean": "擦亮羽片",
+      "groom": "轉緊發條",
+      "snack": "星星潤滑油",
+      "invite": ["發條有點鬆了，等一下一起接個委託？", "嘀……嗒……轉得有點慢了。", "油壺見底了，我們去找點補給吧。"],
+      "support": ["嘀嗒，我們一起看看這題。", "慢慢來，我幫你記著線索。", "先看題目問什麼，我陪你。"],
+      "welcome": ["嘀嗒！你來了，今天查什麼？", "調查員報到，我準備好了。"],
+      "bond": ["我開始記得你走路的節奏了。", "你想事情的時候，我會安靜一點。", "你解開的每個案子，我都記在發條裡。", "有你在，我的鐘永遠不會走錯。"],
+      "story": "嘀嗒剛被做出來的時候，一分鐘只會叫五十九聲，老是少一聲。灰鴉夫人說，少的那一聲要留給搭檔。現在每次你解開一題，牠就補上那一聲。",
+      "storyJunior": ["嘀嗒以前每分鐘少叫一聲。", "夫人說，那一聲留給搭檔。", "你解開題目，牠就補上了。"]
+    },
+    "snail": {
+      "name": "慢慢",
+      "type": "動物",
+      "supply": "嫩菜葉",
+      "clean": "噴水霧",
+      "groom": "擦亮殼",
+      "snack": "蘋果薄片",
+      "invite": ["肚子空空的，等一下一起去走走？", "想吃一片菜葉，不急。", "殼裡有點乾，我們去找補給吧。"],
+      "support": ["不急，我們一個字一個字看。", "慢一點，看得比較清楚。", "先找題目裡最重要的那句。"],
+      "welcome": ["你來了。我剛好爬到門口。", "今天也慢慢走、仔細看。"],
+      "bond": ["我發現你也會回頭再看一遍。", "跟你一起走，路上的東西變多了。", "你停下來想的時候，我最安心。", "我走得慢，可是我們都到得了。"],
+      "story": "慢慢曾經花了一整個下午，才從事務所的門口爬到窗邊。到的時候，牠已經把地上每一道刮痕都看過一遍，其中一道後來成了破案的線索。",
+      "storyJunior": ["慢慢爬了一個下午才到窗邊。", "牠把地上的刮痕都看過了。", "有一道後來幫忙破了案。"]
+    },
+    "pig": {
+      "name": "胖子",
+      "type": "動物",
+      "supply": "玉米飯糰",
+      "clean": "泡泡澡",
+      "groom": "刷刷背",
+      "snack": "地瓜餅",
+      "invite": ["哼哼，肚子在唱歌，一起接個委託吧？", "聞到飯糰的味道了，是我想太多嗎？", "有點餓，不過我還走得動。"],
+      "support": ["哼哼，我們一起看看這題。", "沒關係，再聞一次線索。", "先把知道的事說一遍給我聽。"],
+      "welcome": ["哼哼！你來啦，今天去哪裡？", "我把鼻子擦乾淨了，出發吧。"],
+      "bond": ["你身上有一種讓人放心的味道。", "你一皺眉，我就知道題目有趣了。", "跟你吃過的飯糰，我都記得。", "不管去哪裡，我都跟你同一隊。"],
+      "story": "胖子的鼻子很靈，卻分不出「三分之一」和「一半」哪個比較多，常常選了比較小的那塊餅。有一天牠看你把餅切給牠看，從此再也沒有選錯。",
+      "storyJunior": ["胖子常常選到比較小的餅。", "你把餅切開給牠看。", "從此牠再也沒有選錯。"]
+    },
+    "hamster": {
+      "name": "米爵",
+      "type": "動物",
+      "supply": "葵花籽",
+      "clean": "沙浴",
+      "groom": "梳理領毛",
+      "snack": "起司小方塊",
+      "invite": ["咳，口袋裡的葵花籽見底了。", "方便的話，等一下一起接個委託？", "紳士也會餓，不過不要緊。"],
+      "support": ["別擔心，再看一次題目。", "我小聲說：先看單位。", "一步一步來，我幫你扶著帽子。"],
+      "welcome": ["日安，調查員。帽子戴好了。", "你來得正好，茶剛泡好。"],
+      "bond": ["你的肩膀坐起來很穩。", "你讀題的樣子，很有偵探的架勢。", "我把最好的那顆葵花籽留給你看。", "能坐在你肩上，是我的榮幸。"],
+      "story": "米爵的小禮帽裡藏著一張紙條，上面是牠第一次數對的數字：二十四顆葵花籽。牠說那天之後才敢自稱紳士，因為紳士數東西不馬虎。",
+      "storyJunior": ["米爵的帽子裡有一張紙條。", "上面寫著二十四顆葵花籽。", "那是牠第一次數對。"]
+    },
+    "mechapple": {
+      "name": "蘋咚",
+      "type": "機械",
+      "supply": "蘋果電池",
+      "clean": "擦拭外殼",
+      "groom": "關節上油",
+      "snack": "肉桂火花糖",
+      "invite": ["咔噠，電力剩一點點了。", "我們去找點能源，好嗎？", "電池燈在閃，不過還能走。"],
+      "support": ["咔噠，我們一步一步想。", "先排順序：哪一步先做？", "把題目拆成小塊，我來排。"],
+      "welcome": ["咔噠！開機完成，今天排什麼？", "你來了，我把零件都排好了。"],
+      "bond": ["我把你的名字排在清單第一行。", "你做事的順序，我學起來了。", "跟你一起，連亂掉的事也排得好。", "你是我清單上劃不掉的那一項。"],
+      "story": "蘋咚出廠時少鎖了一顆螺絲，走路總是先邁右腳兩次。牠沒有去修，反而把這件事寫進清單：先右、再右、再左。牠說，知道順序就不算壞掉。",
+      "storyJunior": ["蘋咚少了一顆螺絲。", "牠走路先右、再右、再左。", "牠說，知道順序就不算壞。"]
+    },
+    "trimonster": {
+      "name": "方奇",
+      "type": "奇幻",
+      "supply": "星星果凍",
+      "clean": "洗五隻腳",
+      "groom": "梳絨毛",
+      "snack": "彩虹軟糖",
+      "invite": ["三隻眼睛都在看果凍的方向。", "肚子咕嚕，等一下一起出門？", "有點餓，不過我還想到處看看。"],
+      "support": ["我三隻眼睛陪你一起看。", "換個角度看，會不會不一樣？", "先看圖，再看字，再看數字。"],
+      "welcome": ["你來了！我三隻眼睛都看到了。", "今天要看什麼新東西？"],
+      "bond": ["我有一隻眼睛專門看你。", "你看到的東西，常常我也沒看到。", "五隻腳都願意跟你走。", "三隻眼睛看過很多人，你最特別。"],
+      "story": "方奇的三隻眼睛看的東西不一樣：一隻看形狀，一隻看數量，一隻看誰在說話。牠以前覺得這樣很吵，直到有一天三隻眼睛同時看懂了同一道題。",
+      "storyJunior": ["方奇三隻眼睛看的不一樣。", "形狀、數量，還有誰在說話。", "有一天，三隻一起看懂了。"]
+    },
+    "emberlizard": {
+      "name": "噗火",
+      "type": "奇幻",
+      "supply": "暖石餅乾",
+      "clean": "溫水沖澡",
+      "groom": "擦亮鱗片",
+      "snack": "辣味小石糖",
+      "invite": ["噗……肚子裡的火小小的。", "想吃暖石餅乾，等一下一起去？", "有點餓，打嗝都沒有火花了。"],
+      "support": ["噗！別怕，我們一起看。", "深呼吸，再看一次題目。", "卡住很正常，我也常打嗝。"],
+      "welcome": ["噗！你來了！啊，嚇到自己。", "今天我會小心不要亂噴火。"],
+      "bond": ["在你旁邊，我比較不會嚇到。", "你答對的時候，我的火會變亮。", "我把最暖的那顆石頭留給你。", "有你在，我的火不會熄。"],
+      "story": "噗火第一次噴出火苗，是因為聽到有人算對了一題，太高興打了一個嗝。牠到現在還是控制不好，所以每次你快要想出來，牠就先躲到你後面。",
+      "storyJunior": ["噗火太高興就會打嗝噴火。", "你快想出來時，牠先躲好。", "牠是怕嚇到你，也怕嚇到自己。"]
+    },
+    "fishbowl": {
+      "name": "泡泡艇",
+      "type": "機械",
+      "supply": "泡泡能量水",
+      "clean": "換清水",
+      "groom": "擦亮玻璃",
+      "snack": "海藻脆片",
+      "invite": ["啵，能量水剩半格了。", "等一下一起飄去接個委託？", "泡泡變少了，不過還飄得動。"],
+      "support": ["啵啵，我們一起看這題。", "把想法像泡泡一樣一顆顆放出來。", "不急，慢慢浮上來就好。"],
+      "welcome": ["啵！你來了，今天飄去哪？", "水換好了，隨時可以出發。"],
+      "bond": ["小魚今天游到靠你那一邊。", "你笑的時候，水裡會多幾顆泡泡。", "我們飄過的街角，小魚都記得。", "不管飄多遠，都會飄回你旁邊。"],
+      "story": "泡泡艇裡的小魚從來沒看過海。牠聽你讀過一篇寫海的文章，那天晚上魚缸裡的泡泡排成了一排一排，像浪。小魚說，原來讀懂了就算去過。",
+      "storyJunior": ["小魚沒有看過海。", "牠聽你讀了一篇寫海的文章。", "那晚泡泡排得像海浪。"]
+    },
+    "gorilla": {
+      "name": "阿抱",
+      "type": "動物",
+      "supply": "香蕉",
+      "clean": "泡澡",
+      "groom": "梳毛",
+      "snack": "堅果球",
+      "invite": ["肚子有點空，等一下一起走走？", "想吃一根香蕉，不急喔。", "有點餓，不過我力氣還在。"],
+      "support": ["沒關係，我們一起慢慢看。", "你想到哪裡了？說給我聽。", "錯了也沒事，再試一次就好。"],
+      "welcome": ["你來了。今天想做什麼都陪你。", "我把位子留好了，坐這裡。"],
+      "bond": ["你說話的時候，我會認真聽。", "你難過的題目，我陪你再看一次。", "我力氣很大，可是最想幫你拿書。", "你是我最想保護的搭檔。"],
+      "story": "阿抱看起來壯壯的，其實最怕把東西弄壞。牠翻書用一根手指，放證物用兩隻手捧著。館長說，整座博物館裡，最輕的手是阿抱的。",
+      "storyJunior": ["阿抱很壯，卻最怕弄壞東西。", "牠翻書只用一根手指。", "館長說，牠的手最輕。"]
+    },
+    "salamander": {
+      "name": "露露",
+      "type": "動物",
+      "supply": "小蝦餅",
+      "clean": "換溪水",
+      "groom": "鋪新苔蘚",
+      "snack": "小魚乾",
+      "invite": ["尾巴擺得慢了，有點餓。", "等一下一起去看看水邊？", "想吃小蝦餅，不過不急。"],
+      "support": ["安靜看一下，哪裡變了？", "我們先找不一樣的地方。", "慢慢看，小變化會自己出現。"],
+      "welcome": ["你來了。今天的水很清。", "我剛看到一件小事，等一下告訴你。"],
+      "bond": ["你靠近的時候，我不會躲了。", "你也看得到很小的變化。", "我把看到的小事，都先留給你。", "安靜的時候，我最喜歡在你旁邊。"],
+      "story": "露露不太說話。牠每天記一件小事：水位高了一點、葉子黃了一片、雲比昨天低。記了一百天，牠發現自己猜得到明天會不會下雨。",
+      "storyJunior": ["露露每天記一件小事。", "水位、葉子，還有雲。", "記了一百天，牠會猜天氣了。"]
+    }
+  },
+  "thanks": {
+    "阿齒": ["有你幫忙，鐘塔的齒輪一顆都沒裝錯。", "下次鐘響的時候，裡面有你的一份。"],
+    "小梅": ["這篇報導可以登了，資料是你幫我查清楚的。", "有憑有據，讀者才會相信。謝謝你。"],
+    "阿岩": ["尺寸剛剛好，工坊今天可以準時收工。", "你算過的，我放心照著做。"],
+    "老墨": ["這份稿子總算讀得通了，多虧你。", "一字一句都對上了，可以付印了。"],
+    "灰鴉夫人": ["做得不錯。這件案子我記在你的名下。", "事務所有你，我可以多喝一杯茶。"],
+    "鐵叔": ["時刻表對得上了，今天的火車都準時。", "車站的人不用再問我幾點了，謝啦。"],
+    "鎮長": ["鎮上的事辦妥了，我代大家謝謝你。", "有你幫忙，活動可以如期舉行。"],
+    "浪叔": ["貨都點清楚了，船可以準時出港。", "港口今天沒有人吵架，是你的功勞。"],
+    "小鈴": ["謝謝你！我自己一個人一定弄不好。", "我學起來了，下次換我試試看。"],
+    "邱老闆": ["嗯，算得清楚。這筆生意我做得安心。", "不錯，下次有難算的再找你。"],
+    "果汁攤老闆娘": ["味道對了！來，這杯請你。", "配方卡我收好了，多謝你幫忙。"],
+    "余館員": ["展品的說明可以掛上去了，謝謝你。", "有你核對過，參觀的人不會看錯。"]
+  },
+  "abilities": {
+    "m_prime": "我會找質數，把一個數拆成質因數",
+    "m_gcd": "我會求最大公因數和最小公倍數",
+    "m_fracdiv": "我會算分數的除法，也說得出意思",
+    "m_decdiv": "我會算小數的除法",
+    "m_mixed": "我會解整數、分數、小數混在一起的問題",
+    "m_ratio": "我會把比化成最簡比，找出相等的比",
+    "m_speed": "我會用速度、距離、時間互相算",
+    "m_base": "我會分出基準量和比較量",
+    "m_relation": "我會看出數量關係，列出算式",
+    "m_pattern": "我會找出數列的規律，推出後面的數",
+    "m_scale": "我會用比例尺算實際的距離",
+    "m_circle": "我會算圓周長、圓面積和扇形",
+    "m_prism": "我會算柱體的體積和表面積",
+    "m_chart": "我會讀圓形圖，用百分率算數量",
+    "m_chance": "我會用資料比較哪件事比較可能",
+    "m_frac_ops": "我會算分數的加減和乘法",
+    "m_dec_ops": "我會算小數的乘法",
+    "m_area": "我會算三角形、平行四邊形和梯形的面積",
+    "c_word": "我會看句子判斷字詞的意思",
+    "c_idiom": "我會選對成語放進句子裡",
+    "c_sentence": "我會分辨句型和修辭",
+    "c_structure": "我會把段落排出順序，看出文章怎麼組織",
+    "c_main": "我會說出文章的主旨",
+    "c_extract": "我會從文章裡找到需要的訊息",
+    "c_infer": "我會從線索推出沒有寫出來的事",
+    "c_author": "我會看出作者的想法和寫作目的",
+    "c_express": "我會把想法說清楚、前後連貫",
+    "c_writing": "我會分段寫出切題的文章，也會修改",
+    "s_heat": "我會說明熱怎麼傳播、怎麼保溫",
+    "s_weather": "我會看天氣圖，說明天氣怎麼變",
+    "s_earth": "我會說明地表怎麼被改變",
+    "s_magnet": "我會讓電磁鐵變強，也會改變它的磁極",
+    "s_circuit": "我會接出通路，分辨串聯和並聯",
+    "s_lever": "我會找出支點，判斷槓桿省不省力",
+    "s_sound": "我會說明聲音的大小和高低是怎麼來的",
+    "s_eco": "我會說明生物和環境怎麼互相影響",
+    "o_postwar": "我會說出戰後臺灣產業怎麼轉變",
+    "o_consume": "我會分辨需要和想要，做消費的選擇",
+    "o_rules": "我會分辨習俗、道德和法律",
+    "o_tech": "我會說出科技帶來的好處和要注意的事",
+    "o_debate": "我會分辨證據和意見，用理由支持想法",
+    "o_economy": "我會說明貿易和資源為什麼重要",
+    "o_society": "我會說出人權為什麼需要保障",
+    "o_environment": "我會說出環境問題和可以做的行動",
+    "o_action": "我會為一個公共問題規劃行動",
+    "j_addstep": "我會先算一步、再算一步",
+    "j_area": "我會數方格比較哪一面比較大",
+    "j_num200": "我會數到 200，也會比大小",
+    "j_add2": "我會算二位數的加法和減法",
+    "j_length": "我會用尺量出幾公分",
+    "j_mult1": "我會背 2、5、4、8 的乘法",
+    "j_time": "我會看時鐘說出幾點幾分",
+    "j_mult2": "我會背 3、6、7、9 的乘法",
+    "j_num1000": "我會數到 1000，也會比大小",
+    "j_add3": "我會算三位數的加法和減法",
+    "j_shape": "我會認出三角形、四邊形、圓形和盒子的形狀",
+    "j_share": "我會把東西平分，或幾個裝一袋",
+    "j_fraction": "我會說出平分後的一份是幾分之一",
+    "j_vocab_cur": "我會讀這學期的生字和注音",
+    "j_vocab_g1": "我還記得一年級學過的字",
+    "j_quake": "我知道地震時要趴下、掩護、穩住",
+    "j_plastic": "我知道哪些東西可以重複使用",
+    "j_seed": "我會說出種子發芽的順序",
+    "j_magnet": "我知道哪些東西會被磁鐵吸住",
+    "j_color": "我會說出兩種顏色混在一起變什麼",
+    "g5_n51": "我會說出每個數字在哪一位、代表多少",
+    "g5_n52": "我會解要算好幾步的生活問題",
+    "g5_n53": "我會找公因數和公倍數",
+    "g5_n56": "我會把整數相除的結果寫成分數",
+    "g5_n57": "我會算分數除以整數",
+    "g5_n59": "我會算除不盡時商是小數的除法",
+    "g5_n510": "我會算百分率和打幾折",
+    "g5_n511": "我會把小數取概數",
+    "g5_n512": "我會換算公畝、公頃和平方公里",
+    "g5_n513": "我會換算公噸和公斤",
+    "g5_n514": "我會用立方公尺表示體積",
+    "g5_n515": "我會分辨容積和容量，也會換算",
+    "g5_n516": "我會算時間的乘法和除法",
+    "g5_s51": "我會說出三角形和四邊形的性質",
+    "g5_s53": "我會認出扇形和它的圓心角",
+    "g5_s54": "我會找出對稱軸，畫出對稱的另一半",
+    "g5_s55": "我會說出正方體和長方體的面、邊、頂點",
+    "g5_s56": "我會看出兩個面是平行還是垂直",
+    "g5_s57": "我會分辨球、柱體和錐體",
+    "g5_r51": "我會把三個步驟寫成一個算式",
+    "g5_r52": "我會用運算的規律讓計算變簡單",
+    "g5_r53": "我會用符號寫出數學公式",
+    "g5_d51": "我會把資料畫成折線圖"
+  }
+};
+function carePetCopy(id) {
+  return CARE_COPY.pets[id] || CARE_COPY.pets.tick;
+}
+function careCopyPick(list, seed = 0) {
+  return list?.[Math.abs(seed) % list.length] || '';
+}
+function careShortLines(text) {
+  const chunks = String(text).match(/[^，。？！；]+[，。？！；]?/g) || [];
+  const lines = [];
+  for (const c of chunks) {
+    if (lines.length && lines[lines.length - 1].length + c.length <= 18) lines[lines.length - 1] += c;else lines.push(c);
+  }
+  return lines;
+}
+function careResultCopy(e) {
+  const a = CARE_COPY.common.afterTask;
+  let key = e.reason === 'full_reveal' ? 'fullRevealRetry' : e.reason === 'daily_cap' ? 'capReached' : e.diagnostic ? 'diagnosticDone' : e.source === 'review' || e.source === 'delayed' ? e.passed ? e.hints ? 'passedWithHint' : 'reviewPassed' : 'reviewFailed' : e.passed ? e.hints ? 'passedWithHint' : e.retriedAfterWrong ? 'passedAfterRetry' : 'passedNoHint' : null;
+  return key ? careCopyPick(a[key], e.t || 0) : '';
+}
+function careSupplyName(id, pet) {
+  return carePetCopy(pet)[id === 'care_snack' ? 'snack' : 'supply'];
+}
 const CARE_PARAMS = Object.freeze({
   stipendPerStage: 15,
   stipendDailyCap: 4,
@@ -48075,6 +48477,7 @@ function settleCareStipend(state, t = now()) {
     if (!reason && (c.stipend.perKp[e.kpId] || 0) >= params.stipendPerConceptPerDay) reason = 'concept_cap';
     const prior = (st.practiceLog || []).slice(0, (st.practiceLog || []).findIndex(x => 'p:' + x.id === e.eventId)).reverse().find(x => x.source === e.source && x.missionId === e.missionId && x.caseId === e.caseId && x.stage === e.stage);
     const event = {
+      diagnostic,
       retriedAfterWrong: (e.attempts || 0) > 1 || !!(prior && !prior.passed),
       t: e.t,
       eventId: e.eventId,
@@ -48270,7 +48673,7 @@ function careActiveSeconds(previous, current, lastInput, visible) {
 function careNeutralVisit(state, where, t = now()) {
   let st = ensureCare(state, t),
     c = st.student?.care;
-  if (!c?.enabled) return {
+  if (!c?.enabled || !['agency', 'care'].includes(where)) return {
     state: st,
     line: ''
   };
@@ -48304,7 +48707,7 @@ function careNeutralVisit(state, where, t = now()) {
   };
   let line = '';
   if (!c.selfCare && c.pets[id]?.sat < 30 && c.lines.hunger < 1) {
-    line = carePetKind(id) === 'machine' ? '能源少了，等等補給吧。' : '有點餓了，等等吃點心吧。';
+    line = careCopyPick(carePetCopy(id).invite, t % 3);
     c = careLog({
       ...c,
       lines: {
@@ -48329,7 +48732,11 @@ function careNeutralVisit(state, where, t = now()) {
   };
 }
 function carePetKind(id) {
-  return ['tick', 'mechapple', 'fishbowl'].includes(id) ? 'machine' : ['trimonster', 'emberlizard', 'salamander'].includes(id) ? 'fantasy' : 'animal';
+  return {
+    機械: 'machine',
+    奇幻: 'fantasy',
+    動物: 'animal'
+  }[carePetCopy(id).type];
 }
 function carePurchaseName(p) {
   return CARE_SUPPLIES[p.id]?.name || SHOP_BY_ID[p.id]?.name || p.id;
@@ -48350,6 +48757,27 @@ function reconcileCareLegacy(state, t = now()) {
         t,
         id: 'companion_up',
         price: 150,
+        type: 'refund'
+      }, ...(w.purchases || [])]
+    };
+    st = {
+      ...st,
+      student: {
+        ...st.student,
+        wallet: w
+      }
+    };
+  }
+  if (!w.magnifierRefunded && (hasItem(w, 'magnifier') || (w.purchases || []).some(p => p.id === 'magnifier' && p.type !== 'refund'))) {
+    const refunded = (w.purchases || []).some(p => p.id === 'magnifier' && p.type === 'refund');
+    w = {
+      ...w,
+      coins: w.coins + (refunded ? 0 : 120),
+      magnifierRefunded: true,
+      purchases: refunded ? w.purchases : [{
+        t,
+        id: 'magnifier',
+        price: 120,
         type: 'refund'
       }, ...(w.purchases || [])]
     };
@@ -48428,6 +48856,27 @@ function settleKeepsakes(state, t = now()) {
       }
     }
   } : state;
+  const quotes = {
+    ...(next.student.keepsakes?.quotes || {})
+  };
+  const counts = {};
+  for (const s of memorialStamps(next).slice().reverse()) {
+    counts[s.client] = (counts[s.client] || 0) + 1;
+    if (!quotes[s.id]) {
+      quotes[s.id] = careCopyPick(CARE_COPY.thanks[s.client], counts[s.client] - 1) || '謝謝你，調查員。';
+      changed = true;
+    }
+  }
+  if (changed) next = {
+    ...next,
+    student: {
+      ...next.student,
+      keepsakes: {
+        ...next.student.keepsakes,
+        quotes
+      }
+    }
+  };
   if (!state.student.keepsakes) next = markMemorialSeen(next);
   return next;
 }
@@ -48445,7 +48894,7 @@ function memorialStamps(state) {
     };
   });
   const cases = getWallet(state.student).caseLog.filter(x => x.result === 'arrest').map((x, i) => ({
-    id: 'c:' + x.t + ':' + i,
+    id: 'c:' + x.t + ':' + (x.caseId || x.title),
     t: x.t,
     n: 0,
     title: x.title,
@@ -48554,6 +49003,7 @@ function markMemorialSeen(state) {
   };
 }
 function validateKeepsakes(k, bad, p) {
+  if (k.quotes !== undefined && (!backupObject(k.quotes) || Object.values(k.quotes).some(s => typeof s !== 'string' || s.length > 300))) bad(p + '.quotes');
   if (!backupObject(k) || !backupObject(k.stamps) || Object.values(k.stamps).some(s => !backupObject(s) || !Number.isFinite(s.t) || s.t < 0 || !Number.isInteger(s.n) || s.n < 0) || k.seen !== undefined && (!backupObject(k.seen) || Object.values(k.seen).some(n => !Number.isInteger(n) || n < 0))) bad(p);
 }
 function giftMissionIds(state) {
@@ -69032,10 +69482,11 @@ function CarePanel({
   }, "\u56DE\u5230\u5192\u96AA"), React.createElement(Notice, null, "\u7167\u9867\u529F\u80FD\u5DF2\u95DC\u9589\u3002"));
   const level = careLevel(p.bond),
     kind = carePetKind(id),
-    labels = kind === 'machine' ? ['補充能源', '擦拭', '上油'] : kind === 'fantasy' ? ['補給', '清潔', '整理'] : ['餵食', '洗澡', '梳理'];
+    copy = carePetCopy(id),
+    labels = ['補給 ' + careSupplyName(supply, id), copy.clean, copy.groom];
   const act = a => {
     if (a === 'feed' && p.sat >= 100) {
-      setMessage(kind === 'machine' ? '能源滿了，謝謝你。' : '吃飽了，謝謝你。');
+      setMessage(kind === 'machine' ? '能源滿了，謝謝你。' : careCopyPick(CARE_COPY.common.care.alreadyFull, cheer));
       return;
     }
     if (a === 'feed' && !(c.inv[supply] > 0)) {
@@ -69044,7 +69495,7 @@ function CarePanel({
     }
     setState(s => careAction(s, a, supply));
     setCheer(n => n + 1);
-    setMessage(a === 'feed' && supply === 'care_snack' ? '喜歡這個味道！' : '和你在一起很開心。');
+    setMessage(p.day === todayKey() && p.done[a] ? CARE_COPY.common.care.repeatSameDay[0] : a === 'feed' && supply === 'care_snack' ? '喜歡這個味道！' : careCopyPick(copy.welcome, cheer));
   };
   return React.createElement("div", {
     className: "stage",
@@ -69080,7 +69531,11 @@ function CarePanel({
     id: "care-self",
     type: "checkbox",
     checked: c.selfCare,
-    onChange: e => setState(s => careToggle(s, 'selfCare', e.target.checked))
+    onChange: e => {
+      const on = e.target.checked;
+      setState(s => careToggle(s, 'selfCare', on));
+      setMessage(CARE_COPY.common.care[on ? 'selfCareOn' : 'selfCareOff'][0]);
+    }
   }), " \u81EA\u5DF1\u7167\u9867\u81EA\u5DF1"), React.createElement("div", {
     className: "row care-actions"
   }, ['feed', 'clean', 'groom'].map((a, i) => React.createElement(Btn, {
@@ -69099,18 +69554,18 @@ function CarePanel({
   }, Object.entries(CARE_SUPPLIES).map(([k, s]) => React.createElement("option", {
     key: k,
     value: k
-  }, s.name, "\uFF1A", c.inv[k] || 0, " \u4EFD")))), React.createElement(Btn, {
+  }, s.name, "\u30FB", careSupplyName(k, id), "\uFF1A", c.inv[k] || 0, " \u4EFD")))), React.createElement(Btn, {
     id: "care-shop",
     onClick: () => go('wanted', 'shop')
   }, "\u53BB\u6AC3\u53F0")), React.createElement("p", {
     className: "small muted"
   }, "\u6E05\u6F54\u548C\u6574\u7406\u7684\u5DE5\u5177\u514D\u8CBB\u3002"), message && React.createElement(Notice, null, message), React.createElement("details", {
     id: "care-story"
-  }, React.createElement("summary", null, "\u6211\u5011\u7684\u5C0F\u6545\u4E8B"), ['今天一起出發吧。', '一起看看島上的小路。', '你停下來觀察，我也跟著看。', '每次發現，都想和你分享。', '走過的地方，都成了回憶。'].slice(0, level).map((s, i) => React.createElement("p", {
+  }, React.createElement("summary", null, "\u6211\u5011\u7684\u5C0F\u6545\u4E8B"), (studentGrade(state.student) === 2 ? copy.storyJunior : [copy.story]).map((s, i) => React.createElement("p", {
     key: i
-  }, "\u7B2C ", i + 1, " \u7D1A\uFF1A", s)), React.createElement("small", {
-    className: "muted"
-  }, "\u6545\u4E8B\u77ED\u53E5\u6703\u6301\u7E8C\u66F4\u65B0\u3002"))), Object.entries(c.stipend.pendingRetry).length > 0 && React.createElement("div", {
+  }, s)), copy.bond.slice(0, level - 1).map((s, i) => React.createElement("p", {
+    key: i
+  }, "\u89AA\u5BC6\u5EA6\u7B2C ", i + 2, " \u7D1A\uFF1A", s)))), Object.entries(c.stipend.pendingRetry).length > 0 && React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u63DB\u4E00\u984C\u4F86\u8A66\u8A66"), Object.entries(c.stipend.pendingRetry).map(([key, v]) => React.createElement(Btn, {
     key: key,
@@ -69132,10 +69587,14 @@ function CareResultLine({
   const e = state.student.care.log.slice().reverse().find(e => ['stipend_granted', 'stipend_skipped'].includes(e.type) && (eventId ? e.eventId === eventId : stageKey && e.key === stageKey));
   if (!e) return null;
   const text = e.type === 'stipend_granted' ? '補給金 ＋15' : e.reason === 'daily_cap' ? '今天領滿了，明天還有。' : e.reason === 'concept_cap' ? '這個觀念今天領滿了。' : e.reason === 'full_reveal' ? '一起看完解法，換一題試試。' : '';
-  return text ? React.createElement("div", {
+  const line = careResultCopy(e);
+  return text || line ? React.createElement("div", {
     className: "care-result",
     role: "status"
-  }, text, e.reason === 'full_reveal' && onRetry && React.createElement(Btn, {
+  }, line && careShortLines(line).map((s, i) => React.createElement("p", {
+    className: "care-copy-line",
+    key: i
+  }, s)), text, e.reason === 'full_reveal' && onRetry && React.createElement(Btn, {
     small: true,
     id: "care-retry",
     onClick: onRetry
@@ -69360,26 +69819,13 @@ function SubjectBadge({
     "data-earned": earned
   }, !earned ? React.createElement(BadgeOutline, {
     tier: i
-  }) : sy >= 0 && !failed ? React.createElement("svg", {
+  }) : sy >= 0 && !failed ? React.createElement("img", {
     width: size,
     height: size,
-    viewBox: `${x} ${y} ${a.width[i]} ${h}`,
-    role: "img",
-    "aria-label": `${row.label}第 ${tier + 1} 階`
-  }, React.createElement("defs", null, React.createElement("clipPath", {
-    id: clip
-  }, React.createElement("rect", {
-    x: x,
-    y: y,
-    width: a.width[i],
-    height: h
-  }))), React.createElement("image", {
-    clipPath: `url(#${clip})`,
-    href: "assets/badges/enamel-island-v1/board.png",
-    width: "1484",
-    height: "1060",
+    src: `assets/badges/enamel-island-v1/subject-growth.${subject}.lv${String(i + 1).padStart(2, '0')}.art-v2.png`,
+    alt: `${row.label}第 ${tier + 1} 階`,
     onError: () => setFailed(true)
-  })) : React.createElement("span", {
+  }) : React.createElement("span", {
     className: "badge-fallback",
     "data-badge-fallback": failed ? 'true' : undefined
   }, icon), earned && mastery && React.createElement("b", {
@@ -69468,32 +69914,78 @@ function KeepsakePicture({
   }));
 }
 function OfficeKeepsakesArt({
-  student
+  student,
+  onOpen,
+  busy
 }) {
   return React.createElement("g", {
-    className: "office-keepsakes",
-    pointerEvents: "none"
-  }, officeKeepsakes(student).filter(o => !student.adventureUI?.hiddenKeepsakes?.includes(o.id)).map(o => {
-    const p = OFFICE_KEEPSAKE_PLACES[o.id];
-    return React.createElement("g", {
-      key: o.id,
-      "data-office-keepsake": o.id,
-      transform: `translate(${p.x - 28},${p.y - 50})`
-    }, React.createElement("rect", {
-      x: "-4",
-      y: "-4",
-      width: "64",
-      height: "74",
-      rx: "6",
-      fill: "#172a30bb",
-      stroke: "#c8a66a"
-    }), React.createElement("svg", {
-      width: "56",
-      height: "66"
-    }, React.createElement(KeepsakePicture, {
-      id: o.id
-    })));
-  }));
+    id: "office-cabinet",
+    className: "hot office-cabinet",
+    transform: "translate(170,230)",
+    role: "button",
+    "aria-label": "\u7D00\u5FF5\u6AC3",
+    tabIndex: busy ? -1 : 0,
+    "aria-disabled": !!busy,
+    onClick: e => {
+      e.stopPropagation();
+      if (!busy) onOpen?.();
+    },
+    onKeyDown: e => {
+      if (!busy && ['Enter', ' '].includes(e.key)) {
+        e.preventDefault();
+        e.stopPropagation();
+        onOpen?.();
+      }
+    }
+  }, React.createElement("rect", {
+    x: "-58",
+    y: "-64",
+    width: "116",
+    height: "140",
+    rx: "4",
+    fill: "#5a3823",
+    stroke: "#bd9859",
+    strokeWidth: "4"
+  }), React.createElement("rect", {
+    x: "-48",
+    y: "-54",
+    width: "96",
+    height: "116",
+    fill: "#192f32",
+    stroke: "#987147",
+    strokeWidth: "3"
+  }), React.createElement("path", {
+    d: "M-46 -15H46 M-46 25H46 M0 -52V60",
+    stroke: "#b28a55",
+    strokeWidth: "4"
+  }), React.createElement("path", {
+    d: "M-40 -48L-12 -48L-40 -20 M10 -48L40 -48L10 -18",
+    fill: "#cce8e7",
+    opacity: ".12"
+  }), React.createElement("circle", {
+    cx: "-7",
+    cy: "8",
+    r: "3",
+    fill: "#e8c16c"
+  }), React.createElement("circle", {
+    cx: "7",
+    cy: "8",
+    r: "3",
+    fill: "#e8c16c"
+  }), React.createElement("rect", {
+    x: "-62",
+    y: "74",
+    width: "124",
+    height: "38",
+    rx: "6",
+    fill: "#14232d",
+    stroke: "#c6a16b"
+  }), React.createElement("text", {
+    y: "99",
+    textAnchor: "middle",
+    fill: "#fff5df",
+    fontSize: "19"
+  }, "\u7D00\u5FF5\u6AC3"));
 }
 function OfficeCollection({
   state,
@@ -69522,18 +70014,19 @@ function OfficeCollection({
   }, React.createElement("button", {
     onClick: () => setTab('keepsakes'),
     className: tab === 'keepsakes' ? 'active' : ''
-  }, "\u7D00\u5FF5\u64FA\u8A2D"), React.createElement("button", {
+  }, "\u7D00\u5FF5\u6AC3"), React.createElement("button", {
     id: "office-gifts",
     onClick: () => setTab('gifts'),
     className: tab === 'gifts' ? 'active' : ''
-  }, "\u6211\u7684\u79AE\u7269", choices.length ? ' ●' : '')), tab === 'keepsakes' ? React.createElement(React.Fragment, null, React.createElement("p", null, "\u5192\u96AA\u5F97\u5230\u7684\u7D00\u5FF5\uFF0C\u90FD\u597D\u597D\u6536\u5728\u9019\u88E1\u3002\u53EF\u4EE5\u9078\u64C7\u8981\u4E0D\u8981\u64FA\u51FA\u4F86\u3002"), React.createElement("div", {
+  }, "\u6211\u7684\u79AE\u7269", choices.length ? ' ●' : '')), tab === 'keepsakes' ? React.createElement(React.Fragment, null, React.createElement("p", null, "\u5192\u96AA\u5F97\u5230\u7684\u7D00\u5FF5\uFF0C\u90FD\u597D\u597D\u6536\u5728\u9019\u88E1\u3002\u53EF\u4EE5\u9078\u64C7\u8981\u4E0D\u8981\u9673\u5217\u5728\u6AC3\u88E1\u3002"), React.createElement("div", {
     className: "grid two"
   }, officeKeepsakes(state.student).map(o => React.createElement("label", {
     className: "card keepsake-choice",
+    "data-stored": state.student.adventureUI?.hiddenKeepsakes?.includes(o.id) ? "true" : "false",
     key: o.id
   }, React.createElement(KeepsakePicture, {
     id: o.id
-  }), React.createElement("b", null, o.name), React.createElement("span", null, OFFICE_KEEPSAKE_PLACES[o.id].label), React.createElement("span", null, React.createElement("input", {
+  }), React.createElement("b", null, o.name), React.createElement("span", null, state.student.adventureUI?.hiddenKeepsakes?.includes(o.id) ? "已收好" : "櫃內展示中"), React.createElement("span", null, React.createElement("input", {
     type: "checkbox",
     checked: !state.student.adventureUI?.hiddenKeepsakes?.includes(o.id),
     onChange: e => {
@@ -69554,7 +70047,7 @@ function OfficeCollection({
         };
       });
     }
-  }), " \u64FA\u51FA\u4F86")))), !officeKeepsakes(state.student).length && React.createElement("p", null, "\u5B8C\u6210\u5192\u96AA\uFF0C\u5C31\u6703\u7559\u4E0B\u7B2C\u4E00\u4EF6\u7D00\u5FF5\u3002")) : React.createElement(React.Fragment, null, React.createElement("p", null, "\u7070\u9D09\u592B\u4EBA\uFF1A\u6BCF\u4EFD\u79AE\u7269\u6311\u4E00\u4EF6\u559C\u6B61\u7684\uFF0C\u53E6\u4E00\u4EF6\u4E0B\u6B21\u9084\u6709\u6A5F\u6703\u9078\u3002"), React.createElement("div", {
+  }), " \u5728\u6AC3\u5167\u9673\u5217")))), !officeKeepsakes(state.student).length && React.createElement("p", null, "\u5B8C\u6210\u5192\u96AA\uFF0C\u5C31\u6703\u7559\u4E0B\u7B2C\u4E00\u4EF6\u7D00\u5FF5\u3002")) : React.createElement(React.Fragment, null, React.createElement("p", null, "\u7070\u9D09\u592B\u4EBA\uFF1A\u6BCF\u4EFD\u79AE\u7269\u6311\u4E00\u4EF6\u559C\u6B61\u7684\uFF0C\u53E6\u4E00\u4EF6\u4E0B\u6B21\u9084\u6709\u6A5F\u6703\u9078\u3002"), React.createElement("div", {
     className: "gift-progress"
   }, [['mission', '新委託'], ['review', '到期複習'], ['repair', '訂正成功']].map(([k, n]) => React.createElement("span", {
     key: k
@@ -69721,7 +70214,7 @@ function useAdventureNotices(state, setState, scene, goal, busy, notify) {
     if (busy) return;
     const ui = s.adventureUI || {};
     if (scene.id === 'agency' && officeKeepsakes(s).length && !ui.keepsakesNotified) {
-      notify('你的裝備收進事務所當紀念了！書櫃上層與門邊掛架都能看到。點「紀念擺設」看看。');
+      notify('你的裝備收進事務所的紀念櫃了！點「紀念櫃」看看。');
       setState(st => ({
         ...st,
         student: {
@@ -70263,9 +70756,9 @@ const SHOP_PRESENTATION = {
     note: '永久使用'
   },
   magnifier: {
-    short: '第一個提示保留金徽章資格',
-    stat: '每案 1 次',
-    note: '3 星以下通緝令'
+    short: '提示不影響通緝獎勵',
+    stat: '人人內建',
+    note: '原購買者退還 120 金幣'
   },
   watch: {
     short: '答錯後，追回來更容易',
@@ -70310,7 +70803,8 @@ function SceneView({
   cinematic,
   onInteract,
   onHover,
-  cheer
+  cheer,
+  onCollection
 }) {
   const [mapArtFailed, setMapArtFailed] = useState(false);
   const scene = worldMapScene(sourceScene, !mapArtFailed);
@@ -70498,7 +70992,9 @@ function SceneView({
     story: story,
     onFailure: () => setMapArtFailed(true)
   }), scene.id === 'agency' && React.createElement(OfficeKeepsakesArt, {
-    student: student
+    student: student,
+    busy: busy,
+    onOpen: onCollection
   }), scene.props && React.createElement("g", {
     className: "scene-props",
     pointerEvents: "none",
@@ -71481,7 +71977,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.11-v51',
+    build: '2026.11.11-v52',
     ...context,
     message
   };
@@ -71528,7 +72024,9 @@ function guardedMechanic(Component, kind) {
   return function SafeMechanic(props) {
     const shared = React.useContext(MechanicSafetyContext),
       state = shared?.state || shared,
-      ref = useRef(null);
+      ref = useRef(null),
+      finished = useRef(false),
+      [ended, setEnded] = useState(false);
     const binding = kind === 'step' ? findStepTask(state, props.params) : null;
     const pathKey = JSON.stringify(binding?.path || []),
       signature = kind === 'step' ? stepTaskSignature(props.params) : '';
@@ -71537,6 +72035,9 @@ function guardedMechanic(Component, kind) {
     }, [shared?.setState, pathKey, signature]);
     const context = mechanicErrorContext(state, kind, props.params);
     const done = result => {
+      if (finished.current) return;
+      finished.current = true;
+      setEnded(true);
       try {
         props.onDone?.(result);
         if (kind === 'step' && shared?.setState && pathKey !== '[]') shared.setState(prev => clearStepDraft(prev, JSON.parse(pathKey), signature));
@@ -71547,12 +72048,16 @@ function guardedMechanic(Component, kind) {
     return React.createElement(MechanicErrorBoundary, {
       ref: ref,
       context: context
+    }, React.createElement("fieldset", {
+      className: "mechanic-controls",
+      disabled: ended,
+      inert: ended ? '' : undefined
     }, React.createElement(Component, _extends({}, props, {
       key: kind + pathKey + signature,
       draft: binding?.task.stepDraft,
       onDraft: onDraft,
       onDone: done
-    })));
+    }))));
   };
 }
 for (const [kind, Component] of Object.entries(ALL_MECHS)) ALL_MECHS[kind] = guardedMechanic(Component, kind);
@@ -73132,7 +73637,7 @@ function Adventure({
   }, "\u8001\u7167\u7247\u7DF4\u7FD2\u684C"), scene.id === 'agency' && React.createElement(React.Fragment, null, React.createElement("button", {
     id: "office-keepsakes",
     onClick: () => setCollection('keepsakes')
-  }, "\u7D00\u5FF5\u64FA\u8A2D"), React.createElement("button", {
+  }, "\u7D00\u5FF5\u6AC3"), React.createElement("button", {
     id: "office-gift-open",
     onClick: () => setCollection('gifts')
   }, giftChoices(state).length ? '🎁 領取禮物' : '我的禮物')));
@@ -73182,6 +73687,7 @@ function Adventure({
     busy: busy,
     cinematic: !!node,
     onInteract: interact,
+    onCollection: () => setCollection('keepsakes'),
     cheer: cheer
   }), React.createElement("div", {
     key: titleKey,
@@ -73865,9 +74371,9 @@ function CasePlayer({
     }, s.badge && React.createElement(Tag, {
       kind: "accent"
     }, {
-      gold: '🥇 金徽章：全關通過、未用提示',
-      silver: '🥈 銀徽章：全關通過',
-      bronze: '🥉 銅徽章：解開一半以上'
+      gold: '🥇 金徽章：全部關卡通過',
+      silver: '🥈 銀徽章：通過一半以上',
+      bronze: '🥉 銅徽章：至少通過一關'
     }[s.badge]), React.createElement(Tag, null, "\u7D93\u9A57 +", s.xp), React.createElement(Tag, null, "\u91D1\u5E63 +", s.coins)), React.createElement("details", null, React.createElement("summary", {
       className: "small muted"
     }, "\u734E\u52F5\u600E\u9EBC\u7B97"), React.createElement("div", {
@@ -73943,7 +74449,7 @@ function CasePlayer({
     style: {
       fontSize: '1rem'
     }
-  }, a.stars >= 4 ? '這張通緝令是遷移挑戰，沒有提示。放心，答錯他只是跑遠一步，不會失敗。' : '這幾關可以用提示，用了提示一樣能逮捕，只是徽章從金變銀。先看清楚每一關要查什麼。', hasItem(wallet, 'magnifier') && a.stars <= 3 ? ' 你帶著放大鏡：第一次用提示不會扣追蹤值。' : '', hasItem(wallet, 'watch') ? ' 懷錶在身上，答錯只會跑遠一半。' : '')), React.createElement("div", null, React.createElement(Btn, {
+  }, a.stars >= 4 ? '這張通緝令是無提示挑戰。每關有三次機會，沒過也能繼續追下一個線索。' : '這幾關可以用提示，獎勵和追蹤值都一樣。全部關卡通過就有金徽章。', hasItem(wallet, 'watch') ? ' 懷錶在身上，答錯只會跑遠一半。' : '')), React.createElement("div", null, React.createElement(Btn, {
     kind: "primary",
     id: "case-start",
     onClick: () => setPhase('play')
@@ -73974,7 +74480,7 @@ function CasePlayer({
     onClick: () => setState(useHintCard(state))
   }, "\u7528\u4E00\u5F35\u63D0\u793A\u5361\uFF08\u5269 ", wallet.hintCards, "\uFF09"), React.createElement("span", {
     className: "small muted"
-  }, "\u9019\u4E00\u95DC\u53EF\u4EE5\u770B\u4E00\u689D\u63D0\u793A\uFF1B\u7528\u4E86\u63D0\u793A\uFF0C\u5FBD\u7AE0\u6703\u5F9E\u91D1\u8B8A\u9280\u3002")), st.cardHint && React.createElement("div", {
+  }, "\u9019\u4E00\u95DC\u53EF\u4EE5\u770B\u4E00\u689D\u63D0\u793A\uFF0C\u4E0D\u5F71\u97FF\u901A\u7DDD\u734E\u52F5\u3002")), st.cardHint && React.createElement("div", {
     className: "small muted",
     id: "card-used"
   }, "\u5DF2\u7528\u63D0\u793A\u5361\uFF1A\u9019\u4E00\u95DC\u53EF\u4EE5\u770B\u4E00\u689D\u63D0\u793A\u3002"), st.cardHint && st.kind === 'problems' && React.createElement("div", {
@@ -73988,7 +74494,7 @@ function CasePlayer({
     key: `${key}:${st.presented ? 'ready' : 'pending'}`,
     params: st.params,
     hintsAllowed: !!st.allowHints || !!st.cardHint,
-    maxAttempts: st.allowHints || st.cardHint ? undefined : 3,
+    maxAttempts: st.allowHints || st.cardHint ? undefined : st.maxAttempts || 3,
     onDone: onDone,
     seed: a.seed + a.stepIdx
   })), phase === 'step_result' && result && React.createElement("div", {
@@ -74002,7 +74508,7 @@ function CasePlayer({
     style: {
       fontSize: '1rem'
     }
-  }, result.passed ? result.hints ? st.freeHint ? '解開了！放大鏡幫你把這次提示算成免費的，包圍圈照樣縮小。' : '解開了！用了提示也算解開，包圍圈縮小了。' : result.attempts > 1 ? '訂正後解開了，包圍圈縮小了！' : '漂亮，一次就解開，包圍圈縮小了一大圈！' : pick(makeRng(a.seed + a.stepIdx + 1), suspect.escape))), !result.passed && React.createElement("div", {
+  }, result.passed ? result.hints ? '解開了！用了提示也算解開，包圍圈縮小了。' : result.attempts > 1 ? '訂正後解開了，包圍圈縮小了！' : '漂亮，一次就解開，包圍圈縮小了一大圈！' : pick(makeRng(a.seed + a.stepIdx + 1), suspect.escape))), !result.passed && React.createElement("div", {
     className: "dialog",
     id: "companion-guide"
   }, React.createElement("div", {
@@ -74249,7 +74755,10 @@ function ShopPanel({
     className: "shop-focus"
   }, React.createElement(FocusMeter, {
     state: state
-  }), React.createElement("span", null, "\u7B54\u932F\u3001\u7528\u63D0\u793A\u90FD\u4E0D\u6263\u5C08\u6CE8\u529B\u3002\u9694\u5929\u81EA\u52D5\u6062\u5FA9\u3002")), groups.map(([kind, label, subtitle]) => React.createElement("section", {
+  }), React.createElement("span", null, "\u7B54\u932F\u3001\u7528\u63D0\u793A\u90FD\u4E0D\u6263\u5C08\u6CE8\u529B\u3002\u9694\u5929\u81EA\u52D5\u6062\u5FA9\u3002")), React.createElement("p", {
+    className: "notice",
+    id: "shop-builtins"
+  }, "\u5075\u63A2\u8AB2\u8207\u653E\u5927\u93E1\u5DF2\u5167\u5EFA\u3002\u7528\u63D0\u793A\u4E0D\u5F71\u97FF\u901A\u7DDD\u734E\u52F5\uFF1B\u820A\u653E\u5927\u93E1\u8CFC\u8CB7\u8005\u6703\u9000\u9084 120 \u91D1\u5E63\u4E00\u6B21\u3002"), groups.map(([kind, label, subtitle]) => React.createElement("section", {
     key: kind
   }, React.createElement("div", {
     className: "shop-section-title"
@@ -74360,7 +74869,7 @@ ShopPanel = function CareShop(props) {
     className: "inventory-owned"
   }, "\u80CC\u5305 ", c.inv[id] || 0, " \u4EFD")), React.createElement("div", {
     className: "inventory-copy"
-  }, React.createElement("h3", null, it.name), React.createElement("p", null, id === 'care_snack' ? '喜歡的點心，多一句開心的反應。' : '一袋剛剛好的補給，動物和機械都能使用。'), React.createElement("div", {
+  }, React.createElement("h3", null, it.name), React.createElement("b", null, careSupplyName(id, selectedCompanion(props.state.student).id)), React.createElement("p", null, id === 'care_snack' ? '喜歡的點心，多一句開心的反應。' : '一袋剛剛好的補給，動物和機械都能使用。'), React.createElement("div", {
     className: "inventory-stat"
   }, React.createElement("b", null, "\u98FD\u8DB3\uFF0F\u80FD\u6E90 +", it.restore), React.createElement("small", null, "\u4F7F\u7528\u6642\u6062\u5FA9")), React.createElement("p", null, "\u76EE\u524D\u6709 ", c.inv[id] || 0, " \u4EFD")), React.createElement("div", {
     className: "inventory-footer"
@@ -74592,7 +75101,7 @@ function MemorialBook({
     key: s.id
   }, React.createElement("span", {
     className: "memorial-stamp"
-  }, "\u2726"), React.createElement("h3", null, s.title), React.createElement("small", null, s.t ? fmtDay(s.t) : '較早的紀錄', "\u30FB", s.focus), React.createElement("p", null, "\u8B1D\u8B1D\u4F60\uFF0C\u8ABF\u67E5\u54E1\u3002", React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))))));
+  }, "\u2726"), React.createElement("h3", null, s.title), React.createElement("small", null, s.t ? fmtDay(s.t) : '較早的紀錄', "\u30FB", s.focus), React.createElement("p", null, state.student.keepsakes?.quotes?.[s.id] || '謝謝你，調查員。', React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))))));
 }
 function ChestArt({
   locks,
@@ -76648,7 +77157,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.11-v51\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.11-v52\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -77178,7 +77687,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.11-v51",
+    "data-build": "2026.11.11-v52",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
