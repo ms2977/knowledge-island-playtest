@@ -554,6 +554,8 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .junior-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; width: 100%; }
 .junior-opt { min-height: 56px; font-size: 1.15rem; font-weight: 700; border-radius: 14px; border: 2px solid #c9b48a; background: #fff; color: #2a2118; cursor: pointer; padding: 8px 12px; }
 .junior-opt:hover:not(:disabled) { border-color: #d9a441; background: #fff7df; }
+.junior-opt.sel { border-color:#247a91;background:#e6f3fa;box-shadow:0 0 0 2px #247a9140; }
+.junior-opt:focus-visible { outline:3px solid #247a91;outline-offset:3px; }
 .junior-opt.ok { background: #dff5e1; border-color: #4caf50; }
 .junior-opt.no { background: #fde2dd; border-color: #c0392b; opacity: .8; }
 .big-char { font-size: 72px; font-weight: 700; line-height: 1.2; border: 2px dashed #c9b48a; border-radius: 16px; padding: 4px 24px; background: #fff; }
@@ -768,7 +770,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261111-input-guard">
+<meta name="game-release" content="playtest-20261111-pickone">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -38370,71 +38372,98 @@ function PickOne({
     passNeed = Math.max(1, items.length - 1),
     hints = []
   } = params;
-  const [idx, setIdx] = useState(0);
-  const [chosen, setChosen] = useState(null);
-  const [tries, setTries] = useState(0);
-  const [score, setScore] = useState(0);
-  const [log, setLog] = useState([]);
-  const [finished, setFinished] = useState(false);
+  const [idx, setIdx] = useState(0),
+    [chosen, setChosen] = useState(null),
+    [checked, setChecked] = useState(null);
+  const [tries, setTries] = useState(0),
+    [answers, setAnswers] = useState([]),
+    [answerShown, setAnswerShown] = useState(false);
+  const finished = useRef(false),
+    submitted = useRef(false),
+    advanced = useRef(-1),
+    revealed = useRef(false);
+  const complete = result => {
+    if (finished.current) return;
+    finished.current = true;
+    onDone?.(result);
+  };
   const m = useMechanic({
     hintsAllowed,
-    onDone,
-    maxAttempts: 99
+    onDone: complete,
+    maxAttempts
   });
   const it = items[idx];
   const hintTexts = hints.length ? hints : it?.hint ? [it.hint] : ['先把題目念一次，再看圖。', '把每一個選項都看一遍，不急。'];
+  const score = answers.filter(a => a.correct).length,
+    firstTryCorrect = answers.filter(a => a.firstTryCorrect).length;
+  const detail = rows => ({
+    correct: rows.filter(a => a.correct).length,
+    score: rows.filter(a => a.correct).length,
+    total: items.length,
+    firstTryCorrect: rows.filter(a => a.firstTryCorrect).length,
+    log: rows.map(a => a.firstTryCorrect),
+    answers: rows
+  });
   const choose = j => {
-    if (m.done || finished || chosen != null && it.options[chosen].correct) return;
+    if (m.done || finished.current || checked === 'correct') return;
     setChosen(j);
-    if (it.options[j].correct) {
-      const ok = tries === 0;
-      setScore(s => s + (ok ? 1 : 0));
-      setLog(l => [...l, ok]);
+    setChecked(null);
+    submitted.current = false;
+    m.setFeedback(null);
+  };
+  const check = () => {
+    if (m.done || finished.current || submitted.current || chosen == null) return;
+    submitted.current = true;
+    const option = it.options[chosen],
+      row = {
+        item: idx,
+        choice: chosen,
+        correct: !!option.correct,
+        firstTryCorrect: !!option.correct && tries === 0 && !answerShown,
+        wrongAttempts: tries + (option.correct ? 0 : 1),
+        answerShown,
+        assisted: answerShown || m.hints > 0
+      };
+    if (option.correct) {
+      setChecked('correct');
+      setAnswers(a => [...a, row]);
       m.setFeedback({
         kind: 'good',
-        text: it.options[j].why || '答對了！'
+        text: '確認正確！' + (option.why || '')
       });
     } else {
+      setChecked('wrong');
       setTries(t => t + 1);
-      m.setFeedback({
-        kind: 'bad',
-        text: it.options[j].why || '再想想看。'
-      });
+      m.fail((option.why || '再讀一次題目，想想看。') + ' 改選後，再按「確認答案」。', detail([...answers, row]));
     }
   };
+  const reveal = () => {
+    if (m.done || finished.current || revealed.current || checked === 'correct' || !hintsAllowed || tries < 2 || m.hints >= m.maxHints) return;
+    revealed.current = true;
+    setAnswerShown(true);
+    setChosen(null);
+    setChecked(null);
+    submitted.current = false;
+    m.useHint();
+    m.setFeedback(null);
+  };
   const next = () => {
+    if (m.done || finished.current || checked !== 'correct' || advanced.current === idx) return;
+    advanced.current = idx;
     if (idx + 1 < items.length) {
       setIdx(idx + 1);
       setChosen(null);
+      setChecked(null);
       setTries(0);
+      setAnswerShown(false);
+      submitted.current = false;
+      revealed.current = false;
       m.setFeedback(null);
       return;
     }
-    const total = items.length;
-    const s = score;
-    setFinished(true);
-    if (s >= passNeed) m.pass(`完成！${total} 題裡有 ${s} 題一次就答對。`, {
-      score: s,
-      total,
-      log
-    });else {
-      m.setFeedback({
-        kind: 'bad',
-        text: `完成了，${total} 題裡有 ${s} 題一次答對，再練一次會更好。`
-      });
-      onDone && onDone({
-        passed: false,
-        attempts: total - s,
-        hints: m.hints,
-        detail: {
-          score: s,
-          total,
-          log
-        }
-      });
-    }
+    if (score >= passNeed) m.pass(`完成！${items.length} 題已確認答對 ${score} 題，訂正答對也算通過。`, detail(answers));else m.giveUp(detail(answers));
   };
-  const solved = chosen != null && it.options[chosen].correct && !finished;
+  const solved = checked === 'correct';
   return React.createElement("div", {
     className: "col mech junior-mech"
   }, story && React.createElement("p", {
@@ -38445,7 +38474,7 @@ function PickOne({
     kind: "accent"
   }, "\u7B2C ", idx + 1, " \u984C\uFF0F\u5171 ", items.length, " \u984C"), React.createElement("span", {
     className: "small muted"
-  }, "\u4E00\u6B21\u7B54\u5C0D ", score, " \u984C")), React.createElement("div", {
+  }, "\u78BA\u8A8D\u7B54\u5C0D ", score, " \u984C \xB7 \u9996\u6B21\u7B54\u5C0D ", firstTryCorrect, " \u984C")), React.createElement("div", {
     className: "card col",
     style: {
       gap: 10,
@@ -38459,37 +38488,45 @@ function PickOne({
     className: "junior-q",
     id: "po-q"
   }, it.q), React.createElement("div", {
-    className: "junior-options"
+    className: "junior-options",
+    role: "group",
+    "aria-label": "\u5148\u9078\u7B54\u6848\uFF0C\u78BA\u8A8D\u524D\u53EF\u4EE5\u6539\u9078"
   }, it.options.map((o, j) => React.createElement("button", {
     key: j,
     type: "button",
     id: `po-${j}`,
-    className: `junior-opt ${it.nozy ? 'nozy' : ''} ${chosen === j ? o.correct ? 'ok' : 'no' : ''} ${solved && o.correct ? 'ok' : ''}`,
-    disabled: solved || m.done || chosen === j,
+    "aria-pressed": chosen === j,
+    className: `junior-opt ${it.nozy ? 'nozy' : ''} ${chosen === j ? checked === 'correct' ? 'ok' : checked === 'wrong' ? 'no' : 'sel' : ''}`,
+    disabled: solved || m.done,
     onClick: () => choose(j)
-  }, o.text)))), React.createElement("div", {
+  }, o.text)))), !m.done && React.createElement(React.Fragment, null, React.createElement("p", {
+    className: "small muted",
+    id: "po-instruction"
+  }, solved ? '這題已確認答對，可以繼續。' : '先選一個答案，可以改選；按「確認答案」才會判定。'), React.createElement("div", {
     className: "row",
     style: {
       gap: 8
     }
-  }, solved && React.createElement(Btn, {
+  }, solved ? React.createElement(Btn, {
     kind: "primary",
     big: true,
     id: "po-next",
     onClick: next
-  }, idx + 1 < items.length ? '下一題 ▶' : '完成'), !solved && tries >= 2 && !m.done && React.createElement(Btn, {
+  }, idx + 1 < items.length ? '下一題 ▶' : '完成') : React.createElement(Btn, {
+    kind: "primary",
+    big: true,
+    id: "po-check",
+    disabled: chosen == null || checked === 'wrong',
+    onClick: check
+  }, "\u78BA\u8A8D\u7B54\u6848"), !solved && tries >= 2 && hintsAllowed && !answerShown && m.hints < m.maxHints && React.createElement(Btn, {
     small: true,
     kind: "ghost",
     id: "po-skip",
-    onClick: () => {
-      setChosen(it.options.findIndex(o => o.correct));
-      setLog(l => [...l, false]);
-      m.setFeedback({
-        kind: 'warn',
-        text: '正確答案是：' + it.options.find(o => o.correct).text + '。' + (it.options.find(o => o.correct).why || '')
-      });
-    }
-  }, "\u770B\u7B54\u6848")), React.createElement(MechHUD, {
+    onClick: reveal
+  }, "\u770B\u89E3\u8AAA\uFF0C\u518D\u4F5C\u7B54\uFF08\u8A08\u4E00\u6B21\u63D0\u793A\uFF09"))), answerShown && React.createElement("div", {
+    className: "notice",
+    id: "po-explanation"
+  }, React.createElement("b", null, "\u7B54\u6848\u89E3\u8AAA\uFF1A"), it.options.find(o => o.correct).text, " ", it.options.find(o => o.correct).why || '', React.createElement("p", null, "\u770B\u904E\u89E3\u8AAA\u5F8C\uFF0C\u8ACB\u81EA\u5DF1\u9078\u4E00\u6B21\uFF0C\u518D\u6309\u300C\u78BA\u8A8D\u7B54\u6848\u300D\u3002\u7CFB\u7D71\u6703\u8A18\u9304\u9019\u6B21\u4F7F\u7528\u4E86\u63D0\u793A\u3002")), React.createElement(MechHUD, {
     m: m,
     hintsAllowed: hintsAllowed,
     hintTexts: hintTexts
@@ -71444,7 +71481,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.11-v50',
+    build: '2026.11.11-v51',
     ...context,
     message
   };
@@ -73965,7 +74002,7 @@ function CasePlayer({
     style: {
       fontSize: '1rem'
     }
-  }, result.passed ? result.hints ? st.freeHint ? '解開了！放大鏡幫你把這次提示算成免費的，包圍圈照樣縮小。' : '解開了！用了提示也算解開，包圍圈縮小了。' : '漂亮，一次就解開，包圍圈縮小了一大圈！' : pick(makeRng(a.seed + a.stepIdx + 1), suspect.escape))), !result.passed && React.createElement("div", {
+  }, result.passed ? result.hints ? st.freeHint ? '解開了！放大鏡幫你把這次提示算成免費的，包圍圈照樣縮小。' : '解開了！用了提示也算解開，包圍圈縮小了。' : result.attempts > 1 ? '訂正後解開了，包圍圈縮小了！' : '漂亮，一次就解開，包圍圈縮小了一大圈！' : pick(makeRng(a.seed + a.stepIdx + 1), suspect.escape))), !result.passed && React.createElement("div", {
     className: "dialog",
     id: "companion-guide"
   }, React.createElement("div", {
@@ -76611,7 +76648,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.11-v50\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.11-v51\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -77141,7 +77178,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.11-v50",
+    "data-build": "2026.11.11-v51",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
