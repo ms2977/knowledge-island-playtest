@@ -641,6 +641,14 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 
 .care-cheer{animation:care-greeting .65s ease-out;transform-origin:center bottom}@keyframes care-greeting{25%{transform:translateY(-5px) rotate(-3deg)}65%{transform:rotate(3deg)}}@media(prefers-reduced-motion:reduce){.care-cheer{animation:none}}
 
+/* Always visible above the scene; no need to open the handbook or ask a hint. */
+.train-route{border:2px solid #d6ad51;background:#fff7df;color:#30251b;border-radius:14px;padding:14px 18px;margin:0 0 12px;box-shadow:0 3px 10px #0002}
+.train-route-heading,.train-route-body{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.train-route-heading{font-size:15px}.train-route-heading strong{font-size:21px;white-space:nowrap;color:#694313}
+.train-fragment-track{display:flex;gap:5px;margin:9px 0}.train-fragment-track span{flex:1;text-align:center;border-radius:5px;border:1px solid #ad8b53;color:#967c54;background:#fffdf5;line-height:21px}.train-fragment-track span.got{background:#785322;color:#fff4c6;border-color:#785322}
+.train-route-body>div{flex:1;min-width:0}.train-route-body b{font-size:18px}.train-route-body p{margin:5px 0 0;line-height:1.6;font-size:16px}.train-route-body button{flex-shrink:0}
+@media(max-width:600px){.train-route{padding:11px 12px}.train-route-heading{flex-wrap:wrap;gap:3px}.train-route-heading strong{font-size:22px}.train-route-body{align-items:stretch;flex-direction:column;gap:10px}.train-route-body button{width:100%;min-height:44px}.train-route-body b{font-size:18px}.train-route-body p{font-size:15px}.train-fragment-track{margin:7px 0}}
+
 .paint-preview{color:#203b50;max-width:1240px;margin:auto}.paint-cover{background:linear-gradient(90deg,#123648ed,#1236488c),url('assets/scenes/workshop/background.webp') center/cover;color:#fff;padding:32px;border-radius:20px}.paint-cover h1{font-size:clamp(26px,4vw,42px);margin:8px 0}.paint-cover .eyebrow{color:#f2cd88}.paint-cover button{color:#203b50;background:#fff}.paint-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;margin-top:20px}.paint-evidence{position:sticky;top:12px;align-self:start;background:#eee7d9;padding:18px;border-radius:18px;max-height:calc(100vh - 24px);overflow:auto}.paint-evidence h2{font-size:20px}.paint-evidence details,.paint-learning{background:#fff9ed;color:#203b50;border:1px solid #d9cba9;padding:12px;border-radius:12px;margin:10px 0}.paint-evidence summary{cursor:pointer;font-weight:bold}.paint-progress{list-style:none;padding:0}.paint-progress li{padding:5px}.paint-progress .complete{color:#146553}.paint-art{object-fit:contain;max-width:100%;display:block}.paint-cans{width:100%}.paint-labels{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}.paint-form{background:#fffdf7;color:#203b50;border:1px solid #d8cdb5;border-radius:18px;padding:24px;margin-bottom:18px}.paint-form-head{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:18px;align-items:center}.paint-form-head .paint-art{max-height:180px;width:100%}.paint-form p{margin:8px 0}.paint-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px;margin:22px 0}.paint-field{display:flex;flex-direction:column;gap:8px;min-width:0}.paint-field input,.paint-field select,.paint-form>select{width:100%;max-width:100%;min-height:44px;color:#203b50;background:#fff;border:1px solid #8b9eaa;border-radius:8px;padding:10px}.paint-preview button{min-height:44px;padding:10px 16px;border:1px solid #8299a6;border-radius:10px;cursor:pointer}.paint-preview button:disabled{opacity:.55;cursor:default}.paint-preview .paint-primary{background:#176d77;color:white;border-color:#176d77}.paint-counter output{min-width:60px;text-align:center}.paint-count-visual{display:flex;flex-wrap:wrap;gap:4px;max-width:260px;min-height:22px;margin:8px 0}.paint-count-visual i{display:block;width:14px;height:18px;background:#226f96;border:1px solid #173d57;border-radius:0 0 4px 4px}.paint-hint,.paint-assist{padding:16px;border-radius:12px;background:#e8f2f0;color:#173f40;margin-top:14px}.paint-assist button{margin:4px}.paint-route{font-size:14px}.paint-art-fallback{padding:16px;border:2px dashed #9d946f;border-radius:12px;background:#f8f1df;color:#203b50}.paint-invoice{max-height:240px}.paint-demo-groups{display:flex;gap:16px;flex-wrap:wrap}.paint-demo-groups span{padding:8px;border:1px dashed #366981;animation:paintAppear 1.5s ease both}.paint-demo-groups span+span{animation-delay:.8s}.paint-halves{display:flex;width:180px}.paint-halves i{width:50%;background:#a9cee4;border:1px solid #315c74;text-align:center;padding:20px 4px}.paint-main{min-width:0}.paint-preview .wrap{flex-wrap:wrap}@keyframes paintAppear{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.paint-demo-groups span{animation:none}}@media(max-width:700px){.paint-cover{padding:20px}.paint-layout{grid-template-columns:1fr;gap:12px}.paint-evidence{position:static;max-height:none;padding:14px}.paint-evidence>.paint-art{max-height:140px}.paint-progress{display:flex;flex-wrap:wrap;gap:8px}.paint-form{padding:16px}.paint-form-head{grid-template-columns:1fr}.paint-form-head .paint-art{max-height:100px}.paint-fields{grid-template-columns:1fr}.paint-preview button{font-size:16px}}
 
 .paint-tenths{display:flex;max-width:360px;margin:16px 0}.paint-tenths i{flex:1;height:36px;border:1px solid #203b50}.paint-preview :focus-visible{outline:3px solid #bd7617;outline-offset:3px}
@@ -713,7 +721,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261110-pet-care-b">
+<meta name="game-release" content="playtest-20261111-train-guide">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -41168,6 +41176,7 @@ const SCENES = {
       id: 'npc_tiesu_n',
       kind: 'npc',
       npc: 'tiesu',
+      dialog: 'd_tiesu_platform',
       x: 760,
       y: 500
     }, {
@@ -41522,7 +41531,7 @@ const DIALOGUES = {
       text: '灰鴉夫人派你來的？……午夜列車的月台就在後面，平常是鎖著的。拿著，這是鑰匙。'
     }, {
       who: 'tiesu',
-      text: '小心，那班車不等人。'
+      text: '點右邊的「午夜月台」進去，先看看長椅上的車票。'
     }]
   },
   d_tiesu_info: {
@@ -42764,7 +42773,7 @@ const MECH_AFTER = {
       text: '是一位戴面具的人付錢請我「順便帶走」的！他說……下一站是舊火車站的午夜列車。'
     }, {
       who: 'narr',
-      text: '第二章完。第十三封信回到了小鈴手上，但「真正的信差」還在島上的某處。'
+      text: '第二章完。第十三封信回到了小鈴手上。要追查午夜列車上的信差，先到通緝板破案，集滿 9 片線索碎片，再找灰鴉夫人。'
     }]
   }
 };
@@ -42797,7 +42806,7 @@ const COMPANION_TIPS = [{
   text: '碎片拼出一句話了！快回事務所找灰鴉夫人。'
 }, {
   when: ['c2_done'],
-  text: '兩個案子都結了！「真正的信差」說下一站是舊火車站的午夜列車……嘀嗒覺得這還沒完。'
+  text: '要追查午夜列車，先到通緝板破案，集滿 9 片線索碎片，再回事務所找灰鴉夫人。'
 }, {
   when: ['q3_solved', '!c2_done'],
   text: '推論成立了！回迴廊的真相之室，把每條線索指給大家看。'
@@ -44573,7 +44582,7 @@ Object.assign(JUNIOR_CH1_TEXT, {
     "lines": [["grayraven", "歡迎加入事務所！"], ["grayraven", "你會觀察，也會找理由。"], ["grayraven", "還有新的委託等著你。"]]
   },
   "d_tiesu_night": {
-    "lines": [["tiesu", "灰鴉夫人請你來的嗎？"], ["tiesu", "我陪你去後面的月台。"], ["tiesu", "請拿好這把鑰匙。"], ["tiesu", "遊戲不用搶快，慢慢來。"]]
+    "lines": [["tiesu", "這是月台的鑰匙。"], ["tiesu", "點右邊的「午夜月台」。"], ["tiesu", "先看長椅上的車票。"]]
   },
   "d_tiesu_info": {
     "lines": [["tiesu", "列車到站後，月台有張車票。"], ["tiesu", "上面寫著一個謎語。"], ["tiesu", "我把這些車票收好了。"]]
@@ -45250,7 +45259,7 @@ Object.assign(JUNIOR_CH1_COMMENTS, {
 });
 JUNIOR_CH1_GLOSSARY.push(...[["手稿", "還沒印成書、用手寫的文章。"], ["館長", "管理書院的人。"], ["迴廊", "連接房間的走道。"], ["便條", "寫著簡短事情的小紙條。"], ["懷錶", "可以帶在身上的小鐘。"], ["證詞", "一個人說自己看到或聽到的事。"], ["觀測", "仔細看，並把發現記下來。"], ["望遠鏡", "讓遠處的東西看起來更清楚。"], ["暗格", "藏在地板或牆裡的小空間。"], ["日誌", "每天把看到的事情記下來。"], ["岩層", "一層一層堆起來的岩石。"], ["比例尺", "地圖上的長度和實際長度的關係。"], ["太陽系儀", "用模型表示太陽和行星的儀器。"], ["水跡", "水流過或滴落後留下的痕跡。"], ["典藏庫", "保存收藏品的房間。"], ["特展", "為一個主題辦的展覽。"], ["借閱簿", "記下誰借了東西、何時歸還。"], ["個人資料", "能直接或間接認出你是誰的資料。"], ["意見", "一個人的看法或想法。"], ["今昔", "現在和以前。"], ["清冊", "把每件物品列出來的紀錄。"], ["影本", "把原來的文件複製一份。"], ["原件", "原來的那件物品。"], ["署名", "寫下名字，表示是誰寫的。"]]);
 const JUNIOR_CH23_AFTER = {
-  "c6": [["narr", "守衛請范先生打開袋子。"], ["narr", "裡面是手稿缺少的一頁。"], ["narr", "還有第十三封信。"], ["merchant", "有人付錢請我帶走它們。"], ["merchant", "他說，下一站是午夜列車。"], ["narr", "第二章完成！"], ["narr", "先把信還給小鈴。"], ["narr", "再回事務所，看看新的線索。"]],
+  "c6": [["narr", "守衛請范先生打開袋子。"], ["narr", "裡面是手稿缺少的一頁。"], ["narr", "還有第十三封信。"], ["merchant", "有人付錢請我帶走它們。"], ["merchant", "他說，下一站是午夜列車。"], ["narr", "第二章完成！"], ["narr", "先把信還給小鈴。"], ["narr", "先到通緝板完成案件。"], ["narr", "集滿 9 片線索碎片。"], ["narr", "再找灰鴉夫人接委託。"]],
   "t6": [["narr", "車廂的門打開了。"], ["narr", "走進來的是灰鴉夫人。"], ["grayraven", "這些任務是我安排的。"], ["grayraven", "我請人帶走手稿和信。"], ["grayraven", "沒先說清楚，讓大家擔心了。"], ["grayraven", "下次我會先取得大家同意。"], ["grayraven", "你會觀察、提問，也會查證。"], ["grayraven", "歡迎成為事務所的調查員！"], ["narr", "第三章完成！"], ["narr", "下一封信，可以由你來寫。"]],
   "e6": [["narr", "婆婆抱著完整的星圖。"], ["astronomer", "找到我，也找到星圖了。"], ["apprentice", "對不起，我不該偷偷拿走。"], ["apprentice", "我怕妳爬梯子摔倒。"], ["astronomer", "謝謝你關心我。"], ["astronomer", "下次我們先說，一起想辦法。"], ["narr", "她們決定裝夜燈、一起看星圖。"], ["narr", "星圖收哪裡，也要一起決定。"], ["narr", "三眼小怪物從石縫探出頭來。"], ["narr", "第四章完成！回事務所報告吧。"]],
   "f6": [["narr", "阿海拿出第七張照片。"], ["curator", "我核對過，是原來那張。"], ["curator", "對不起，我們該先問問您。"], ["mei", "我會改預告，拿掉不必要的住址。"], ["elder", "我也不該自己拿走館藏。"], ["elder", "照片歸還給你們。"], ["elder", "我願意說說海邊的故事。"], ["narr", "大家一起討論新的展示內容。"], ["narr", "要說哪些故事，先問阿海。"], ["narr", "阿抱抱著相簿，向你伸出手。"], ["narr", "第五章完成！回事務所報告吧。"]]
@@ -46044,6 +46053,144 @@ function casebookEntries(story, student) {
     archives: groups.filter(g => g.evidence.length || g.notes.length)
   };
 }
+function trainStory(student, story = student?.story || createStory()) {
+  if (story.flags.c2_done && !story.flags.ch3_open && getWallet(student).fragments >= 9) return {
+    ...story,
+    flags: {
+      ...story.flags,
+      ch3_open: true
+    }
+  };
+  return story;
+}
+function trainRouteHint(student, story = trainStory(student)) {
+  const f = story.flags,
+    ev = story.evidence,
+    count = Math.max(0, Math.floor(getWallet(student).fragments || 0));
+  if (!f.c2_done || f.c3_done || f.c4_brief || f.c5_brief) return null;
+  const base = {
+    count,
+    ready: !!f.ch3_open || count >= 9
+  };
+  const target = (title, text, scene, hotspot, localLabel, travelLabel) => ({
+    ...base,
+    title,
+    text,
+    tip: text,
+    scene,
+    hotspot,
+    button: story.scene === scene ? localLabel : travelLabel
+  });
+  if (!f.c3_brief) {
+    if (!base.ready) return {
+      ...base,
+      title: '先收集 9 片線索',
+      text: `現在有 ${count} 片，還差 ${9 - count} 片。到通緝板完成案件、逮捕怪盜，每案得到 1 片。集滿後找灰鴉夫人。`,
+      tip: `午夜列車需要 9 片線索碎片。你現在有 ${count} 片，還差 ${9 - count} 片。先到通緝板完成案件，每逮捕一位怪盜就有 1 片；集滿後回事務所找灰鴉夫人。`,
+      action: 'wanted',
+      button: '去通緝板收集'
+    };
+    return target('線索集滿了！接新委託', '回事務所找灰鴉夫人接下午夜列車委託，接著去舊火車站找鐵叔。', 'agency', 'npc_grayraven', '找灰鴉夫人', '回事務所');
+  }
+  if (!ev.includes('G1')) {
+    if (story.scene === 'midnight_platform') return target('先看長椅上的車票', '你已到午夜月台。點長椅上的車票，核對座位號碼。', 'midnight_platform', 'bench', '查看車票', '去午夜月台');
+    return target('去午夜月台找車票', '到舊火車站找鐵叔，再進「午夜月台」，看看長椅上的車票。', 'station', 'to_platform', '進午夜月台', '去舊火車站');
+  }
+  if (!ev.includes('G2')) return target('把行李送上車', '點月台上的「行李推車」，把行李送到第三節車廂。', 'midnight_platform', 'cart', '查看行李推車', '回午夜月台');
+  if (!ev.includes('G3')) return target('進第三節車廂', '行李送到了！進第三節車廂，看看小桌上的信。', 'midnight_carriage3', 'desk_letter', '查看桌上的信', '進第三節車廂');
+  if (!ev.includes('G4')) return target('看看座位上的懷錶', '信已拼回來了，接著查看右邊座位上的懷錶。', 'midnight_carriage3', 'watch', '查看懷錶', '回第三節車廂');
+  if (!ev.includes('G5')) return target('找出座墊下的便條', '懷錶的線索找到了，接著查看座墊下的便條。', 'midnight_carriage3', 'notes', '查看便條', '回第三節車廂');
+  if (!f.q4_solved) return {
+    ...base,
+    title: '整理證據，推理信差身分',
+    text: '打開調查手冊的推論，找出真正的信差，並附上證據。',
+    tip: '線索齊了！打開調查手冊的推論，找出真正的信差，並附上證據。',
+    action: 'book',
+    button: '打開調查手冊'
+  };
+  return target('找午夜信差說清楚', '推論成立了！到第三節車廂找午夜信差，完成最後的調查。', 'midnight_carriage3', 'npc_midnight', '找午夜信差', '回第三節車廂');
+}
+function trainReminderDialogue(student, story) {
+  const r = trainRouteHint(student, story),
+    junior = isJuniorStory(student);
+  const text = r?.ready ? junior ? ['9 片線索已經集滿了！', '先回事務所找灰鴉夫人。', '聽完委託，再來找我。'] : ['你的線索碎片已經集滿了。先回事務所找灰鴉夫人，接下午夜列車的委託，再來找我開月台的門。'] : junior ? [`車票還缺 ${9 - (r?.count || 0)} 片線索。`, `你現在有 ${r?.count || 0}／9 片。`, '先到通緝板完成案件。', '每逮捕一位怪盜得 1 片。', '集滿後，找灰鴉夫人。'] : [`我把謎題車票收在本子裡了，但要查出午夜列車的邀請，得先集滿 9 片線索碎片。你目前有 ${r?.count || 0} 片，還差 ${9 - (r?.count || 0)} 片。`, '到通緝板完成案件，每逮捕一位怪盜就能得到 1 片。集滿後先找灰鴉夫人接委託，再來找我。畫面上方也會提醒你下一步。'];
+  return {
+    lines: text.map(text => ({
+      who: 'tiesu',
+      text
+    }))
+  };
+}
+DIALOGUES.d_tiesu_train_wait = {
+  lines: [{
+    who: 'tiesu',
+    text: '先集滿 9 片線索碎片，再找灰鴉夫人接委託。'
+  }]
+};
+npcBefore('tiesu', 'd_tiesu_info', [{
+  when: ['c2_done', '!c3_brief', '!c3_done'],
+  node: 'd_tiesu_train_wait'
+}]);
+DIALOGUES.d_gr_ch2_done = {
+  lines: [{
+    who: 'grayraven',
+    text: '第十三封信找回來了。下一站雖然是午夜列車，但先要集滿 9 片線索碎片。到通緝板完成案件，每逮捕一位怪盜可得 1 片；集滿後回來找我接委託。'
+  }]
+};
+JUNIOR_CH1_TEXT.d_gr_ch2_done = {
+  lines: [['grayraven', '第十三封信找回來了！'], ['grayraven', '先到通緝板完成案件。'], ['grayraven', '每逮捕一位怪盜得 1 片。'], ['grayraven', '集滿 9 片，再來找我。']]
+};
+DIALOGUES.d_gr_train_ready = {
+  lines: [{
+    who: 'grayraven',
+    text: '午夜列車的委託已經交給你了。到舊火車站找鐵叔，進午夜月台，先查看長椅上的車票。'
+  }]
+};
+JUNIOR_CH1_TEXT.d_gr_train_ready = {
+  lines: [['grayraven', '去舊火車站找鐵叔。'], ['grayraven', '進午夜月台後，'], ['grayraven', '先看長椅上的車票。']]
+};
+npcBefore('grayraven', 'd_gr_ch2_done', [{
+  when: ['c3_brief', '!c3_done'],
+  node: 'd_gr_train_ready'
+}]);
+DIALOGUES.d_tiesu_platform = {
+  branches: [{
+    when: ['c3_done'],
+    lines: [{
+      who: 'tiesu',
+      text: '午夜列車的調查已經完成。回到事務所找灰鴉夫人，聽聽接下來的消息吧。'
+    }]
+  }, {
+    when: ['ev:G2'],
+    lines: [{
+      who: 'tiesu',
+      text: '車票核對好了，行李也送到了。點「第三節車廂」上車，看看小桌上的信。'
+    }]
+  }, {
+    when: ['ev:G1'],
+    lines: [{
+      who: 'tiesu',
+      text: '車票上的座位找到了。接著點月台上的「行李推車」，把行李送到第三節車廂。'
+    }]
+  }, {
+    when: [],
+    lines: [{
+      who: 'tiesu',
+      text: '你已經到月台了。先點「長椅上的車票」，核對你的座位號碼。'
+    }]
+  }]
+};
+JUNIOR_CH1_TEXT.d_tiesu_platform = {
+  branches: [{
+    lines: [['tiesu', '午夜列車的事查清楚了。'], ['tiesu', '回事務所找灰鴉夫人吧。']]
+  }, {
+    lines: [['tiesu', '行李送到了！'], ['tiesu', '點「第三節車廂」上車。'], ['tiesu', '看看小桌上的信。']]
+  }, {
+    lines: [['tiesu', '車票核對好了！'], ['tiesu', '接著點「行李推車」。'], ['tiesu', '把行李送到第三節車廂。']]
+  }, {
+    lines: [['tiesu', '你已經到月台了。'], ['tiesu', '先點「長椅上的車票」。'], ['tiesu', '看看座位號碼。']]
+  }]
+};
 const SUSPECTS = {
   fog: {
     id: 'fog',
@@ -68903,6 +69050,43 @@ function CareParentPanel({
     className: "small muted"
   }, "\u7167\u9867\u7D71\u8A08\u4FDD\u7559\u6700\u8FD1 300 \u7B46\uFF1B\u5B8C\u6574\u89E3\u7B54\u53EA\u8FA8\u8B58\u7B97\u5F0F\u6B65\u9A5F\u984C\uFF0C\u5176\u9918\u672A\u77E5\u3002\u518D\u8A66\u5305\u542B\u540C\u6B21\u7B54\u932F\u8207\u4E0A\u4E00\u7B46\u672A\u901A\u904E\uFF0C\u4E0D\u4EE3\u8868\u81EA\u9858\u53C3\u8207\u3002\u6536\u652F\u4F9D\u4FDD\u7559\u7684\u88DC\u7D66\u3001\u8FFD\u6355\u3001\u8CFC\u8CB7\u8207\u9000\u8CBB\u7D00\u9304\u8A08\u7B97\uFF1B\u820A\u5BF6\u7BB1\u6C92\u6709\u65E5\u671F\uFF0C\u4E0D\u56DE\u63A8\u3002\u95DC\u9589\u671F\u9593\u4E0D\u7D71\u8A08\u7167\u9867\u3002"));
 }
+function TrainRouteNotice({
+  student,
+  story,
+  onAction,
+  disabled = false
+}) {
+  const r = trainRouteHint(student, story);
+  if (!r) return null;
+  return React.createElement("aside", {
+    className: "train-route",
+    id: "train-route",
+    "aria-label": "\u5348\u591C\u5217\u8ECA\u4E0B\u4E00\u6B65"
+  }, React.createElement("div", {
+    className: "train-route-heading"
+  }, React.createElement("span", null, "\uD83D\uDCAC ", selectedCompanion(student).name, "\u63D0\u9192\u4F60"), React.createElement("strong", {
+    id: "train-fragment-count"
+  }, "\u7DDA\u7D22\u788E\u7247 ", Math.min(r.count, 9), "\uFF0F9 \u7247")), React.createElement("div", {
+    className: "train-fragment-track",
+    "aria-hidden": "true"
+  }, Array.from({
+    length: 9
+  }, (_, i) => React.createElement("span", {
+    key: i,
+    className: i < r.count ? 'got' : ''
+  }, i < r.count ? '✦' : '◇'))), React.createElement("div", {
+    className: "train-route-body"
+  }, React.createElement("div", null, React.createElement("b", {
+    id: "train-route-title"
+  }, "\u4E0B\u4E00\u6B65\uFF1A", r.title), React.createElement("p", {
+    id: "train-route-text"
+  }, r.text)), onAction && React.createElement(Btn, {
+    kind: "primary",
+    id: "train-route-action",
+    disabled: disabled,
+    onClick: onAction
+  }, r.button)));
+}
 const PLAYER_SPEED = 300;
 function visibleHotspots(scene, story) {
   return scene.hotspots.filter(h => condOk(story, h.requires));
@@ -70078,7 +70262,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.10-v46b',
+    build: '2026.11.11-v47',
     ...context,
     message
   };
@@ -70960,7 +71144,7 @@ function QuestsScreen({
   }, {
     name: '搭上午夜列車',
     done: !!ch.train_ch3?.completed,
-    desc: '集滿 9 片線索碎片，完成第三章'
+    desc: '通緝板破案集滿 9 片 → 找灰鴉夫人 → 找鐵叔進月台'
   }, {
     name: '能力覺醒',
     done: state.missions.some(m => m.status === 'passed'),
@@ -71117,7 +71301,7 @@ function RecordsScreen({
   }, "\u672A\u901A\u904E"), " ", l.hints ? `提示 ${l.hints}` : '')))));
 }
 function resolveNode(nodeId, story, student) {
-  const n = storyDialogue(student, nodeId);
+  const n = nodeId === 'd_tiesu_train_wait' ? trainReminderDialogue(student, story) : storyDialogue(student, nodeId);
   if (!n) return null;
   let eff = {
     id: nodeId,
@@ -71184,7 +71368,7 @@ function Adventure({
   onOpenCare
 }) {
   const student = state.student;
-  const story = student.story || createStory();
+  const story = trainStory(student, student.story || createStory());
   const setStory = (st2, extraState) => {
     const base = extraState || state;
     setState({
@@ -71248,7 +71432,7 @@ function Adventure({
       id: 'tip_' + Date.now(),
       lines: [{
         who: 'tick',
-        text: storyCompanionTip(student, story, tip.text),
+        text: trainRouteHint(student, story)?.tip || storyCompanionTip(student, story, tip.text),
         mood: 'happy'
       }]
     });
@@ -71339,7 +71523,7 @@ function Adventure({
     setNode(null);
   };
   const interact = useCallback(h => {
-    const st = state.student.story || createStory();
+    const st = trainStory(state.student, state.student.story || createStory());
     if (h.kind === 'exit') {
       const pos = {
         scene: h.to,
@@ -71355,7 +71539,9 @@ function Adventure({
     }
     if (h.kind === 'npc') {
       const talks = NPC_TALK[h.npc] || [];
-      const pick = talks.find(t => condOk(st, t.when));
+      const pick = h.dialog ? {
+        node: h.dialog
+      } : talks.find(t => condOk(st, t.when));
       if (!pick) return;
       let st2 = st;
       if (!st.met.includes(h.npc)) {
@@ -71558,14 +71744,40 @@ function Adventure({
     };
     interact(h);
   };
-  const route = juniorCh1Route(student, story);
+  const trainRoute = trainRouteHint(student, story);
+  const route = !trainRoute && juniorCh1Route(student, story);
+  const followTrainRoute = () => {
+    if (busy || !trainRoute) return;
+    if (trainRoute.action === 'wanted') {
+      onOpenWanted();
+      return;
+    }
+    if (trainRoute.action === 'book') {
+      setBook(true);
+      return;
+    }
+    if (story.scene !== trainRoute.scene) {
+      interact({
+        kind: 'exit',
+        to: trainRoute.scene
+      });
+      return;
+    }
+    const h = scene.hotspots.find(h => h.id === trainRoute.hotspot);
+    if (h && condOk(story, h.requires)) interact(h);
+  };
   const objectivesOpen = storyObjectives(student).filter(o => o.chapter === currentChapter(story) && !condOk(story, o.done));
   return React.createElement("div", {
     className: "stage wide",
     style: {
       paddingBlock: 10
     }
-  }, route && React.createElement("aside", {
+  }, React.createElement(TrainRouteNotice, {
+    student: student,
+    story: story,
+    onAction: followTrainRoute,
+    disabled: busy
+  }), route && React.createElement("aside", {
     className: "junior-route",
     id: "junior-route",
     "aria-label": "\u4E0B\u4E00\u6B65\u63D0\u793A"
@@ -71575,7 +71787,7 @@ function Adventure({
     className: "gamehud"
   }, React.createElement("span", {
     className: "loc"
-  }, "\uD83D\uDCCD ", scene.name), objectivesOpen[0] && React.createElement("span", {
+  }, "\uD83D\uDCCD ", scene.name), !trainRoute && objectivesOpen[0] && React.createElement("span", {
     className: "small",
     style: {
       opacity: 0.85
@@ -71998,7 +72210,9 @@ function WantedBoard({
   const lockedTemplates = CASE_TEMPLATES.filter(t => templateLocked(state, t));
   return React.createElement("div", {
     className: "stage"
-  }, React.createElement("div", {
+  }, React.createElement(TrainRouteNotice, {
+    student: state.student
+  }), React.createElement("div", {
     className: "row between",
     style: {
       flexWrap: 'wrap',
@@ -72154,7 +72368,7 @@ function WantedBoard({
     className: "notice good"
   }, b.text)), React.createElement("p", {
     className: "small muted"
-  }, wallet.fragments >= 9 ? '第三章「午夜列車」已開啟：回事務所找灰鴉夫人，再到舊火車站。' : '集滿 9 片，第三章「午夜列車」就會開啟。')), tab === 'log' && React.createElement("div", {
+  }, state.student.story?.flags?.c3_done ? '第三章已完成，碎片可繼續收集。' : wallet.fragments >= 9 ? '線索碎片已集滿！完成第二章後，回事務所找灰鴉夫人接委託，再到舊火車站。' : `目前 ${wallet.fragments}／9 片，還差 ${9 - wallet.fragments} 片。每完成一張通緝令、逮捕怪盜可得 1 片。集滿後找灰鴉夫人。`)), tab === 'log' && React.createElement("div", {
     className: "card col"
   }, !wallet.caseLog.length && React.createElement("span", {
     className: "muted small"
@@ -74942,7 +75156,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.10-v46b\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.11-v47\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -75455,7 +75669,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.10-v46b",
+    "data-build": "2026.11.11-v47",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
