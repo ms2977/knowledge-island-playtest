@@ -743,6 +743,20 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 }
 @media(max-width:767px){.badge-row-link{gap:8px}.badge-row-link>.badge-label{flex-basis:76px;font-size:14px}.badge-row-link>.badge-strip{gap:6px}.badge-detail-grid{grid-template-columns:1fr}.pet-closeup{min-height:150px}.pet-closeup>svg{height:210px}.wardrobe-preview-switch{flex-wrap:wrap}.goal-detail{display:none}.junior .explore-actions #open-review-desk,.junior .explore-actions #office-keepsakes,.junior .explore-actions #office-gift-open{margin-right:110px}}
 
+/* v49: illustrated inventory, readable resources and building-anchored world map. */
+.item-art{display:inline-flex;align-items:center;justify-content:center;flex:none;vertical-align:middle}.item-art img{width:100%;height:100%;object-fit:contain}.item-art-fallback{display:grid;place-items:center;width:75%;height:75%;border:2px solid #b28b43;border-radius:24%;background:#f9e5ae;color:#283f44;font-size:1.6em;font-weight:800}
+.coin-amount{display:inline-flex;align-items:center;gap:6px;flex:none;color:#493915}.coin-amount>span:last-child{display:flex;flex-direction:column;line-height:1.3}.coin-amount small{font-size:13px}.coin-amount b{font:800 24px/1.2 var(--font-body);font-variant-numeric:tabular-nums}
+.resource-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:4px 0 16px}.resource-tile{display:flex;align-items:center;gap:8px;padding:14px 12px;border:1px solid #b8c9c7;border-radius:12px;background:#fffdf5;color:#203b42;text-align:left;font:inherit;min-width:0;box-shadow:0 3px 0 #cdd8d333}.resource-tile>span:not(.item-art){min-width:0}.resource-tile>span:not(.item-art):not(.case-medals){display:flex;flex-direction:column;gap:4px}.resource-label{font-size:16px;font-weight:700;line-height:1.65}.resource-tile strong{display:block;font:800 30px/1.1 var(--font-body);font-variant-numeric:tabular-nums}.resource-tile strong small{display:inline;font-size:14px;font-weight:500}.resource-tile small{display:block;font-size:13px;color:#51625e;line-height:1.65}.resource-tile button,button.resource-tile{cursor:pointer}button.resource-tile:hover{border-color:#b38b3d;background:#fff7dc}.medals-tile{flex-direction:column;align-items:stretch;gap:7px}.case-medals{display:flex;justify-content:space-between;gap:10px}.case-medals>span{display:flex;align-items:center;gap:4px}.case-medals>span>span{display:flex;flex-direction:column;font-size:12px;line-height:1.3}.case-medals b{font-size:22px;font-variant-numeric:tabular-nums}.wanted-navigation{margin-bottom:12px}.wanted-navigation+section{margin-top:0}.wanted-head.compact-head{padding:12px 18px}.wanted-head.compact-head h2{margin:0;font-size:22px}
+.shop-shelves{gap:24px}.shop-banner{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 26px;background:#193d43;color:#fff3d7;border:1px solid #b19658;border-radius:14px}.shop-banner h2{margin:2px 0 8px;font-size:28px}.shop-banner p{margin:0;line-height:1.65}.shop-banner .coin-amount{color:#fff3d7;background:#0f2c32;padding:10px 16px;border:1px solid #65827a;border-radius:10px}.shop-section-title{display:flex;align-items:baseline;gap:12px;margin:0 0 10px}.shop-section-title h3{margin:0}.shop-section-title span{font-size:14px;color:#536b66}.shop-grid.inventory-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.inventory-card{display:flex;flex-direction:column;border:1px solid #bcab89;border-radius:12px;background:#fffdf5;overflow:hidden;min-width:0}.inventory-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:156px;background:radial-gradient(ellipse at 50% 70%,#f7e6bc,#ece9d9 68%);border-bottom:1px solid #d7c7a8}.inventory-art .item-art,.inventory-art .shop-original-art{filter:drop-shadow(0 5px 4px #47382124)}.inventory-kind{position:absolute;top:10px;left:10px;padding:3px 8px;border-radius:5px;background:#fffdf0e8;color:#465d52;font-size:12px}.inventory-owned{position:absolute;top:10px;right:10px;color:#245d4b;background:#e6f2e1;padding:3px 8px;border-radius:5px;font-size:12px}.inventory-copy{display:flex;flex-direction:column;gap:8px;padding:16px;flex:1}.inventory-copy h3{font-size:19px;margin:0;line-height:1.6}.inventory-copy p{margin:0;color:#3d5556;font-size:14px;line-height:1.8}.inventory-stat{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;padding:8px 10px;background:#e7f0e9;border-radius:6px;color:#275a48}.inventory-stat b{font-size:16px}.inventory-stat small{font-size:12px}.inventory-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;background:#f1eee2;border-top:1px solid #ddd2b9}.inventory-footer .btn{min-height:44px}.inventory-footer .coin-amount b{font-size:22px}.inventory-card details{font-size:13px;line-height:1.8}.inventory-card summary{cursor:pointer;color:#506b69;min-height:32px}.inventory-card details p{margin-top:8px}.inventory-card .item-icon{max-width:112px}.shop-focus{display:flex;align-items:center;flex-wrap:wrap;gap:12px;color:#4d6566;font-size:14px}.purchase-history{margin-top:8px}.care-shop-grid{max-width:900px}.care-inventory-inline{display:flex;gap:14px;align-items:center;padding:12px;border:1px solid #c2cdbb;background:#f4f6e9;border-radius:10px}
+.growth-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px}.growth-character{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 18px;background:linear-gradient(160deg,#244953,#142a36);border:1px solid #a58b55;border-radius:14px;color:#fff0d3}.growth-character h2{margin:0}.growth-portrait{width:190px;height:265px;max-width:100%;background:radial-gradient(ellipse at 50% 65%,#697e7133,transparent 68%)}.growth-character .gauge{width:100%}.growth-character .btn{width:100%;font-size:14px}.growth-xp{font-size:14px;color:#d3ddcf}.growth-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.growth-stat{background:#fffdf5;border:1px solid #c5cec5;padding:12px;border-radius:10px;display:flex;flex-direction:column;gap:5px}.growth-stat strong{font-size:26px;color:#265950;font-variant-numeric:tabular-nums}.growth-stat span{font-size:14px}.growth-subjects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.growth-subject{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid #c6cfbf;border-radius:10px;background:#fffdf5;min-width:0}.growth-subject>div{flex:1;min-width:0}.growth-subject h3{font-size:17px;margin:0 0 6px}.growth-subject h3 b{float:right;color:#265950}.growth-subject p{font-size:14px;margin:5px 0;line-height:1.7}.growth-subject small{font-size:12px;color:#52645c}.growth-section{padding:20px;background:#f7f8f1;border:1px solid #c6d1c9;border-radius:12px}.growth-section h2{margin:0 0 8px;font-size:22px}.growth-section>.small{line-height:1.7}.growth-concepts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.growth-concept{padding:12px;background:#fff;border:1px solid #d1dcd4;border-radius:8px}.growth-concept b{font-size:14px}.growth-concept .row{align-items:center;margin-bottom:8px}.growth-concept .nozy{font-variant-numeric:tabular-nums;font-weight:700;color:#315c50}.growth-concept small{display:block;margin-top:6px;color:#58706a;font-size:12px}
+.map-anchor-line{stroke:#ffde8b;stroke-width:2;vector-effect:non-scaling-stroke;paint-order:stroke;pointer-events:none}.map-marker .map-pin circle{fill:#173c46;stroke:#ffe2a0;stroke-width:2}.map-marker:hover .map-pin circle,.map-marker:focus .map-pin circle{fill:#9d6828;stroke:white}.map-marker .map-pin text{fill:#fff6dc;font:700 16px var(--font-body)}.map-marker.locked .map-pin circle{fill:#3f535a;stroke:#bec6bb}.map-marker.locked{cursor:help}.map-marker.locked .map-anchor-line{stroke:#bbc5ba}.map-marker .label text{font:700 16px var(--font-body)}.map-marker .label rect{fill:#15343ded;stroke:#e0c18a;stroke-width:1}.map-marker.locked .label rect{fill:#3d4b50ed;stroke:#aeb9b7}.map-marker.locked .label text{fill:#e0e7df}.scene.map-compact .map-marker>.label,.scene.map-compact .map-marker>.map-anchor-line{display:none}.map-pin{filter:drop-shadow(0 2px 2px #10232acc)}.map-pin-hit{fill:transparent}.map-number{display:inline-grid;place-items:center;min-width:24px;height:24px;margin-right:7px;border-radius:50%;background:#244b52;color:#fff0cf;font:bold 13px var(--font-body)}.map-directory button{display:flex;align-items:center;text-align:left}.map-directory button span:last-child{display:block}.map-directory .nozy{font-size:14px}.map-directory button:disabled .map-number{background:#5d6c70}.map-directory small{white-space:normal}.map-directory-heading{font-weight:700;color:#e9d9aa}.scene.map-scene .floor-help{display:none}
+@media(max-width:1050px){.resource-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.inventory-grid.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.growth-layout{grid-template-columns:220px minmax(0,1fr)}.growth-subjects{grid-template-columns:1fr}.growth-character{padding:18px 12px}}
+@media(max-width:767px){.resource-summary{gap:8px}.resource-tile{padding:12px 8px;gap:5px}.resource-tile>.item-art{width:42px!important;height:42px!important}.resource-tile strong{font-size:26px}.resource-label{font-size:15px}.resource-tile small{font-size:13px}.case-medals{gap:5px}.case-medals svg{width:22px}.shop-banner{padding:16px;align-items:flex-start}.shop-banner h2{font-size:22px}.shop-banner .coin-amount{padding:8px}.shop-grid.inventory-grid{grid-template-columns:1fr}.inventory-art{min-height:166px}.inventory-art .item-art{width:128px!important;height:128px!important}.shop-section-title{align-items:flex-start;flex-direction:column;gap:3px}.growth-layout{grid-template-columns:1fr}.growth-character{display:grid;grid-template-columns:125px 1fr;column-gap:16px;text-align:left;padding:18px}.growth-portrait{width:125px;height:190px;grid-row:span 5}.growth-character .btn{grid-column:1/-1}.growth-stats{gap:6px}.growth-stat{padding:10px}.growth-stat span{font-size:12px}.growth-stat strong{font-size:23px}.growth-concepts{grid-template-columns:1fr}.growth-section{padding:16px}.map-directory{width:100%;padding:10px;background:#f4f3e8;border-radius:12px;box-sizing:border-box}.map-directory button{align-items:flex-start;min-height:54px;padding:8px}.map-directory .nozy{font-size:15px}.map-directory small{font-size:12px}.junior .map-directory{padding-bottom:62px}}
+@media(min-width:768px){.scene-wrap>.map-directory{gap:6px;padding:6px}.scene-wrap>.map-directory button{padding:6px 10px}.scene-wrap>.map-directory button small{display:none}.map-scene .map-pin-hit{cursor:pointer}}
+@media(prefers-reduced-motion:reduce){.map-marker .pulse{animation:none}}
+
+.scene-wrap:has(.map-compact)>.scene-title{display:none}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -750,7 +764,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261111-collections-b">
+<meta name="game-release" content="playtest-20261111-shop-map">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -65977,7 +65991,8 @@ function CharacterIllustration({
 }
 function SceneArt({
   art,
-  story
+  story,
+  onFailure
 }) {
   const url = SCENE_ART[art];
   const [failed, setFailed] = useState(null);
@@ -65993,7 +66008,10 @@ function SceneArt({
     width: "1280",
     height: "720",
     preserveAspectRatio: "xMidYMid slice",
-    onError: () => setFailed(url)
+    onError: () => {
+      setFailed(url);
+      onFailure?.();
+    }
   }), React.createElement(Vignette, {
     strength: 0.36
   }), art !== 'overworld' && React.createElement(Dust, {
@@ -69011,8 +69029,11 @@ function CarePanel({
     id: 'care-' + a,
     onClick: () => act(a)
   }, ['◒', '◇', '✧'][i], " ", labels[i]))), React.createElement("div", {
-    className: "row"
-  }, React.createElement("label", null, "\u4F7F\u7528\u88DC\u7D66 ", React.createElement("select", {
+    className: "row care-inventory-inline"
+  }, React.createElement(ItemArt, {
+    id: supply,
+    size: 64
+  }), React.createElement("label", null, "\u4F7F\u7528\u88DC\u7D66 ", React.createElement("select", {
     id: "care-supply",
     value: supply,
     onChange: e => setSupply(e.target.value)
@@ -69683,10 +69704,250 @@ function useAdventureNotices(state, setState, scene, goal, busy, notify) {
     }
   }, [scene.id, goal.key, busy, offer, s.adventureUI?.keepsakesNotified, s.gifts?.seenOffer]);
 }
+const WORLD_MAP_PLACES = {
+  to_agency: {
+    x: 275,
+    y: 505,
+    lx: 230,
+    ly: 565,
+    n: 1,
+    landmark: '左下方亮著暖燈的獨棟事務所'
+  },
+  to_tower: {
+    x: 650,
+    y: 230,
+    lx: 635,
+    ly: 145,
+    n: 2,
+    landmark: '中央有大鐘面的高塔'
+  },
+  to_station: {
+    x: 955,
+    y: 505,
+    lx: 955,
+    ly: 550,
+    n: 3,
+    landmark: '右下方玻璃拱頂與蒸汽火車'
+  },
+  to_market: {
+    x: 890,
+    y: 350,
+    lx: 1015,
+    ly: 382,
+    n: 4,
+    landmark: '右側噴水池旁的彩色攤棚'
+  },
+  to_forest: {
+    x: 1070,
+    y: 155,
+    lx: 1100,
+    ly: 220,
+    n: 5,
+    landmark: '右上方森林中的石拱遺跡'
+  },
+  to_academy: {
+    x: 345,
+    y: 215,
+    lx: 420,
+    ly: 265,
+    n: 6,
+    landmark: '左上方大型玻璃圓頂建築'
+  },
+  to_observatory: {
+    x: 195,
+    y: 250,
+    lx: 190,
+    ly: 305,
+    n: 7,
+    landmark: '書院左側露台上的黃銅觀星儀'
+  },
+  to_museum: {
+    x: 747,
+    y: 405,
+    lx: 720,
+    ly: 475,
+    n: 8,
+    landmark: '市集西南邊紅屋頂的多層建築'
+  },
+  to_harbor: {
+    x: 1015,
+    y: 630,
+    lx: 1135,
+    ly: 592,
+    n: 9,
+    landmark: '車站下方有小船與木棧橋的碼頭'
+  },
+  to_townhall: {
+    x: 855,
+    y: 268,
+    lx: 870,
+    ly: 195,
+    n: 10,
+    landmark: '噴水池北側成排紅屋頂的廳舍'
+  },
+  to_hill: {
+    x: 755,
+    y: 65,
+    lx: 870,
+    ly: 46,
+    n: 11,
+    landmark: '鐘塔後方沿山路上行的山丘'
+  },
+  to_oldstreet: {
+    x: 145,
+    y: 387,
+    lx: 150,
+    ly: 425,
+    n: 12,
+    landmark: '事務所北邊沿城牆的小屋街道'
+  }
+};
+function worldMapScene(scene, painted = true) {
+  return scene.id !== 'overworld' ? scene : {
+    ...scene,
+    hotspots: scene.hotspots.map(h => ({
+      ...h,
+      ...(painted ? WORLD_MAP_PLACES[h.id] : {
+        n: WORLD_MAP_PLACES[h.id]?.n,
+        landmark: WORLD_MAP_PLACES[h.id]?.landmark
+      })
+    }))
+  };
+}
+function placeMapPins(scene, out, scale) {
+  if (1280 / scale >= 900) return out;
+  const placed = [],
+    width = 1280 / scale,
+    height = 720 / scale;
+  for (const h of [...scene.hotspots].sort((a, b) => a.y - b.y || a.x - b.x)) {
+    const x = h.x / scale,
+      y = h.y / scale,
+      origin = {
+        x: Math.max(22, Math.min(width - 22, x)),
+        y: Math.max(22, Math.min(height - 22, y - 16))
+      };
+    let point = null;
+    for (let distance = 0; distance <= 180 && !point; distance += 4) for (let angle = 0; angle < 360 && !point; angle += 20) {
+      const rad = angle * Math.PI / 180,
+        c = {
+          x: origin.x + Math.cos(rad) * distance,
+          y: origin.y + Math.sin(rad) * distance
+        };
+      if (c.x >= 22 && c.x <= width - 22 && c.y >= 22 && c.y <= height - 22 && placed.every(p => Math.hypot(c.x - p.x, c.y - p.y) >= 44)) point = c;
+    }
+    point = point || origin;
+    placed.push(point);
+    out[h.id].pin = {
+      x: point.x - x,
+      y: point.y - y
+    };
+  }
+  return out;
+}
+function WorldMapMarker({
+  h,
+  place,
+  scale,
+  locked = false,
+  busy = false,
+  onClick
+}) {
+  const hint = locked ? MAP_LOCK_HINT[h.to] : h.landmark,
+    label = (locked ? '◇ ' : '') + h.label;
+  const compact = 1280 / scale < 900,
+    radius = compact ? 14 : 17;
+  const px = place.pin?.x || 0,
+    py = place.pin?.y ?? Math.max(22 - h.y / scale, Math.min((720 - h.y) / scale - 22, -16));
+  const enter = e => {
+    if (!locked && !busy) onClick(e);else e.stopPropagation();
+  };
+  return React.createElement("g", {
+    className: `hot map-hot map-marker ${locked ? 'locked' : ''}`,
+    id: `hot-${h.id}`,
+    role: "button",
+    tabIndex: busy ? -1 : 0,
+    "aria-disabled": locked || busy,
+    "aria-label": `${h.n} ${h.label}${locked ? '，尚未開放，' + hint : ''}`,
+    onClick: enter,
+    onKeyDown: e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        enter(e);
+      }
+    },
+    "data-map-number": h.n,
+    "data-map-x": h.x,
+    "data-map-y": h.y
+  }, React.createElement("title", null, `${h.label}・${hint || ''}`), React.createElement("line", {
+    className: "map-anchor-line",
+    x1: h.x,
+    y1: h.y,
+    x2: place.x,
+    y2: place.y + 20 * scale
+  }), React.createElement("g", {
+    className: "map-pin",
+    transform: `translate(${h.x},${h.y}) scale(${scale})`
+  }, React.createElement("circle", {
+    className: "map-pin-hit",
+    cx: px,
+    cy: py,
+    r: "22",
+    style: {
+      fill: 'transparent',
+      stroke: 'none'
+    }
+  }), React.createElement("path", {
+    d: `M0 0 L${px} ${py}`,
+    stroke: locked ? '#bec6bb' : '#ffe2a0',
+    strokeWidth: "2"
+  }), React.createElement("circle", {
+    "data-map-disc": true,
+    cx: px,
+    cy: py,
+    r: radius
+  }), React.createElement("text", {
+    x: px,
+    textAnchor: "middle",
+    y: py + 6
+  }, h.n), React.createElement("circle", {
+    r: "3",
+    style: {
+      fill: locked ? '#bec6bb' : '#ffe2a0',
+      stroke: '#203941',
+      strokeWidth: 1
+    }
+  })), React.createElement("g", {
+    className: "label always",
+    transform: `translate(${place.x},${place.y}) scale(${scale})`
+  }, React.createElement("rect", {
+    x: -place.w / 2,
+    width: place.w,
+    height: "40",
+    rx: "8"
+  }), React.createElement("text", {
+    textAnchor: "middle",
+    y: "26",
+    fill: "#fff5df"
+  }, label)));
+}
 function sceneLabelPlacements(scene, story, scale) {
   const isMap = scene.kind === 'map',
     labels = [],
     out = {};
+  if (isMap && scene.hotspots.every(h => h.lx != null)) {
+    for (const h of scene.hotspots) {
+      const locked = !condOk(story, h.requires),
+        w = Math.max(100, [...h.label].length * 16 + 24 + (locked ? 20 : 0));
+      out[h.id] = {
+        id: h.id,
+        x: Math.max((w / 2 + 3) * scale, Math.min(1280 - (w / 2 + 3) * scale, h.lx)),
+        y: h.ly,
+        w,
+        height: 40
+      };
+    }
+    return placeMapPins(scene, out, scale);
+  }
   for (const h of isMap ? scene.hotspots : visibleHotspots(scene, story)) {
     const npc = h.kind === 'npc' ? NPCS[h.npc] : null,
       sc = isMap ? .6 : depthScale(h.y),
@@ -69717,56 +69978,228 @@ function sceneLabelPlacements(scene, story, scale) {
     placed.push(label);
     out[label.id] = label;
   }
-  return out;
+  return isMap ? placeMapPins(scene, out, scale) : out;
 }
 function LockedSceneHotspot({
   h,
   place,
   scale
 }) {
-  return React.createElement("g", {
-    className: "map-locked",
-    role: "img",
-    "aria-label": `${h.label}，${MAP_LOCK_HINT[h.to]}`
-  }, React.createElement("title", null, MAP_LOCK_HINT[h.to]), React.createElement("g", {
-    transform: `translate(${h.x},${h.y}) scale(${scale})`
-  }, React.createElement("circle", {
-    r: "26",
-    fill: "#172c35",
-    stroke: "#a9b3ad",
+  return React.createElement(WorldMapMarker, {
+    h: h,
+    place: place,
+    scale: scale,
+    locked: true
+  });
+}
+const ITEM_ART_NAMES = {
+  coin: '金幣',
+  care_basic: '基礎補給',
+  care_snack: '偏好點心',
+  notebook: '調查筆記本',
+  magnifier: '黃銅放大鏡',
+  watch: '追蹤懷錶',
+  tea: '灰鴉夫人的茶點',
+  hint_card: '提示卡',
+  fragment: '線索碎片',
+  title_fog: '霧巷追蹤者',
+  title_ink: '讀信人',
+  frame_gold: '金框通緝令'
+};
+const ITEM_ART_FALLBACK = {
+  coin: '幣',
+  care_basic: '補',
+  care_snack: '點',
+  notebook: '冊',
+  magnifier: '鏡',
+  watch: '錶',
+  tea: '茶',
+  hint_card: '燈',
+  fragment: '圖',
+  title_fog: '貓',
+  title_ink: '信',
+  frame_gold: '框'
+};
+function ItemArt({
+  id,
+  size = 96,
+  decorative = true
+}) {
+  const [failed, setFailed] = useState(false);
+  return React.createElement("span", {
+    className: "item-art",
+    style: {
+      width: size,
+      height: size
+    },
+    role: decorative ? undefined : 'img',
+    "aria-label": decorative ? undefined : ITEM_ART_NAMES[id],
+    "aria-hidden": decorative || undefined,
+    "data-item-art": id
+  }, !failed && ITEM_ART_NAMES[id] ? React.createElement("img", {
+    src: `assets/items/island-supplies-v1/${id}.webp`,
+    width: size,
+    height: size,
+    alt: "",
+    onError: () => setFailed(true)
+  }) : React.createElement("span", {
+    className: "item-art-fallback nozy",
+    "data-art-fallback": true
+  }, ITEM_ART_FALLBACK[id] || '物'));
+}
+function CoinAmount({
+  value,
+  id,
+  caption = '金幣'
+}) {
+  return React.createElement("span", {
+    className: "coin-amount",
+    id: id
+  }, React.createElement(ItemArt, {
+    id: "coin",
+    size: 36
+  }), React.createElement("span", null, React.createElement("small", null, caption), React.createElement("b", {
+    className: "nozy"
+  }, value)));
+}
+function CaseMedal({
+  kind,
+  size = 28
+}) {
+  const color = {
+    gold: '#e2ae40',
+    silver: '#a7bec6',
+    bronze: '#b98150'
+  }[kind];
+  return React.createElement("svg", {
+    viewBox: "0 0 48 58",
+    width: size,
+    height: size + 6,
+    "aria-hidden": "true"
+  }, React.createElement("path", {
+    d: "M13 29 L8 56 24 47 40 56 35 29",
+    fill: kind === 'gold' ? '#327973' : kind === 'silver' ? '#526b98' : '#a05547'
+  }), React.createElement("circle", {
+    cx: "24",
+    cy: "23",
+    r: "20",
+    fill: color,
+    stroke: "#665036",
     strokeWidth: "2"
-  }), React.createElement("text", {
-    textAnchor: "middle",
-    y: "7",
-    fontSize: "20",
-    fill: "#d9ddd5"
-  }, "\u25C7")), React.createElement("g", {
-    className: "map-locked-label",
-    transform: `translate(${place.x},${place.y}) scale(${scale})`
-  }, React.createElement("rect", {
-    x: -place.w / 2,
-    width: place.w,
-    height: "56",
-    rx: "8",
-    fill: "#17212bea"
-  }), React.createElement("text", {
-    textAnchor: "middle",
-    y: "22",
-    fill: "#e5e0d2",
-    fontSize: "16"
-  }, h.label), React.createElement("text", {
-    textAnchor: "middle",
-    y: "44",
-    fill: "#bebaa9",
-    fontSize: "14"
-  }, MAP_LOCK_HINT[h.to])));
+  }), React.createElement("circle", {
+    cx: "24",
+    cy: "23",
+    r: "15",
+    fill: "none",
+    stroke: "#fff5db"
+  }), React.createElement("path", {
+    d: "M24 10 28 19 38 20 30 27 32 37 24 32 16 37 18 27 10 20 20 19Z",
+    fill: "#fff4ce"
+  }));
+}
+function ResourceSummary({
+  wallet,
+  onSelect
+}) {
+  return React.createElement("section", {
+    className: "resource-summary",
+    "aria-label": "\u6211\u7684\u5192\u96AA\u8CC7\u6E90",
+    id: "resource-summary"
+  }, React.createElement("button", {
+    className: "resource-tile",
+    onClick: () => onSelect('shop'),
+    "aria-label": `金幣 ${wallet.coins}，前往櫃台`
+  }, React.createElement(ItemArt, {
+    id: "coin",
+    size: 52
+  }), React.createElement("span", null, React.createElement("span", {
+    className: "resource-label"
+  }, "\u91D1\u5E63"), React.createElement("strong", {
+    className: "nozy"
+  }, wallet.coins), React.createElement("small", null, "\u53BB\u6AC3\u53F0\u63DB\u7528\u54C1 \u203A"))), React.createElement("button", {
+    className: "resource-tile",
+    onClick: () => onSelect('clues'),
+    "aria-label": `線索碎片 ${wallet.fragments}，查看線索板`
+  }, React.createElement(ItemArt, {
+    id: "fragment",
+    size: 52
+  }), React.createElement("span", null, React.createElement("span", {
+    className: "resource-label"
+  }, "\u7DDA\u7D22\u788E\u7247"), React.createElement("strong", {
+    className: "nozy"
+  }, wallet.fragments, React.createElement("small", null, " / 9")), React.createElement("small", null, wallet.fragments >= 9 ? '已集滿・查看線索 ›' : `還差 ${9 - wallet.fragments} 片 ›`))), React.createElement("div", {
+    className: "resource-tile"
+  }, React.createElement(ItemArt, {
+    id: "hint_card",
+    size: 52
+  }), React.createElement("span", null, React.createElement("span", {
+    className: "resource-label"
+  }, "\u63D0\u793A\u5361"), React.createElement("strong", {
+    className: "nozy"
+  }, wallet.hintCards || 0, React.createElement("small", null, " \u5F35")), React.createElement("small", null, "\u8FFD\u6355\u9047\u5230\u56F0\u96E3\u6642\u4F7F\u7528"))), React.createElement("button", {
+    className: "resource-tile medals-tile",
+    onClick: () => onSelect('log'),
+    "aria-label": `追捕徽章，金 ${wallet.badges.gold}、銀 ${wallet.badges.silver}、銅 ${wallet.badges.bronze}，查看追捕紀錄`
+  }, React.createElement("span", {
+    className: "resource-label"
+  }, "\u8FFD\u6355\u5FBD\u7AE0"), React.createElement("span", {
+    className: "case-medals"
+  }, [['gold', '金'], ['silver', '銀'], ['bronze', '銅']].map(([k, n]) => React.createElement("span", {
+    key: k
+  }, React.createElement(CaseMedal, {
+    kind: k
+  }), React.createElement("span", {
+    className: "nozy"
+  }, n, React.createElement("b", null, wallet.badges[k]))))), React.createElement("small", null, "\u67E5\u770B\u8FFD\u6355\u7D00\u9304 \u203A")));
+}
+const SHOP_PRESENTATION = {
+  notebook: {
+    short: '翻開觀念和舊紀錄',
+    stat: '隨時翻閱',
+    note: '永久使用'
+  },
+  magnifier: {
+    short: '第一個提示保留金徽章資格',
+    stat: '每案 1 次',
+    note: '3 星以下通緝令'
+  },
+  watch: {
+    short: '答錯後，追回來更容易',
+    stat: '追蹤只扣 5',
+    note: '原本答錯扣 10'
+  },
+  tea: {
+    short: '休息一下，再接一件案子',
+    stat: '專注力 +1',
+    note: '每天最多 2 份'
+  }
+};
+function ShopItemPicture({
+  it,
+  size = 112
+}) {
+  const [failed, setFailed] = useState(false);
+  return ITEM_ART_NAMES[it.id] ? React.createElement(ItemArt, {
+    id: it.id,
+    size: size
+  }) : it.img && !failed ? React.createElement("img", {
+    className: "shop-original-art",
+    src: it.img,
+    width: size,
+    height: size,
+    alt: "",
+    onError: () => setFailed(true)
+  }) : React.createElement(ItemIcon, {
+    icon: it.icon,
+    size: size
+  });
 }
 const PLAYER_SPEED = 300;
 function visibleHotspots(scene, story) {
   return scene.hotspots.filter(h => condOk(story, h.requires));
 }
 function SceneView({
-  scene,
+  scene: sourceScene,
   story,
   student,
   busy,
@@ -69775,6 +70208,8 @@ function SceneView({
   onHover,
   cheer
 }) {
+  const [mapArtFailed, setMapArtFailed] = useState(false);
+  const scene = worldMapScene(sourceScene, !mapArtFailed);
   const svgRef = useRef(null),
     desktop = useAdventureDesktop();
   const [labelScale, setLabelScale] = useState(1),
@@ -69785,7 +70220,7 @@ function SceneView({
   }, []);
   useEffect(() => {
     const el = svgRef.current;
-    const ro = new ResizeObserver(() => setLabelScale(innerWidth >= 768 ? 1280 / el.getBoundingClientRect().width : 1));
+    const ro = new ResizeObserver(() => setLabelScale(innerWidth >= 768 || scene.kind === 'map' ? 1280 / el.getBoundingClientRect().width : 1));
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
@@ -69950,13 +70385,14 @@ function SceneView({
   return React.createElement("svg", {
     ref: svgRef,
     viewBox: "0 0 1280 720",
-    className: `scene ${cinematic ? 'cinematic' : ''}`,
+    className: `scene ${cinematic ? 'cinematic' : ''} ${isMap ? 'map-scene ' + (1280 / labelScale < 900 ? 'map-compact' : '') : ''}`,
     onClick: clickFloor,
     role: "group",
     "aria-label": scene.name
   }, React.createElement(SceneArt, {
     art: scene.art,
-    story: story
+    story: story,
+    onFailure: () => setMapArtFailed(true)
   }), scene.id === 'agency' && React.createElement(OfficeKeepsakesArt, {
     student: student
   }), scene.props && React.createElement("g", {
@@ -70067,6 +70503,13 @@ function Hotspot({
   labelScale = 1,
   place
 }) {
+  if (isMap) return React.createElement(WorldMapMarker, {
+    h: h,
+    place: place,
+    scale: labelScale,
+    busy: busy,
+    onClick: onClick
+  });
   const sc = isMap ? 0.6 : depthScale(h.y);
   const npc = h.kind === 'npc' ? NPCS[h.npc] : null;
   const nameY = npc ? FIELD_ART[npc.id] ? 30 - 225 * sc * (npc.id === 'ling' ? .85 : 1) - 38 : 30 - (npc.look.hat === 'tophat' ? 280 : 242) * sc : isMap ? 40 : -70 * sc - 10;
@@ -70934,7 +71377,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.11-v48',
+    build: '2026.11.11-v49',
     ...context,
     message
   };
@@ -71858,14 +72301,9 @@ function GrowthScreen({
 }) {
   const s = state.student;
   const lp = levelProgress(s.xp);
-  const unlocked = unlockedOutfits(s);
-  const toggleOutfit = id => setState({
-    ...state,
-    student: {
-      ...s,
-      outfits: s.outfits.includes(id) ? s.outfits.filter(x => x !== id) : [...s.outfits, id]
-    }
-  });
+  const sk = skillsOf(state),
+    rows = memorialRows(state),
+    gradeLogs = state.practiceLog.filter(l => kpGrade(l.kpId) === studentGrade(s));
   const logs = state.practiceLog.slice(-12).reverse();
   const byKp = {};
   state.practiceLog.filter(l => kpGrade(l.kpId) === studentGrade(s)).forEach(l => {
@@ -71886,59 +72324,93 @@ function GrowthScreen({
     id: "growth-book",
     onClick: () => go('records')
   }, "\u67E5\u770B\u7D00\u5FF5\u518A"), React.createElement("div", {
-    className: "grid two"
+    className: "growth-layout"
+  }, React.createElement("aside", {
+    className: "growth-character"
   }, React.createElement("div", {
-    className: "card col"
-  }, React.createElement("div", {
-    className: "row"
-  }, React.createElement(Avatar, {
+    className: "growth-portrait"
+  }, React.createElement(CharacterIllustration, {
+    id: s.avatar,
     student: s,
-    size: 96
-  }), React.createElement("div", null, React.createElement("h2", null, s.name, equippedTitle(s.wallet) && React.createElement(Tag, {
+    fullPreview: true
+  })), React.createElement("h2", null, s.name), equippedTitle(s.wallet) && React.createElement(Tag, {
     kind: "accent"
-  }, equippedTitle(s.wallet))), React.createElement("div", null, "Lv.", lp.l, "\u30FB", titleOf(lp.l)), React.createElement("div", {
-    className: "small muted"
-  }, s.xp, " XP\uFF08\u4E0B\u4E00\u7D1A ", lp.hi, "\uFF09"))), React.createElement(Progress, {
+  }, equippedTitle(s.wallet)), React.createElement("b", null, "Lv.", lp.l, " \xB7 ", titleOf(lp.l)), React.createElement(Progress, {
     value: lp.pct,
     accent: true
-  }), React.createElement("div", {
-    className: "col",
-    style: {
-      gap: 6
-    }
-  }, React.createElement("span", {
-    className: "eyebrow"
-  }, "\u5404\u79D1\u6280\u80FD\u7B49\u7D1A"), React.createElement(SkillBars, {
-    state: state
   }), React.createElement("span", {
-    className: "small muted"
-  }, "\u4E3B\u7DDA\u3001\u59D4\u8A17\u3001\u8907\u7FD2\u3001\u8FFD\u6355\u7684\u6BCF\u4E00\u6B21\u901A\u904E\u90FD\u6703\u7D2F\u7A4D\uFF1B5 \u661F\u901A\u7DDD\u4EE4\u9700\u8981\u8A72\u6848\u6D89\u53CA\u7684\u79D1\u76EE\u90FD\u5230 Lv.2\uFF1B\u300C\u5348\u591C\u4FE1\u5DEE\u300D\u9700\u8981\u6578\u5B78\u8207\u570B\u8A9E Lv.2\u3002")), React.createElement("div", null, React.createElement("button", {
+    className: "growth-xp nozy"
+  }, s.xp, " / ", lp.hi, " XP"), React.createElement("button", {
     className: "btn primary",
     id: "records-wardrobe",
     onClick: () => go('wardrobe')
-  }, "\u524D\u5F80\u66F4\u8863\u5BA4 \xB7 \u5916\u8C8C\u8207\u6613\u5BB9"))), React.createElement("div", {
-    className: "card col"
-  }, React.createElement("h3", null, "\u6211\u7684\u80FD\u529B\u5730\u5716"), !Object.keys(byKp).length && React.createElement("span", {
-    className: "muted small"
-  }, "\u9084\u6C92\u6709\u7DF4\u7FD2\u7D00\u9304\u3002"), React.createElement("div", {
-    className: "mastery"
-  }, Object.entries(byKp).map(([k, v]) => React.createElement(React.Fragment, {
-    key: k
-  }, React.createElement("div", null, React.createElement("div", {
+  }, "\u524D\u5F80\u66F4\u8863\u5BA4")), React.createElement("div", {
+    className: "col"
+  }, React.createElement("div", {
+    className: "growth-stats"
+  }, React.createElement("div", {
+    className: "growth-stat"
+  }, React.createElement("span", null, "\u7DF4\u7FD2\u901A\u904E"), React.createElement("strong", {
+    className: "nozy"
+  }, gradeLogs.filter(l => l.passed).length), React.createElement("span", null, "\u6B21")), React.createElement("div", {
+    className: "growth-stat"
+  }, React.createElement("span", null, "\u63A2\u7D22\u4E3B\u984C"), React.createElement("strong", {
+    className: "nozy"
+  }, Object.keys(byKp).length), React.createElement("span", null, "\u500B")), React.createElement("div", {
+    className: "growth-stat"
+  }, React.createElement("span", null, "\u8FFD\u6355\u6210\u529F"), React.createElement("strong", {
+    className: "nozy"
+  }, getWallet(s).caseLog.filter(l => l.result === 'arrest').length), React.createElement("span", null, "\u6B21"))), React.createElement("section", {
+    className: "growth-section col"
+  }, React.createElement("div", null, React.createElement("h2", null, "\u5404\u79D1\u6210\u9577"), React.createElement("p", {
+    className: "small muted"
+  }, "\u6BCF\u6B21\u901A\u904E\u7DF4\u7FD2\uFF0C\u90FD\u5F80\u4E0B\u4E00\u500B\u7B49\u7D1A\u524D\u9032\u3002")), React.createElement("div", {
+    className: "growth-subjects"
+  }, skillSubjectsActive(state).map(k => {
+    const skill = sk[k],
+      row = rows.find(r => r.id === 'skill-' + k);
+    return React.createElement("article", {
+      className: "growth-subject",
+      key: k,
+      id: 'growth-skill-' + k
+    }, React.createElement(SubjectBadge, {
+      row: row,
+      tier: Math.max(0, row.level - 1),
+      earned: row.level > 0,
+      size: 64
+    }), React.createElement("div", null, React.createElement("h3", null, SKILL_SUBJECTS[k].name, React.createElement("b", {
+      className: "nozy"
+    }, "Lv.", skill.level)), React.createElement("p", null, skill.title), React.createElement("div", {
+      className: "gauge"
+    }, React.createElement("span", {
+      style: {
+        width: skill.pct + '%',
+        background: subjColor(k)
+      }
+    })), React.createElement("small", null, skill.max ? `已達最高級 · 通過 ${skill.passes} 次` : `再通過 ${skill.hi - skill.passes} 次升級`)));
+  })), React.createElement("details", null, React.createElement("summary", null, "\u7B49\u7D1A\u600E\u9EBC\u7D2F\u7A4D\uFF1F"), React.createElement("p", {
     className: "small"
-  }, React.createElement("b", null, KP_BY_ID[k]?.name || k)), React.createElement("div", {
+  }, "\u4E3B\u7DDA\u3001\u59D4\u8A17\u3001\u8907\u7FD2\u3001\u8FFD\u6355\u7684\u6BCF\u4E00\u6B21\u901A\u904E\u90FD\u6703\u7D2F\u7A4D\u30025 \u661F\u901A\u7DDD\u4EE4\u9700\u8981\u76F8\u95DC\u79D1\u76EE\u90FD\u5230 Lv.2\uFF1B\u5348\u591C\u4FE1\u5DEE\u9700\u8981\u6578\u5B78\u8207\u570B\u8A9E Lv.2\u3002"))), React.createElement("section", {
+    className: "growth-section col"
+  }, React.createElement("h2", null, "\u6211\u7684\u80FD\u529B\u5730\u5716"), React.createElement("p", {
+    className: "small muted"
+  }, "\u9019\u88E1\u986F\u793A\u6BCF\u500B\u4E3B\u984C\u7684\u7DF4\u7FD2\u901A\u904E\u7D00\u9304\uFF1B\u80FD\u5426\u7A69\u7A69\u8A18\u4F4F\uFF0C\u9084\u8981\u770B\u770B\u4E4B\u5F8C\u7684\u8907\u7FD2\u3002"), !Object.keys(byKp).length && React.createElement("p", null, "\u5B8C\u6210\u7B2C\u4E00\u6B21\u7DF4\u7FD2\uFF0C\u5C31\u6703\u7559\u4E0B\u7D00\u9304\u3002"), React.createElement("div", {
+    className: "growth-concepts"
+  }, Object.entries(byKp).map(([k, v]) => React.createElement("article", {
+    className: "growth-concept",
+    key: k
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement("b", null, KP_BY_ID[k]?.name || k), React.createElement("span", {
+    className: "nozy"
+  }, v.ok, " / ", v.n)), React.createElement("div", {
     className: "gauge"
   }, React.createElement("span", {
     style: {
       width: `${v.ok / v.n * 100}%`,
-      background: v.ok / v.n >= 0.7 ? 'var(--good)' : 'var(--warn)'
+      background: 'var(--teal)'
     }
-  }))), React.createElement("span", {
-    className: "small muted",
-    style: {
-      fontVariantNumeric: 'tabular-nums'
-    }
-  }, v.ok, "/", v.n)))))), React.createElement("section", {
+  })), React.createElement("small", null, "\u901A\u904E\u6B21\u6578\uFF0F\u7DF4\u7FD2\u6B21\u6578"))))))), React.createElement("section", {
     className: "card col",
     id: "growth-achievements"
   }, React.createElement("h3", null, "\u5176\u4ED6\u7D00\u5FF5"), ACHIEVEMENTS.filter(a => s.achievements.includes(a.id)).map(a => React.createElement("div", {
@@ -72534,7 +73006,7 @@ function Adventure({
     disabled: busy
   }, student.care && !student.care.selfCare && (student.care.pets?.[student.care.out?.[0]]?.sat || 0) < 30 ? '🍽 ' : '', "\u5925\u4F34"));
   const nearby = !busy && React.createElement("div", {
-    className: "explore-actions",
+    className: `explore-actions ${scene.kind === 'map' ? 'map-directory' : ''}`,
     "aria-label": "\u53EF\u524D\u5F80\u8207\u8ABF\u67E5\u7684\u5730\u9EDE"
   }, React.createElement("span", null, scene.kind === 'map' ? '選擇目的地' : '附近可調查'), (scene.kind === 'map' ? scene.hotspots : visibleHotspots(scene, story)).map(h => {
     const open = condOk(story, h.requires);
@@ -72543,7 +73015,11 @@ function Adventure({
       disabled: !open,
       title: !open ? MAP_LOCK_HINT[h.to] : undefined,
       onClick: () => interact(h)
-    }, h.kind === 'npc' ? NPCS[h.npc].name : h.label, !open && React.createElement("small", null, MAP_LOCK_HINT[h.to]));
+    }, scene.kind === 'map' ? React.createElement(React.Fragment, null, React.createElement("span", {
+      className: "map-number nozy"
+    }, WORLD_MAP_PLACES[h.id]?.n), React.createElement("span", null, React.createElement("span", {
+      className: "nozy"
+    }, h.label), !open && React.createElement("small", null, MAP_LOCK_HINT[h.to]))) : React.createElement(React.Fragment, null, h.kind === 'npc' ? NPCS[h.npc].name : h.label, !open && React.createElement("small", null, MAP_LOCK_HINT[h.to])));
   }), scene.id === 'archive' && story.flags.c5_done && React.createElement("button", {
     id: "open-review-desk",
     onClick: () => setReviewDesk(true)
@@ -72973,19 +73449,16 @@ function WantedBoard({
   }, React.createElement(TrainRouteNotice, {
     student: state.student
   }), React.createElement("div", {
-    className: "row between",
-    style: {
-      flexWrap: 'wrap',
-      gap: 8
-    }
+    className: "row between wanted-navigation"
   }, React.createElement(Btn, {
     small: true,
     onClick: () => go('adventure')
-  }, "\u2190 \u56DE\u5230\u4E8B\u52D9\u6240"), React.createElement("span", {
-    className: "small muted"
-  }, title && React.createElement(Tag, {
+  }, "\u2190 \u56DE\u5230\u4E8B\u52D9\u6240"), title && React.createElement(Tag, {
     kind: "accent"
-  }, title), " \u5FBD\u7AE0 \u91D1", wallet.badges.gold, "\u30FB\u9280", wallet.badges.silver, "\u30FB\u9285", wallet.badges.bronze, "\u3000\u7DDA\u7D22\u788E\u7247 ", wallet.fragments, "\u3000\u63D0\u793A\u5361 ", wallet.hintCards || 0, "\u3000\u91D1\u5E63 ", wallet.coins)), React.createElement("div", {
+  }, title)), React.createElement(ResourceSummary, {
+    wallet: wallet,
+    onSelect: setTab
+  }), tab !== 'shop' && React.createElement("div", {
     className: "card raised wanted-head"
   }, React.createElement("span", {
     className: "eyebrow"
@@ -73644,114 +74117,98 @@ function ShopPanel({
   setState,
   toast
 }) {
-  const wallet = getWallet(state.student);
-  const f = focusState(state);
+  const wallet = getWallet(state.student),
+    f = focusState(state);
   const buy = id => {
-    const r = buyItem(state, id);
-    if (!r.ok) {
-      toast(r.reason);
+    const result = buyItem(state, id);
+    if (!result.ok) {
+      toast(result.reason);
       return;
     }
-    setState(r.state);
-    const it = SHOP_BY_ID[id];
-    toast(id === 'tea' ? '專注力 +1，今天可以多接一張通緝令' : `換到了「${it.name}」`);
+    setState(result.state);
+    toast(id === 'tea' ? '專注力 +1，今天可以多接一張通緝令' : `換到了「${SHOP_BY_ID[id].name}」`);
   };
-  const groups = [['tool', '學習支援道具（永久）'], ['consumable', '茶點'], ['cosmetic', '裝飾與稱號'], ['decor', '事務所裝潢（買了就會擺在事務所裡）']];
+  const groups = [['tool', '學習支援道具', '買一次，冒險時一直帶著'], ['consumable', '休息茶點', '補充今天的專注力'], ['cosmetic', '裝飾與稱號', '留下你的偵探風格'], ['decor', '事務所擺設', '把喜歡的東西擺在事務所']];
   return React.createElement("div", {
-    className: "col"
-  }, React.createElement("div", {
-    className: "card raised col shop-head"
-  }, React.createElement("div", {
-    className: "row between",
-    style: {
-      flexWrap: 'wrap',
-      gap: 8
-    }
+    className: "col shop-shelves"
+  }, React.createElement("header", {
+    className: "shop-banner"
   }, React.createElement("div", null, React.createElement("span", {
     className: "eyebrow"
-  }, "\u7070\u9D09\u5075\u63A2\u4E8B\u52D9\u6240\u30FB\u6AC3\u53F0"), React.createElement("h3", null, "\u7528\u8FFD\u6355\u8CFA\u4F86\u7684\u91D1\u5E63\uFF0C\u63DB\u8ABF\u67E5\u7684\u597D\u5E6B\u624B")), React.createElement("span", {
-    className: "coins",
-    id: "shop-coins"
-  }, "\u91D1\u5E63 ", React.createElement("b", null, wallet.coins))), React.createElement("p", {
-    className: "small muted"
-  }, "\u6AC3\u53F0\u53EA\u8CE3\u300C\u5E6B\u4F60\u60F3\u300D\u7684\u5DE5\u5177\u548C\u88DD\u98FE\uFF1A\u6C92\u6709\u4EFB\u4F55\u9053\u5177\u6703\u66FF\u4F60\u4F5C\u7B54\u3001\u8DF3\u904E\u7DDA\u7D22\u6216\u76F4\u63A5\u7D66\u7B54\u6848\u3002\u7FFB\u904E\u7B46\u8A18\u672C\u3001\u7528\u904E\u653E\u5927\u93E1\uFF0C\u5BB6\u9577\u7D00\u9304\u88E1\u90FD\u770B\u5F97\u5230\u3002"), React.createElement("div", {
-    className: "row",
-    style: {
-      gap: 14,
-      flexWrap: 'wrap'
-    }
+  }, "\u7070\u9D09\u5075\u63A2\u4E8B\u52D9\u6240"), React.createElement("h2", null, "\u8ABF\u67E5\u54E1\u88DC\u7D66\u6AC3\u53F0"), React.createElement("p", null, "\u5E36\u4E0A\u597D\u5E6B\u624B\uFF0C\u518D\u53BB\u5C0B\u627E\u4E0B\u4E00\u689D\u7DDA\u7D22\u3002")), React.createElement(CoinAmount, {
+    id: "shop-coins",
+    value: wallet.coins,
+    caption: "\u6211\u7684\u91D1\u5E63"
+  })), React.createElement("div", {
+    className: "shop-focus"
   }, React.createElement(FocusMeter, {
     state: state
-  }), React.createElement("span", {
-    className: "small muted"
-  }, "\u5C08\u6CE8\u529B\u6BCF\u5929 ", f.max, " \u9EDE\uFF0C\u63A5\u4E00\u5F35\u901A\u7DDD\u4EE4\u7528 1 \u9EDE\uFF0C\u9694\u5929\u81EA\u52D5\u6062\u5FA9\uFF1B\u7B54\u932F\u3001\u7528\u63D0\u793A\u90FD\u4E0D\u6703\u6263\u3002"))), groups.map(([kind, label]) => React.createElement("div", {
-    key: kind,
-    className: "col"
-  }, React.createElement("span", {
-    className: "eyebrow"
-  }, label), React.createElement("div", {
-    className: "grid shop-grid"
-  }, SHOP_ITEMS.filter(i => i.kind === kind).map(it => {
-    const owned = hasItem(wallet, it.id);
-    const lock = itemLocked(state, it);
-    const equipped = wallet.titleId === it.id || wallet.frameId === it.id;
-    const teaOut = it.id === 'tea' && f.teaLeft <= 0;
-    return React.createElement("div", {
+  }), React.createElement("span", null, "\u7B54\u932F\u3001\u7528\u63D0\u793A\u90FD\u4E0D\u6263\u5C08\u6CE8\u529B\u3002\u9694\u5929\u81EA\u52D5\u6062\u5FA9\u3002")), groups.map(([kind, label, subtitle]) => React.createElement("section", {
+    key: kind
+  }, React.createElement("div", {
+    className: "shop-section-title"
+  }, React.createElement("h3", null, label), React.createElement("span", null, subtitle)), React.createElement("div", {
+    className: "grid shop-grid inventory-grid"
+  }, SHOP_ITEMS.filter(it => it.kind === kind).map(it => {
+    const owned = hasItem(wallet, it.id),
+      lock = itemLocked(state, it),
+      equipped = wallet.titleId === it.id || wallet.frameId === it.id,
+      teaOut = it.id === 'tea' && f.teaLeft <= 0,
+      pres = SHOP_PRESENTATION[it.id];
+    return React.createElement("article", {
+      className: `inventory-card ${owned ? 'owned' : ''}`,
       key: it.id,
-      className: `item-card col ${owned ? 'owned' : ''}`
+      "data-shop-item": it.id
     }, React.createElement("div", {
-      className: "row",
-      style: {
-        alignItems: 'flex-start'
-      }
-    }, it.img ? React.createElement("img", {
-      className: "item-img",
-      src: it.img,
-      alt: "",
-      width: 44,
-      height: 44
-    }) : React.createElement(ItemIcon, {
-      icon: it.icon
-    }), React.createElement("div", {
-      style: {
-        minWidth: 0,
-        flex: 1
-      }
-    }, React.createElement("b", null, it.name), React.createElement("div", {
-      className: "small"
-    }, it.desc), React.createElement("div", {
-      className: "small muted"
-    }, it.effect))), React.createElement("div", {
-      className: "row between"
+      className: "inventory-art"
     }, React.createElement("span", {
-      className: "small"
-    }, it.kind === 'consumable' ? `${it.price} 金幣／份（今天還可買 ${f.teaLeft} 份）` : owned ? React.createElement(Tag, {
-      kind: "good"
-    }, "\u5DF2\u64C1\u6709") : `${it.price} 金幣`), it.kind === 'decor' && owned ? React.createElement(Btn, {
+      className: "inventory-kind"
+    }, kind === 'tool' ? '永久道具' : kind === 'consumable' ? '使用一份' : '收藏裝飾'), React.createElement(ShopItemPicture, {
+      it: it
+    }), owned && kind !== 'consumable' && React.createElement("span", {
+      className: "inventory-owned"
+    }, "\u2713 \u5DF2\u64C1\u6709")), React.createElement("div", {
+      className: "inventory-copy"
+    }, React.createElement("h3", null, it.name), React.createElement("p", null, pres?.short || it.desc), pres && React.createElement("div", {
+      className: "inventory-stat"
+    }, React.createElement("b", null, pres.stat), React.createElement("small", null, pres.note)), it.id === 'tea' && React.createElement("p", null, "\u4ECA\u5929\u9084\u53EF\u63DB ", f.teaLeft, " \u4EFD"), React.createElement("details", null, React.createElement("summary", null, "\u7528\u9014\u8207\u8AAA\u660E"), React.createElement("p", null, it.desc), React.createElement("p", null, it.effect))), React.createElement("div", {
+      className: "inventory-footer"
+    }, React.createElement(CoinAmount, {
+      value: it.price,
+      caption: kind === 'consumable' ? '每份金幣' : '金幣'
+    }), kind === 'decor' && owned ? React.createElement(Btn, {
       small: true,
       id: `equip-${it.id}`,
       kind: (wallet.decor || []).includes(it.id) ? 'teal' : undefined,
       onClick: () => setState(toggleDecor(state, it.id))
-    }, (wallet.decor || []).includes(it.id) ? '擺出中・收起' : '擺出') : it.kind === 'cosmetic' && owned ? React.createElement(Btn, {
+    }, (wallet.decor || []).includes(it.id) ? '擺出中・收起' : '擺出') : kind === 'cosmetic' && owned ? React.createElement(Btn, {
       small: true,
       id: `equip-${it.id}`,
       kind: equipped ? 'teal' : undefined,
       onClick: () => setState(equipCosmetic(state, it.id))
-    }, equipped ? '使用中・取下' : '使用') : it.kind !== 'consumable' && owned ? null : React.createElement(Btn, {
+    }, equipped ? '使用中・取下' : '使用') : kind !== 'consumable' && owned ? React.createElement("span", {
+      className: "tag good"
+    }, "\u5DF2\u653E\u9032\u80CC\u5305") : React.createElement(Btn, {
       small: true,
       kind: "primary",
       id: `buy-${it.id}`,
       disabled: !!lock || teaOut || wallet.coins < it.price,
       title: lock || undefined,
       onClick: () => buy(it.id)
-    }, lock ? lock : teaOut ? '今天買過了' : wallet.coins < it.price ? `還差 ${it.price - wallet.coins}` : '換取')));
-  })))), React.createElement("div", {
-    className: "card col"
-  }, React.createElement("h3", null, "\u6D88\u8CBB\u7D00\u9304"), !(wallet.purchases || []).length && React.createElement("span", {
+    }, lock ? '尚未解鎖' : teaOut ? '今天換完了' : wallet.coins < it.price ? `還差 ${it.price - wallet.coins}` : '換取')), lock && !owned && React.createElement("p", {
+      className: "small",
+      style: {
+        padding: '0 16px 12px',
+        margin: 0
+      }
+    }, lock));
+  })))), React.createElement("p", {
     className: "small muted"
-  }, "\u9084\u6C92\u6709\u63DB\u904E\u6771\u897F\u3002"), (wallet.purchases || []).slice(0, 8).map((p, i) => React.createElement("div", {
-    key: i,
-    className: "row between small"
+  }, "\u9053\u5177\u6703\u5E6B\u4F60\u6574\u7406\u7DDA\u7D22\u548C\u601D\u8003\uFF0C\u7B54\u6848\u4ECD\u7531\u4F60\u4F86\u767C\u73FE\u3002"), React.createElement("details", {
+    className: "card purchase-history"
+  }, React.createElement("summary", null, "\u6D88\u8CBB\u7D00\u9304"), !(wallet.purchases || []).length && React.createElement("p", null, "\u9084\u6C92\u6709\u63DB\u904E\u6771\u897F\u3002"), (wallet.purchases || []).slice(0, 8).map((p, i) => React.createElement("div", {
+    className: "row between small",
+    key: i
   }, React.createElement("span", null, fmtDate(p.t), "\u30FB", carePurchaseName(p), p.type === 'refund' ? '（退還）' : ''), React.createElement("span", null, carePurchaseAmount(p), " \u91D1\u5E63")))));
 }
 const ShopPanelBeforeCare = ShopPanel;
@@ -73771,16 +74228,50 @@ ShopPanel = function CareShop(props) {
     className: tab === 'care' ? 'active' : '',
     onClick: () => setTab('care')
   }, "\u5925\u4F34\u88DC\u7D66")), tab === 'items' ? React.createElement(ShopPanelBeforeCare, props) : React.createElement("section", {
-    className: "card col",
+    className: "col shop-shelves",
     id: "care-supplies"
-  }, React.createElement("h2", null, "\u5925\u4F34\u88DC\u7D66"), React.createElement("span", null, "\u91D1\u5E63 ", w.coins), React.createElement("p", null, "\u57FA\u790E\u88DC\u7D66\u5C31\u80FD\u8B93\u5925\u4F34\u958B\u5FC3\u3002"), Object.entries(CARE_SUPPLIES).map(([id, it]) => React.createElement("div", {
-    className: "card soft col",
-    key: id
-  }, React.createElement("h3", null, id === 'care_basic' ? '◒' : '✦', " ", it.name), React.createElement("span", null, it.cost, " \u91D1\u5E63\u30FB\u6062\u5FA9 ", it.restore), React.createElement("span", null, "\u76EE\u524D\u6709 ", c.inv[id] || 0, " \u4EFD"), React.createElement("span", null, id === 'care_snack' ? '多一句開心的反應。' : '動物和機械都能使用。'), React.createElement(Btn, {
+  }, React.createElement("header", {
+    className: "shop-banner"
+  }, React.createElement("div", null, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u4E00\u8D77\u51FA\u767C\u7684\u5C0F\u5925\u4F34"), React.createElement("h2", null, "\u5925\u4F34\u88DC\u7D66\u6AC3\u53F0"), React.createElement("p", null, "\u57FA\u790E\u88DC\u7D66\u5C31\u80FD\u8B93\u5925\u4F34\u958B\u5FC3\u3002")), React.createElement(CoinAmount, {
+    value: w.coins,
+    caption: "\u6211\u7684\u91D1\u5E63"
+  })), React.createElement("div", {
+    className: "grid shop-grid inventory-grid care-shop-grid"
+  }, Object.entries(CARE_SUPPLIES).map(([id, it]) => React.createElement("article", {
+    className: "inventory-card",
+    key: id,
+    "data-shop-item": id
+  }, React.createElement("div", {
+    className: "inventory-art"
+  }, React.createElement(ItemArt, {
+    id: id,
+    size: 128
+  }), React.createElement("span", {
+    className: "inventory-kind"
+  }, id === 'care_basic' ? '日常補給' : '開心點心'), React.createElement("span", {
+    className: "inventory-owned"
+  }, "\u80CC\u5305 ", c.inv[id] || 0, " \u4EFD")), React.createElement("div", {
+    className: "inventory-copy"
+  }, React.createElement("h3", null, it.name), React.createElement("p", null, id === 'care_snack' ? '喜歡的點心，多一句開心的反應。' : '一袋剛剛好的補給，動物和機械都能使用。'), React.createElement("div", {
+    className: "inventory-stat"
+  }, React.createElement("b", null, "\u98FD\u8DB3\uFF0F\u80FD\u6E90 +", it.restore), React.createElement("small", null, "\u4F7F\u7528\u6642\u6062\u5FA9")), React.createElement("p", null, "\u76EE\u524D\u6709 ", c.inv[id] || 0, " \u4EFD")), React.createElement("div", {
+    className: "inventory-footer"
+  }, React.createElement(CoinAmount, {
+    value: it.cost,
+    caption: "\u6BCF\u4EFD\u91D1\u5E63"
+  }), React.createElement(Btn, {
+    kind: "primary",
     id: 'buy-' + id,
     disabled: w.coins < it.cost,
-    onClick: () => props.setState(s => carePurchase(s, id))
-  }, "\u63DB\u4E00\u4EFD")))));
+    onClick: () => {
+      props.setState(s => carePurchase(s, id));
+      props.toast?.(`換到一份${it.name}`);
+    }
+  }, w.coins < it.cost ? `還差 ${it.cost - w.coins}` : '換一份'))))), React.createElement("p", {
+    className: "small muted"
+  }, "\u5169\u7A2E\u88DC\u7D66\u90FD\u6062\u5FA9 50 \u9EDE\u3002\u9078\u4F60\u559C\u6B61\u7684\u5C31\u597D\u3002")));
 };
 const CasePlayerBeforeCare = CasePlayer;
 CasePlayer = function CareCasePlayer(props) {
@@ -75942,7 +76433,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.11-v48\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.11-v49\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -76455,7 +76946,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.11-v48",
+    "data-build": "2026.11.11-v49",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
