@@ -790,6 +790,13 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .idiom-options .btn{min-height:48px;flex:1 1 130px;font-size:1.05rem;white-space:normal}
 @media(max-width:480px){.idiom-card{padding:12px}.idiom-options .btn{flex-basis:100%;width:100%}}
 
+.interval-question{font-size:1.2rem;line-height:1.9;margin:0;overflow-wrap:anywhere}
+.interval-diagram{margin:0;padding:12px;border:1px solid #b7cbd1;border-radius:14px;background:#fffdf5}
+.interval-diagram svg{display:block;width:100%;max-width:560px;margin:auto;font-size:16px;fill:#234e5f}
+.interval-diagram figcaption{margin-top:8px;font-size:.95rem;line-height:1.6;color:#465e6c}
+.interval-options{display:flex;gap:12px;flex-wrap:wrap}.interval-options .btn{flex:1 1 110px;min-height:48px;font-size:1.15rem}
+@media(max-width:480px){.interval-options .btn{flex-basis:100%}.interval-diagram{padding:8px}.interval-question{font-size:1.1rem}}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -797,12 +804,1765 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261112-idioms">
+<meta name="game-release" content="playtest-20261112-intervals">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const INTERVALS_V58_BANK = [{
+  "id": "interval58-both-01",
+  "contentKey": "interval58-both-01",
+  "variantGroup": "interval-both",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "both",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "海邊直線步道從起點到終點按相同距離分段，在分隔位置種樹，起點和終點都要放置。全長 18 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+  "params": {
+    "question": "海邊直線步道從起點到終點按相同距離分段，在分隔位置種樹，起點和終點都要放置。全長 18 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+    "model": {
+      "type": "both",
+      "ask": "count",
+      "length": 18,
+      "spacing": 3,
+      "count": 7,
+      "start": true,
+      "end": true
+    },
+    "answer": 7,
+    "unit": "棵",
+    "options": [7, 6, 5],
+    "feedback": {
+      "5": "把兩端都有誤當成兩端都沒有。",
+      "6": "把間隔數直接當成物件數，漏了起點。"
+    },
+    "clue": "兩端都有物件，最前面的位置也要算。",
+    "formula": "18 ÷ 3 = 6（個間隔）；6 + 1 = 7",
+    "object": "樹",
+    "objectUnit": "棵",
+    "diagramLabel": "起點和終點都要放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-both-02",
+  "contentKey": "interval58-both-02",
+  "variantGroup": "interval-both",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "both",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "校園直線走道從起點到終點按相同距離分段，在分隔位置放置花盆，起點和終點都要放置。全長 36 公尺，每隔 4 公尺放一個，共有幾個花盆？",
+  "params": {
+    "question": "校園直線走道從起點到終點按相同距離分段，在分隔位置放置花盆，起點和終點都要放置。全長 36 公尺，每隔 4 公尺放一個，共有幾個花盆？",
+    "model": {
+      "type": "both",
+      "ask": "count",
+      "length": 36,
+      "spacing": 4,
+      "count": 10,
+      "start": true,
+      "end": true
+    },
+    "answer": 10,
+    "unit": "個",
+    "options": [10, 9, 8],
+    "feedback": {
+      "8": "把兩端都有誤當成兩端都沒有。",
+      "9": "把間隔數直接當成物件數，漏了起點。"
+    },
+    "clue": "兩端都有物件，最前面的位置也要算。",
+    "formula": "36 ÷ 4 = 9（個間隔）；9 + 1 = 10",
+    "object": "花盆",
+    "objectUnit": "個",
+    "diagramLabel": "起點和終點都要放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-both-03",
+  "contentKey": "interval58-both-03",
+  "variantGroup": "interval-both",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "both",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "筆直山徑從起點到終點按相同距離分段，在分隔位置放置路標，起點和終點都要放置。共有 11 個路標，每隔 5 公尺放一個。這段路線全長幾公尺？",
+  "params": {
+    "question": "筆直山徑從起點到終點按相同距離分段，在分隔位置放置路標，起點和終點都要放置。共有 11 個路標，每隔 5 公尺放一個。這段路線全長幾公尺？",
+    "model": {
+      "type": "both",
+      "ask": "length",
+      "length": 50,
+      "spacing": 5,
+      "count": 11,
+      "start": true,
+      "end": true
+    },
+    "answer": 50,
+    "unit": "公尺",
+    "options": [50, 55, 60],
+    "feedback": {
+      "55": "先分清物件數與間隔數，再用每段長度求全長。兩端都有物件，最前面的位置也要算。",
+      "60": "這個結果把端點條件反過來算了。兩端都有物件，最前面的位置也要算。"
+    },
+    "clue": "兩端都有物件，最前面的位置也要算。",
+    "formula": "11 − 1 = 10；10 × 5 = 50（公尺）",
+    "object": "路標",
+    "objectUnit": "個",
+    "diagramLabel": "起點和終點都要放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-both-04",
+  "contentKey": "interval58-both-04",
+  "variantGroup": "interval-both",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "both",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "河岸直線小路從起點到終點按相同距離分段，在分隔位置放置路燈，起點和終點都要放置。共有 13 盞路燈，每隔 6 公尺放一盞。這段路線全長幾公尺？",
+  "params": {
+    "question": "河岸直線小路從起點到終點按相同距離分段，在分隔位置放置路燈，起點和終點都要放置。共有 13 盞路燈，每隔 6 公尺放一盞。這段路線全長幾公尺？",
+    "model": {
+      "type": "both",
+      "ask": "length",
+      "length": 72,
+      "spacing": 6,
+      "count": 13,
+      "start": true,
+      "end": true
+    },
+    "answer": 72,
+    "unit": "公尺",
+    "options": [72, 78, 84],
+    "feedback": {
+      "78": "先分清物件數與間隔數，再用每段長度求全長。兩端都有物件，最前面的位置也要算。",
+      "84": "這個結果把端點條件反過來算了。兩端都有物件，最前面的位置也要算。"
+    },
+    "clue": "兩端都有物件，最前面的位置也要算。",
+    "formula": "13 − 1 = 12；12 × 6 = 72（公尺）",
+    "object": "路燈",
+    "objectUnit": "盞",
+    "diagramLabel": "起點和終點都要放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-both-05",
+  "contentKey": "interval58-both-05",
+  "variantGroup": "interval-both",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "both",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "展館直線長廊從起點到終點按相同距離分段，在分隔位置放置展示牌，起點和終點都要放置。全長 168 公尺，共放了 7 面展示牌。相鄰兩面展示牌之間相距幾公尺？",
+  "params": {
+    "question": "展館直線長廊從起點到終點按相同距離分段，在分隔位置放置展示牌，起點和終點都要放置。全長 168 公尺，共放了 7 面展示牌。相鄰兩面展示牌之間相距幾公尺？",
+    "model": {
+      "type": "both",
+      "ask": "spacing",
+      "length": 168,
+      "spacing": 28,
+      "count": 7,
+      "start": true,
+      "end": true
+    },
+    "answer": 28,
+    "unit": "公尺",
+    "options": [28, 24, 21],
+    "feedback": {
+      "21": "又多加一個間隔，把全長分成太多份。兩端都有物件，最前面的位置也要算。",
+      "24": "把物件數直接當成間隔數來分全長，間隔數算多了。兩端都有物件，最前面的位置也要算。"
+    },
+    "clue": "兩端都有物件，最前面的位置也要算。",
+    "formula": "7 − 1 = 6；168 ÷ 6 = 28（公尺）",
+    "object": "展示牌",
+    "objectUnit": "面",
+    "diagramLabel": "起點和終點都要放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-both-06",
+  "contentKey": "interval58-both-06",
+  "variantGroup": "interval-both",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "both",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "廣場直線邊界從起點到終點按相同距離分段，在分隔位置放置交通錐，起點和終點都要放置。全長 360 公尺，共放了 9 個交通錐。相鄰兩個交通錐之間相距幾公尺？",
+  "params": {
+    "question": "廣場直線邊界從起點到終點按相同距離分段，在分隔位置放置交通錐，起點和終點都要放置。全長 360 公尺，共放了 9 個交通錐。相鄰兩個交通錐之間相距幾公尺？",
+    "model": {
+      "type": "both",
+      "ask": "spacing",
+      "length": 360,
+      "spacing": 45,
+      "count": 9,
+      "start": true,
+      "end": true
+    },
+    "answer": 45,
+    "unit": "公尺",
+    "options": [45, 40, 36],
+    "feedback": {
+      "36": "又多加一個間隔，把全長分成太多份。兩端都有物件，最前面的位置也要算。",
+      "40": "把物件數直接當成間隔數來分全長，間隔數算多了。兩端都有物件，最前面的位置也要算。"
+    },
+    "clue": "兩端都有物件，最前面的位置也要算。",
+    "formula": "9 − 1 = 8；360 ÷ 8 = 45（公尺）",
+    "object": "交通錐",
+    "objectUnit": "個",
+    "diagramLabel": "起點和終點都要放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-one-01",
+  "contentKey": "interval58-one-01",
+  "variantGroup": "interval-one",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "one",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "農場直線小路從起點到終點按相同距離分段，在分隔位置種樹，起點放置，終點不放。全長 21 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+  "params": {
+    "question": "農場直線小路從起點到終點按相同距離分段，在分隔位置種樹，起點放置，終點不放。全長 21 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+    "model": {
+      "type": "one",
+      "ask": "count",
+      "length": 21,
+      "spacing": 3,
+      "count": 7,
+      "start": true,
+      "end": false
+    },
+    "answer": 7,
+    "unit": "棵",
+    "options": [7, 8, 6],
+    "feedback": {
+      "6": "把只有一端有誤當成兩端都沒有，少算一個位置。",
+      "8": "把只有一端有誤當成兩端都有，多算一個位置。"
+    },
+    "clue": "只有一端有物件，另一端是空的，別把它當成兩端都有。",
+    "formula": "21 ÷ 3 = 7（個間隔）；共有 7 棵樹",
+    "object": "樹",
+    "objectUnit": "棵",
+    "diagramLabel": "起點放置，終點不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-one-02",
+  "contentKey": "interval58-one-02",
+  "variantGroup": "interval-one",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "one",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "公園直線便道從起點到終點按相同距離分段，在分隔位置放置路燈，起點不放，終點放置。全長 40 公尺，每隔 4 公尺放一盞，共有幾盞路燈？",
+  "params": {
+    "question": "公園直線便道從起點到終點按相同距離分段，在分隔位置放置路燈，起點不放，終點放置。全長 40 公尺，每隔 4 公尺放一盞，共有幾盞路燈？",
+    "model": {
+      "type": "one",
+      "ask": "count",
+      "length": 40,
+      "spacing": 4,
+      "count": 10,
+      "start": false,
+      "end": true
+    },
+    "answer": 10,
+    "unit": "盞",
+    "options": [10, 11, 9],
+    "feedback": {
+      "9": "把只有一端有誤當成兩端都沒有，少算一個位置。",
+      "11": "把只有一端有誤當成兩端都有，多算一個位置。"
+    },
+    "clue": "只有一端有物件，另一端是空的，別把它當成兩端都有。",
+    "formula": "40 ÷ 4 = 10（個間隔）；共有 10 盞路燈",
+    "object": "路燈",
+    "objectUnit": "盞",
+    "diagramLabel": "起點不放，終點放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-one-03",
+  "contentKey": "interval58-one-03",
+  "variantGroup": "interval-one",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "one",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "車站直線走廊從起點到終點按相同距離分段，在分隔位置放置告示牌，起點放置，終點不放。共有 11 面告示牌，每隔 5 公尺放一面。這段路線全長幾公尺？",
+  "params": {
+    "question": "車站直線走廊從起點到終點按相同距離分段，在分隔位置放置告示牌，起點放置，終點不放。共有 11 面告示牌，每隔 5 公尺放一面。這段路線全長幾公尺？",
+    "model": {
+      "type": "one",
+      "ask": "length",
+      "length": 55,
+      "spacing": 5,
+      "count": 11,
+      "start": true,
+      "end": false
+    },
+    "answer": 55,
+    "unit": "公尺",
+    "options": [55, 50, 60],
+    "feedback": {
+      "50": "先分清物件數與間隔數，再用每段長度求全長。只有一端有物件，另一端是空的，別把它當成兩端都有。",
+      "60": "這個結果把端點條件反過來算了。只有一端有物件，另一端是空的，別把它當成兩端都有。"
+    },
+    "clue": "只有一端有物件，另一端是空的，別把它當成兩端都有。",
+    "formula": "間隔數也是 11；11 × 5 = 55（公尺）",
+    "object": "告示牌",
+    "objectUnit": "面",
+    "diagramLabel": "起點放置，終點不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-one-04",
+  "contentKey": "interval58-one-04",
+  "variantGroup": "interval-one",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "one",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "球場外直線步道從起點到終點按相同距離分段，在分隔位置放置旗子，起點不放，終點放置。共有 13 面旗子，每隔 6 公尺放一面。這段路線全長幾公尺？",
+  "params": {
+    "question": "球場外直線步道從起點到終點按相同距離分段，在分隔位置放置旗子，起點不放，終點放置。共有 13 面旗子，每隔 6 公尺放一面。這段路線全長幾公尺？",
+    "model": {
+      "type": "one",
+      "ask": "length",
+      "length": 78,
+      "spacing": 6,
+      "count": 13,
+      "start": false,
+      "end": true
+    },
+    "answer": 78,
+    "unit": "公尺",
+    "options": [78, 72, 84],
+    "feedback": {
+      "72": "先分清物件數與間隔數，再用每段長度求全長。只有一端有物件，另一端是空的，別把它當成兩端都有。",
+      "84": "這個結果把端點條件反過來算了。只有一端有物件，另一端是空的，別把它當成兩端都有。"
+    },
+    "clue": "只有一端有物件，另一端是空的，別把它當成兩端都有。",
+    "formula": "間隔數也是 13；13 × 6 = 78（公尺）",
+    "object": "旗子",
+    "objectUnit": "面",
+    "diagramLabel": "起點不放，終點放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-one-05",
+  "contentKey": "interval58-one-05",
+  "variantGroup": "interval-one",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "one",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "碼頭直線棧道從起點到終點按相同距離分段，在分隔位置放置安全標誌，起點放置，終點不放。全長 210 公尺，共放了 6 個安全標誌。相鄰兩個安全標誌之間相距幾公尺？",
+  "params": {
+    "question": "碼頭直線棧道從起點到終點按相同距離分段，在分隔位置放置安全標誌，起點放置，終點不放。全長 210 公尺，共放了 6 個安全標誌。相鄰兩個安全標誌之間相距幾公尺？",
+    "model": {
+      "type": "one",
+      "ask": "spacing",
+      "length": 210,
+      "spacing": 35,
+      "count": 6,
+      "start": true,
+      "end": false
+    },
+    "answer": 35,
+    "unit": "公尺",
+    "options": [35, 42, 30],
+    "feedback": {
+      "30": "多算了一個間隔，每段長度就算得太短。只有一端有物件，另一端是空的，別把它當成兩端都有。",
+      "42": "少算了一個間隔，每段長度就算得太長。只有一端有物件，另一端是空的，別把它當成兩端都有。"
+    },
+    "clue": "只有一端有物件，另一端是空的，別把它當成兩端都有。",
+    "formula": "間隔數也是 6；210 ÷ 6 = 35（公尺）",
+    "object": "安全標誌",
+    "objectUnit": "個",
+    "diagramLabel": "起點放置，終點不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-one-06",
+  "contentKey": "interval58-one-06",
+  "variantGroup": "interval-one",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "one",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "花園直線小徑從起點到終點按相同距離分段，在分隔位置放置花盆，起點不放，終點放置。全長 504 公尺，共放了 8 個花盆。相鄰兩個花盆之間相距幾公尺？",
+  "params": {
+    "question": "花園直線小徑從起點到終點按相同距離分段，在分隔位置放置花盆，起點不放，終點放置。全長 504 公尺，共放了 8 個花盆。相鄰兩個花盆之間相距幾公尺？",
+    "model": {
+      "type": "one",
+      "ask": "spacing",
+      "length": 504,
+      "spacing": 63,
+      "count": 8,
+      "start": false,
+      "end": true
+    },
+    "answer": 63,
+    "unit": "公尺",
+    "options": [63, 72, 56],
+    "feedback": {
+      "56": "多算了一個間隔，每段長度就算得太短。只有一端有物件，另一端是空的，別把它當成兩端都有。",
+      "72": "少算了一個間隔，每段長度就算得太長。只有一端有物件，另一端是空的，別把它當成兩端都有。"
+    },
+    "clue": "只有一端有物件，另一端是空的，別把它當成兩端都有。",
+    "formula": "間隔數也是 8；504 ÷ 8 = 63（公尺）",
+    "object": "花盆",
+    "objectUnit": "個",
+    "diagramLabel": "起點不放，終點放置"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-none-01",
+  "contentKey": "interval58-none-01",
+  "variantGroup": "interval-none",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "none",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "校門前直線道路從起點到終點按相同距離分段，在分隔位置種樹，起點和終點都不放。全長 24 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+  "params": {
+    "question": "校門前直線道路從起點到終點按相同距離分段，在分隔位置種樹，起點和終點都不放。全長 24 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+    "model": {
+      "type": "none",
+      "ask": "count",
+      "length": 24,
+      "spacing": 3,
+      "count": 7,
+      "start": false,
+      "end": false
+    },
+    "answer": 7,
+    "unit": "棵",
+    "options": [7, 8, 9],
+    "feedback": {
+      "8": "把間隔數直接當成物件數，沒有排除空著的端點。",
+      "9": "把兩端都沒有誤當成兩端都有。"
+    },
+    "clue": "兩端的位置都空著，只計算中間放置的物件。",
+    "formula": "24 ÷ 3 = 8（個間隔）；8 − 1 = 7",
+    "object": "樹",
+    "objectUnit": "棵",
+    "diagramLabel": "起點和終點都不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-none-02",
+  "contentKey": "interval58-none-02",
+  "variantGroup": "interval-none",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "none",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "廣場直線通道從起點到終點按相同距離分段，在分隔位置放置花盆，起點和終點都不放。全長 44 公尺，每隔 4 公尺放一個，共有幾個花盆？",
+  "params": {
+    "question": "廣場直線通道從起點到終點按相同距離分段，在分隔位置放置花盆，起點和終點都不放。全長 44 公尺，每隔 4 公尺放一個，共有幾個花盆？",
+    "model": {
+      "type": "none",
+      "ask": "count",
+      "length": 44,
+      "spacing": 4,
+      "count": 10,
+      "start": false,
+      "end": false
+    },
+    "answer": 10,
+    "unit": "個",
+    "options": [10, 11, 12],
+    "feedback": {
+      "11": "把間隔數直接當成物件數，沒有排除空著的端點。",
+      "12": "把兩端都沒有誤當成兩端都有。"
+    },
+    "clue": "兩端的位置都空著，只計算中間放置的物件。",
+    "formula": "44 ÷ 4 = 11（個間隔）；11 − 1 = 10",
+    "object": "花盆",
+    "objectUnit": "個",
+    "diagramLabel": "起點和終點都不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-none-03",
+  "contentKey": "interval58-none-03",
+  "variantGroup": "interval-none",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "none",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "海岸直線木道從起點到終點按相同距離分段，在分隔位置放置路標，起點和終點都不放。共有 11 個路標，每隔 5 公尺放一個。這段路線全長幾公尺？",
+  "params": {
+    "question": "海岸直線木道從起點到終點按相同距離分段，在分隔位置放置路標，起點和終點都不放。共有 11 個路標，每隔 5 公尺放一個。這段路線全長幾公尺？",
+    "model": {
+      "type": "none",
+      "ask": "length",
+      "length": 60,
+      "spacing": 5,
+      "count": 11,
+      "start": false,
+      "end": false
+    },
+    "answer": 60,
+    "unit": "公尺",
+    "options": [60, 55, 50],
+    "feedback": {
+      "50": "這個結果把端點條件反過來算了。兩端的位置都空著，只計算中間放置的物件。",
+      "55": "先分清物件數與間隔數，再用每段長度求全長。兩端的位置都空著，只計算中間放置的物件。"
+    },
+    "clue": "兩端的位置都空著，只計算中間放置的物件。",
+    "formula": "11 + 1 = 12；12 × 5 = 60（公尺）",
+    "object": "路標",
+    "objectUnit": "個",
+    "diagramLabel": "起點和終點都不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-none-04",
+  "contentKey": "interval58-none-04",
+  "variantGroup": "interval-none",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "none",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "社區直線人行道從起點到終點按相同距離分段，在分隔位置放置路燈，起點和終點都不放。共有 13 盞路燈，每隔 6 公尺放一盞。這段路線全長幾公尺？",
+  "params": {
+    "question": "社區直線人行道從起點到終點按相同距離分段，在分隔位置放置路燈，起點和終點都不放。共有 13 盞路燈，每隔 6 公尺放一盞。這段路線全長幾公尺？",
+    "model": {
+      "type": "none",
+      "ask": "length",
+      "length": 84,
+      "spacing": 6,
+      "count": 13,
+      "start": false,
+      "end": false
+    },
+    "answer": 84,
+    "unit": "公尺",
+    "options": [84, 78, 72],
+    "feedback": {
+      "72": "這個結果把端點條件反過來算了。兩端的位置都空著，只計算中間放置的物件。",
+      "78": "先分清物件數與間隔數，再用每段長度求全長。兩端的位置都空著，只計算中間放置的物件。"
+    },
+    "clue": "兩端的位置都空著，只計算中間放置的物件。",
+    "formula": "13 + 1 = 14；14 × 6 = 84（公尺）",
+    "object": "路燈",
+    "objectUnit": "盞",
+    "diagramLabel": "起點和終點都不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-none-05",
+  "contentKey": "interval58-none-05",
+  "variantGroup": "interval-none",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "none",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "博物館直線通廊從起點到終點按相同距離分段，在分隔位置放置座椅，起點和終點都不放。全長 60 公尺，共放了 5 張座椅。相鄰兩張座椅之間相距幾公尺？",
+  "params": {
+    "question": "博物館直線通廊從起點到終點按相同距離分段，在分隔位置放置座椅，起點和終點都不放。全長 60 公尺，共放了 5 張座椅。相鄰兩張座椅之間相距幾公尺？",
+    "model": {
+      "type": "none",
+      "ask": "spacing",
+      "length": 60,
+      "spacing": 10,
+      "count": 5,
+      "start": false,
+      "end": false
+    },
+    "answer": 10,
+    "unit": "公尺",
+    "options": [10, 12, 15],
+    "feedback": {
+      "12": "把物件數直接當成間隔數，少算了連向空端點的間隔。兩端的位置都空著，只計算中間放置的物件。",
+      "15": "再減一個間隔，把全長分成更少份。兩端的位置都空著，只計算中間放置的物件。"
+    },
+    "clue": "兩端的位置都空著，只計算中間放置的物件。",
+    "formula": "5 + 1 = 6；60 ÷ 6 = 10（公尺）",
+    "object": "座椅",
+    "objectUnit": "張",
+    "diagramLabel": "起點和終點都不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-none-06",
+  "contentKey": "interval58-none-06",
+  "variantGroup": "interval-none",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "none",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "運動場直線邊界從起點到終點按相同距離分段，在分隔位置放置旗子，起點和終點都不放。全長 168 公尺，共放了 7 面旗子。相鄰兩面旗子之間相距幾公尺？",
+  "params": {
+    "question": "運動場直線邊界從起點到終點按相同距離分段，在分隔位置放置旗子，起點和終點都不放。全長 168 公尺，共放了 7 面旗子。相鄰兩面旗子之間相距幾公尺？",
+    "model": {
+      "type": "none",
+      "ask": "spacing",
+      "length": 168,
+      "spacing": 21,
+      "count": 7,
+      "start": false,
+      "end": false
+    },
+    "answer": 21,
+    "unit": "公尺",
+    "options": [21, 24, 28],
+    "feedback": {
+      "24": "把物件數直接當成間隔數，少算了連向空端點的間隔。兩端的位置都空著，只計算中間放置的物件。",
+      "28": "再減一個間隔，把全長分成更少份。兩端的位置都空著，只計算中間放置的物件。"
+    },
+    "clue": "兩端的位置都空著，只計算中間放置的物件。",
+    "formula": "7 + 1 = 8；168 ÷ 8 = 21（公尺）",
+    "object": "旗子",
+    "objectUnit": "面",
+    "diagramLabel": "起點和終點都不放"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-loop-01",
+  "contentKey": "interval58-loop-01",
+  "variantGroup": "interval-loop",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "loop",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "圓形花圃周圍等距種樹，圍成封閉的一圈，每個位置只放一次。全長 27 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+  "params": {
+    "question": "圓形花圃周圍等距種樹，圍成封閉的一圈，每個位置只放一次。全長 27 公尺，每隔 3 公尺種一棵，共有幾棵樹？",
+    "model": {
+      "type": "loop",
+      "ask": "count",
+      "length": 27,
+      "spacing": 3,
+      "count": 9,
+      "start": false,
+      "end": false
+    },
+    "answer": 9,
+    "unit": "棵",
+    "options": [9, 10, 8],
+    "feedback": {
+      "8": "把封閉的一圈誤當成兩端不放的直線。",
+      "10": "封閉的一圈不會多出一個端點，不能重算起點。"
+    },
+    "clue": "走回起點時是原來的位置，不能再放一次。",
+    "formula": "27 ÷ 3 = 9（個間隔）；共有 9 棵樹",
+    "object": "樹",
+    "objectUnit": "棵",
+    "diagramLabel": "圍成封閉的一圈，每個位置只放一次"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-loop-02",
+  "contentKey": "interval58-loop-02",
+  "variantGroup": "interval-loop",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "loop",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "環形步道一圈等距放置路燈，圍成封閉的一圈，每個位置只放一次。全長 48 公尺，每隔 4 公尺放一盞，共有幾盞路燈？",
+  "params": {
+    "question": "環形步道一圈等距放置路燈，圍成封閉的一圈，每個位置只放一次。全長 48 公尺，每隔 4 公尺放一盞，共有幾盞路燈？",
+    "model": {
+      "type": "loop",
+      "ask": "count",
+      "length": 48,
+      "spacing": 4,
+      "count": 12,
+      "start": false,
+      "end": false
+    },
+    "answer": 12,
+    "unit": "盞",
+    "options": [12, 13, 11],
+    "feedback": {
+      "11": "把封閉的一圈誤當成兩端不放的直線。",
+      "13": "封閉的一圈不會多出一個端點，不能重算起點。"
+    },
+    "clue": "走回起點時是原來的位置，不能再放一次。",
+    "formula": "48 ÷ 4 = 12（個間隔）；共有 12 盞路燈",
+    "object": "路燈",
+    "objectUnit": "盞",
+    "diagramLabel": "圍成封閉的一圈，每個位置只放一次"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-loop-03",
+  "contentKey": "interval58-loop-03",
+  "variantGroup": "interval-loop",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "loop",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "封閉的花園圍籬一圈等距放置花盆，圍成封閉的一圈，每個位置只放一次。共有 13 個花盆，每隔 5 公尺放一個。這段路線全長幾公尺？",
+  "params": {
+    "question": "封閉的花園圍籬一圈等距放置花盆，圍成封閉的一圈，每個位置只放一次。共有 13 個花盆，每隔 5 公尺放一個。這段路線全長幾公尺？",
+    "model": {
+      "type": "loop",
+      "ask": "length",
+      "length": 65,
+      "spacing": 5,
+      "count": 13,
+      "start": false,
+      "end": false
+    },
+    "answer": 65,
+    "unit": "公尺",
+    "options": [65, 60, 70],
+    "feedback": {
+      "60": "先分清物件數與間隔數，再用每段長度求全長。走回起點時是原來的位置，不能再放一次。",
+      "70": "這個結果把端點條件反過來算了。走回起點時是原來的位置，不能再放一次。"
+    },
+    "clue": "走回起點時是原來的位置，不能再放一次。",
+    "formula": "間隔數也是 13；13 × 5 = 65（公尺）",
+    "object": "花盆",
+    "objectUnit": "個",
+    "diagramLabel": "圍成封閉的一圈，每個位置只放一次"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-loop-04",
+  "contentKey": "interval58-loop-04",
+  "variantGroup": "interval-loop",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "loop",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "池塘周圍封閉的一圈等距放置安全標誌，圍成封閉的一圈，每個位置只放一次。共有 15 個安全標誌，每隔 6 公尺放一個。這段路線全長幾公尺？",
+  "params": {
+    "question": "池塘周圍封閉的一圈等距放置安全標誌，圍成封閉的一圈，每個位置只放一次。共有 15 個安全標誌，每隔 6 公尺放一個。這段路線全長幾公尺？",
+    "model": {
+      "type": "loop",
+      "ask": "length",
+      "length": 90,
+      "spacing": 6,
+      "count": 15,
+      "start": false,
+      "end": false
+    },
+    "answer": 90,
+    "unit": "公尺",
+    "options": [90, 84, 96],
+    "feedback": {
+      "84": "先分清物件數與間隔數，再用每段長度求全長。走回起點時是原來的位置，不能再放一次。",
+      "96": "這個結果把端點條件反過來算了。走回起點時是原來的位置，不能再放一次。"
+    },
+    "clue": "走回起點時是原來的位置，不能再放一次。",
+    "formula": "間隔數也是 15；15 × 6 = 90（公尺）",
+    "object": "安全標誌",
+    "objectUnit": "個",
+    "diagramLabel": "圍成封閉的一圈，每個位置只放一次"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-loop-05",
+  "contentKey": "interval58-loop-05",
+  "variantGroup": "interval-loop",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "loop",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "封閉的廣場邊界一圈等距放置展示牌，圍成封閉的一圈，每個位置只放一次。全長 210 公尺，共放了 6 面展示牌。相鄰兩面展示牌之間相距幾公尺？",
+  "params": {
+    "question": "封閉的廣場邊界一圈等距放置展示牌，圍成封閉的一圈，每個位置只放一次。全長 210 公尺，共放了 6 面展示牌。相鄰兩面展示牌之間相距幾公尺？",
+    "model": {
+      "type": "loop",
+      "ask": "spacing",
+      "length": 210,
+      "spacing": 35,
+      "count": 6,
+      "start": false,
+      "end": false
+    },
+    "answer": 35,
+    "unit": "公尺",
+    "options": [35, 42, 30],
+    "feedback": {
+      "30": "多算了一個間隔，每段長度就算得太短。走回起點時是原來的位置，不能再放一次。",
+      "42": "少算了一個間隔，每段長度就算得太長。走回起點時是原來的位置，不能再放一次。"
+    },
+    "clue": "走回起點時是原來的位置，不能再放一次。",
+    "formula": "間隔數也是 6；210 ÷ 6 = 35（公尺）",
+    "object": "展示牌",
+    "objectUnit": "面",
+    "diagramLabel": "圍成封閉的一圈，每個位置只放一次"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-loop-06",
+  "contentKey": "interval58-loop-06",
+  "variantGroup": "interval-loop",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "loop",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "環狀觀景步道一圈等距放置座椅，圍成封閉的一圈，每個位置只放一次。全長 504 公尺，共放了 8 張座椅。相鄰兩張座椅之間相距幾公尺？",
+  "params": {
+    "question": "環狀觀景步道一圈等距放置座椅，圍成封閉的一圈，每個位置只放一次。全長 504 公尺，共放了 8 張座椅。相鄰兩張座椅之間相距幾公尺？",
+    "model": {
+      "type": "loop",
+      "ask": "spacing",
+      "length": 504,
+      "spacing": 63,
+      "count": 8,
+      "start": false,
+      "end": false
+    },
+    "answer": 63,
+    "unit": "公尺",
+    "options": [63, 72, 56],
+    "feedback": {
+      "56": "多算了一個間隔，每段長度就算得太短。走回起點時是原來的位置，不能再放一次。",
+      "72": "少算了一個間隔，每段長度就算得太長。走回起點時是原來的位置，不能再放一次。"
+    },
+    "clue": "走回起點時是原來的位置，不能再放一次。",
+    "formula": "間隔數也是 8；504 ÷ 8 = 63（公尺）",
+    "object": "座椅",
+    "objectUnit": "張",
+    "diagramLabel": "圍成封閉的一圈，每個位置只放一次"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-cut-01",
+  "contentKey": "interval58-cut-01",
+  "variantGroup": "interval-cut",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "cut",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "把一根木條分成等長的小段，每次只鋸開其中一段，沒有疊在一起，切口耗損不計。木條全長 30 公分，每段 5 公分，一共要鋸幾次？",
+  "params": {
+    "question": "把一根木條分成等長的小段，每次只鋸開其中一段，沒有疊在一起，切口耗損不計。木條全長 30 公分，每段 5 公分，一共要鋸幾次？",
+    "model": {
+      "type": "cut",
+      "ask": "cuts",
+      "length": 30,
+      "spacing": 5,
+      "count": 6,
+      "cutSeconds": 0
+    },
+    "answer": 5,
+    "unit": "次",
+    "options": [5, 6, 7],
+    "feedback": {
+      "6": "把分成的段數當成切割次數；原來完整的一段不需要切。",
+      "7": "把段數再加一，反而多算切割；兩個原有端點不用切。"
+    },
+    "clue": "先看分成幾段，再找段與段之間的切口；原有的兩個端點不用切。",
+    "formula": "30 ÷ 5 = 6（段）；6 − 1 = 5（次）",
+    "object": "木條",
+    "objectUnit": "段",
+    "diagramLabel": "每次切開一段；不重疊切割"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-cut-02",
+  "contentKey": "interval58-cut-02",
+  "variantGroup": "interval-cut",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "cut",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "把一根繩子分成等長的小段，每次只剪開其中一段，沒有疊在一起，切口耗損不計。繩子全長 32 公分，每段 4 公分，一共要剪幾次？",
+  "params": {
+    "question": "把一根繩子分成等長的小段，每次只剪開其中一段，沒有疊在一起，切口耗損不計。繩子全長 32 公分，每段 4 公分，一共要剪幾次？",
+    "model": {
+      "type": "cut",
+      "ask": "cuts",
+      "length": 32,
+      "spacing": 4,
+      "count": 8,
+      "cutSeconds": 0
+    },
+    "answer": 7,
+    "unit": "次",
+    "options": [7, 8, 9],
+    "feedback": {
+      "8": "把分成的段數當成切割次數；原來完整的一段不需要切。",
+      "9": "把段數再加一，反而多算切割；兩個原有端點不用切。"
+    },
+    "clue": "先看分成幾段，再找段與段之間的切口；原有的兩個端點不用切。",
+    "formula": "32 ÷ 4 = 8（段）；8 − 1 = 7（次）",
+    "object": "繩子",
+    "objectUnit": "段",
+    "diagramLabel": "每次切開一段；不重疊切割"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-cut-03",
+  "contentKey": "interval58-cut-03",
+  "variantGroup": "interval-cut",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "cut",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "把一根木條分成等長的小段，每次只鋸開其中一段，沒有疊在一起，切口耗損不計。一共鋸了 8 次，每段長 3 公分，原來木條長幾公分？",
+  "params": {
+    "question": "把一根木條分成等長的小段，每次只鋸開其中一段，沒有疊在一起，切口耗損不計。一共鋸了 8 次，每段長 3 公分，原來木條長幾公分？",
+    "model": {
+      "type": "cut",
+      "ask": "length",
+      "length": 27,
+      "spacing": 3,
+      "count": 9,
+      "cutSeconds": 0
+    },
+    "answer": 27,
+    "unit": "公分",
+    "options": [27, 24, 21],
+    "feedback": {
+      "21": "從切割次數再減一，段數就更少了；每切一次是多出一段。",
+      "24": "用切割次數當成段數，漏了原來就有的一段。"
+    },
+    "clue": "先看分成幾段，再找段與段之間的切口；原有的兩個端點不用切。",
+    "formula": "8 + 1 = 9（段）；9 × 3 = 27（公分）",
+    "object": "木條",
+    "objectUnit": "段",
+    "diagramLabel": "每次切開一段；不重疊切割"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-cut-04",
+  "contentKey": "interval58-cut-04",
+  "variantGroup": "interval-cut",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "cut",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "把一根繩子分成等長的小段，每次只剪開其中一段，沒有疊在一起，切口耗損不計。一共剪了 10 次，每段長 6 公分，原來繩子長幾公分？",
+  "params": {
+    "question": "把一根繩子分成等長的小段，每次只剪開其中一段，沒有疊在一起，切口耗損不計。一共剪了 10 次，每段長 6 公分，原來繩子長幾公分？",
+    "model": {
+      "type": "cut",
+      "ask": "length",
+      "length": 66,
+      "spacing": 6,
+      "count": 11,
+      "cutSeconds": 0
+    },
+    "answer": 66,
+    "unit": "公分",
+    "options": [66, 60, 54],
+    "feedback": {
+      "54": "從切割次數再減一，段數就更少了；每切一次是多出一段。",
+      "60": "用切割次數當成段數，漏了原來就有的一段。"
+    },
+    "clue": "先看分成幾段，再找段與段之間的切口；原有的兩個端點不用切。",
+    "formula": "10 + 1 = 11（段）；11 × 6 = 66（公分）",
+    "object": "繩子",
+    "objectUnit": "段",
+    "diagramLabel": "每次切開一段；不重疊切割"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-cut-05",
+  "contentKey": "interval58-cut-05",
+  "variantGroup": "interval-cut",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "cut",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "把一根木條分成等長的小段，每次只鋸開其中一段，沒有疊在一起，切口耗損不計。木條全長 48 公分，每段 4 公分。每鋸一次需 7 秒，不計休息時間，全部鋸完需幾秒？",
+  "params": {
+    "question": "把一根木條分成等長的小段，每次只鋸開其中一段，沒有疊在一起，切口耗損不計。木條全長 48 公分，每段 4 公分。每鋸一次需 7 秒，不計休息時間，全部鋸完需幾秒？",
+    "model": {
+      "type": "cut",
+      "ask": "duration",
+      "length": 48,
+      "spacing": 4,
+      "count": 12,
+      "cutSeconds": 7
+    },
+    "answer": 77,
+    "unit": "秒",
+    "options": [77, 84, 91],
+    "feedback": {
+      "84": "用段數計算切割時間，等於把原有的一段也當成需要切一次。",
+      "91": "多算了切割次數；切割只發生在小段之間，原有端點不用切。"
+    },
+    "clue": "先看分成幾段，再找段與段之間的切口；原有的兩個端點不用切。",
+    "formula": "48 ÷ 4 = 12（段）；12 − 1 = 11（次）；11 × 7 = 77（秒）",
+    "object": "木條",
+    "objectUnit": "段",
+    "diagramLabel": "每次切開一段；不重疊切割"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-cut-06",
+  "contentKey": "interval58-cut-06",
+  "variantGroup": "interval-cut",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "cut",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "把一根繩子分成等長的小段，每次只剪開其中一段，沒有疊在一起，切口耗損不計。繩子全長 45 公分，每段 3 公分。每剪一次需 9 秒，不計休息時間，全部剪完需幾秒？",
+  "params": {
+    "question": "把一根繩子分成等長的小段，每次只剪開其中一段，沒有疊在一起，切口耗損不計。繩子全長 45 公分，每段 3 公分。每剪一次需 9 秒，不計休息時間，全部剪完需幾秒？",
+    "model": {
+      "type": "cut",
+      "ask": "duration",
+      "length": 45,
+      "spacing": 3,
+      "count": 15,
+      "cutSeconds": 9
+    },
+    "answer": 126,
+    "unit": "秒",
+    "options": [126, 135, 144],
+    "feedback": {
+      "135": "用段數計算切割時間，等於把原有的一段也當成需要切一次。",
+      "144": "多算了切割次數；切割只發生在小段之間，原有端點不用切。"
+    },
+    "clue": "先看分成幾段，再找段與段之間的切口；原有的兩個端點不用切。",
+    "formula": "45 ÷ 3 = 15（段）；15 − 1 = 14（次）；14 × 9 = 126（秒）",
+    "object": "繩子",
+    "objectUnit": "段",
+    "diagramLabel": "每次切開一段；不重疊切割"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-bell-01",
+  "contentKey": "interval58-bell-01",
+  "variantGroup": "interval-bell",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "bell",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "鐘樓敲鐘，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。共響 6 次，相鄰兩次相隔 3 秒，一共經過幾秒？",
+  "params": {
+    "question": "鐘樓敲鐘，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。共響 6 次，相鄰兩次相隔 3 秒，一共經過幾秒？",
+    "model": {
+      "type": "bell",
+      "ask": "elapsed",
+      "count": 6,
+      "spacing": 3,
+      "elapsed": 15,
+      "targetCount": 0
+    },
+    "answer": 15,
+    "unit": "秒",
+    "options": [15, 18, 21],
+    "feedback": {
+      "18": "把響聲次數當成等待的間隔數，多算了第一聲之前的等待。",
+      "21": "把第一聲之前和最後一聲之後也算入，但題目都沒有計這兩段時間。"
+    },
+    "clue": "每個點是一聲，兩聲之間才是等待；第一聲開始時還沒有經過一段等待。",
+    "formula": "6 − 1 = 5（個間隔）；5 × 3 = 15（秒）",
+    "object": "聲音",
+    "objectUnit": "次",
+    "diagramLabel": "只計第一聲開始到最後一聲開始"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-bell-02",
+  "contentKey": "interval58-bell-02",
+  "variantGroup": "interval-bell",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "bell",
+  "difficulty": "easy",
+  "kind": "interval",
+  "title": "碼頭警示鈴響鈴，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。共響 8 次，相鄰兩次相隔 4 秒，一共經過幾秒？",
+  "params": {
+    "question": "碼頭警示鈴響鈴，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。共響 8 次，相鄰兩次相隔 4 秒，一共經過幾秒？",
+    "model": {
+      "type": "bell",
+      "ask": "elapsed",
+      "count": 8,
+      "spacing": 4,
+      "elapsed": 28,
+      "targetCount": 0
+    },
+    "answer": 28,
+    "unit": "秒",
+    "options": [28, 32, 36],
+    "feedback": {
+      "32": "把響聲次數當成等待的間隔數，多算了第一聲之前的等待。",
+      "36": "把第一聲之前和最後一聲之後也算入，但題目都沒有計這兩段時間。"
+    },
+    "clue": "每個點是一聲，兩聲之間才是等待；第一聲開始時還沒有經過一段等待。",
+    "formula": "8 − 1 = 7（個間隔）；7 × 4 = 28（秒）",
+    "object": "聲音",
+    "objectUnit": "次",
+    "diagramLabel": "只計第一聲開始到最後一聲開始"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-bell-03",
+  "contentKey": "interval58-bell-03",
+  "variantGroup": "interval-bell",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "bell",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "音樂教室敲鼓，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。第一聲開始到最後一聲開始共 40 秒，相鄰兩聲相隔 5 秒，共響了幾次？",
+  "params": {
+    "question": "音樂教室敲鼓，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。第一聲開始到最後一聲開始共 40 秒，相鄰兩聲相隔 5 秒，共響了幾次？",
+    "model": {
+      "type": "bell",
+      "ask": "events",
+      "count": 9,
+      "spacing": 5,
+      "elapsed": 40,
+      "targetCount": 0
+    },
+    "answer": 9,
+    "unit": "次",
+    "options": [9, 8, 7],
+    "feedback": {
+      "7": "從間隔數再減一會漏算聲音；兩端都是有聲音的時刻。",
+      "8": "算出的只是等待間隔數，起初的第一聲也要算進聲音次數。"
+    },
+    "clue": "每個點是一聲，兩聲之間才是等待；第一聲開始時還沒有經過一段等待。",
+    "formula": "40 ÷ 5 = 8（個間隔）；8 + 1 = 9（次）",
+    "object": "聲音",
+    "objectUnit": "次",
+    "diagramLabel": "只計第一聲開始到最後一聲開始"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-bell-04",
+  "contentKey": "interval58-bell-04",
+  "variantGroup": "interval-bell",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "bell",
+  "difficulty": "normal",
+  "kind": "interval",
+  "title": "劇場提示鈴響鈴，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。第一聲開始到最後一聲開始共 30 秒，相鄰兩聲相隔 3 秒，共響了幾次？",
+  "params": {
+    "question": "劇場提示鈴響鈴，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。第一聲開始到最後一聲開始共 30 秒，相鄰兩聲相隔 3 秒，共響了幾次？",
+    "model": {
+      "type": "bell",
+      "ask": "events",
+      "count": 11,
+      "spacing": 3,
+      "elapsed": 30,
+      "targetCount": 0
+    },
+    "answer": 11,
+    "unit": "次",
+    "options": [11, 10, 9],
+    "feedback": {
+      "9": "從間隔數再減一會漏算聲音；兩端都是有聲音的時刻。",
+      "10": "算出的只是等待間隔數，起初的第一聲也要算進聲音次數。"
+    },
+    "clue": "每個點是一聲，兩聲之間才是等待；第一聲開始時還沒有經過一段等待。",
+    "formula": "30 ÷ 3 = 10（個間隔）；10 + 1 = 11（次）",
+    "object": "聲音",
+    "objectUnit": "次",
+    "diagramLabel": "只計第一聲開始到最後一聲開始"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-bell-05",
+  "contentKey": "interval58-bell-05",
+  "variantGroup": "interval-bell",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "bell",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "觀測站提示音響起，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。響 12 次共需 44 秒。保持相同間隔，改響 17 次，共需幾秒？",
+  "params": {
+    "question": "觀測站提示音響起，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。響 12 次共需 44 秒。保持相同間隔，改響 17 次，共需幾秒？",
+    "model": {
+      "type": "bell",
+      "ask": "compare",
+      "count": 12,
+      "spacing": 4,
+      "elapsed": 44,
+      "targetCount": 17
+    },
+    "answer": 64,
+    "unit": "秒",
+    "options": [64, 68, 72],
+    "feedback": {
+      "68": "新次數仍要先換成兩聲之間的間隔數；不能把每一聲都配一段等待時間。",
+      "72": "新次數前後都多放了等待時間；只計第一聲到最後一聲之間。"
+    },
+    "clue": "每個點是一聲，兩聲之間才是等待；第一聲開始時還沒有經過一段等待。",
+    "formula": "44 ÷ (12 − 1) = 4（秒／間隔）；(17 − 1) × 4 = 64（秒）",
+    "object": "聲音",
+    "objectUnit": "次",
+    "diagramLabel": "只計第一聲開始到最後一聲開始"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}, {
+  "id": "interval58-bell-06",
+  "contentKey": "interval58-bell-06",
+  "variantGroup": "interval-bell",
+  "kpId": "m_relation",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "practiceFamily": "interval",
+  "scenario": "bell",
+  "difficulty": "hard",
+  "kind": "interval",
+  "title": "遊戲關卡響起音效，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。響 14 次共需 26 秒。保持相同間隔，改響 19 次，共需幾秒？",
+  "params": {
+    "question": "遊戲關卡響起音效，相鄰兩次聲音之間的時間都相同，只計第一聲開始到最後一聲開始的時間，不計聲音本身的長度。響 14 次共需 26 秒。保持相同間隔，改響 19 次，共需幾秒？",
+    "model": {
+      "type": "bell",
+      "ask": "compare",
+      "count": 14,
+      "spacing": 2,
+      "elapsed": 26,
+      "targetCount": 19
+    },
+    "answer": 36,
+    "unit": "秒",
+    "options": [36, 38, 40],
+    "feedback": {
+      "38": "新次數仍要先換成兩聲之間的間隔數；不能把每一聲都配一段等待時間。",
+      "40": "新次數前後都多放了等待時間；只計第一聲到最後一聲之間。"
+    },
+    "clue": "每個點是一聲，兩聲之間才是等待；第一聲開始時還沒有經過一段等待。",
+    "formula": "26 ÷ (14 − 1) = 2（秒／間隔）；(19 − 1) × 2 = 36（秒）",
+    "object": "聲音",
+    "objectUnit": "次",
+    "diagramLabel": "只計第一聲開始到最後一聲開始"
+  },
+  "alignmentNote": "本專案依 N-6-9／R-6-4 的數量關係解題目標，將間隔情境列為 m_relation 的題型家族。官方條目與本次查核的課程手冊未明列植樹問題；這是教學判斷，非官方指定題型或出版社學期進度。本批供六年級，不自動下放五年級。",
+  "sourceRefs": [{
+    "url": "https://www.naer.edu.tw/upload/1/9/doc/2021/數學領域課程手冊（114年1月更新版）.pdf",
+    "pdfPages": [383, 384, 385],
+    "printedPages": [371, 372, 373],
+    "checked": "2026-11-12",
+    "purpose": "數量關係與解題教學原則，未點名植樹題型"
+  }],
+  "reviewed": true,
+  "humanReviewed": false,
+  "contentVersion": "intervals-v58-1",
+  "authorReview": "原創；逐題核對端點、等距／等時條件、問題量與單位、計算、干擾迷思；提示最後一層才列算式。"
+}];
 const IDIOMS_V57_BANK = [{
   "id": "idiom57-01-1",
   "contentKey": "idiom57-01-1",
@@ -45785,6 +47545,51 @@ function validChineseParams(kind, p) {
 function validIdiomChoices(p) {
   return !!p && p.perItemOptions === true && Array.isArray(p.items) && p.items.length > 0 && p.items.length <= 3 && Array.isArray(p.chips) && new Set(p.chips).size === p.chips.length && p.items.every(it => it && typeof it.pre === 'string' && typeof it.post === 'string' && typeof it.contentKey === 'string' && typeof it.clue === 'string' && typeof it.explanation === 'string' && Array.isArray(it.options) && it.options.length === 3 && new Set(it.options).size === 3 && it.options.every(x => typeof x === 'string' && p.chips.includes(x)) && it.options.includes(it.answer) && it.options.filter(x => x !== it.answer).every(x => typeof it.whyWrong?.[x] === 'string' && it.whyWrong[x].length > 0)) && new Set(p.items.map(it => it.contentKey)).size === p.items.length;
 }
+function intervalAnswer(p) {
+  const m = p.model,
+    d = {
+      both: 1,
+      one: 0,
+      none: -1,
+      loop: 0
+    }[m.type];
+  if (d !== undefined) {
+    if (m.ask === 'count') return m.length / m.spacing + d;
+    if (m.ask === 'length') return (m.count - d) * m.spacing;
+    if (m.ask === 'spacing') return m.length / (m.count - d);
+  }
+  if (m.type === 'cut') {
+    if (m.ask === 'cuts') return m.length / m.spacing - 1;
+    if (m.ask === 'length') return m.count * m.spacing;
+    if (m.ask === 'duration') return (m.length / m.spacing - 1) * m.cutSeconds;
+  }
+  if (m.type === 'bell') {
+    if (m.ask === 'elapsed') return (m.count - 1) * m.spacing;
+    if (m.ask === 'events') return m.elapsed / m.spacing + 1;
+    if (m.ask === 'compare') return m.elapsed / (m.count - 1) * (m.targetCount - 1);
+  }
+  return NaN;
+}
+function validIntervalParams(p) {
+  if (!p || !p.model || !['question', 'unit', 'clue', 'formula', 'object', 'objectUnit', 'diagramLabel'].every(k => typeof p[k] === 'string' && p[k].length > 0)) return false;
+  const m = p.model;
+  if (!['both', 'one', 'none', 'loop', 'cut', 'bell'].includes(m.type) || !Number.isInteger(m.count) || m.count < 3 || m.count > 100 || !Number.isInteger(m.spacing) || m.spacing <= 0 || m.spacing > 1000) return false;
+  if (m.type !== 'bell' && (!Number.isInteger(m.length) || m.length <= 0 || m.length > 100000 || m.length % m.spacing !== 0)) return false;
+  if (['both', 'one', 'none', 'loop'].includes(m.type)) {
+    const d = {
+      both: 1,
+      one: 0,
+      none: -1,
+      loop: 0
+    }[m.type];
+    if (m.count !== m.length / m.spacing + d) return false;
+    if (typeof m.start !== 'boolean' || typeof m.end !== 'boolean' || m.type !== 'loop' && Number(m.start) + Number(m.end) !== d + 1) return false;
+  }
+  if (m.type === 'cut' && (m.count !== m.length / m.spacing || !Number.isInteger(m.cutSeconds) || m.cutSeconds < 0 || m.ask === 'duration' && m.cutSeconds <= 0)) return false;
+  if (m.type === 'bell' && (m.elapsed !== (m.count - 1) * m.spacing || !Number.isInteger(m.targetCount) || m.targetCount < 0 || m.ask === 'compare' && m.targetCount < 2)) return false;
+  const answer = intervalAnswer(p);
+  return Number.isFinite(answer) && answer === p.answer && Array.isArray(p.options) && p.options.length === 3 && new Set(p.options).size === 3 && p.options.every(x => Number.isFinite(x) && x > 0) && p.options.includes(p.answer) && p.options.filter(x => x !== p.answer).every(x => typeof p.feedback?.[x] === 'string' && p.feedback[x].length > 0);
+}
 const ZY_CJK = /[㐀-䶿一-鿿]/;
 const ZY_MAX_WORD = 4;
 let JUNIOR_MODE = false;
@@ -49061,6 +50866,7 @@ function validateBackupState(input) {
     opt(r, 'hints', strs, p + '.params');
     if (['punctuation', 'typos', 'polyphone'].includes(t.kind) && !validChineseParams(t.kind, r)) bad(p + '.params.chinese');
     if (t.kind === 'idiom' && r.perItemOptions !== undefined && !validIdiomChoices(r)) bad(p + '.params.idiom');
+    if (t.kind === 'interval' && !validIntervalParams(r)) bad(p + '.params.interval');
     if (t.kind === 'lock' && typeof validateLockParams === 'function' && !validateLockParams(r, true)) bad(p + '.params.lock');
     if (t.kind === 'pickone') r.items.forEach((x, i) => {
       obj(x, p);
@@ -49127,6 +50933,7 @@ function validateBackupState(input) {
     str(m.kpId, p + '.kpId');
     str(m.status, p + '.status');
     for (const k of ['title', 'subject', 'errorItemId']) opt(m, k, str, p);
+    if (m.practiceFamily != null && !['general', 'interval'].includes(m.practiceFamily)) bad(p + '.practiceFamily');
     arr(m.stages, p + '.stages', stage);
     if (m.stages.length !== 3) bad(p + '.stages');
     opt(m, 'diag', (a, q) => arr(a, q, stage), p);
@@ -49143,6 +50950,7 @@ function validateBackupState(input) {
     opt(e, 'reasonIds', strs, p);
     if (e.itemGrade !== undefined && (!Number.isInteger(e.itemGrade) || e.itemGrade < 1 || e.itemGrade > 6)) bad(p + '.itemGrade');
     if (e.unitTitle !== undefined && (typeof e.unitTitle !== 'string' || e.unitTitle.length > 40)) bad(p + '.unitTitle');
+    if (e.practiceFamily !== undefined && !['', 'general', 'interval'].includes(e.practiceFamily)) bad(p + '.practiceFamily');
     if (e.noTask !== undefined && typeof e.noTask !== 'boolean') bad(p + '.noTask');
     if (e.status !== undefined && !['confirmed', 'unclassified'].includes(e.status)) bad(p + '.status');
     if (e.status === 'unclassified' && e.kpIds.length) bad(p + '.unclassified.kpIds');
@@ -49168,7 +50976,7 @@ function validateBackupState(input) {
   });
   opt(s, 'learning', (v, p) => {
     obj(v, p);
-    for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli', 'g2Seen', 'g2Families', 'ch4Seen', 'g5Seen', 'g5Families', 'chineseSeen', 'idiomSeen']) opt(v, k, strs, p);
+    for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli', 'g2Seen', 'g2Families', 'ch4Seen', 'g5Seen', 'g5Families', 'chineseSeen', 'idiomSeen', 'intervalSeen']) opt(v, k, strs, p);
     opt(v, 'seen', records, p);
     opt(v, 'archivedCases', records, p);
     for (const k of ['storyTasks', 'reviewTasks']) opt(v, k, (x, q) => map(x, q, stage), p);
@@ -54311,6 +56119,166 @@ function IdiomChoices({
   }));
 }
 ALL_MECHS.idiom = props => props.params.perItemOptions ? React.createElement(IdiomChoices, props) : React.createElement(IdiomFill, props);
+function IntervalDiagram({
+  params: p
+}) {
+  const m = p.model,
+    loop = m.type === 'loop',
+    cut = m.type === 'cut',
+    bell = m.type === 'bell',
+    id = React.useId();
+  const dot = (x, y, filled, key) => React.createElement("circle", {
+    key: key,
+    cx: x,
+    cy: y,
+    r: "7",
+    fill: filled ? '#24778a' : '#fff',
+    stroke: "#24778a",
+    strokeWidth: "2"
+  });
+  return React.createElement("figure", {
+    className: "interval-diagram"
+  }, React.createElement("svg", {
+    viewBox: loop ? '0 0 400 200' : '0 0 400 130',
+    role: "img",
+    "aria-labelledby": id
+  }, React.createElement("title", {
+    id: id
+  }, p.diagramLabel, "\u3002", loop ? '封閉的線會接回原點，不重複算起點。' : cut ? '原有兩端不是切口。' : bell ? '一個點是一聲，兩個點之間是等待時間。' : '實心點表示放物件，空心點表示端點不放物件。', "\u793A\u610F\u5716\u4E2D\u9593\u6709\u7701\u7565\uFF0C\u4E0D\u80FD\u7528\u5716\u4E0A\u9EDE\u6578\u7576\u4F5C\u7E3D\u6578\u3002"), loop ? React.createElement(React.Fragment, null, React.createElement("path", {
+    d: "M 200 35 C 25 35 25 165 200 165 C 375 165 375 35 200 35",
+    fill: "none",
+    stroke: "#b68849",
+    strokeWidth: "4",
+    strokeDasharray: "12 3"
+  }), [[200, 35], [83, 64], [83, 136], [200, 165], [317, 136]].map(([x, y], i) => dot(x, y, true, i)), React.createElement("text", {
+    x: "200",
+    y: "95",
+    textAnchor: "middle"
+  }, "\u5C01\u9589\u7684\u4E00\u5708"), React.createElement("text", {
+    x: "200",
+    y: "119",
+    textAnchor: "middle"
+  }, "\u56DE\u5230\u540C\u4E00\u4F4D\u7F6E"), React.createElement("text", {
+    x: "320",
+    y: "88",
+    textAnchor: "middle"
+  }, "\u22EE"), React.createElement("text", {
+    x: "200",
+    y: "20",
+    textAnchor: "middle"
+  }, "\u8D77\u9EDE\u53EA\u8A08\u4E00\u6B21")) : React.createElement(React.Fragment, null, cut && React.createElement("rect", {
+    x: "30",
+    y: "48",
+    width: "340",
+    height: "24",
+    rx: "3",
+    fill: "#f0d6a8"
+  }), React.createElement("path", {
+    d: "M 30 60 H 88 M 312 60 H 370",
+    stroke: "#b68849",
+    strokeWidth: "4",
+    fill: "none"
+  }), React.createElement("path", {
+    d: "M 88 60 H 312",
+    stroke: "#b68849",
+    strokeWidth: "2",
+    strokeDasharray: "5 8"
+  }), [30, 88, 312, 370].map((x, i) => cut ? React.createElement("line", {
+    key: i,
+    x1: x,
+    y1: "41",
+    x2: x,
+    y2: "79",
+    stroke: i === 0 || i === 3 ? '#b68849' : '#24778a',
+    strokeWidth: "2",
+    strokeDasharray: i === 0 || i === 3 ? 'none' : '3 3'
+  }) : dot(x, 60, bell || i !== 0 && i !== 3 || i === 0 && m.start || i === 3 && m.end, i)), React.createElement("text", {
+    x: "30",
+    y: "30",
+    textAnchor: "start"
+  }, cut ? '原有一端' : bell ? '第一聲' : '起點'), React.createElement("text", {
+    x: "370",
+    y: "30",
+    textAnchor: "end"
+  }, cut ? '原有另一端' : bell ? '最後一聲' : '終點'), React.createElement("path", {
+    d: "M 30 88 V 96 H 88 V 88",
+    fill: "none",
+    stroke: "#24778a",
+    strokeWidth: "2"
+  }), React.createElement("text", {
+    x: "59",
+    y: "121",
+    textAnchor: "middle"
+  }, cut ? '一小段' : bell ? '一段等待' : '一個間隔'), React.createElement("text", {
+    x: "200",
+    y: "84",
+    textAnchor: "middle"
+  }, "\u4E2D\u9593\u7701\u7565"))), React.createElement("figcaption", null, p.diagramLabel, "\u3002\u793A\u610F\u5716\u6709\u7701\u7565\uFF0C\u8ACB\u4F9D\u984C\u76EE\u6578\u5B57\u8A08\u7B97\u3002"));
+}
+function IntervalPractice({
+  params: p,
+  hintsAllowed = true,
+  maxAttempts,
+  onDone
+}) {
+  const m = useMechanic({
+      hintsAllowed,
+      maxAttempts,
+      onDone
+    }),
+    [value, setValue] = useState(null),
+    submitted = useRef(false);
+  const choose = v => {
+    if (m.done) return;
+    submitted.current = false;
+    setValue(v);
+    m.setFeedback(null);
+  };
+  const check = () => {
+    if (value === null || m.done || submitted.current) return;
+    submitted.current = true;
+    const detail = {
+      answer: value,
+      firstAttemptCorrect: value === p.answer && m.attempts === 0 && m.hintLevel < 3,
+      firstTryCorrect: value === p.answer && m.attempts === 0 && m.hintLevel < 3,
+      fullReveal: m.hintLevel >= 3,
+      revealKnown: true,
+      misconception: value === p.answer ? null : p.feedback[value]
+    };
+    if (value === p.answer) m.pass('確認正確！' + p.formula, detail);else m.fail(p.feedback[value], detail);
+  };
+  const first = p.model.type === 'cut' ? '先數小段，再數段與段之間要切的位置。' : p.model.type === 'bell' ? '先數兩聲之間的等待，再數聲音；第一聲之前還沒有等待。' : `先數間隔，再數${p.object}；留意線段兩端或接回起點的位置。`;
+  return React.createElement("section", {
+    className: "col interval-practice"
+  }, React.createElement("h3", null, "\u770B\u6E05\u9593\u9694\uFF0C\u6838\u5C0D\u6578\u91CF"), React.createElement("p", {
+    className: "interval-question"
+  }, p.question), React.createElement(IntervalDiagram, {
+    params: p
+  }), React.createElement("div", {
+    className: "interval-options",
+    role: "group",
+    "aria-label": "\u9078\u64C7\u7B54\u6848\uFF0C\u78BA\u8A8D\u524D\u53EF\u4EE5\u4FEE\u6539"
+  }, p.options.map((v, i) => React.createElement("button", {
+    id: 'interval-option-' + i,
+    key: v,
+    className: 'btn' + (value === v ? ' primary' : ''),
+    "aria-pressed": value === v,
+    disabled: m.done,
+    onClick: () => choose(v)
+  }, v, " ", p.unit))), React.createElement("div", null, React.createElement(Btn, {
+    id: "interval-check",
+    kind: "primary",
+    big: true,
+    disabled: m.done || value === null || submitted.current,
+    onClick: check
+  }, "\u78BA\u8A8D\u7B54\u6848")), React.createElement(MechHUD, {
+    m: m,
+    hintsAllowed: hintsAllowed,
+    hintTexts: [first, p.clue, '完整解答：' + p.formula + '。看完後仍要自己選答並確認。'],
+    fullRevealAt: 3
+  }));
+}
+ALL_MECHS.interval = IntervalPractice;
 const CHAPTERS = {
   math_ch1: {
     id: 'math_ch1',
@@ -63056,6 +65024,7 @@ function settleCareStipend(state, t = now()) {
               kpId: e.kpId,
               missionId: e.missionId,
               stage: e.stage,
+              practiceFamily: e.practiceFamily,
               questionKeys: e.questionKeys || []
             }
           }
@@ -63393,7 +65362,7 @@ function validateCare(c, bad, p = 'student.care') {
   const s = c.stipend;
   if (!obj(s) || !date(s.day) || !num(s.count, 0, 8) || !obj(s.perKp) || !arr(s.settled, 400) || s.settled.some(x => typeof x !== 'string') || !obj(s.pendingRetry) || Object.keys(s.pendingRetry).length > 2000 || !obj(s.cursor) || !num(s.cursor.t, 0, 9e15) || !arr(s.cursor.ids, 2400) || s.cursor.ids.some(x => typeof x !== 'string')) bad(p + '.stipend');
   if (Object.entries(s.perKp).some(([k, n]) => !KP_BY_ID[k] && !Object.hasOwn(PAINT_CONCEPTS, k) || !Number.isInteger(n) || n < 0 || n > 3)) bad(p + '.perKp');
-  for (const x of Object.values(s.pendingRetry)) if (!obj(x) || !KP_BY_ID[x.kpId] || typeof x.missionId !== 'string' || typeof x.stage !== 'string' || !arr(x.questionKeys, 100) || x.questionKeys.some(k => typeof k !== 'string')) bad(p + '.pendingRetry');
+  for (const x of Object.values(s.pendingRetry)) if (!obj(x) || !KP_BY_ID[x.kpId] || typeof x.missionId !== 'string' || typeof x.stage !== 'string' || x.practiceFamily !== undefined && !['general', 'interval'].includes(x.practiceFamily) || !arr(x.questionKeys, 100) || x.questionKeys.some(k => typeof k !== 'string')) bad(p + '.pendingRetry');
   if (!obj(c.lines) || !date(c.lines.day) || !num(c.lines.hunger, 0, 1) || c.log.some(e => !obj(e) || typeof e.type !== 'string' || !num(e.t, 0, 9e15))) bad(p + '.log');
   if (c.freeDay !== undefined && !date(c.freeDay)) bad(p + '.freeDay');
 }
@@ -65736,6 +67705,7 @@ const DIFFICULTIES = [{
 }];
 function generateMission(errorItem, kpId, seed, withDiagnostic, difficulty = 'normal', context = null) {
   const rng = makeRng(seed);
+  const family = typeof errorPracticeFamily === 'function' ? errorPracticeFamily(errorItem, kpId) : null;
   const gen = genFor(kpId);
   if (!gen) return null;
   let stages = (typeof chooseLearningStages === 'function' ? chooseLearningStages(gen, kpId, seed, context) : gen(rng)).map((s, i) => ({
@@ -65757,6 +67727,7 @@ function generateMission(errorItem, kpId, seed, withDiagnostic, difficulty = 'no
   if (context && typeof g5ApplyStages === 'function') stages = g5ApplyStages(stages, context, kpId, seed, difficulty);
   if (typeof chineseApplyStages === 'function') stages = chineseApplyStages(stages, context, kpId, seed, difficulty);
   if (typeof idiomApplyStages === 'function') stages = idiomApplyStages(stages, context, kpId, seed, difficulty);
+  if (family === 'interval') stages = intervalApplyStages(stages, context, seed, difficulty);
   if (difficulty === 'hard') {
     stages[1].allowHints = false;
     if (stages[2].kind === 'problems') stages[2].params = {
@@ -65784,10 +67755,21 @@ function generateMission(errorItem, kpId, seed, withDiagnostic, difficulty = 'no
     ...t,
     probe: 'language'
   })));
+  if (family === 'interval') diag.splice(0, diag.length, ...intervalApplyStages([{
+    ...stage(0, 'interval', {}),
+    id: 'diag_0',
+    key: 'd1',
+    name: '診斷・間隔觀察',
+    short: '診斷',
+    allowHints: false,
+    maxAttempts: 1,
+    probe: 'strategy'
+  }].slice(0, withDiagnostic ? 1 : 0), context, seed + 99, difficulty, stages.map(t => t.contentKey)));
   const kp = KP_BY_ID[kpId];
   return {
+    practiceFamily: family,
     id: uid(),
-    errorItemId: errorItem ? errorItem.id : null,
+    errorItemId: errorItem?.id || null,
     kpId,
     subject: kp.subject,
     title: `${kp.name}・能力覺醒`,
@@ -70767,6 +72749,7 @@ function learningLogFields(state, kp, stage) {
   return {
     careStageId,
     careReplay: stage?.status === 'passed',
+    practiceFamily: stage?.practiceFamily,
     bankId: stage?.bankId,
     questionId: stage?.questionId,
     contentKey: stage?.contentKey,
@@ -70811,7 +72794,7 @@ function reconcileLearning(state) {
     if (m.status === 'ready' && m.difficulty !== diff) {
       changed = true;
       return {
-        ...generateMission(null, m.kpId, m.seed, false, diff, state),
+        ...generateMission(missionGenerationItem(state, m), m.kpId, m.seed, false, diff, state),
         id: m.id,
         errorItemId: m.errorItemId,
         source: m.source
@@ -70889,6 +72872,14 @@ function applyLearningSettings(state, settings) {
   if (!practiceKpsFor(next).length) throw new Error('請至少選一個已學過的單元。');
   return refreshBoard(reconcileLearning(next));
 }
+function missionGenerationItem(state, mission) {
+  const item = state.errorItems?.find(e => e.id === mission.errorItemId);
+  return mission.practiceFamily ? {
+    ...item,
+    id: mission.errorItemId || item?.id,
+    practiceFamily: mission.practiceFamily
+  } : item || null;
+}
 function beginMissionStage(state, missionId, stageId) {
   const m = state.missions.find(m => m.id === missionId);
   if (!m || !learningAllows(state, m.kpId)) return state;
@@ -70896,7 +72887,7 @@ function beginMissionStage(state, missionId, stageId) {
   if (!current) return state;
   const idx = m.stages.findIndex(s => s.id === stageId);
   if (idx >= 0 && (!current.presented || current.bankBlocked)) {
-    const fresh = generateMission(null, m.kpId, m.seed, false, m.difficulty || getSettings(state).difficulty, state).stages[idx];
+    const fresh = generateMission(missionGenerationItem(state, m), m.kpId, m.seed, false, m.difficulty || getSettings(state).difficulty, state).stages[idx];
     current = {
       ...fresh,
       id: current.id,
@@ -70907,11 +72898,12 @@ function beginMissionStage(state, missionId, stageId) {
     };
     state = upsertMission(state, {
       ...m,
+      practiceFamily: current.practiceFamily || m.practiceFamily,
       stages: m.stages.map((s, i) => i === idx ? current : s)
     });
   }
-  if (idx < 0 && current.bankId === 'idioms-v57' && !current.presented) {
-    const fresh = generateMission(null, m.kpId, m.seed, true, m.difficulty || getSettings(state).difficulty, state).diag.find(t => t.id === stageId);
+  if (idx < 0 && !current.presented && (current.bankId === 'idioms-v57' || typeof errorPracticeFamily === 'function' && errorPracticeFamily(missionGenerationItem(state, m), m.kpId) === 'interval')) {
+    const fresh = generateMission(missionGenerationItem(state, m), m.kpId, m.seed, true, m.difficulty || getSettings(state).difficulty, state).diag.find(t => t.id === stageId);
     current = {
       ...fresh,
       id: current.id,
@@ -70931,7 +72923,7 @@ function beginMissionStage(state, missionId, stageId) {
 function prepareReviewStage(state, mission) {
   const saved = state.learning?.reviewTasks?.[mission.id];
   if (saved && !saved.bankBlocked) return saved;
-  const fresh = generateMission(null, mission.kpId, Math.floor(Math.random() * 1e9), false, getSettings(state).difficulty, state).stages[2];
+  const fresh = generateMission(missionGenerationItem(state, mission), mission.kpId, Math.floor(Math.random() * 1e9), false, getSettings(state).difficulty, state).stages[2];
   return {
     ...fresh,
     name: '複習挑戰',
@@ -71355,6 +73347,10 @@ function reviewedBankRemember(learning, stage) {
       idiomSeen: [...(learning.idiomSeen || []).filter(x => !keys.includes(x)), ...keys].slice(-1000)
     };
   }
+  if (stage.bankId === 'intervals-v58') return {
+    ...learning,
+    intervalSeen: push('intervalSeen', stage.contentKey, 1000)
+  };
   if (stage.bankId === 'chinese-v56') return {
     ...learning,
     chineseSeen: push('chineseSeen', stage.contentKey, 1000)
@@ -71606,6 +73602,7 @@ function saveErrorItem(state, item, {
     noTask: ids.some(id => !errorHasTask(id)),
     status: unclassified ? 'unclassified' : 'confirmed'
   };
+  if (ids.includes('m_relation') && typeof errorPracticeFamily === 'function') saved.practiceFamily = errorPracticeFamily(saved, 'm_relation');
   let st = {
     ...state,
     errorItems: [...state.errorItems.filter(e => e.id !== saved.id), saved]
@@ -71635,7 +73632,7 @@ function saveErrorItem(state, item, {
     }
   }
   const outside = ids.some(id => errorHasTask(id) && !learningAllows(st, id));
-  const message = unclassified ? '已存成待分類，之後可以回來補選。' : [made ? '已儲存錯題，建立了練習。練習會是同一個觀念的題目，不一定和這題是同一種題型。' : '已儲存錯題。', held ? '題目年級與目前孩子不同，本次只保留錯題，沒有建立練習。' : '', outside ? '這個觀念不在目前的練習範圍，所以還沒有建立練習。' : '', saved.noTask ? '遊戲還沒有這個觀念的練習。錯題已經存下來，之後補上練習時會提醒你。' : ''].filter(Boolean).join(' ');
+  const message = unclassified ? '已存成待分類，之後可以回來補選。' : [made ? saved.practiceFamily === 'interval' ? '已儲存錯題，已建立間隔問題練習；三階段、重試與複習都會維持間隔題型。' : '已儲存錯題，建立了練習。練習會是同一個觀念的題目，不一定和這題是同一種題型。' : '已儲存錯題。', held ? '題目年級與目前孩子不同，本次只保留錯題，沒有建立練習。' : '', outside ? '這個觀念不在目前的練習範圍，所以還沒有建立練習。' : '', saved.noTask ? '遊戲還沒有這個觀念的練習。錯題已經存下來，之後補上練習時會提醒你。' : ''].filter(Boolean).join(' ');
   return {
     state: st,
     item: saved,
@@ -71950,6 +73947,64 @@ function idiomStoryStage(state, kp, seed, difficulty) {
     key: 'story',
     allowHints: difficulty !== 'hard'
   }], state, kp, seed, difficulty)[0] : null;
+}
+function suggestedIntervalFamily(item) {
+  if (item?.subject && item.subject !== 'math') return false;
+  const text = [item?.unitTitle, item?.text, item?.explanation].join(' ').normalize('NFKC').replace(/\s+/g, '');
+  const spatial = /間隔問題|植樹問題/.test(text) || /每隔|等距|間隔/.test(text) && /樹|路燈|電線桿|旗|花盆|座椅|標誌|路標|展示牌|交通錐/.test(text) && /兩端|一端|起點|終點|圍成|一圈|環狀|封閉/.test(text);
+  const cutting = /鋸|剪|切/.test(text) && /木頭|木條|木棒|繩/.test(text) && /幾次|幾刀|幾段|每段|等長|分成/.test(text);
+  const sounds = /敲鐘|鐘聲|響鈴|敲鼓|提示音|響起音效/.test(text) && /相隔|間隔|每隔|第一聲|第.*聲|幾秒|幾次/.test(text);
+  return spatial || cutting || sounds;
+}
+function errorPracticeFamily(item, kp) {
+  if (kp !== 'm_relation') return null;
+  if (['general', 'interval'].includes(item?.practiceFamily)) return item.practiceFamily;
+  return suggestedIntervalFamily(item) ? 'interval' : 'general';
+}
+function intervalApplyStages(stages, state, seed, difficulty = 'normal', exclude = []) {
+  if (state && (studentGrade(state.student) !== 6 || !learningAllows(state, 'm_relation'))) return stages.map(t => ({
+    ...t,
+    kind: 'bankempty',
+    params: {
+      message: '間隔練習目前只提供給六年級，且須在數量關係的練習範圍內。'
+    },
+    bankBlocked: true
+  }));
+  const seen = [...(state?.learning?.intervalSeen || []), ...(state?.practiceLog || []).filter(x => x.bankId === 'intervals-v58').map(x => x.contentKey)],
+    used = new Set(exclude),
+    rng = makeRng(seed);
+  const prior = [];
+  for (const m of state?.missions || []) if (m.seed === seed && m.kpId === 'm_relation' && m.status !== 'passed') for (const t of [...(m.diag || []), ...m.stages]) if (t.presented && t.bankId === 'intervals-v58') prior.push(t.contentKey);
+  prior.forEach(k => used.add(k));
+  return stages.map(t => {
+    const level = t.key === 's1' || t.probe ? difficulty === 'hard' ? 'normal' : 'easy' : difficulty;
+    const pool = INTERVALS_V58_BANK.filter(q => q.difficulty === level && !used.has(q.contentKey)),
+      fresh = pool.filter(q => !seen.includes(q.contentKey));
+    const choices = fresh.length ? fresh : [...pool].sort((a, b) => seen.lastIndexOf(a.contentKey) - seen.lastIndexOf(b.contentKey)).slice(0, 1),
+      q = pick(rng, choices);
+    if (!q) throw new Error('INTERVAL_POOL_EMPTY');
+    used.add(q.contentKey);
+    return {
+      ...t,
+      kind: 'interval',
+      params: {
+        ...JSON.parse(JSON.stringify(q.params)),
+        options: shuffle(rng, q.params.options)
+      },
+      bankId: 'intervals-v58',
+      bankBlocked: false,
+      practiceFamily: 'interval',
+      questionId: q.id,
+      contentKey: q.contentKey,
+      variantGroup: q.variantGroup,
+      stimulusGroup: null,
+      contentGrade: 6,
+      semester: KP_BY_ID.m_relation.semester,
+      questionTitle: '間隔問題',
+      contentVersion: q.contentVersion,
+      repeatPractice: !fresh.length
+    };
+  });
 }
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
@@ -84774,7 +86829,10 @@ function careRetryTask(state, spec) {
   if (!spec) return null;
   const idx = Math.max(0, ['s1', 's2', 's3'].indexOf(spec.stage));
   for (let i = 0; i < 24; i++) {
-    const task = generateMission(null, spec.kpId, Math.floor(Math.random() * 1e9), false, getSettings(state).difficulty, state).stages[idx];
+    const task = generateMission(missionGenerationItem(state, {
+      ...state.missions.find(m => m.id === spec.missionId),
+      ...spec
+    }), spec.kpId, Math.floor(Math.random() * 1e9), false, getSettings(state).difficulty, state).stages[idx];
     if (!task.bankBlocked && !learningKeys(spec.kpId, task).some(k => spec.questionKeys.includes(k))) return {
       ...task,
       presentationId: uid()
@@ -87478,7 +89536,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.12-v57',
+    build: '2026.11.12-v58',
     ...context,
     message
   };
@@ -88186,7 +90244,7 @@ function MissionPlayer({
         toast('+40 經驗值，記憶更穩固了');
       } else {
         m.difficulty = local.difficulty;
-        const regen = generateMission(null, m.kpId, Math.floor(Math.random() * 1e9), false, m.difficulty, state);
+        const regen = generateMission(missionGenerationItem(state, m), m.kpId, Math.floor(Math.random() * 1e9), false, m.difficulty, state);
         m.stages = regen.stages;
         m.status = 'needs_review';
         m.nextReviewAt = null;
@@ -88223,7 +90281,7 @@ function MissionPlayer({
         toast('能力覺醒完成！+50 經驗值');
       } else if (local.key === 's3' && !res.passed) {
         m.status = 'needs_review';
-        const regen = generateMission(null, m.kpId, Math.floor(Math.random() * 1e9), false, m.difficulty, state);
+        const regen = generateMission(missionGenerationItem(state, m), m.kpId, Math.floor(Math.random() * 1e9), false, m.difficulty, state);
         m.stages = m.difficulty === 'easy' ? m.stages.map((s, i) => i === 2 ? {
           ...regen.stages[2],
           id: s.id,
@@ -88247,7 +90305,7 @@ function MissionPlayer({
       advance();
       return;
     }
-    const regen = generateMission(null, mission.kpId, Math.floor(Math.random() * 1e9), false, mission.difficulty || getSettings(state).difficulty, state);
+    const regen = generateMission(missionGenerationItem(state, mission), mission.kpId, Math.floor(Math.random() * 1e9), false, mission.difficulty || getSettings(state).difficulty, state);
     const idx = mission.stages.findIndex(s => s.id === local.id);
     if (idx < 0) {
       advance();
@@ -92380,7 +94438,24 @@ function ErrorItemForm({
   }), React.createElement(ErrorConceptLabel, {
     id: id,
     state: state
-  }))), React.createElement(Btn, {
+  }))), kps.includes('m_relation') && React.createElement("div", {
+    className: "field notice",
+    id: "interval-family-control"
+  }, React.createElement("label", {
+    htmlFor: "ei-practice-family"
+  }, "\u9019\u7B46\u6578\u91CF\u95DC\u4FC2\u932F\u984C\u8981\u7DF4\u54EA\u4E00\u985E\uFF1F"), React.createElement("select", {
+    id: "ei-practice-family",
+    value: f.practiceFamily || '',
+    onChange: e => set('practiceFamily', e.target.value)
+  }, React.createElement("option", {
+    value: ""
+  }, "\u4F9D\u984C\u76EE\u6587\u5B57\u5EFA\u8B70\uFF1A", suggestedIntervalFamily(f) ? '間隔問題' : '一般數量關係'), React.createElement("option", {
+    value: "interval"
+  }, "\u9593\u9694\u554F\u984C\uFF08\u7AEF\u9EDE\u3001\u74B0\u72C0\u3001\u5207\u5272\u3001\u6572\u9418\uFF09"), React.createElement("option", {
+    value: "general"
+  }, "\u4E00\u822C\u6578\u91CF\u95DC\u4FC2\uFF08\u548C\u5DEE\u3001\u500D\u6578\u7B49\uFF09")), React.createElement("span", {
+    className: "small"
+  }, "\u9019\u662F\u95DC\u9375\u5B57\u5EFA\u8B70\uFF0C\u8ACB\u6838\u5C0D\u3002\u9078\u9593\u9694\u554F\u984C\u5F8C\uFF0C\u4E09\u968E\u6BB5\u8207\u4E4B\u5F8C\u7684\u8907\u7FD2\u90FD\u7DF4\u9593\u9694\u554F\u984C\u3002\u76EE\u524D\u63D0\u4F9B\u516D\u5E74\u7D1A\u984C\u76EE\u3002")), React.createElement(Btn, {
     id: "kp-unsure",
     disabled: !canNext1 || piiFlags.length > 0,
     onClick: () => create(false, true)
@@ -92423,7 +94498,7 @@ function ErrorItemForm({
   }, React.createElement(ErrorConceptLabel, {
     id: id,
     state: state
-  }), React.createElement("p", null, held ? '題目年級與孩子不同，本次只保存錯題，不建立練習。' : !errorHasTask(id) ? '遊戲還沒有這個觀念的練習。會保存錯題，補上練習後會在錯題清單提醒。' : !learningAllows(state, id) ? '這個觀念不在目前的練習範圍，所以還沒有建立練習。' : '會建立三階段練習；練習會是同一個觀念的題目，不一定和這題是同一種題型。'), errorHasTask(id) && !errorCanJoin(state, id) && React.createElement("p", {
+  }), React.createElement("p", null, held ? '題目年級與孩子不同，本次只保存錯題，不建立練習。' : !errorHasTask(id) ? '遊戲還沒有這個觀念的練習。會保存錯題，補上練習後會在錯題清單提醒。' : !learningAllows(state, id) ? '這個觀念不在目前的練習範圍，所以還沒有建立練習。' : errorPracticeFamily(f, id) === 'interval' ? '會建立三階段間隔問題練習，重試與複習也維持間隔題型。' : '會建立三階段練習；練習會是同一個觀念的題目，不一定和這題是同一種題型。'), errorHasTask(id) && !errorCanJoin(state, id) && React.createElement("p", {
     className: "small"
   }, "\u9019\u500B\u89C0\u5FF5\u76EE\u524D\u5C6C\u65BC\u5176\u4ED6\u5B78\u7FD2\u5E74\u7D1A\u3002\u5148\u5B58\u932F\u984C\uFF0C\u4E4B\u5F8C\u53EF\u5728\u7DF4\u7FD2\u8A2D\u5B9A\u8ABF\u6574\u5E74\u7D1A\u3002"))), React.createElement("div", {
     className: "card soft small"
@@ -92909,7 +94984,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.12-v57\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.12-v58\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -93658,7 +95733,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.12-v57",
+    "data-build": "2026.11.12-v58",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
