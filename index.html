@@ -782,6 +782,14 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .cn-new{gap:18px}.cn-new h3{line-height:1.9}.cn-passage{background:#fffdf4;border:1px solid #d8caa5;border-radius:16px;padding:22px;font-size:1.22rem;line-height:2.6;overflow-wrap:anywhere}.cn-slot{font:inherit;border:2px solid #78958e;border-radius:7px;background:#fff;min-width:48px;min-height:48px;line-height:1.5;margin:0 3px;padding:2px 8px;vertical-align:baseline;color:#173e3e}.cn-slot.selected,.cn-char.selected{outline:3px solid #e4ad4b;outline-offset:2px}.cn-options{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.cn-options button{min-width:54px;min-height:48px;font-size:1.25rem}.cn-meaning{border:1px solid #afc7c0;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px}.cn-meaning legend{font-weight:bold;line-height:2}.cn-meaning button{text-align:left;line-height:1.9}.cn-char{display:inline-block;background:none;border:1px solid transparent;border-radius:5px;color:inherit;font:inherit;line-height:2.3;padding:2px 5px;margin:3px 2px;min-width:42px;min-height:48px;vertical-align:baseline}.cn-char.revised{background:#edf5f7;border-color:#88aaa5}.cn-char b{font-size:.9em;color:#29675b}.cn-passage mark{background:#ffe0a0;padding:3px 6px;border-bottom:3px solid #a9701e}.cn-new .notice{line-height:2;overflow-wrap:anywhere}.junior .cn-passage{line-height:3.1}.junior .cn-char{line-height:2.8;padding-right:12px}
 @media(max-width:600px){.cn-passage{padding:14px;font-size:1.12rem}.cn-slot{margin:2px;min-width:44px;padding:2px 5px}.cn-meaning{padding:12px}.cn-char{min-width:36px;padding-left:3px;padding-right:3px}.cn-options{gap:10px}.cn-new h3{font-size:1.12rem}}
 
+.idiom-card{border:1px solid #b7cbd1;border-radius:16px;background:#fffdf5;padding:16px;margin:0;min-width:0}
+.idiom-card legend{font-weight:700;padding:0 8px;color:#235167}
+.idiom-card .passage{margin:0 0 14px;line-height:1.9;overflow-wrap:anywhere}
+.idiom-blank{display:inline-block;white-space:nowrap;border-bottom:2px solid #23778a;color:#20566c;padding:0 5px}
+.idiom-options{display:flex;flex-wrap:wrap;gap:10px}
+.idiom-options .btn{min-height:48px;flex:1 1 130px;font-size:1.05rem;white-space:normal}
+@media(max-width:480px){.idiom-card{padding:12px}.idiom-options .btn{flex-basis:100%;width:100%}}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -789,12 +797,4693 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261112-chinese">
+<meta name="game-release" content="playtest-20261112-idioms">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const IDIOMS_V57_BANK = [{
+  "id": "idiom57-01-1",
+  "contentKey": "idiom57-01-1",
+  "variantGroup": "idiom57-01",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "外面正熱鬧地玩遊戲，小安卻沒有分心，仍然＿＿＿地修好模型。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "外面正熱鬧地玩遊戲，小安卻沒有分心，仍然",
+      "post": "地修好模型。",
+      "answer": "一心一意",
+      "options": ["一心一意", "三心二意", "東張西望"],
+      "clue": "注意力一直放在同一件事上",
+      "explanation": "「一心一意」表示把心思集中在同一件事上。句中重點是注意力一直放在同一件事上。",
+      "whyWrong": {
+        "三心二意": "「三心二意」表示心意不定，不能專注；這句要表達的是注意力一直放在同一件事上，不符合這個詞的意思。",
+        "東張西望": "「東張西望」表示向四處觀看；這句要表達的是注意力一直放在同一件事上，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-01-1"
+    }],
+    "chips": ["一心一意", "三心二意", "東張西望"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-01-2",
+  "contentKey": "idiom57-01-2",
+  "variantGroup": "idiom57-01",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "弟弟關掉平板，把其他玩具收起來，＿＿＿地照顧受傷的小鳥。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "弟弟關掉平板，把其他玩具收起來，",
+      "post": "地照顧受傷的小鳥。",
+      "answer": "一心一意",
+      "options": ["一心一意", "三心二意", "東張西望"],
+      "clue": "注意力一直放在同一件事上",
+      "explanation": "「一心一意」表示把心思集中在同一件事上。句中重點是注意力一直放在同一件事上。",
+      "whyWrong": {
+        "三心二意": "「三心二意」表示心意不定，不能專注；這句要表達的是注意力一直放在同一件事上，不符合這個詞的意思。",
+        "東張西望": "「東張西望」表示向四處觀看；這句要表達的是注意力一直放在同一件事上，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-01-2"
+    }],
+    "chips": ["一心一意", "三心二意", "東張西望"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-02-1",
+  "contentKey": "idiom57-02-1",
+  "variantGroup": "idiom57-02",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小凱剛說要練琴，又想踢球，沒多久再想打電動，做事總是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小凱剛說要練琴，又想踢球，沒多久再想打電動，做事總是",
+      "post": "。",
+      "answer": "三心二意",
+      "options": ["三心二意", "一心一意", "目不轉睛"],
+      "clue": "興趣不斷改變，沒有持續投入",
+      "explanation": "「三心二意」表示心意不定，不能專注。句中重點是興趣不斷改變，沒有持續投入。",
+      "whyWrong": {
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是興趣不斷改變，沒有持續投入，不符合這個詞的意思。",
+        "目不轉睛": "「目不轉睛」表示眼睛一直注視同一個地方；這句要表達的是興趣不斷改變，沒有持續投入，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-02-1"
+    }],
+    "chips": ["三心二意", "一心一意", "目不轉睛"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "目不轉睛",
+    "entryId": 5433,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5433&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-02-2",
+  "contentKey": "idiom57-02-2",
+  "variantGroup": "idiom57-02",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "她一會兒想學陶藝，一會兒想學舞蹈，每堂課才開始就想換，這樣＿＿＿，很難深入學習。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "她一會兒想學陶藝，一會兒想學舞蹈，每堂課才開始就想換，這樣",
+      "post": "，很難深入學習。",
+      "answer": "三心二意",
+      "options": ["三心二意", "一心一意", "目不轉睛"],
+      "clue": "興趣不斷改變，沒有持續投入",
+      "explanation": "「三心二意」表示心意不定，不能專注。句中重點是興趣不斷改變，沒有持續投入。",
+      "whyWrong": {
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是興趣不斷改變，沒有持續投入，不符合這個詞的意思。",
+        "目不轉睛": "「目不轉睛」表示眼睛一直注視同一個地方；這句要表達的是興趣不斷改變，沒有持續投入，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-02-2"
+    }],
+    "chips": ["三心二意", "一心一意", "目不轉睛"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "目不轉睛",
+    "entryId": 5433,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5433&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-03-1",
+  "contentKey": "idiom57-03-1",
+  "variantGroup": "idiom57-03",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "客人突然一起到，阿奇找不到杯子，還把湯匙碰落，忙得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "客人突然一起到，阿奇找不到杯子，還把湯匙碰落，忙得",
+      "post": "。",
+      "answer": "手忙腳亂",
+      "options": ["手忙腳亂", "井井有條", "一心一意"],
+      "clue": "忙亂中連連出錯",
+      "explanation": "「手忙腳亂」表示慌亂得不知道怎麼安排動作。句中重點是忙亂中連連出錯。",
+      "whyWrong": {
+        "井井有條": "「井井有條」表示安排清楚，有次序；這句要表達的是忙亂中連連出錯，不符合這個詞的意思。",
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是忙亂中連連出錯，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-03-1"
+    }],
+    "chips": ["手忙腳亂", "井井有條", "一心一意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "手忙腳亂",
+    "entryId": 1305,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1305&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "井井有條",
+    "entryId": 296,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=296&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-03-2",
+  "contentKey": "idiom57-03-2",
+  "variantGroup": "idiom57-03",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小組沒先分工，收攤時有人撞翻紙箱，有人找不到袋子，大家弄得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小組沒先分工，收攤時有人撞翻紙箱，有人找不到袋子，大家弄得",
+      "post": "。",
+      "answer": "手忙腳亂",
+      "options": ["手忙腳亂", "井井有條", "一心一意"],
+      "clue": "忙亂中連連出錯",
+      "explanation": "「手忙腳亂」表示慌亂得不知道怎麼安排動作。句中重點是忙亂中連連出錯。",
+      "whyWrong": {
+        "井井有條": "「井井有條」表示安排清楚，有次序；這句要表達的是忙亂中連連出錯，不符合這個詞的意思。",
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是忙亂中連連出錯，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-03-2"
+    }],
+    "chips": ["手忙腳亂", "井井有條", "一心一意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "手忙腳亂",
+    "entryId": 1305,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1305&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "井井有條",
+    "entryId": 296,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=296&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-04-1",
+  "contentKey": "idiom57-04-1",
+  "variantGroup": "idiom57-04",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "書按類別排好，工具各有標籤，阿雨把工作室整理得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "書按類別排好，工具各有標籤，阿雨把工作室整理得",
+      "post": "。",
+      "answer": "井井有條",
+      "options": ["井井有條", "手忙腳亂", "七嘴八舌"],
+      "clue": "物品或步驟有清楚的順序",
+      "explanation": "「井井有條」表示安排清楚，有次序。句中重點是物品或步驟有清楚的順序。",
+      "whyWrong": {
+        "手忙腳亂": "「手忙腳亂」表示慌亂得不知道怎麼安排動作；這句要表達的是物品或步驟有清楚的順序，不符合這個詞的意思。",
+        "七嘴八舌": "「七嘴八舌」表示許多人同時說話；這句要表達的是物品或步驟有清楚的順序，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-04-1"
+    }],
+    "chips": ["井井有條", "手忙腳亂", "七嘴八舌"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "井井有條",
+    "entryId": 296,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=296&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "手忙腳亂",
+    "entryId": 1305,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1305&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "七嘴八舌",
+    "entryId": 538,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=538&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-04-2",
+  "contentKey": "idiom57-04-2",
+  "variantGroup": "idiom57-04",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "值日生先分好擦桌、掃地和倒垃圾的順序，整場清掃安排得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "值日生先分好擦桌、掃地和倒垃圾的順序，整場清掃安排得",
+      "post": "。",
+      "answer": "井井有條",
+      "options": ["井井有條", "手忙腳亂", "七嘴八舌"],
+      "clue": "物品或步驟有清楚的順序",
+      "explanation": "「井井有條」表示安排清楚，有次序。句中重點是物品或步驟有清楚的順序。",
+      "whyWrong": {
+        "手忙腳亂": "「手忙腳亂」表示慌亂得不知道怎麼安排動作；這句要表達的是物品或步驟有清楚的順序，不符合這個詞的意思。",
+        "七嘴八舌": "「七嘴八舌」表示許多人同時說話；這句要表達的是物品或步驟有清楚的順序，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-04-2"
+    }],
+    "chips": ["井井有條", "手忙腳亂", "七嘴八舌"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "井井有條",
+    "entryId": 296,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=296&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "手忙腳亂",
+    "entryId": 1305,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1305&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "七嘴八舌",
+    "entryId": 538,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=538&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-05-1",
+  "contentKey": "idiom57-05-1",
+  "variantGroup": "idiom57-05",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "新的座位圖標出名字和方向，誰坐哪裡＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "新的座位圖標出名字和方向，誰坐哪裡",
+      "post": "。",
+      "answer": "一目了然",
+      "options": ["一目了然", "大惑不解", "東張西望"],
+      "clue": "資訊清楚，不用反覆猜測",
+      "explanation": "「一目了然」表示看一眼就能明白。句中重點是資訊清楚，不用反覆猜測。",
+      "whyWrong": {
+        "大惑不解": "「大惑不解」表示感到困惑，不明白事情；這句要表達的是資訊清楚，不用反覆猜測，不符合這個詞的意思。",
+        "東張西望": "「東張西望」表示向四處觀看；這句要表達的是資訊清楚，不用反覆猜測，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-05-1"
+    }],
+    "chips": ["一目了然", "大惑不解", "東張西望"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "一目了然",
+    "entryId": 980,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=980&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-05-2",
+  "contentKey": "idiom57-05-2",
+  "variantGroup": "idiom57-05",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "館長把借出和歸還的日期分成兩欄，書本是否逾期就＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "館長把借出和歸還的日期分成兩欄，書本是否逾期就",
+      "post": "。",
+      "answer": "一目了然",
+      "options": ["一目了然", "大惑不解", "東張西望"],
+      "clue": "資訊清楚，不用反覆猜測",
+      "explanation": "「一目了然」表示看一眼就能明白。句中重點是資訊清楚，不用反覆猜測。",
+      "whyWrong": {
+        "大惑不解": "「大惑不解」表示感到困惑，不明白事情；這句要表達的是資訊清楚，不用反覆猜測，不符合這個詞的意思。",
+        "東張西望": "「東張西望」表示向四處觀看；這句要表達的是資訊清楚，不用反覆猜測，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-05-2"
+    }],
+    "chips": ["一目了然", "大惑不解", "東張西望"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "一目了然",
+    "entryId": 980,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=980&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-06-1",
+  "contentKey": "idiom57-06-1",
+  "variantGroup": "idiom57-06",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小路只聽到談話的最後一句，不知道大家在討論什麼，聽得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小路只聽到談話的最後一句，不知道大家在討論什麼，聽得",
+      "post": "。",
+      "answer": "大惑不解",
+      "options": ["大惑不解", "一目了然", "胸有成竹"],
+      "clue": "資訊不足，所以不明白",
+      "explanation": "「大惑不解」表示感到困惑，不明白事情。句中重點是資訊不足，所以不明白。",
+      "whyWrong": {
+        "一目了然": "「一目了然」表示看一眼就能明白；這句要表達的是資訊不足，所以不明白，不符合這個詞的意思。",
+        "胸有成竹": "「胸有成竹」表示做事之前已有完整的計畫和把握；這句要表達的是資訊不足，所以不明白，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-06-1"
+    }],
+    "chips": ["大惑不解", "一目了然", "胸有成竹"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一目了然",
+    "entryId": 980,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=980&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "胸有成竹",
+    "entryId": 9,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-06-2",
+  "contentKey": "idiom57-06-2",
+  "variantGroup": "idiom57-06",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "說明書漏了好幾個步驟，新手看完仍然＿＿＿，不知道先裝哪個零件。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "說明書漏了好幾個步驟，新手看完仍然",
+      "post": "，不知道先裝哪個零件。",
+      "answer": "大惑不解",
+      "options": ["大惑不解", "一目了然", "胸有成竹"],
+      "clue": "資訊不足，所以不明白",
+      "explanation": "「大惑不解」表示感到困惑，不明白事情。句中重點是資訊不足，所以不明白。",
+      "whyWrong": {
+        "一目了然": "「一目了然」表示看一眼就能明白；這句要表達的是資訊不足，所以不明白，不符合這個詞的意思。",
+        "胸有成竹": "「胸有成竹」表示做事之前已有完整的計畫和把握；這句要表達的是資訊不足，所以不明白，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-06-2"
+    }],
+    "chips": ["大惑不解", "一目了然", "胸有成竹"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一目了然",
+    "entryId": 980,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=980&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "胸有成竹",
+    "entryId": 9,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-07-1",
+  "contentKey": "idiom57-07-1",
+  "variantGroup": "idiom57-07",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "指揮舉起手，全場立刻＿＿＿，連翻動樂譜的聲音都聽得見。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "指揮舉起手，全場立刻",
+      "post": "，連翻動樂譜的聲音都聽得見。",
+      "answer": "鴉雀無聲",
+      "options": ["鴉雀無聲", "七嘴八舌", "眾說紛紜"],
+      "clue": "原本的說話聲全部停止",
+      "explanation": "「鴉雀無聲」表示非常安靜，沒有聲音。句中重點是原本的說話聲全部停止。",
+      "whyWrong": {
+        "七嘴八舌": "「七嘴八舌」表示許多人同時說話；這句要表達的是原本的說話聲全部停止，不符合這個詞的意思。",
+        "眾說紛紜": "「眾說紛紜」表示許多人的說法不一致，難有定論；這句要表達的是原本的說話聲全部停止，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-07-1"
+    }],
+    "chips": ["鴉雀無聲", "七嘴八舌", "眾說紛紜"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "鴉雀無聲",
+    "entryId": 353,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=353&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "七嘴八舌",
+    "entryId": 538,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=538&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "眾說紛紜",
+    "entryId": 12302,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12302&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-07-2",
+  "contentKey": "idiom57-07-2",
+  "variantGroup": "idiom57-07",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "老師請大家靜聽雨聲，同學都停止說話，教室頓時＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "老師請大家靜聽雨聲，同學都停止說話，教室頓時",
+      "post": "。",
+      "answer": "鴉雀無聲",
+      "options": ["鴉雀無聲", "七嘴八舌", "眾說紛紜"],
+      "clue": "原本的說話聲全部停止",
+      "explanation": "「鴉雀無聲」表示非常安靜，沒有聲音。句中重點是原本的說話聲全部停止。",
+      "whyWrong": {
+        "七嘴八舌": "「七嘴八舌」表示許多人同時說話；這句要表達的是原本的說話聲全部停止，不符合這個詞的意思。",
+        "眾說紛紜": "「眾說紛紜」表示許多人的說法不一致，難有定論；這句要表達的是原本的說話聲全部停止，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-07-2"
+    }],
+    "chips": ["鴉雀無聲", "七嘴八舌", "眾說紛紜"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "鴉雀無聲",
+    "entryId": 353,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=353&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "七嘴八舌",
+    "entryId": 538,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=538&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "眾說紛紜",
+    "entryId": 12302,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12302&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-08-1",
+  "contentKey": "idiom57-08-1",
+  "variantGroup": "idiom57-08",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "一聽說明天要出遊，同學便＿＿＿地問要帶什麼，老師幾乎聽不清楚。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "一聽說明天要出遊，同學便",
+      "post": "地問要帶什麼，老師幾乎聽不清楚。",
+      "answer": "七嘴八舌",
+      "options": ["七嘴八舌", "鴉雀無聲", "一心一意"],
+      "clue": "眾人同時開口，聲音交錯",
+      "explanation": "「七嘴八舌」表示許多人同時說話。句中重點是眾人同時開口，聲音交錯。",
+      "whyWrong": {
+        "鴉雀無聲": "「鴉雀無聲」表示非常安靜，沒有聲音；這句要表達的是眾人同時開口，聲音交錯，不符合這個詞的意思。",
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是眾人同時開口，聲音交錯，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-08-1"
+    }],
+    "chips": ["七嘴八舌", "鴉雀無聲", "一心一意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "七嘴八舌",
+    "entryId": 538,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=538&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "鴉雀無聲",
+    "entryId": 353,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=353&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-08-2",
+  "contentKey": "idiom57-08-2",
+  "variantGroup": "idiom57-08",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "廣播剛結束，大家＿＿＿地議論起來，你一句、我一句，聲音混成一團。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "廣播剛結束，大家",
+      "post": "地議論起來，你一句、我一句，聲音混成一團。",
+      "answer": "七嘴八舌",
+      "options": ["七嘴八舌", "鴉雀無聲", "一心一意"],
+      "clue": "眾人同時開口，聲音交錯",
+      "explanation": "「七嘴八舌」表示許多人同時說話。句中重點是眾人同時開口，聲音交錯。",
+      "whyWrong": {
+        "鴉雀無聲": "「鴉雀無聲」表示非常安靜，沒有聲音；這句要表達的是眾人同時開口，聲音交錯，不符合這個詞的意思。",
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是眾人同時開口，聲音交錯，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-08-2"
+    }],
+    "chips": ["七嘴八舌", "鴉雀無聲", "一心一意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "七嘴八舌",
+    "entryId": 538,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=538&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "鴉雀無聲",
+    "entryId": 353,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=353&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-09-1",
+  "contentKey": "idiom57-09-1",
+  "variantGroup": "idiom57-09",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小樂盯著魔術師的雙手，連眼珠都捨不得移開，＿＿＿地等著紙花出現。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小樂盯著魔術師的雙手，連眼珠都捨不得移開，",
+      "post": "地等著紙花出現。",
+      "answer": "目不轉睛",
+      "options": ["目不轉睛", "東張西望", "三心二意"],
+      "clue": "視線始終停在同一個目標",
+      "explanation": "「目不轉睛」表示眼睛一直注視同一個地方。句中重點是視線始終停在同一個目標。",
+      "whyWrong": {
+        "東張西望": "「東張西望」表示向四處觀看；這句要表達的是視線始終停在同一個目標，不符合這個詞的意思。",
+        "三心二意": "「三心二意」表示心意不定，不能專注；這句要表達的是視線始終停在同一個目標，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-09-1"
+    }],
+    "chips": ["目不轉睛", "東張西望", "三心二意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "目不轉睛",
+    "entryId": 5433,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5433&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-09-2",
+  "contentKey": "idiom57-09-2",
+  "variantGroup": "idiom57-09",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "救援員正把小貓抱下樹，妹妹＿＿＿地看著那個樹枝，一刻也沒移開視線。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "救援員正把小貓抱下樹，妹妹",
+      "post": "地看著那個樹枝，一刻也沒移開視線。",
+      "answer": "目不轉睛",
+      "options": ["目不轉睛", "東張西望", "三心二意"],
+      "clue": "視線始終停在同一個目標",
+      "explanation": "「目不轉睛」表示眼睛一直注視同一個地方。句中重點是視線始終停在同一個目標。",
+      "whyWrong": {
+        "東張西望": "「東張西望」表示向四處觀看；這句要表達的是視線始終停在同一個目標，不符合這個詞的意思。",
+        "三心二意": "「三心二意」表示心意不定，不能專注；這句要表達的是視線始終停在同一個目標，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-09-2"
+    }],
+    "chips": ["目不轉睛", "東張西望", "三心二意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "目不轉睛",
+    "entryId": 5433,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5433&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-10-1",
+  "contentKey": "idiom57-10-1",
+  "variantGroup": "idiom57-10",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小南站在門口，一下看左邊，一下望右邊，＿＿＿地尋找來接他的家人。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小南站在門口，一下看左邊，一下望右邊，",
+      "post": "地尋找來接他的家人。",
+      "answer": "東張西望",
+      "options": ["東張西望", "目不轉睛", "一心一意"],
+      "clue": "目光在不同方向來回移動",
+      "explanation": "「東張西望」表示向四處觀看。句中重點是目光在不同方向來回移動。",
+      "whyWrong": {
+        "目不轉睛": "「目不轉睛」表示眼睛一直注視同一個地方；這句要表達的是目光在不同方向來回移動，不符合這個詞的意思。",
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是目光在不同方向來回移動，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-10-1"
+    }],
+    "chips": ["東張西望", "目不轉睛", "一心一意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "目不轉睛",
+    "entryId": 5433,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5433&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-10-2",
+  "contentKey": "idiom57-10-2",
+  "variantGroup": "idiom57-10",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "第一次走進展場，小海不斷轉頭看四周的作品，＿＿＿，沒有固定注視某一件。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "第一次走進展場，小海不斷轉頭看四周的作品，",
+      "post": "，沒有固定注視某一件。",
+      "answer": "東張西望",
+      "options": ["東張西望", "目不轉睛", "一心一意"],
+      "clue": "目光在不同方向來回移動",
+      "explanation": "「東張西望」表示向四處觀看。句中重點是目光在不同方向來回移動。",
+      "whyWrong": {
+        "目不轉睛": "「目不轉睛」表示眼睛一直注視同一個地方；這句要表達的是目光在不同方向來回移動，不符合這個詞的意思。",
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是目光在不同方向來回移動，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-10-2"
+    }],
+    "chips": ["東張西望", "目不轉睛", "一心一意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "東張西望",
+    "entryId": 8377,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=8377&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "目不轉睛",
+    "entryId": 5433,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5433&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-11-1",
+  "contentKey": "idiom57-11-1",
+  "variantGroup": "idiom57-11",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小嘉的拼圖才拼一半，就嫌麻煩收起來，再也不做，真可惜＿＿＿了。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小嘉的拼圖才拼一半，就嫌麻煩收起來，再也不做，真可惜",
+      "post": "了。",
+      "answer": "半途而廢",
+      "options": ["半途而廢", "持之以恆", "水到渠成"],
+      "clue": "還沒完成就放棄",
+      "explanation": "「半途而廢」表示事情做到一半便停止。句中重點是還沒完成就放棄。",
+      "whyWrong": {
+        "持之以恆": "「持之以恆」表示長久地持續做一件事；這句要表達的是還沒完成就放棄，不符合這個詞的意思。",
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是還沒完成就放棄，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-11-1"
+    }],
+    "chips": ["半途而廢", "持之以恆", "水到渠成"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "半途而廢",
+    "entryId": 152,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=152&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "持之以恆",
+    "entryId": 7554,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7554&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-12-1",
+  "contentKey": "idiom57-12-1",
+  "variantGroup": "idiom57-12",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "每天放學後，小禾都練字十五分鐘，半年來沒有中斷，這種＿＿＿的精神值得學習。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "每天放學後，小禾都練字十五分鐘，半年來沒有中斷，這種",
+      "post": "的精神值得學習。",
+      "answer": "持之以恆",
+      "options": ["持之以恆", "半途而廢", "三心二意"],
+      "clue": "長時間規律地持續",
+      "explanation": "「持之以恆」表示長久地持續做一件事。句中重點是長時間規律地持續。",
+      "whyWrong": {
+        "半途而廢": "「半途而廢」表示事情做到一半便停止；這句要表達的是長時間規律地持續，不符合這個詞的意思。",
+        "三心二意": "「三心二意」表示心意不定，不能專注；這句要表達的是長時間規律地持續，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-12-1"
+    }],
+    "chips": ["持之以恆", "半途而廢", "三心二意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "持之以恆",
+    "entryId": 7554,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7554&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "半途而廢",
+    "entryId": 152,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=152&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-13-1",
+  "contentKey": "idiom57-13-1",
+  "variantGroup": "idiom57-13",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "停電後山村缺少照明，救援隊立刻送來燈具，對居民而言真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "停電後山村缺少照明，救援隊立刻送來燈具，對居民而言真是",
+      "post": "。",
+      "answer": "雪中送炭",
+      "options": ["雪中送炭", "錦上添花", "畫蛇添足"],
+      "clue": "對方正陷入困難，援助解決了急需",
+      "explanation": "「雪中送炭」表示在別人急需幫助時給予援助。句中重點是對方正陷入困難，援助解決了急需。",
+      "whyWrong": {
+        "錦上添花": "「錦上添花」表示在原有的美好之上再增添美好；這句要表達的是對方正陷入困難，援助解決了急需，不符合這個詞的意思。",
+        "畫蛇添足": "「畫蛇添足」表示多做不必要的事，反而壞了原意；這句要表達的是對方正陷入困難，援助解決了急需，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-13-1"
+    }],
+    "chips": ["雪中送炭", "錦上添花", "畫蛇添足"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "雪中送炭",
+    "entryId": 135,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=135&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "錦上添花",
+    "entryId": 279,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=279&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫蛇添足",
+    "entryId": 23,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=23&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-14-1",
+  "contentKey": "idiom57-14-1",
+  "variantGroup": "idiom57-14",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "這座花園本來就很漂亮，新添的蝴蝶步道又讓它更有趣，真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "這座花園本來就很漂亮，新添的蝴蝶步道又讓它更有趣，真是",
+      "post": "。",
+      "answer": "錦上添花",
+      "options": ["錦上添花", "雪中送炭", "畫蛇添足"],
+      "clue": "原本已經很好，新增的事物又帶來好處",
+      "explanation": "「錦上添花」表示在原有的美好之上再增添美好。句中重點是原本已經很好，新增的事物又帶來好處。",
+      "whyWrong": {
+        "雪中送炭": "「雪中送炭」表示在別人急需幫助時給予援助；這句要表達的是原本已經很好，新增的事物又帶來好處，不符合這個詞的意思。",
+        "畫蛇添足": "「畫蛇添足」表示多做不必要的事，反而壞了原意；這句要表達的是原本已經很好，新增的事物又帶來好處，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-14-1"
+    }],
+    "chips": ["錦上添花", "雪中送炭", "畫蛇添足"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "錦上添花",
+    "entryId": 279,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=279&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "雪中送炭",
+    "entryId": 135,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=135&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫蛇添足",
+    "entryId": 23,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=23&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-15-1",
+  "contentKey": "idiom57-15-1",
+  "variantGroup": "idiom57-15",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "阿方偶然在路邊撿到一枚硬幣，便每天坐在原處等，什麼事也不做，簡直是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "阿方偶然在路邊撿到一枚硬幣，便每天坐在原處等，什麼事也不做，簡直是",
+      "post": "。",
+      "answer": "守株待兔",
+      "options": ["守株待兔", "持之以恆", "未雨綢繆"],
+      "clue": "不再付出努力，只等好運重來",
+      "explanation": "「守株待兔」表示抱著偶然得來的好處，空等再有收穫。句中重點是不再付出努力，只等好運重來。",
+      "whyWrong": {
+        "持之以恆": "「持之以恆」表示長久地持續做一件事；這句要表達的是不再付出努力，只等好運重來，不符合這個詞的意思。",
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是不再付出努力，只等好運重來，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-15-1"
+    }],
+    "chips": ["守株待兔", "持之以恆", "未雨綢繆"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "守株待兔",
+    "entryId": 39,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=39&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "持之以恆",
+    "entryId": 7554,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7554&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-16-1",
+  "contentKey": "idiom57-16-1",
+  "variantGroup": "idiom57-16",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "海報的方向箭頭已十分清楚，小光又添上幾支相反的裝飾箭頭，反而使人迷路，真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "海報的方向箭頭已十分清楚，小光又添上幾支相反的裝飾箭頭，反而使人迷路，真是",
+      "post": "。",
+      "answer": "畫蛇添足",
+      "options": ["畫蛇添足", "畫龍點睛", "錦上添花"],
+      "clue": "多餘的添加破壞了原本的效果",
+      "explanation": "「畫蛇添足」表示多做不必要的事，反而壞了原意。句中重點是多餘的添加破壞了原本的效果。",
+      "whyWrong": {
+        "畫龍點睛": "「畫龍點睛」表示加上關鍵的一筆，使整體更出色；這句要表達的是多餘的添加破壞了原本的效果，不符合這個詞的意思。",
+        "錦上添花": "「錦上添花」表示在原有的美好之上再增添美好；這句要表達的是多餘的添加破壞了原本的效果，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-16-1"
+    }],
+    "chips": ["畫蛇添足", "畫龍點睛", "錦上添花"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "畫蛇添足",
+    "entryId": 23,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=23&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫龍點睛",
+    "entryId": 382,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=382&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "錦上添花",
+    "entryId": 279,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=279&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-17-1",
+  "contentKey": "idiom57-17-1",
+  "variantGroup": "idiom57-17",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "兔子從破洞逃走一隻，園長立刻補好圍欄，以免其他兔子再逃走，這就是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "兔子從破洞逃走一隻，園長立刻補好圍欄，以免其他兔子再逃走，這就是",
+      "post": "。",
+      "answer": "亡羊補牢",
+      "options": ["亡羊補牢", "守株待兔", "未雨綢繆"],
+      "clue": "損失已發生，現在補救以免重演",
+      "explanation": "「亡羊補牢」表示出了問題後及時補救，避免再受損失。句中重點是損失已發生，現在補救以免重演。",
+      "whyWrong": {
+        "守株待兔": "「守株待兔」表示抱著偶然得來的好處，空等再有收穫；這句要表達的是損失已發生，現在補救以免重演，不符合這個詞的意思。",
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是損失已發生，現在補救以免重演，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-17-1"
+    }],
+    "chips": ["亡羊補牢", "守株待兔", "未雨綢繆"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "亡羊補牢",
+    "entryId": 482,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=482&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "守株待兔",
+    "entryId": 39,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=39&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-18-1",
+  "contentKey": "idiom57-18-1",
+  "variantGroup": "idiom57-18",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小亮先說整天沒離開教室，又說午休時獨自去操場，這兩句話＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小亮先說整天沒離開教室，又說午休時獨自去操場，這兩句話",
+      "post": "。",
+      "answer": "自相矛盾",
+      "options": ["自相矛盾", "一心一意", "人云亦云"],
+      "clue": "同一個人的兩個說法不能同時成立",
+      "explanation": "「自相矛盾」表示自己的說法或做法互相牴觸。句中重點是同一個人的兩個說法不能同時成立。",
+      "whyWrong": {
+        "一心一意": "「一心一意」表示把心思集中在同一件事上；這句要表達的是同一個人的兩個說法不能同時成立，不符合這個詞的意思。",
+        "人云亦云": "「人云亦云」表示沒有自己的看法，只跟著別人說；這句要表達的是同一個人的兩個說法不能同時成立，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-18-1"
+    }],
+    "chips": ["自相矛盾", "一心一意", "人云亦云"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "自相矛盾",
+    "entryId": 89,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=89&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一心一意",
+    "entryId": 1323,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1323&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "人云亦云",
+    "entryId": 427,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=427&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-19-1",
+  "contentKey": "idiom57-19-1",
+  "variantGroup": "idiom57-19",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "公車站已搬到另一條街，阿伯卻拿著舊地圖堅持在原處等車，這樣＿＿＿，當然等不到。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "公車站已搬到另一條街，阿伯卻拿著舊地圖堅持在原處等車，這樣",
+      "post": "，當然等不到。",
+      "answer": "刻舟求劍",
+      "options": ["刻舟求劍", "舉一反三", "未雨綢繆"],
+      "clue": "條件已變，仍照搬舊辦法",
+      "explanation": "「刻舟求劍」表示情況已改變，卻仍死守舊方法。句中重點是條件已變，仍照搬舊辦法。",
+      "whyWrong": {
+        "舉一反三": "「舉一反三」表示從一個例子推想出其他相通的情況；這句要表達的是條件已變，仍照搬舊辦法，不符合這個詞的意思。",
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是條件已變，仍照搬舊辦法，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-19-1"
+    }],
+    "chips": ["刻舟求劍", "舉一反三", "未雨綢繆"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "刻舟求劍",
+    "entryId": 43,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=43&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "舉一反三",
+    "entryId": 13,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=13&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-20-1",
+  "contentKey": "idiom57-20-1",
+  "variantGroup": "idiom57-20",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "easy",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小苗需要時間長根，小明卻為了讓它快長高，每天硬把莖向上拉，這種＿＿＿的做法反而害死了小苗。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小苗需要時間長根，小明卻為了讓它快長高，每天硬把莖向上拉，這種",
+      "post": "的做法反而害死了小苗。",
+      "answer": "揠苗助長",
+      "options": ["揠苗助長", "持之以恆", "水到渠成"],
+      "clue": "過度催促成長反而造成傷害",
+      "explanation": "「揠苗助長」表示急著求成，反而損害事物的發展。句中重點是過度催促成長反而造成傷害。",
+      "whyWrong": {
+        "持之以恆": "「持之以恆」表示長久地持續做一件事；這句要表達的是過度催促成長反而造成傷害，不符合這個詞的意思。",
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是過度催促成長反而造成傷害，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-20-1"
+    }],
+    "chips": ["揠苗助長", "持之以恆", "水到渠成"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "揠苗助長",
+    "entryId": 56,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=56&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "持之以恆",
+    "entryId": 7554,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=7554&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-21-1",
+  "contentKey": "idiom57-21-1",
+  "variantGroup": "idiom57-21",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "出發前，隊長已查清路況、排好備用路線；被問到怎麼走時，他＿＿＿地拿出地圖。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "出發前，隊長已查清路況、排好備用路線；被問到怎麼走時，他",
+      "post": "地拿出地圖。",
+      "answer": "胸有成竹",
+      "options": ["胸有成竹", "臨渴掘井", "大惑不解"],
+      "clue": "事前已仔細準備，所以從容有把握",
+      "explanation": "「胸有成竹」表示做事之前已有完整的計畫和把握。句中重點是事前已仔細準備，所以從容有把握。",
+      "whyWrong": {
+        "臨渴掘井": "「臨渴掘井」表示事情到了眼前才急忙準備；這句要表達的是事前已仔細準備，所以從容有把握，不符合這個詞的意思。",
+        "大惑不解": "「大惑不解」表示感到困惑，不明白事情；這句要表達的是事前已仔細準備，所以從容有把握，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-21-1"
+    }],
+    "chips": ["胸有成竹", "臨渴掘井", "大惑不解"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "胸有成竹",
+    "entryId": 9,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "臨渴掘井",
+    "entryId": 240,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=240&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-21-2",
+  "contentKey": "idiom57-21-2",
+  "variantGroup": "idiom57-21",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "展覽還沒開幕，小組長已試走動線、演練導覽，面對臨時提問仍＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "展覽還沒開幕，小組長已試走動線、演練導覽，面對臨時提問仍",
+      "post": "。",
+      "answer": "胸有成竹",
+      "options": ["胸有成竹", "臨渴掘井", "大惑不解"],
+      "clue": "事前已仔細準備，所以從容有把握",
+      "explanation": "「胸有成竹」表示做事之前已有完整的計畫和把握。句中重點是事前已仔細準備，所以從容有把握。",
+      "whyWrong": {
+        "臨渴掘井": "「臨渴掘井」表示事情到了眼前才急忙準備；這句要表達的是事前已仔細準備，所以從容有把握，不符合這個詞的意思。",
+        "大惑不解": "「大惑不解」表示感到困惑，不明白事情；這句要表達的是事前已仔細準備，所以從容有把握，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-21-2"
+    }],
+    "chips": ["胸有成竹", "臨渴掘井", "大惑不解"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "胸有成竹",
+    "entryId": 9,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "臨渴掘井",
+    "entryId": 240,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=240&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-22-1",
+  "contentKey": "idiom57-22-1",
+  "variantGroup": "idiom57-22",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "接力賽就要開始，大家才發現沒排棒次，現場才匆忙商量，真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "接力賽就要開始，大家才發現沒排棒次，現場才匆忙商量，真是",
+      "post": "。",
+      "answer": "臨渴掘井",
+      "options": ["臨渴掘井", "未雨綢繆", "胸有成竹"],
+      "clue": "急需發生才開始準備",
+      "explanation": "「臨渴掘井」表示事情到了眼前才急忙準備。句中重點是急需發生才開始準備。",
+      "whyWrong": {
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是急需發生才開始準備，不符合這個詞的意思。",
+        "胸有成竹": "「胸有成竹」表示做事之前已有完整的計畫和把握；這句要表達的是急需發生才開始準備，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-22-1"
+    }],
+    "chips": ["臨渴掘井", "未雨綢繆", "胸有成竹"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "臨渴掘井",
+    "entryId": 240,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=240&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "胸有成竹",
+    "entryId": 9,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-22-2",
+  "contentKey": "idiom57-22-2",
+  "variantGroup": "idiom57-22",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "要上臺報告時，他才打開資料夾找資料；這樣＿＿＿，怎麼來得及整理？",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "要上臺報告時，他才打開資料夾找資料；這樣",
+      "post": "，怎麼來得及整理？",
+      "answer": "臨渴掘井",
+      "options": ["臨渴掘井", "未雨綢繆", "胸有成竹"],
+      "clue": "急需發生才開始準備",
+      "explanation": "「臨渴掘井」表示事情到了眼前才急忙準備。句中重點是急需發生才開始準備。",
+      "whyWrong": {
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是急需發生才開始準備，不符合這個詞的意思。",
+        "胸有成竹": "「胸有成竹」表示做事之前已有完整的計畫和把握；這句要表達的是急需發生才開始準備，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-22-2"
+    }],
+    "chips": ["臨渴掘井", "未雨綢繆", "胸有成竹"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "臨渴掘井",
+    "entryId": 240,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=240&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "胸有成竹",
+    "entryId": 9,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-23-1",
+  "contentKey": "idiom57-23-1",
+  "variantGroup": "idiom57-23",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小江為了省一點車錢，繞路走了很久，結果錯過重要的甄選，實在＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小江為了省一點車錢，繞路走了很久，結果錯過重要的甄選，實在",
+      "post": "。",
+      "answer": "因小失大",
+      "options": ["因小失大", "一舉兩得", "錦上添花"],
+      "clue": "貪圖的小好處使重要機會流失",
+      "explanation": "「因小失大」表示為了小利益而失去更重要的東西。句中重點是貪圖的小好處使重要機會流失。",
+      "whyWrong": {
+        "一舉兩得": "「一舉兩得」表示做一件事，同時得到兩種好處；這句要表達的是貪圖的小好處使重要機會流失，不符合這個詞的意思。",
+        "錦上添花": "「錦上添花」表示在原有的美好之上再增添美好；這句要表達的是貪圖的小好處使重要機會流失，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-23-1"
+    }],
+    "chips": ["因小失大", "一舉兩得", "錦上添花"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "因小失大",
+    "entryId": 1350,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1350&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "錦上添花",
+    "entryId": 279,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=279&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-23-2",
+  "contentKey": "idiom57-23-2",
+  "variantGroup": "idiom57-23",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "他只想多拿一張免費貼紙，排隊太久而錯過返家的末班車，這回真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "他只想多拿一張免費貼紙，排隊太久而錯過返家的末班車，這回真是",
+      "post": "。",
+      "answer": "因小失大",
+      "options": ["因小失大", "一舉兩得", "錦上添花"],
+      "clue": "貪圖的小好處使重要機會流失",
+      "explanation": "「因小失大」表示為了小利益而失去更重要的東西。句中重點是貪圖的小好處使重要機會流失。",
+      "whyWrong": {
+        "一舉兩得": "「一舉兩得」表示做一件事，同時得到兩種好處；這句要表達的是貪圖的小好處使重要機會流失，不符合這個詞的意思。",
+        "錦上添花": "「錦上添花」表示在原有的美好之上再增添美好；這句要表達的是貪圖的小好處使重要機會流失，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-23-2"
+    }],
+    "chips": ["因小失大", "一舉兩得", "錦上添花"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "因小失大",
+    "entryId": 1350,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1350&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "錦上添花",
+    "entryId": 279,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=279&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-24-1",
+  "contentKey": "idiom57-24-1",
+  "variantGroup": "idiom57-24",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "阿仁為搶到便宜十元的杯子，擠壞了自己價值百元的水壺，結果＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "阿仁為搶到便宜十元的杯子，擠壞了自己價值百元的水壺，結果",
+      "post": "。",
+      "answer": "得不償失",
+      "options": ["得不償失", "一舉兩得", "事半功倍"],
+      "clue": "實際損失超過獲得的好處",
+      "explanation": "「得不償失」表示得到的好處抵不過付出的損失。句中重點是實際損失超過獲得的好處。",
+      "whyWrong": {
+        "一舉兩得": "「一舉兩得」表示做一件事，同時得到兩種好處；這句要表達的是實際損失超過獲得的好處，不符合這個詞的意思。",
+        "事半功倍": "「事半功倍」表示用較少的力氣，得到較大的效果；這句要表達的是實際損失超過獲得的好處，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-24-1"
+    }],
+    "chips": ["得不償失", "一舉兩得", "事半功倍"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "得不償失",
+    "entryId": 913,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=913&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "事半功倍",
+    "entryId": 273,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=273&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-24-2",
+  "contentKey": "idiom57-24-2",
+  "variantGroup": "idiom57-24",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "為了讓海報亮一點，小組用了昂貴材料，卻只增加很少效果，還超出預算，大家覺得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "為了讓海報亮一點，小組用了昂貴材料，卻只增加很少效果，還超出預算，大家覺得",
+      "post": "。",
+      "answer": "得不償失",
+      "options": ["得不償失", "一舉兩得", "事半功倍"],
+      "clue": "實際損失超過獲得的好處",
+      "explanation": "「得不償失」表示得到的好處抵不過付出的損失。句中重點是實際損失超過獲得的好處。",
+      "whyWrong": {
+        "一舉兩得": "「一舉兩得」表示做一件事，同時得到兩種好處；這句要表達的是實際損失超過獲得的好處，不符合這個詞的意思。",
+        "事半功倍": "「事半功倍」表示用較少的力氣，得到較大的效果；這句要表達的是實際損失超過獲得的好處，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-24-2"
+    }],
+    "chips": ["得不償失", "一舉兩得", "事半功倍"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "得不償失",
+    "entryId": 913,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=913&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "事半功倍",
+    "entryId": 273,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=273&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-25-1",
+  "contentKey": "idiom57-25-1",
+  "variantGroup": "idiom57-25",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "這篇故事原本少了中心，結尾補上主角分享種子的那一幕，便有了＿＿＿的效果。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "這篇故事原本少了中心，結尾補上主角分享種子的那一幕，便有了",
+      "post": "的效果。",
+      "answer": "畫龍點睛",
+      "options": ["畫龍點睛", "畫蛇添足", "買櫝還珠"],
+      "clue": "新增的關鍵細節使主旨更鮮明",
+      "explanation": "「畫龍點睛」表示加上關鍵的一筆，使整體更出色。句中重點是新增的關鍵細節使主旨更鮮明。",
+      "whyWrong": {
+        "畫蛇添足": "「畫蛇添足」表示多做不必要的事，反而壞了原意；這句要表達的是新增的關鍵細節使主旨更鮮明，不符合這個詞的意思。",
+        "買櫝還珠": "「買櫝還珠」表示取了外表或次要部分，卻捨棄真正有價值的內容；這句要表達的是新增的關鍵細節使主旨更鮮明，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-25-1"
+    }],
+    "chips": ["畫龍點睛", "畫蛇添足", "買櫝還珠"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "畫龍點睛",
+    "entryId": 382,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=382&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫蛇添足",
+    "entryId": 23,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=23&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "買櫝還珠",
+    "entryId": 199,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=199&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-25-2",
+  "contentKey": "idiom57-25-2",
+  "variantGroup": "idiom57-25",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "導覽圖雖標出道路，卻難分方向；角落加上一個指北符號，正好＿＿＿，讓整張圖活了起來。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "導覽圖雖標出道路，卻難分方向；角落加上一個指北符號，正好",
+      "post": "，讓整張圖活了起來。",
+      "answer": "畫龍點睛",
+      "options": ["畫龍點睛", "畫蛇添足", "買櫝還珠"],
+      "clue": "新增的關鍵細節使主旨更鮮明",
+      "explanation": "「畫龍點睛」表示加上關鍵的一筆，使整體更出色。句中重點是新增的關鍵細節使主旨更鮮明。",
+      "whyWrong": {
+        "畫蛇添足": "「畫蛇添足」表示多做不必要的事，反而壞了原意；這句要表達的是新增的關鍵細節使主旨更鮮明，不符合這個詞的意思。",
+        "買櫝還珠": "「買櫝還珠」表示取了外表或次要部分，卻捨棄真正有價值的內容；這句要表達的是新增的關鍵細節使主旨更鮮明，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-25-2"
+    }],
+    "chips": ["畫龍點睛", "畫蛇添足", "買櫝還珠"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "畫龍點睛",
+    "entryId": 382,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=382&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫蛇添足",
+    "entryId": 23,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=23&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "買櫝還珠",
+    "entryId": 199,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=199&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-26-1",
+  "contentKey": "idiom57-26-1",
+  "variantGroup": "idiom57-26",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "大家真的餓了，阿布卻只不停描述想像中的大餐；這樣＿＿＿，肚子仍然空空。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "大家真的餓了，阿布卻只不停描述想像中的大餐；這樣",
+      "post": "，肚子仍然空空。",
+      "answer": "畫餅充飢",
+      "options": ["畫餅充飢", "雪中送炭", "水到渠成"],
+      "clue": "只有想像中的好處，實際需要仍未解決",
+      "explanation": "「畫餅充飢」表示用空想或空話安慰自己，不能真正解決需要。句中重點是只有想像中的好處，實際需要仍未解決。",
+      "whyWrong": {
+        "雪中送炭": "「雪中送炭」表示在別人急需幫助時給予援助；這句要表達的是只有想像中的好處，實際需要仍未解決，不符合這個詞的意思。",
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是只有想像中的好處，實際需要仍未解決，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-26-1"
+    }],
+    "chips": ["畫餅充飢", "雪中送炭", "水到渠成"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "畫餅充飢",
+    "entryId": 955,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=955&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "雪中送炭",
+    "entryId": 135,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=135&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-26-2",
+  "contentKey": "idiom57-26-2",
+  "variantGroup": "idiom57-26",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "社團沒有經費，組長卻只幻想明年一定會有豪華器材，始終不找資源，這不過是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "社團沒有經費，組長卻只幻想明年一定會有豪華器材，始終不找資源，這不過是",
+      "post": "。",
+      "answer": "畫餅充飢",
+      "options": ["畫餅充飢", "雪中送炭", "水到渠成"],
+      "clue": "只有想像中的好處，實際需要仍未解決",
+      "explanation": "「畫餅充飢」表示用空想或空話安慰自己，不能真正解決需要。句中重點是只有想像中的好處，實際需要仍未解決。",
+      "whyWrong": {
+        "雪中送炭": "「雪中送炭」表示在別人急需幫助時給予援助；這句要表達的是只有想像中的好處，實際需要仍未解決，不符合這個詞的意思。",
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是只有想像中的好處，實際需要仍未解決，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-26-2"
+    }],
+    "chips": ["畫餅充飢", "雪中送炭", "水到渠成"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "畫餅充飢",
+    "entryId": 955,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=955&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "雪中送炭",
+    "entryId": 135,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=135&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-27-1",
+  "contentKey": "idiom57-27-1",
+  "variantGroup": "idiom57-27",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "阿青每天只多認兩個字，累積幾年竟能讀完整本故事書，正說明了＿＿＿的道理。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "阿青每天只多認兩個字，累積幾年竟能讀完整本故事書，正說明了",
+      "post": "的道理。",
+      "answer": "滴水穿石",
+      "options": ["滴水穿石", "杯水車薪", "揠苗助長"],
+      "clue": "細小的努力長期累積成成果",
+      "explanation": "「滴水穿石」表示微小而持續的力量，日久也能造成大效果。句中重點是細小的努力長期累積成成果。",
+      "whyWrong": {
+        "杯水車薪": "「杯水車薪」表示力量或數量太少，無法解決眼前的大問題；這句要表達的是細小的努力長期累積成成果，不符合這個詞的意思。",
+        "揠苗助長": "「揠苗助長」表示急著求成，反而損害事物的發展；這句要表達的是細小的努力長期累積成成果，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-27-1"
+    }],
+    "chips": ["滴水穿石", "杯水車薪", "揠苗助長"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "滴水穿石",
+    "entryId": 1735,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1735&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "杯水車薪",
+    "entryId": 119,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=119&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "揠苗助長",
+    "entryId": 56,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=56&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-27-2",
+  "contentKey": "idiom57-27-2",
+  "variantGroup": "idiom57-27",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "清潔隊多年來每天撿拾海灘垃圾，原本髒亂的海岸終於恢復乾淨，持續的小行動也能＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "清潔隊多年來每天撿拾海灘垃圾，原本髒亂的海岸終於恢復乾淨，持續的小行動也能",
+      "post": "。",
+      "answer": "滴水穿石",
+      "options": ["滴水穿石", "杯水車薪", "揠苗助長"],
+      "clue": "細小的努力長期累積成成果",
+      "explanation": "「滴水穿石」表示微小而持續的力量，日久也能造成大效果。句中重點是細小的努力長期累積成成果。",
+      "whyWrong": {
+        "杯水車薪": "「杯水車薪」表示力量或數量太少，無法解決眼前的大問題；這句要表達的是細小的努力長期累積成成果，不符合這個詞的意思。",
+        "揠苗助長": "「揠苗助長」表示急著求成，反而損害事物的發展；這句要表達的是細小的努力長期累積成成果，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-27-2"
+    }],
+    "chips": ["滴水穿石", "杯水車薪", "揠苗助長"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "滴水穿石",
+    "entryId": 1735,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1735&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "杯水車薪",
+    "entryId": 119,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=119&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "揠苗助長",
+    "entryId": 56,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=56&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-28-1",
+  "contentKey": "idiom57-28-1",
+  "variantGroup": "idiom57-28",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "數百人等著喝水，現場卻只有兩小瓶，這點水對眼前的需求只是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "數百人等著喝水，現場卻只有兩小瓶，這點水對眼前的需求只是",
+      "post": "。",
+      "answer": "杯水車薪",
+      "options": ["杯水車薪", "滴水穿石", "雪中送炭"],
+      "clue": "眼前需要很大，現有援助的量遠遠不足",
+      "explanation": "「杯水車薪」表示力量或數量太少，無法解決眼前的大問題。句中重點是眼前需要很大，現有援助的量遠遠不足。",
+      "whyWrong": {
+        "滴水穿石": "「滴水穿石」表示微小而持續的力量，日久也能造成大效果；這句要表達的是眼前需要很大，現有援助的量遠遠不足，不符合這個詞的意思。",
+        "雪中送炭": "「雪中送炭」表示在別人急需幫助時給予援助；這句要表達的是眼前需要很大，現有援助的量遠遠不足，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-28-1"
+    }],
+    "chips": ["杯水車薪", "滴水穿石", "雪中送炭"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "杯水車薪",
+    "entryId": 119,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=119&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "滴水穿石",
+    "entryId": 1735,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1735&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "雪中送炭",
+    "entryId": 135,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=135&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-28-2",
+  "contentKey": "idiom57-28-2",
+  "variantGroup": "idiom57-28",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "展場還缺一百張椅子，倉庫卻只剩一張可用，這張椅子對目前的缺口可說是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "展場還缺一百張椅子，倉庫卻只剩一張可用，這張椅子對目前的缺口可說是",
+      "post": "。",
+      "answer": "杯水車薪",
+      "options": ["杯水車薪", "滴水穿石", "雪中送炭"],
+      "clue": "眼前需要很大，現有援助的量遠遠不足",
+      "explanation": "「杯水車薪」表示力量或數量太少，無法解決眼前的大問題。句中重點是眼前需要很大，現有援助的量遠遠不足。",
+      "whyWrong": {
+        "滴水穿石": "「滴水穿石」表示微小而持續的力量，日久也能造成大效果；這句要表達的是眼前需要很大，現有援助的量遠遠不足，不符合這個詞的意思。",
+        "雪中送炭": "「雪中送炭」表示在別人急需幫助時給予援助；這句要表達的是眼前需要很大，現有援助的量遠遠不足，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-28-2"
+    }],
+    "chips": ["杯水車薪", "滴水穿石", "雪中送炭"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "杯水車薪",
+    "entryId": 119,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=119&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "滴水穿石",
+    "entryId": 1735,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1735&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "雪中送炭",
+    "entryId": 135,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=135&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-29-1",
+  "contentKey": "idiom57-29-1",
+  "variantGroup": "idiom57-29",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "把落葉做成堆肥，既減少垃圾，又能滋養花圃，真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "把落葉做成堆肥，既減少垃圾，又能滋養花圃，真是",
+      "post": "。",
+      "answer": "一舉兩得",
+      "options": ["一舉兩得", "因小失大", "得不償失"],
+      "clue": "同一個行動帶來兩項好處",
+      "explanation": "「一舉兩得」表示做一件事，同時得到兩種好處。句中重點是同一個行動帶來兩項好處。",
+      "whyWrong": {
+        "因小失大": "「因小失大」表示為了小利益而失去更重要的東西；這句要表達的是同一個行動帶來兩項好處，不符合這個詞的意思。",
+        "得不償失": "「得不償失」表示得到的好處抵不過付出的損失；這句要表達的是同一個行動帶來兩項好處，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-29-1"
+    }],
+    "chips": ["一舉兩得", "因小失大", "得不償失"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "因小失大",
+    "entryId": 1350,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1350&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "得不償失",
+    "entryId": 913,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=913&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-29-2",
+  "contentKey": "idiom57-29-2",
+  "variantGroup": "idiom57-29",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "步行到附近圖書館，既能借書，又能活動身體，一趟路就＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "步行到附近圖書館，既能借書，又能活動身體，一趟路就",
+      "post": "。",
+      "answer": "一舉兩得",
+      "options": ["一舉兩得", "因小失大", "得不償失"],
+      "clue": "同一個行動帶來兩項好處",
+      "explanation": "「一舉兩得」表示做一件事，同時得到兩種好處。句中重點是同一個行動帶來兩項好處。",
+      "whyWrong": {
+        "因小失大": "「因小失大」表示為了小利益而失去更重要的東西；這句要表達的是同一個行動帶來兩項好處，不符合這個詞的意思。",
+        "得不償失": "「得不償失」表示得到的好處抵不過付出的損失；這句要表達的是同一個行動帶來兩項好處，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-29-2"
+    }],
+    "chips": ["一舉兩得", "因小失大", "得不償失"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "因小失大",
+    "entryId": 1350,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1350&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "得不償失",
+    "entryId": 913,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=913&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-30-1",
+  "contentKey": "idiom57-30-1",
+  "variantGroup": "idiom57-30",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "大家沒先分類，就反覆翻找混在一起的零件，忙了半天只裝好一小角，真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "大家沒先分類，就反覆翻找混在一起的零件，忙了半天只裝好一小角，真是",
+      "post": "。",
+      "answer": "事倍功半",
+      "options": ["事倍功半", "事半功倍", "一舉兩得"],
+      "clue": "方法不適合，辛苦很多而成果很少",
+      "explanation": "「事倍功半」表示付出很多力氣，得到的效果卻很少。句中重點是方法不適合，辛苦很多而成果很少。",
+      "whyWrong": {
+        "事半功倍": "「事半功倍」表示用較少的力氣，得到較大的效果；這句要表達的是方法不適合，辛苦很多而成果很少，不符合這個詞的意思。",
+        "一舉兩得": "「一舉兩得」表示做一件事，同時得到兩種好處；這句要表達的是方法不適合，辛苦很多而成果很少，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-30-1"
+    }],
+    "chips": ["事倍功半", "事半功倍", "一舉兩得"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "事倍功半",
+    "entryId": 6307,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6307&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "事半功倍",
+    "entryId": 273,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=273&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-30-2",
+  "contentKey": "idiom57-30-2",
+  "variantGroup": "idiom57-30",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小安不檢查錯在哪裡，只把同一份筆記抄十遍，花了很多時間仍不理解，學習變得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小安不檢查錯在哪裡，只把同一份筆記抄十遍，花了很多時間仍不理解，學習變得",
+      "post": "。",
+      "answer": "事倍功半",
+      "options": ["事倍功半", "事半功倍", "一舉兩得"],
+      "clue": "方法不適合，辛苦很多而成果很少",
+      "explanation": "「事倍功半」表示付出很多力氣，得到的效果卻很少。句中重點是方法不適合，辛苦很多而成果很少。",
+      "whyWrong": {
+        "事半功倍": "「事半功倍」表示用較少的力氣，得到較大的效果；這句要表達的是方法不適合，辛苦很多而成果很少，不符合這個詞的意思。",
+        "一舉兩得": "「一舉兩得」表示做一件事，同時得到兩種好處；這句要表達的是方法不適合，辛苦很多而成果很少，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-30-2"
+    }],
+    "chips": ["事倍功半", "事半功倍", "一舉兩得"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "事倍功半",
+    "entryId": 6307,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6307&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "事半功倍",
+    "entryId": 273,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=273&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-31-1",
+  "contentKey": "idiom57-31-1",
+  "variantGroup": "idiom57-31",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "先把書依書號分組，再放回架上，小組用原來一半的時間完成更多本，整理工作變得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "先把書依書號分組，再放回架上，小組用原來一半的時間完成更多本，整理工作變得",
+      "post": "。",
+      "answer": "事半功倍",
+      "options": ["事半功倍", "事倍功半", "得不償失"],
+      "clue": "方法改進後，用更少時間完成更多工作",
+      "explanation": "「事半功倍」表示用較少的力氣，得到較大的效果。句中重點是方法改進後，用更少時間完成更多工作。",
+      "whyWrong": {
+        "事倍功半": "「事倍功半」表示付出很多力氣，得到的效果卻很少；這句要表達的是方法改進後，用更少時間完成更多工作，不符合這個詞的意思。",
+        "得不償失": "「得不償失」表示得到的好處抵不過付出的損失；這句要表達的是方法改進後，用更少時間完成更多工作，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-31-1"
+    }],
+    "chips": ["事半功倍", "事倍功半", "得不償失"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "事半功倍",
+    "entryId": 273,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=273&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "事倍功半",
+    "entryId": 6307,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6307&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "得不償失",
+    "entryId": 913,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=913&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-32-1",
+  "contentKey": "idiom57-32-1",
+  "variantGroup": "idiom57-32",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "他對從沒學過樂理的小弟弟大談複雜和聲，弟弟只茫然眨眼，這樣講解有如＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "他對從沒學過樂理的小弟弟大談複雜和聲，弟弟只茫然眨眼，這樣講解有如",
+      "post": "。",
+      "answer": "對牛彈琴",
+      "options": ["對牛彈琴", "不恥下問", "各抒己見"],
+      "clue": "對方完全不懂所談的內容，無法回應",
+      "explanation": "「對牛彈琴」表示對不理解內容的人談論，難以得到回應。句中重點是對方完全不懂所談的內容，無法回應。",
+      "whyWrong": {
+        "不恥下問": "「不恥下問」表示不以向地位或學識較低的人請教為羞恥；這句要表達的是對方完全不懂所談的內容，無法回應，不符合這個詞的意思。",
+        "各抒己見": "「各抒己見」表示每個人都表達自己的意見；這句要表達的是對方完全不懂所談的內容，無法回應，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-32-1"
+    }],
+    "chips": ["對牛彈琴", "不恥下問", "各抒己見"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "對牛彈琴",
+    "entryId": 47,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=47&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "不恥下問",
+    "entryId": 167,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=167&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "各抒己見",
+    "entryId": 11147,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11147&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-33-1",
+  "contentKey": "idiom57-33-1",
+  "variantGroup": "idiom57-33",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "只學了三天木工的小光，竟向老師傅炫耀自己才會做榫接，旁人笑他＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "只學了三天木工的小光，竟向老師傅炫耀自己才會做榫接，旁人笑他",
+      "post": "。",
+      "answer": "班門弄斧",
+      "options": ["班門弄斧", "不恥下問", "精益求精"],
+      "clue": "以為自己最厲害，卻在專家面前炫耀",
+      "explanation": "「班門弄斧」表示在行家面前賣弄本領。句中重點是以為自己最厲害，卻在專家面前炫耀。",
+      "whyWrong": {
+        "不恥下問": "「不恥下問」表示不以向地位或學識較低的人請教為羞恥；這句要表達的是以為自己最厲害，卻在專家面前炫耀，不符合這個詞的意思。",
+        "精益求精": "「精益求精」表示已經做得很好，仍追求更好；這句要表達的是以為自己最厲害，卻在專家面前炫耀，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-33-1"
+    }],
+    "chips": ["班門弄斧", "不恥下問", "精益求精"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "班門弄斧",
+    "entryId": 5,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "不恥下問",
+    "entryId": 167,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=167&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-34-1",
+  "contentKey": "idiom57-34-1",
+  "variantGroup": "idiom57-34",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "資深園丁不懂新的記錄軟體，仍主動請教剛入行的學徒，這種＿＿＿的態度令人敬佩。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "資深園丁不懂新的記錄軟體，仍主動請教剛入行的學徒，這種",
+      "post": "的態度令人敬佩。",
+      "answer": "不恥下問",
+      "options": ["不恥下問", "班門弄斧", "人云亦云"],
+      "clue": "願意向比自己年幼或資淺的人學習",
+      "explanation": "「不恥下問」表示不以向地位或學識較低的人請教為羞恥。句中重點是願意向比自己年幼或資淺的人學習。",
+      "whyWrong": {
+        "班門弄斧": "「班門弄斧」表示在行家面前賣弄本領；這句要表達的是願意向比自己年幼或資淺的人學習，不符合這個詞的意思。",
+        "人云亦云": "「人云亦云」表示沒有自己的看法，只跟著別人說；這句要表達的是願意向比自己年幼或資淺的人學習，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-34-1"
+    }],
+    "chips": ["不恥下問", "班門弄斧", "人云亦云"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "不恥下問",
+    "entryId": 167,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=167&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "班門弄斧",
+    "entryId": 5,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "人云亦云",
+    "entryId": 427,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=427&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-35-1",
+  "contentKey": "idiom57-35-1",
+  "variantGroup": "idiom57-35",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "老師只示範如何算一種長方形花圃，小瑜就能推算尺寸不同的三種花圃，真會＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "老師只示範如何算一種長方形花圃，小瑜就能推算尺寸不同的三種花圃，真會",
+      "post": "。",
+      "answer": "舉一反三",
+      "options": ["舉一反三", "囫圇吞棗", "守株待兔"],
+      "clue": "能把學過的一例運用到新的同類問題",
+      "explanation": "「舉一反三」表示從一個例子推想出其他相通的情況。句中重點是能把學過的一例運用到新的同類問題。",
+      "whyWrong": {
+        "囫圇吞棗": "「囫圇吞棗」表示接收內容時不分析、不分辨，就全部吞下；這句要表達的是能把學過的一例運用到新的同類問題，不符合這個詞的意思。",
+        "守株待兔": "「守株待兔」表示抱著偶然得來的好處，空等再有收穫；這句要表達的是能把學過的一例運用到新的同類問題，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-35-1"
+    }],
+    "chips": ["舉一反三", "囫圇吞棗", "守株待兔"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "舉一反三",
+    "entryId": 13,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=13&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "囫圇吞棗",
+    "entryId": 4,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=4&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "守株待兔",
+    "entryId": 39,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=39&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-36-1",
+  "contentKey": "idiom57-36-1",
+  "variantGroup": "idiom57-36",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "學會用比例調果汁後，小甯又想通了顏料配色和縮圖的關係，能夠＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "學會用比例調果汁後，小甯又想通了顏料配色和縮圖的關係，能夠",
+      "post": "。",
+      "answer": "觸類旁通",
+      "options": ["觸類旁通", "不求甚解", "刻舟求劍"],
+      "clue": "理解原理後，能連結不同而相關的事物",
+      "explanation": "「觸類旁通」表示接觸一類事物後，理解其他相關事物。句中重點是理解原理後，能連結不同而相關的事物。",
+      "whyWrong": {
+        "不求甚解": "「不求甚解」表示只了解大概，不追究深入的意思；這句要表達的是理解原理後，能連結不同而相關的事物，不符合這個詞的意思。",
+        "刻舟求劍": "「刻舟求劍」表示情況已改變，卻仍死守舊方法；這句要表達的是理解原理後，能連結不同而相關的事物，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-36-1"
+    }],
+    "chips": ["觸類旁通", "不求甚解", "刻舟求劍"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "觸類旁通",
+    "entryId": 332,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=332&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "不求甚解",
+    "entryId": 204,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=204&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "刻舟求劍",
+    "entryId": 43,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=43&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-37-1",
+  "contentKey": "idiom57-37-1",
+  "variantGroup": "idiom57-37",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小風沒看過公告，只聽路人隨口說就宣稱公園要拆了；大家提醒他別把＿＿＿當成事實。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小風沒看過公告，只聽路人隨口說就宣稱公園要拆了；大家提醒他別把",
+      "post": "當成事實。",
+      "answer": "道聽塗說",
+      "options": ["道聽塗說", "見微知著", "目不轉睛"],
+      "clue": "消息只是聽來的，沒有證據或查核",
+      "explanation": "「道聽塗說」表示傳播在路上聽來而未經查證的消息。句中重點是消息只是聽來的，沒有證據或查核。",
+      "whyWrong": {
+        "見微知著": "「見微知著」表示從細小的跡象推知較大的情況；這句要表達的是消息只是聽來的，沒有證據或查核，不符合這個詞的意思。",
+        "目不轉睛": "「目不轉睛」表示眼睛一直注視同一個地方；這句要表達的是消息只是聽來的，沒有證據或查核，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-37-1"
+    }],
+    "chips": ["道聽塗說", "見微知著", "目不轉睛"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "道聽塗說",
+    "entryId": 1146,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1146&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "見微知著",
+    "entryId": 9308,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9308&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "目不轉睛",
+    "entryId": 5433,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5433&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-38-1",
+  "contentKey": "idiom57-38-1",
+  "variantGroup": "idiom57-38",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "關於腳印的主人，有人說是狗，有人說是狐狸，還有人說是浣熊，一時間＿＿＿，無法確定。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "關於腳印的主人，有人說是狗，有人說是狐狸，還有人說是浣熊，一時間",
+      "post": "，無法確定。",
+      "answer": "眾說紛紜",
+      "options": ["眾說紛紜", "鴉雀無聲", "一目了然"],
+      "clue": "各方說法不同，尚無一致結論",
+      "explanation": "「眾說紛紜」表示許多人的說法不一致，難有定論。句中重點是各方說法不同，尚無一致結論。",
+      "whyWrong": {
+        "鴉雀無聲": "「鴉雀無聲」表示非常安靜，沒有聲音；這句要表達的是各方說法不同，尚無一致結論，不符合這個詞的意思。",
+        "一目了然": "「一目了然」表示看一眼就能明白；這句要表達的是各方說法不同，尚無一致結論，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-38-1"
+    }],
+    "chips": ["眾說紛紜", "鴉雀無聲", "一目了然"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "眾說紛紜",
+    "entryId": 12302,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=12302&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "鴉雀無聲",
+    "entryId": 353,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=353&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一目了然",
+    "entryId": 980,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=980&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-39-1",
+  "contentKey": "idiom57-39-1",
+  "variantGroup": "idiom57-39",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小舟沒看過作品，別人說好他就說好，別人說差他又說差，完全是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小舟沒看過作品，別人說好他就說好，別人說差他又說差，完全是",
+      "post": "。",
+      "answer": "人云亦云",
+      "options": ["人云亦云", "各抒己見", "舉一反三"],
+      "clue": "沒有查證或思考，只重複他人的判斷",
+      "explanation": "「人云亦云」表示沒有自己的看法，只跟著別人說。句中重點是沒有查證或思考，只重複他人的判斷。",
+      "whyWrong": {
+        "各抒己見": "「各抒己見」表示每個人都表達自己的意見；這句要表達的是沒有查證或思考，只重複他人的判斷，不符合這個詞的意思。",
+        "舉一反三": "「舉一反三」表示從一個例子推想出其他相通的情況；這句要表達的是沒有查證或思考，只重複他人的判斷，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-39-1"
+    }],
+    "chips": ["人云亦云", "各抒己見", "舉一反三"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "人云亦云",
+    "entryId": 427,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=427&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "各抒己見",
+    "entryId": 11147,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11147&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "舉一反三",
+    "entryId": 13,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=13&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-40-1",
+  "contentKey": "idiom57-40-1",
+  "variantGroup": "idiom57-40",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "normal",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "討論新遊戲規則時，主持人請每個人說明自己的理由，鼓勵大家＿＿＿，不必跟別人一樣。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "討論新遊戲規則時，主持人請每個人說明自己的理由，鼓勵大家",
+      "post": "，不必跟別人一樣。",
+      "answer": "各抒己見",
+      "options": ["各抒己見", "人云亦云", "鴉雀無聲"],
+      "clue": "每人根據自己的思考提出看法",
+      "explanation": "「各抒己見」表示每個人都表達自己的意見。句中重點是每人根據自己的思考提出看法。",
+      "whyWrong": {
+        "人云亦云": "「人云亦云」表示沒有自己的看法，只跟著別人說；這句要表達的是每人根據自己的思考提出看法，不符合這個詞的意思。",
+        "鴉雀無聲": "「鴉雀無聲」表示非常安靜，沒有聲音；這句要表達的是每人根據自己的思考提出看法，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-40-1"
+    }],
+    "chips": ["各抒己見", "人云亦云", "鴉雀無聲"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "各抒己見",
+    "entryId": 11147,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11147&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "人云亦云",
+    "entryId": 427,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=427&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "鴉雀無聲",
+    "entryId": 353,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=353&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-41-1",
+  "contentKey": "idiom57-41-1",
+  "variantGroup": "idiom57-41",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小組說要減少一次性垃圾，卻為宣傳大量發送用完即丟的塑膠袋，目標與做法竟然＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小組說要減少一次性垃圾，卻為宣傳大量發送用完即丟的塑膠袋，目標與做法竟然",
+      "post": "。",
+      "answer": "南轅北轍",
+      "options": ["南轅北轍", "水到渠成", "精益求精"],
+      "clue": "做法與目標背道而馳",
+      "explanation": "「南轅北轍」表示行動的方向和想達成的目標相反。句中重點是做法與目標背道而馳。",
+      "whyWrong": {
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是做法與目標背道而馳，不符合這個詞的意思。",
+        "精益求精": "「精益求精」表示已經做得很好，仍追求更好；這句要表達的是做法與目標背道而馳，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-41-1"
+    }],
+    "chips": ["南轅北轍", "水到渠成", "精益求精"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "南轅北轍",
+    "entryId": 28,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=28&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-41-2",
+  "contentKey": "idiom57-41-2",
+  "variantGroup": "idiom57-41",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "他想讓同學敢提問題，卻每次都嘲笑提問者；這種做法與原先目的＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "他想讓同學敢提問題，卻每次都嘲笑提問者；這種做法與原先目的",
+      "post": "。",
+      "answer": "南轅北轍",
+      "options": ["南轅北轍", "水到渠成", "精益求精"],
+      "clue": "做法與目標背道而馳",
+      "explanation": "「南轅北轍」表示行動的方向和想達成的目標相反。句中重點是做法與目標背道而馳。",
+      "whyWrong": {
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是做法與目標背道而馳，不符合這個詞的意思。",
+        "精益求精": "「精益求精」表示已經做得很好，仍追求更好；這句要表達的是做法與目標背道而馳，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-41-2"
+    }],
+    "chips": ["南轅北轍", "水到渠成", "精益求精"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "南轅北轍",
+    "entryId": 28,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=28&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-42-1",
+  "contentKey": "idiom57-42-1",
+  "variantGroup": "idiom57-42",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "要查今天的實際雨量，他卻只翻沒有觀測資料的童話故事，想從中找精確數字，無異於＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "要查今天的實際雨量，他卻只翻沒有觀測資料的童話故事，想從中找精確數字，無異於",
+      "post": "。",
+      "answer": "緣木求魚",
+      "options": ["緣木求魚", "守株待兔", "水到渠成"],
+      "clue": "所採方法與要找的結果根本不相通",
+      "explanation": "「緣木求魚」表示採取無法達成目的的方法。句中重點是所採方法與要找的結果根本不相通。",
+      "whyWrong": {
+        "守株待兔": "「守株待兔」表示抱著偶然得來的好處，空等再有收穫；這句要表達的是所採方法與要找的結果根本不相通，不符合這個詞的意思。",
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是所採方法與要找的結果根本不相通，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-42-1"
+    }],
+    "chips": ["緣木求魚", "守株待兔", "水到渠成"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "緣木求魚",
+    "entryId": 86,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=86&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "守株待兔",
+    "entryId": 39,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=39&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-42-2",
+  "contentKey": "idiom57-42-2",
+  "variantGroup": "idiom57-42",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "為了知道密封盒內的物品重量，他只看盒上的顏色，既不秤重也沒有其他資料，這樣求答案如同＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "為了知道密封盒內的物品重量，他只看盒上的顏色，既不秤重也沒有其他資料，這樣求答案如同",
+      "post": "。",
+      "answer": "緣木求魚",
+      "options": ["緣木求魚", "守株待兔", "水到渠成"],
+      "clue": "所採方法與要找的結果根本不相通",
+      "explanation": "「緣木求魚」表示採取無法達成目的的方法。句中重點是所採方法與要找的結果根本不相通。",
+      "whyWrong": {
+        "守株待兔": "「守株待兔」表示抱著偶然得來的好處，空等再有收穫；這句要表達的是所採方法與要找的結果根本不相通，不符合這個詞的意思。",
+        "水到渠成": "「水到渠成」表示條件成熟後，自然得到成果；這句要表達的是所採方法與要找的結果根本不相通，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-42-2"
+    }],
+    "chips": ["緣木求魚", "守株待兔", "水到渠成"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "緣木求魚",
+    "entryId": 86,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=86&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "守株待兔",
+    "entryId": 39,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=39&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-43-1",
+  "contentKey": "idiom57-43-1",
+  "variantGroup": "idiom57-43",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小組買了珍貴的研究筆記，只留下漂亮封套做展示，卻把重要紀錄丟掉，真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小組買了珍貴的研究筆記，只留下漂亮封套做展示，卻把重要紀錄丟掉，真是",
+      "post": "。",
+      "answer": "買櫝還珠",
+      "options": ["買櫝還珠", "畫龍點睛", "錦上添花"],
+      "clue": "留下漂亮外殼，反而丟掉核心內容",
+      "explanation": "「買櫝還珠」表示取了外表或次要部分，卻捨棄真正有價值的內容。句中重點是留下漂亮外殼，反而丟掉核心內容。",
+      "whyWrong": {
+        "畫龍點睛": "「畫龍點睛」表示加上關鍵的一筆，使整體更出色；這句要表達的是留下漂亮外殼，反而丟掉核心內容，不符合這個詞的意思。",
+        "錦上添花": "「錦上添花」表示在原有的美好之上再增添美好；這句要表達的是留下漂亮外殼，反而丟掉核心內容，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-43-1"
+    }],
+    "chips": ["買櫝還珠", "畫龍點睛", "錦上添花"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "買櫝還珠",
+    "entryId": 199,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=199&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫龍點睛",
+    "entryId": 382,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=382&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "錦上添花",
+    "entryId": 279,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=279&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-43-2",
+  "contentKey": "idiom57-43-2",
+  "variantGroup": "idiom57-43",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "他收到附有精采故事的禮盒，卻扔掉故事書，只珍藏外面的金色盒子，像是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "他收到附有精采故事的禮盒，卻扔掉故事書，只珍藏外面的金色盒子，像是",
+      "post": "。",
+      "answer": "買櫝還珠",
+      "options": ["買櫝還珠", "畫龍點睛", "錦上添花"],
+      "clue": "留下漂亮外殼，反而丟掉核心內容",
+      "explanation": "「買櫝還珠」表示取了外表或次要部分，卻捨棄真正有價值的內容。句中重點是留下漂亮外殼，反而丟掉核心內容。",
+      "whyWrong": {
+        "畫龍點睛": "「畫龍點睛」表示加上關鍵的一筆，使整體更出色；這句要表達的是留下漂亮外殼，反而丟掉核心內容，不符合這個詞的意思。",
+        "錦上添花": "「錦上添花」表示在原有的美好之上再增添美好；這句要表達的是留下漂亮外殼，反而丟掉核心內容，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-43-2"
+    }],
+    "chips": ["買櫝還珠", "畫龍點睛", "錦上添花"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "買櫝還珠",
+    "entryId": 199,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=199&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫龍點睛",
+    "entryId": 382,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=382&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "錦上添花",
+    "entryId": 279,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=279&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-44-1",
+  "contentKey": "idiom57-44-1",
+  "variantGroup": "idiom57-44",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "社團停止改善飲水品質，卻把全部經費拿去裝飾水龍頭，大家批評這是在＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "社團停止改善飲水品質，卻把全部經費拿去裝飾水龍頭，大家批評這是在",
+      "post": "。",
+      "answer": "捨本逐末",
+      "options": ["捨本逐末", "精益求精", "未雨綢繆"],
+      "clue": "放棄核心任務，只追求枝節",
+      "explanation": "「捨本逐末」表示放棄根本重要的事，追求次要的事。句中重點是放棄核心任務，只追求枝節。",
+      "whyWrong": {
+        "精益求精": "「精益求精」表示已經做得很好，仍追求更好；這句要表達的是放棄核心任務，只追求枝節，不符合這個詞的意思。",
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是放棄核心任務，只追求枝節，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-44-1"
+    }],
+    "chips": ["捨本逐末", "精益求精", "未雨綢繆"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "捨本逐末",
+    "entryId": 1322,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1322&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-44-2",
+  "contentKey": "idiom57-44-2",
+  "variantGroup": "idiom57-44",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "閱讀活動不再安排讀書和討論，卻把每次時間全用來比誰的書套漂亮，已經＿＿＿了。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "閱讀活動不再安排讀書和討論，卻把每次時間全用來比誰的書套漂亮，已經",
+      "post": "了。",
+      "answer": "捨本逐末",
+      "options": ["捨本逐末", "精益求精", "未雨綢繆"],
+      "clue": "放棄核心任務，只追求枝節",
+      "explanation": "「捨本逐末」表示放棄根本重要的事，追求次要的事。句中重點是放棄核心任務，只追求枝節。",
+      "whyWrong": {
+        "精益求精": "「精益求精」表示已經做得很好，仍追求更好；這句要表達的是放棄核心任務，只追求枝節，不符合這個詞的意思。",
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是放棄核心任務，只追求枝節，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-44-2"
+    }],
+    "chips": ["捨本逐末", "精益求精", "未雨綢繆"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "捨本逐末",
+    "entryId": 1322,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1322&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-45-1",
+  "contentKey": "idiom57-45-1",
+  "variantGroup": "idiom57-45",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "救援仍在進行，主辦人卻要求先拍完宣傳照才能送出救援物資，這種先後安排實在＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "救援仍在進行，主辦人卻要求先拍完宣傳照才能送出救援物資，這種先後安排實在",
+      "post": "。",
+      "answer": "本末倒置",
+      "options": ["本末倒置", "井井有條", "事半功倍"],
+      "clue": "兩件事都做，但重要性和先後次序顛倒",
+      "explanation": "「本末倒置」表示把主要和次要的輕重順序弄反。句中重點是兩件事都做，但重要性和先後次序顛倒。",
+      "whyWrong": {
+        "井井有條": "「井井有條」表示安排清楚，有次序；這句要表達的是兩件事都做，但重要性和先後次序顛倒，不符合這個詞的意思。",
+        "事半功倍": "「事半功倍」表示用較少的力氣，得到較大的效果；這句要表達的是兩件事都做，但重要性和先後次序顛倒，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-45-1"
+    }],
+    "chips": ["本末倒置", "井井有條", "事半功倍"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "本末倒置",
+    "entryId": 302,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=302&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "井井有條",
+    "entryId": 296,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=296&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "事半功倍",
+    "entryId": 273,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=273&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-45-2",
+  "contentKey": "idiom57-45-2",
+  "variantGroup": "idiom57-45",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "評選研究作品時，內容只占一分，封面顏色卻占九十九分，這樣的比重真是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "評選研究作品時，內容只占一分，封面顏色卻占九十九分，這樣的比重真是",
+      "post": "。",
+      "answer": "本末倒置",
+      "options": ["本末倒置", "井井有條", "事半功倍"],
+      "clue": "兩件事都做，但重要性和先後次序顛倒",
+      "explanation": "「本末倒置」表示把主要和次要的輕重順序弄反。句中重點是兩件事都做，但重要性和先後次序顛倒。",
+      "whyWrong": {
+        "井井有條": "「井井有條」表示安排清楚，有次序；這句要表達的是兩件事都做，但重要性和先後次序顛倒，不符合這個詞的意思。",
+        "事半功倍": "「事半功倍」表示用較少的力氣，得到較大的效果；這句要表達的是兩件事都做，但重要性和先後次序顛倒，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-45-2"
+    }],
+    "chips": ["本末倒置", "井井有條", "事半功倍"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "本末倒置",
+    "entryId": 302,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=302&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "井井有條",
+    "entryId": 296,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=296&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "事半功倍",
+    "entryId": 273,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=273&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-46-1",
+  "contentKey": "idiom57-46-1",
+  "variantGroup": "idiom57-46",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小佑一口氣背下整頁公式，完全不分每條的用途，遇到問題就胡亂套用，這樣學習是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小佑一口氣背下整頁公式，完全不分每條的用途，遇到問題就胡亂套用，這樣學習是",
+      "post": "。",
+      "answer": "囫圇吞棗",
+      "options": ["囫圇吞棗", "舉一反三", "各抒己見"],
+      "clue": "沒有逐項分析，只把整批內容照收",
+      "explanation": "「囫圇吞棗」表示接收內容時不分析、不分辨，就全部吞下。句中重點是沒有逐項分析，只把整批內容照收。",
+      "whyWrong": {
+        "舉一反三": "「舉一反三」表示從一個例子推想出其他相通的情況；這句要表達的是沒有逐項分析，只把整批內容照收，不符合這個詞的意思。",
+        "各抒己見": "「各抒己見」表示每個人都表達自己的意見；這句要表達的是沒有逐項分析，只把整批內容照收，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-46-1"
+    }],
+    "chips": ["囫圇吞棗", "舉一反三", "各抒己見"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "囫圇吞棗",
+    "entryId": 4,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=4&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "舉一反三",
+    "entryId": 13,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=13&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "各抒己見",
+    "entryId": 11147,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11147&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-46-2",
+  "contentKey": "idiom57-46-2",
+  "variantGroup": "idiom57-46",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "她把網上整篇說明全部抄進報告，沒有分辨哪些可信、哪些互相衝突，簡直是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "她把網上整篇說明全部抄進報告，沒有分辨哪些可信、哪些互相衝突，簡直是",
+      "post": "。",
+      "answer": "囫圇吞棗",
+      "options": ["囫圇吞棗", "舉一反三", "各抒己見"],
+      "clue": "沒有逐項分析，只把整批內容照收",
+      "explanation": "「囫圇吞棗」表示接收內容時不分析、不分辨，就全部吞下。句中重點是沒有逐項分析，只把整批內容照收。",
+      "whyWrong": {
+        "舉一反三": "「舉一反三」表示從一個例子推想出其他相通的情況；這句要表達的是沒有逐項分析，只把整批內容照收，不符合這個詞的意思。",
+        "各抒己見": "「各抒己見」表示每個人都表達自己的意見；這句要表達的是沒有逐項分析，只把整批內容照收，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-46-2"
+    }],
+    "chips": ["囫圇吞棗", "舉一反三", "各抒己見"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "囫圇吞棗",
+    "entryId": 4,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=4&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "舉一反三",
+    "entryId": 13,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=13&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "各抒己見",
+    "entryId": 11147,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11147&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-47-1",
+  "contentKey": "idiom57-47-1",
+  "variantGroup": "idiom57-47",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "他能說出故事的大意，卻不願追問主角為何改變心意，覺得「大概懂就好」，讀得＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "他能說出故事的大意，卻不願追問主角為何改變心意，覺得「大概懂就好」，讀得",
+      "post": "。",
+      "answer": "不求甚解",
+      "options": ["不求甚解", "精益求精", "觸類旁通"],
+      "clue": "知道表面大意就停止追究細節",
+      "explanation": "「不求甚解」表示只了解大概，不追究深入的意思。句中重點是知道表面大意就停止追究細節。",
+      "whyWrong": {
+        "精益求精": "「精益求精」表示已經做得很好，仍追求更好；這句要表達的是知道表面大意就停止追究細節，不符合這個詞的意思。",
+        "觸類旁通": "「觸類旁通」表示接觸一類事物後，理解其他相關事物；這句要表達的是知道表面大意就停止追究細節，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-47-1"
+    }],
+    "chips": ["不求甚解", "精益求精", "觸類旁通"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "不求甚解",
+    "entryId": 204,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=204&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "觸類旁通",
+    "entryId": 332,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=332&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-47-2",
+  "contentKey": "idiom57-47-2",
+  "variantGroup": "idiom57-47",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小東只知道這個按鈕會亮燈，卻不想理解何時該按、為何會亮，對操作原理始終＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小東只知道這個按鈕會亮燈，卻不想理解何時該按、為何會亮，對操作原理始終",
+      "post": "。",
+      "answer": "不求甚解",
+      "options": ["不求甚解", "精益求精", "觸類旁通"],
+      "clue": "知道表面大意就停止追究細節",
+      "explanation": "「不求甚解」表示只了解大概，不追究深入的意思。句中重點是知道表面大意就停止追究細節。",
+      "whyWrong": {
+        "精益求精": "「精益求精」表示已經做得很好，仍追求更好；這句要表達的是知道表面大意就停止追究細節，不符合這個詞的意思。",
+        "觸類旁通": "「觸類旁通」表示接觸一類事物後，理解其他相關事物；這句要表達的是知道表面大意就停止追究細節，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-47-2"
+    }],
+    "chips": ["不求甚解", "精益求精", "觸類旁通"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "不求甚解",
+    "entryId": 204,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=204&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "觸類旁通",
+    "entryId": 332,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=332&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-48-1",
+  "contentKey": "idiom57-48-1",
+  "variantGroup": "idiom57-48",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "館長說「若暴雨就取消，天晴仍照常」，小報只引「就取消」便宣稱活動一定停辦，這是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "館長說「若暴雨就取消，天晴仍照常」，小報只引「就取消」便宣稱活動一定停辦，這是",
+      "post": "。",
+      "answer": "斷章取義",
+      "options": ["斷章取義", "一目了然", "各抒己見"],
+      "clue": "抽掉關鍵上下文，讓引文意思改變",
+      "explanation": "「斷章取義」表示抽取部分話語而忽略上下文，曲解原意。句中重點是抽掉關鍵上下文，讓引文意思改變。",
+      "whyWrong": {
+        "一目了然": "「一目了然」表示看一眼就能明白；這句要表達的是抽掉關鍵上下文，讓引文意思改變，不符合這個詞的意思。",
+        "各抒己見": "「各抒己見」表示每個人都表達自己的意見；這句要表達的是抽掉關鍵上下文，讓引文意思改變，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-48-1"
+    }],
+    "chips": ["斷章取義", "一目了然", "各抒己見"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "斷章取義",
+    "entryId": 515,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=515&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一目了然",
+    "entryId": 980,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=980&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "各抒己見",
+    "entryId": 11147,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11147&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-48-2",
+  "contentKey": "idiom57-48-2",
+  "variantGroup": "idiom57-48",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "文章先說「有人認為不必節水」，隨後反駁這種想法；小偉只摘第一句說作者反對節水，實在＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "文章先說「有人認為不必節水」，隨後反駁這種想法；小偉只摘第一句說作者反對節水，實在",
+      "post": "。",
+      "answer": "斷章取義",
+      "options": ["斷章取義", "一目了然", "各抒己見"],
+      "clue": "抽掉關鍵上下文，讓引文意思改變",
+      "explanation": "「斷章取義」表示抽取部分話語而忽略上下文，曲解原意。句中重點是抽掉關鍵上下文，讓引文意思改變。",
+      "whyWrong": {
+        "一目了然": "「一目了然」表示看一眼就能明白；這句要表達的是抽掉關鍵上下文，讓引文意思改變，不符合這個詞的意思。",
+        "各抒己見": "「各抒己見」表示每個人都表達自己的意見；這句要表達的是抽掉關鍵上下文，讓引文意思改變，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-48-2"
+    }],
+    "chips": ["斷章取義", "一目了然", "各抒己見"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "斷章取義",
+    "entryId": 515,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=515&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一目了然",
+    "entryId": 980,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=980&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "各抒己見",
+    "entryId": 11147,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11147&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-49-1",
+  "contentKey": "idiom57-49-1",
+  "variantGroup": "idiom57-49",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "獎狀把阿山畫的海報記在阿河名下，又把阿河的模型記給阿山，兩人的作品被＿＿＿了。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "獎狀把阿山畫的海報記在阿河名下，又把阿河的模型記給阿山，兩人的作品被",
+      "post": "了。",
+      "answer": "張冠李戴",
+      "options": ["張冠李戴", "自相矛盾", "斷章取義"],
+      "clue": "原本屬於甲的作品或功勞被誤安到乙身上",
+      "explanation": "「張冠李戴」表示把人物或事物的歸屬弄錯。句中重點是原本屬於甲的作品或功勞被誤安到乙身上。",
+      "whyWrong": {
+        "自相矛盾": "「自相矛盾」表示自己的說法或做法互相牴觸；這句要表達的是原本屬於甲的作品或功勞被誤安到乙身上，不符合這個詞的意思。",
+        "斷章取義": "「斷章取義」表示抽取部分話語而忽略上下文，曲解原意；這句要表達的是原本屬於甲的作品或功勞被誤安到乙身上，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-49-1"
+    }],
+    "chips": ["張冠李戴", "自相矛盾", "斷章取義"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "張冠李戴",
+    "entryId": 388,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=388&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "自相矛盾",
+    "entryId": 89,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=89&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "斷章取義",
+    "entryId": 515,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=515&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-49-2",
+  "contentKey": "idiom57-49-2",
+  "variantGroup": "idiom57-49",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "兩張人物介紹卡放反了，導覽員誤把甲的發明說成乙的成就，犯了＿＿＿的錯誤。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "兩張人物介紹卡放反了，導覽員誤把甲的發明說成乙的成就，犯了",
+      "post": "的錯誤。",
+      "answer": "張冠李戴",
+      "options": ["張冠李戴", "自相矛盾", "斷章取義"],
+      "clue": "原本屬於甲的作品或功勞被誤安到乙身上",
+      "explanation": "「張冠李戴」表示把人物或事物的歸屬弄錯。句中重點是原本屬於甲的作品或功勞被誤安到乙身上。",
+      "whyWrong": {
+        "自相矛盾": "「自相矛盾」表示自己的說法或做法互相牴觸；這句要表達的是原本屬於甲的作品或功勞被誤安到乙身上，不符合這個詞的意思。",
+        "斷章取義": "「斷章取義」表示抽取部分話語而忽略上下文，曲解原意；這句要表達的是原本屬於甲的作品或功勞被誤安到乙身上，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-49-2"
+    }],
+    "chips": ["張冠李戴", "自相矛盾", "斷章取義"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "張冠李戴",
+    "entryId": 388,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=388&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "自相矛盾",
+    "entryId": 89,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=89&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "斷章取義",
+    "entryId": 515,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=515&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-50-1",
+  "contentKey": "idiom57-50-1",
+  "variantGroup": "idiom57-50",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "紀錄清楚寫著隊長遲到，隊長明明看過，卻硬說準時的小青才遲到，這是在＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "紀錄清楚寫著隊長遲到，隊長明明看過，卻硬說準時的小青才遲到，這是在",
+      "post": "。",
+      "answer": "指鹿為馬",
+      "options": ["指鹿為馬", "張冠李戴", "大惑不解"],
+      "clue": "明知真相卻蓄意說反",
+      "explanation": "「指鹿為馬」表示明知事實，仍故意顛倒是非。句中重點是明知真相卻蓄意說反。",
+      "whyWrong": {
+        "張冠李戴": "「張冠李戴」表示把人物或事物的歸屬弄錯；這句要表達的是明知真相卻蓄意說反，不符合這個詞的意思。",
+        "大惑不解": "「大惑不解」表示感到困惑，不明白事情；這句要表達的是明知真相卻蓄意說反，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-50-1"
+    }],
+    "chips": ["指鹿為馬", "張冠李戴", "大惑不解"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "指鹿為馬",
+    "entryId": 11,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "張冠李戴",
+    "entryId": 388,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=388&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-50-2",
+  "contentKey": "idiom57-50-2",
+  "variantGroup": "idiom57-50",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "裁判親眼看見球落在界內，卻為偏袒另一隊堅稱出界，這種＿＿＿的行為破壞了公平。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "裁判親眼看見球落在界內，卻為偏袒另一隊堅稱出界，這種",
+      "post": "的行為破壞了公平。",
+      "answer": "指鹿為馬",
+      "options": ["指鹿為馬", "張冠李戴", "大惑不解"],
+      "clue": "明知真相卻蓄意說反",
+      "explanation": "「指鹿為馬」表示明知事實，仍故意顛倒是非。句中重點是明知真相卻蓄意說反。",
+      "whyWrong": {
+        "張冠李戴": "「張冠李戴」表示把人物或事物的歸屬弄錯；這句要表達的是明知真相卻蓄意說反，不符合這個詞的意思。",
+        "大惑不解": "「大惑不解」表示感到困惑，不明白事情；這句要表達的是明知真相卻蓄意說反，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-50-2"
+    }],
+    "chips": ["指鹿為馬", "張冠李戴", "大惑不解"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "指鹿為馬",
+    "entryId": 11,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=11&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "張冠李戴",
+    "entryId": 388,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=388&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-51-1",
+  "contentKey": "idiom57-51-1",
+  "variantGroup": "idiom57-51",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小森把沒交作業的提醒遮起來，便認定老師不會發現他缺交，這不是＿＿＿嗎？",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小森把沒交作業的提醒遮起來，便認定老師不會發現他缺交，這不是",
+      "post": "嗎？",
+      "answer": "掩耳盜鈴",
+      "options": ["掩耳盜鈴", "未雨綢繆", "亡羊補牢"],
+      "clue": "只遮住自己所見，卻以為問題或證據不存在",
+      "explanation": "「掩耳盜鈴」表示欺騙自己，以為別人也不知道事實。句中重點是只遮住自己所見，卻以為問題或證據不存在。",
+      "whyWrong": {
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是只遮住自己所見，卻以為問題或證據不存在，不符合這個詞的意思。",
+        "亡羊補牢": "「亡羊補牢」表示出了問題後及時補救，避免再受損失；這句要表達的是只遮住自己所見，卻以為問題或證據不存在，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-51-1"
+    }],
+    "chips": ["掩耳盜鈴", "未雨綢繆", "亡羊補牢"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "掩耳盜鈴",
+    "entryId": 2,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=2&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "亡羊補牢",
+    "entryId": 482,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=482&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-52-1",
+  "contentKey": "idiom57-52-1",
+  "variantGroup": "idiom57-52",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "管理員根本沒有下令，小童卻拿著借來的識別證，說「不聽我的就叫管理員處罰你」，分明是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "管理員根本沒有下令，小童卻拿著借來的識別證，說「不聽我的就叫管理員處罰你」，分明是",
+      "post": "。",
+      "answer": "狐假虎威",
+      "options": ["狐假虎威", "雪中送炭", "一舉兩得"],
+      "clue": "利用他人的地位或名號威嚇",
+      "explanation": "「狐假虎威」表示借助有權勢者的威勢來嚇唬別人。句中重點是利用他人的地位或名號威嚇。",
+      "whyWrong": {
+        "雪中送炭": "「雪中送炭」表示在別人急需幫助時給予援助；這句要表達的是利用他人的地位或名號威嚇，不符合這個詞的意思。",
+        "一舉兩得": "「一舉兩得」表示做一件事，同時得到兩種好處；這句要表達的是利用他人的地位或名號威嚇，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-52-1"
+    }],
+    "chips": ["狐假虎威", "雪中送炭", "一舉兩得"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "狐假虎威",
+    "entryId": 32,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=32&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "雪中送炭",
+    "entryId": 135,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=135&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "一舉兩得",
+    "entryId": 423,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=423&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-53-1",
+  "contentKey": "idiom57-53-1",
+  "variantGroup": "idiom57-53",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "小島沒有任何危險跡象，小奇卻堅信明天整片天空會掉下來，嚇得不敢出門，大家勸他別＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "小島沒有任何危險跡象，小奇卻堅信明天整片天空會掉下來，嚇得不敢出門，大家勸他別",
+      "post": "。",
+      "answer": "杞人憂天",
+      "options": ["杞人憂天", "未雨綢繆", "亡羊補牢"],
+      "clue": "擔心沒有合理根據的災難",
+      "explanation": "「杞人憂天」表示為缺乏根據、不太可能發生的事過度擔憂。句中重點是擔心沒有合理根據的災難。",
+      "whyWrong": {
+        "未雨綢繆": "「未雨綢繆」表示在問題發生以前先做好準備；這句要表達的是擔心沒有合理根據的災難，不符合這個詞的意思。",
+        "亡羊補牢": "「亡羊補牢」表示出了問題後及時補救，避免再受損失；這句要表達的是擔心沒有合理根據的災難，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-53-1"
+    }],
+    "chips": ["杞人憂天", "未雨綢繆", "亡羊補牢"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "杞人憂天",
+    "entryId": 37,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=37&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "亡羊補牢",
+    "entryId": 482,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=482&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-54-1",
+  "contentKey": "idiom57-54-1",
+  "variantGroup": "idiom57-54",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "颱風還沒到，居民已檢查排水溝、準備飲水，希望靠＿＿＿減少風雨帶來的影響。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "颱風還沒到，居民已檢查排水溝、準備飲水，希望靠",
+      "post": "減少風雨帶來的影響。",
+      "answer": "未雨綢繆",
+      "options": ["未雨綢繆", "臨渴掘井", "亡羊補牢"],
+      "clue": "危險尚未發生，先採取具體準備",
+      "explanation": "「未雨綢繆」表示在問題發生以前先做好準備。句中重點是危險尚未發生，先採取具體準備。",
+      "whyWrong": {
+        "臨渴掘井": "「臨渴掘井」表示事情到了眼前才急忙準備；這句要表達的是危險尚未發生，先採取具體準備，不符合這個詞的意思。",
+        "亡羊補牢": "「亡羊補牢」表示出了問題後及時補救，避免再受損失；這句要表達的是危險尚未發生，先採取具體準備，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-54-1"
+    }],
+    "chips": ["未雨綢繆", "臨渴掘井", "亡羊補牢"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "未雨綢繆",
+    "entryId": 97,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=97&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "臨渴掘井",
+    "entryId": 240,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=240&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "亡羊補牢",
+    "entryId": 482,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=482&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-55-1",
+  "contentKey": "idiom57-55-1",
+  "variantGroup": "idiom57-55",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "校園多年沒有火警，校長仍提醒大家火災風險不會因此消失，要保持＿＿＿的意識。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "校園多年沒有火警，校長仍提醒大家火災風險不會因此消失，要保持",
+      "post": "的意識。",
+      "answer": "居安思危",
+      "options": ["居安思危", "杞人憂天", "守株待兔"],
+      "clue": "安穩時仍對有根據的風險保持警覺",
+      "explanation": "「居安思危」表示處在安穩環境時仍想到可能的危險。句中重點是安穩時仍對有根據的風險保持警覺。",
+      "whyWrong": {
+        "杞人憂天": "「杞人憂天」表示為缺乏根據、不太可能發生的事過度擔憂；這句要表達的是安穩時仍對有根據的風險保持警覺，不符合這個詞的意思。",
+        "守株待兔": "「守株待兔」表示抱著偶然得來的好處，空等再有收穫；這句要表達的是安穩時仍對有根據的風險保持警覺，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-55-1"
+    }],
+    "chips": ["居安思危", "杞人憂天", "守株待兔"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "居安思危",
+    "entryId": 165,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=165&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "杞人憂天",
+    "entryId": 37,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=37&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "守株待兔",
+    "entryId": 39,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=39&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-56-1",
+  "contentKey": "idiom57-56-1",
+  "variantGroup": "idiom57-56",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "船身剛出現一條細小裂縫，還沒有漏水，師傅便立刻補強，以求＿＿＿，避免日後破裂。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "船身剛出現一條細小裂縫，還沒有漏水，師傅便立刻補強，以求",
+      "post": "，避免日後破裂。",
+      "answer": "防微杜漸",
+      "options": ["防微杜漸", "亡羊補牢", "揠苗助長"],
+      "clue": "壞現象剛萌芽，就先防止擴大",
+      "explanation": "「防微杜漸」表示在小問題剛出現時就阻止它擴大。句中重點是壞現象剛萌芽，就先防止擴大。",
+      "whyWrong": {
+        "亡羊補牢": "「亡羊補牢」表示出了問題後及時補救，避免再受損失；這句要表達的是壞現象剛萌芽，就先防止擴大，不符合這個詞的意思。",
+        "揠苗助長": "「揠苗助長」表示急著求成，反而損害事物的發展；這句要表達的是壞現象剛萌芽，就先防止擴大，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-56-1"
+    }],
+    "chips": ["防微杜漸", "亡羊補牢", "揠苗助長"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "防微杜漸",
+    "entryId": 313,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=313&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "亡羊補牢",
+    "entryId": 482,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=482&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "揠苗助長",
+    "entryId": 56,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=56&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-57-1",
+  "contentKey": "idiom57-57-1",
+  "variantGroup": "idiom57-57",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "研究員從葉背幾個細小蟲卵，推知果園可能即將出現大量害蟲，這種由小跡象判讀大情況的能力可說是＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "研究員從葉背幾個細小蟲卵，推知果園可能即將出現大量害蟲，這種由小跡象判讀大情況的能力可說是",
+      "post": "。",
+      "answer": "見微知著",
+      "options": ["見微知著", "道聽塗說", "大惑不解"],
+      "clue": "由微小線索推論較大現象",
+      "explanation": "「見微知著」表示從細小的跡象推知較大的情況。句中重點是由微小線索推論較大現象。",
+      "whyWrong": {
+        "道聽塗說": "「道聽塗說」表示傳播在路上聽來而未經查證的消息；這句要表達的是由微小線索推論較大現象，不符合這個詞的意思。",
+        "大惑不解": "「大惑不解」表示感到困惑，不明白事情；這句要表達的是由微小線索推論較大現象，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-57-1"
+    }],
+    "chips": ["見微知著", "道聽塗說", "大惑不解"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "見微知著",
+    "entryId": 9308,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=9308&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "道聽塗說",
+    "entryId": 1146,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=1146&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "大惑不解",
+    "entryId": 574,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=574&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-58-1",
+  "contentKey": "idiom57-58-1",
+  "variantGroup": "idiom57-58",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "模型橋連續三次倒塌，小組每次都找出弱點重做，終於成功，靠的正是＿＿＿的毅力。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "模型橋連續三次倒塌，小組每次都找出弱點重做，終於成功，靠的正是",
+      "post": "的毅力。",
+      "answer": "鍥而不舍",
+      "options": ["鍥而不舍", "半途而廢", "三心二意"],
+      "clue": "一次次受挫後仍繼續嘗試",
+      "explanation": "「鍥而不舍」表示遇到困難仍持續努力，不輕易放棄。句中重點是一次次受挫後仍繼續嘗試。",
+      "whyWrong": {
+        "半途而廢": "「半途而廢」表示事情做到一半便停止；這句要表達的是一次次受挫後仍繼續嘗試，不符合這個詞的意思。",
+        "三心二意": "「三心二意」表示心意不定，不能專注；這句要表達的是一次次受挫後仍繼續嘗試，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-58-1"
+    }],
+    "chips": ["鍥而不舍", "半途而廢", "三心二意"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "鍥而不舍",
+    "entryId": 5406,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=5406&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "半途而廢",
+    "entryId": 152,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=152&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "三心二意",
+    "entryId": 6662,
+    "section": "修訂本參考資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=6662&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-59-1",
+  "contentKey": "idiom57-59-1",
+  "variantGroup": "idiom57-59",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "這篇報告已獲好評，小蘭仍查證每個數字、修清模糊句子，努力＿＿＿。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "這篇報告已獲好評，小蘭仍查證每個數字、修清模糊句子，努力",
+      "post": "。",
+      "answer": "精益求精",
+      "options": ["精益求精", "畫蛇添足", "半途而廢"],
+      "clue": "在已有好成果之上持續改進",
+      "explanation": "「精益求精」表示已經做得很好，仍追求更好。句中重點是在已有好成果之上持續改進。",
+      "whyWrong": {
+        "畫蛇添足": "「畫蛇添足」表示多做不必要的事，反而壞了原意；這句要表達的是在已有好成果之上持續改進，不符合這個詞的意思。",
+        "半途而廢": "「半途而廢」表示事情做到一半便停止；這句要表達的是在已有好成果之上持續改進，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-59-1"
+    }],
+    "chips": ["精益求精", "畫蛇添足", "半途而廢"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "精益求精",
+    "entryId": 901,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=901&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "畫蛇添足",
+    "entryId": 23,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=23&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "半途而廢",
+    "entryId": 152,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=152&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}, {
+  "id": "idiom57-60-1",
+  "contentKey": "idiom57-60-1",
+  "variantGroup": "idiom57-60",
+  "kpId": "c_idiom",
+  "subject": "chinese",
+  "grade": 5,
+  "audienceGrades": [5, 6],
+  "difficulty": "hard",
+  "curriculumCode": "Ab-III-6",
+  "kind": "idiom",
+  "title": "大家已把路線、安全設備和導覽訓練準備妥當，試走也順利，步道正式開放便＿＿＿了。",
+  "params": {
+    "perItemOptions": true,
+    "items": [{
+      "pre": "大家已把路線、安全設備和導覽訓練準備妥當，試走也順利，步道正式開放便",
+      "post": "了。",
+      "answer": "水到渠成",
+      "options": ["水到渠成", "揠苗助長", "臨渴掘井"],
+      "clue": "必要條件都已具備，成果順勢出現",
+      "explanation": "「水到渠成」表示條件成熟後，自然得到成果。句中重點是必要條件都已具備，成果順勢出現。",
+      "whyWrong": {
+        "揠苗助長": "「揠苗助長」表示急著求成，反而損害事物的發展；這句要表達的是必要條件都已具備，成果順勢出現，不符合這個詞的意思。",
+        "臨渴掘井": "「臨渴掘井」表示事情到了眼前才急忙準備；這句要表達的是必要條件都已具備，成果順勢出現，不符合這個詞的意思。"
+      },
+      "contentKey": "idiom57-60-1"
+    }],
+    "chips": ["水到渠成", "揠苗助長", "臨渴掘井"]
+  },
+  "contentVersion": "idioms-v57-1",
+  "reviewed": true,
+  "humanReviewed": false,
+  "sourceRefs": [{
+    "term": "水到渠成",
+    "entryId": 151,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=151&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "揠苗助長",
+    "entryId": 56,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=56&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }, {
+    "term": "臨渴掘井",
+    "entryId": 240,
+    "section": "成語典下載資料",
+    "url": "https://dict.idioms.moe.edu.tw/idiomView.jsp?ID=240&la=0&webMd=2",
+    "checked": "2026-11-12"
+  }],
+  "authorReview": "原創語境；逐句核對唯一答案、關鍵線索、兩個近義或對比干擾詞；難度為專案建議，不是官方年級表。"
+}];
 const CHINESE_V56_BANK = [{
   "id": "cn56_p2_01",
   "kpId": "j_punctuation",
@@ -41093,6 +45782,9 @@ function validChineseParams(kind, p) {
   })) return false;
   return !p.meaning || typeof p.meaning.q === 'string' && texts(p.meaning.options) && unique(p.meaning.options) && p.meaning.options.includes(p.meaning.answer);
 }
+function validIdiomChoices(p) {
+  return !!p && p.perItemOptions === true && Array.isArray(p.items) && p.items.length > 0 && p.items.length <= 3 && Array.isArray(p.chips) && new Set(p.chips).size === p.chips.length && p.items.every(it => it && typeof it.pre === 'string' && typeof it.post === 'string' && typeof it.contentKey === 'string' && typeof it.clue === 'string' && typeof it.explanation === 'string' && Array.isArray(it.options) && it.options.length === 3 && new Set(it.options).size === 3 && it.options.every(x => typeof x === 'string' && p.chips.includes(x)) && it.options.includes(it.answer) && it.options.filter(x => x !== it.answer).every(x => typeof it.whyWrong?.[x] === 'string' && it.whyWrong[x].length > 0)) && new Set(p.items.map(it => it.contentKey)).size === p.items.length;
+}
 const ZY_CJK = /[㐀-䶿一-鿿]/;
 const ZY_MAX_WORD = 4;
 let JUNIOR_MODE = false;
@@ -44368,6 +49060,7 @@ function validateBackupState(input) {
     for (const k of ['story', 'title', 'question', 'problem']) opt(r, k, str, p + '.params');
     opt(r, 'hints', strs, p + '.params');
     if (['punctuation', 'typos', 'polyphone'].includes(t.kind) && !validChineseParams(t.kind, r)) bad(p + '.params.chinese');
+    if (t.kind === 'idiom' && r.perItemOptions !== undefined && !validIdiomChoices(r)) bad(p + '.params.idiom');
     if (t.kind === 'lock' && typeof validateLockParams === 'function' && !validateLockParams(r, true)) bad(p + '.params.lock');
     if (t.kind === 'pickone') r.items.forEach((x, i) => {
       obj(x, p);
@@ -44475,7 +49168,7 @@ function validateBackupState(input) {
   });
   opt(s, 'learning', (v, p) => {
     obj(v, p);
-    for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli', 'g2Seen', 'g2Families', 'ch4Seen', 'g5Seen', 'g5Families', 'chineseSeen']) opt(v, k, strs, p);
+    for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli', 'g2Seen', 'g2Families', 'ch4Seen', 'g5Seen', 'g5Families', 'chineseSeen', 'idiomSeen']) opt(v, k, strs, p);
     opt(v, 'seen', records, p);
     opt(v, 'archivedCases', records, p);
     for (const k of ['storyTasks', 'reviewTasks']) opt(v, k, (x, q) => map(x, q, stage), p);
@@ -49548,6 +54241,76 @@ Object.assign(ALL_MECHS, {
   g5fold: G5Fold,
   g5line: G5Line
 });
+function IdiomChoices({
+  params: p,
+  hintsAllowed = true,
+  maxAttempts,
+  onDone
+}) {
+  const m = useMechanic({
+      hintsAllowed,
+      maxAttempts,
+      onDone
+    }),
+    [fill, setFill] = useState(p.items.map(() => null)),
+    submitted = useRef(false);
+  const choose = (i, value) => {
+    if (m.done) return;
+    submitted.current = false;
+    setFill(a => a.map((x, j) => i === j ? value : x));
+    m.setFeedback(null);
+  };
+  const check = () => {
+    if (m.done || submitted.current || fill.some(x => !x)) return;
+    submitted.current = true;
+    const detail = {
+      fill,
+      firstTryCorrect: m.attempts === 0 && m.hintLevel < 3,
+      firstAttemptCorrect: m.attempts === 0 && m.hintLevel < 3,
+      fullReveal: m.hintLevel >= 3,
+      revealKnown: true
+    };
+    const wrong = p.items.flatMap((it, i) => fill[i] === it.answer ? [] : [`第 ${i + 1} 句：${it.whyWrong[fill[i]]}`]);
+    if (wrong.length) m.fail(wrong.join('　'), detail);else m.pass('全部用對了！' + p.items.map((it, i) => `${i + 1}：${it.explanation}`).join('　'), detail);
+  };
+  const hints = ['先讀完整句，找出人物的做法、事情發生的先後，以及最後的結果。', p.items.map((it, i) => `第 ${i + 1} 句：留意「${it.clue}」。`).join('　'), '完整解答：' + p.items.map((it, i) => `${i + 1}：${it.explanation} ${Object.values(it.whyWrong).join(' ')}`).join('　') + ' 看完後仍要自己選答並確認。'];
+  return React.createElement("section", {
+    className: "col idiom-choices"
+  }, React.createElement("h3", null, "\u8B80\u61C2\u60C5\u5883\uFF0C\u9078\u51FA\u5408\u9069\u7684\u6210\u8A9E"), p.story && React.createElement("p", {
+    className: "story"
+  }, p.story), React.createElement("p", null, "\u6BCF\u53E5\u9078\u4E00\u500B\u6210\u8A9E\uFF1B\u53EF\u4EE5\u6539\u9078\uFF0C\u5168\u90E8\u9078\u597D\u5F8C\u518D\u78BA\u8A8D\u3002"), p.items.map((it, i) => React.createElement("fieldset", {
+    className: "idiom-card",
+    key: it.contentKey
+  }, React.createElement("legend", null, "\u7B2C ", i + 1, " \u53E5", it.review ? '・複習' : ''), React.createElement("p", {
+    className: "passage"
+  }, it.pre, React.createElement("strong", {
+    className: "idiom-blank"
+  }, fill[i] || '＿＿＿'), it.post), React.createElement("div", {
+    className: "idiom-options",
+    role: "group",
+    "aria-label": `第 ${i + 1} 句選項`
+  }, it.options.map((v, j) => React.createElement("button", {
+    type: "button",
+    id: `idiom-option-${i}-${j}`,
+    key: v,
+    className: 'btn' + (fill[i] === v ? ' primary' : ''),
+    "aria-pressed": fill[i] === v,
+    disabled: m.done,
+    onClick: () => choose(i, v)
+  }, v))))), React.createElement("div", null, React.createElement(Btn, {
+    id: "idiom-check",
+    kind: "primary",
+    big: true,
+    disabled: m.done || submitted.current || fill.some(x => !x),
+    onClick: check
+  }, "\u78BA\u8A8D\u586B\u7A7A")), React.createElement(MechHUD, {
+    m: m,
+    hintsAllowed: hintsAllowed,
+    hintTexts: hints,
+    fullRevealAt: 3
+  }));
+}
+ALL_MECHS.idiom = props => props.params.perItemOptions ? React.createElement(IdiomChoices, props) : React.createElement(IdiomFill, props);
 const CHAPTERS = {
   math_ch1: {
     id: 'math_ch1',
@@ -60993,6 +65756,7 @@ function generateMission(errorItem, kpId, seed, withDiagnostic, difficulty = 'no
   if (context && typeof g2ApplyStages === "function") stages = g2ApplyStages(stages, context, kpId, seed, difficulty);
   if (context && typeof g5ApplyStages === 'function') stages = g5ApplyStages(stages, context, kpId, seed, difficulty);
   if (typeof chineseApplyStages === 'function') stages = chineseApplyStages(stages, context, kpId, seed, difficulty);
+  if (typeof idiomApplyStages === 'function') stages = idiomApplyStages(stages, context, kpId, seed, difficulty);
   if (difficulty === 'hard') {
     stages[1].allowHints = false;
     if (stages[2].kind === 'problems') stages[2].params = {
@@ -61013,6 +65777,10 @@ function generateMission(errorItem, kpId, seed, withDiagnostic, difficulty = 'no
     id: `diag_${i}`
   })) : [];
   if (context && typeof CHINESE_NEW_KPS !== 'undefined' && CHINESE_NEW_KPS.some(k => k.id === kpId)) diag.splice(0, diag.length, ...chineseApplyStages(diag, context, kpId, seed + 99, difficulty).map(t => ({
+    ...t,
+    probe: 'language'
+  })));
+  if (kpId === 'c_idiom' && typeof idiomApplyStages === 'function') diag.splice(0, diag.length, ...idiomApplyStages(diag, context, kpId, seed + 99, difficulty, stages.flatMap(t => t.sentenceKeys || [])).map(t => ({
     ...t,
     probe: 'language'
   })));
@@ -65917,12 +70685,14 @@ function learningKey(kp, kind, value) {
   return `${kp}:${kind}:${(a >>> 0).toString(36)}:${(b >>> 0).toString(36)}:${s.length}`;
 }
 function learningKeys(kp, stage) {
+  if (stage.bankId === 'idioms-v57') return stage.params.items.map(it => it.contentKey);
   if (stage.contentKey) return [stage.contentKey];
   if (stage.bankBlocked) return [];
   const p = stage.params;
   return stage.kind === 'pickone' ? p.items.map(q => learningKey(kp, stage.kind, q)) : [learningKey(kp, stage.kind, p)];
 }
 function chooseLearningStages(gen, kp, seed, state) {
+  if (kp === 'c_idiom' && typeof idiomApplyStages === 'function') return gen(makeRng(seed));
   const variants = Array.from({
     length: 18
   }, (_, i) => gen(makeRng(seed + i * 104729)));
@@ -66140,6 +70910,21 @@ function beginMissionStage(state, missionId, stageId) {
       stages: m.stages.map((s, i) => i === idx ? current : s)
     });
   }
+  if (idx < 0 && current.bankId === 'idioms-v57' && !current.presented) {
+    const fresh = generateMission(null, m.kpId, m.seed, true, m.difficulty || getSettings(state).difficulty, state).diag.find(t => t.id === stageId);
+    current = {
+      ...fresh,
+      id: current.id,
+      status: current.status,
+      attempts: current.attempts,
+      hints: current.hints,
+      presented: true
+    };
+    state = upsertMission(state, {
+      ...m,
+      diag: m.diag.map(t => t.id === stageId ? current : t)
+    });
+  }
   const token = `mission:${m.id}:${stageId}:${learningKeys(m.kpId, current).join('|')}`;
   return rememberLearningStage(state, m.kpId, current, 'mission', token);
 }
@@ -66330,7 +71115,7 @@ function beginStoryTask(state, id) {
   const kp = pool[count % pool.length],
     diff = getSettings(state).difficulty,
     seed = Math.floor(Math.random() * 1e9);
-  const variant = (typeof ch5SelectStage === 'function' ? ch5SelectStage(state, id, kp, seed, diff) : null) || (typeof ch4SelectStage === 'function' ? ch4SelectStage(state, id, kp, seed, diff) : null);
+  const variant = (typeof idiomStoryStage === 'function' ? idiomStoryStage(state, kp, seed, diff) : null) || (typeof ch5SelectStage === 'function' ? ch5SelectStage(state, id, kp, seed, diff) : null) || (typeof ch4SelectStage === 'function' ? ch4SelectStage(state, id, kp, seed, diff) : null);
   const native = !variant && kp === room.kp && !storyAlternative(state, id) && !old?.done && !state.student.chapters?.[MECH_ROOMS[id].chapter]?.rooms?.[room.id]?.done;
   const generated = native || variant ? null : generateMission(null, kp, seed, false, diff, state);
   const idx = diff === 'easy' ? 0 : 1;
@@ -66563,6 +71348,13 @@ function g2ApplyStages(stages, state, kp, seed, difficulty) {
 }
 function reviewedBankRemember(learning, stage) {
   const push = (key, value, max) => [...(learning[key] || []).filter(x => x !== value), value].slice(-max);
+  if (stage.bankId === 'idioms-v57') {
+    const keys = stage.params.items.map(it => it.contentKey);
+    return {
+      ...learning,
+      idiomSeen: [...(learning.idiomSeen || []).filter(x => !keys.includes(x)), ...keys].slice(-1000)
+    };
+  }
   if (stage.bankId === 'chinese-v56') return {
     ...learning,
     chineseSeen: push('chineseSeen', stage.contentKey, 1000)
@@ -67096,6 +71888,69 @@ for (const kp of CHINESE_NEW_KPS) {
   };
 }
 if (typeof CASE_TEMPLATES !== 'undefined') for (const c of CASE_TEMPLATES) for (const s of c.steps) if (s.subject === 'chinese') s.pool.push(...CHINESE_NEW_KPS.map(k => k.id));
+function idiomSeen(state) {
+  return [...(state?.learning?.idiomSeen || []), ...(state?.practiceLog || []).filter(x => x.bankId === 'idioms-v57').flatMap(x => x.questionKeys || [])];
+}
+function idiomApplyStages(stages, state, kp, seed, difficulty = 'normal', exclude = []) {
+  if (kp !== 'c_idiom') return stages;
+  if (state && (![5, 6].includes(studentGrade(state.student)) || !learningAllows(state, kp))) return stages.map(t => ({
+    ...t,
+    kind: 'bankempty',
+    params: {
+      message: '成語練習目前不在練習範圍內。'
+    },
+    bankBlocked: true
+  }));
+  const pool = IDIOMS_V57_BANK.filter(q => q.difficulty === difficulty),
+    rng = makeRng(seed),
+    seen = idiomSeen(state),
+    used = new Set(exclude);
+  for (const mission of state?.missions || []) if (mission.kpId === kp && mission.seed === seed && mission.status !== 'passed') for (const t of [...(mission.diag || []), ...mission.stages]) if (t.presented && t.bankId === 'idioms-v57') for (const it of t.params.items) used.add(it.contentKey);
+  return stages.map(t => {
+    const items = [];
+    for (let i = 0; i < 3; i++) {
+      const eligible = pool.filter(q => !used.has(q.contentKey)),
+        fresh = eligible.filter(q => !seen.includes(q.contentKey));
+      const choices = fresh.length ? fresh : [...eligible].sort((a, b) => seen.lastIndexOf(a.contentKey) - seen.lastIndexOf(b.contentKey)).slice(0, 1),
+        q = pick(rng, choices);
+      if (!q) throw new Error('IDIOM_POOL_EXHAUSTED');
+      items.push({
+        ...JSON.parse(JSON.stringify(q.params.items[0])),
+        options: shuffle(rng, q.params.items[0].options),
+        review: !fresh.length
+      });
+      used.add(q.contentKey);
+    }
+    const sentenceKeys = items.map(it => it.contentKey),
+      params = {
+        perItemOptions: true,
+        items,
+        chips: [...new Set(items.flatMap(it => it.options))]
+      };
+    return {
+      ...t,
+      kind: 'idiom',
+      params,
+      bankId: 'idioms-v57',
+      bankBlocked: false,
+      sentenceKeys,
+      questionId: sentenceKeys.join('+'),
+      contentKey: null,
+      variantGroup: null,
+      contentGrade: 5,
+      semester: KP_BY_ID.c_idiom.semester,
+      contentVersion: 'idioms-v57-1',
+      repeatPractice: items.some(it => it.review)
+    };
+  });
+}
+CN_GEN.c_idiom = rng => idiomApplyStages([0, 1, 2].map(i => stage(i, 'idiom', {})), null, 'c_idiom', Math.floor(rng() * 1e9));
+function idiomStoryStage(state, kp, seed, difficulty) {
+  return kp === 'c_idiom' ? idiomApplyStages([{
+    key: 'story',
+    allowHints: difficulty !== 'hard'
+  }], state, kp, seed, difficulty)[0] : null;
+}
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
     normal: `assets/chars/${id}/tachie_normal.webp`
@@ -82623,7 +87478,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.12-v56',
+    build: '2026.11.12-v57',
     ...context,
     message
   };
@@ -88054,7 +92909,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.12-v56\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.12-v57\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -88803,7 +93658,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.12-v56",
+    "data-build": "2026.11.12-v57",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
