@@ -768,6 +768,10 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .error-recipient{padding:20px;border:2px solid #547d85;border-radius:12px;background:#eff8f7;gap:12px}.error-recipient>strong{font-size:24px;line-height:1.6;color:#183e50}.error-recipient .field{min-width:0}.error-recipient select{max-width:100%;width:100%;min-width:0}.error-recipient p{margin:6px 0;line-height:1.7}.error-recipient .kp-opt{align-items:center;line-height:1.9}.error-recipient .notice{line-height:1.8}.map-label-copy{height:100%;display:flex;align-items:center;justify-content:center;color:#fff5df;font:700 16px var(--font-body);white-space:nowrap;line-height:1.1}.map-label-copy ruby.zy{flex:none}.map-directory .map-directory-name{font-size:14px;line-height:1.6}.map-directory .map-number{flex:none;margin-right:8px}.map-directory button{gap:2px}.map-directory .map-directory-copy{min-width:0}
 @media(max-width:767px){.error-recipient{padding:14px}.error-recipient>strong{font-size:21px}.map-directory .map-directory-name{font-size:15px}.map-directory button{align-items:center}}
 
+#curriculum-map{gap:18px;min-width:0}#curriculum-map h2,#curriculum-map h3{margin:0 0 8px}#curriculum-map p{margin:7px 0;overflow-wrap:anywhere}.map-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.map-summary-tile{display:flex;flex-direction:column;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:left;min-width:0;background:#f7faf9;color:#243e50}.map-summary-tile strong{font-size:28px}.map-summary-tile.selected{outline:3px solid #32758b;outline-offset:1px}.status-mastered{--status:#287147}.status-exploring{--status:#916e20}.status-review{--status:#ad5f16}.status-untried{--status:#5b6e7c}.status-unavailable{--status:#687179}.concept-status-symbol,.map-summary-tile>span:first-child{color:var(--status);font-weight:700;font-size:22px}.concept-status{display:inline-flex;align-items:center;gap:7px;font-size:14px;line-height:1.6}.concept-status-symbol{flex:none}.map-summary-tile.status-unavailable{background:repeating-linear-gradient(135deg,#f2f3f2,#f2f3f2 8px,#e8eceb 8px,#e8eceb 9px)}.map-next{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.map-next section{padding:16px;border:1px solid var(--line);border-radius:12px;background:#f6f8f6}.map-next section>div+div{border-top:1px solid var(--line);padding-top:9px;margin-top:9px}.map-controls{flex-wrap:wrap;gap:8px}.map-controls button{min-height:44px;white-space:normal}.concept-map-row{border-top:1px solid var(--line)}.concept-map-row:last-child{border-bottom:1px solid var(--line)}.concept-map-row>summary{display:grid;grid-template-columns:142px minmax(180px,1fr) minmax(180px,1.4fr) 20px;gap:12px;align-items:center;padding:17px 4px;cursor:pointer;list-style:none}.concept-map-row>summary::-webkit-details-marker{display:none}.concept-map-row>summary:focus-visible{outline:3px solid #32758b;outline-offset:-3px}.concept-map-title{display:flex;flex-direction:column;gap:7px;min-width:0}.concept-map-title small{font-size:12px;color:#5a6e80;overflow-wrap:anywhere}.concept-map-recent{font-size:13px;line-height:1.7;color:#506070;overflow-wrap:anywhere}.concept-map-detail{background:#f5f8f7;padding:18px;border-radius:8px;display:grid;gap:14px;line-height:1.8}.concept-map-detail li{overflow-wrap:anywhere}.concept-prerequisites{display:flex;flex-wrap:wrap;gap:10px}.concept-prerequisite{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:8px;padding:9px}.map-coverage{padding:14px;border-left:4px solid #7a868e;background:#eff2f3}.map-gray-toggle{padding:15px;min-height:48px;width:100%;border:1px dashed #7c898b;background:#eef1f0;color:#344c59;text-align:left;border-radius:8px;margin:8px 0;white-space:normal}.map-legend{display:flex;flex-wrap:wrap;gap:15px;border-top:1px solid var(--line);padding-top:12px}.map-print-only{display:none}
+@media(max-width:650px){.map-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.map-next{grid-template-columns:1fr}.concept-map-row>summary{grid-template-columns:1fr 22px;gap:8px}.concept-map-row>summary>.concept-status,.concept-map-title,.concept-map-recent{grid-column:1}.concept-map-row>summary>span:last-child{grid-column:2;grid-row:1/4}.concept-map-detail{padding:12px}.concept-map-detail ul{padding-left:20px}.map-summary-tile{padding:12px}.map-summary-tile strong{font-size:26px}}
+@media print{body:has(#curriculum-map){background:white!important}.app:has(#curriculum-map){max-width:none;margin:0;padding:0}.app:has(#curriculum-map)>.topbar,.parent-app:has(#curriculum-map)>:not(#curriculum-map),#curriculum-map .map-screen{display:none!important}.parent-app:has(#curriculum-map){padding:0;display:block}.map-print-only{display:block}#curriculum-map{padding:0;border:0;display:block}.concept-map-row{break-inside:avoid}.concept-map-row>summary{grid-template-columns:120px 1fr;gap:8px}.concept-map-row>summary>.concept-map-recent{grid-column:1/3}.concept-map-row>summary>span:last-child{display:none}.concept-map-detail{font-size:11px;padding:10px;gap:5px}#curriculum-map .concept-status{font-size:12px}}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -775,7 +779,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261112-memorial-badges">
+<meta name="game-release" content="playtest-20261112-parent-map">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -791,7 +795,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "認識 20 以內的質數，將整數做質因數分解。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["g5_n53"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_gcd",
   "name": "最大公因數與最小公倍數",
@@ -802,7 +808,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "以短除法或質因數分解求兩數的最大公因數、最小公倍數並應用。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_prime"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_fracdiv",
   "name": "分數的除法",
@@ -813,7 +821,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "理解分數除法的意義（包含除、等分除）並計算。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_frac_ops", "g5_n57"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_decdiv",
   "name": "小數的除法",
@@ -824,7 +834,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "整數除以小數、小數除以小數的意義與計算；餘數問題不納入評量。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_dec_ops", "g5_n59"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_mixed",
   "name": "整數、分數、小數的四則應用",
@@ -838,7 +850,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "在生活情境中解決混合整數、分數、小數的四則運算問題。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_fracdiv", "m_decdiv", "g5_r52"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_ratio",
   "name": "比與比值",
@@ -849,7 +863,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "認識比的意義、比值，相等的比與最簡整數比，並應用於分配問題。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_mult_div_int", "g5_n510"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_speed",
   "name": "速度",
@@ -860,7 +876,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "速度、距離與時間的關係；單位換算由大單位到小單位，並理解分段行程的平均速度。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_ratio", "m_time_units"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_base",
   "name": "基準量與比較量",
@@ -871,7 +889,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "分辨基準量（1 倍的量）與比較量，用倍數關係解題。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["g5_n510"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_relation",
   "name": "數量關係與列式解題",
@@ -885,7 +905,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "由問題中的數量關係列出恰當算式（和差、倍數、未知數）解題。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["g5_r53"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_pattern",
   "name": "數量模式與關係表示",
@@ -899,7 +921,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "觀察數列或圖形的規律，用數量關係推算。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_add2"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_scale",
   "name": "放大縮小與比例尺",
@@ -913,7 +937,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "圖形的放大與縮小；地圖比例尺的意義與實際距離換算。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_ratio"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_circle",
   "name": "圓周率、圓周長、圓面積與扇形",
@@ -924,7 +950,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "以圓周率約 3.14 計算圓周長、圓面積；已知圓心角或占全圓的分數，直接求扇形弧長與面積。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_area", "g5_s53"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_prism",
   "name": "柱體體積與表面積",
@@ -935,7 +963,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "角柱與圓柱的體積（底面積×高）與表面積。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["g5_s55", "g5_s57"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_chart",
   "name": "圓形圖與資料整理",
@@ -946,7 +976,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "讀懂與製作圓形圖，由百分率推算數量；整理資料成統計圖表。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["g5_d51", "g5_n510"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_chance",
   "name": "可能性",
@@ -957,7 +989,9 @@ const ERROR_CONCEPTS = [{
     "value": 6
   }],
   "scope": "由統計資料的數量多寡，比較差異明顯的事件何者較可能；不做古典機率計算。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_bar_line"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_frac_ops",
   "name": "分數的加減與乘法",
@@ -971,7 +1005,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "異分母分數加減、分數乘法（五年級）。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_frac_basic", "g5_n53"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_dec_ops",
   "name": "小數的乘法",
@@ -982,7 +1018,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "理解整數乘以小數、小數乘以小數的意義與計算（五年級）。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_dec_addsub", "g5_n51"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_area",
   "name": "平面圖形面積",
@@ -993,7 +1031,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "三角形、平行四邊形、梯形面積（五年級）。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_rect_area"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_word",
   "name": "字詞與語意理解",
@@ -1010,7 +1050,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "常用字詞的字義、多義字與語詞在句中的意思。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_idiom",
   "name": "成語與詞語運用",
@@ -1021,7 +1063,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "成語與常用語詞的正確理解與在情境中的運用。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_sentence",
   "name": "句型與修辭",
@@ -1038,7 +1082,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "基礎句型、複句關係、語氣，以及譬喻、擬人、誇飾、排比等修辭。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_structure",
   "name": "段落結構與文章組織",
@@ -1049,7 +1095,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "意義段與篇章結構、段落順序、文章的組織方式。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["c_sentence"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_main",
   "name": "文章主旨與摘要",
@@ -1060,7 +1108,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "擷取大意、歸納主旨。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["c_structure"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_extract",
   "name": "文本訊息擷取",
@@ -1071,7 +1121,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "從文章中找出明確的訊息與細節。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_infer",
   "name": "推論與比較",
@@ -1082,7 +1134,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "運用自我提問、推論等策略，推測文本隱含的因果訊息或觀點；比較不同說法。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["c_extract"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_author",
   "name": "作者觀點與寫作目的",
@@ -1093,7 +1147,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "辨識作者的立場、態度與寫作目的，提出自己的看法。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["c_infer"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_express",
   "name": "語文表達與邏輯思考",
@@ -1104,7 +1160,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "清楚表達想法，句子之間有邏輯連貫。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "c_writing",
   "name": "寫作與文章組織",
@@ -1115,7 +1173,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "掌握寫作步驟，段落分明、符合主題；修改文章。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["c_structure", "c_express"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_heat",
   "name": "熱的傳播與保溫",
@@ -1132,7 +1192,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "熱會以傳導、對流、輻射三種方式傳播；物體受熱膨脹、遇冷收縮；保溫是減少熱的傳播。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_weather",
   "name": "天氣變化與天氣圖",
@@ -1149,7 +1211,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "水循環、雲霧雨露的形成，天氣圖上的高低氣壓與鋒面，颱風路徑與防災準備。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_earth",
   "name": "大地的變動與岩石",
@@ -1166,7 +1230,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "風化、侵蝕、搬運、堆積改變地表；岩石與礦物的特徵；土壤的形成；地震防災。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_magnet",
   "name": "電流與電磁鐵",
@@ -1183,7 +1249,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "指北針與地磁；電流通過導線會產生磁場；電磁鐵的強弱與線圈匝數、電池數量有關，磁極隨電流方向改變。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["s_circuit", "j_magnet"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_circuit",
   "name": "通路與斷路（先備）",
@@ -1197,7 +1265,9 @@ const ERROR_CONCEPTS = [{
     "value": "II"
   }],
   "scope": "電池、燈泡、開關、導線接成通路燈才會亮；串聯與並聯的差異。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_lever",
   "name": "槓桿與簡單機械",
@@ -1214,7 +1284,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "槓桿的支點、施力點、抗力點；施力臂越長越省力；兩邊「重量×到支點的距離」相等時平衡；輪軸、滑輪與齒輪的功能。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_length"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_sound",
   "name": "聲音的產生與特性",
@@ -1228,7 +1300,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "物體振動發出聲音；音量和振動大小有關、音調和振動快慢有關；噪音的影響與防治。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "s_eco",
   "name": "生態與永續",
@@ -1245,7 +1319,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "生物與環境互相影響；生態系中的生產者、消費者、分解者；外來種的威脅；可再生與不可再生資源；永續行動。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_postwar",
   "name": "戰後經濟發展與轉型",
@@ -1262,7 +1338,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "戰後土地改革與美援、重大建設、產業從農業到工業再到科技業的轉型，以及生活的變遷。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_consume",
   "name": "消費選擇與理財",
@@ -1279,7 +1357,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "分辨需要與想要，理性消費、消費者權益與儲蓄規劃。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_rules",
   "name": "生活中的規範與法治",
@@ -1296,7 +1376,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "習俗、道德、法律三種規範的差異，社會秩序、基本權利與義務、憲法與法治。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_tech",
   "name": "科技發展與新規範",
@@ -1313,7 +1395,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "資訊科技與個人資料保護、能源與生物科技的影響、科技倫理與相關規範。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_debate",
   "name": "多元觀點與理性討論",
@@ -1330,7 +1414,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "分辨證據與意見、聆聽與回應不同觀點、用理由支持主張、共同決定。立場不分對錯，評量的是理由與證據。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_economy",
   "name": "經濟活動與永續發展",
@@ -1347,7 +1433,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "全球經濟與貿易、產業轉變、資源的價值與永續發展。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_society",
   "name": "人權與國際參與",
@@ -1364,7 +1452,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "人權保障、國際組織與世界公民、社會永續。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_environment",
   "name": "環境問題與公民行動",
@@ -1381,7 +1471,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "全球環境問題、國際合作與公民行動。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "o_action",
   "name": "公共參與與行動規劃",
@@ -1398,7 +1490,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "發現公共問題、調查、規劃行動、合作討論與成果省思（探究實作）。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_addstep",
   "name": "加減兩步驟",
@@ -1412,7 +1506,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "先算、再算；100以內連加、連減、加減與比較。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_add2"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_area",
   "name": "面的大小：覆蓋與數方格",
@@ -1426,7 +1522,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "用相同大小方片比較面，不教面積公式。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_shape"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_num200",
   "name": "200 以內的數",
@@ -1440,7 +1538,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "百、十、個位；數數；錢幣；比大小。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_add2",
   "name": "二位數加減",
@@ -1454,7 +1554,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "二位數加法、減法、進位與退位。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_num200"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_length",
   "name": "認識公分",
@@ -1468,7 +1570,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "用直尺量長度、公分、長度加減。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_mult1",
   "name": "乘法（一）：2、5、4、8",
@@ -1482,7 +1586,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "幾的幾倍；2、5、4、8 的乘法。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_add2"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_time",
   "name": "時間：鐘面報讀",
@@ -1493,7 +1599,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "時針分針、幾時幾分、整時的經過時間（不含秒）。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_mult2",
   "name": "乘法（二）：3、6、7、9",
@@ -1507,7 +1615,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "3、6、7、9 的乘法與生活應用。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_mult1"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_num1000",
   "name": "1000 以內的數",
@@ -1521,7 +1631,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "數到 1000、位值、比大小。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_add3",
   "name": "三位數加減",
@@ -1538,7 +1650,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "三位數加法（可二次進位）、減法（限一次退位）、加減應用。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_add2", "j_num1000"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_shape",
   "name": "平面圖形與立體形體",
@@ -1552,7 +1666,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "三角形、四邊形、圓形；邊、角、頂點；正方體、長方體。以實物辨認。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_share",
   "name": "分裝與平分",
@@ -1563,7 +1679,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "幾個一袋可以裝幾袋、平分給幾個人每人幾個（除法前置，不列除式）。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_mult1"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_fraction",
   "name": "認識分數",
@@ -1574,7 +1692,9 @@ const ERROR_CONCEPTS = [{
     "value": 2
   }],
   "scope": "把一個東西平分成幾份，一份是幾分之一（限連續量）。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_share"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_vocab_cur",
   "name": "二上生字：認讀與注音",
@@ -1594,7 +1714,9 @@ const ERROR_CONCEPTS = [{
     "value": "I"
   }],
   "scope": "看字選注音、看注音選字、部首與筆畫。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_vocab_g1",
   "name": "一年級生字複習",
@@ -1614,7 +1736,9 @@ const ERROR_CONCEPTS = [{
     "value": "I"
   }],
   "scope": "一年級學過的字再認一次。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_quake",
   "name": "防震小達人",
@@ -1631,7 +1755,9 @@ const ERROR_CONCEPTS = [{
     "value": "I"
   }],
   "scope": "地震時趴下、掩護、穩住；安全的做法。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_plastic",
   "name": "減塑行動家",
@@ -1648,7 +1774,9 @@ const ERROR_CONCEPTS = [{
     "value": "I"
   }],
   "scope": "哪些東西可以重複使用；減塑行動的步驟。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_seed",
   "name": "奇妙的種子",
@@ -1665,7 +1793,9 @@ const ERROR_CONCEPTS = [{
     "value": "I"
   }],
   "scope": "種子發芽的順序、照顧植物需要什麼。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_magnet",
   "name": "磁鐵真好玩",
@@ -1682,7 +1812,9 @@ const ERROR_CONCEPTS = [{
     "value": "I"
   }],
   "scope": "哪些東西會被磁鐵吸住；磁鐵的兩端；生活中的磁鐵。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "j_color",
   "name": "彩色的世界",
@@ -1699,7 +1831,9 @@ const ERROR_CONCEPTS = [{
     "value": "I"
   }],
   "scope": "混色、顏色傳達的訊息。",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n51",
   "name": "十進位的位值系統",
@@ -1710,7 +1844,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "十進位的位值系統",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_dec_addsub"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n52",
   "name": "多步驟生活應用",
@@ -1721,7 +1857,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "多步驟生活應用",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_mult_div_int"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n53",
   "name": "公因數和公倍數",
@@ -1732,7 +1870,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "公因數和公倍數",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_mult_div_int"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n56",
   "name": "整數相除之分數表示",
@@ -1743,7 +1883,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "整數相除之分數表示",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_frac_basic", "m_mult_div_int"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n57",
   "name": "分數除以整數",
@@ -1754,7 +1896,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "分數除以整數",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_frac_ops"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n59",
   "name": "整數、小數除以整數(商為小數)",
@@ -1765,7 +1909,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "整數、小數除以整數(商為小數)",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_dec_addsub", "m_mult_div_int"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n510",
   "name": "比率、百分率與折成",
@@ -1776,7 +1922,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "比率、百分率與折成",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["g5_n56"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n511",
   "name": "小數取概數",
@@ -1787,7 +1935,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "小數取概數",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_dec_addsub"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n512",
   "name": "面積大單位換算",
@@ -1798,7 +1948,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "面積大單位換算",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_rect_area"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n513",
   "name": "公噸與公斤",
@@ -1809,7 +1961,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "公噸與公斤",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_num1000"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n514",
   "name": "立方公尺",
@@ -1820,7 +1974,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "立方公尺",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_volume_basic"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n515",
   "name": "容積與容量",
@@ -1831,7 +1987,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "容積與容量",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_volume_basic"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_n516",
   "name": "時間乘除",
@@ -1842,7 +2000,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "時間乘除",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_time_units", "m_frac_ops", "m_dec_ops"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_s51",
   "name": "三角形與四邊形的性質",
@@ -1853,7 +2013,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "三角形與四邊形的性質",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_angle"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_s53",
   "name": "扇形",
@@ -1864,7 +2026,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "扇形",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_angle", "m_frac_basic"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_s54",
   "name": "線對稱",
@@ -1875,7 +2039,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "線對稱",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_shape"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_s55",
   "name": "正方體和長方體",
@@ -1886,7 +2052,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "正方體和長方體",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_volume_basic", "m_rect_area"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_s56",
   "name": "空間中面與面的關係",
@@ -1897,7 +2065,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "空間中面與面的關係",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_shape"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_s57",
   "name": "球、柱體與錐體",
@@ -1908,7 +2078,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "球、柱體與錐體",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["j_shape"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_r51",
   "name": "三步驟問題併式",
@@ -1919,7 +2091,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "三步驟問題併式",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["g5_n52"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_r52",
   "name": "四則計算規律(II)",
@@ -1930,7 +2104,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "四則計算規律(II)",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_mult_div_int"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_r53",
   "name": "以符號表示數學公式",
@@ -1941,7 +2117,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "以符號表示數學公式",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_area"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "g5_d51",
   "name": "製作折線圖",
@@ -1952,7 +2130,9 @@ const ERROR_CONCEPTS = [{
     "value": 5
   }],
   "scope": "製作折線圖",
-  "availability": "runtime-partial"
+  "availability": "runtime-partial",
+  "prerequisites": ["m_bar_line"],
+  "taskCoverage": "部分條目內容已有任務；不代表整條課綱已涵蓋。"
 }, {
   "id": "m_mult_div_int",
   "name": "整數乘除與兩步驟應用",
@@ -1966,7 +2146,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_mult1", "j_share"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "m_frac_basic",
   "name": "分數意義、等值與同分母加減",
@@ -1980,7 +2162,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_fraction"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "m_dec_addsub",
   "name": "二位小數加減",
@@ -1991,7 +2175,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_add2"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "m_angle",
   "name": "角度與量角",
@@ -2002,7 +2188,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_shape"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "m_rect_area",
   "name": "長方形與正方形面積",
@@ -2013,7 +2201,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_mult1"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "m_volume_basic",
   "name": "體積與立方公分",
@@ -2024,7 +2214,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_shape"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "m_time_units",
   "name": "時分秒換算與加減",
@@ -2035,7 +2227,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_time"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "m_bar_line",
   "name": "長條圖與折線圖報讀",
@@ -2046,7 +2240,9 @@ const ERROR_CONCEPTS = [{
     "value": 4
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": ["j_num1000"],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inaiii3",
   "name": "混合物是由不同的物質所混合,物質混合前後重量不會改變,性質可能會改變",
@@ -2057,7 +2253,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inaiii4",
   "name": "空氣由各種不同氣體所組成,空氣具有熱脹冷縮的性質",
@@ -2068,7 +2266,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inaiii5",
   "name": "不同形式的能量可以相互轉換,但總量不變",
@@ -2079,7 +2279,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inaiii6",
   "name": "能量可藉由電流傳遞、轉換而後為人類所應用",
@@ -2090,7 +2292,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inaiii7",
   "name": "運動的物體具有動能,對同一物體而言,速度越快動能越大",
@@ -2101,7 +2305,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inaiii9",
   "name": "植物生長所需的養分是經由光合作用從太陽光獲得的",
@@ -2112,7 +2318,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inaiii10",
   "name": "在生態系中,能量經由食物鏈在不同物種間流動與循環",
@@ -2123,7 +2331,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inbiii1",
   "name": "物質有不同的結構與功能",
@@ -2134,7 +2344,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inbiii2",
   "name": "應用性質的不同可分離物質或鑑別物質",
@@ -2145,7 +2357,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inbiii3",
   "name": "物質表面的結構與性質不同,其可產生的摩擦力不同;摩擦力會影響物體運動的情形",
@@ -2156,7 +2370,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inbiii5",
   "name": "生物體是由細胞所組成,具有由細胞、器官到個體等不同層次的構造",
@@ -2167,7 +2383,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inbiii6",
   "name": "動物的形態特徵與行為相關,動物身體的構造不同,有不同的運動方式",
@@ -2178,7 +2396,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inbiii7",
   "name": "植物各部位的構造和所具有的功能有關,有些植物產生特化的構造以適應環境",
@@ -2189,7 +2409,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inbiii8",
   "name": "生物可依其形態特徵進行分類",
@@ -2200,7 +2422,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii1",
   "name": "生活及探究中常用的測量工具和方法",
@@ -2211,7 +2435,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii2",
   "name": "自然界或生活中有趣的最大或最小的事物(量),事物大小宜用適當的單位來表示",
@@ -2222,7 +2448,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii3",
   "name": "本量與改變量不同,由兩者的比例可評估變化的程度",
@@ -2233,7 +2461,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii4",
   "name": "對相同事物做多次測量,其結果間可能有差異,差異越大表示測量越不精確",
@@ -2244,7 +2474,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii5",
   "name": "力的大小可由物體的形變或運動狀態的改變程度得知",
@@ -2255,7 +2487,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii6",
   "name": "運用時間與距離可描述物體的速度與速度的變化",
@@ -2266,7 +2500,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii7",
   "name": "動物體內的器官系統是由數個器官共同組合,以執行某種特定的生理作用",
@@ -2277,7 +2513,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii8",
   "name": "在同一時期,特定區域上,相同物種所組成的群體稱為「族群」,而在特定區域由多個族群結合而組成「群集」",
@@ -2288,7 +2526,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii10",
   "name": "地球是由空氣、陸地、海洋及生存於其中的生物所組成的",
@@ -2299,7 +2539,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii12",
   "name": "地球上的水存在於大氣、海洋、湖泊與地下中",
@@ -2310,7 +2552,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii13",
   "name": "日出日落時間與位置,在不同季節會不同",
@@ -2321,7 +2565,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii14",
   "name": "四季星空會有所不同",
@@ -2332,7 +2578,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_inciii15",
   "name": "除了地球外,還有其他行星環繞著太陽運行",
@@ -2343,7 +2591,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii1",
   "name": "自然界中存在著各種的穩定狀態;當有新的外加因素時,可能造成改變,再達到新的穩定狀態",
@@ -2354,7 +2604,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii3",
   "name": "地球上的物體(含生物和非生物)均會受地球引力的作用,地球對物體的引力就是物體的重量",
@@ -2365,7 +2617,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii4",
   "name": "生物個體間的性狀具有差異性;子代與親代的性狀具有相似性和相異性",
@@ -2376,7 +2630,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii5",
   "name": "生物體接受環境刺激會產生適當的反應,並自動調節生理作用以維持恆定",
@@ -2387,7 +2643,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii6",
   "name": "生物種類具有多樣性;生物生存的環境亦具有多樣性",
@@ -2398,7 +2656,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii8",
   "name": "土壤是由岩石風化成的碎屑及生物遺骸所組成",
@@ -2409,7 +2669,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii10",
   "name": "流水及生物活動,對地表的改變會產生不同的影響",
@@ -2420,7 +2682,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_indiii11",
   "name": "海水的流動會影響天氣與氣候的變化",
@@ -2431,7 +2695,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii1",
   "name": "自然界的物體、生物與環境間的交互作用,常具有規則性",
@@ -2442,7 +2708,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii2",
   "name": "物質的形態與性質可因燃燒、生鏽、發酵、酸鹼作用等而改變或形成新物質,這些改變有些會和溫度、水、空氣、光等有關",
@@ -2453,7 +2721,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii3",
   "name": "燃燒是物質與氧劇烈作用的現象,燃燒必須同時具備可燃物、助燃物,並達到燃點等三個要素",
@@ -2464,7 +2734,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii4",
   "name": "物質溶解、反應前後總重量不變",
@@ -2475,7 +2747,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii5",
   "name": "常用酸鹼物質的特性,水溶液的酸鹼性質及其生活上的運用",
@@ -2486,7 +2760,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii7",
   "name": "陽光是由不同色光組成",
@@ -2497,7 +2773,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii8",
   "name": "光會有折射現象,放大鏡可聚光和成像",
@@ -2508,7 +2786,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii11",
   "name": "動物有覓食、生殖、保護、訊息傳遞以及社會性的行為",
@@ -2519,7 +2799,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii12",
   "name": "生物的分布和習性,會受環境因素的影響;環境改變也會影響生存於其中的生物種類",
@@ -2530,7 +2812,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ineiii13",
   "name": "生態系中生物與生物彼此間的交互作用,有寄生、共生和競爭的關係",
@@ -2541,7 +2825,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_infiii1",
   "name": "世界與本地不同性別科學家的事蹟與貢獻",
@@ -2552,7 +2838,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_infiii2",
   "name": "科技在生活中的應用與對環境與人體的影響",
@@ -2563,7 +2851,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_infiii3",
   "name": "自然界生物的特徵與原理在人類生活上的應用",
@@ -2574,7 +2864,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_infiii4",
   "name": "人類日常生活中所依賴的經濟動植物及栽培養殖的方法",
@@ -2585,7 +2877,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ingiii1",
   "name": "自然景觀和環境一旦被改變或破壞,極難恢復",
@@ -2596,7 +2890,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ingiii3",
   "name": "生物多樣性對人類的重要性,而氣候變遷將對生物生存造成影響",
@@ -2607,7 +2903,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ingiii4",
   "name": "人類的活動會造成氣候變遷,加劇對生態與環境的影響",
@@ -2618,7 +2916,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ingiii6",
   "name": "碳足跡與水足跡所代表環境的意涵",
@@ -2629,7 +2929,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "s_ingiii7",
   "name": "人類行為的改變可以減緩氣候變遷所造成的衝擊與影響",
@@ -2640,7 +2942,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_aaiii3",
   "name": "個人的價值觀會影響其行為,也可能會影響人際關係",
@@ -2651,7 +2955,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_abiii1",
   "name": "臺灣的地理位置、自然環境,與歷史文化的發展有關聯性",
@@ -2662,7 +2968,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_abiii2",
   "name": "交通運輸與產業發展會影響城鄉與區域間的人口遷移及連結互動",
@@ -2673,7 +2981,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_abiii3",
   "name": "自然環境、自然災害及經濟活動,和生活空間的使用有關聯性",
@@ -2684,7 +2994,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_aciii3",
   "name": "我國政府組織可區分為中央及地方政府,各具有不同的功能,並依公權力管理公共事務",
@@ -2695,7 +3007,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_aciii4",
   "name": "國家權力的運用會維護國家安全及社會秩序,也可能會增進或傷害個人與群體的權益",
@@ -2706,7 +3020,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_afiii2",
   "name": "國際間因利益競爭而造成衝突、對立與結盟",
@@ -2717,7 +3033,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_bbiii1",
   "name": "自然與人文環境的交互影響,造成生活空間型態的差異與多元",
@@ -2728,7 +3046,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_bciii1",
   "name": "族群或地區的文化特色,各有其產生的背景因素,因而形塑臺灣多元豐富的文化內涵",
@@ -2739,7 +3059,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_bciii2",
   "name": "權力不平等與資源分配不均,會造成個人或群體間的差別待遇",
@@ -2750,7 +3072,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_cbiii2",
   "name": "臺灣史前文化、原住民族文化、中華文化及世界其他文化隨著時代變遷,都在臺灣留下有形與無形的文化資產,並於生活中展現特色",
@@ -2761,7 +3085,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_cciii1",
   "name": "個人在團體中的角色會隨著社會變遷產生改變",
@@ -2772,7 +3098,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_cciii2",
   "name": "族群的遷徙、通婚及交流,與社會變遷互為因果",
@@ -2783,7 +3111,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_cdiii1",
   "name": "不同時空環境下,臺灣人民透過爭取權利與政治改革,使得政治逐漸走向民主",
@@ -2794,7 +3124,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }, {
   "id": "o_cdiii2",
   "name": "臺灣人民的政治參與及公民團體的發展,為臺灣的民主政治奠定基礎",
@@ -2805,7 +3137,9 @@ const ERROR_CONCEPTS = [{
     "value": "III"
   }],
   "scope": "",
-  "availability": "catalog-only"
+  "availability": "catalog-only",
+  "prerequisites": [],
+  "taskCoverage": "只有觀念資料，尚未提供任務。"
 }];
 const CONCEPT_KEYWORDS = {
   "m_prime": ["質數", "質因數", "因數分解", "合數", "質數與質因數分解", "分解質因數", "質因數分解", "最小質數", "唯一的偶質數", "只有兩個因數", "因數個數", "1不是質數", "分解乘積", "質數表", "判斷質數", "樹狀分解", "合數分解"],
@@ -48878,7 +49212,7 @@ function settleKeepsakes(state, t = now()) {
     }
   };
   if (!state.student.keepsakes) next = markMemorialSeen(next);
-  return next;
+  return settleConceptMilestones(next, t);
 }
 function memorialStamps(state) {
   const missions = Object.entries(state.student?.keepsakes?.stamps || {}).map(([id, s]) => {
@@ -48914,13 +49248,11 @@ function memorialStamps(state) {
   return [...missions, ...cases, ...chapters].sort((a, b) => b.t - a.t);
 }
 function memorialRows(state) {
-  const rows = [];
+  const rows = [],
+    progress = conceptProgressMap(state);
   for (const subject of skillSubjectsActive(state)) {
     const sk = skillOf(state, subject),
-      solid = new Set(state.missions.filter(m => KP_BY_ID[m.kpId]?.subject === subject && kpGrade(m.kpId) === studentGrade(state.student) && (masteryOf(m).key === 'solid' || m.status === 'needs_review' && masteryOf({
-        ...m,
-        status: 'passed'
-      }).key === 'solid')).map(m => m.kpId)).size;
+      solid = learnedSubjectConcepts(state, subject, progress).length;
     rows.push({
       id: 'skill-' + subject,
       label: subjName(subject) + '解題',
@@ -48938,7 +49270,7 @@ function memorialRows(state) {
       count: solid,
       thresholds: [1, 3, 6, 10, 15],
       unit: '個觀念',
-      detail: '通過兩次無提示複習。'
+      detail: '無提示複習確認，或跨兩天至少三次無提示通過。已取得的學會紀念會保留。'
     });
   }
   rows.push({
@@ -49003,8 +49335,15 @@ function markMemorialSeen(state) {
   };
 }
 function validateKeepsakes(k, bad, p) {
+  if (!backupObject(k)) bad(p);
   if (k.quotes !== undefined && (!backupObject(k.quotes) || Object.values(k.quotes).some(s => typeof s !== 'string' || s.length > 300))) bad(p + '.quotes');
-  if (!backupObject(k) || !backupObject(k.stamps) || Object.values(k.stamps).some(s => !backupObject(s) || !Number.isFinite(s.t) || s.t < 0 || !Number.isInteger(s.n) || s.n < 0) || k.seen !== undefined && (!backupObject(k.seen) || Object.values(k.seen).some(n => !Number.isInteger(n) || n < 0))) bad(p);
+  if (!backupObject(k.stamps) || Object.values(k.stamps).some(s => !backupObject(s) || !Number.isFinite(s.t) || s.t < 0 || !Number.isInteger(s.n) || s.n < 0) || k.seen !== undefined && (!backupObject(k.seen) || Object.values(k.seen).some(n => !Number.isInteger(n) || n < 0))) bad(p);
+  if (k.conceptMilestones !== undefined) {
+    if (!backupObject(k.conceptMilestones) || Object.keys(k.conceptMilestones).length > 1000) bad(p + '.conceptMilestones');
+    for (const [id, m] of Object.entries(k.conceptMilestones)) {
+      if (id.length > 80 || !backupObject(m) || typeof m.full !== 'boolean' || typeof m.half !== 'boolean' || m.full && !m.half || !Number.isFinite(m.fullAt) || m.fullAt < 0 || !Number.isFinite(m.halfAt) || m.halfAt < 0 || typeof m.basis !== 'string' || m.basis.length > 200) bad(p + '.conceptMilestones.' + id);
+    }
+  }
 }
 function giftMissionIds(state) {
   return [...new Set([...Object.keys(state.student?.keepsakes?.stamps || {}), ...state.missions.filter(m => m.status === 'passed').map(m => m.id)])];
@@ -49124,6 +49463,246 @@ function validateGifts(g, bad, p) {
   const strings = v => Array.isArray(v) && v.every(x => typeof x === 'string');
   if (!backupObject(g) || g.version !== 1 || !Number.isFinite(g.startedAt) || !strings(g.missions) || !strings(g.seen) || !strings(g.pending) || !backupObject(g.counts) || !['mission', 'review', 'repair'].every(k => Number.isInteger(g.counts[k]) && g.counts[k] >= 0) || !Number.isInteger(g.claimed) || g.claimed < 0 || !Array.isArray(g.history) || g.history.some(h => !backupObject(h) || typeof h.id !== 'string' || !Number.isFinite(h.t)) || typeof g.seenOffer !== 'string') bad(p);
   if (g.claimed > Object.values(g.counts).reduce((n, v) => n + Math.floor(v / 3), 0)) bad(p + '.claimed');
+}
+const CONCEPT_MAP_STATES = {
+  mastered: {
+    label: '已掌握',
+    symbol: '●✓'
+  },
+  exploring: {
+    label: '探索中',
+    symbol: '◐'
+  },
+  review: {
+    label: '需要複習',
+    symbol: '↶'
+  },
+  untried: {
+    label: '還沒試過',
+    symbol: '○'
+  },
+  unavailable: {
+    label: '遊戲還沒有這個任務',
+    symbol: '▧'
+  }
+};
+function conceptLevelKey(subject, grade) {
+  return subject === 'math' ? 'grade-' + grade : 'stage-' + ['I', 'II', 'III'][Math.ceil(grade / 2) - 1];
+}
+function conceptAtLevel(c, key) {
+  return c.levels.some(l => l.kind + '-' + l.value === key);
+}
+function conceptIndependent(e) {
+  return !e.hints && !e.detail?.fullReveal && !e.fullReveal && e.assisted !== 'solve';
+}
+function conceptEvidenceIndex(state) {
+  const logs = new Map(),
+    missions = new Map(),
+    seen = new Set();
+  for (const l of state.practiceLog || []) {
+    if (!l.kpId) continue;
+    const key = l.id ? 'id:' + l.id : l.presentationId ? 'p:' + l.kpId + ':' + l.presentationId : null;
+    if (key && seen.has(key)) continue;
+    if (key) seen.add(key);
+    if (!logs.has(l.kpId)) logs.set(l.kpId, []);
+    logs.get(l.kpId).push(l);
+  }
+  for (const m of state.missions || []) {
+    if (!missions.has(m.kpId)) missions.set(m.kpId, []);
+    missions.get(m.kpId).push(m);
+  }
+  return {
+    logs,
+    missions
+  };
+}
+function conceptProgress(state, id, t = now(), index = conceptEvidenceIndex(state)) {
+  const c = ERROR_CONCEPTS.find(c => c.id === id),
+    logs = (index.logs.get(id) || []).slice().sort((a, b) => (a.t || 0) - (b.t || 0)),
+    ms = index.missions.get(id) || [],
+    saved = state.student?.keepsakes?.conceptMilestones?.[id] || {};
+  const events = logs.map(l => ({
+    ...l,
+    origin: 'practice',
+    independent: conceptIndependent(l)
+  }));
+  const full = [],
+    half = [];
+  if (saved.full) full.push({
+    t: saved.fullAt || 0,
+    basis: saved.basis || '先前已保存的掌握紀錄'
+  });
+  if (saved.half) half.push({
+    t: saved.halfAt || 0
+  });
+  for (const m of ms) {
+    const rs = (m.reviews || []).slice().sort((a, b) => (a.t || 0) - (b.t || 0)),
+      clean = rs.filter(r => r.passed && conceptIndependent(r) && !logs.some(l => l.source === 'review' && l.missionId === m.id && Math.abs(l.t - r.t) < 2000 && !conceptIndependent(l)));
+    if (clean.length >= 2) full.push({
+      t: clean[1].t || 0,
+      basis: '兩次無提示複習通過'
+    });
+    const stages = m.stages || [],
+      completed = m.status === 'passed' || stages.length === 3 && stages.every(s => s.status === 'passed') || rs.length > 0;
+    if (completed) half.push({
+      t: Math.max(0, ...stages.map(s => s.finishedAt || 0))
+    });
+    for (const s of stages) {
+      if (!s.finishedAt || logs.some(l => l.missionId === m.id && l.stage === s.key && Math.abs(l.t - s.finishedAt) < 2000)) continue;
+      events.push({
+        t: s.finishedAt,
+        passed: s.status === 'passed',
+        hints: s.hints,
+        attempts: s.attempts,
+        detail: s.detail,
+        source: 'mission',
+        missionId: m.id,
+        title: m.title,
+        origin: 'stage',
+        independent: conceptIndependent(s)
+      });
+    }
+    for (const r of rs) {
+      if (logs.some(l => l.source === 'review' && l.missionId === m.id && Math.abs(l.t - r.t) < 2000)) continue;
+      events.push({
+        ...r,
+        source: 'review',
+        missionId: m.id,
+        title: m.title,
+        origin: 'review',
+        independent: conceptIndependent(r)
+      });
+    }
+  }
+  const passes = logs.filter(l => l.passed && conceptIndependent(l) && Number.isFinite(l.t) && l.t > 0),
+    days = new Set();
+  for (let i = 0; i < passes.length; i++) {
+    days.add(todayKey(passes[i].t));
+    if (i >= 2 && days.size >= 2) {
+      full.push({
+        t: passes[i].t,
+        basis: '至少三次無提示通過，分布在兩天以上'
+      });
+      break;
+    }
+  }
+  const dateSort = (a, b) => (a.t || Infinity) - (b.t || Infinity);
+  full.sort(dateSort);
+  half.sort(dateSort);
+  events.sort((a, b) => (b.t || 0) - (a.t || 0));
+  const failed = ms.some(m => m.status === 'needs_review'),
+    due = ms.some(m => m.status === 'passed' && m.nextReviewAt && t >= m.nextReviewAt),
+    everSolid = full.length > 0,
+    everInitial = everSolid || half.length > 0;
+  const touched = events.length > 0 || ms.some(m => m.status === 'in_progress' || m.status === 'passed' || m.status === 'needs_review');
+  const key = failed || due ? 'review' : everSolid ? 'solid' : everInitial ? 'initial' : touched ? 'learning' : 'pending';
+  const mapStatus = key === 'review' ? 'review' : key === 'solid' ? 'mastered' : ['initial', 'learning'].includes(key) ? 'exploring' : c?.availability === 'runtime-partial' ? 'untried' : 'unavailable';
+  return {
+    id,
+    key,
+    mapStatus,
+    everSolid,
+    everInitial,
+    reviewReason: failed ? 'failed' : due ? 'due' : null,
+    solidAt: full[0]?.t || 0,
+    initialAt: half[0]?.t || 0,
+    basis: full[0]?.basis || null,
+    brightness: everSolid ? 'full' : everInitial ? 'half' : 'outline',
+    recent: events.slice(0, 5),
+    latest: events[0] || null,
+    latestIndependent: events.find(e => e.independent) || null,
+    reviewFailedAt: events.find(e => e.source === 'review' && !e.passed)?.t || 0,
+    missionIds: ms.map(m => m.id),
+    availability: c?.availability || 'catalog-only'
+  };
+}
+function conceptProgressMap(state, t = now()) {
+  const index = conceptEvidenceIndex(state);
+  return Object.fromEntries(ERROR_CONCEPTS.map(c => [c.id, conceptProgress(state, c.id, t, index)]));
+}
+function learnedSubjectConcepts(state, subject, progress = conceptProgressMap(state)) {
+  const level = conceptLevelKey(subject, studentGrade(state.student));
+  return ERROR_CONCEPTS.filter(c => c.subject === subject && c.availability === 'runtime-partial' && (conceptAtLevel(c, level) || KP_BY_ID[c.id] && kpGrade(c.id) === studentGrade(state.student)) && progress[c.id].everSolid);
+}
+function settleConceptMilestones(state, t = now()) {
+  if (!state.student) return state;
+  const old = state.student.keepsakes || {},
+    saved = old.conceptMilestones || {},
+    next = {
+      ...saved
+    },
+    progress = conceptProgressMap(state, t);
+  let changed = false;
+  for (const c of ERROR_CONCEPTS) {
+    const p = progress[c.id],
+      prev = saved[c.id] || {};
+    if (p.everSolid && !prev.full || p.everInitial && !prev.half) {
+      next[c.id] = {
+        ...prev,
+        half: p.everInitial,
+        halfAt: prev.halfAt || p.initialAt || 0,
+        full: p.everSolid,
+        fullAt: prev.fullAt || p.solidAt || 0,
+        basis: prev.basis || p.basis || ''
+      };
+      changed = true;
+    }
+  }
+  return changed ? {
+    ...state,
+    student: {
+      ...state.student,
+      keepsakes: {
+        ...old,
+        conceptMilestones: next
+      }
+    }
+  } : state;
+}
+function conceptDate(t) {
+  return t ? new Date(t).toLocaleDateString('zh-TW', {
+    month: 'numeric',
+    day: 'numeric'
+  }) : '日期未保存';
+}
+function conceptEvidenceText(e, state) {
+  if (!e) return '尚無作答紀錄';
+  const source = e.title || e.missionId && state.missions.find(m => m.id === e.missionId)?.title || {
+    chapter: '主線案件',
+    story: '主線案件',
+    mission: '委託練習',
+    mission_retry: '換題練習',
+    review: '間隔複習',
+    wanted: '追捕',
+    chest: '寶箱',
+    delayed: '延後確認'
+  }[e.source] || '練習';
+  const help = !e.independent ? '提示了解法' : e.assisted === 'read' ? '只幫忙念題' : '獨立';
+  return `${conceptDate(e.t)}｜${source}｜${help}｜${e.passed ? e.attempts > 1 ? '重試後答對' : '答對' : '答錯'}`;
+}
+function conceptRecentText(p, state) {
+  if (p.key === 'initial') return '三階段通過，等間隔複習確認';
+  if (p.key === 'review') return (p.reviewReason === 'failed' ? '複習未通過，建議再練習' : '已到複習日') + (p.latest ? '・' + conceptEvidenceText(p.latest, state) : '');
+  if (p.latest) return conceptEvidenceText(p.latest, state);
+  if (p.everSolid) return conceptDate(p.solidAt) + '・' + p.basis;
+  return p.mapStatus === 'unavailable' ? '遊戲還沒有任務，因此沒有作答紀錄' : '有任務，尚無作答紀錄';
+}
+function conceptMapSuggestions(state, progress, scope = ERROR_CONCEPTS) {
+  const grade = studentGrade(state.student),
+    stage = Math.ceil(grade / 2),
+    rank = c => c.levels.some(l => l.kind === 'grade' ? l.value === grade : {
+      I: 1,
+      II: 2,
+      III: 3
+    }[l.value] === stage) ? 0 : 1;
+  return scope.filter(c => c.availability === 'runtime-partial' && ['pending', 'learning'].includes(progress[c.id].key) && c.levels.some(l => l.kind === 'grade' ? l.value <= grade : {
+    I: 1,
+    II: 2,
+    III: 3
+  }[l.value] <= stage) && !(c.prerequisites || []).some(id => {
+    const p = progress[id];
+    return p && (p.key === 'review' || p.key === 'learning' && p.latestIndependent?.passed === false);
+  })).sort((a, b) => rank(a) - rank(b) || a.id.localeCompare(b.id)).slice(0, 3);
 }
 const STAGE_META = [{
   key: 's1',
@@ -72366,7 +72945,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.12-v53',
+    build: '2026.11.12-v54',
     ...context,
     message
   };
@@ -75405,13 +75984,10 @@ function badgeEarnedDate(state, row, tier) {
       } else pending.add(l.kpId);
     }
   } else if (row.id.startsWith('solid-')) {
-    const byKp = new Map();
-    for (const m of state.missions) {
-      if (KP_BY_ID[m.kpId]?.subject !== row.id.slice(6) || kpGrade(m.kpId) !== studentGrade(state.student)) continue;
-      const reviews = (m.reviews || []).filter(r => r.passed && !r.hints).sort((a, b) => a.t - b.t);
-      if (reviews[1] && !byKp.has(m.kpId)) byKp.set(m.kpId, reviews[1]);
-    }
-    events = [...byKp.values()];
+    const progress = conceptProgressMap(state);
+    events = learnedSubjectConcepts(state, row.id.slice(6), progress).map(c => ({
+      t: progress[c.id].solidAt
+    }));
   }
   const e = events.slice().sort((a, b) => a.t - b.t)[need - 1];
   return e?.t ? fmtDay(e.t) : '較早取得・日期未保存';
@@ -77601,7 +78177,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.12-v53\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.12-v54\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -77703,10 +78279,11 @@ function ParentApp({
   profiles,
   onSwitchProfile,
   initialDraft,
-  clearDraft
+  clearDraft,
+  initialTab
 }) {
-  const [ok, setOk] = useState(!!initialDraft);
-  const [tab, setTab] = useState(initialDraft ? 'input' : 'overview');
+  const [ok, setOk] = useState(!!initialDraft || initialTab === 'map');
+  const [tab, setTab] = useState(initialTab === 'map' ? 'map' : initialDraft ? 'input' : 'overview');
   const [adding, setAdding] = useState(!!initialDraft);
   const draftRef = useRef(initialDraft);
   const finishInput = () => {
@@ -77721,7 +78298,7 @@ function ParentApp({
     onBack: goStudent
   });
   return React.createElement("div", {
-    className: "stage"
+    className: "stage parent-app"
   }, React.createElement("div", {
     className: "row between"
   }, React.createElement("div", null, React.createElement("span", {
@@ -77743,12 +78320,12 @@ function ParentApp({
     key: m.id,
     id: `pprofile-${m.id}`,
     className: `chip ${m.id === profiles.active ? 'sel' : ''}`,
-    onClick: () => m.id !== profiles.active && onSwitchProfile(m.id, adding && tab === 'input' ? draftRef.current : null)
+    onClick: () => m.id !== profiles.active && onSwitchProfile(m.id, adding && tab === 'input' ? draftRef.current : null, tab === 'map' ? 'map' : null)
   }, m.name, m.grade ? `・${gradeName(m.grade)}年級` : '')), React.createElement("span", {
     className: "small muted"
   }, "\uFF08\u5207\u63DB\u89D2\u8272\u6703\u540C\u6642\u5207\u63DB\u904A\u6232\u756B\u9762\u7684\u89D2\u8272\uFF09")), React.createElement("div", {
     className: "tabs"
-  }, [['overview', '學習總覽'], ['input', '上傳錯題'], ['list', '錯題與練習情形'], ['settings', '練習設定'], ['data', '資料與系統']].map(([k, n]) => React.createElement("button", {
+  }, [['overview', '學習總覽'], ['map', '課綱地圖'], ['input', '上傳錯題'], ['list', '錯題與練習情形'], ['settings', '練習設定'], ['data', '資料與系統']].map(([k, n]) => React.createElement("button", {
     key: k,
     id: `tab-${k}`,
     className: tab === k ? 'active' : '',
@@ -77761,7 +78338,9 @@ function ParentApp({
   }), React.createElement(CareParentPanel, {
     state: state,
     setState: setState
-  })), tab === 'input' && (adding ? React.createElement(ErrorItemForm, {
+  })), tab === 'map' && React.createElement(ParentCurriculumMap, {
+    state: state
+  }), tab === 'input' && (adding ? React.createElement(ErrorItemForm, {
     state: state,
     setState: setState,
     toast: toast,
@@ -77824,6 +78403,217 @@ function WardrobeParentCard({
   }, React.createElement("span", null, owned.has(r.id) ? '✅' : '◻️', " ", wardrobeItem(r.id)?.name || r.id), React.createElement("span", {
     className: "muted"
   }, r.text)))));
+}
+function ConceptMapStatus({
+  progress
+}) {
+  const s = CONCEPT_MAP_STATES[progress.mapStatus];
+  return React.createElement("span", {
+    className: 'concept-status status-' + progress.mapStatus
+  }, React.createElement("span", {
+    className: "concept-status-symbol",
+    "aria-hidden": "true"
+  }, s.symbol), React.createElement("span", null, s.label));
+}
+function ConceptMapRow({
+  concept: c,
+  progress: p,
+  allProgress,
+  state,
+  printMode = false
+}) {
+  return React.createElement("details", {
+    className: "concept-map-row",
+    id: printMode ? undefined : 'map-row-' + c.id,
+    "data-concept-id": c.id,
+    "data-status": p.mapStatus,
+    "data-progress": p.key,
+    "data-brightness": p.brightness,
+    open: printMode || undefined
+  }, React.createElement("summary", null, React.createElement(ConceptMapStatus, {
+    progress: p
+  }), React.createElement("span", {
+    className: "concept-map-title"
+  }, React.createElement("b", null, c.name), React.createElement("small", null, c.codes.join('／'))), React.createElement("span", {
+    className: "concept-map-recent"
+  }, conceptRecentText(p, state)), React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\u2304")), React.createElement("div", {
+    className: "concept-map-detail"
+  }, React.createElement("p", null, React.createElement("b", null, "\u9019\u500B\u89C0\u5FF5\u5728\u5B78\u4EC0\u9EBC"), React.createElement("br", null), c.scope || c.name), React.createElement("div", null, React.createElement("b", null, "\u901A\u5E38\u8981\u5148\u6703"), React.createElement("p", {
+    className: "small muted"
+  }, "\u5148\u5099\u9023\u7DDA\u662F\u672C\u5C08\u6848\u7684\u6559\u5B78\u8A2D\u8A08\uFF0C\u4E0D\u662F\u5B98\u65B9\u898F\u5B9A\uFF0C\u4E5F\u4E0D\u662F\u638C\u63E1\u8B49\u660E\u3002"), React.createElement("div", {
+    className: "concept-prerequisites"
+  }, (c.prerequisites || []).map(id => {
+    const pc = ERROR_CONCEPTS.find(x => x.id === id);
+    return pc ? React.createElement("span", {
+      className: "concept-prerequisite",
+      key: id
+    }, React.createElement("b", null, pc.name), React.createElement(ConceptMapStatus, {
+      progress: allProgress[id]
+    })) : null;
+  }), !c.prerequisites?.length && React.createElement("span", null, "\u76EE\u524D\u6C92\u6709\u5217\u51FA\u5148\u5099\u9023\u7DDA\u3002"))), React.createElement("div", null, React.createElement("b", null, "\u6700\u8FD1\u7684\u7D00\u9304"), p.recent.length ? React.createElement("ul", null, p.recent.map((e, i) => React.createElement("li", {
+    key: i
+  }, conceptEvidenceText(e, state)))) : React.createElement("p", null, c.availability === 'catalog-only' ? '遊戲還沒有這個觀念的任務，所以沒有作答紀錄。這不代表孩子不會。' : p.everSolid ? conceptDate(p.solidAt) + '・' + p.basis : '有任務，孩子還沒有留下作答紀錄。')), p.everSolid && React.createElement("p", {
+    className: "small"
+  }, "\u66FE\u65BC ", conceptDate(p.solidAt), " \u7559\u4E0B\u638C\u63E1\u7D00\u9304\uFF1A", p.basis, "\u3002", p.key === 'review' ? '學會紀念保留，目前建議複習。' : '')));
+}
+function ParentCurriculumMap({
+  state
+}) {
+  const grade = studentGrade(state.student),
+    [subject, setSubject] = useState('math'),
+    [level, setLevel] = useState(() => conceptLevelKey('math', grade)),
+    [filter, setFilter] = useState(null),
+    [showGray, setShowGray] = useState(false),
+    [showOther, setShowOther] = useState(false);
+  const [checkedAt, setCheckedAt] = useState(() => now());
+  useEffect(() => {
+    const timer = setInterval(() => setCheckedAt(now()), 30000);
+    return () => clearInterval(timer);
+  }, []);
+  const progress = useMemo(() => conceptProgressMap(state, checkedAt), [state, checkedAt]),
+    scoped = ERROR_CONCEPTS.filter(c => c.subject === subject && conceptAtLevel(c, level)),
+    hasRuntime = scoped.some(c => c.availability === 'runtime-partial'),
+    counts = Object.fromEntries(Object.keys(CONCEPT_MAP_STATES).map(k => [k, scoped.filter(c => progress[c.id].mapStatus === k).length])),
+    gray = scoped.filter(c => progress[c.id].mapStatus === 'unavailable'),
+    collapseGray = gray.length > 3 && !showGray;
+  const shown = scoped.filter(c => (!filter || progress[c.id].mapStatus === filter) && !(collapseGray && progress[c.id].mapStatus === 'unavailable')),
+    next = conceptMapSuggestions(state, progress, scoped),
+    reviews = ERROR_CONCEPTS.filter(c => progress[c.id].key === 'review').sort((a, b) => (progress[b.id].latest?.t || 0) - (progress[a.id].latest?.t || 0)).slice(0, 3);
+  const subjects = ['math', 'chinese', 'science', 'social', 'life', 'english'],
+    other = grade <= 2 ? ['science', 'social'] : ['life'],
+    changeSubject = id => {
+      setSubject(id);
+      setLevel(conceptLevelKey(id, grade));
+      setFilter(null);
+      setShowGray(false);
+    },
+    levelName = k => k.startsWith('grade-') ? k.slice(6) + ' 年級' : {
+      'stage-I': '第一學習階段（1–2 年級）',
+      'stage-II': '第二學習階段（3–4 年級）',
+      'stage-III': '第三學習階段（5–6 年級）'
+    }[k];
+  return React.createElement("section", {
+    id: "curriculum-map",
+    className: "card col",
+    "aria-labelledby": "map-heading"
+  }, React.createElement("header", null, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u904A\u6232\u88E1\u7684\u5B78\u7FD2\u7D00\u9304"), React.createElement("h2", {
+    id: "map-heading"
+  }, "\u8AB2\u7DB1\u5730\u5716"), React.createElement("p", null, "\u4F9D 108 \u8AB2\u7DB1\u6574\u7406\u3002\u9019\u88E1\u53EA\u8A18\u9304\u5B69\u5B50\u5728\u904A\u6232\u88E1\u505A\u904E\u7684\u4E8B\uFF0C\u4E0D\u662F\u5B78\u6821\u6210\u7E3E\uFF1B\u6C92\u6709\u7D00\u9304\u7684\u5730\u65B9\uFF0C\u53EF\u80FD\u53EA\u662F\u904A\u6232\u9084\u6C92\u505A\u5230\u3002"), React.createElement("p", {
+    className: "small muted"
+  }, "\u76EE\u524D\u4F9D\u820A\u7684\u7DF4\u7FD2\u7D00\u9304\u63A8\u7B97\uFF0C\u4E4B\u5F8C\u6703\u63DB\u6210\u66F4\u6E96\u7684\u7D00\u9304\u3002\u7B2C\u4E00\u671F\u53EA\u4F9B\u67E5\u770B\uFF0C\u4E0D\u6703\u6539\u8B8A\u51FA\u984C\u6216\u5B69\u5B50\u7684\u5B78\u7FD2\u9032\u5EA6\u3002"), React.createElement("p", {
+    id: "map-current-child"
+  }, React.createElement("b", null, "\u6B63\u5728\u770B\uFF1A", state.student?.name || '尚未建立角色', "\u30FB", gradeName(grade), "\u5E74\u7D1A"))), React.createElement("div", {
+    className: "map-screen col"
+  }, React.createElement("b", {
+    id: "map-summary-scope"
+  }, subjName(subject), "\u30FB", levelName(level), "\u7684\u89C0\u5FF5\u6458\u8981"), React.createElement("div", {
+    className: "map-summary",
+    "aria-label": "\u76EE\u524D\u79D1\u76EE\u8207\u5C64\u7D1A\u7684\u89C0\u5FF5\u6458\u8981"
+  }, (hasRuntime ? Object.keys(CONCEPT_MAP_STATES) : ['unavailable']).map(k => React.createElement("button", {
+    key: k,
+    id: 'map-tile-' + k,
+    className: 'map-summary-tile status-' + k + (filter === k ? ' selected' : ''),
+    "aria-pressed": filter === k,
+    onClick: () => {
+      setFilter(filter === k ? null : k);
+      if (k === 'unavailable') setShowGray(true);
+    }
+  }, React.createElement("span", {
+    "aria-hidden": "true"
+  }, CONCEPT_MAP_STATES[k].symbol), React.createElement("strong", null, counts[k]), React.createElement("span", null, CONCEPT_MAP_STATES[k].label)))), React.createElement("div", {
+    className: "map-next"
+  }, React.createElement("section", null, React.createElement("h3", null, "\u63A5\u4E0B\u4F86\u9069\u5408\u5B78"), next.map(c => React.createElement("div", {
+    key: c.id
+  }, React.createElement("b", null, c.name), React.createElement("p", {
+    className: "small"
+  }, "\u76EE\u524D\u7D00\u9304\u6C92\u6709\u986F\u793A\u9700\u8981\u5148\u88DC\u7684\u5148\u5099\u89C0\u5FF5\u3002", learningAllows(state, c.id) ? '可在委託板查看。' : '目前練習範圍尚未包含，可到練習設定調整。'))), !next.length && React.createElement("p", null, "\u76EE\u524D\u6C92\u6709\u5176\u4ED6\u53EF\u5EFA\u8B70\u7684\u4EFB\u52D9\u3002")), !!reviews.length && React.createElement("section", null, React.createElement("h3", null, "\u5148\u8907\u7FD2\u9019\u4E9B"), reviews.map(c => {
+    const p = progress[c.id];
+    return React.createElement("div", {
+      key: c.id
+    }, React.createElement("b", null, c.name, "\uFF08", subjName(c.subject), "\uFF09"), React.createElement("p", {
+      className: "small"
+    }, p.everSolid ? '先前掌握：' + conceptDate(p.solidAt) + '；' : '', p.reviewReason === 'failed' ? '複習未通過：' + conceptDate(p.reviewFailedAt) : '已到複習日', "\u3002", learningAllows(state, c.id) ? '遊戲會在委託板安排複習。' : '這個觀念不在目前練習範圍，可先核對練習設定。'));
+  }))), React.createElement("div", {
+    className: "row map-controls",
+    "aria-label": "\u9078\u64C7\u79D1\u76EE"
+  }, subjects.filter(id => showOther || !other.includes(id)).map(id => React.createElement("button", {
+    id: 'map-subject-' + id,
+    key: id,
+    className: 'chip ' + (id === subject ? 'sel' : ''),
+    disabled: !ERROR_CONCEPTS.some(c => c.subject === id),
+    "aria-pressed": id === subject,
+    onClick: () => changeSubject(id)
+  }, id === 'english' ? '英語・尚未開放' : subjName(id))), !showOther && React.createElement("button", {
+    className: "chip",
+    id: "map-other-subjects",
+    onClick: () => setShowOther(true)
+  }, "\u5176\u4ED6\u79D1\u76EE")), React.createElement("div", {
+    className: "row map-controls",
+    "aria-label": "\u9078\u64C7\u5E74\u7D1A\u6216\u5B78\u7FD2\u968E\u6BB5"
+  }, (subject === 'math' ? [1, 2, 3, 4, 5, 6].map(n => 'grade-' + n) : ['stage-I', 'stage-II', 'stage-III']).map(k => React.createElement("button", {
+    id: 'map-level-' + k,
+    key: k,
+    className: 'chip ' + (level === k ? 'sel' : ''),
+    "aria-pressed": level === k,
+    onClick: () => {
+      setLevel(k);
+      setFilter(null);
+      setShowGray(false);
+    }
+  }, levelName(k)))), React.createElement("div", {
+    className: "row between"
+  }, React.createElement("h3", {
+    id: "map-range-title"
+  }, subjName(subject), "\u30FB", levelName(level)), React.createElement(Btn, {
+    id: "map-print",
+    onClick: () => window.print()
+  }, "\u5217\u5370\u9019\u4E00\u9801")), !!gray.length && React.createElement("p", {
+    className: "map-coverage"
+  }, "\u9019\u4E00\u5340\u6709 ", gray.length, " \u500B\u89C0\u5FF5\u904A\u6232\u9084\u6C92\u6709\u4EFB\u52D9\u3002\u7070\u8272\u659C\u7DDA\u4EE3\u8868\u300C\u904A\u6232\u9084\u6C92\u505A\u300D\uFF0C\u4E0D\u662F\u5B69\u5B50\u4E0D\u6703\u3002"), React.createElement("p", {
+    className: "small muted"
+  }, "\u6709\u4EFB\u52D9\u7684\u89C0\u5FF5\uFF0C\u904A\u6232\u4E5F\u53EA\u6DB5\u84CB\u90A3\u689D\u8AB2\u7DB1\u7684\u4E00\u90E8\u5206\u3002"), filter && React.createElement("button", {
+    className: "chip",
+    id: "map-clear-filter",
+    onClick: () => setFilter(null)
+  }, "\u53D6\u6D88\u72C0\u614B\u7BE9\u9078"), React.createElement("div", {
+    id: "map-concept-list"
+  }, shown.map(c => React.createElement(ConceptMapRow, {
+    key: c.id,
+    concept: c,
+    progress: progress[c.id],
+    allProgress: progress,
+    state: state
+  })), collapseGray && (!filter || filter === 'unavailable') && React.createElement("button", {
+    id: "map-gray-toggle",
+    className: "map-gray-toggle",
+    "aria-expanded": "false",
+    onClick: () => setShowGray(true)
+  }, "\u25A7 \u9084\u6709 ", gray.length, " \u500B\u30FB\u904A\u6232\u9084\u6C92\u6709\u4EFB\u52D9\u7684\u89C0\u5FF5\u3000\u5C55\u958B"), showGray && gray.length > 3 && React.createElement("button", {
+    id: "map-gray-toggle",
+    className: "map-gray-toggle",
+    "aria-expanded": "true",
+    onClick: () => setShowGray(false)
+  }, "\u6536\u8D77\u904A\u6232\u9084\u6C92\u6709\u4EFB\u52D9\u7684\u89C0\u5FF5"), !scoped.length && React.createElement("p", null, "\u9019\u500B\u7BC4\u570D\u7684\u89C0\u5FF5\u5C1A\u672A\u5EFA\u6A94\uFF0C\u4E0D\u662F\u5B69\u5B50\u7684\u5B78\u7FD2\u7D50\u679C\u3002"), scoped.length > 0 && !shown.length && !collapseGray && React.createElement("p", null, "\u9019\u500B\u7BC4\u570D\u6C92\u6709\u7B26\u5408\u6240\u9078\u72C0\u614B\u7684\u7D00\u9304\u3002")), React.createElement("div", {
+    className: "map-legend"
+  }, (hasRuntime ? Object.keys(CONCEPT_MAP_STATES) : ['unavailable']).map(k => React.createElement(ConceptMapStatus, {
+    key: k,
+    progress: {
+      mapStatus: k
+    }
+  })))), React.createElement("div", {
+    className: "map-print-only"
+  }, React.createElement("h3", null, subjName(subject), "\u30FB", levelName(level)), React.createElement("p", null, "\u5305\u542B\u6B64\u7BC4\u570D\u5168\u90E8 ", scoped.length, " \u500B\u89C0\u5FF5\u3002\u7070\u8272\u659C\u7DDA\u8868\u793A\u904A\u6232\u9084\u6C92\u6709\u4EFB\u52D9\u3002"), scoped.map(c => React.createElement(ConceptMapRow, {
+    key: c.id,
+    concept: c,
+    progress: progress[c.id],
+    allProgress: progress,
+    state: state,
+    printMode: true
+  }))));
 }
 function BackupSummary({
   state
@@ -78041,16 +78831,21 @@ function App() {
   }, []);
   const [profiles, setProfiles] = useState(() => loadProfiles());
   const [parentDraft, setParentDraft] = useState(null);
+  const [parentTab, setParentTab] = useState(null);
   useEffect(() => {
-    if (mode !== 'parent') setParentDraft(null);
+    if (mode !== 'parent') {
+      setParentDraft(null);
+      setParentTab(null);
+    }
   }, [mode]);
-  const switchTo = (id, draft = null) => {
+  const switchTo = (id, draft = null, tab = null) => {
     try {
       const next = switchProfile(state, id);
       setStateRaw(next);
       setProfiles(loadProfiles());
       setParentDraft(draft);
-      setMode(draft ? 'parent' : 'student');
+      setParentTab(tab === 'map' ? 'map' : null);
+      setMode(draft || tab === 'map' ? 'parent' : 'student');
       toast('切換到 ' + (next.student?.name || '新角色'));
     } catch (e) {
       toast(e.message);
@@ -78131,7 +78926,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.12-v53",
+    "data-build": "2026.11.12-v54",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
@@ -78190,6 +78985,7 @@ function App() {
   }) : React.createElement(ParentApp, {
     key: 'parent-' + profiles.active,
     initialDraft: parentDraft,
+    initialTab: parentTab,
     clearDraft: () => setParentDraft(null),
     state: state,
     setState: setState,
