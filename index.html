@@ -546,9 +546,12 @@ ruby.zy .zy-col { display: inline-flex; flex-direction: column; align-items: cen
 ruby.zy .zy-s { writing-mode: vertical-rl; text-orientation: upright; line-height: 1; }
 ruby.zy .zy-l { line-height: .8; }
 ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
-.speak-btn { position: fixed; right: 16px; bottom: 16px; z-index: 60; border-radius: 999px; padding: 10px 16px; background: #fff3cf; border: 2px solid #d9a441; color: #4a3a12; font-weight: 700; box-shadow: 0 4px 14px rgba(0,0,0,.18); cursor: pointer; font-size: 1rem; }
+.speech-controls { position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); z-index:100; display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; max-width:calc(100vw - 20px); }
+.speak-btn { min-height:44px; border-radius:999px; padding:10px 16px; background:#fff3cf; border:2px solid #d9a441; color:#4a3a12; font-weight:700; box-shadow:0 4px 14px rgba(0,0,0,.18); cursor:pointer; font-size:1rem; }
+.speech-stop { background:#9a302d; border-color:#782420; color:#fff; }
+.speak-btn:focus-visible { outline:3px solid #247a91; outline-offset:3px; }
 .speak-btn.busy { background: #ffe39a; }
-@media (max-width: 640px) { .speak-btn { right: 10px; bottom: 10px; padding: 8px 12px; } }
+@media (max-width: 640px) { .speech-controls { right:10px; bottom:calc(10px + env(safe-area-inset-bottom,0px)); } .speak-btn { padding:8px 12px; } }
 /* 二年級機關 */
 .junior-q { font-size: 1.25rem; font-weight: 700; text-align: center; margin: 4px 0; }
 .junior-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; width: 100%; }
@@ -679,7 +682,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 #wardrobe .wv-item .wv-slot { color:var(--muted); }
 #wardrobe .wv-item.locked { background:var(--surface2); color:var(--muted); }
 #wardrobe .wardrobe-actions { position:fixed; bottom:0; left:0; right:0; z-index:25; max-width:1208px; margin:0 auto; padding:12px max(16px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px)); background:var(--surface); border:1px solid var(--line); box-shadow:0 -4px 16px #0001; }
-.app:has(#wardrobe) #speak-btn { bottom:calc(84px + env(safe-area-inset-bottom,0px)); }
+.app:has(#wardrobe) .speech-controls { bottom:calc(84px + env(safe-area-inset-bottom,0px)); }
 #wardrobe .wardrobe-panel button { scroll-margin-top:calc(var(--wardrobe-top) + 16px); scroll-margin-bottom:100px; }
 /* Body and accessories share one slow idle transform and one frame. */
 .pet-idle { transform-box:fill-box; transform-origin:50% 100%; }
@@ -838,7 +841,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261113-practice-r2">
+<meta name="game-release" content="playtest-20261113-speech-r2">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -134538,47 +134541,100 @@ function zyPlainText(el) {
   c.querySelectorAll('rt, rp, button, .hud, .topbar, [aria-hidden="true"], svg').forEach(n => n.remove());
   return c.textContent.replace(/\s+/g, ' ').trim();
 }
-function speakText(text) {
-  if (!('speechSynthesis' in window) || !text) return false;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text.slice(0, 600));
-  u.lang = 'zh-TW';
-  u.rate = 0.9;
-  const voices = window.speechSynthesis.getVoices() || [];
-  const v = voices.find(x => /^zh[-_]TW/i.test(x.lang)) || voices.find(x => /^zh/i.test(x.lang));
-  if (v) u.voice = v;
-  window.speechSynthesis.speak(u);
-  return true;
+const GAME_SPEECH = {
+  active: false,
+  utterance: null
+};
+function setSpeechPlaying(active) {
+  GAME_SPEECH.active = active;
+  window.dispatchEvent(new Event('kei-speech-status'));
 }
-function SpeakButton() {
-  const [ok, setOk] = useState(() => 'speechSynthesis' in window);
-  const [busy, setBusy] = useState(false);
+function stopSpeech() {
+  const u = GAME_SPEECH.utterance;
+  GAME_SPEECH.utterance = null;
+  if (u) {
+    u.onend = null;
+    u.onerror = null;
+    u.onstart = null;
+  }
+  window.dispatchEvent(new Event('kei-stop-speech'));
+  try {
+    window.speechSynthesis?.cancel();
+  } catch (e) {}
+  setSpeechPlaying(false);
+}
+function useSpeechPlaying() {
+  const [active, setActive] = useState(GAME_SPEECH.active);
+  useEffect(() => {
+    const sync = () => setActive(GAME_SPEECH.active);
+    sync();
+    window.addEventListener('kei-speech-status', sync);
+    return () => window.removeEventListener('kei-speech-status', sync);
+  }, []);
+  return active;
+}
+function speakText(text) {
+  if (!window.speechSynthesis || typeof window.SpeechSynthesisUtterance !== 'function' || !text) return false;
+  stopSpeech();
+  try {
+    const u = new SpeechSynthesisUtterance(text.slice(0, 600));
+    u.lang = 'zh-TW';
+    u.rate = 0.9;
+    const voices = window.speechSynthesis.getVoices() || [];
+    const v = voices.find(x => /^zh[-_]TW/i.test(x.lang)) || voices.find(x => /^zh/i.test(x.lang));
+    if (v) u.voice = v;
+    GAME_SPEECH.utterance = u;
+    u.onend = u.onerror = () => {
+      if (GAME_SPEECH.utterance !== u) return;
+      GAME_SPEECH.utterance = null;
+      setSpeechPlaying(false);
+    };
+    setSpeechPlaying(true);
+    window.speechSynthesis.speak(u);
+    return true;
+  } catch (e) {
+    stopSpeech();
+    return false;
+  }
+}
+function SpeakButton({
+  allowRead = true
+}) {
+  const ok = !!window.speechSynthesis,
+    busy = useSpeechPlaying();
+  useEffect(() => {
+    window.addEventListener('pagehide', stopSpeech);
+    return () => {
+      window.removeEventListener('pagehide', stopSpeech);
+      stopSpeech();
+    };
+  }, []);
   if (!ok) return null;
   const onClick = () => {
     const target = document.querySelector('#dialogue') || document.querySelector('.overlay-panel') || document.querySelector('.stage .card.raised') || document.querySelector('main') || document.body;
     const text = zyPlainText(target);
     if (!text) return;
-    setBusy(true);
-    const r = speakText(text);
-    if (!r) {
-      setOk(false);
-      return;
-    }
-    const t = setInterval(() => {
-      if (!window.speechSynthesis.speaking) {
-        clearInterval(t);
-        setBusy(false);
-      }
-    }, 300);
+    speakText(text);
   };
-  return React.createElement("button", {
+  if (!allowRead && !busy) return null;
+  return React.createElement("div", {
+    className: "speech-controls",
+    role: "group",
+    "aria-label": "\u6717\u8B80\u63A7\u5236"
+  }, allowRead && React.createElement("button", {
     type: "button",
     id: "speak-btn",
     className: `speak-btn ${busy ? 'busy' : ''}`,
     onClick: onClick,
     "aria-label": "\u5FF5\u7D66\u6211\u807D",
     title: "\u7528\u700F\u89BD\u5668\u7684\u8A9E\u97F3\u5FF5\u51FA\u756B\u9762\u4E0A\u7684\u6587\u5B57"
-  }, "\uD83D\uDD0A \u5FF5\u7D66\u6211\u807D");
+  }, "\uD83D\uDD0A \u5FF5\u7D66\u6211\u807D"), busy && React.createElement("button", {
+    type: "button",
+    id: "speak-stop",
+    className: "speak-btn speech-stop",
+    onClick: stopSpeech,
+    "aria-label": "\u505C\u6B62\u6717\u8B80"
+  }, "\u25A0 \u505C\u6B62\u6717\u8B80"));
 }
 (function installZhuyin() {
   if (typeof React === 'undefined' || React.__zyInstalled) return;
@@ -143318,17 +143374,24 @@ function EnglishPractice({
     try {
       window.speechSynthesis?.cancel();
     } catch (e) {}
+    setSpeechPlaying(false);
   };
   useEffect(() => {
     alive.current = true;
     const s = window.speechSynthesis,
-      changed = () => setVoiceVersion(v => v + 1);
+      changed = () => setVoiceVersion(v => v + 1),
+      cancelled = () => {
+        stop();
+        if (alive.current) setSpeaking(false);
+      };
+    window.addEventListener('kei-stop-speech', cancelled);
     try {
       s?.getVoices();
       s?.addEventListener?.('voiceschanged', changed);
     } catch (e) {}
     return () => {
       alive.current = false;
+      window.removeEventListener('kei-stop-speech', cancelled);
       s?.removeEventListener?.('voiceschanged', changed);
       stop();
     };
@@ -143344,6 +143407,7 @@ function EnglishPractice({
   };
   const play = () => {
     if (m.done) return;
+    stopSpeech();
     stop();
     setSpeaking(false);
     const token = playToken.current;
@@ -143362,6 +143426,7 @@ function EnglishPractice({
       u.rate = .8;
       speech.current = u;
       setSpeaking(true);
+      setSpeechPlaying(true);
       const active = () => alive.current && playToken.current === token;
       u.onstart = () => {
         if (!active()) return;
@@ -143375,6 +143440,7 @@ function EnglishPractice({
         clearTimeout(timer.current);
         speech.current = null;
         setSpeaking(false);
+        setSpeechPlaying(false);
         setHeard(true);
       };
       u.onerror = () => {
@@ -143452,7 +143518,10 @@ function EnglishPractice({
     kind: "teal",
     onClick: play,
     disabled: m.done
-  }, speaking ? '再聽一次' : heard ? '再聽一次' : '聽單字'), React.createElement("span", {
+  }, speaking ? '再聽一次' : heard ? '再聽一次' : '聽單字'), speaking && React.createElement(Btn, {
+    id: "english-stop",
+    onClick: stopSpeech
+  }, "\u505C\u6B62\u64AD\u653E"), React.createElement("span", {
     role: "status"
   }, speaking ? '播放中…' : heard ? '聽完可以選答案，也能再聽一次。' : '先按「聽單字」，聽完再選答案。'), React.createElement(Btn, {
     small: true,
@@ -144685,6 +144754,8 @@ function JuniorHands({
   onDone,
   maxAttempts
 }) {
+  const speaking = useSpeechPlaying();
+  useEffect(() => () => stopSpeech(), []);
   const [speechUnavailable, setSpeechUnavailable] = useState(false),
     [a, setA] = useState(() => jhInitial(kind, p)),
     [part, setPart] = useState(0),
@@ -144758,7 +144829,11 @@ function JuniorHands({
         setSpeechUnavailable(true);
       }
     }
-  }, "\u5FF5\u984C\u76EE\u7D66\u6211\u807D"), speechUnavailable && React.createElement("p", {
+  }, "\u5FF5\u984C\u76EE\u7D66\u6211\u807D"), speaking && React.createElement("button", {
+    type: "button",
+    id: "jh-speak-stop",
+    onClick: stopSpeech
+  }, "\u505C\u6B62\u6717\u8B80"), speechUnavailable && React.createElement("p", {
     role: "status"
   }, React.createElement(JhText, {
     text: "\u9019\u500B\u700F\u89BD\u5668\u66AB\u6642\u4E0D\u80FD\u6717\u8B80\uFF0C\u53EF\u4EE5\u5148\u770B\u6CE8\u97F3\u8B80\u984C\u76EE\u3002"
@@ -182210,6 +182285,7 @@ function StudentApp({
   const [view, setView] = useState('menu');
   const [arg, setArg] = useState(null);
   const go = (v, a = null) => {
+    stopSpeech();
     setView(v);
     setArg(a);
     window.scrollTo(0, 0);
@@ -187044,7 +187120,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.13-v66",
+    "data-build": "2026.11.13-v67",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
@@ -187115,7 +187191,10 @@ function App() {
     toast: toast,
     profiles: profiles,
     onSwitchProfile: switchTo
-  }), toastEl, junior && React.createElement(SpeakButton, null)));
+  }), toastEl, mode === 'student' && s && React.createElement(SpeakButton, {
+    key: 'speech-' + profiles.active,
+    allowRead: junior
+  })));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App, null));
 </script>
