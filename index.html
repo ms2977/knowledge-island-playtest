@@ -801,6 +801,22 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 @media(max-width:600px){.english-options{grid-template-columns:1fr}.english-progress-cols{grid-template-columns:1fr}.english-word-card{padding:14px}.english-progress-cols{gap:8px}}
 .english-progress-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.english-progress-columns section{padding:12px;border:1px solid #c8dadd;border-radius:12px}.english-table-scroll{overflow:auto}.english-word-table{width:100%;min-width:560px;border-collapse:collapse}.english-word-table th,.english-word-table td{text-align:left;padding:10px;border-bottom:1px solid #d3e0e2}.english-word-table small{display:block}.english-progress{max-width:100%;min-width:0}@media(max-width:600px){.english-progress-columns{grid-template-columns:1fr}}
 
+.new-topics{border:2px solid #287f8b;background:#f6fbfa;padding:20px;display:grid;gap:14px;margin:16px 0;color:#203c4c}
+.new-topics h3,.new-topics h4,.new-topics p{margin:0}
+.new-topics-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.new-topics-heading h3{font-size:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.new-topics-count{font-size:15px;background:#dceeed;color:#245b61;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.new-topics-groups{display:grid;gap:16px}
+.new-topics-group h4{font-size:17px;color:#27636c;margin-bottom:8px}
+.new-topics-group ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px}
+.new-topics-group li{display:grid;gap:3px;border-left:3px solid #bad8d5;padding:6px 10px;overflow-wrap:anywhere;line-height:1.55}
+.new-topics-group li span{font-size:14px;color:#455f6c}
+.new-topics-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border-top:1px solid #bad8d5;padding-top:14px}
+.new-topics-actions button{min-height:44px}
+.new-topics-filter-note{font-size:14px;background:#fff3d8;padding:10px;border-radius:8px}
+@media(max-width:600px){.new-topics{padding:16px;gap:12px}.new-topics-group ul{grid-template-columns:1fr}.new-topics-actions button{flex:1 1 auto}.new-topics-actions>span{flex-basis:100%}.new-topics-heading>strong{font-size:16px}}
+@media print{.new-topics{display:none}}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -808,7 +824,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261113-english">
+<meta name="game-release" content="playtest-20261113-new-topics">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -81202,6 +81218,7 @@ function validateBackupState(input) {
       if (typeof validatePaintCases !== 'function') bad(p);
       validatePaintCases(v, bad, p);
     });
+    opt(st, 'topicUpdates', (v, p) => validateTopicUpdates(v, bad, p));
     s.student = st;
   }
   function stage(t, p) {
@@ -104988,6 +105005,125 @@ if (typeof kpStatus === 'function') {
     };
   };
 }
+const NEW_TOPIC_RELEASES = [{
+  id: 'chinese-v56',
+  topics: [{
+    id: 'j_punctuation',
+    desc: '讀短句，選出合適的標點符號。'
+  }, {
+    id: 'j_typos',
+    desc: '找出句子裡的錯字，換成正確的字。'
+  }, {
+    id: 'c_punctuation',
+    desc: '依文意調整標點，讓句子的意思更清楚。'
+  }, {
+    id: 'c_typos',
+    desc: '從上下文辨認容易混淆的字並訂正。'
+  }, {
+    id: 'c_polyphones',
+    desc: '依詞語與句意，選出破音字的正確讀音。'
+  }]
+}, {
+  id: 'english-v59',
+  topics: [{
+    id: 'en_days',
+    desc: '認識星期和日期相關的英語字詞。'
+  }, {
+    id: 'en_numbers_time',
+    desc: '用英語數字讀懂時間與數量。'
+  }, {
+    id: 'en_letter_words',
+    desc: '讀懂書信中常見的問候與用語。'
+  }, {
+    id: 'en_weather',
+    desc: '認識描述天氣與季節的英語字詞。'
+  }, {
+    id: 'en_family',
+    desc: '用英語辨認家人與常見稱呼。'
+  }, {
+    id: 'en_school',
+    desc: '認識校園和文具相關的英語字詞。'
+  }, {
+    id: 'en_colors_shapes',
+    desc: '讀懂描述顏色與形狀的英語字詞。'
+  }, {
+    id: 'en_actions',
+    desc: '認識生活中常見動作的英語說法。'
+  }, {
+    id: 'en_places',
+    desc: '讀懂地點與方向相關的英語字詞。'
+  }, {
+    id: 'en_food',
+    desc: '認識食物與飲料的英語名稱。'
+  }, {
+    id: 'en_patterns_1',
+    desc: '理解日常句意，排列詞卡組成句子。'
+  }]
+}];
+function newTopicRows(state) {
+  if (!state.student) return [];
+  const grade = studentGrade(state.student),
+    used = new Set();
+  return NEW_TOPIC_RELEASES.flatMap(batch => batch.topics.map(t => ({
+    ...t,
+    release: batch.id
+  }))).filter(t => {
+    if (used.has(t.id) || !KP_BY_ID[t.id] || !kpAllowedForGrade(t.id, grade) || !missionSupported(t.id)) return false;
+    used.add(t.id);
+    return true;
+  });
+}
+function newTopicScope(state) {
+  return state.settings?.practiceKps?.length ? state.settings.practiceKps : seedQuestsFor(studentGrade(state.student));
+}
+function pendingNewTopics(state) {
+  const seen = new Set(state.student?.topicUpdates?.seen || []),
+    checked = new Set(newTopicScope(state));
+  return newTopicRows(state).filter(t => !seen.has(t.id) && !checked.has(t.id));
+}
+function rememberNewTopics(state, ids) {
+  if (!state.student || !ids.length) return state;
+  const old = state.student.topicUpdates?.seen || [],
+    seen = [...new Set([...old, ...ids])];
+  if (seen.length === old.length) return state;
+  return {
+    ...state,
+    student: {
+      ...state.student,
+      topicUpdates: {
+        v: 1,
+        seen
+      }
+    }
+  };
+}
+function acknowledgeCheckedTopics(state) {
+  const checked = new Set(newTopicScope(state));
+  return rememberNewTopics(state, newTopicRows(state).filter(t => checked.has(t.id)).map(t => t.id));
+}
+function newTopicSettings(state, ids) {
+  const cur = getSettings(state),
+    grade = studentGrade(state.student);
+  const settings = {
+    practiceKps: [...new Set([...newTopicScope(state), ...ids])]
+  };
+  if (grade === 6) {
+    settings.g6Semesters = [...new Set([...(cur.g6Semesters || ['6上', '6下', '複習']), ...ids.map(id => rangeGroup(KP_BY_ID[id], grade))])];
+    if (ids.some(id => kpGrade(id) === 5 || G6_PREREQUISITE_KPS.includes(id))) settings.g6Prerequisites = true;
+  }
+  return settings;
+}
+function decideNewTopics(state, visibleIds, action) {
+  if (!['join', 'later'].includes(action)) return state;
+  const visible = new Set(visibleIds),
+    ids = pendingNewTopics(state).filter(t => visible.has(t.id)).map(t => t.id);
+  if (!ids.length) return state;
+  const next = action === 'join' ? applyLearningSettings(state, newTopicSettings(state, ids)) : state;
+  return rememberNewTopics(next, ids);
+}
+function validateTopicUpdates(v, bad, p) {
+  if (!backupObject(v) || v.v !== 1 || !Array.isArray(v.seen) || v.seen.length > 2000 || v.seen.some(id => typeof id !== 'string' || !/^[a-z][a-z0-9_-]{0,99}$/.test(id)) || new Set(v.seen).size !== v.seen.length) bad(p);
+}
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
     normal: `assets/chars/${id}/tachie_normal.webp`
@@ -120519,7 +120655,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.12-v59',
+    build: '2026.11.13-v60',
     ...context,
     message
   };
@@ -125862,6 +125998,17 @@ function SettingsPanel({
   const [repeats, setRepeats] = useState(cur.g6AllowRepeat === true);
   const [expansion, setExpansion] = useState(cur.g6ExpansionEnabled !== false);
   const [g2Extensions, setG2Extensions] = useState(cur.g2AllowExtensions === true);
+  const externalScope = useRef(cur);
+  useEffect(() => {
+    const prev = externalScope.current;
+    externalScope.current = cur;
+    if (grade !== studentGrade(state.student)) return;
+    const added = cur.practiceKps.filter(id => !prev.practiceKps.includes(id));
+    if (added.length) setKps(draft => [...new Set([...draft, ...added])]);
+    const addedSem = (cur.g6Semesters || ['6上', '6下', '複習']).filter(s => !(prev.g6Semesters || ['6上', '6下', '複習']).includes(s));
+    if (addedSem.length) setSemesters(draft => [...new Set([...draft, ...addedSem])]);
+    if (cur.g6Prerequisites === true && prev.g6Prerequisites === false) setPrerequisites(true);
+  }, [state.settings]);
   const save = () => {
     if (!kps.length) {
       toast('請至少選一個已學過的單元。');
@@ -126010,7 +126157,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.12-v59\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.13-v60\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -126156,7 +126303,11 @@ function ParentApp({
     onClick: () => m.id !== profiles.active && onSwitchProfile(m.id, adding && tab === 'input' ? draftRef.current : null, tab === 'map' ? 'map' : null)
   }, m.name, m.grade ? `・${gradeName(m.grade)}年級` : '')), React.createElement("span", {
     className: "small muted"
-  }, "\uFF08\u5207\u63DB\u89D2\u8272\u6703\u540C\u6642\u5207\u63DB\u904A\u6232\u756B\u9762\u7684\u89D2\u8272\uFF09")), React.createElement("div", {
+  }, "\uFF08\u5207\u63DB\u89D2\u8272\u6703\u540C\u6642\u5207\u63DB\u904A\u6232\u756B\u9762\u7684\u89D2\u8272\uFF09")), React.createElement(ParentNewTopics, {
+    state: state,
+    setState: setState,
+    toast: toast
+  }), React.createElement("div", {
     className: "tabs"
   }, [['overview', '學習總覽'], ['map', '課綱地圖'], ['input', '上傳錯題'], ['list', '錯題與練習情形'], ['settings', '練習設定'], ['data', '資料與系統']].map(([k, n]) => React.createElement("button", {
     key: k,
@@ -126452,6 +126603,67 @@ function ParentCurriculumMap({
     state: state,
     printMode: true
   }))));
+}
+function ParentNewTopics({
+  state,
+  setState,
+  toast
+}) {
+  const topics = pendingNewTopics(state),
+    ids = topics.map(t => t.id),
+    grade = studentGrade(state.student);
+  const identity = JSON.stringify([state.meta?.createdAt, state.student?.createdAt, state.student?.name, grade]);
+  const sameChild = cur => JSON.stringify([cur.meta?.createdAt, cur.student?.createdAt, cur.student?.name, studentGrade(cur.student)]) === identity;
+  const checkedKey = JSON.stringify(newTopicScope(state));
+  useEffect(() => {
+    setState(cur => sameChild(cur) ? acknowledgeCheckedTopics(cur) : cur);
+  }, [identity, checkedKey]);
+  if (!topics.length) return null;
+  const settings = newTopicSettings(state, ids),
+    cur = getSettings(state);
+  const addedSemesters = (settings.g6Semesters || []).filter(s => !(cur.g6Semesters || ['6上', '6下', '複習']).includes(s));
+  const semesterName = s => s === '6上' ? '六上' : s === '6下' ? '六下' : '先備與語文複習';
+  const decide = action => {
+    setState(current => sameChild(current) ? decideNewTopics(current, ids, action) : current);
+    toast(action === 'join' ? '已加入練習範圍，委託板已更新。' : '已收起這批新主題，之後仍可到練習設定加入。');
+  };
+  return React.createElement("section", {
+    className: "new-topics card",
+    id: "parent-new-topics",
+    "aria-labelledby": "new-topics-title"
+  }, React.createElement("div", {
+    className: "new-topics-heading"
+  }, React.createElement("div", null, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u7D66\u5BB6\u9577\u7684\u65B0\u5167\u5BB9"), React.createElement("h3", {
+    id: "new-topics-title"
+  }, "\u6709\u65B0\u4E3B\u984C ", React.createElement("span", {
+    className: "new-topics-count"
+  }, topics.length, " \u500B"))), React.createElement("strong", {
+    id: "new-topics-child"
+  }, state.student.name, "\u30FB", gradeName(grade), "\u5E74\u7D1A")), React.createElement("p", null, "\u4EE5\u4E0B\u4E3B\u984C\u9069\u5408\u9019\u500B\u5E74\u7D1A\uFF0C\u76EE\u524D\u9084\u6C92\u52A0\u5165\u7DF4\u7FD2\u3002\u8ACB\u4F9D\u5B69\u5B50\u5B78\u904E\u7684\u5167\u5BB9\u6C7A\u5B9A\uFF1B\u4E5F\u53EF\u4EE5\u7A0D\u5F8C\u5230\u300C\u7DF4\u7FD2\u8A2D\u5B9A\u300D\u9010\u4E00\u52FE\u9078\u3002"), React.createElement("div", {
+    className: "new-topics-groups"
+  }, [...new Set(topics.map(t => KP_BY_ID[t.id].subject))].map(subject => React.createElement("div", {
+    key: subject,
+    className: "new-topics-group"
+  }, React.createElement("h4", null, SUBJECTS[subject].name), React.createElement("ul", null, topics.filter(t => KP_BY_ID[t.id].subject === subject).map(t => React.createElement("li", {
+    key: t.id,
+    "data-new-topic": t.id
+  }, React.createElement("strong", null, KP_BY_ID[t.id].name), React.createElement("span", null, t.desc))))))), !!addedSemesters.length && React.createElement("p", {
+    className: "new-topics-filter-note",
+    id: "new-topics-semesters"
+  }, "\u52A0\u5165\u6642\u6703\u4E00\u4F75\u958B\u555F\u300C", addedSemesters.map(semesterName).join('、'), "\u300D\u5206\u985E\uFF0C\u8B93\u9019\u4E9B\u4E3B\u984C\u80FD\u51FA\u73FE\u5728\u59D4\u8A17\u677F\uFF1B\u539F\u672C\u5DF2\u52FE\u9078\u5728\u9019\u4E9B\u5206\u985E\u7684\u55AE\u5143\u4E5F\u6703\u6062\u5FA9\u51FA\u984C\u3002"), React.createElement("div", {
+    className: "new-topics-actions"
+  }, React.createElement(Btn, {
+    kind: "primary",
+    id: "new-topics-join",
+    onClick: () => decide('join')
+  }, "\u52A0\u5165\u7DF4\u7FD2\u7BC4\u570D"), React.createElement(Btn, {
+    id: "new-topics-later",
+    onClick: () => decide('later')
+  }, "\u5148\u4E0D\u8981"), React.createElement("span", {
+    className: "small muted"
+  }, "\u9019\u6B21\u9078\u64C7\u53EA\u5957\u7528\u5230 ", state.student.name, "\u3002")));
 }
 function BackupSummary({
   state
@@ -126764,7 +126976,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.12-v59",
+    "data-build": "2026.11.13-v60",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
