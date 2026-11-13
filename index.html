@@ -838,12 +838,1795 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261113-language-r1">
+<meta name="game-release" content="playtest-20261113-practice-r2">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
 <script>
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const PRIME_V66_BANK = [{
+  "id": "prime66_6",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 6,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 6 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:6",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "6＝2×3。",
+  "factors": [2, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "35f986840a732ac8dae570283ea30ddcad7fde48d6c43d90c1b0c11db0c4fbce"
+  }
+}, {
+  "id": "prime66_8",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 8,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 8 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:8",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "8＝2×2×2。",
+  "factors": [2, 2, 2],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "aea64027b0a4706035cefd41e57824123bf62d307115d60094d813cd2906ae42"
+  }
+}, {
+  "id": "prime66_9",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 9,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 9 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:9",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "9＝3×3。",
+  "factors": [3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "c00eb8988b52d8ff6b12bc0036cf7e738e74f87ccbd034c3e273ddce4ff557fc"
+  }
+}, {
+  "id": "prime66_10",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 10,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 10 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:10",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "10＝2×5。",
+  "factors": [2, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "2e9d6843bbecaf8eccab87be38e0d73d6349408366109cee7c51b2981c4b7a01"
+  }
+}, {
+  "id": "prime66_12",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 12,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 12 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:12",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "12＝2×2×3。",
+  "factors": [2, 2, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "d6e50d009835ad8d3a2b08de289908cfc3bbde2e9303744ccd10a9ec12bbfa0e"
+  }
+}, {
+  "id": "prime66_14",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 14,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 14 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:14",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "14＝2×7。",
+  "factors": [2, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "8641020e201431d36cfd30e55b90740cea7cede11ea578da8f6649b6315a0126"
+  }
+}, {
+  "id": "prime66_15",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 15,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 15 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:15",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "15＝3×5。",
+  "factors": [3, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "97d3e5ebaebe3acf6b4c27453a58e75acc8e7c5ca553b031b9e1e1fcfdc8314a"
+  }
+}, {
+  "id": "prime66_16",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 16,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 16 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:16",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "16＝2×2×2×2。",
+  "factors": [2, 2, 2, 2],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "3ed18b2af3ab3a2d4c47e9674a650e63b26692ccd678e88cf65075e8396dd756"
+  }
+}, {
+  "id": "prime66_18",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 18,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 18 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:18",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "18＝2×3×3。",
+  "factors": [2, 3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "ba4d19e9930725134c7fb956bb2d7bcc5090affc2ce141c855accb09f5eacdec"
+  }
+}, {
+  "id": "prime66_20",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 20,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 20 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:20",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "20＝2×2×5。",
+  "factors": [2, 2, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "1245d519b9fe0789666673e420f9faf5f9e350c42d353d9ce00045529a64d779"
+  }
+}, {
+  "id": "prime66_21",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 21,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 21 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:21",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "21＝3×7。",
+  "factors": [3, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "833787524f3dc4b7f6b5fdc92a340ab26cdf847a78ca848d6b478467db2f4a1c"
+  }
+}, {
+  "id": "prime66_24",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 24,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 24 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:24",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "24＝2×2×2×3。",
+  "factors": [2, 2, 2, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "1208b09250b6e2a36fc2f78de06fa80cbc6d52b4775a70a6b1b916f8abea320c"
+  }
+}, {
+  "id": "prime66_25",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 25,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 25 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:25",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "25＝5×5。",
+  "factors": [5, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "884cdfb1e70183f041c1f40fa200e86612229c1022ec0eca1dfc8702aeeb2743"
+  }
+}, {
+  "id": "prime66_27",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 27,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 27 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:27",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "27＝3×3×3。",
+  "factors": [3, 3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "88ba174ca3f9ad87cec75fda90721299c8b4894bf7eddb0bee870abb407ba11d"
+  }
+}, {
+  "id": "prime66_28",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 28,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 28 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:28",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "28＝2×2×7。",
+  "factors": [2, 2, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "95869edea2c9ae89c73c51fd5ee8dac1d94597bb7af03e7bdd159c3b64aeb0c3"
+  }
+}, {
+  "id": "prime66_30",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 30,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 30 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:30",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "30＝2×3×5。",
+  "factors": [2, 3, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "00dc1700d8f6c7e602dc4a6f1c7b9457ed39c9f45a65b955032f6a2f98230516"
+  }
+}, {
+  "id": "prime66_32",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 32,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 32 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:32",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "32＝2×2×2×2×2。",
+  "factors": [2, 2, 2, 2, 2],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "91cfa3a8783454ae7de2d86e4706af432a9d340ced1b2cee22850e8143a8bd04"
+  }
+}, {
+  "id": "prime66_35",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "easy",
+  "kind": "factor",
+  "params": {
+    "n": 35,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 35 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:35",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "35＝5×7。",
+  "factors": [5, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "7c398c4bf65bd9b0e559d60678922a4e9aaee2686c8b06488c5a062c30fbd05c"
+  }
+}, {
+  "id": "prime66_36",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 36,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 36 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:36",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "36＝2×2×3×3。",
+  "factors": [2, 2, 3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "6af208dd6283970e9d3de37b790d7e1268b5997cc6fa7134145df7ac0503875e"
+  }
+}, {
+  "id": "prime66_40",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 40,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 40 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:40",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "40＝2×2×2×5。",
+  "factors": [2, 2, 2, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "d4b4d9821e392a3503bc563276938e68393625625c9fa73d2b1ec3f5a6ccd49e"
+  }
+}, {
+  "id": "prime66_44",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 44,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 44 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:44",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "44＝2×2×11。",
+  "factors": [2, 2, 11],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "84ba582cef699c5208bc356f4e5b618921257ba5838f66e2813f9533c4bd5486"
+  }
+}, {
+  "id": "prime66_45",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 45,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 45 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:45",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "45＝3×3×5。",
+  "factors": [3, 3, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "f16416b57968b2dc9c1704239764a0530205876be835ecdf9e35bce5d8c581fa"
+  }
+}, {
+  "id": "prime66_48",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 48,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 48 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:48",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "48＝2×2×2×2×3。",
+  "factors": [2, 2, 2, 2, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "426f928451490e6c9bb71a999fd63e76ea0fe7446affb59965916c2c4aee7945"
+  }
+}, {
+  "id": "prime66_50",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 50,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 50 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:50",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "50＝2×5×5。",
+  "factors": [2, 5, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "e7161b23af485a9e341588dcf269f6786a55867e1f241f63a18a863cb9fb3157"
+  }
+}, {
+  "id": "prime66_52",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 52,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 52 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:52",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "52＝2×2×13。",
+  "factors": [2, 2, 13],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "c58b8a69d87dd00961fcbcaccef942a5b30e661429f91c69c9e8460eebcafd73"
+  }
+}, {
+  "id": "prime66_54",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 54,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 54 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:54",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "54＝2×3×3×3。",
+  "factors": [2, 3, 3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "1623a6845a6c380c32491b33f63b69cde0df6b0846348e650d11b4e2aba13a46"
+  }
+}, {
+  "id": "prime66_56",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 56,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 56 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:56",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "56＝2×2×2×7。",
+  "factors": [2, 2, 2, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "0d04042ae7889663712a532b1c743c0901ba823bc5124f61f2a2ae3a6c428c20"
+  }
+}, {
+  "id": "prime66_60",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 60,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 60 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:60",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "60＝2×2×3×5。",
+  "factors": [2, 2, 3, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "1ad0681ad20c1dc8129fc16a11b2f72211216ed11b1bcbff1e137094c47daa18"
+  }
+}, {
+  "id": "prime66_63",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 63,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 63 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:63",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "63＝3×3×7。",
+  "factors": [3, 3, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "bb286d5c7ffcf80ef932cfc2d3fecb4a7b3124a7415d3835ce9a47456774641f"
+  }
+}, {
+  "id": "prime66_66",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 66,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 66 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:66",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "66＝2×3×11。",
+  "factors": [2, 3, 11],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "609ec6890421c1a1320d27f89b7d68c15f45e5377c40018817ead711c11125b8"
+  }
+}, {
+  "id": "prime66_70",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 70,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 70 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:70",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "70＝2×5×7。",
+  "factors": [2, 5, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "8fd450114782ccd814a551a94177a9a597ab6f4d9ffcdfd4179b3e90c5f4aba5"
+  }
+}, {
+  "id": "prime66_72",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 72,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 72 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:72",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "72＝2×2×2×3×3。",
+  "factors": [2, 2, 2, 3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "1934a4493603324af60bb7b38262429df90f99df7aa21ee50ba0784be4179f08"
+  }
+}, {
+  "id": "prime66_75",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 75,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 75 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:75",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "75＝3×5×5。",
+  "factors": [3, 5, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "45f9c70279539bd0ae1424375694912663e6fc8efb7e48b4fdd38002689fbde7"
+  }
+}, {
+  "id": "prime66_78",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 78,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 78 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:78",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "78＝2×3×13。",
+  "factors": [2, 3, 13],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "cb9bb27a3f8abb2967b18b97907c76afb594281862cffdfc67ba07e9f2c5f8b3"
+  }
+}, {
+  "id": "prime66_84",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 84,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 84 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:84",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "84＝2×2×3×7。",
+  "factors": [2, 2, 3, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "503e7f242c79f47235c6e55e56465e975ba536802c24b2b58ef1719f36ecf2c0"
+  }
+}, {
+  "id": "prime66_88",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "normal",
+  "kind": "factor",
+  "params": {
+    "n": 88,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 88 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:88",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "88＝2×2×2×11。",
+  "factors": [2, 2, 2, 11],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "29a374e996536d16d34b26e32a54cbbdb20976486620ecc54aed75153203b705"
+  }
+}, {
+  "id": "prime66_96",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 96,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 96 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:96",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "96＝2×2×2×2×2×3。",
+  "factors": [2, 2, 2, 2, 2, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "1ce65e554d8593d9e9f01eba278cabb962bec622b9906c36897233f9eabcb8ff"
+  }
+}, {
+  "id": "prime66_98",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 98,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 98 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:98",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "98＝2×7×7。",
+  "factors": [2, 7, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "19c40969769619588a432395ef8b2bc7e2a6e84a1a5ff99c80823694964db786"
+  }
+}, {
+  "id": "prime66_99",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 99,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 99 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:99",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "99＝3×3×11。",
+  "factors": [3, 3, 11],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "04f621f007bcc0ad65056fe25308d22ff8d960d472da98f592e4e4e7a5e2d2e4"
+  }
+}, {
+  "id": "prime66_100",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 100,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 100 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:100",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "100＝2×2×5×5。",
+  "factors": [2, 2, 5, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "4f8c3d724157e05c9888bf9ad749f16b1b368d279c9f788151628c02422187d1"
+  }
+}, {
+  "id": "prime66_104",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 104,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 104 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:104",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "104＝2×2×2×13。",
+  "factors": [2, 2, 2, 13],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "aa164ea9f6f05295b51fea17c4dfe3c865ebd6dea714a768022faeac75e9042b"
+  }
+}, {
+  "id": "prime66_108",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 108,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 108 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:108",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "108＝2×2×3×3×3。",
+  "factors": [2, 2, 3, 3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "fe39e7ccf29d1c84ed7a8680f70ca5a175db8ebf180420dec929f295e1fcfe21"
+  }
+}, {
+  "id": "prime66_110",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 110,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 110 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:110",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "110＝2×5×11。",
+  "factors": [2, 5, 11],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "e1be2fafddcc928d161a11bb0bbf2eb3d0f33e1c80793d2b1f14be495f74b499"
+  }
+}, {
+  "id": "prime66_112",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 112,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 112 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:112",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "112＝2×2×2×2×7。",
+  "factors": [2, 2, 2, 2, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "8b4a57c0e11d29061d720273327d6d024d2907e30a5ef5ec73eeacc9f05a979f"
+  }
+}, {
+  "id": "prime66_117",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 117,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 117 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:117",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "117＝3×3×13。",
+  "factors": [3, 3, 13],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "2d588992556d86d53e23cdb4781e5887f17fc9fe78de41fa1889a98ce38018e6"
+  }
+}, {
+  "id": "prime66_120",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 120,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 120 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:120",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "120＝2×2×2×3×5。",
+  "factors": [2, 2, 2, 3, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "bc83a2ac59612f8affcf438ca259cd7756d4fb0f4b5d16c9d42a7a6e39bb8bfd"
+  }
+}, {
+  "id": "prime66_125",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 125,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 125 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:125",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "125＝5×5×5。",
+  "factors": [5, 5, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "574b095f514749b5e4e5d0e587cc24488c3d565e43b7b00645e3761291e091fc"
+  }
+}, {
+  "id": "prime66_128",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 128,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 128 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:128",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "128＝2×2×2×2×2×2×2。",
+  "factors": [2, 2, 2, 2, 2, 2, 2],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "bb67ffab75f3e293137d9717997ab5668445c5b081132a04e90fe1302c10c19f"
+  }
+}, {
+  "id": "prime66_132",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 132,
+    "story": "鐘塔的零件櫃換了新鎖。用質數齒輪解開編號 132 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:132",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "132＝2×2×3×11。",
+  "factors": [2, 2, 3, 11],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "64a070b25fed301835b1d92ea8e70916cf054a2178366f722467abd2a97ab03b"
+  }
+}, {
+  "id": "prime66_135",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 135,
+    "story": "書院的藏書箱換了新鎖。用質數齒輪解開編號 135 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:135",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "135＝3×3×3×5。",
+  "factors": [3, 3, 3, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "3faa416e6ec339a3c6f08120fc8226e2a9ea0d41a39456720067e4beb2bb1393"
+  }
+}, {
+  "id": "prime66_140",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 140,
+    "story": "月台的行李櫃換了新鎖。用質數齒輪解開編號 140 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:140",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "140＝2×2×5×7。",
+  "factors": [2, 2, 5, 7],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "e0492cca05d3bdeebecfb7c9722cdebca3e0a26d7cafd21bfd4723d72f9af066"
+  }
+}, {
+  "id": "prime66_144",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 144,
+    "story": "觀測台的工具盒換了新鎖。用質數齒輪解開編號 144 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:144",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "144＝2×2×2×2×3×3。",
+  "factors": [2, 2, 2, 2, 3, 3],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "adb80b36de8947f4a67441f13f006caefd5328edce7d271f7b8f0b633f51b704"
+  }
+}, {
+  "id": "prime66_150",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 150,
+    "story": "博物館的檔案箱換了新鎖。用質數齒輪解開編號 150 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:150",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "150＝2×3×5×5。",
+  "factors": [2, 3, 5, 5],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "6bb8ce004dfbbc573c6ecfd2f92728f3df16f3d105b6108c8977c6100535a740"
+  }
+}, {
+  "id": "prime66_156",
+  "kpId": "m_prime",
+  "subject": "math",
+  "grade": 6,
+  "audienceGrades": [6],
+  "contentGrade": 6,
+  "semester": "6上",
+  "scope": "core",
+  "difficulty": "hard",
+  "kind": "factor",
+  "params": {
+    "n": 156,
+    "story": "燈塔的備用箱換了新鎖。用質數齒輪解開編號 156 的鎖。"
+  },
+  "variantGroup": "prime66:factor",
+  "stimulusGroup": null,
+  "title": "質數齒輪鎖",
+  "runtimeRequirements": ["factor"],
+  "contentKey": "prime66:factor:156",
+  "reviewed": true,
+  "contentRevision": 1,
+  "curriculumCodes": ["N-6-1"],
+  "solution": "156＝2×2×3×13。",
+  "factors": [2, 2, 3, 13],
+  "review": {
+    "reviewer": "Codex",
+    "reviewerType": "AI",
+    "reviewedAt": "2026-11-13",
+    "humanReviewed": false,
+    "scope": "數字分解、唯一質因數多重集合、按鈕可操作性與難度分組；不代替教師驗收",
+    "sha256": "7e9f91d34df1b7f179176b47c2bd2ee11eed56848ed950695a532d6b93741128"
+  }
+}];
 const LANGUAGE_V65_BANK = [{
   "id": "lang65_r_easy_1_1",
   "kpId": "c_sentence",
@@ -135983,6 +137766,17 @@ function validateBackupState(input) {
       if (v.companionRefunded !== undefined && typeof v.companionRefunded !== 'boolean') bad(p + '.companionRefunded');
       for (const k of ['coins', 'xpFromCases', 'fragments', 'chestsOpened', 'hintCards']) opt(v, k, num, p);
       for (const k of ['badges', 'arrests', 'items', 'focus']) opt(v, k, scalarMap, p);
+      opt(v, 'chapterFragments', (x, q) => {
+        obj(x, q);
+        if (x.version !== 1) bad(q + '.version');
+        map(x.counts, q + '.counts', (n, r) => {
+          if (!Number.isInteger(n) || n < 0 || n > 9) bad(r);
+        });
+        arr(x.unlocked, q + '.unlocked', (n, r) => {
+          if (!Number.isInteger(n) || n < 1 || n > 6) bad(r);
+        });
+        opt(x, 'legacyThrough', num, q);
+      }, p);
       for (const k of ['kpRecent']) opt(v, k, strs, p);
       for (const k of ['caseLog', 'purchases']) opt(v, k, records, p);
       opt(v, 'offers', (a, q) => arr(a, q, (o, r) => {
@@ -150226,7 +152020,7 @@ function casebookEntries(story, student) {
   };
 }
 function trainStory(student, story = student?.story || createStory()) {
-  if (story.flags.c2_done && !story.flags.ch3_open && getWallet(student).fragments >= 9) return {
+  if (story.flags.c2_done && !story.flags.ch3_open && chapterFragmentsAllow(student, 3, story)) return {
     ...story,
     flags: {
       ...story.flags,
@@ -150236,13 +152030,17 @@ function trainStory(student, story = student?.story || createStory()) {
   return story;
 }
 function trainRouteHint(student, story = trainStory(student)) {
+  const gate = chapterFragmentRoute(student, story);
+  if (gate) return gate;
   const f = story.flags,
     ev = story.evidence,
-    count = Math.max(0, Math.floor(getWallet(student).fragments || 0));
+    progress = chapterFragmentProgress(student, story),
+    count = progress.count;
   if (!f.c2_done || f.c3_done || f.c4_brief || f.c5_brief) return null;
   const base = {
+    ...progress,
     count,
-    ready: !!f.ch3_open || count >= 9
+    ready: chapterFragmentsAllow(student, 3, story)
   };
   const target = (title, text, scene, hotspot, localLabel, travelLabel) => ({
     ...base,
@@ -150363,6 +152161,131 @@ JUNIOR_CH1_TEXT.d_tiesu_platform = {
     lines: [['tiesu', '你已經到月台了。'], ['tiesu', '先點「長椅上的車票」。'], ['tiesu', '看看座位號碼。']]
   }]
 };
+const FRAGMENT_CHAPTER_NAMES = ['鐘塔的秘密', '消失的第十三封信', '午夜列車', '失落的星圖', '被遺忘的照片', '燈塔的最後一封信'];
+function fragmentChapter(story) {
+  const f = story?.flags || {};
+  for (let n = FRAGMENT_CHAPTER_NAMES.length; n >= 1; n--) if (f[`c${n}_brief`] || f[`c${n}_done`]) return n;
+  return 1;
+}
+function chapterFragmentLedger(student, story = student?.story) {
+  const saved = student?.wallet?.chapterFragments;
+  if (saved?.version === 1) return saved;
+  const f = story?.flags || {},
+    chapter = fragmentChapter(story),
+    counts = {},
+    unlocked = [1];
+  for (let n = 2; n <= FRAGMENT_CHAPTER_NAMES.length; n++) if (f[`c${n}_brief`] || f[`c${n}_done`] || f[`ch${n}_open`] || n >= 4 && f[`c${n - 1}_done`] && f[`c${n - 1}_epilogue`]) unlocked.push(n);
+  if (chapter <= 2) counts[chapter] = Math.min(9, Math.max(0, Math.floor(student?.wallet?.fragments || 0)));
+  return {
+    version: 1,
+    counts,
+    unlocked,
+    legacyThrough: chapter - 1
+  };
+}
+function ensureChapterFragments(state) {
+  if (!state.student || state.student.wallet?.chapterFragments?.version === 1) return state;
+  return {
+    ...state,
+    student: {
+      ...state.student,
+      wallet: {
+        ...getWallet(state.student),
+        chapterFragments: chapterFragmentLedger(state.student)
+      }
+    }
+  };
+}
+function chapterFragmentProgress(student, story = student?.story) {
+  const chapter = fragmentChapter(story),
+    ledger = chapterFragmentLedger(student, story);
+  const count = Math.min(9, Math.max(0, ledger.counts[chapter] || 0));
+  return {
+    chapter,
+    count,
+    ready: count >= 9,
+    label: `第${['一', '二', '三', '四', '五', '六'][chapter - 1]}章`,
+    name: FRAGMENT_CHAPTER_NAMES[chapter - 1]
+  };
+}
+function chapterFragmentsAllow(student, next, story = student?.story) {
+  const ledger = chapterFragmentLedger(student, story),
+    f = story?.flags || {};
+  return !!(ledger.unlocked.includes(next) || f[`c${next}_brief`] || f[`c${next}_done`] || (ledger.counts[next - 1] || 0) >= 9);
+}
+function chapterFragmentRoute(student, story = student?.story || createStory()) {
+  const p = chapterFragmentProgress(student, story),
+    f = story.flags;
+  const waiting = p.chapter < 6 ? f[`c${p.chapter}_done`] && !chapterFragmentsAllow(student, p.chapter + 1, story) : f.c6_open && !f.c6_done && !p.ready;
+  if (!waiting) return null;
+  const text = `${p.label}還差 ${9 - p.count} 片線索。到通緝板完成案件，每逮捕一位怪盜得 1 片。這一章要重新集滿 9 片，${p.chapter === 6 ? '再回燈室完成最後的燈號。' : '再找灰鴉夫人接下一章。'}`;
+  return {
+    ...p,
+    title: `集滿${p.label}的 9 片線索`,
+    text,
+    tip: text,
+    action: 'wanted',
+    button: '去通緝板收集'
+  };
+}
+function chapterFragmentDialogue(nodeId, student, story) {
+  const next = {
+    d_gr_ch2: 2,
+    d_gr_ch3: 3,
+    d_gr_ch2_done: 3,
+    d_c4_gr_ch4: 4,
+    d_c5_gr_ch5: 5,
+    d_c6_brief: 6
+  }[nodeId];
+  const p = chapterFragmentProgress(student, story);
+  const blocked = next && !chapterFragmentsAllow(student, next, story) || nodeId === 'd_c6_signal' && !story.flags.c6_done && !p.ready;
+  if (!blocked) return null;
+  return {
+    lines: [{
+      who: next ? 'grayraven' : 'keeper',
+      text: `${p.label}的線索還沒有拼完整。你已收集 ${p.count}／9 片，還差 ${9 - p.count} 片。`
+    }, {
+      who: 'tick',
+      text: '到通緝板完成案件，每逮捕一位怪盜得到 1 片。每章都要重新收集喔！'
+    }],
+    choices: [{
+      text: '去通緝板收集',
+      next: 'd_fragment_wanted'
+    }, {
+      text: '等一下再去',
+      next: null
+    }]
+  };
+}
+DIALOGUES.d_fragment_wanted = {
+  lines: [],
+  action: 'wanted'
+};
+function awardChapterFragment(student, story = student.story) {
+  const ledger = chapterFragmentLedger(student, story),
+    p = chapterFragmentProgress(student, story),
+    count = Math.min(9, p.count + 1);
+  const next = {
+    ...ledger,
+    counts: {
+      ...ledger.counts,
+      [p.chapter]: count
+    }
+  };
+  const beat = count !== p.count && [3, 6, 9].includes(count) ? {
+    at: count,
+    text: count < 9 ? `${p.label}拼好了 ${count} 片線索，繼續調查吧！` : p.chapter === 2 ? '第二章線索碎片已集滿！午夜列車的入口準備好了；完成第二章後，找灰鴉夫人接委託。' : `${p.label}線索碎片已集滿！${p.chapter === 6 ? '回燈室完成最後的燈號。' : '完成本章劇情後，找灰鴉夫人接下一章。'}`
+  } : null;
+  return {
+    ledger: next,
+    progress: {
+      ...p,
+      count,
+      ready: count >= 9
+    },
+    beat
+  };
+}
 const SUSPECTS = {
   fog: {
     id: 'fog',
@@ -150872,6 +152795,7 @@ function nextStep(state) {
   };
 }
 function settleCase(state) {
+  state = ensureChapterFragments(state);
   const w = getWallet(state.student);
   const a = w.active;
   if (!a) return {
@@ -150911,7 +152835,8 @@ function settleCase(state) {
     [a.suspect]: (w.arrests[a.suspect] || 0) + (allPassed ? 1 : 0)
   };
   const fragments = w.fragments + (allPassed ? 1 : 0);
-  const beat = allPassed ? FRAGMENT_BEATS.find(b => b.at === fragments) : null;
+  const earned = allPassed ? awardChapterFragment(state.student) : null;
+  const beat = earned?.beat || null;
   const badges = {
     ...w.badges
   };
@@ -150960,9 +152885,19 @@ function settleCase(state) {
       ...story.flags
     };
     const totalArrests = Object.values(arrests).reduce((x, y) => x + y, 0);
+    if (earned) st = {
+      ...st,
+      student: {
+        ...st.student,
+        wallet: {
+          ...getWallet(st.student),
+          chapterFragments: earned.ledger
+        }
+      }
+    };
     if (fragments >= 3) flags.frag_3 = true;
     if (fragments >= 6) flags.frag_6 = true;
-    if (fragments >= 9) flags.ch3_open = true;
+    if (flags.c2_done && chapterFragmentsAllow(st.student, 3, story)) flags.ch3_open = true;
     if (totalArrests >= 1) flags.arrests_1 = true;
     if (totalArrests >= 3) flags.arrests_3 = true;
     if (totalArrests >= 6) flags.arrests_6 = true;
@@ -150996,6 +152931,7 @@ function settleCase(state) {
       line,
       beat,
       fragments,
+      chapterFragments: chapterFragmentProgress(st.student),
       suspect,
       passed: passedSteps.length,
       total: a.stages.length,
@@ -160399,6 +162335,7 @@ function learningLogFields(state, kp, stage) {
 }
 function reconcileLearning(state) {
   if (!state.student) return state;
+  if (typeof ensureChapterFragments === 'function') state = ensureChapterFragments(state);
   const sig = learningSignature(state),
     l = state.learning || {},
     allowed = practiceKpsFor(state),
@@ -160869,7 +162806,8 @@ function g6PolicySuffix(state) {
 }
 function g6Select(state, kp, seed, difficulty) {
   if (!g6Enabled(state)) return null;
-  return selectG6Expansion(G6_EXPANSION_BANK, {
+  const bank = kp === 'm_prime' && typeof PRIME_V66_BANK !== 'undefined' ? [...G6_EXPANSION_BANK, ...PRIME_V66_BANK] : G6_EXPANSION_BANK;
+  return selectG6Expansion(bank, {
     grade: studentGrade(state.student),
     allowedKpIds: learningAllows(state, kp) ? [kp] : [],
     semesters: state.settings?.g6Semesters || ['6上', '6下', '複習'],
@@ -160880,7 +162818,7 @@ function g6Select(state, kp, seed, difficulty) {
     recentFamilies: state.learning?.g6Families || [],
     recentStimuli: state.learning?.g6Stimuli || [],
     seed,
-    allowRepeat: state.settings?.g6AllowRepeat === true
+    allowRepeat: kp === 'm_prime' || state.settings?.g6AllowRepeat === true
   });
 }
 function g6ApplyStages(stages, state, kp, seed, difficulty) {
@@ -173932,6 +175870,13 @@ function PetWardrobeLayers({
   const nf = N ? N.frames[frame] : null;
   const Hh = styles.head && pet.styles[styles.head];
   const hf = Hh ? Hh.frames[frame] : null;
+  const shellAnchors = [[202, 140], [181, 154], [225, 147], [203, 155]];
+  const hBox = hf && (petId === 'snail' ? (() => {
+    const [cx, bottom] = shellAnchors[frame];
+    const w = hf.h[2] * 1.18,
+      h = hf.h[3] * 1.18;
+    return [cx - w / 2, bottom - h, w, h];
+  })() : hf.h);
   return React.createElement("g", {
     "data-pet-wardrobe": `${styles.head || '-'}/${styles.neck || '-'}`
   }, nf && React.createElement(SheetImg, {
@@ -173968,10 +175913,11 @@ function PetWardrobeLayers({
     sw: Hh.sw,
     sh: Hh.sh,
     rect: hf.head,
-    x: hf.h[0],
-    y: hf.h[1],
-    w: hf.h[2],
-    h: hf.h[3]
+    x: hBox[0],
+    y: hBox[1],
+    w: hBox[2],
+    h: hBox[3],
+    "data-pet-head-placement": petId === 'snail' ? 'shell' : 'head'
   }));
 }
 function DirectionalScarf({
@@ -174859,7 +176805,7 @@ function WardrobeStylesPanel({
       onClick: () => togglePet(slot, id)
     }, React.createElement("span", {
       className: "wv-slot"
-    }, label), React.createElement("span", {
+    }, pet.id === 'snail' && slot === 'head' ? '殼上帽飾' : label), React.createElement("span", {
       className: "wv-name"
     }, has ? on ? '已戴上 · 點一下拿下' : '已擁有 · 點一下戴上' : `🔒 ${wardrobeRewardText(id)}`));
   }))))));
@@ -175749,12 +177695,12 @@ function TrainRouteNotice({
   return React.createElement("aside", {
     className: "train-route",
     id: "train-route",
-    "aria-label": "\u5348\u591C\u5217\u8ECA\u4E0B\u4E00\u6B65"
+    "aria-label": "\u7AE0\u7BC0\u4E0B\u4E00\u6B65"
   }, React.createElement("div", {
     className: "train-route-heading"
   }, React.createElement("span", null, "\uD83D\uDCAC ", selectedCompanion(student).name, "\u63D0\u9192\u4F60"), React.createElement("strong", {
     id: "train-fragment-count"
-  }, "\u7DDA\u7D22\u788E\u7247 ", Math.min(r.count, 9), "\uFF0F9 \u7247")), React.createElement("div", {
+  }, r.label, "\u7DDA\u7D22\u788E\u7247 ", Math.min(r.count, 9), "\uFF0F9 \u7247")), React.createElement("div", {
     className: "train-fragment-track",
     "aria-hidden": "true"
   }, Array.from({
@@ -176502,7 +178448,7 @@ function adventureGoal(student, story) {
   if (train) return {
     ...train,
     key: 'train:' + train.title,
-    short: !train.ready ? `線索碎片 ${train.count}／9・去通緝板` : train.title
+    short: !train.ready ? `${train.label}碎片 ${train.count}／9・去通緝板` : train.title
   };
   const tip = COMPANION_TIPS.find(t => condOk(story, t.when)),
     text = storyCompanionTip(student, story, tip?.text || '到島上看看，幫居民解決難題。');
@@ -177135,8 +179081,10 @@ function CaseMedal({
 }
 function ResourceSummary({
   wallet,
+  student,
   onSelect
 }) {
+  const p = chapterFragmentProgress(student);
   return React.createElement("section", {
     className: "resource-summary",
     "aria-label": "\u6211\u7684\u5192\u96AA\u8CC7\u6E90",
@@ -177155,15 +179103,15 @@ function ResourceSummary({
   }, wallet.coins), React.createElement("small", null, "\u53BB\u6AC3\u53F0\u63DB\u7528\u54C1 \u203A"))), React.createElement("button", {
     className: "resource-tile",
     onClick: () => onSelect('clues'),
-    "aria-label": `線索碎片 ${wallet.fragments}，查看線索板`
+    "aria-label": `${p.label}線索碎片 ${p.count}／9，查看線索板`
   }, React.createElement(ItemArt, {
     id: "fragment",
     size: 52
   }), React.createElement("span", null, React.createElement("span", {
     className: "resource-label"
-  }, "\u7DDA\u7D22\u788E\u7247"), React.createElement("strong", {
+  }, p.label, React.createElement("br", null), "\u7DDA\u7D22\u788E\u7247"), React.createElement("strong", {
     className: "nozy"
-  }, wallet.fragments, React.createElement("small", null, " / 9")), React.createElement("small", null, wallet.fragments >= 9 ? '已集滿・查看線索 ›' : `還差 ${9 - wallet.fragments} 片 ›`))), React.createElement("div", {
+  }, p.count, React.createElement("small", null, " / 9")), React.createElement("small", null, p.ready ? '本章集滿・查看線索 ›' : `還差 ${9 - p.count} 片 ›`))), React.createElement("div", {
     className: "resource-tile"
   }, React.createElement(ItemArt, {
     id: "hint_card",
@@ -177229,6 +179177,35 @@ function ShopItemPicture({
     icon: it.icon,
     size: size
   });
+}
+function ChapterFragmentBoard({
+  student
+}) {
+  const p = chapterFragmentProgress(student),
+    ledger = chapterFragmentLedger(student),
+    total = getWallet(student).fragments;
+  return React.createElement("div", {
+    className: "card col",
+    id: "chapter-fragment-board"
+  }, React.createElement("h3", null, p.label, "\u30FB", p.name, "\u7684\u7DDA\u7D22\u677F"), React.createElement("strong", {
+    className: "nozy"
+  }, "\u672C\u7AE0 ", p.count, "\uFF0F9 \u7247"), React.createElement("div", {
+    className: "row",
+    "aria-label": `本章已收集 ${p.count} 片`
+  }, Array.from({
+    length: 9
+  }, (_, i) => React.createElement("div", {
+    key: i,
+    className: `fragment ${i < p.count ? 'got' : ''}`,
+    "aria-hidden": "true"
+  }, i < p.count ? '✦' : ''))), React.createElement("p", null, "\u6BCF\u902E\u6355\u4E00\u4F4D\u602A\u76DC\u5F97\u5230 1 \u7247\u3002\u6BCF\u7AE0\u5404\u81EA\u6536\u96C6 9 \u7247\uFF1B\u4E0B\u4E00\u7AE0\u958B\u59CB\u6642\uFF0C\u65B0\u7DDA\u7D22\u677F\u6703\u5F9E 0 \u7247\u958B\u59CB\u3002"), React.createElement("div", {
+    className: "notice good"
+  }, student.story?.flags?.c6_done ? '六章劇情已完成，仍可到通緝板繼續練習與收集。' : p.ready ? `本章線索碎片已集滿！${p.chapter === 6 ? '回燈室完成最後的燈號。' : '完成本章劇情後，找灰鴉夫人接下一章。'}` : `還差 ${9 - p.count} 片，去通緝板完成案件吧。`), React.createElement("p", {
+    className: "small muted"
+  }, "\u7D2F\u7A4D\u53D6\u5F97 ", total, " \u7247\u3002\u96C6\u6EFF\u5F8C\u4ECD\u53EF\u7E7C\u7E8C\u7DF4\u7FD2\u3001\u7372\u5F97\u91D1\u5E63\u548C\u6210\u5C31\uFF1B\u591A\u6536\u7684\u788E\u7247\u8A08\u5165\u7D2F\u7A4D\u7D00\u9304\uFF0C\u4E0D\u9810\u5148\u586B\u6EFF\u4E0B\u4E00\u7AE0\u3002"), React.createElement("details", null, React.createElement("summary", null, "\u904E\u53BB\u7AE0\u7BC0\u7684\u6536\u96C6\u7D00\u9304"), FRAGMENT_CHAPTER_NAMES.slice(0, p.chapter - 1).map((name, i) => React.createElement("p", {
+    key: name,
+    className: "small"
+  }, "\u7B2C ", i + 1, " \u7AE0\u30FB", name, "\uFF1A", ledger.counts[i + 1] !== undefined ? `${ledger.counts[i + 1]}／9 片` : '舊版已通過，進度保留'))));
 }
 const PLAYER_SPEED = 300;
 function visibleHotspots(scene, story) {
@@ -179476,7 +181453,7 @@ function GrowthScreen({
   }, "\u672A\u901A\u904E"), " ", l.hints ? `提示 ${l.hints}` : '')))));
 }
 function resolveNode(nodeId, story, student) {
-  const n = nodeId === 'd_tiesu_train_wait' ? trainReminderDialogue(student, story) : storyDialogue(student, nodeId);
+  const n = chapterFragmentDialogue(nodeId, student, story) || (nodeId === 'd_tiesu_train_wait' ? trainReminderDialogue(student, story) : storyDialogue(student, nodeId));
   if (!n) return null;
   let eff = {
     id: nodeId,
@@ -180038,7 +182015,7 @@ function Adventure({
     id: "hud-wanted",
     onClick: onOpenWanted,
     disabled: busy
-  }, "\u901A\u7DDD\u677F", getWallet(student).active && React.createElement("span", {
+  }, "\u901A\u7DDD\u677F \xB7 \u672C\u7AE0 ", chapterFragmentProgress(student, story).count, "/9", getWallet(student).active && React.createElement("span", {
     className: "badge"
   }, "\u8FFD")), React.createElement("button", {
     id: "hud-quests",
@@ -180521,7 +182498,6 @@ function WantedBoard({
     setState(st);
     go('case');
   };
-  const nextBeat = FRAGMENT_BEATS.find(b => b.at > wallet.fragments);
   const lockedTemplates = CASE_TEMPLATES.filter(t => templateLocked(state, t));
   return React.createElement("div", {
     className: "stage"
@@ -180536,6 +182512,7 @@ function WantedBoard({
     kind: "accent"
   }, title)), React.createElement(ResourceSummary, {
     wallet: wallet,
+    student: state.student,
     onSelect: setTab
   }), tab !== 'shop' && React.createElement("div", {
     className: "card raised wanted-head"
@@ -180664,23 +182641,9 @@ function WantedBoard({
   }, React.createElement(SuspectCard, {
     suspect: s,
     wallet: wallet
-  })))), tab === 'clues' && React.createElement("div", {
-    className: "card col"
-  }, React.createElement("h3", null, "\u7B2C\u5341\u4E09\u5C01\u4FE1\u7684\u7DDA\u7D22\u677F"), React.createElement("div", {
-    className: "row"
-  }, Array.from({
-    length: 9
-  }).map((_, i) => React.createElement("div", {
-    key: i,
-    className: `fragment ${i < wallet.fragments ? 'got' : ''}`
-  }, i < wallet.fragments ? '✦' : ''))), React.createElement("p", {
-    className: "small"
-  }, "\u6BCF\u902E\u6355\u4E00\u4F4D\u602A\u76DC\uFF0C\u5C31\u6703\u62FF\u5230\u4E00\u7247\u548C\u300C\u771F\u6B63\u7684\u4FE1\u5DEE\u300D\u6709\u95DC\u7684\u788E\u7247\u3002", nextBeat ? `再 ${nextBeat.at - wallet.fragments} 片會拼出新的訊息。` : '碎片已經集滿。'), FRAGMENT_BEATS.filter(b => b.at <= wallet.fragments).map(b => React.createElement("div", {
-    key: b.at,
-    className: "notice good"
-  }, b.text)), React.createElement("p", {
-    className: "small muted"
-  }, state.student.story?.flags?.c3_done ? '第三章已完成，碎片可繼續收集。' : wallet.fragments >= 9 ? '線索碎片已集滿！完成第二章後，回事務所找灰鴉夫人接委託，再到舊火車站。' : `目前 ${wallet.fragments}／9 片，還差 ${9 - wallet.fragments} 片。每完成一張通緝令、逮捕怪盜可得 1 片。集滿後找灰鴉夫人。`)), tab === 'log' && React.createElement("div", {
+  })))), tab === 'clues' && React.createElement(ChapterFragmentBoard, {
+    student: state.student
+  }), tab === 'log' && React.createElement("div", {
     className: "card col"
   }, !wallet.caseLog.length && React.createElement("span", {
     className: "muted small"
@@ -180828,7 +182791,7 @@ function CasePlayer({
       className: "notice good"
     }, s.beat.text), s.allPassed && !s.beat && React.createElement("div", {
       className: "notice"
-    }, "\u4F60\u62FF\u5230\u4E00\u7247\u7DDA\u7D22\u788E\u7247\uFF08", s.fragments, "/9\uFF09\u3002"), !s.allPassed && React.createElement("div", {
+    }, "\u4F60\u62FF\u5230\u4E00\u7247\u7DDA\u7D22\u788E\u7247\uFF08", s.chapterFragments.label, " ", s.chapterFragments.count, "\uFF0F9\uFF1B\u7D2F\u7A4D ", s.fragments, " \u7247\uFF09\u3002"), !s.allPassed && React.createElement("div", {
       className: "notice warn"
     }, "\u89E3\u958B\u4E86 ", s.passed, "/", s.total, " \u500B\u7DDA\u7D22\u3002\u4ED6\u6703\u518D\u51FA\u73FE\u2014\u2014\u901A\u7DDD\u677F\u4E0A\u6703\u6709\u65B0\u7684\u7DDA\u7D22\uFF0C\u4E0B\u6B21\u7528\u65B0\u7684\u984C\u76EE\u518D\u8FFD\u3002"), React.createElement("div", {
       className: "row",
@@ -181462,7 +183425,7 @@ function Newspaper({
     className: "news-box"
   }, React.createElement("b", null, "\u5C0F\u6885\u7684\u5C08\u6B04"), React.createElement("div", {
     className: "small"
-  }, w.fragments >= 9 ? '第十三封信的碎片集滿了。據說午夜列車今晚會停靠。' : w.fragments > 0 ? `事務所的線索板上已有 ${w.fragments} 片碎片。「真正的信差」到底是誰？本報持續追蹤。` : '線索板還是空的。誰會是第一個逮到怪盜的人？')))), React.createElement("div", {
+  }, `${chapterFragmentProgress(s).label}線索板：${chapterFragmentProgress(s).count}／9 片。每章重新收集，累積已取得 ${w.fragments} 片。`)))), React.createElement("div", {
     className: "row between"
   }, React.createElement("span", {
     className: "small muted"
@@ -185081,7 +187044,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.13-v65",
+    "data-build": "2026.11.13-v66",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
