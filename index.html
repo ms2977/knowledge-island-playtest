@@ -836,7 +836,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261113-lighthouse-r2">
+<meta name="game-release" content="playtest-20261113-field-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -137747,7 +137747,8 @@ const SCENES = {
       kind: 'npc',
       npc: 'midnight',
       x: 670,
-      y: 470
+      y: 470,
+      spriteScale: 1.3
     }, {
       id: 'desk_letter',
       kind: 'object',
@@ -164497,13 +164498,15 @@ function IllustratedArt({
     } : null);
   const [failed, setFailed] = useState(null);
   const wstyles = typeof wardrobeOutfitStyle === 'function' && student && PLAYER_CHAR_BY_ID[id] ? wardrobeOutfitStyle(student) : null;
+  const outfitSheet = wstyles ? WARDROBE_V1.players[id]?.[wstyles.outfit]?.portrait?.sheet : null;
+  const outfitStatus = useSpriteImageStatus(outfitSheet);
   const uid = React.useId().replace(/:/g, '');
-  if (wstyles && failed !== 'wardrobe') return React.createElement(WardrobePortraitArt, _extends({}, props, {
+  if (wstyles && outfitStatus === 'ready' && failed !== outfitSheet) return React.createElement(WardrobePortraitArt, _extends({}, props, {
     id: id,
     student: student,
     styles: wstyles,
     portrait: portrait,
-    onError: () => setFailed('wardrobe')
+    onError: () => setFailed(outfitSheet)
   }));
   if (!url || !l || failed === url) return children;
   const a = activeDisguise(student) ? {} : student?.appearance || {},
@@ -165439,6 +165442,41 @@ function FieldPreview({
     animate: active
   })));
 }
+const SPRITE_IMAGE_STATUS = new Map();
+function preloadSpriteImage(url) {
+  if (SPRITE_IMAGE_STATUS.has(url)) return SPRITE_IMAGE_STATUS.get(url);
+  const entry = {
+    status: 'loading'
+  };
+  entry.promise = new Promise(resolve => {
+    const img = new window.Image();
+    const done = status => {
+      entry.status = status;
+      resolve(status);
+    };
+    img.onload = () => {
+      if (img.decode) img.decode().then(() => done('ready'), () => done('error'));else done('ready');
+    };
+    img.onerror = () => done('error');
+    img.src = url;
+  });
+  SPRITE_IMAGE_STATUS.set(url, entry);
+  return entry;
+}
+function useSpriteImageStatus(url) {
+  const [, refresh] = useState(0);
+  useEffect(() => {
+    if (!url) return;
+    let alive = true;
+    preloadSpriteImage(url).promise.then(() => {
+      if (alive) refresh(n => n + 1);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [url]);
+  return url ? SPRITE_IMAGE_STATUS.get(url)?.status || 'loading' : 'none';
+}
 function useSpriteStep(walking, period = 160) {
   const [step, setStep] = useState(0),
     [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -165603,16 +165641,17 @@ function FieldSprite(props) {
     back = direction === 'back';
   const frame = art?.frames === 6 ? (back ? 3 : 0) + [0, 1, 0, 2][step] : back ? 1 : 0;
   const url = art ? `${art.path}/frame-${frame}.webp` : null;
+  const requestedStyle = typeof wardrobeOutfitStyle === 'function' && student ? wardrobeOutfitStyle(student) : null;
+  const outfit = requestedStyle ? WARDROBE_V1.players[id]?.[requestedStyle.outfit] : null;
+  const bodyStatus = useSpriteImageStatus(url),
+    outfitStatus = useSpriteImageStatus(outfit?.sheet);
   useEffect(() => {
-    if (art) for (let i = 0; i < art.frames; i++) {
-      const image = new window.Image();
-      image.src = `${art.path}/frame-${i}.webp`;
-    }
+    if (art) for (let i = 0; i < art.frames; i++) preloadSpriteImage(`${art.path}/frame-${i}.webp`);
   }, [id]);
-  if (!art || failed === id) return React.createElement(VectorFieldSprite, props);
+  const wstyles = outfitStatus === 'ready' && outfit?.frames[frame]?.body && failed !== outfit.sheet ? requestedStyle : null;
+  if (!art || !wstyles && (bodyStatus !== 'ready' || failed === url)) return React.createElement(VectorFieldSprite, props);
   const a = activeDisguise(student) ? {} : student?.appearance || {},
     base = PLAYER_CHAR_BY_ID[id]?.look;
-  const wstyles = typeof wardrobeOutfitStyle === 'function' && student ? wardrobeOutfitStyle(student) : null;
   const worn = student && !wstyles ? visibleEquipment(student) : [];
   const anchor = art.anchors[frame],
     neck = anchor.neck,
@@ -165659,12 +165698,12 @@ function FieldSprite(props) {
     styles: wstyles,
     uid: uid,
     hairColor: a.hairColor,
-    onError: () => setFailed(id)
+    onError: () => setFailed(outfit.sheet)
   }) : React.createElement(React.Fragment, null, React.createElement("image", {
     href: url,
     width: "320",
     height: "480",
-    onError: () => setFailed(id),
+    onError: () => setFailed(url),
     "data-sprite-frame": frame
   }), base && [['hair', a.hairColor, base.hairColor], ['eyes', EYE_TINT_ENABLED ? a.eye : undefined, base.eye]].map(([part, color, original]) => React.createElement(PaintedTint, {
     key: part,
@@ -166134,24 +166173,34 @@ function SheetImg({
   onError,
   ...rest
 }) {
+  const clip = 'sheet' + React.useId().replaceAll(':', '');
   if (!rect) return null;
   const [rx, ry, rw, rh] = rect;
   w = w ?? rw;
   h = h ?? rh;
-  return React.createElement("svg", _extends({
+  const sx = w / rw,
+    sy = h / rh;
+  return React.createElement("g", _extends({
+    "data-sheet-crop": rect.join(' ')
+  }, rest), React.createElement("defs", null, React.createElement("clipPath", {
+    id: clip,
+    clipPathUnits: "userSpaceOnUse"
+  }, React.createElement("rect", {
     x: x,
     y: y,
     width: w,
-    height: h,
-    viewBox: `${rx} ${ry} ${rw} ${rh}`,
-    preserveAspectRatio: "none",
-    overflow: "hidden"
-  }, rest), React.createElement("image", {
+    height: h
+  }))), React.createElement("g", {
+    clipPath: `url(#${clip})`
+  }, React.createElement("image", {
     href: sheet,
-    width: sw,
-    height: sh,
+    x: x - rx * sx,
+    y: y - ry * sy,
+    width: sw * sx,
+    height: sh * sy,
+    preserveAspectRatio: "none",
     onError: onError
-  }));
+  })));
 }
 function WardrobeHairTint({
   src,
@@ -169477,7 +169526,7 @@ function sceneLabelPlacements(scene, story, scale) {
   }
   for (const h of isMap ? scene.hotspots : visibleHotspots(scene, story)) {
     const npc = h.kind === 'npc' ? NPCS[h.npc] : null,
-      sc = isMap ? .6 : depthScale(h.y),
+      sc = isMap ? .6 : depthScale(h.y) * (h.spriteScale || 1),
       locked = isMap && !condOk(story, h.requires),
       name = npc ? npc.name : h.label;
     const dy = npc ? FIELD_ART[npc.id] ? 30 - 225 * sc * (npc.id === 'ling' ? .85 : 1) - 38 : 30 - (npc.look.hat === 'tophat' ? 280 : 242) * sc : isMap ? 40 : -70 * sc - 10;
@@ -170040,7 +170089,7 @@ function Hotspot({
     busy: busy,
     onClick: onClick
   });
-  const sc = isMap ? 0.6 : depthScale(h.y);
+  const sc = isMap ? 0.6 : depthScale(h.y) * (h.spriteScale || 1);
   const npc = h.kind === 'npc' ? NPCS[h.npc] : null;
   const nameY = npc ? FIELD_ART[npc.id] ? 30 - 225 * sc * (npc.id === 'ling' ? .85 : 1) - 38 : 30 - (npc.look.hat === 'tophat' ? 280 : 242) * sc : isMap ? 40 : -70 * sc - 10;
   const w = place?.w || 152,
@@ -177572,7 +177621,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.13-v63",
+    "data-build": "2026.11.13-v64",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
