@@ -856,6 +856,12 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 #story-source-focus{max-width:100%;width:320px}
 @media(max-width:800px){.story-source-choices{grid-template-columns:1fr}.story-source-option{padding:14px}}
 
+/* v70: readable supply budgets, large original art and a quiet break corner. */
+.focus-recovery{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(320px,1.2fr);border:1px solid #c6d9d5;border-radius:22px;overflow:hidden;background:#f7fbf8;color:#203f49;margin:8px 0 20px;box-shadow:0 8px 25px #153c4c0b}
+.focus-budget{padding:24px;background:linear-gradient(145deg,#e8f4ef,#f5f8ec);display:flex;flex-direction:column;align-items:flex-start;gap:10px}.focus-budget h3,.focus-rest h3{margin:0;font-size:22px}.focus-budget p,.focus-rest p{margin:0;line-height:1.75}.focus-budget .eyebrow{color:#3b726b}.focus-budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin:4px 0}.focus-budget-grid>div{background:#ffffffb8;border:1px solid #c6d9d5;border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:5px}.focus-budget-grid b{font-size:26px;line-height:1.3}.focus-budget-grid small{font-size:15px;font-weight:400}.focus-rest{display:flex;align-items:center;gap:16px;padding:24px;background:linear-gradient(140deg,#fffcf3,#f9f4e7)}.focus-rest-picture{display:flex;flex-direction:column;align-items:center;flex:0 0 128px;gap:12px}.focus-rest-copy{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0}.focus-rest-reward{color:#256c60;font-size:18px;font-weight:700}.focus-free{display:inline-block;border-radius:18px;background:#e0eee4;border:1px solid #afcbbc;padding:6px 9px;font-size:14px;color:#275d51;text-align:center}.focus-countdown{font-size:28px;font-variant-numeric:tabular-nums;color:#4c6b67;letter-spacing:2px}.focus-other{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 24px;border-top:1px solid #c6d9d5;background:#fff}.focus-item-remaining{color:#3e6a60;font-size:15px}.focus-dots{flex-wrap:wrap;max-width:210px}.focus{flex-wrap:wrap;row-gap:7px}.focus-recovery .btn{white-space:normal}#focus-settings .row{flex-wrap:wrap}.junior .focus-recovery{font-size:17px}.junior .focus-budget-grid{grid-template-columns:1fr}.junior .focus-rest{align-items:flex-start}.junior .focus-free{line-height:1.8}
+@media(max-width:800px){.focus-recovery{grid-template-columns:1fr}.focus-budget-grid{max-width:420px}.focus-rest{border-top:1px solid #d8dec9}.junior .focus-budget-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.focus-budget,.focus-rest{padding:18px}.focus-rest{flex-direction:column;align-items:center}.focus-rest-picture{flex-basis:auto}.focus-rest-copy{align-items:stretch;width:100%}.focus-rest-copy h3{text-align:center}.focus-free{font-size:15px}.focus-other{padding:18px}.focus-other .btn{width:100%}.focus-budget-grid>div{padding:9px}.focus-budget h3,.focus-rest h3{font-size:21px}.focus-recovery .focus{max-width:100%}}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -863,7 +869,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261114-story-source-r1">
+<meta name="game-release" content="playtest-20261114-focus-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -137196,6 +137202,16 @@ Object.assign(ZHUYIN_DATA.words, {
   "零件": ["ㄌㄧㄥˊ", "ㄐㄧㄢˋ"],
   "供電": ["ㄍㄨㄥ", "ㄉㄧㄢˋ"]
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  '繽': 'ㄅㄧㄣ'
+});
+Object.assign(ZHUYIN_DATA.words, {
+  '繽紛': ['ㄅㄧㄣ', 'ㄈㄣ'],
+  '補給': ['ㄅㄨˇ', 'ㄐㄧˇ'],
+  '便當': ['ㄅㄧㄢˋ', 'ㄉㄤ'],
+  '飯糰': ['ㄈㄢˋ', 'ㄊㄨㄢˊ'],
+  '調查': ['ㄉㄧㄠˋ', 'ㄔㄚˊ']
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -137770,6 +137786,11 @@ function validateBackupState(input) {
     if (!['string', 'number', 'boolean'].includes(typeof x) && x !== null) bad(q);
   });
   obj(input, '根目錄');
+  if (input.settings) {
+    const a = input.settings;
+    if (a.focusPurchaseMax !== undefined && (!Number.isInteger(a.focusPurchaseMax) || a.focusPurchaseMax < 0 || a.focusPurchaseMax > 8)) bad('settings.focusPurchaseMax');
+    if (a.focusRestEnabled !== undefined && typeof a.focusRestEnabled !== 'boolean') bad('settings.focusRestEnabled');
+  }
   if (input.version !== 1) backupError('這不是支援的第 1 版備份，請保留原檔。');
   arr(input.missions, 'missions');
   const s = {
@@ -137844,6 +137865,11 @@ function validateBackupState(input) {
       if (v.companionRefunded !== undefined && typeof v.companionRefunded !== 'boolean') bad(p + '.companionRefunded');
       for (const k of ['coins', 'xpFromCases', 'fragments', 'chestsOpened', 'hintCards']) opt(v, k, num, p);
       for (const k of ['badges', 'arrests', 'items', 'focus']) opt(v, k, scalarMap, p);
+      opt(v, 'focus', (x, q) => {
+        for (const k of ['purchased', 'restStartedAt', 'restClaimedAt']) opt(x, k, (n, r) => {
+          if (!Number.isSafeInteger(n) || n < 0) bad(r);
+        }, q);
+      }, p);
       opt(v, 'chapterFragments', (x, q) => {
         obj(x, q);
         if (x.version !== 1) bad(q + '.version');
@@ -153115,8 +153141,10 @@ function skillSubjectsActive(state) {
   const a = activeSubjects(studentGrade(state?.student));
   return a.length ? a : ['math', 'chinese'];
 }
-const FOCUS_DEFAULT = 5;
-const TEA_PER_DAY = 2;
+const FOCUS_DEFAULT = 5,
+  FOCUS_PURCHASE_DEFAULT = 4,
+  FOCUS_REST_POINTS = 2,
+  FOCUS_REST_MS = 5 * 60 * 1000;
 function todayKey(t = Date.now()) {
   const d = new Date(t);
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -153125,29 +153153,52 @@ function focusMax(state) {
   const n = Number(getSettings(state).focusMax);
   return Number.isFinite(n) && n >= 1 ? Math.min(12, Math.round(n)) : FOCUS_DEFAULT;
 }
-function focusState(state) {
-  const w = getWallet(state.student);
-  const f = w.focus || {};
-  const today = todayKey();
-  const used = f.day === today ? f.used || 0 : 0;
-  const tea = f.day === today ? f.tea || 0 : 0;
-  const bonus = f.day === today ? f.bonus || 0 : 0;
-  const max = focusMax(state);
-  const left = Math.max(0, max + bonus - used);
+function focusPurchaseMax(state) {
+  const n = getSettings(state).focusPurchaseMax;
+  return typeof n === 'number' && Number.isFinite(n) ? Math.max(0, Math.min(8, Math.round(n))) : FOCUS_PURCHASE_DEFAULT;
+}
+function focusCount(n) {
+  return typeof n === 'number' && Number.isSafeInteger(n) && n >= 0 ? n : 0;
+}
+function focusState(state, t = Date.now()) {
+  const raw = getWallet(state.student).focus || {},
+    day = todayKey(t),
+    same = raw.day === day;
+  const used = same ? focusCount(raw.used) : 0,
+    tea = same ? focusCount(raw.tea) : 0,
+    bonus = same ? focusCount(raw.bonus) : 0;
+  const purchased = same ? raw.purchased === undefined ? Math.max(tea, bonus) : focusCount(raw.purchased) : 0;
+  const purchaseMax = focusPurchaseMax(state),
+    purchaseLeft = Math.max(0, purchaseMax - purchased),
+    max = focusMax(state);
+  const restStartedAt = focusCount(raw.restStartedAt),
+    restClaimedAt = focusCount(raw.restClaimedAt),
+    restEnabled = getSettings(state).focusRestEnabled !== false;
+  const restClaimed = restClaimedAt > 0 && todayKey(restClaimedAt) === day;
+  const restPending = restStartedAt > restClaimedAt;
+  const restRemaining = restPending ? Math.max(0, restStartedAt + FOCUS_REST_MS - t) : FOCUS_REST_MS;
   return {
-    day: today,
+    day,
     used,
     tea,
     bonus,
+    purchased,
     max,
-    left,
-    teaLeft: Math.max(0, TEA_PER_DAY - tea)
+    left: Math.max(0, max + bonus - used),
+    purchaseMax,
+    purchaseLeft,
+    teaLeft: purchaseLeft,
+    restEnabled,
+    restStartedAt,
+    restClaimedAt,
+    restClaimed,
+    restPending,
+    restRemaining,
+    restReady: restEnabled && !restClaimed && restPending && restRemaining === 0
   };
 }
-function spendFocus(state) {
+function writeFocus(state, f, patch = {}) {
   const w = getWallet(state.student);
-  const f = focusState(state);
-  if (f.left <= 0) return null;
   return {
     ...state,
     student: {
@@ -153155,33 +153206,46 @@ function spendFocus(state) {
       wallet: {
         ...w,
         focus: {
-          day: f.day,
-          used: f.used + 1,
-          tea: f.tea,
-          bonus: f.bonus
-        }
-      }
-    }
-  };
-}
-function restoreFocus(state, n = 1) {
-  const w = getWallet(state.student);
-  const f = focusState(state);
-  return {
-    ...state,
-    student: {
-      ...state.student,
-      wallet: {
-        ...w,
-        focus: {
+          ...w.focus,
           day: f.day,
           used: f.used,
-          tea: f.tea + 1,
-          bonus: f.bonus + n
+          tea: f.tea,
+          bonus: f.bonus,
+          purchased: f.purchased,
+          restStartedAt: f.restStartedAt,
+          restClaimedAt: f.restClaimedAt,
+          ...patch
         }
       }
     }
   };
+}
+function spendFocus(state, t = Date.now()) {
+  const f = focusState(state, t);
+  return f.left <= 0 ? null : writeFocus(state, f, {
+    used: f.used + 1
+  });
+}
+function restoreFocus(state, n = 1, id = 'tea', t = Date.now()) {
+  const f = focusState(state, t);
+  return !Number.isInteger(n) || n <= 0 || n > f.purchaseLeft ? state : writeFocus(state, f, {
+    tea: f.tea + (id === 'tea' ? 1 : 0),
+    bonus: f.bonus + n,
+    purchased: f.purchased + n
+  });
+}
+function startFocusRest(state, t = Date.now()) {
+  const f = focusState(state, t);
+  return !f.restEnabled || f.restClaimed || f.restPending ? state : writeFocus(state, f, {
+    restStartedAt: t
+  });
+}
+function claimFocusRest(state, t = Date.now()) {
+  const f = focusState(state, t);
+  return !f.restReady ? state : writeFocus(state, f, {
+    bonus: f.bonus + FOCUS_REST_POINTS,
+    restClaimedAt: t
+  });
 }
 const SHOP_ITEMS = [{
   id: 'notebook',
@@ -153218,11 +153282,30 @@ const SHOP_ITEMS = [{
 }, {
   id: 'tea',
   kind: 'consumable',
+  focusPoints: 1,
   name: '灰鴉夫人的茶點',
   price: 25,
   icon: 'cup',
-  desc: '恢復 1 點專注力，今天可以多接一張通緝令。',
-  effect: '每天最多買 2 份。'
+  desc: '補充 1 點專注力，今天可以多接一張通緝令。',
+  effect: '與水果盒、便當共用今天的購買點數額度。'
+}, {
+  id: 'fruit_box',
+  kind: 'consumable',
+  focusPoints: 1,
+  name: '島嶼水果盒',
+  price: 25,
+  icon: 'cup',
+  desc: '一盒繽紛水果，補充 1 點專注力，今天可以多接一張通緝令。',
+  effect: '與茶點、便當共用今天的購買點數額度；換取後立即使用。'
+}, {
+  id: 'lunch_box',
+  kind: 'consumable',
+  focusPoints: 2,
+  name: '調查便當',
+  price: 45,
+  icon: 'cup',
+  desc: '帶上飯糰與蔬菜，補充 2 點專注力，今天可以多接兩張通緝令。',
+  effect: '與茶點、水果盒共用今天的購買點數額度；換取後立即使用。'
 }, {
   id: 'title_fog',
   kind: 'cosmetic',
@@ -153326,7 +153409,7 @@ function itemLocked(state, item) {
   if (item.requires?.arrests && !(w.arrests[item.requires.arrests] > 0)) return `要先逮捕過${SUSPECTS[item.requires.arrests].name}`;
   return null;
 }
-function buyItem(state, id) {
+function buyItem(state, id, t = Date.now()) {
   const item = SHOP_BY_ID[id];
   const w = getWallet(state.student);
   if (!item) return {
@@ -153350,10 +153433,10 @@ function buyItem(state, id) {
     ok: false,
     reason: '已經擁有'
   };
-  if (item.kind === 'consumable' && item.id === 'tea' && focusState(state).teaLeft <= 0) return {
+  if (item.focusPoints && focusState(state, t).purchaseLeft < item.focusPoints) return {
     state,
     ok: false,
-    reason: '今天的茶點已經買過 2 份了，明天再來'
+    reason: focusState(state, t).purchaseLeft === 0 ? '今天的補給額度用完了，可以看看免費休息或委託任務' : '剩餘額度只有 1 點，可以選茶點或水果盒'
   };
   if (w.coins < item.price) return {
     state,
@@ -153379,7 +153462,7 @@ function buyItem(state, id) {
       }
     }
   };
-  if (id === 'tea') st = restoreFocus(st, 1);
+  if (item.focusPoints) st = restoreFocus(st, item.focusPoints, id, t);
   if (item.kind === 'cosmetic') st = equipCosmetic(st, id);
   if (item.kind === 'decor') st = toggleDecor(st, id);
   st = grantAch(st, 'first_purchase');
@@ -179796,6 +179879,9 @@ const ITEM_ART_NAMES = {
   magnifier: '黃銅放大鏡',
   watch: '追蹤懷錶',
   tea: '灰鴉夫人的茶點',
+  fruit_box: '島嶼水果盒',
+  lunch_box: '調查便當',
+  rest_nook: '休息角落',
   hint_card: '提示卡',
   fragment: '線索碎片',
   title_fog: '霧巷追蹤者',
@@ -179810,6 +179896,9 @@ const ITEM_ART_FALLBACK = {
   magnifier: '鏡',
   watch: '錶',
   tea: '茶',
+  fruit_box: '果',
+  lunch_box: '飯',
+  rest_nook: '歇',
   hint_card: '燈',
   fragment: '圖',
   title_fog: '貓',
@@ -179969,9 +180058,21 @@ const SHOP_PRESENTATION = {
   tea: {
     short: '休息一下，再接一件案子',
     stat: '專注力 +1',
-    note: '每天最多 2 份'
+    note: '共用每日補給額度'
   }
 };
+Object.assign(SHOP_PRESENTATION, {
+  fruit_box: {
+    short: '繽紛水果，補給好心情',
+    stat: '專注力 +1',
+    note: '共用每日補給額度'
+  },
+  lunch_box: {
+    short: '帶上飯糰，準備下一趟調查',
+    stat: '專注力 +2',
+    note: '共用每日補給額度'
+  }
+});
 function ShopItemPicture({
   it,
   size = 112
@@ -183362,13 +183463,13 @@ function WantedBoard({
     if (st !== state) setState(st);
   }, []);
   const wallet = getWallet(state.student);
-  const focus = focusState(state);
+  const focus = useFocusClock(state);
   const title = equippedTitle(wallet);
   const [tab, setTab] = useState(initialTab);
   const [open, setOpen] = useState(null);
   const accept = id => {
     if (focus.left <= 0) {
-      toast && toast('今天的專注力用完了，明天再接新的通緝令');
+      toast && toast('專注力用完了，看看補給與免費休息，也能先做委託任務');
       return;
     }
     const st = acceptOffer(state, id);
@@ -183407,8 +183508,6 @@ function WantedBoard({
   }, React.createElement(SkillBars, {
     state: state,
     compact: true
-  }), React.createElement(FocusMeter, {
-    state: state
   }))), React.createElement("div", {
     className: "tabs"
   }, [['board', '通緝令'], ['shop', '櫃台'], ['files', '怪盜檔案'], ['clues', '線索板'], ['log', '追捕紀錄']].map(([k, n]) => React.createElement("button", {
@@ -183422,7 +183521,12 @@ function WantedBoard({
     toast: toast || (() => {})
   }), tab === 'board' && React.createElement("div", {
     className: "col"
-  }, wallet.active && React.createElement("div", {
+  }, React.createElement(FocusRecovery, {
+    state: state,
+    setState: setState,
+    onShop: () => setTab('shop'),
+    onAdventure: () => go('adventure')
+  }), wallet.active && React.createElement("div", {
     className: "notice warn row between"
   }, React.createElement("span", null, "\u4F60\u6B63\u5728\u8FFD\u6355 ", React.createElement("b", null, SUSPECTS[wallet.active.suspect].name), "\uFF08", wallet.active.title, "\uFF09\uFF0C\u7B2C ", wallet.active.stepIdx + 1, "/", wallet.active.stages.length, " \u95DC\u3002\u63A5\u4E0B\u7684\u6848\u5B50\u8981\u8FFD\u5230\u5E95\u3002"), React.createElement(Btn, {
     kind: "primary",
@@ -183431,7 +183535,7 @@ function WantedBoard({
   }, "\u7E7C\u7E8C\u8FFD\u6355")), !wallet.active && focus.left <= 0 && React.createElement("div", {
     className: "notice",
     id: "focus-empty"
-  }, "\u4ECA\u5929\u7684\u5C08\u6CE8\u529B\u7528\u5B8C\u4E86\uFF08\u5DF2\u63A5 ", focus.used, " \u5F35\uFF09\u3002\u660E\u5929\u6703\u81EA\u52D5\u6062\u5FA9\uFF1B\u60F3\u518D\u63A5\u4E00\u5F35\uFF0C\u53EF\u4EE5\u5230\u6AC3\u53F0\u63DB\u4E00\u4EFD\u8336\u9EDE\uFF0C\u6216\u5148\u53BB\u59D4\u8A17\u677F\u3001\u4E3B\u7DDA\u5287\u60C5\u8D70\u8D70\u3002"), React.createElement("div", {
+  }, "\u4ECA\u5929\u7684\u5C08\u6CE8\u529B\u7528\u5B8C\u4E86\uFF08\u5DF2\u63A5 ", focus.used, " \u5F35\uFF09\u3002\u4E0A\u65B9\u53EF\u4EE5\u67E5\u770B\u88DC\u7D66\u8207\u4F11\u606F\uFF1B\u59D4\u8A17\u4EFB\u52D9\u548C\u4E3B\u7DDA\u5287\u60C5\u4E0D\u6263\u5C08\u6CE8\u529B\uFF0C\u660E\u5929\u4E5F\u6703\u6062\u5FA9\u3002"), React.createElement("div", {
     className: "grid"
   }, wallet.offers.map(o => {
     const s = SUSPECTS[o.suspect];
@@ -183836,6 +183940,97 @@ function CasePlayer({
     onClick: retryStep
   }, "\u518D\u8A66\u4E00\u6B21\u9019\u500B\u7DDA\u7D22")))))));
 }
+function useFocusClock(state) {
+  const [clock, setClock] = useState(Date.now);
+  useEffect(() => {
+    const id = setInterval(() => setClock(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return focusState(state, clock);
+}
+function FocusRecovery({
+  state,
+  setState,
+  onShop,
+  onAdventure
+}) {
+  const f = useFocusClock(state),
+    seconds = Math.ceil(f.restRemaining / 1000),
+    time = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+  return React.createElement("section", {
+    className: "focus-recovery",
+    "aria-label": "\u5C08\u6CE8\u529B\u88DC\u7D66\u8207\u4F11\u606F",
+    id: "focus-recovery"
+  }, React.createElement("div", {
+    className: "focus-budget"
+  }, React.createElement("div", {
+    className: "focus-budget-heading"
+  }, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u4ECA\u5929\u7684\u8ABF\u67E5\u6E96\u5099"), React.createElement("h3", null, "\u4F11\u606F\u4E00\u4E0B\uFF0C\u518D\u51FA\u767C")), React.createElement(FocusMeter, {
+    state: state
+  }), React.createElement("p", null, "\u76EE\u524D\u53EF\u518D\u63A5 ", React.createElement("strong", {
+    className: "nozy"
+  }, f.left), " \u5F35\u901A\u7DDD\u4EE4"), React.createElement("div", {
+    className: "focus-budget-grid"
+  }, React.createElement("div", null, React.createElement("span", null, "\u4ECA\u65E5\u5DF2\u63A5\u6848"), React.createElement("b", {
+    className: "nozy"
+  }, f.used, React.createElement("small", null, " \u5F35"))), React.createElement("div", null, React.createElement("span", null, "\u88DC\u7D66\u9084\u53EF\u8CB7"), React.createElement("b", {
+    className: "nozy",
+    id: "focus-purchase-left"
+  }, f.purchaseLeft, React.createElement("small", null, " / ", f.purchaseMax, " \u9EDE")))), React.createElement("p", {
+    className: "small"
+  }, "\u7B54\u932F\u3001\u7528\u63D0\u793A\u4E0D\u6263\u9EDE\u6578\u3002\u57FA\u672C ", f.max, " \u9EDE\u6BCF\u5929\u6062\u5FA9\uFF1B\u88DC\u7D66\u53EA\u4F9B\u4ECA\u5929\u4F7F\u7528\u3002"), onShop && React.createElement(Btn, {
+    id: "focus-open-shop",
+    onClick: onShop,
+    kind: "teal"
+  }, "\u770B\u770B\u88DC\u7D66\u5546\u54C1")), React.createElement("div", {
+    className: "focus-rest"
+  }, React.createElement("div", {
+    className: "focus-rest-picture"
+  }, React.createElement(ItemArt, {
+    id: "rest_nook",
+    size: 128
+  }), React.createElement("span", {
+    className: "focus-free"
+  }, "\u514D\u8CBB\u30FB\u6BCF\u5929\u4E00\u6B21")), React.createElement("div", {
+    className: "focus-rest-copy"
+  }, React.createElement("h3", null, "\u8ABF\u67E5\u54E1\u4F11\u606F\u89D2\u843D"), React.createElement("p", null, "\u653E\u4E0B\u87A2\u5E55\uFF0C\u559D\u6C34\u3001\u4F38\u5C55\uFF0C\u8B93\u773C\u775B\u770B\u770B\u9060\u65B9\u3002"), React.createElement("div", {
+    className: "focus-rest-reward"
+  }, "\u5C08\u6CE8\u529B ", React.createElement("b", {
+    className: "nozy"
+  }, "+2")), !f.restEnabled ? React.createElement("p", {
+    id: "focus-rest-status"
+  }, "\u5BB6\u9577\u76EE\u524D\u95DC\u9589\u4E86\u4F11\u606F\u56DE\u88DC\u3002") : f.restClaimed ? React.createElement("p", {
+    id: "focus-rest-status",
+    role: "status"
+  }, "\u4ECA\u5929\u5DF2\u9818\u53D6\uFF0C\u660E\u5929\u518D\u4F86\u4F11\u606F\u89D2\u843D\u3002") : f.restPending ? React.createElement(React.Fragment, null, React.createElement("p", {
+    id: "focus-rest-status",
+    role: "status"
+  }, f.restReady ? '休息時間到了，回來時再領取就好。' : '已開始計時，可以放心離開遊戲。'), !f.restReady && React.createElement("p", {
+    className: "focus-countdown nozy",
+    "aria-label": `還有 ${Math.ceil(seconds / 60)} 分鐘可以領取`
+  }, time), React.createElement(Btn, {
+    id: "focus-rest-claim",
+    kind: "primary",
+    disabled: !f.restReady,
+    onClick: () => setState(current => claimFocusRest(current))
+  }, f.restReady ? '領取 2 點專注力' : '休息中')) : React.createElement(React.Fragment, null, React.createElement("p", {
+    id: "focus-rest-status"
+  }, "\u4F11\u606F 5 \u5206\u9418\u5F8C\uFF0C\u56DE\u4F86\u9818\u53D6 2 \u9EDE\u3002"), React.createElement(Btn, {
+    id: "focus-rest-start",
+    kind: "teal",
+    onClick: () => setState(current => startFocusRest(current))
+  }, "\u958B\u59CB\u514D\u8CBB\u4F11\u606F")), React.createElement("p", {
+    className: "small muted"
+  }, "\u4E0D\u7528\u91D1\u5E63\u3002\u95DC\u9589\u904A\u6232\u4ECD\u6703\u8A08\u6642\u3002"))), onAdventure && f.left === 0 && React.createElement("div", {
+    className: "focus-other"
+  }, React.createElement("span", null, "\u60F3\u63DB\u500B\u6D3B\u52D5\uFF1F\u59D4\u8A17\u4EFB\u52D9\u548C\u4E3B\u7DDA\u5287\u60C5\u90FD\u4E0D\u6263\u5C08\u6CE8\u529B\u3002"), React.createElement(Btn, {
+    small: true,
+    id: "focus-back-adventure",
+    onClick: onAdventure
+  }, "\u56DE\u4E8B\u52D9\u6240\u770B\u770B")));
+}
 function ItemIcon({
   icon,
   size = 44
@@ -183980,17 +184175,17 @@ function FocusMeter({
   state,
   compact
 }) {
-  const f = focusState(state);
+  const f = useFocusClock(state);
   return React.createElement("span", {
     className: "focus",
     title: `專注力：今天還可以接 ${f.left} 張通緝令（每天 ${f.max} 張，隔天恢復）`,
-    "aria-label": `專注力 ${f.left}/${f.max}`
+    "aria-label": `專注力 ${f.left}/${f.max + f.bonus}`
   }, !compact && React.createElement("span", {
     className: "small"
   }, "\u5C08\u6CE8\u529B"), React.createElement("span", {
     className: "focus-dots"
   }, Array.from({
-    length: f.max + f.bonus
+    length: Math.min(24, f.max + f.bonus)
   }).map((_, i) => React.createElement("i", {
     key: i,
     className: i < f.left ? 'on' : ''
@@ -184037,17 +184232,17 @@ function ShopPanel({
   toast
 }) {
   const wallet = getWallet(state.student),
-    f = focusState(state);
+    f = useFocusClock(state);
   const buy = id => {
     const result = buyItem(state, id);
     if (!result.ok) {
       toast(result.reason);
       return;
     }
-    setState(result.state);
-    toast(id === 'tea' ? '專注力 +1，今天可以多接一張通緝令' : `換到了「${SHOP_BY_ID[id].name}」`);
+    setState(current => buyItem(current, id).state);
+    toast(SHOP_BY_ID[id].focusPoints ? '補給已更新，看看現在的專注力！' : `換到了「${SHOP_BY_ID[id].name}」`);
   };
-  const groups = [['tool', '學習支援道具', '買一次，冒險時一直帶著'], ['consumable', '休息茶點', '補充今天的專注力'], ['cosmetic', '裝飾與稱號', '留下你的偵探風格'], ['decor', '事務所擺設', '把喜歡的東西擺在事務所']];
+  const groups = [['consumable', '出發前的補給', '換取後立即補充專注力'], ['tool', '學習支援道具', '買一次，冒險時一直帶著'], ['cosmetic', '裝飾與稱號', '留下你的偵探風格'], ['decor', '事務所擺設', '把喜歡的東西擺在事務所']];
   return React.createElement("div", {
     className: "col shop-shelves"
   }, React.createElement("header", {
@@ -184058,11 +184253,10 @@ function ShopPanel({
     id: "shop-coins",
     value: wallet.coins,
     caption: "\u6211\u7684\u91D1\u5E63"
-  })), React.createElement("div", {
-    className: "shop-focus"
-  }, React.createElement(FocusMeter, {
-    state: state
-  }), React.createElement("span", null, "\u7B54\u932F\u3001\u7528\u63D0\u793A\u90FD\u4E0D\u6263\u5C08\u6CE8\u529B\u3002\u9694\u5929\u81EA\u52D5\u6062\u5FA9\u3002")), React.createElement("p", {
+  })), React.createElement(FocusRecovery, {
+    state: state,
+    setState: setState
+  }), React.createElement("p", {
     className: "notice",
     id: "shop-builtins"
   }, "\u5075\u63A2\u8AB2\u8207\u653E\u5927\u93E1\u5DF2\u5167\u5EFA\u3002\u7528\u63D0\u793A\u4E0D\u5F71\u97FF\u901A\u7DDD\u734E\u52F5\uFF1B\u820A\u653E\u5927\u93E1\u8CFC\u8CB7\u8005\u6703\u9000\u9084 120 \u91D1\u5E63\u4E00\u6B21\u3002"), groups.map(([kind, label, subtitle]) => React.createElement("section", {
@@ -184075,7 +184269,7 @@ function ShopPanel({
     const owned = hasItem(wallet, it.id),
       lock = itemLocked(state, it),
       equipped = wallet.titleId === it.id || wallet.frameId === it.id,
-      teaOut = it.id === 'tea' && f.teaLeft <= 0,
+      teaOut = !!it.focusPoints && f.purchaseLeft < it.focusPoints,
       pres = SHOP_PRESENTATION[it.id];
     return React.createElement("article", {
       className: `inventory-card ${owned ? 'owned' : ''}`,
@@ -184093,7 +184287,9 @@ function ShopPanel({
       className: "inventory-copy"
     }, React.createElement("h3", null, it.name), React.createElement("p", null, pres?.short || it.desc), pres && React.createElement("div", {
       className: "inventory-stat"
-    }, React.createElement("b", null, pres.stat), React.createElement("small", null, pres.note)), it.id === 'tea' && React.createElement("p", null, "\u4ECA\u5929\u9084\u53EF\u63DB ", f.teaLeft, " \u4EFD"), React.createElement("details", null, React.createElement("summary", null, "\u7528\u9014\u8207\u8AAA\u660E"), React.createElement("p", null, it.desc), React.createElement("p", null, it.effect))), React.createElement("div", {
+    }, React.createElement("b", null, pres.stat), React.createElement("small", null, pres.note)), it.focusPoints && React.createElement("p", {
+      className: "focus-item-remaining"
+    }, teaOut ? f.purchaseLeft === 0 ? '今天補給額度已用完' : '剩 1 點額度，可選茶點或水果盒' : `今天還可換 ${Math.floor(f.purchaseLeft / it.focusPoints)} 份（共用額度）`), React.createElement("details", null, React.createElement("summary", null, "\u7528\u9014\u8207\u8AAA\u660E"), React.createElement("p", null, it.desc), React.createElement("p", null, it.effect))), React.createElement("div", {
       className: "inventory-footer"
     }, React.createElement(CoinAmount, {
       value: it.price,
@@ -184117,7 +184313,7 @@ function ShopPanel({
       disabled: !!lock || teaOut || wallet.coins < it.price,
       title: lock || undefined,
       onClick: () => buy(it.id)
-    }, lock ? '尚未解鎖' : teaOut ? '今天換完了' : wallet.coins < it.price ? `還差 ${it.price - wallet.coins}` : '換取')), lock && !owned && React.createElement("p", {
+    }, lock ? '尚未解鎖' : teaOut ? f.purchaseLeft === 0 ? '今日額度用完' : '剩餘額度不足' : wallet.coins < it.price ? `還差 ${it.price - wallet.coins}` : '換取')), lock && !owned && React.createElement("p", {
       className: "small",
       style: {
         padding: '0 16px 12px',
@@ -187323,6 +187519,8 @@ function SettingsPanel({
   const [kps, setKps] = useState(cur.practiceKps);
   const [diff, setDiff] = useState(cur.difficulty);
   const [focus, setFocus] = useState(cur.focusMax ?? 5);
+  const [purchaseMax, setPurchaseMax] = useState(focusPurchaseMax(state));
+  const [restEnabled, setRestEnabled] = useState(cur.focusRestEnabled !== false);
   const [zhuyin, setZhuyin] = useState(cur.zhuyin !== false);
   const [semesters, setSemesters] = useState(cur.g6Semesters || ['6上', '6下', '複習']);
   const [prerequisites, setPrerequisites] = useState(cur.g6Prerequisites !== false);
@@ -187380,6 +187578,8 @@ function SettingsPanel({
         g2AllowExtensions: g2Extensions,
         storySource: source,
         focusMax: Math.max(3, Math.min(8, Number(focus) || 5)),
+        focusPurchaseMax: Math.max(0, Math.min(8, Math.round(Number(purchaseMax) || 0))),
+        focusRestEnabled: restEnabled,
         zhuyin
       }));
       toast('已更新學習設定，新的主線機關與任務會依此出題');
@@ -187477,15 +187677,15 @@ function SettingsPanel({
     value: source,
     onChange: setSource
   }), React.createElement("div", {
-    className: "card col"
-  }, React.createElement("h3", null, "\u5192\u96AA\u6A21\u5F0F\uFF1A\u6BCF\u65E5\u5C08\u6CE8\u529B"), React.createElement("p", {
+    className: "card col",
+    id: "focus-settings"
+  }, React.createElement("h3", null, state.student.name, "\u7684\u6BCF\u65E5\u5C08\u6CE8\u529B"), React.createElement("p", {
     className: "small muted"
-  }, "\u5B69\u5B50\u6BCF\u5929\u6700\u591A\u80FD\u63A5\u5E7E\u5F35\u901A\u7DDD\u4EE4\uFF08\u6BCF\u5F35 2\uFF5E4 \u984C\uFF0C\u7D04 5\uFF5E10 \u5206\u9418\uFF09\u3002\u7528\u5B8C\u5C31\u5F97\u7B49\u660E\u5929\uFF0C\u6216\u5728\u6AC3\u53F0\u82B1\u91D1\u5E63\u63DB\u8336\u9EDE\uFF08\u6BCF\u5929\u6700\u591A 2 \u4EFD\uFF09\u3002\u7B54\u932F\u3001\u7528\u63D0\u793A\u90FD\u4E0D\u6703\u6263\u5C08\u6CE8\u529B\u3002"), React.createElement("div", {
-    className: "row"
+  }, "\u53EA\u9650\u5236\u4ECA\u5929\u65B0\u63A5\u7684\u901A\u7DDD\u4EE4\uFF1B\u7B54\u932F\u3001\u63D0\u793A\u3001\u7E7C\u7E8C\u539F\u6848\u4EF6\u3001\u59D4\u8A17\u8207\u4E3B\u7DDA\u4E0D\u6263\u9EDE\u6578\u3002\u8336\u9EDE\u548C\u6C34\u679C\u76D2\u5404\u88DC 1 \u9EDE\uFF0C\u4FBF\u7576\u88DC 2 \u9EDE\uFF0C\u4E09\u7A2E\u5171\u7528\u8CFC\u8CB7\u984D\u5EA6\u3002"), React.createElement("div", {
+    className: "row wrap"
   }, React.createElement("label", {
-    className: "small",
     htmlFor: "focus-max"
-  }, "\u6BCF\u5929"), React.createElement("input", {
+  }, "\u6BCF\u65E5\u57FA\u672C\u9EDE\u6578"), React.createElement("input", {
     id: "focus-max",
     type: "number",
     min: "3",
@@ -187493,11 +187693,32 @@ function SettingsPanel({
     value: focus,
     onChange: e => setFocus(e.target.value),
     style: {
-      width: 70
+      width: 76
     }
-  }), React.createElement("span", {
-    className: "small"
-  }, "\u5F35\uFF083\uFF5E8\uFF0C\u9810\u8A2D 5\uFF09"))), React.createElement("div", null, React.createElement(Btn, {
+  }), React.createElement("span", null, "\u9EDE\uFF083\uFF5E8\uFF0C\u9810\u8A2D 5\uFF09")), React.createElement("div", {
+    className: "row wrap"
+  }, React.createElement("label", {
+    htmlFor: "focus-purchase-max"
+  }, "\u6BCF\u65E5\u53EF\u8CFC\u8CB7\u88DC\u7D66"), React.createElement("input", {
+    id: "focus-purchase-max",
+    type: "number",
+    min: "0",
+    max: "8",
+    value: purchaseMax,
+    onChange: e => setPurchaseMax(e.target.value),
+    style: {
+      width: 76
+    }
+  }), React.createElement("span", null, "\u9EDE\uFF080\uFF5E8\uFF0C\u9810\u8A2D 4\uFF09")), React.createElement("label", null, React.createElement("input", {
+    id: "focus-rest-enabled",
+    type: "checkbox",
+    checked: restEnabled,
+    onChange: e => setRestEnabled(e.target.checked)
+  }), " \u6BCF\u5929\u4E00\u6B21\u514D\u8CBB\u4F11\u606F\uFF1A5 \u5206\u9418\u5F8C\u53EF\u9818 2 \u9EDE"), React.createElement("p", {
+    id: "focus-daily-total"
+  }, "\u8A2D\u5B9A\u5F8C\u6BCF\u5929\u6700\u591A\u53EF\u63A5 ", Math.max(3, Math.min(8, Number(focus) || 5)) + Math.max(0, Math.min(8, Math.round(Number(purchaseMax) || 0))) + (restEnabled ? 2 : 0), " \u5F35\u901A\u7DDD\u4EE4\u3002\u964D\u4F4E\u984D\u5EA6\u4E0D\u6703\u6536\u56DE\u4ECA\u5929\u5DF2\u53D6\u5F97\u7684\u9EDE\u6578\uFF1B\u65B0\u8A2D\u5B9A\u6309\u4E0B\u300C\u5132\u5B58\u300D\u5F8C\u751F\u6548\u3002"), React.createElement("p", {
+    className: "small muted"
+  }, "\u5C08\u6CE8\u529B\u662F\u904A\u6232\u63A5\u6848\u9EDE\u6578\uFF0C\u6C92\u6709\u6E2C\u91CF\u5B69\u5B50\u7684\u5BE6\u969B\u6CE8\u610F\u529B\u3002\u4F11\u606F\u53EF\u95DC\u9589\u904A\u6232\u8A08\u6642\uFF0C\u56DE\u4F86\u518D\u9818\u53D6\uFF0C\u4E0D\u5FC5\u76EF\u8457\u5012\u6578\u3002")), React.createElement("div", null, React.createElement(Btn, {
     kind: "primary",
     id: "settings-save",
     onClick: save
@@ -187517,7 +187738,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.14-v69\uFF08\u4E3B\u7DDA\u984C\u76EE\u4F86\u6E90\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.14-v70\uFF08\u88DC\u7D66\u8207\u514D\u8CBB\u4F11\u606F\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -188342,7 +188563,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.14-v69",
+    "data-build": "2026.11.14-v70",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
