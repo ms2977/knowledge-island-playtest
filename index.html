@@ -845,6 +845,17 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 @media(prefers-reduced-motion:reduce){.maze-walk{animation:none}}
 @media(min-width:701px){.maze-guide{height:54%;bottom:10%;left:43%;max-width:55%}.maze-scene-entrance .maze-explorers,.maze-scene-exit .maze-explorers{height:65%;width:60%;left:1%}}
 
+.story-source-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border:0;padding:0;margin:0;min-width:0}
+.story-source-choices legend{padding:0;margin-bottom:10px}
+.story-source-option{display:flex;align-items:flex-start;gap:10px;border:2px solid var(--line,#c9d7dc);border-radius:14px;padding:16px;cursor:pointer;background:var(--paper,#fffdf5);min-width:0}
+.story-source-option.selected{border-color:var(--teal,#177f8b);background:#edf7f6}
+.story-source-option input{flex:0 0 auto;margin-top:5px;accent-color:#177f8b}
+.story-source-option small{display:block;line-height:1.65;margin-top:8px;color:#4a6573}
+.story-source-option:focus-within{outline:3px solid #d59032;outline-offset:3px}
+.story-source-error{border-left:4px solid #c07113;padding:12px;background:#fff4df;line-height:1.7}
+#story-source-focus{max-width:100%;width:320px}
+@media(max-width:800px){.story-source-choices{grid-template-columns:1fr}.story-source-option{padding:14px}}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -852,7 +863,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261113-maze-r1">
+<meta name="game-release" content="playtest-20261114-story-source-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -138008,6 +138019,7 @@ function validateBackupState(input) {
   records(s.practiceLog, 'practiceLog');
   obj(s.meta, 'meta');
   opt(s, 'settings', (v, p) => {
+    opt(v, 'storySource', (x, q) => validateStorySource(x, bad, q), p);
     obj(v, p);
     opt(v, 'lighthouse', (x, q) => {
       obj(x, q);
@@ -138029,6 +138041,7 @@ function validateBackupState(input) {
     for (const k of ['g6Prerequisites', 'g6ExpansionEnabled', 'g6AllowRepeat', 'g2AllowExtensions', 'zhuyin']) if (v[k] !== undefined && typeof v[k] !== 'boolean') bad(p + '.' + k);
   });
   opt(s, 'learning', (v, p) => {
+    opt(v, 'taskHistory', (x, q) => validateStoryTaskHistory(x, bad, q), p);
     obj(v, p);
     for (const k of ['presentations', 'g6Seen', 'g6Families', 'g6Stimuli', 'g2Seen', 'g2Families', 'ch4Seen', 'g5Seen', 'g5Families', 'chineseSeen', 'idiomSeen', 'intervalSeen', 'languageV65Seen']) opt(v, k, strs, p);
     opt(v, 'expansionV62', (x, q) => validateV62History(x, bad, q), p);
@@ -162553,6 +162566,10 @@ function applyLearningSettings(state, settings) {
     }
   };
   if (!practiceKpsFor(next).length) throw new Error('請至少選一個已學過的單元。');
+  if (typeof storySourceCheck === 'function') {
+    const error = storySourceCheck(next);
+    if (error) throw new Error(error);
+  }
   return refreshBoard(reconcileLearning(next));
 }
 function missionGenerationItem(state, mission) {
@@ -162780,6 +162797,7 @@ function storyAlternative(state, id) {
   return room && (!kpAllowedForGrade(room.kp, studentGrade(state.student)) || studentGrade(state.student) === 5 && KP_BY_ID[room.kp]?.subject === 'math' || !learningAllows(state, room.kp) || getSettings(state).difficulty !== 'normal' || typeof g6Select === 'function' && g6Select(state, room.kp, 1, getSettings(state).difficulty)?.reason !== 'no-eligible-reviewed-question' && g6Enabled(state));
 }
 function beginStoryTask(state, id) {
+  if (typeof storySourceCustom === 'function' && storySourceCustom(state, id)) return beginStorySourceTask(state, id);
   const room = storyRoom(id);
   if (!room) return state;
   const l = state.learning || {},
@@ -162858,6 +162876,10 @@ function getStoryTask(state, id) {
   } : task;
 }
 function adaptStoryNode(node, state) {
+  if (typeof storySourceDialogue === 'function') {
+    const custom = storySourceDialogue(node, state);
+    if (custom) return custom;
+  }
   if (node?.id?.startsWith('d_c6_')) return node;
   if (!node) return node;
   if (typeof JUNIOR_CH1_TEXT !== 'undefined' && studentGrade(state.student) === 2 && JUNIOR_CH1_TEXT[node.id]) return node;
@@ -176560,6 +176582,301 @@ function RearGoggleBand({
     fill: "#a18b63"
   })));
 }
+const STORY_SOURCE_MODES = ['story', 'mixed', 'subject'];
+function storySource(state) {
+  const s = getSettings(state).storySource;
+  return s && STORY_SOURCE_MODES.includes(s.mode) ? {
+    mode: s.mode,
+    subject: s.subject || ''
+  } : {
+    mode: 'story',
+    subject: ''
+  };
+}
+function storySourceSubjects(state) {
+  return [...new Set(practiceKpsFor(state).filter(missionSupported).map(k => KP_BY_ID[k]?.subject))].filter(Boolean);
+}
+function validateStorySource(s, bad, p) {
+  if (!backupObject(s) || !STORY_SOURCE_MODES.includes(s.mode) || typeof s.subject !== 'string' || s.subject !== '' && !Object.hasOwn(SUBJECTS, s.subject)) bad(p);
+}
+function storySourceCheck(state) {
+  const s = storySource(state);
+  return s.mode === 'subject' && !storySourceSubjects(state).includes(s.subject) ? '專精一科需要選擇科目，並在已學範圍勾選該科至少一個可用單元；六年級也請檢查學期與先備設定。' : '';
+}
+const STORY_SOURCE_EVENTS = {
+  r1: ['準備油料', '幫阿齒完成小任務，再核對油料清單。'],
+  r2: ['運送零件', '完成小任務，再把零件交給阿齒送上樓。'],
+  r3: ['尋找鐵盒', '完成小任務，再跟著尋寶記錄尋找鐵盒。'],
+  r4: ['修補鐘面', '完成小任務，再幫阿齒檢查補片。'],
+  r5: ['打開保險箱', '完成小任務，再查看保險箱裡的物品。'],
+  r6: ['啟動核心', '完成小任務，再一起啟動鐘塔核心。'],
+  c1: ['查看館長筆記', '完成小任務，再查看館長留下的筆記。'],
+  c2: ['核對袋中物品', '完成小任務，再和阿岩核對袋子裡的物品。'],
+  c3: ['整理散落手稿', '完成小任務，再整理散落的手稿。'],
+  c4: ['打開迴廊的門', '完成小任務，再打開通往迴廊的門。'],
+  c5: ['點亮迴廊', '完成小任務，再點亮迴廊的燈。'],
+  c6: ['核對最後記錄', '完成小任務，再一起核對最後一份記錄。'],
+  t1: ['查看遺落車票', '完成小任務，再查看長椅上的車票。'],
+  t2: ['運送行李', '完成小任務，再和鐵叔把行李送上車。'],
+  t3: ['整理第十三封信', '完成小任務，再整理被撕開的信。'],
+  t4: ['查看懷錶', '完成小任務，再核對懷錶和車站記錄。'],
+  t5: ['查看座椅便條', '完成小任務，再查看座椅下的便條。'],
+  t6: ['詢問午夜信差', '完成小任務，再請午夜信差說明真相。'],
+  e1: ['核對觀測日誌', '幫阿嵐完成小任務，再核對觀測日誌。'],
+  e2: ['查看鏡片', '完成小任務，再和阿嵐查看鏡片。'],
+  e3: ['檢查樣本', '完成小任務，再檢查帶回來的樣本。'],
+  e4: ['打開地板暗門', '完成小任務，再和阿齒打開地板暗門。'],
+  e5: ['查看星圖室', '完成小任務，再找找星圖室留下的線索。'],
+  e6: ['尋找觀測點', '完成小任務，再沿著記錄尋找觀測點。'],
+  f1: ['核對照片清冊', '完成小任務，再和邱館長核對照片清冊。'],
+  f2: ['查看展示預告', '完成小任務，再查看展示預告的線索。'],
+  f3: ['查看港口貨箱', '完成小任務，再聽浪叔說說貨箱和老屋。'],
+  f4: ['查看借閱簿', '完成小任務，再和小梅核對借閱簿。'],
+  f5: ['查看牆上便條', '完成小任務，再查看牆上的便條。'],
+  f6: ['討論照片展示', '完成小任務，再和大家討論照片的展示方式。'],
+  g1: ['查看公開信封', '完成小任務，再和阿守查看公開的信封副本。'],
+  g2: ['查看船班記錄', '完成小任務，再和浪叔查看船班記錄。'],
+  g3: ['查看獲准閱讀的信', '完成小任務，再和阿岩查看已獲准閱讀的信。'],
+  g4: ['核對燈具紀錄', '完成小任務，再核對燈具紀錄；真正的電路交給大人檢查。']
+};
+for (const [id, [, goal]] of Object.entries(STORY_SOURCE_EVENTS)) if (STORY_LEARNING[id]) STORY_LEARNING[id].goal = goal;
+function storySourceChapter(id) {
+  return MECH_ROOMS[id]?.chapter || (/^g[1-4]$/.test(id) ? CH6_ID : null);
+}
+function storySourcePinned(state, id) {
+  const t = state.learning?.storyTasks?.[id];
+  return t && !t.done && !t.blocked && !t.bankBlocked && t.policy === learningSignature(state) && learningAllows(state, t.kpId) ? t : null;
+}
+function storySourceOriginalCh6(state, id) {
+  return Object.entries(ch6Case(state).active).some(([key, qid]) => key.startsWith(id + ':') && !ch6Case(state).sessions[qid]?.done);
+}
+function storySourceCustom(state, id) {
+  if (!STORY_SOURCE_EVENTS[id]) return false;
+  const t = storySourcePinned(state, id);
+  if (t) return !!t.sourceMode && t.sourceMode !== 'story';
+  if (/^g[1-4]$/.test(id) && storySourceOriginalCh6(state, id)) return false;
+  return storySource(state).mode !== 'story';
+}
+const storySourceRememberBase = rememberLearningStage;
+rememberLearningStage = function (state, kp, stage, source, presentation) {
+  const next = storySourceRememberBase(state, kp, stage, source, presentation);
+  if (next === state || !stage || stage.bankBlocked) return next;
+  const h = next.learning?.taskHistory || [];
+  if (h.some(x => x.presentation === presentation)) return next;
+  return {
+    ...next,
+    learning: {
+      ...next.learning,
+      taskHistory: [...h, {
+        presentation,
+        kpId: kp,
+        kind: stage.kind,
+        source,
+        t: now()
+      }].slice(-80)
+    }
+  };
+};
+function validateStoryTaskHistory(h, bad, p) {
+  if (!Array.isArray(h) || h.length > 80) bad(p);
+  const ids = new Set();
+  for (const x of h) {
+    if (!backupObject(x) || typeof x.presentation !== 'string' || ids.has(x.presentation) || !KP_BY_ID[x.kpId] || !Object.hasOwn(ALL_MECHS, x.kind) || typeof x.source !== 'string' || !Number.isFinite(x.t) || x.t < 0) bad(p);
+    ids.add(x.presentation);
+  }
+}
+function storySourceRecent(state) {
+  const h = state.learning?.taskHistory || [];
+  return [...(state.practiceLog || []).filter(x => x.kind && x.kpId && (!h.length || x.t < h[0].t)), ...h].slice(-10);
+}
+function storySourceRecovery(state) {
+  const log = (state.practiceLog || []).filter(x => x.kind && x.kpId && typeof x.passed === 'boolean'),
+    last = log.at(-1);
+  if (!last || last.passed) return null;
+  const rows = log.filter(x => x.kind === last.kind).slice(-3);
+  return rows.length === 3 && rows.every(x => !x.passed) ? last : null;
+}
+function storySourceCandidates(state, kps, seed) {
+  const diff = getSettings(state).difficulty,
+    out = [];
+  for (let i = 0; i < kps.length; i++) {
+    const kp = kps[i],
+      m = generateMission(null, kp, seed + i * 104729, false, diff, state);
+    for (const t of m?.stages || []) if (!t.bankBlocked && t.kind !== 'bankempty') out.push({
+      ...t,
+      kpId: kp,
+      seed: seed + i * 104729,
+      allowHints: diff !== 'hard' && t.allowHints !== false
+    });
+  }
+  return out;
+}
+function beginStorySourceTask(state, id, seed = Math.floor(Math.random() * 1e9)) {
+  if (!STORY_SOURCE_EVENTS[id] || storySourcePinned(state, id)) return state;
+  if (/^g[1-4]$/.test(id) && !ch6Gate(state, id)) return state;
+  const source = storySource(state);
+  if (source.mode === 'story') return state;
+  const kps = practiceKpsFor(state).filter(k => missionSupported(k) && (source.mode !== 'subject' || KP_BY_ID[k].subject === source.subject));
+  let pool = storySourceCandidates(state, kps, seed);
+  const recent = storySourceRecent(state),
+    last = recent.at(-1),
+    chapterId = storySourceChapter(id);
+  const chapter = Object.entries(state.learning?.storyTasks || {}).filter(([event, t]) => event !== id && storySourceChapter(event) === chapterId && !t.blocked && t.kpId).map(([, t]) => t);
+  const recovery = storySourceRecovery(state),
+    alternate = recovery && pool.filter(t => t.kpId === recovery.kpId && t.kind !== recovery.kind);
+  if (alternate?.length) pool = alternate;
+  const rng = makeRng(seed),
+    rank = t => [source.mode === 'mixed' && last && KP_BY_ID[last.kpId]?.subject === KP_BY_ID[t.kpId].subject ? 1 : 0, source.mode === 'mixed' ? chapter.filter(x => KP_BY_ID[x.kpId]?.subject === KP_BY_ID[t.kpId].subject).length : 0, chapter.filter(x => x.kind === t.kind).length, recent.filter(x => x.kind === t.kind).length, recent.filter(x => x.kpId === t.kpId).length, chapter.filter(x => x.kpId === t.kpId).length, t.repeatPractice ? 1 : 0, rng()];
+  const ranked = pool.map(t => ({
+    t,
+    rank: rank(t)
+  })).sort((a, b) => {
+    for (let i = 0; i < a.rank.length; i++) {
+      const d = a.rank[i] - b.rank[i];
+      if (d) return d;
+    }
+    return 0;
+  });
+  const selected = ranked[0]?.t,
+    policy = learningSignature(state),
+    [title, frame] = STORY_SOURCE_EVENTS[id];
+  const task = selected ? {
+    ...selected,
+    id,
+    eventId: id,
+    title,
+    frame,
+    native: false,
+    done: false,
+    sourceMode: source.mode,
+    sourceSubject: source.subject,
+    policy,
+    difficulty: getSettings(state).difficulty,
+    contentVersion: selected.contentVersion || LEARNING_VERSION,
+    presentationId: `story:${id}:${seed}:${uid()}`,
+    recoveryKind: alternate?.length ? recovery.kind : null
+  } : {
+    kind: 'bankempty',
+    params: {},
+    blocked: true,
+    policy,
+    sourceMode: source.mode,
+    done: false
+  };
+  const next = {
+    ...state,
+    learning: {
+      ...state.learning,
+      storyTasks: {
+        ...state.learning?.storyTasks,
+        [id]: task
+      }
+    }
+  };
+  return selected ? rememberLearningStage(next, task.kpId, task, 'chapter', task.presentationId) : next;
+}
+function storySourceDialogue(node, state) {
+  const id = [node?.mech, ...(node?.choices || []).map(c => c.mech)].find(id => storySourceCustom(state, id));
+  if (!id) return null;
+  const who = node.lines?.find(l => NPCS[l.who] && !NPCS[l.who].companion)?.who || 'narr';
+  return {
+    ...node,
+    lines: [{
+      who,
+      text: STORY_SOURCE_EVENTS[id][1]
+    }],
+    choices: node.choices?.map(c => c.mech ? {
+      ...c,
+      text: '我來完成小任務。'
+    } : c)
+  };
+}
+function storySourceAfter(state, id, after) {
+  const task = getStoryTask(state, id);
+  if (!task?.sourceMode || task.sourceMode === 'story') return after;
+  const evidence = (MECH_ROOMS[id]?.give || []).map(e => storyEvidence(state.student, e)).filter(Boolean);
+  const lines = [...evidence.map(e => ({
+    who: 'narr',
+    text: `調查記錄・${e.name}：${e.desc}`
+  })), ...(after?.lines || []).map((line, i) => id === 'e6' && i === 0 ? {
+    ...line,
+    text: '沿著記錄，你們找到了觀測點。星婆婆抱著星圖，抬頭看了你一眼。'
+  } : line)];
+  return lines.length ? {
+    ...after,
+    lines
+  } : after;
+}
+function storySourceGoal(state, goal) {
+  const h = SCENES[goal.scene]?.hotspots.find(h => h.id === goal.hotspot);
+  if (!h) return goal;
+  const st = state.student.story || createStory(),
+    nodeId = h.dialog || h.npc && (NPC_TALK[h.npc] || []).find(t => condOk(st, t.when))?.node;
+  const n = nodeId && resolveNode(nodeId, st, state.student),
+    id = [n?.mech, ...(n?.choices || []).map(c => c.mech)].find(id => storySourceCustom(state, id));
+  if (!id) return goal;
+  const [short, text] = STORY_SOURCE_EVENTS[id];
+  return {
+    ...goal,
+    short,
+    text: `到${SCENES[goal.scene].name}，${text}`,
+    sourceEvent: id
+  };
+}
+function storySourceAttempt(state, id, res) {
+  const task = getStoryTask(state, id);
+  if (!task || task.done || task.blocked || !learningAllows(state, task.kpId) || !res.attemptId || (state.practiceLog || []).some(x => x.storyAttemptId === res.attemptId)) return state;
+  const next = {
+    ...state,
+    learning: {
+      ...state.learning,
+      storyTasks: {
+        ...state.learning.storyTasks,
+        [id]: {
+          ...task,
+          done: !!res.passed
+        }
+      }
+    }
+  };
+  return logPractice(next, {
+    ...learningLogFields(state, task.kpId, task),
+    source: 'chapter',
+    eventId: id,
+    chapterId: storySourceChapter(id),
+    roomId: MECH_ROOMS[id]?.room || id,
+    kpId: task.kpId,
+    kind: task.kind,
+    passed: !!res.passed,
+    attempts: res.attempts,
+    hints: res.hints,
+    detail: res.detail,
+    storyAttemptId: res.attemptId,
+    storySource: task.sourceMode
+  });
+}
+const STORY_SOURCE_CH6_GIVE = {
+  g1: ['E63'],
+  g2: ['E64'],
+  g3: ['E65'],
+  g4: ['E61', 'E66']
+};
+function storySourceCh6Finish(state, id, res) {
+  const task = getStoryTask(state, id);
+  if (!STORY_SOURCE_CH6_GIVE[id] || !ch6Gate(state, id) || !task || task.done || task.blocked || !learningAllows(state, task.kpId)) return state;
+  const next = storySourceAttempt(state, id, res);
+  if (!res.passed || next === state) return next;
+  return {
+    ...next,
+    student: {
+      ...next.student,
+      story: applyStory(next.student.story, {
+        set: ['c6_' + id],
+        give: STORY_SOURCE_CH6_GIVE[id]
+      })
+    }
+  };
+}
 const FITTED_CAPE_ART = {
   front: [1684, 934, 'cape-front-layer', [168, 126, 1410, 720]],
   rear: [1288, 1221, 'cape-rear-layer'],
@@ -180311,27 +180628,29 @@ function MechOverlay({
   state,
   student,
   onFinish,
-  onClose
+  onClose,
+  onAttempt
 }) {
   const mr = MECH_ROOMS[mechId];
-  const ch = CHAPTERS[mr.chapter];
-  const room = ch.rooms.find(r => r.id === mr.room);
+  const room = storyRoom(mechId);
   const task = getStoryTask(state, mechId);
   const Mech = task && ALL_MECHS[task.kind];
   const [result, setResult] = useState(null);
   const [key, setKey] = useState(0);
-  const juniorRoom = juniorCh1Room(student, mechId),
-    title = juniorRoom?.title || room.title;
+  const resultLock = useRef(false),
+    custom = task?.sourceMode && task.sourceMode !== 'story';
+  const juniorRoom = custom ? null : juniorCh1Room(student, mechId),
+    title = custom ? task.title : juniorRoom?.title || room?.title;
   const params = juniorRoom && task ? {
     ...task.params,
     story: task.bankId === 'ch5-20261110' ? juniorRoom.goal + '\n' + (task.params.story || '') : juniorRoom.goal
   } : task?.params;
-  const instructions = task && juniorMechInstructions(student, mechId, task);
+  const instructions = custom ? null : task && juniorMechInstructions(student, mechId, task);
   if (!task || task.blocked || !Mech) return React.createElement("div", {
     className: "overlay"
   }, React.createElement("div", {
     className: "overlay-panel col"
-  }, React.createElement(Notice, null, "\u76EE\u524D\u6C92\u6709\u7B26\u5408\u7DF4\u7FD2\u7BC4\u570D\u7684\u6A5F\u95DC\u3002\u8ACB\u5148\u5230\u5BB6\u9577\u5340\u9078\u64C7\u5DF2\u5B78\u55AE\u5143\u3002"), React.createElement(Btn, {
+  }, React.createElement(Notice, null, "\u76EE\u524D\u6C92\u6709\u53EF\u7528\u7684\u6A5F\u95DC\u3002\u8ACB\u5230\u5BB6\u9577\u5340\u6AA2\u67E5\u4E3B\u7DDA\u4F86\u6E90\u3001\u5DF2\u5B78\u55AE\u5143\u8207\u5B78\u671F\uFF1B\u984C\u76EE\u7528\u5B8C\u6642\u53EF\u8ABF\u6574\u7BC4\u570D\uFF0C\u6216\u958B\u555F\u5141\u8A31\u7684\u91CD\u8907\u8907\u7FD2\u3002\u8ABF\u67E5\u9032\u5EA6\u548C\u7DDA\u7D22\u90FD\u6703\u4FDD\u7559\u3002"), React.createElement(Btn, {
     onClick: onClose
   }, "\u8FD4\u56DE\u5834\u666F")));
   return React.createElement("div", {
@@ -180358,15 +180677,27 @@ function MechOverlay({
     "data-junior-mech-guide": mechId
   }, React.createElement("b", null, "\u600E\u9EBC\u73A9"), instructions.map(t => React.createElement("p", {
     key: t
-  }, t))), task.repeatPractice && React.createElement(Notice, null, task.bankId === 'ch5-20261110' ? '這個單元的照片變化題都看過了。這次複習較早做過的一題，也可以先離開、換個單元。' : '這是同觀念的複習機關。'), React.createElement("div", {
+  }, t))), task.repeatPractice && React.createElement(Notice, null, task.bankId === 'ch5-20261110' ? '這個單元的照片變化題都看過了。這次複習較早做過的一題，也可以先離開、換個單元。' : '這是同觀念的複習機關。'), custom && React.createElement("p", {
+    className: "small muted"
+  }, task.sourceMode === 'mixed' ? '跨科小任務' : subjName(KP_BY_ID[task.kpId]?.subject) + '小任務', " \xB7 \u5B8C\u6210\u5F8C\u67E5\u770B\u9019\u6B21\u8ABF\u67E5\u7684\u7DDA\u7D22\u3002"), React.createElement("div", {
     "data-story-event": mechId,
+    "data-story-source": task.sourceMode || 'story',
     "data-story-kp": task.kpId,
     "data-story-difficulty": task.difficulty
   }, React.createElement(Mech, {
     key: key,
     params: params,
     hintsAllowed: task.allowHints !== false,
-    onDone: setResult,
+    onDone: res => {
+      if (resultLock.current) return;
+      resultLock.current = true;
+      const r = custom ? {
+        ...res,
+        attemptId: uid()
+      } : res;
+      setResult(r);
+      if (custom && !r.passed) onAttempt?.(r);
+    },
     seed: task.seed
   })), result && React.createElement("div", {
     className: "row"
@@ -180378,6 +180709,7 @@ function MechOverlay({
     kind: "primary",
     id: "mech-retry",
     onClick: () => {
+      resultLock.current = false;
       setResult(null);
       setKey(k => k + 1);
     }
@@ -182125,18 +182457,20 @@ function Adventure({
   }, [scene.id]);
   const askTick = () => {
     if (busy) return;
-    const tip = COMPANION_TIPS.find(t => condOk(story, t.when));
+    const tip = COMPANION_TIPS.find(t => condOk(story, t.when)),
+      sourceGoal = storySourceGoal(state, adventureGoal(student, story));
     setNode({
       id: 'tip_' + Date.now(),
       lines: [{
         who: 'tick',
-        text: trainRouteHint(student, story)?.tip || storyCompanionTip(student, story, tip.text),
+        text: sourceGoal.sourceEvent ? sourceGoal.text : trainRouteHint(student, story)?.tip || storyCompanionTip(student, story, tip.text),
         mood: 'happy'
       }]
     });
   };
   const openMech = (id, base) => {
-    if (!/^g[1-5]$/.test(id) && id !== 'delayed') setState(beginStoryTask(base || state, id));else if (base) setState(base);
+    const s = base || state;
+    if (storySourceCustom(s, id)) setState(beginStorySourceTask(s, id));else if (!/^g[1-5]$/.test(id) && id !== 'delayed') setState(beginStoryTask(s, id));else if (base) setState(base);
     setNode(null);
     setMech(id);
   };
@@ -182298,7 +182632,7 @@ function Adventure({
     const ch = CHAPTERS[mr.chapter];
     const room = ch.rooms.find(r => r.id === mr.room);
     const task = getStoryTask(state, mech);
-    if (!task || task.blocked || !learningAllows(state, task.kpId)) return;
+    if (!task || task.blocked || task.done || !learningAllows(state, task.kpId)) return;
     let st = setRoomResult(state, mr.chapter, room.id, {
       ...res,
       kpId: task.kpId,
@@ -182317,7 +182651,12 @@ function Adventure({
         }
       }
     };
-    st = logPractice(st, {
+    if (task.sourceMode && task.sourceMode !== 'story') {
+      st = storySourceAttempt({
+        ...st,
+        learning: state.learning
+      }, mech, res);
+    } else st = logPractice(st, {
       ...learningLogFields(state, task.kpId, task),
       source: 'chapter',
       eventId: mech,
@@ -182348,7 +182687,7 @@ function Adventure({
         notify(`新證據：${storyEvidence(student, e)?.name}`);
         setNewEv(n => n + 1);
       });
-      const after = mr.chapter === 'island_ch5' && state.student.story?.flags?.c5_done ? null : storyMechAfter(student, mech);
+      const after = storySourceAfter(state, mech, mr.chapter === 'island_ch5' && state.student.story?.flags?.c5_done ? null : storyMechAfter(student, mech));
       if (after) {
         story2 = applyStory(story2, {
           set: after.set || []
@@ -182485,7 +182824,7 @@ function Adventure({
     if (h && condOk(story, h.requires)) interact(h);
   };
   const objectivesOpen = storyObjectives(student).filter(o => o.chapter === currentChapter(story) && !condOk(story, o.done));
-  const goal = adventureGoal(student, story);
+  const goal = storySourceGoal(state, adventureGoal(student, story));
   useAdventureNotices(state, setState, scene, goal, busy || !!note, notify);
   const followGoal = () => {
     setGoalOpen(false);
@@ -182509,7 +182848,7 @@ function Adventure({
     style: {
       opacity: 0.85
     }
-  }, "\u76EE\u6A19\uFF1A", objectivesOpen[0].text), React.createElement("span", {
+  }, "\u76EE\u6A19\uFF1A", goal.sourceEvent ? goal.short : objectivesOpen[0].text), React.createElement("span", {
     className: "spacer",
     style: {
       flex: 1
@@ -182683,7 +183022,7 @@ function Adventure({
     setState: setState,
     initial: collection,
     onClose: () => setCollection(null)
-  }), mech && (/^g[1-5]$/.test(mech) || mech === 'delayed') ? React.createElement(Ch6Overlay, {
+  }), mech && (/^g[1-5]$/.test(mech) || mech === 'delayed') ? React.createElement(StorySourceCh6Overlay, {
     key: mech,
     state: state,
     setState: setState,
@@ -182694,6 +183033,7 @@ function Adventure({
     mechId: mech,
     state: state,
     student: student,
+    onAttempt: res => setState(storySourceAttempt(state, mech, res)),
     onFinish: onMechFinish,
     onClose: () => setMech(null)
   }), news && React.createElement(Newspaper, {
@@ -186024,6 +186364,122 @@ function MazeAdventure({
     }
   }, "\u8D70\u5230\u4E0B\u4E00\u500B\u8DEF\u53E3")) : null))));
 }
+function StorySourcePicker({
+  state,
+  value,
+  onChange
+}) {
+  const subjects = storySourceSubjects(state),
+    error = storySourceCheck({
+      ...state,
+      settings: {
+        ...state.settings,
+        storySource: value
+      }
+    });
+  const choices = [['story', '劇情原題', '保留章節原本的題目安排；不適合年級或已學範圍時，依原規則替換。'], ['mixed', '照我的設定跨科混合', '從已學範圍輪流選科目，盡量換觀念和題型。'], ['subject', '專精一科', '主線的小任務集中練習一科，仍依已學範圍與難度出題。']];
+  return React.createElement("section", {
+    className: "card col",
+    id: "story-source-settings",
+    "aria-labelledby": "story-source-heading"
+  }, React.createElement("h3", {
+    id: "story-source-heading"
+  }, "\u4E3B\u7DDA\u984C\u76EE\u4F86\u6E90"), React.createElement("p", {
+    className: "small"
+  }, "\u9019\u662F ", React.createElement("b", null, state.student?.name || '這位孩子'), " \u7684\u8A2D\u5B9A\u3002\u9078\u597D\u5F8C\uFF0C\u6309\u9801\u9762\u4E0B\u65B9\u300C\u5132\u5B58\u8A2D\u5B9A\u4E26\u66F4\u65B0\u4EFB\u52D9\u300D\u624D\u751F\u6548\u3002"), React.createElement("fieldset", {
+    className: "story-source-choices"
+  }, React.createElement("legend", {
+    className: "small"
+  }, "\u9078\u64C7\u4E00\u7A2E\u51FA\u984C\u65B9\u5F0F"), choices.map(([mode, label, description]) => React.createElement("label", {
+    className: 'story-source-option' + (value.mode === mode ? ' selected' : ''),
+    key: mode
+  }, React.createElement("input", {
+    type: "radio",
+    name: "story-source",
+    id: 'story-source-' + mode,
+    checked: value.mode === mode,
+    onChange: () => onChange({
+      ...value,
+      mode
+    })
+  }), React.createElement("span", null, React.createElement("b", null, label), React.createElement("small", null, description))))), value.mode === 'subject' && React.createElement("label", {
+    className: "col",
+    htmlFor: "story-source-focus"
+  }, "\u8981\u5C08\u7CBE\u54EA\u4E00\u79D1\uFF1F", React.createElement("select", {
+    id: "story-source-focus",
+    value: value.subject,
+    onChange: e => onChange({
+      ...value,
+      subject: e.target.value
+    })
+  }, React.createElement("option", {
+    value: ""
+  }, "\u8ACB\u9078\u64C7\u79D1\u76EE"), value.subject && !subjects.includes(value.subject) && React.createElement("option", {
+    value: value.subject
+  }, subjName(value.subject), "\uFF08\u76EE\u524D\u7BC4\u570D\u7121\u53EF\u7528\u55AE\u5143\uFF09"), subjects.map(s => React.createElement("option", {
+    key: s,
+    value: s
+  }, subjName(s))))), error && React.createElement("p", {
+    className: "story-source-error",
+    role: "status"
+  }, error), React.createElement("p", {
+    className: "small muted"
+  }, "\u79D1\u76EE\u4F9D\u4E0A\u65B9\u5E74\u7D1A\u3001\u5DF2\u5B78\u55AE\u5143\u53CA\u5B78\u671F\u7BE9\u9078\u3002\u7BC4\u570D\u8F03\u5C11\u6642\uFF0C\u79D1\u76EE\u6216\u984C\u578B\u53EF\u80FD\u91CD\u8907\u3002\u5207\u63DB\u4F86\u6E90\u5F9E\u4E0B\u4E00\u500B\u5C1A\u672A\u958B\u555F\u7684\u4E3B\u7DDA\u6A5F\u95DC\u958B\u59CB\uFF1B\u5DF2\u958B\u555F\u4E14\u4ECD\u9069\u5408\u7BC4\u570D\u7684\u984C\u76EE\u4FDD\u7559\u3002\u7AE0\u7BC0\u9032\u5EA6\u3001\u7DDA\u7D22\u8207\u734E\u52F5\u4E0D\u8B8A\u3002"), React.createElement("p", {
+    className: "small muted"
+  }, "\u9069\u7528\u7B2C\u4E00\u81F3\u7B2C\u4E94\u7AE0\u6A5F\u95DC\u8207\u7B2C\u516D\u7AE0\u56DB\u500B\u5FC5\u7D93\u8ABF\u67E5\uFF1B\u71C8\u5854\u7684\u9078\u4FEE\u56DE\u4FE1\u53CA\u9694\u65E5\u78BA\u8A8D\u7DAD\u6301\u539F\u898F\u5247\u3002"));
+}
+function StorySourceCh6Overlay({
+  state,
+  setState,
+  event,
+  onClose
+}) {
+  const [finished, setFinished] = useState(false),
+    custom = !!state.learning?.storyTasks?.[event]?.sourceMode && state.learning.storyTasks[event].sourceMode !== 'story';
+  if (!custom || !finished && state.learning.storyTasks[event].done) return React.createElement(Ch6Overlay, {
+    state: state,
+    setState: setState,
+    event: event,
+    onClose: onClose
+  });
+  if (finished) return React.createElement("div", {
+    className: "overlay",
+    role: "dialog",
+    "aria-label": "\u65B0\u7684\u8ABF\u67E5\u7DDA\u7D22"
+  }, React.createElement("div", {
+    className: "overlay-panel col",
+    id: "story-source-evidence"
+  }, React.createElement("h2", null, "\u5C0F\u4EFB\u52D9\u5B8C\u6210\uFF0C\u67E5\u770B\u7DDA\u7D22"), STORY_SOURCE_CH6_GIVE[event].map(id => {
+    const e = storyEvidence(state.student, id);
+    return React.createElement("article", {
+      className: "card",
+      key: id
+    }, React.createElement("h3", null, e.name), React.createElement("p", null, e.desc || e.text));
+  }), React.createElement("p", null, "\u9019\u4E9B\u7DDA\u7D22\u5DF2\u6536\u9032\u8ABF\u67E5\u624B\u518A\uFF0C\u53EF\u4EE5\u548C\u5176\u4ED6\u8B49\u64DA\u4E00\u8D77\u6838\u5C0D\u3002"), React.createElement(Btn, {
+    id: "story-source-evidence-close",
+    kind: "primary",
+    onClick: onClose
+  }, "\u7E7C\u7E8C\u8ABF\u67E5")));
+  if (!ch6Gate(state, event)) return React.createElement("div", {
+    className: "overlay"
+  }, React.createElement("div", {
+    className: "overlay-panel col"
+  }, React.createElement(Notice, null, "\u5148\u8DDF\u8457\u76EE\u524D\u76EE\u6A19\u5B8C\u6210\u524D\u9762\u7684\u8ABF\u67E5\u3002"), React.createElement(Btn, {
+    onClick: onClose
+  }, "\u8FD4\u56DE\u5834\u666F")));
+  return React.createElement(MechOverlay, {
+    mechId: event,
+    state: state,
+    student: state.student,
+    onClose: onClose,
+    onAttempt: res => setState(storySourceAttempt(state, event, res)),
+    onFinish: res => {
+      const next = storySourceCh6Finish(state, event, res);
+      setState(next);
+      if (res.passed && next.student.story.flags['c6_' + event]) setFinished(true);else onClose();
+    }
+  });
+}
 const AI_STATUS = {
   image: false,
   reason: false,
@@ -186873,6 +187329,25 @@ function SettingsPanel({
   const [repeats, setRepeats] = useState(cur.g6AllowRepeat === true);
   const [expansion, setExpansion] = useState(cur.g6ExpansionEnabled !== false);
   const [g2Extensions, setG2Extensions] = useState(cur.g2AllowExtensions === true);
+  const [source, setSource] = useState(() => storySource(state));
+  const sourceDraft = {
+    ...state,
+    student: {
+      ...state.student,
+      grade
+    },
+    settings: {
+      ...cur,
+      practiceKps: kps,
+      difficulty: diff,
+      g6Semesters: semesters,
+      g6Prerequisites: prerequisites,
+      g6ExpansionEnabled: expansion,
+      g6AllowRepeat: repeats,
+      g2AllowExtensions: g2Extensions,
+      storySource: source
+    }
+  };
   const externalScope = useRef(cur);
   useEffect(() => {
     const prev = externalScope.current;
@@ -186889,6 +187364,11 @@ function SettingsPanel({
       toast('請至少選一個已學過的單元。');
       return;
     }
+    const sourceError = storySourceCheck(sourceDraft);
+    if (sourceError) {
+      toast(sourceError);
+      return;
+    }
     try {
       setState(changeLearningGrade(state, grade, {
         practiceKps: kps,
@@ -186898,6 +187378,7 @@ function SettingsPanel({
         g6AllowRepeat: repeats,
         g6ExpansionEnabled: expansion,
         g2AllowExtensions: g2Extensions,
+        storySource: source,
         focusMax: Math.max(3, Math.min(8, Number(focus) || 5)),
         zhuyin
       }));
@@ -186991,7 +187472,11 @@ function SettingsPanel({
     id: "zhuyin-on",
     checked: zhuyin,
     onChange: e => setZhuyin(e.target.checked)
-  }), " \u986F\u793A\u6CE8\u97F3\uFF08\u95DC\u6389\u5F8C\u53EA\u6709\u570B\u5B57\uFF09")), React.createElement("div", {
+  }), " \u986F\u793A\u6CE8\u97F3\uFF08\u95DC\u6389\u5F8C\u53EA\u6709\u570B\u5B57\uFF09")), React.createElement(StorySourcePicker, {
+    state: sourceDraft,
+    value: source,
+    onChange: setSource
+  }), React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u5192\u96AA\u6A21\u5F0F\uFF1A\u6BCF\u65E5\u5C08\u6CE8\u529B"), React.createElement("p", {
     className: "small muted"
@@ -187032,7 +187517,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.13-v62\uFF08\u984F\u6599\u756A\u5916\u9810\u89BD\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A2026.11.14-v69\uFF08\u4E3B\u7DDA\u984C\u76EE\u4F86\u6E90\uFF09"), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -187857,7 +188342,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.13-v68",
+    "data-build": "2026.11.14-v69",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
