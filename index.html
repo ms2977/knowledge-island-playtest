@@ -879,7 +879,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261115-junior-life-r1">
+<meta name="game-release" content="playtest-20261115-npc-progress-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -144097,6 +144097,37 @@ Object.assign(ZHUYIN_DATA.words, {
   "調淺": ["ㄊㄧㄠˊ", "ㄑㄧㄢˇ"],
   "調深": ["ㄊㄧㄠˊ", "ㄕㄣ"]
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  "佈": "ㄅㄨˋ",
+  "唉": "ㄞ",
+  "堤": "ㄊㄧˊ",
+  "宮": "ㄍㄨㄥ",
+  "歉": "ㄑㄧㄢˋ",
+  "酬": "ㄔㄡˊ",
+  "醜": "ㄔㄡˇ"
+});
+Object.assign(ZHUYIN_DATA.words, {
+  "改過來": ["ㄍㄞˇ", "ㄍㄨㄛˋ", "ㄌㄞˊ"],
+  "調查員": ["ㄉㄧㄠˋ", "ㄔㄚˊ", "ㄩㄢˊ"],
+  "重編": ["ㄔㄨㄥˊ", "ㄅㄧㄢ"],
+  "星圖": ["ㄒㄧㄥ", "ㄊㄨˊ"],
+  "晾乾": ["ㄌㄧㄤˋ", "ㄍㄢ"],
+  "抄好": ["ㄔㄠ", "ㄏㄠˇ"],
+  "更正": ["ㄍㄥ", "ㄓㄥˋ"],
+  "手稿": ["ㄕㄡˇ", "ㄍㄠˇ"],
+  "開價": ["ㄎㄞ", "ㄐㄧㄚˋ"],
+  "價值": ["ㄐㄧㄚˋ", "ㄓˊ"],
+  "堤防": ["ㄊㄧˊ", "ㄈㄤˊ"],
+  "三十年": ["ㄙㄢ", "ㄕˊ", "ㄋㄧㄢˊ"],
+  "一毛錢": ["ㄧˋ", "ㄇㄠˊ", "ㄑㄧㄢˊ"],
+  "一晚": ["ㄧˋ", "ㄨㄢˇ"],
+  "一封": ["ㄧˋ", "ㄈㄥ"],
+  "一盞": ["ㄧˋ", "ㄓㄢˇ"],
+  "一份": ["ㄧˊ", "ㄈㄣˋ"],
+  "一欄": ["ㄧˋ", "ㄌㄢˊ"],
+  "借還": ["ㄐㄧㄝˋ", "ㄏㄨㄢˊ"],
+  "歸還": ["ㄍㄨㄟ", "ㄏㄨㄢˊ"]
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -159309,6 +159340,454 @@ function awardChapterFragment(student, story = student.story) {
     },
     beat
   };
+}
+const NPC_PROGRESS_V72_DATA = {
+  "gray_c1": {
+    "who": "gray",
+    "after": "c1",
+    "text": "報上說鐘塔修好了。我那天說的六點四十分，是我把日子記錯了——以後我先翻報紙對一下再開口。",
+    "junior": ["鐘塔修好了，報上有寫。", "我上次把日子記錯了。", "以後我先對一對再說。"]
+  },
+  "gray_c2": {
+    "who": "gray",
+    "after": "c2",
+    "text": "手稿回書院了，晚報登了一整版。我讀了兩遍：第一遍看發生什麼事，第二遍看這句話是誰說的。",
+    "junior": ["手稿回書院了。", "我把新聞讀了兩遍。", "第二遍看是誰說的。"]
+  },
+  "gray_c3": {
+    "who": "gray",
+    "after": "c3",
+    "text": "午夜列車的報導我剪下來了。標題很大，可是我現在會先看內文有沒有寫出處。",
+    "junior": ["午夜列車的新聞好大。", "我先看有沒有寫出處。"]
+  },
+  "gray_c4": {
+    "who": "gray",
+    "after": "c4",
+    "text": "觀測台的星圖找回來了。報上沒有寫誰是壞人，我想了很久，覺得這樣寫才對。",
+    "junior": ["星圖找回來了。", "報上沒有說誰是壞人。", "我覺得這樣寫很好。"]
+  },
+  "gray_c5": {
+    "who": "gray",
+    "after": "c5",
+    "text": "博物館的預告更正了，住址拿掉了。原來報紙也會寫錯，改過來就好。",
+    "junior": ["報紙把預告改好了。", "住址也拿掉了。", "寫錯了，改過來就好。"]
+  },
+  "gray_c6": {
+    "who": "gray",
+    "after": "c6",
+    "text": "星期日晚上我也去看了，燈真的閃了三下。小梅先前猜錯的地方，這次她自己在報上說明了。",
+    "junior": ["星期日的燈閃了三下。", "我也去看了。", "小梅在報上更正了。"]
+  },
+  "aki_c2": {
+    "who": "aki",
+    "after": "c2",
+    "text": "聽說手稿和小鈴那封信都回來了。她把信收進抽屜，說等鐘塔節再拿出來。我這幾天在列大修要換的零件。",
+    "junior": ["小鈴的信回來了。", "她把信收好了。", "我在列要換的零件。"]
+  },
+  "aki_c3": {
+    "who": "aki",
+    "after": "c3",
+    "text": "午夜列車停靠那晚，鐘一分都沒有慢——我特地爬上去對過。小鈴說，你現在是掛了名的調查員了。",
+    "junior": ["那天晚上鐘很準。", "我特地上去對過時間。", "你是正式的調查員了！"]
+  },
+  "aki_c5": {
+    "who": "aki",
+    "after": "c5",
+    "text": "博物館來借鐘塔以前的維修照片，我請他們先問過照片裡的老師傅。這是從老照片那件事學來的。",
+    "junior": ["博物館來借舊照片。", "我請他們先問老師傅。", "先問過，再拿去展出。"]
+  },
+  "aki_c6": {
+    "who": "aki",
+    "after": "c6",
+    "text": "新燈的手動開關，我裝好了。平常它自己定時亮；有約定的時候，汐伯自己按。新的和舊的，不一定只能留一個。",
+    "junior": ["新燈的手動開關裝好了。", "有約定時，汐伯自己按。", "新的和舊的可以一起留。"]
+  },
+  "ling_c2": {
+    "who": "ling",
+    "after": "c2",
+    "text": "第十三封信回來了！可是信封上多了別人的字……我想知道那個人為什麼要拿走它。",
+    "junior": ["我的信回來了！", "信封上多了別人的字。", "他為什麼要拿走呢？"]
+  },
+  "ling_c3": {
+    "who": "ling",
+    "after": "c3",
+    "text": "「下一封信會由你來寫」——原來是在說你！我不當信差了，可是我可以幫你出謎語。",
+    "junior": ["下一封信會由你來寫！", "我不當信差了。", "我可以幫你出謎語。"]
+  },
+  "ling_c4": {
+    "who": "ling",
+    "after": "c4",
+    "text": "阿嵐跟我說了星圖的事。她和我一樣，是擔心一個人才那樣做的；下次我們都要先說出來。",
+    "junior": ["阿嵐跟我說了星圖的事。", "她也是因為擔心別人。", "下次我們要先說出來。"]
+  },
+  "ling_c5": {
+    "who": "ling",
+    "after": "c5",
+    "text": "我去看了老照片展。阿海阿公的那張卡片，是他自己同意才寫的。我要寫鐘塔的事以前，也該先問哥哥。",
+    "junior": ["我去看了老照片展。", "卡片是阿公同意才寫的。", "我也應該先問哥哥。"]
+  },
+  "ling_c6": {
+    "who": "ling",
+    "after": "c6",
+    "text": "每年一封，寫了三十年！我只寫了十三封就被你找到了。聽說汐伯也回信了，我好想知道他寫了什麼。",
+    "junior": ["一年一封，寫了三十年！", "我只寫了十三封。", "汐伯也回信了呢。"]
+  },
+  "tiesu_c2": {
+    "who": "tiesu",
+    "after": "c2",
+    "text": "手稿的事辦完了？范先生來問過離島的班次，我照紀錄告訴他時間，別的我不亂猜。",
+    "junior": ["手稿的事辦完了嗎？", "范先生來問過火車時間。", "我只說紀錄上有的事。"]
+  },
+  "tiesu_c4": {
+    "who": "tiesu",
+    "after": "c4",
+    "text": "聽說觀測台的塔梯裝了夜燈。星婆婆半夜上下樓，總算有人替她想到了。車站的階梯，我也該檢查一遍。",
+    "junior": ["觀測台的樓梯裝了夜燈。", "星婆婆上下樓安全多了。", "車站的階梯我也要檢查。"]
+  },
+  "tiesu_c5": {
+    "who": "tiesu",
+    "after": "c5",
+    "text": "老街的人搭車來看照片展，車站熱鬧多了。阿海阿公也來了，他說想親自看看那張卡片。",
+    "junior": ["好多人搭車來看照片展。", "阿海阿公也來了。", "他想親自看看那張卡片。"]
+  },
+  "tiesu_c6": {
+    "who": "tiesu",
+    "after": "c6",
+    "text": "汐伯那張退貨單寫的是「請星期一再送」，不是「不要了」。單子上怎麼寫，就照著怎麼讀——我的本子也是這樣記的。",
+    "junior": ["退貨單寫「星期一再送」。", "不是寫「不要了」。", "單子怎麼寫，就怎麼讀。"]
+  },
+  "chiu_c2": {
+    "who": "chiu",
+    "after": "c2",
+    "text": "手稿回書院了？唉，我連看都還沒看到……好啦，展出的時候我買票進去看，一樣是看。",
+    "junior": ["手稿回書院了啊。", "我還沒有看過呢。", "展出時，我買票進去看。"]
+  },
+  "chiu_c4": {
+    "who": "chiu",
+    "after": "c4",
+    "text": "星圖不賣，我知道，我問過了。星婆婆倒是讓我在觀測台看了一晚上的星星，一毛錢都沒收。",
+    "junior": ["星圖不賣，我問過了。", "星婆婆讓我看了一晚星星。", "她一毛錢都沒有收。"]
+  },
+  "chiu_c6": {
+    "who": "chiu",
+    "after": "c6",
+    "text": "汐伯那三十封信，我一封都不會開價。有些東西放在主人手上，才是它的價錢。",
+    "junior": ["汐伯的信，我不會出價。", "有些東西留在主人手上，", "才是最有價值的。"]
+  },
+  "mei_c2": {
+    "who": "mei",
+    "after": "c2",
+    "text": "手稿案的報導我分成兩欄：左邊是查證過的事，右邊是還在問的事。主編說版面變醜了，可是我覺得這樣才清楚。",
+    "junior": ["我把報導分成兩欄。", "一邊是查證過的事。", "一邊是還在問的事。"]
+  },
+  "mei_c4": {
+    "who": "mei",
+    "after": "c4",
+    "text": "星圖那篇我改了三次標題，最後用的是「星圖回家了」。「誰偷了星圖」比較好賣，可是那不是事實。",
+    "junior": ["星圖那篇我改了三次標題。", "最後寫「星圖回家了」。", "因為沒有人偷走它。"]
+  },
+  "mei_c6": {
+    "who": "mei",
+    "after": "c6",
+    "text": "我先前猜汐伯討厭新科技，結果猜錯了。更正登在頭版——猜錯不丟臉，不改才丟臉。",
+    "junior": ["我猜錯了汐伯的想法。", "更正已經登在頭版。", "猜錯要改，這樣才對。"]
+  },
+  "mo_c4": {
+    "who": "mo",
+    "after": "c4",
+    "text": "星婆婆把舊的觀測日誌送來書院修補。阿嵐抄的新日誌字很端正，我請她也留一份副本在這裡。",
+    "junior": ["星婆婆送舊日誌來修補。", "阿嵐抄的新日誌很整齊。", "書院也留了一份副本。"]
+  },
+  "mo_c5": {
+    "who": "mo",
+    "after": "c5",
+    "text": "博物館借了幾本講老街的書去佈展。借書單上，我多加了一欄：「書裡提到的人，問過了嗎？」",
+    "junior": ["博物館來借老街的書。", "借書單多了一欄。", "要寫有沒有先問過人。"]
+  },
+  "mo_c6": {
+    "who": "mo",
+    "after": "c6",
+    "text": "書院替汐伯讀信很多年了，每一封都是他點頭了才唸。今年這一封，是他自己說要唸慢一點。",
+    "junior": ["書院替汐伯讀信很多年。", "他點頭，我們才唸。", "今年他要我們唸慢一點。"]
+  },
+  "yan_c2": {
+    "who": "yan",
+    "after": "c2",
+    "text": "……手稿補好了。撕開的地方，我沿著紙的紋路接回去。誰進過藏書閣，本子上都還留著。",
+    "junior": ["手稿補好了。", "我順著紙的紋路接回去。", "進出的紀錄都還留著。"]
+  },
+  "yan_c3": {
+    "who": "yan",
+    "after": "c3",
+    "text": "……館長說，可以跟你多說幾句了。第十三封信的信封，我做了一個盒子收著。",
+    "junior": ["館長說可以跟你說話了。", "我做了一個盒子，", "把那個信封收好。"]
+  },
+  "yan_c4": {
+    "who": "yan",
+    "after": "c4",
+    "text": "……觀測台的舊日誌受潮了，我一頁一頁壓平。阿嵐來看過，她說以後抄完會先晾乾。",
+    "junior": ["舊日誌受潮了。", "我一頁一頁壓平。", "阿嵐說以後會先晾乾。"]
+  },
+  "yan_c5": {
+    "who": "yan",
+    "after": "c5",
+    "text": "……老街那張便條和照片背面的字，我後來也看了。很像。可是「很像」只能拿來問人，不能拿來認定。",
+    "junior": ["便條和照片的字很像。", "「很像」只能拿來問人。", "不能直接說就是他。"]
+  },
+  "yan_c6": {
+    "who": "yan",
+    "after": "c6",
+    "text": "……汐伯的信，影本我鎖回櫃子了。他說可以給你看的那幾段，我另外抄了一張。",
+    "junior": ["汐伯的信我鎖回櫃子了。", "他同意公開的那幾段，", "我另外抄了一張。"]
+  },
+  "merchant_c3": {
+    "who": "merchant",
+    "after": "c3",
+    "text": "委託我的人，後來自己出面說明了。我也向館長道了歉。這趟生意沒賺到錢，倒是學到要先問東西是誰的。",
+    "junior": ["委託我的人自己說明了。", "我也向館長道歉了。", "以後要先問東西是誰的。"]
+  },
+  "merchant_c6": {
+    "who": "merchant",
+    "after": "c6",
+    "text": "聽說燈塔的事了。照著單子上寫的日期辦事——這個道理，我是在書院學到的。",
+    "junior": ["我聽說燈塔的事了。", "單子上寫哪一天，", "就照那一天去辦。"]
+  },
+  "midnight_c6": {
+    "who": "midnight",
+    "after": "c6",
+    "text": "島上的信越來越多了：小鈴的、米亞船長的、汐伯的回信。寫信的人換了，信還是要有人送。下一班車見。",
+    "junior": ["島上的信越來越多了。", "寫信的人換了，", "信還是要有人送。"]
+  },
+  "astronomer_c1": {
+    "who": "astronomer",
+    "after": "c1",
+    "text": "鐘聲回來了，我的觀測紀錄又能對時。少了鐘聲那一晚，我是看星星的位置推時間的。",
+    "junior": ["鐘聲回來了。", "我的紀錄又能對時間了。", "那一晚我是看星星猜時間。"]
+  },
+  "astronomer_c2": {
+    "who": "astronomer",
+    "after": "c2",
+    "text": "書院的手稿找回來了？字和星星一樣，少了一頁、少了一顆，整張圖就讀不通。",
+    "junior": ["手稿找回來了嗎？", "字和星星一樣，", "少了一個，就讀不通。"]
+  },
+  "astronomer_c3": {
+    "who": "astronomer",
+    "after": "c3",
+    "text": "午夜那班列車，我從塔頂看得見車燈。每一次到站的時間我都記了，改天拿去和鐵叔的本子對一對。",
+    "junior": ["我從塔頂看得見列車。", "到站時間我都記下來。", "要和鐵叔的本子對一對。"]
+  },
+  "astronomer_c5": {
+    "who": "astronomer",
+    "after": "c5",
+    "text": "老照片裡那排海邊的房子，我年輕時見過。館員來問我，我只說我親眼看過的部分，其他的請她去問住過的人。",
+    "junior": ["照片裡的老屋我見過。", "我只說自己看過的事。", "其他的，要問住過的人。"]
+  },
+  "astronomer_c6": {
+    "who": "astronomer",
+    "after": "c6",
+    "text": "星期日七點，我在觀測台數了：一下、兩下、三下，間隔一樣長。三十年的約定，數得出來。",
+    "junior": ["星期日七點，我數了。", "一下、兩下、三下。", "三十年的約定完成了。"]
+  },
+  "apprentice_c5": {
+    "who": "apprentice",
+    "after": "c5",
+    "text": "我跟婆婆去看了照片展。她說以前的事要問記得的人；我就想，以後觀測日誌也要寫上是誰看到的。",
+    "junior": ["我和婆婆去看照片展。", "以前的事要問記得的人。", "日誌也要寫是誰看到的。"]
+  },
+  "apprentice_c6": {
+    "who": "apprentice",
+    "after": "c6",
+    "text": "燈塔閃三下那晚，是我幫婆婆扶望遠鏡。新燈和舊的燈號都留下來了，跟我們塔梯上那盞夜燈一樣。",
+    "junior": ["那一晚我幫婆婆扶望遠鏡。", "新燈和舊燈號都留下了。", "就像我們塔梯的夜燈。"]
+  },
+  "curator_c4": {
+    "who": "curator",
+    "after": "c4",
+    "text": "聽說星圖回到觀測台了。博物館想借來展出，我先寫信問星婆婆願不願意；她說不方便的話，我們就不展。",
+    "junior": ["星圖回到觀測台了。", "我寫信問能不能借來展。", "婆婆說不行，就不展。"]
+  },
+  "curator_c6": {
+    "who": "curator",
+    "after": "c6",
+    "text": "我想替汐伯和米亞船長的信辦一個小展。這次我先去問汐伯；要不要展、展哪幾封，都由他決定。",
+    "junior": ["我想辦一個信的小展。", "這次我先去問汐伯。", "要不要展，由他決定。"]
+  },
+  "captain_c6": {
+    "who": "captain",
+    "after": "c6",
+    "text": "星期日晚上，港口的人都站在堤防上看。三下燈光閃完，好一陣子沒有人說話。米亞的船過去了，信還會來的。",
+    "junior": ["星期日大家到堤防上看。", "燈閃了三下，好安靜。", "船走了，信還會再來。"]
+  },
+  "elder_c6": {
+    "who": "elder",
+    "after": "c6",
+    "text": "我打魚那些年，夜裡回港都是看汐伯的燈。新燈也好，只要有人記得它為什麼要亮。",
+    "junior": ["我以前回港都看那盞燈。", "換成新燈也很好。", "要記得它為什麼亮。"]
+  },
+  "keeper_c6": {
+    "who": "keeper",
+    "after": "c6",
+    "text": "新燈裝好了，定時亮、定時滅，很可靠。阿齒替它加了手動開關；有約定的時候，換我自己來按。",
+    "junior": ["新燈裝好了，很準時。", "阿齒幫它加了手動開關。", "有約定時，我自己來按。"]
+  },
+  "grayraven_idle": {
+    "who": "grayraven",
+    "after": "c6",
+    "text": "奇案簿翻到第六頁了。下一個委託還在路上；港口的遠行手冊、森林的迷宮、委託板上的居民，都用得上你。",
+    "junior": ["奇案簿寫到第六頁了。", "新的委託還在路上。", "先去幫幫島上的居民吧。"]
+  }
+};
+const NPC_PROGRESS_ROWS = [];
+const NPC_PROGRESS_REMINDERS = {
+  astronomer: 'd_astro_mid',
+  curator: 'd_curator_mid',
+  captain: 'd_captain_mid'
+};
+const NPC_PROGRESS_SHORT_REMINDERS = {
+  astronomer: ['只改變一個條件。', '其他條件要保持一樣。', '才能知道變化的原因。'],
+  curator: ['一句話是證據還是意見？', '記得看看它的來源。'],
+  captain: ['垃圾掉進海裡，', '可能漂到很遠的地方。', '我們要把垃圾收好。']
+};
+function npcProgressRegister(key, who, chapter, lines, junior, sourceNode = null) {
+  const node = 'd_progress_' + key,
+    reminder = NPC_PROGRESS_REMINDERS[who];
+  DIALOGUES[node] = {
+    lines: [...lines, ...(reminder ? DIALOGUES[reminder].lines : [])]
+  };
+  JUNIOR_CH1_TEXT[node] = {
+    lines: [...junior, ...(NPC_PROGRESS_SHORT_REMINDERS[who] || []).map(t => [who, t])]
+  };
+  const row = {
+    who,
+    chapter,
+    node,
+    sourceNode
+  };
+  NPC_PROGRESS_ROWS.push(row);
+  return row;
+}
+for (const [key, q] of Object.entries(NPC_PROGRESS_V72_DATA)) npcProgressRegister(key, q.who, Number(q.after.slice(1)), [{
+  who: q.who,
+  text: q.text
+}], q.junior.map(t => [q.who, t]));
+const NPC_PROGRESS_LEGACY = {
+  d_tiesu_clock_done: 1,
+  d_tiesu_train_done: 3,
+  d_chiu_clock_done: 1,
+  d_chiu_train_done: 3,
+  d_chiu_photo_done: 5,
+  d_mei_clock_done: 1,
+  d_mei_train_done: 3,
+  d_mei_photo_done: 5,
+  d_merchant_manuscript_done: 2,
+  d_mo_train_done: 3,
+  d_aki_starmap_done: 4,
+  d_captain_starmap_done: 4,
+  d_captain_photo_done: 5,
+  d_aki_done: 1,
+  d_ling_done: 1,
+  d_mo_done: 2,
+  d_mid_done: 3,
+  d_c4_astro_done4: 4,
+  d_c4_appr_after: 4,
+  d_c5_curator_done5: 5,
+  d_c5_elder_after: 5
+};
+for (const [id, chapter] of Object.entries(NPC_PROGRESS_LEGACY)) {
+  const original = DIALOGUES[id],
+    who = original.lines[0].who;
+  const junior = JUNIOR_CH1_TEXT[id].lines.flatMap(([speaker, text]) => {
+    const chunks = [];
+    let rest = text;
+    while (rest.length > 18) {
+      let n = 18;
+      for (let i = 17; i >= 8; i--) if ('，。！；？'.includes(rest[i])) {
+        n = i + 1;
+        break;
+      }
+      chunks.push([speaker, rest.slice(0, n)]);
+      rest = rest.slice(n);
+    }
+    if (rest) chunks.push([speaker, rest]);
+    return chunks;
+  });
+  npcProgressRegister(id, who, chapter, original.lines, junior, id);
+}
+DIALOGUES.d_progress_ling_c6_wait = {
+  lines: [{
+    who: 'ling',
+    text: '每年一封，寫了三十年！我只寫了十三封就被你找到了。汐伯的回信桌準備好了；他想寫的時候，我也想幫忙。'
+  }]
+};
+JUNIOR_CH1_TEXT.d_progress_ling_c6_wait = {
+  lines: [['ling', '每年一封，寫了三十年！'], ['ling', '汐伯的回信桌準備好了。'], ['ling', '他想寫時，我也想幫忙。']]
+};
+DIALOGUES.d_progress_midnight_c6_wait = {
+  lines: [{
+    who: 'midnight',
+    text: '島上留下了好多信：小鈴的、米亞船長的。汐伯的回信桌也準備好了。寫信的人換了，信還是要有人送。下一班車見。'
+  }]
+};
+JUNIOR_CH1_TEXT.d_progress_midnight_c6_wait = {
+  lines: [['midnight', '島上留下了好多信。'], ['midnight', '汐伯的回信桌準備好了。'], ['midnight', '信還是要有人送。']]
+};
+for (const [key, line] of [['later', '到時間，再換個情境試試。'], ['due', '現在可以換個情境試試。']]) {
+  const lines = ['還有燈塔的學習確認。', line, '其他冒險也能繼續。'];
+  DIALOGUES['d_progress_grayraven_review_' + key] = {
+    lines: lines.map(text => ({
+      who: 'grayraven',
+      text
+    }))
+  };
+  JUNIOR_CH1_TEXT['d_progress_grayraven_review_' + key] = {
+    lines: lines.map(text => ['grayraven', text])
+  };
+}
+const NPC_PROGRESS_ACTIVE = {
+  1: ['d_gray_checked', 'd_gray_mid', 'd_gray_intro', 'd_ling_confess', 'd_aki_r2', 'd_aki_r1', 'd_aki_intro', 'd_ling_mid', 'd_ling_intro', 'd_tiesu_info', 'd_chiu_scared', 'd_mei_news'],
+  2: ['d_mo_intro', 'd_mo_mid', 'd_merchant_intro', 'd_yan'],
+  3: ['d_tiesu_night', 'd_tiesu_train_wait', 'd_mid_final', 'd_mid_hint', 'd_mid_intro'],
+  4: ['d_c4_astro_hill', 'd_c4_astro_mid4', 'd_c4_astro_case', 'd_c4_captain_ch4_mid', 'd_c4_captain_ch4', 'd_c4_aki_ch4_mid', 'd_c4_aki_ch4', 'd_c4_appr_confess', 'd_c4_appr_mid', 'd_c4_appr_intro'],
+  5: ['d_c5_curator_case', 'd_c5_captain_mid', 'd_c5_captain_ch5', 'd_c5_chiu_ch5', 'd_c5_mei_mid', 'd_c5_mei_ch5', 'd_c5_elder_confess', 'd_c5_elder_intro'],
+  6: ['d_c6_captain', 'd_c6_yan', 'd_c6_mei', 'd_c6_keeper']
+};
+function npcProgressPending(state) {
+  if (studentGrade(state.student) === 2) return [];
+  return Object.entries(learningV2(state.student).concepts).filter(([id, e]) => {
+    const rows = e.evidence.filter(x => x.caseId === CH6_ID);
+    if (!rows.length || !ch6Allowed(state, id) || !CH6_BANK.some(q => q.kp === id && q.mode === 'delayed' && q.grade.includes(studentGrade(state.student)))) return false;
+    const last = rows.filter(x => x.kind === 'delayed').at(-1);
+    return !last || !last.correct || last.assisted === 'solve';
+  }).map(([id]) => id);
+}
+function npcProgressPick(state, npc, story = state.student.story || createStory()) {
+  const talks = NPC_TALK[npc] || [],
+    original = () => talks.find(t => condOk(story, t.when)),
+    flags = story.flags || {};
+  if (npc === 'grayraven') {
+    if (!flags.c6_done || !flags.c6_epilogue) return original();
+    const pending = npcProgressPending(state);
+    return {
+      node: pending.length ? 'd_progress_grayraven_review_' + (ch6Due(state).some(id => pending.includes(id)) ? 'due' : 'later') : 'd_progress_grayraven_idle'
+    };
+  }
+  const active = talks.find(t => Object.entries(NPC_PROGRESS_ACTIVE).some(([chapter, ids]) => ids.includes(t.node) && !flags['c' + chapter + '_done']) && condOk(story, t.when));
+  if (active) return active;
+  if (['curator', 'apprentice', 'elder', 'keeper'].includes(npc) && !(story.met || []).includes(npc) && !flags['met_' + npc]) return original();
+  const row = NPC_PROGRESS_ROWS.filter(r => r.who === npc && flags['c' + r.chapter + '_done']).sort((a, b) => b.chapter - a.chapter)[0];
+  if (!row) return original();
+  if (row.chapter === 6 && ['ling', 'midnight'].includes(npc) && !flags.c6_g5 && !(story.evidence || []).includes('E67')) return {
+    node: 'd_progress_' + npc + '_c6_wait'
+  };
+  return {
+    node: row.node
+  };
+}
+function npcHotspotPick(state, hotspot, story = state.student.story || createStory()) {
+  if (hotspot.dialog && !(hotspot.dialog === 'd_tiesu_platform' && story.flags.c3_done)) return {
+    node: hotspot.dialog
+  };
+  return npcProgressPick(state, hotspot.npc, story);
 }
 const SUSPECTS = {
   fog: {
@@ -190039,10 +190518,7 @@ function Adventure({
       return;
     }
     if (h.kind === 'npc') {
-      const talks = NPC_TALK[h.npc] || [];
-      const pick = h.dialog ? {
-        node: h.dialog
-      } : talks.find(t => condOk(st, t.when));
+      const pick = npcHotspotPick(state, h, st);
       if (!pick) return;
       let st2 = st;
       if (!st.met.includes(h.npc)) {
@@ -196234,7 +196710,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.15-v71b",
+    "data-build": "2026.11.15-v72",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
