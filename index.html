@@ -513,6 +513,20 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .step-hints .btn { align-self:flex-start;max-width:100%;white-space:normal;text-align:left; }
 @media(max-width:520px){.step-number .numin { width:76px; }.step-ops { grid-template-columns:repeat(2,40px); }.step-equation { gap:6px; }.step-goal { font-size:14px; }}
 
+.hero-letter-record{margin:12px 0;padding:20px;border:1px solid #c7b7a4;border-radius:14px;background:linear-gradient(135deg,#fffdf3,#f2edf4);color:#314852}
+.hero-letter-record figcaption{font-weight:800;color:#625479;margin-bottom:16px}
+.hero-letter-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hero-letter-columns section{padding:16px;background:#fffefa;border:1px solid #d6cbbb;border-radius:10px;min-width:0}
+.hero-paper-icon{display:block;font-size:42px;line-height:1;color:#687b71}
+.hero-letter-record h4{margin:8px 0}.hero-letter-record p{margin:8px 0}
+.hero-record-note{padding:12px;border-left:4px solid #90759d;background:#fffaf0;border-radius:6px}
+.hero-diary-timeline{list-style:none;margin:0;padding:0 0 0 14px;border-left:3px solid #a38ca8}
+.hero-diary-timeline li{position:relative;padding:8px 12px;margin-bottom:12px;background:#fffefa;border-radius:8px}
+.hero-diary-timeline li:before{content:'';position:absolute;width:10px;height:10px;border-radius:50%;background:#80698c;left:-20px;top:16px}
+.hero-testimony-note{border-left:4px solid #758e7e;padding:14px;background:#eef4ef;border-radius:8px}
+.hero-deduction fieldset button small{display:block;color:#5b6578}
+@media(max-width:600px){.hero-letter-columns{grid-template-columns:1fr}.hero-letter-record{padding:14px}.hero-letter-columns section{padding:12px}}
+
 .companion-picker {border:0;padding:0;margin:0;min-width:0;}
 .companion-picker legend {font-weight:700;color:#254658;margin-bottom:4px;}
 .companion-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
@@ -885,7 +899,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261115-maze-motion-r2">
+<meta name="game-release" content="playtest-20261115-hero-shuang-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -144162,6 +144176,35 @@ Object.assign(ZHUYIN_DATA.chars, {
   "抵": "ㄉㄧˇ",
   "篷": "ㄆㄥˊ"
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  "戳": "ㄔㄨㄛ",
+  "柳": "ㄌㄧㄡˇ",
+  "笆": "ㄅㄚ",
+  "箋": "ㄐㄧㄢ",
+  "籬": "ㄌㄧˊ",
+  "繡": "ㄒㄧㄡˋ",
+  "薇": "ㄨㄟˊ"
+});
+Object.assign(ZHUYIN_DATA.words, {
+  "薇朵": ["ㄨㄟˊ", "ㄉㄨㄛˇ"],
+  "小霜": ["ㄒㄧㄠˇ", "ㄕㄨㄤ"],
+  "夏信莊園": ["ㄒㄧㄚˋ", "ㄒㄧㄣˋ", "ㄓㄨㄤ", "ㄩㄢˊ"],
+  "夏信": ["ㄒㄧㄚˋ", "ㄒㄧㄣˋ"],
+  "門房": ["ㄇㄣˊ", "ㄈㄤˊ"],
+  "郵戳": ["ㄧㄡˊ", "ㄔㄨㄛ"],
+  "寄信登記簿": ["ㄐㄧˋ", "ㄒㄧㄣˋ", "ㄉㄥ", "ㄐㄧˋ", "ㄅㄨˋ"],
+  "園藝": ["ㄩㄢˊ", "ㄧˋ"],
+  "日誌": ["ㄖˋ", "ㄓˋ"],
+  "壓花": ["ㄧㄚ", "ㄏㄨㄚ"],
+  "信箋": ["ㄒㄧㄣˋ", "ㄐㄧㄢ"],
+  "籬笆": ["ㄌㄧˊ", "˙ㄅㄚ"],
+  "奶奶": ["ㄋㄞˇ", "˙ㄋㄞ"],
+  "爺爺": ["ㄧㄝˊ", "˙ㄧㄝ"],
+  "迷你裙": ["ㄇㄧˊ", "ㄋㄧˇ", "ㄑㄩㄣˊ"],
+  "拱門": ["ㄍㄨㄥˇ", "ㄇㄣˊ"],
+  "玫瑰": ["ㄇㄟˊ", "˙ㄍㄨㄟ"],
+  "花會": ["ㄏㄨㄚ", "ㄏㄨㄟˋ"]
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -177751,6 +177794,50 @@ WARDROBE_V1.items.hero_cheng_baseball_outfit = {
   "fullSet": true,
   "unlockText": "完成阿澄支線《河輪鎮的逆轉記分板》"
 };
+WARDROBE_V1.players.p_shuang.hero_shuang_summer = {
+  "sheet": "assets/wardrobe/v1/sheets/hero_shuang_summer.webp",
+  "sw": 1920,
+  "sh": 960,
+  "frames": [{
+    "body": [0, 0, 320, 480],
+    "hair": [0, 480, 320, 480]
+  }, {
+    "body": [320, 0, 320, 480],
+    "hair": [320, 480, 320, 480]
+  }, {
+    "body": [640, 0, 320, 480],
+    "hair": [640, 480, 320, 480]
+  }, {
+    "body": [960, 0, 320, 480],
+    "hair": [960, 480, 320, 480]
+  }, {
+    "body": [1280, 0, 320, 480],
+    "hair": [1280, 480, 320, 480]
+  }, {
+    "body": [1600, 0, 320, 480],
+    "hair": [1600, 480, 320, 480]
+  }],
+  "hasHead": false,
+  "portrait": {
+    "sheet": "assets/wardrobe/v1/sheets/hero_shuang_summer_portrait.webp",
+    "sw": 1280,
+    "sh": 1080,
+    "canvas": [640, 1080],
+    "body": [0, 0, 640, 1080],
+    "hair": [640, 0, 640, 1080],
+    "face": [205, 15, 240, 235]
+  }
+};
+WARDROBE_V1.items.hero_shuang_summer_outfit = {
+  "id": "hero_shuang_summer_outfit",
+  "scope": "player",
+  "slot": "outfit",
+  "style": "hero_shuang_summer",
+  "name": "夏信玫瑰迷你裙",
+  "ownerAvatar": "p_shuang",
+  "fullSet": true,
+  "unlockText": "完成小霜支線《花園裡沒有寄出的信》"
+};
 const PAINT_ROUTE_CONCEPT = {
   ratio: 'm_ratio',
   decimal: 'm_dec_addsub',
@@ -184305,6 +184392,96 @@ const HERO_CHENG_DATA = {
   "missingFeedback": "需要三份依據互相核對：記分紙說明實際比數，試拉觀察說明交叉接線，檢修簿說明換繩及待測試的記錄。"
 };
 const HERO_CHENG_PLACES = HERO_CHENG_DATA.places;
+const HERO_SHUANG_DATA = {
+  "id": "shuang_garden",
+  "hero": "p_shuang",
+  "region": "夏信莊園",
+  "title": "花園裡沒有寄出的信",
+  "guide": "薇朵",
+  "places": [{
+    "id": "gatehouse",
+    "name": "莊園門房",
+    "number": 1,
+    "title": "先看信有沒有寄出去",
+    "before": ["薇朵：我在溫室的抽屜找到一封信，是奶奶十年前寫給隔壁柳爺爺的，請他們來夏日花會。鎮上都說是柳家不肯來，兩家才不說話。奶奶說可以查，她也想知道那年怎麼了。", "小霜：信還在這裡……那柳爺爺讀過嗎？先看門房的寄信登記。"],
+    "clue": {
+      "id": "mailbook",
+      "name": "門房的寄信登記簿",
+      "text": "那一年夏天，花會前兩個星期的登記簿上，沒有任何一封寄給柳家的信。這封信的信封上也沒有郵戳。",
+      "type": "document"
+    },
+    "after": "小霜：目前沒有寄出的紀錄，信也還在奶奶抽屜裡。我們再看看日誌，確認原因。",
+    "point": [20, 68]
+  }, {
+    "id": "greenhouse",
+    "name": "玻璃溫室",
+    "number": 2,
+    "title": "寫信的人當時怎麼想",
+    "before": ["薇朵：奶奶說園藝日誌可以翻，那是她每天寫的。", "小霜：我常常替別人猜心事……這次不猜，看她自己是怎麼寫的。"],
+    "clue": {
+      "id": "gardenlog",
+      "name": "奶奶的園藝日誌",
+      "text": "奶奶先寫：「邀請信寫好了。想夾一朵今年的玫瑰再寄，可是玫瑰晚開。等花開。」之後連下了五天雨。花會過後，她又寫：「邀請信還在抽屜裡，沒有交給門房寄出。」",
+      "type": "document"
+    },
+    "after": "小霜：她不是不想邀請，是在等花開，後來就錯過了。",
+    "point": [21, 29]
+  }, {
+    "id": "pavilion",
+    "name": "果園涼亭",
+    "number": 3,
+    "title": "籬笆另一邊看到的",
+    "before": ["薇朵：柳爺爺答應見我們。他說那一年的事，他只講他自己看到的。", "小霜：同一件事，站在籬笆兩邊，看到的可能不一樣。先完成整理小任務，再聽他說。"],
+    "clue": {
+      "id": "neighbor",
+      "name": "柳爺爺的說法",
+      "text": "「那年我們沒有收到邀請。花會那天聽見隔壁有音樂，我以為夏家不歡迎我們，就沒有過去。」這是柳爺爺的說法，可以拿去和登記簿、日誌核對。",
+      "type": "testimony"
+    },
+    "after": "薇朵：奶奶以為他們不肯來，柳爺爺以為沒有被邀請……你可以把證據連起來嗎？",
+    "point": [81, 31]
+  }, {
+    "id": "arch",
+    "name": "玫瑰拱門",
+    "number": 4,
+    "optional": true,
+    "title": "小霜的小小約定",
+    "before": ["小霜：我有一封寫給搬走的朋友的信，放在抽屜裡很久了。我怕她已經不記得我。", "薇朵：奶奶的信等了十年。你的還來得及。我們來做一張小卡片吧。"],
+    "clue": {
+      "id": "promise",
+      "name": "小霜的約定卡",
+      "text": "「想知道別人怎麼想，就去問他；寫好的信，要寄出去。」小霜決定回去就把那封信寄出。",
+      "type": "reflection"
+    },
+    "after": "小霜：猜了那麼久，不如問一句。",
+    "point": [79, 67]
+  }],
+  "conclusions": ["邀請信一直沒有寄出；夏家以為柳家不肯來，柳家以為沒有被邀請。", "柳家收到了邀請卻故意不來，所以兩家才不說話。", "夏奶奶其實不想邀請柳家，所以把信藏了起來。"],
+  "correct": 0,
+  "directEvidence": ["mailbook", "gardenlog"],
+  "ending": ["夏奶奶請薇朵把那封信原封不動送過去，另外附上一張今年的邀請。", "柳爺爺讀完信，摘了一籃果子，說花會那天會帶過來。", "小霜換上夏天的裙子，在花會上負責唸邀請名單——這一次，每一封都寄到了。"],
+  "outfitId": "hero_shuang_summer_outfit",
+  "outfitName": "夏信玫瑰迷你裙",
+  "outfitLabel": "夏日迷你裙",
+  "artPrefix": "hero_shuang",
+  "guideArt": "assets/chars/hero_weiduo/tachie_normal.webp",
+  "guideAlt": "莊園小園丁薇朵",
+  "mapAlt": "夏信莊園：左下莊園門房、左上玻璃溫室、右上果園涼亭、右下玫瑰拱門",
+  "optionalLabel": "小霜的小故事",
+  "optionalXPTitle": "小霜的約定卡",
+  "souvenir": {
+    "name": "壓花信箋",
+    "art": "assets/items/island-supplies-v1/pressed_flower_letter.webp"
+  },
+  "outfitArt": "assets/chars/hero_shuang_summer/tachie_normal.webp",
+  "outfitDescription": "奶白短袖上衣、淡紫玫瑰刺繡短裙，搭配花朵髮飾與輕便球鞋。這是一套含髮飾、鞋的完整夏日造型。",
+  "introTitle": "不替別人猜心事，先看證據。",
+  "introText": "薇朵在抽屜發現奶奶十年前的邀請信。奶奶同意大家閱讀與查證；小霜邀你核對門房登記簿、園藝日誌，再聽聽籬笆另一邊的人怎麼說。",
+  "questionTitle": "兩家為什麼錯過了那次花會？",
+  "endingTitle": "寫好的信，這次寄出去",
+  "wrongFeedback": "柳爺爺的說法要和書面記錄核對。先查信有沒有寄出，再看奶奶自己寫下的原因，不能替別人猜心事。",
+  "missingFeedback": "請同時選門房的寄信登記簿和奶奶的園藝日誌。日誌明確寫下沒有寄出；柳爺爺的說法和約定卡不能代替這兩份書面證據。"
+};
 const STORY_SOURCE_MODES = ['story', 'mixed', 'subject'];
 function storySource(state) {
   const s = getSettings(state).storySource;
@@ -184844,7 +185021,7 @@ const HERO_ROUTES = [{
   title: '花園裡沒有寄出的信',
   outfit: '夏日迷你裙',
   description: '一座玫瑰花園，收藏著不同人的說法。',
-  open: false
+  open: true
 }, {
   id: 'leo_canal',
   hero: 'p_leo',
@@ -184943,7 +185120,8 @@ const HERO_CASE_DEFS = {
     wrongFeedback: '先核對日期與物品去向。衣服顏色不能證明誰偷了東西，舊路線也未必適用今天。',
     missingFeedback: '這個說法有兩部分：底稿是否送回？為什麼留白？請各找一份直接支持的記錄。'
   },
-  cheng_river: HERO_CHENG_DATA
+  cheng_river: HERO_CHENG_DATA,
+  shuang_garden: HERO_SHUANG_DATA
 };
 function heroDefinition(id = 'ari_coast') {
   return HERO_CASE_DEFS[id] || null;
@@ -194836,6 +195014,40 @@ function MazeAdventure({
     onClick: advance
   }, React.createElement("span", null, moving ? '正在走路…' : '繼續看下一塊路牌'))) : null))));
 }
+function heroClueLabel(clue) {
+  return {
+    document: '書面證據',
+    testimony: '人物說法・需核對',
+    reflection: '旅途心情'
+  }[clue.type] || (clue.id === 'promise' ? '旅途心情' : '現場記錄');
+}
+function HeroShuangRecord({
+  place
+}) {
+  if (place === 'gatehouse') return React.createElement("figure", {
+    className: "hero-letter-record",
+    "aria-label": "\u767B\u8A18\u7C3F\u548C\u4FE1\u5C01\u7684\u521D\u6B65\u6838\u5C0D"
+  }, React.createElement("figcaption", null, "\u5148\u8A18\u7591\u9EDE\uFF0C\u7E7C\u7E8C\u67E5\u8B49"), React.createElement("div", {
+    className: "hero-letter-columns"
+  }, React.createElement("section", null, React.createElement("span", {
+    className: "hero-paper-icon",
+    "aria-hidden": "true"
+  }, "\u2709"), React.createElement("h4", null, "\u7559\u5728\u62BD\u5C5C\u7684\u4FE1"), React.createElement("p", null, "\u4FE1\u5C01\u6C92\u6709\u90F5\u6233\u3002")), React.createElement("section", null, React.createElement("h4", null, "\u9580\u623F\u767B\u8A18\u7C3F"), React.createElement("p", null, "\u82B1\u6703\u524D\u5169\u500B\u661F\u671F\uFF0C\u6C92\u6709\u5BC4\u7D66\u67F3\u5BB6\u7684\u767B\u8A18\u3002"))), React.createElement("p", {
+    className: "hero-record-note"
+  }, "\u9019\u4E9B\u662F\u7591\u9EDE\uFF1B\u9084\u8981\u67E5\u770B\u5976\u5976\u7684\u65E5\u8A8C\uFF0C\u624D\u80FD\u78BA\u8A8D\u3002"));
+  if (place === 'greenhouse') return React.createElement("figure", {
+    className: "hero-letter-record",
+    "aria-label": "\u5976\u5976\u5712\u85DD\u65E5\u8A8C\u7684\u524D\u5F8C\u8A18\u9304"
+  }, React.createElement("figcaption", null, "\u5976\u5976\u89AA\u7B46\u8A18\u4E0B\u7684\u524D\u5F8C\u7D93\u904E"), React.createElement("ol", {
+    className: "hero-diary-timeline"
+  }, React.createElement("li", null, React.createElement("b", null, "\u82B1\u6703\u4E4B\u524D"), React.createElement("p", null, "\u4FE1\u5BEB\u597D\u4E86\uFF0C\u60F3\u7B49\u73AB\u7470\u958B\uFF0C\u518D\u593E\u4E00\u6735\u4E00\u8D77\u5BC4\u3002")), React.createElement("li", null, React.createElement("b", null, "\u63A5\u9023\u4E0B\u96E8"), React.createElement("p", null, "\u9023\u4E0B\u4E86\u4E94\u5929\u96E8\u3002")), React.createElement("li", null, React.createElement("b", null, "\u82B1\u6703\u904E\u5F8C"), React.createElement("p", null, "\u300C\u9080\u8ACB\u4FE1\u9084\u5728\u62BD\u5C5C\u88E1\uFF0C\u6C92\u6709\u4EA4\u7D66\u9580\u623F\u5BC4\u51FA\u3002\u300D"))), React.createElement("p", {
+    className: "hero-record-note"
+  }, "\u65E5\u8A8C\u660E\u78BA\u5BEB\u51FA\u6C92\u6709\u5BC4\u4FE1\uFF0C\u518D\u548C\u9580\u623F\u767B\u8A18\u7C3F\u6838\u5C0D\u3002"));
+  if (place === 'pavilion') return React.createElement("aside", {
+    className: "hero-testimony-note"
+  }, React.createElement("b", null, "\u9019\u662F\u67F3\u723A\u723A\u7684\u8AAA\u6CD5"), React.createElement("p", null, "\u4ED6\u80FD\u8AAA\u660E\u81EA\u5DF1\u6536\u5230\u4EC0\u9EBC\u3001\u770B\u5230\u4EC0\u9EBC\u3002\u5976\u5976\u7684\u60F3\u6CD5\uFF0C\u4ECD\u8981\u5F9E\u5979\u7684\u65E5\u8A8C\u67E5\u8B49\u3002"));
+  return null;
+}
 function StorySourcePicker({
   state,
   value,
@@ -195038,16 +195250,18 @@ function HeroOutfitCard({
       owned = getWardrobe(student).owned.includes(id),
       wearing = getWardrobe(draft).equipped.outfit === id,
       owner = draft.avatar === r.hero,
-      ari = r.id === 'ari_coast';
+      ari = r.id === 'ari_coast',
+      prefix = ari ? 'hero' : 'hero-' + r.hero.replace('p_', ''),
+      label = d.outfitLabel || (ari ? '禮服' : '棒球裝');
     return React.createElement("section", {
       key: id,
       className: "card hero-outfit",
-      id: ari ? 'hero-outfit-card' : 'hero-cheng-outfit-card'
+      id: prefix + '-outfit-card'
     }, React.createElement(HeroImage, {
       src: d.outfitArt,
       alt: r.name + '的' + d.outfitName
     }), React.createElement("div", null, React.createElement("small", null, "\u4E3B\u89D2\u652F\u7DDA\u6536\u85CF\u30FB", r.name, "\u5C08\u5C6C"), React.createElement("h3", null, d.outfitName), React.createElement("p", null, d.outfitDescription), React.createElement("p", null, owned ? owner ? '已收藏，可試穿；按儲存才會保留。' : '已收藏。到「外貌」選' + r.name + '後，就能試穿。' : '到港口的遠行手冊，完成《' + d.title + '》取得。'), React.createElement(Btn, {
-      id: ari ? 'hero-outfit-wear' : 'hero-cheng-outfit-wear',
+      id: prefix + '-outfit-wear',
       disabled: !owned || !owner,
       kind: wearing ? 'ghost' : 'primary',
       onClick: () => setDraft(v => ({
@@ -195061,7 +195275,7 @@ function HeroOutfitCard({
           }
         }
       }))
-    }, wearing ? ari ? '脫下禮服' : '脫下棒球裝' : ari ? '穿上禮服' : '穿上棒球裝')));
+    }, (wearing ? '脫下' : '穿上') + label)));
   }));
 }
 function HeroChengRecord({
@@ -195191,7 +195405,7 @@ function HeroAdventure({
   }), React.createElement("div", null, React.createElement("b", null, d.souvenir.name), React.createElement("p", null, "\u6240\u6709\u4E3B\u89D2\u90FD\u80FD\u6536\u85CF\u3002\u9019\u4EFD\u65C5\u7A0B\u7D00\u5FF5\u5DF2\u6536\u9032\u9060\u884C\u624B\u518A\u3002"), React.createElement("b", null, d.outfitName), React.createElement("p", null, r.name, "\u5C08\u5C6C\u7684\u5B8C\u6574\u9020\u578B\uFF0C\u5DF2\u653E\u5165\u66F4\u8863\u5BA4\u3002\u7372\u5F97 60 \u7D93\u9A57\u503C\uFF08\u672C\u6848\u53EA\u9818\u4E00\u6B21\uFF09\u3002"), React.createElement(Btn, {
     id: "hero-open-wardrobe",
     onClick: onWardrobe
-  }, routeId === 'ari_coast' ? '到更衣室看禮服' : '到更衣室看棒球裝')));
+  }, '到更衣室看' + (d.outfitLabel || (routeId === 'ari_coast' ? '禮服' : '棒球裝')))));
   return React.createElement("main", {
     id: "hero-page",
     className: "hero-page",
@@ -195255,7 +195469,9 @@ function HeroAdventure({
   }, React.createElement("h2", null, d.region, "\u8ABF\u67E5\u624B\u518A"), !clues.length && React.createElement("p", null, "\u5148\u5230", d.places[0].name, "\uFF0C\u5B8C\u6210\u5C0F\u4EFB\u52D9\u5F8C\u624D\u6703\u53D6\u5F97\u7B2C\u4E00\u4EFD\u8B49\u64DA\u3002"), d.places.filter(x => clues.includes(x.clue.id)).map(x => React.createElement("article", {
     className: "hero-evidence",
     key: x.id
-  }, React.createElement("small", null, x.optional ? '旅途心情' : '現場記錄', "\u30FB", x.name), React.createElement("h3", null, x.clue.name), React.createElement("p", null, x.clue.text), routeId === 'cheng_river' && React.createElement(HeroChengRecord, {
+  }, React.createElement("small", null, heroClueLabel(x.clue), "\u30FB", x.name), React.createElement("h3", null, x.clue.name), React.createElement("p", null, x.clue.text), routeId === 'cheng_river' && React.createElement(HeroChengRecord, {
+    place: x.id
+  }), routeId === 'shuang_garden' && React.createElement(HeroShuangRecord, {
     place: x.id
   }))), complete && reward, React.createElement(Btn, {
     onClick: () => setBook(false)
@@ -195310,7 +195526,7 @@ function HeroAdventure({
     id: 'hero-evidence-' + x.clue.id,
     "aria-pressed": c.evidence.includes(x.clue.id),
     onClick: () => update(s => heroToggleEvidence(s, x.clue.id, routeId))
-  }, React.createElement("b", null, x.clue.name), React.createElement("span", null, x.clue.text)))), c.feedback && React.createElement("p", {
+  }, React.createElement("b", null, x.clue.name), routeId === 'shuang_garden' && React.createElement("small", null, heroClueLabel(x.clue)), React.createElement("span", null, x.clue.text)))), c.feedback && React.createElement("p", {
     role: "status",
     className: "notice"
   }, c.feedback), React.createElement(Btn, {
@@ -195350,6 +195566,8 @@ function HeroAdventure({
   }, line)), clues.includes(p.clue.id) ? React.createElement(React.Fragment, null, React.createElement("article", {
     className: "hero-evidence"
   }, React.createElement("h3", null, p.clue.name), React.createElement("p", null, p.clue.text), routeId === 'cheng_river' && React.createElement(HeroChengRecord, {
+    place: p.id
+  }), routeId === 'shuang_garden' && React.createElement(HeroShuangRecord, {
     place: p.id
   })), React.createElement("p", null, p.after), p.optional && React.createElement("small", null, "\u5361\u7247\u5DF2\u6536\u85CF\uFF0C15 \u7D93\u9A57\u503C\u5DF2\u9818\u53D6\uFF08\u53EA\u9818\u4E00\u6B21\uFF09\u3002"), React.createElement(Btn, {
     id: "hero-next-place",
@@ -197263,7 +197481,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.15-v73b",
+    "data-build": "2026.11.15-v74",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
