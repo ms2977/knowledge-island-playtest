@@ -527,6 +527,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero-deduction fieldset button small{display:block;color:#5b6578}
 @media(max-width:600px){.hero-letter-columns{grid-template-columns:1fr}.hero-letter-record{padding:14px}.hero-letter-columns section{padding:12px}}
 
+.life-page{max-width:1120px;margin:auto}.life-header{background:linear-gradient(120deg,#fff9e9,#e3efeb);border-top:5px solid #ba985b}.life-header h1{font-size:clamp(1.6rem,3vw,2.3rem)}.life-rules{display:flex;gap:8px;flex-wrap:wrap}.life-rules>span{background:#fff9;border:1px solid #cadbd4;border-radius:20px;padding:5px 12px}.life-topic-grid,.life-gift-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.life-topic{align-items:flex-start}.life-topic p{flex:1}.life-art{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;max-width:100%}.life-art img{width:100%;height:100%;object-fit:contain}.life-art>span{font-size:2.5rem;color:#24716e}.life-gift{display:flex;flex-direction:column;align-items:center;gap:12px;border:1px solid #d3bc95;border-radius:18px;padding:18px;background:#fffaf0;color:var(--ink);font:inherit;cursor:pointer}.life-gift:hover,.life-gift:focus-visible{border-color:#187d86;background:#ecf5ee}.life-gift strong{background:#e3efeb;border-radius:20px;padding:7px 18px}.life-gift>span:not(.life-art){font-size:.88rem}.life-question{gap:20px}.life-question-head{display:flex;align-items:center;gap:14px}.life-question-head h2{margin:3px 0}.life-disclaimer{font-size:.88rem;padding:10px 14px;background:#f4efde;border-radius:8px}.life-bill{margin:0;border:1px solid #c9d8d5;border-radius:12px;background:#fffdf6;overflow:hidden}.life-bill>div{display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,2fr);gap:16px;padding:12px 18px;border-bottom:1px dashed #d2d8cf}.life-bill>div:last-child{border-bottom:0}.life-bill dt{color:#526763}.life-bill dd{margin:0;font-weight:700;overflow-wrap:anywhere}.life-fields,.life-reasons{border:0;padding:0;margin:0;min-width:0;display:grid;gap:14px}.life-fields legend,.life-reasons legend{font-weight:700;margin-bottom:14px}.life-fields label{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;background:#edf4f1;border-radius:10px}.life-input-unit{display:flex;align-items:center;gap:10px;flex-shrink:0}.life-input-unit input{width:130px;min-width:0;text-align:center;font-size:1.2rem;font-weight:700}.life-reasons button{font:inherit;border:2px solid #d4c09c;border-radius:12px;background:#fffdf7;color:var(--ink);padding:16px;text-align:left;cursor:pointer}.life-reasons button.selected{background:#dceff4;border-color:#207c96;box-shadow:inset 5px 0 #207c96}.life-reasons button:disabled{opacity:1;cursor:default}.life-stamps{display:flex;gap:12px;justify-content:center}.life-stamps span{display:grid;place-items:center;border:2px dashed #ad9c7b;border-radius:50%;width:40px;height:40px}.life-stamps span[data-done=true]{background:#285f58;color:white;border-style:solid}.life-solution{border-left:5px solid #4a8e68;background:#eaf4e7;padding:20px;border-radius:10px}.life-room{background:linear-gradient(#e8efe8,#f8eddb);border:2px solid #cbb38b;border-radius:16px;padding:22px 20px 0;overflow:hidden}.life-pinboard{display:flex;min-height:116px;justify-content:center;align-items:center;gap:16px;border:8px solid #b58d5a;background:#e9d1a2;border-radius:10px;padding:10px;margin:0 auto 20px;max-width:430px;color:#6e573c}.life-desktop{display:flex;align-items:flex-end;justify-content:space-evenly;min-height:148px;gap:4px;border-bottom:18px solid #997448;color:#6e573c}.life-desktop>span:not(.life-art){align-self:center}.life-collection-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.life-collection-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #c3d4ce;border-radius:12px;font:inherit;color:var(--ink);text-align:left;background:white;cursor:pointer}.life-collection-item small{display:block;margin-top:5px}.life-entry{background:#f8f1df}.life-entry .life-art{float:right}.life-page fieldset:disabled input{color:#23464c;background:#eff4ef;opacity:1}.junior .life-page{font-size:1.08rem}.junior .life-page ruby{white-space:nowrap}.life-page button,.life-page input{min-height:44px}.life-page button:focus-visible,.life-page input:focus-visible{outline:3px solid #187d86;outline-offset:3px}
+@media(max-width:700px){.life-topic-grid,.life-gift-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.life-topic-grid{grid-template-columns:1fr}.life-gift{padding:12px 8px}.life-gift .life-art{width:100px!important;height:100px!important}.life-fields label{align-items:flex-start;flex-direction:column}.life-input-unit input{width:150px}.life-bill>div{grid-template-columns:minmax(80px,1fr) minmax(0,1.6fr);padding:12px;gap:10px}.life-question{padding:16px}.life-collection-grid{grid-template-columns:1fr}.life-pinboard{gap:4px;padding:6px}.life-pinboard .life-art{width:64px!important;height:64px!important}.life-desktop .life-art{width:88px!important;height:100px!important}.life-room{padding:12px 8px 0}.life-question-head{align-items:flex-start}.life-rules{font-size:.85rem}}
+
+.life-header.compact h1{font-size:1.5rem}.life-header.compact .small,.life-header.compact .life-rules{display:none}.life-header.compact p{margin-bottom:0}
+
 .companion-picker {border:0;padding:0;margin:0;min-width:0;}
 .companion-picker legend {font-weight:700;color:#254658;margin-bottom:4px;}
 .companion-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
@@ -899,7 +904,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261115-hero-shuang-r1">
+<meta name="game-release" content="playtest-20261115-life-math-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -144205,6 +144210,25 @@ Object.assign(ZHUYIN_DATA.words, {
   "玫瑰": ["ㄇㄟˊ", "˙ㄍㄨㄟ"],
   "花會": ["ㄏㄨㄚ", "ㄏㄨㄟˋ"]
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  "券": "ㄑㄩㄢˋ",
+  "檻": "ㄎㄢˇ",
+  "綜": "ㄗㄨㄥˋ",
+  "荷": "ㄏㄜˊ"
+});
+Object.assign(ZHUYIN_DATA.words, {
+  "薄荷": ["ㄅㄛˋ", "ㄏㄜˊ"],
+  "稅單": ["ㄕㄨㄟˋ", "ㄉㄢ"],
+  "分攤": ["ㄈㄣ", "ㄊㄢ"],
+  "費率": ["ㄈㄟˋ", "ㄌㄩˋ"],
+  "讀數": ["ㄉㄨˊ", "ㄕㄨˋ"],
+  "重複": ["ㄔㄨㄥˊ", "ㄈㄨˋ"],
+  "帳單": ["ㄓㄤˋ", "ㄉㄢ"],
+  "百分率": ["ㄅㄞˇ", "ㄈㄣ", "ㄌㄩˋ"],
+  "預算": ["ㄩˋ", "ㄙㄨㄢˋ"],
+  "待繳": ["ㄉㄞˋ", "ㄐㄧㄠˇ"],
+  "座鐘": ["ㄗㄨㄛˋ", "ㄓㄨㄥ"]
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -144893,6 +144917,7 @@ function validateBackupState(input) {
     });
     opt(st, 'care', (v, p) => validateCare(v, bad, p));
     opt(st, 'maze', (v, p) => validateMaze(v, bad, p));
+    opt(st, 'lifeMath', (v, p) => validateLifeMath(v, bad, p));
     opt(st, 'heroCases', (v, p) => validateHeroCases(v, bad, p, stage));
     opt(st, 'gifts', (v, p) => validateGifts(v, bad, p));
     opt(st, 'adventureUI', (v, p) => {
@@ -161244,7 +161269,7 @@ function countRepairSuccesses(st) {
   const failed = new Set();
   let n = 0;
   for (const l of log) {
-    if (!l || !l.kpId || l.source === 'maze') continue;
+    if (!l || !l.kpId || l.source === 'maze' || l.detail?.practiceOnly) continue;
     if (l.passed) {
       if (failed.has(l.kpId)) {
         n++;
@@ -162594,7 +162619,7 @@ function giftMissionIds(state) {
 function settleGiftProgress(state) {
   if (!state.student) return state;
   const old = state.student.gifts,
-    logs = (state.practiceLog || []).filter(l => l.source !== 'maze'),
+    logs = (state.practiceLog || []).filter(l => l.source !== 'maze' && !l.detail?.practiceOnly),
     missions = giftMissionIds(state),
     full = giftFullConcepts(state);
   if (!old) {
@@ -162761,7 +162786,7 @@ function conceptAtLevel(c, key) {
   return c.levels.some(l => l.kind + '-' + l.value === key);
 }
 function conceptIndependent(e) {
-  return e.source !== 'maze' && !e.hints && !e.detail?.resumed && !e.detail?.fullReveal && !e.fullReveal && e.assisted !== 'solve';
+  return e.source !== 'maze' && !e.detail?.practiceOnly && !e.hints && !e.detail?.resumed && !e.detail?.fullReveal && !e.fullReveal && e.assisted !== 'solve';
 }
 function conceptEvidenceIndex(state) {
   const logs = new Map(),
@@ -162946,8 +162971,8 @@ function conceptEvidenceText(e, state) {
     chest: '寶箱',
     delayed: '延後確認'
   }[e.source] || '練習';
-  const help = e.source === 'maze' ? '迷宮快答（不作掌握證據）' : !e.independent ? '提示了解法' : e.assisted === 'read' ? '只幫忙念題' : '獨立';
-  return `${conceptDate(e.t)}｜${source}｜${help}｜${e.passed ? e.attempts > 1 ? '重試後答對' : '答對' : '答錯'}`;
+  const help = e.detail?.practiceOnly ? '生活綜合練習（不單獨判定掌握）' : e.source === 'maze' ? '迷宮快答（不作掌握證據）' : !e.independent ? '提示了解法' : e.assisted === 'read' ? '只幫忙念題' : '獨立';
+  return `${conceptDate(e.t)}｜${source}｜${help}｜${e.detail?.fullReveal ? '看解法後練習' : e.passed ? e.attempts > 1 ? '重試後答對' : '答對' : '答錯'}`;
 }
 function conceptRecentText(p, state) {
   if (p.provisional) return '入場小試通過，至少隔三天換情境確認';
@@ -185401,6 +185426,4254 @@ function validateHeroCases(v, bad, p, stage) {
     if (c.clues.some(k => !c.tasks[places.find(x => x.clue.id === k).id]?.result?.passed) || c.solvedAt && (!heroRequiredClues(id).every(k => c.clues.includes(k)) || c.conclusion !== d.correct || !heroRequiredEvidence(id).every(k => c.evidence.includes(k))) || !!c.optionalAt !== c.clues.includes(optional?.clue.id)) bad(p + '.progress');
   }
 }
+const LIFE_MATH_DATA = {
+  "version": "life-math-v74b-1",
+  "disclaimer": "模擬帳單：只依題目資料練習，不代表真實費率。",
+  "questions": [{
+    "id": "lm2-budget-0-0",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-0",
+    "title": "家裡的繳費日",
+    "story": "稅單上的金額已經算好。今天只要讀金額，替家人準備兩筆未繳的錢。",
+    "rows": [["模擬稅單", "42 元・未繳"], ["水費單", "27 元・未繳"], ["準備金", "100 元"]],
+    "fields": [{
+      "label": "一共要準備",
+      "answer": 69,
+      "unit": "元"
+    }, {
+      "label": "付完還剩",
+      "answer": 31,
+      "unit": "元"
+    }],
+    "options": ["稅單與水費單只繳一張。", "照兩張未繳帳單的金額合計。", "稅單印的金額還要再加一次。"],
+    "correct": 1,
+    "hint": "金額都已列好，不用計算稅率。",
+    "solution": "42＋27＝69；100－69＝31 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [42, 27, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-0-1",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-0",
+    "title": "家裡的繳費日",
+    "story": "稅單上的金額已經算好。今天只要讀金額，替家人準備兩筆未繳的錢。",
+    "rows": [["模擬稅單", "46 元・未繳"], ["水費單", "29 元・未繳"], ["準備金", "100 元"]],
+    "fields": [{
+      "label": "一共要準備",
+      "answer": 75,
+      "unit": "元"
+    }, {
+      "label": "付完還剩",
+      "answer": 25,
+      "unit": "元"
+    }],
+    "options": ["照兩張未繳帳單的金額合計。", "稅單印的金額還要再加一次。", "稅單與水費單只繳一張。"],
+    "correct": 0,
+    "hint": "金額都已列好，不用計算稅率。",
+    "solution": "46＋29＝75；100－75＝25 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [46, 29, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-0-2",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-0",
+    "title": "家裡的繳費日",
+    "story": "稅單上的金額已經算好。今天只要讀金額，替家人準備兩筆未繳的錢。",
+    "rows": [["模擬稅單", "50 元・未繳"], ["水費單", "31 元・未繳"], ["準備金", "100 元"]],
+    "fields": [{
+      "label": "一共要準備",
+      "answer": 81,
+      "unit": "元"
+    }, {
+      "label": "付完還剩",
+      "answer": 19,
+      "unit": "元"
+    }],
+    "options": ["稅單印的金額還要再加一次。", "稅單與水費單只繳一張。", "照兩張未繳帳單的金額合計。"],
+    "correct": 2,
+    "hint": "金額都已列好，不用計算稅率。",
+    "solution": "50＋31＝81；100－81＝19 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [50, 31, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-0-3",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-0",
+    "title": "家裡的繳費日",
+    "story": "稅單上的金額已經算好。今天只要讀金額，替家人準備兩筆未繳的錢。",
+    "rows": [["模擬稅單", "54 元・未繳"], ["水費單", "33 元・未繳"], ["準備金", "100 元"]],
+    "fields": [{
+      "label": "一共要準備",
+      "answer": 87,
+      "unit": "元"
+    }, {
+      "label": "付完還剩",
+      "answer": 13,
+      "unit": "元"
+    }],
+    "options": ["稅單與水費單只繳一張。", "照兩張未繳帳單的金額合計。", "稅單印的金額還要再加一次。"],
+    "correct": 1,
+    "hint": "金額都已列好，不用計算稅率。",
+    "solution": "54＋33＝87；100－87＝13 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [54, 33, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-1-0",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-1",
+    "title": "重複影印的稅單",
+    "story": "兩張紙有相同的帳單編號，表示同一筆費用，不是兩筆。",
+    "rows": [["編號 A", "34 元"], ["編號 A 的影本", "34 元"], ["編號 B", "20 元"]],
+    "fields": [{
+      "label": "實際應繳合計",
+      "answer": 54,
+      "unit": "元"
+    }, {
+      "label": "若把影本也付了會多付",
+      "answer": 34,
+      "unit": "元"
+    }],
+    "options": ["先核對編號，同一筆費用只算一次。", "有三張紙就要付三筆。", "有影本就全部不用付。"],
+    "correct": 0,
+    "hint": "同編號代表同一筆。",
+    "solution": "只算 A 和 B：34＋20＝54 元；重付影本會多付 34 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [34, 20, 34]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-1-1",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-1",
+    "title": "重複影印的稅單",
+    "story": "兩張紙有相同的帳單編號，表示同一筆費用，不是兩筆。",
+    "rows": [["編號 A", "37 元"], ["編號 A 的影本", "37 元"], ["編號 B", "21 元"]],
+    "fields": [{
+      "label": "實際應繳合計",
+      "answer": 58,
+      "unit": "元"
+    }, {
+      "label": "若把影本也付了會多付",
+      "answer": 37,
+      "unit": "元"
+    }],
+    "options": ["有三張紙就要付三筆。", "有影本就全部不用付。", "先核對編號，同一筆費用只算一次。"],
+    "correct": 2,
+    "hint": "同編號代表同一筆。",
+    "solution": "只算 A 和 B：37＋21＝58 元；重付影本會多付 37 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [37, 21, 37]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-1-2",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-1",
+    "title": "重複影印的稅單",
+    "story": "兩張紙有相同的帳單編號，表示同一筆費用，不是兩筆。",
+    "rows": [["編號 A", "40 元"], ["編號 A 的影本", "40 元"], ["編號 B", "22 元"]],
+    "fields": [{
+      "label": "實際應繳合計",
+      "answer": 62,
+      "unit": "元"
+    }, {
+      "label": "若把影本也付了會多付",
+      "answer": 40,
+      "unit": "元"
+    }],
+    "options": ["有影本就全部不用付。", "先核對編號，同一筆費用只算一次。", "有三張紙就要付三筆。"],
+    "correct": 1,
+    "hint": "同編號代表同一筆。",
+    "solution": "只算 A 和 B：40＋22＝62 元；重付影本會多付 40 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [40, 22, 40]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-1-3",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-1",
+    "title": "重複影印的稅單",
+    "story": "兩張紙有相同的帳單編號，表示同一筆費用，不是兩筆。",
+    "rows": [["編號 A", "43 元"], ["編號 A 的影本", "43 元"], ["編號 B", "23 元"]],
+    "fields": [{
+      "label": "實際應繳合計",
+      "answer": 66,
+      "unit": "元"
+    }, {
+      "label": "若把影本也付了會多付",
+      "answer": 43,
+      "unit": "元"
+    }],
+    "options": ["先核對編號，同一筆費用只算一次。", "有三張紙就要付三筆。", "有影本就全部不用付。"],
+    "correct": 0,
+    "hint": "同編號代表同一筆。",
+    "solution": "只算 A 和 B：43＋23＝66 元；重付影本會多付 43 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [43, 23, 43]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-2-0",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-2",
+    "title": "郊遊點心預算",
+    "story": "先保留交通費，再看看能不能買預定的點心。",
+    "rows": [["帶的錢", "45 元"], ["來回交通", "14 元"], ["點心", "12 元"]],
+    "fields": [{
+      "label": "扣掉交通後",
+      "answer": 31,
+      "unit": "元"
+    }, {
+      "label": "再買點心後",
+      "answer": 19,
+      "unit": "元"
+    }],
+    "options": ["把交通費花掉也沒有關係。", "帶的錢和交通費要相加。", "先保留交通費，剩下的錢夠買點心。"],
+    "correct": 2,
+    "hint": "這裡有兩次不同的支出。",
+    "solution": "45－14＝31；31－12＝19 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "twoCosts",
+      "args": [45, 14, 12]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-2-1",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-2",
+    "title": "郊遊點心預算",
+    "story": "先保留交通費，再看看能不能買預定的點心。",
+    "rows": [["帶的錢", "48 元"], ["來回交通", "15 元"], ["點心", "13 元"]],
+    "fields": [{
+      "label": "扣掉交通後",
+      "answer": 33,
+      "unit": "元"
+    }, {
+      "label": "再買點心後",
+      "answer": 20,
+      "unit": "元"
+    }],
+    "options": ["帶的錢和交通費要相加。", "先保留交通費，剩下的錢夠買點心。", "把交通費花掉也沒有關係。"],
+    "correct": 1,
+    "hint": "這裡有兩次不同的支出。",
+    "solution": "48－15＝33；33－13＝20 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "twoCosts",
+      "args": [48, 15, 13]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-2-2",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-2",
+    "title": "郊遊點心預算",
+    "story": "先保留交通費，再看看能不能買預定的點心。",
+    "rows": [["帶的錢", "51 元"], ["來回交通", "16 元"], ["點心", "14 元"]],
+    "fields": [{
+      "label": "扣掉交通後",
+      "answer": 35,
+      "unit": "元"
+    }, {
+      "label": "再買點心後",
+      "answer": 21,
+      "unit": "元"
+    }],
+    "options": ["先保留交通費，剩下的錢夠買點心。", "把交通費花掉也沒有關係。", "帶的錢和交通費要相加。"],
+    "correct": 0,
+    "hint": "這裡有兩次不同的支出。",
+    "solution": "51－16＝35；35－14＝21 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "twoCosts",
+      "args": [51, 16, 14]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-2-3",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-2",
+    "title": "郊遊點心預算",
+    "story": "先保留交通費，再看看能不能買預定的點心。",
+    "rows": [["帶的錢", "54 元"], ["來回交通", "17 元"], ["點心", "15 元"]],
+    "fields": [{
+      "label": "扣掉交通後",
+      "answer": 37,
+      "unit": "元"
+    }, {
+      "label": "再買點心後",
+      "answer": 22,
+      "unit": "元"
+    }],
+    "options": ["把交通費花掉也沒有關係。", "帶的錢和交通費要相加。", "先保留交通費，剩下的錢夠買點心。"],
+    "correct": 2,
+    "hint": "這裡有兩次不同的支出。",
+    "solution": "54－17＝37；37－15＝22 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "twoCosts",
+      "args": [54, 17, 15]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-3-0",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-3",
+    "title": "買東西的找零",
+    "story": "文具的標價已是要付的價格。老闆把找零少算了。",
+    "rows": [["筆記本", "18 元"], ["鉛筆盒", "24 元"], ["付出", "100 元"], ["收到找零", "53 元"]],
+    "fields": [{
+      "label": "應找回",
+      "answer": 58,
+      "unit": "元"
+    }, {
+      "label": "少找了",
+      "answer": 5,
+      "unit": "元"
+    }],
+    "options": ["標價外還要自己加一次費用。", "先合計售價，再核對應找與實找的差。", "只看收到的錢，不用算。"],
+    "correct": 1,
+    "hint": "先算應找回多少，再比對。",
+    "solution": "應找 100－18－24＝58 元；少找 5 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "change",
+      "args": [18, 24, 100, 53]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-3-1",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-3",
+    "title": "買東西的找零",
+    "story": "文具的標價已是要付的價格。老闆把找零少算了。",
+    "rows": [["筆記本", "20 元"], ["鉛筆盒", "26 元"], ["付出", "100 元"], ["收到找零", "48 元"]],
+    "fields": [{
+      "label": "應找回",
+      "answer": 54,
+      "unit": "元"
+    }, {
+      "label": "少找了",
+      "answer": 6,
+      "unit": "元"
+    }],
+    "options": ["先合計售價，再核對應找與實找的差。", "只看收到的錢，不用算。", "標價外還要自己加一次費用。"],
+    "correct": 0,
+    "hint": "先算應找回多少，再比對。",
+    "solution": "應找 100－20－26＝54 元；少找 6 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "change",
+      "args": [20, 26, 100, 48]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-3-2",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-3",
+    "title": "買東西的找零",
+    "story": "文具的標價已是要付的價格。老闆把找零少算了。",
+    "rows": [["筆記本", "22 元"], ["鉛筆盒", "28 元"], ["付出", "100 元"], ["收到找零", "43 元"]],
+    "fields": [{
+      "label": "應找回",
+      "answer": 50,
+      "unit": "元"
+    }, {
+      "label": "少找了",
+      "answer": 7,
+      "unit": "元"
+    }],
+    "options": ["只看收到的錢，不用算。", "標價外還要自己加一次費用。", "先合計售價，再核對應找與實找的差。"],
+    "correct": 2,
+    "hint": "先算應找回多少，再比對。",
+    "solution": "應找 100－22－28＝50 元；少找 7 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "change",
+      "args": [22, 28, 100, 43]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-budget-3-3",
+    "grade": 2,
+    "topic": "budget",
+    "family": "2-budget-3",
+    "title": "買東西的找零",
+    "story": "文具的標價已是要付的價格。老闆把找零少算了。",
+    "rows": [["筆記本", "24 元"], ["鉛筆盒", "30 元"], ["付出", "100 元"], ["收到找零", "38 元"]],
+    "fields": [{
+      "label": "應找回",
+      "answer": 46,
+      "unit": "元"
+    }, {
+      "label": "少找了",
+      "answer": 8,
+      "unit": "元"
+    }],
+    "options": ["標價外還要自己加一次費用。", "先合計售價，再核對應找與實找的差。", "只看收到的錢，不用算。"],
+    "correct": 1,
+    "hint": "先算應找回多少，再比對。",
+    "solution": "應找 100－24－30＝46 元；少找 8 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "change",
+      "args": [24, 30, 100, 38]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-0-0",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-0",
+    "title": "兩張電費單",
+    "story": "事務所要把兩期的電費放進同一個信封。",
+    "rows": [["第一期", "32 元"], ["第二期", "25 元"], ["信封裡", "100 元"]],
+    "fields": [{
+      "label": "兩期合計",
+      "answer": 57,
+      "unit": "元"
+    }, {
+      "label": "繳完還剩",
+      "answer": 43,
+      "unit": "元"
+    }],
+    "options": ["只繳比較小的那張就好。", "先把兩張帳單加起來，再從信封的錢扣掉。", "把信封的錢也算成電費。"],
+    "correct": 1,
+    "hint": "先找出要付的兩筆錢。",
+    "solution": "32＋25＝57 元；100－57＝43 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [32, 25, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-0-1",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-0",
+    "title": "兩張電費單",
+    "story": "事務所要把兩期的電費放進同一個信封。",
+    "rows": [["第一期", "36 元"], ["第二期", "28 元"], ["信封裡", "100 元"]],
+    "fields": [{
+      "label": "兩期合計",
+      "answer": 64,
+      "unit": "元"
+    }, {
+      "label": "繳完還剩",
+      "answer": 36,
+      "unit": "元"
+    }],
+    "options": ["先把兩張帳單加起來，再從信封的錢扣掉。", "把信封的錢也算成電費。", "只繳比較小的那張就好。"],
+    "correct": 0,
+    "hint": "先找出要付的兩筆錢。",
+    "solution": "36＋28＝64 元；100－64＝36 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [36, 28, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-0-2",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-0",
+    "title": "兩張電費單",
+    "story": "事務所要把兩期的電費放進同一個信封。",
+    "rows": [["第一期", "40 元"], ["第二期", "31 元"], ["信封裡", "100 元"]],
+    "fields": [{
+      "label": "兩期合計",
+      "answer": 71,
+      "unit": "元"
+    }, {
+      "label": "繳完還剩",
+      "answer": 29,
+      "unit": "元"
+    }],
+    "options": ["把信封的錢也算成電費。", "只繳比較小的那張就好。", "先把兩張帳單加起來，再從信封的錢扣掉。"],
+    "correct": 2,
+    "hint": "先找出要付的兩筆錢。",
+    "solution": "40＋31＝71 元；100－71＝29 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [40, 31, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-0-3",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-0",
+    "title": "兩張電費單",
+    "story": "事務所要把兩期的電費放進同一個信封。",
+    "rows": [["第一期", "44 元"], ["第二期", "34 元"], ["信封裡", "100 元"]],
+    "fields": [{
+      "label": "兩期合計",
+      "answer": 78,
+      "unit": "元"
+    }, {
+      "label": "繳完還剩",
+      "answer": 22,
+      "unit": "元"
+    }],
+    "options": ["只繳比較小的那張就好。", "先把兩張帳單加起來，再從信封的錢扣掉。", "把信封的錢也算成電費。"],
+    "correct": 1,
+    "hint": "先找出要付的兩筆錢。",
+    "solution": "44＋34＝78 元；100－78＝22 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [44, 34, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-1-0",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-1",
+    "title": "節電的小目標",
+    "story": "比較相同天數的兩期帳單，再看看還差多少才達成省錢目標。",
+    "rows": [["上期", "73 元"], ["這期", "51 元"], ["希望省下", "32 元"]],
+    "fields": [{
+      "label": "已經少付",
+      "answer": 22,
+      "unit": "元"
+    }, {
+      "label": "離目標還差",
+      "answer": 10,
+      "unit": "元"
+    }],
+    "options": ["先比較兩期差多少，再與目標比較。", "這期付得比較少，所以一定已達標。", "把兩期電費加起來，就是省下的錢。"],
+    "correct": 0,
+    "hint": "目標是「省下多少」，不是「這期付多少」。",
+    "solution": "73－51＝22 元；32－22＝10 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "differenceGoal",
+      "args": [73, 51, 32]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-1-1",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-1",
+    "title": "節電的小目標",
+    "story": "比較相同天數的兩期帳單，再看看還差多少才達成省錢目標。",
+    "rows": [["上期", "76 元"], ["這期", "53 元"], ["希望省下", "34 元"]],
+    "fields": [{
+      "label": "已經少付",
+      "answer": 23,
+      "unit": "元"
+    }, {
+      "label": "離目標還差",
+      "answer": 11,
+      "unit": "元"
+    }],
+    "options": ["這期付得比較少，所以一定已達標。", "把兩期電費加起來，就是省下的錢。", "先比較兩期差多少，再與目標比較。"],
+    "correct": 2,
+    "hint": "目標是「省下多少」，不是「這期付多少」。",
+    "solution": "76－53＝23 元；34－23＝11 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "differenceGoal",
+      "args": [76, 53, 34]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-1-2",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-1",
+    "title": "節電的小目標",
+    "story": "比較相同天數的兩期帳單，再看看還差多少才達成省錢目標。",
+    "rows": [["上期", "79 元"], ["這期", "55 元"], ["希望省下", "36 元"]],
+    "fields": [{
+      "label": "已經少付",
+      "answer": 24,
+      "unit": "元"
+    }, {
+      "label": "離目標還差",
+      "answer": 12,
+      "unit": "元"
+    }],
+    "options": ["把兩期電費加起來，就是省下的錢。", "先比較兩期差多少，再與目標比較。", "這期付得比較少，所以一定已達標。"],
+    "correct": 1,
+    "hint": "目標是「省下多少」，不是「這期付多少」。",
+    "solution": "79－55＝24 元；36－24＝12 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "differenceGoal",
+      "args": [79, 55, 36]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-1-3",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-1",
+    "title": "節電的小目標",
+    "story": "比較相同天數的兩期帳單，再看看還差多少才達成省錢目標。",
+    "rows": [["上期", "82 元"], ["這期", "57 元"], ["希望省下", "38 元"]],
+    "fields": [{
+      "label": "已經少付",
+      "answer": 25,
+      "unit": "元"
+    }, {
+      "label": "離目標還差",
+      "answer": 13,
+      "unit": "元"
+    }],
+    "options": ["先比較兩期差多少，再與目標比較。", "這期付得比較少，所以一定已達標。", "把兩期電費加起來，就是省下的錢。"],
+    "correct": 0,
+    "hint": "目標是「省下多少」，不是「這期付多少」。",
+    "solution": "82－57＝25 元；38－25＝13 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "differenceGoal",
+      "args": [82, 57, 38]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-2-0",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-2",
+    "title": "別把已繳的再算一次",
+    "story": "收據上蓋了「已繳」的不用再付。請替鐵叔核對待繳金額。",
+    "rows": [["舊電費", "15 元・已繳"], ["新電費", "40 元・未繳"], ["另一張電費", "20 元・未繳"]],
+    "fields": [{
+      "label": "還要繳",
+      "answer": 60,
+      "unit": "元"
+    }, {
+      "label": "若三筆全付會多付",
+      "answer": 15,
+      "unit": "元"
+    }],
+    "options": ["看到金額都要再付。", "未繳的兩筆只選一筆付。", "已繳收據要留著核對，不再付一次。"],
+    "correct": 2,
+    "hint": "先依「已繳／未繳」把資料分開。",
+    "solution": "待繳 40＋20＝60 元；已繳的 15 元不能重複算。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [40, 20, 15]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-2-1",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-2",
+    "title": "別把已繳的再算一次",
+    "story": "收據上蓋了「已繳」的不用再付。請替鐵叔核對待繳金額。",
+    "rows": [["舊電費", "15 元・已繳"], ["新電費", "45 元・未繳"], ["另一張電費", "22 元・未繳"]],
+    "fields": [{
+      "label": "還要繳",
+      "answer": 67,
+      "unit": "元"
+    }, {
+      "label": "若三筆全付會多付",
+      "answer": 15,
+      "unit": "元"
+    }],
+    "options": ["未繳的兩筆只選一筆付。", "已繳收據要留著核對，不再付一次。", "看到金額都要再付。"],
+    "correct": 1,
+    "hint": "先依「已繳／未繳」把資料分開。",
+    "solution": "待繳 45＋22＝67 元；已繳的 15 元不能重複算。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [45, 22, 15]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-2-2",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-2",
+    "title": "別把已繳的再算一次",
+    "story": "收據上蓋了「已繳」的不用再付。請替鐵叔核對待繳金額。",
+    "rows": [["舊電費", "15 元・已繳"], ["新電費", "50 元・未繳"], ["另一張電費", "24 元・未繳"]],
+    "fields": [{
+      "label": "還要繳",
+      "answer": 74,
+      "unit": "元"
+    }, {
+      "label": "若三筆全付會多付",
+      "answer": 15,
+      "unit": "元"
+    }],
+    "options": ["已繳收據要留著核對，不再付一次。", "看到金額都要再付。", "未繳的兩筆只選一筆付。"],
+    "correct": 0,
+    "hint": "先依「已繳／未繳」把資料分開。",
+    "solution": "待繳 50＋24＝74 元；已繳的 15 元不能重複算。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [50, 24, 15]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-2-3",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-2",
+    "title": "別把已繳的再算一次",
+    "story": "收據上蓋了「已繳」的不用再付。請替鐵叔核對待繳金額。",
+    "rows": [["舊電費", "15 元・已繳"], ["新電費", "55 元・未繳"], ["另一張電費", "26 元・未繳"]],
+    "fields": [{
+      "label": "還要繳",
+      "answer": 81,
+      "unit": "元"
+    }, {
+      "label": "若三筆全付會多付",
+      "answer": 15,
+      "unit": "元"
+    }],
+    "options": ["看到金額都要再付。", "未繳的兩筆只選一筆付。", "已繳收據要留著核對，不再付一次。"],
+    "correct": 2,
+    "hint": "先依「已繳／未繳」把資料分開。",
+    "solution": "待繳 55＋26＝81 元；已繳的 15 元不能重複算。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "unpaid",
+      "args": [55, 26, 15]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-3-0",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-3",
+    "title": "抄錯的電費合計",
+    "story": "兩筆明細是對的，合計卻抄錯了。請幫居民查出差額。",
+    "rows": [["小屋", "23 元"], ["工坊", "18 元"], ["抄寫的合計", "48 元"]],
+    "fields": [{
+      "label": "正確合計",
+      "answer": 41,
+      "unit": "元"
+    }, {
+      "label": "抄寫時多算",
+      "answer": 7,
+      "unit": "元"
+    }],
+    "options": ["要把抄寫的合計再加進去。", "明細相加後，比抄寫的合計少。", "合計印在下面，就一定正確。"],
+    "correct": 1,
+    "hint": "只把兩筆明細相加，然後比對合計。",
+    "solution": "23＋18＝41 元；48－41＝7 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumError",
+      "args": [23, 18, 48]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-3-1",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-3",
+    "title": "抄錯的電費合計",
+    "story": "兩筆明細是對的，合計卻抄錯了。請幫居民查出差額。",
+    "rows": [["小屋", "25 元"], ["工坊", "19 元"], ["抄寫的合計", "52 元"]],
+    "fields": [{
+      "label": "正確合計",
+      "answer": 44,
+      "unit": "元"
+    }, {
+      "label": "抄寫時多算",
+      "answer": 8,
+      "unit": "元"
+    }],
+    "options": ["明細相加後，比抄寫的合計少。", "合計印在下面，就一定正確。", "要把抄寫的合計再加進去。"],
+    "correct": 0,
+    "hint": "只把兩筆明細相加，然後比對合計。",
+    "solution": "25＋19＝44 元；52－44＝8 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumError",
+      "args": [25, 19, 52]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-3-2",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-3",
+    "title": "抄錯的電費合計",
+    "story": "兩筆明細是對的，合計卻抄錯了。請幫居民查出差額。",
+    "rows": [["小屋", "27 元"], ["工坊", "20 元"], ["抄寫的合計", "56 元"]],
+    "fields": [{
+      "label": "正確合計",
+      "answer": 47,
+      "unit": "元"
+    }, {
+      "label": "抄寫時多算",
+      "answer": 9,
+      "unit": "元"
+    }],
+    "options": ["合計印在下面，就一定正確。", "要把抄寫的合計再加進去。", "明細相加後，比抄寫的合計少。"],
+    "correct": 2,
+    "hint": "只把兩筆明細相加，然後比對合計。",
+    "solution": "27＋20＝47 元；56－47＝9 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumError",
+      "args": [27, 20, 56]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-energy-3-3",
+    "grade": 2,
+    "topic": "energy",
+    "family": "2-energy-3",
+    "title": "抄錯的電費合計",
+    "story": "兩筆明細是對的，合計卻抄錯了。請幫居民查出差額。",
+    "rows": [["小屋", "29 元"], ["工坊", "21 元"], ["抄寫的合計", "60 元"]],
+    "fields": [{
+      "label": "正確合計",
+      "answer": 50,
+      "unit": "元"
+    }, {
+      "label": "抄寫時多算",
+      "answer": 10,
+      "unit": "元"
+    }],
+    "options": ["要把抄寫的合計再加進去。", "明細相加後，比抄寫的合計少。", "合計印在下面，就一定正確。"],
+    "correct": 1,
+    "hint": "只把兩筆明細相加，然後比對合計。",
+    "solution": "29＋21＝50 元；60－50＝10 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumError",
+      "args": [29, 21, 60]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-0-0",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-0",
+    "title": "水費信封",
+    "story": "水費由固定費和用水費組成。媽媽已把錢放進信封。",
+    "rows": [["固定費", "12 元"], ["用水費", "25 元"], ["信封裡", "80 元"]],
+    "fields": [{
+      "label": "本期共繳",
+      "answer": 37,
+      "unit": "元"
+    }, {
+      "label": "繳完剩下",
+      "answer": 43,
+      "unit": "元"
+    }],
+    "options": ["固定費是找回的錢。", "固定費與用水費都要算入。", "只付用水費。"],
+    "correct": 1,
+    "hint": "合計有兩個部分。",
+    "solution": "25＋12＝37 元；80－37＝43 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [25, 12, 80]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-0-1",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-0",
+    "title": "水費信封",
+    "story": "水費由固定費和用水費組成。媽媽已把錢放進信封。",
+    "rows": [["固定費", "13 元"], ["用水費", "28 元"], ["信封裡", "80 元"]],
+    "fields": [{
+      "label": "本期共繳",
+      "answer": 41,
+      "unit": "元"
+    }, {
+      "label": "繳完剩下",
+      "answer": 39,
+      "unit": "元"
+    }],
+    "options": ["固定費與用水費都要算入。", "只付用水費。", "固定費是找回的錢。"],
+    "correct": 0,
+    "hint": "合計有兩個部分。",
+    "solution": "28＋13＝41 元；80－41＝39 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [28, 13, 80]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-0-2",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-0",
+    "title": "水費信封",
+    "story": "水費由固定費和用水費組成。媽媽已把錢放進信封。",
+    "rows": [["固定費", "14 元"], ["用水費", "31 元"], ["信封裡", "80 元"]],
+    "fields": [{
+      "label": "本期共繳",
+      "answer": 45,
+      "unit": "元"
+    }, {
+      "label": "繳完剩下",
+      "answer": 35,
+      "unit": "元"
+    }],
+    "options": ["只付用水費。", "固定費是找回的錢。", "固定費與用水費都要算入。"],
+    "correct": 2,
+    "hint": "合計有兩個部分。",
+    "solution": "31＋14＝45 元；80－45＝35 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [31, 14, 80]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-0-3",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-0",
+    "title": "水費信封",
+    "story": "水費由固定費和用水費組成。媽媽已把錢放進信封。",
+    "rows": [["固定費", "15 元"], ["用水費", "34 元"], ["信封裡", "80 元"]],
+    "fields": [{
+      "label": "本期共繳",
+      "answer": 49,
+      "unit": "元"
+    }, {
+      "label": "繳完剩下",
+      "answer": 31,
+      "unit": "元"
+    }],
+    "options": ["固定費是找回的錢。", "固定費與用水費都要算入。", "只付用水費。"],
+    "correct": 1,
+    "hint": "合計有兩個部分。",
+    "solution": "34＋15＝49 元；80－49＝31 元。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumBudget",
+      "args": [34, 15, 80]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-1-0",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-1",
+    "title": "雨水澆花計畫",
+    "story": "花園原本全用自來水，改用收集的雨水替代其中一部分。",
+    "rows": [["原本需要", "54 公升"], ["改用雨水", "19 公升"], ["自來水上限", "25 公升"]],
+    "fields": [{
+      "label": "仍需自來水",
+      "answer": 35,
+      "unit": "公升"
+    }, {
+      "label": "超過上限",
+      "answer": 10,
+      "unit": "公升"
+    }],
+    "options": ["替代一部分後，仍要檢查有沒有超過上限。", "用了雨水就不需自來水了。", "雨水量要加到原本需求。"],
+    "correct": 0,
+    "hint": "先扣掉被雨水替代的量。",
+    "solution": "54－19＝35 公升；35－25＝10 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "remainingLimit",
+      "args": [54, 19, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-1-1",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-1",
+    "title": "雨水澆花計畫",
+    "story": "花園原本全用自來水，改用收集的雨水替代其中一部分。",
+    "rows": [["原本需要", "59 公升"], ["改用雨水", "21 公升"], ["自來水上限", "27 公升"]],
+    "fields": [{
+      "label": "仍需自來水",
+      "answer": 38,
+      "unit": "公升"
+    }, {
+      "label": "超過上限",
+      "answer": 11,
+      "unit": "公升"
+    }],
+    "options": ["用了雨水就不需自來水了。", "雨水量要加到原本需求。", "替代一部分後，仍要檢查有沒有超過上限。"],
+    "correct": 2,
+    "hint": "先扣掉被雨水替代的量。",
+    "solution": "59－21＝38 公升；38－27＝11 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "remainingLimit",
+      "args": [59, 21, 27]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-1-2",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-1",
+    "title": "雨水澆花計畫",
+    "story": "花園原本全用自來水，改用收集的雨水替代其中一部分。",
+    "rows": [["原本需要", "64 公升"], ["改用雨水", "23 公升"], ["自來水上限", "29 公升"]],
+    "fields": [{
+      "label": "仍需自來水",
+      "answer": 41,
+      "unit": "公升"
+    }, {
+      "label": "超過上限",
+      "answer": 12,
+      "unit": "公升"
+    }],
+    "options": ["雨水量要加到原本需求。", "替代一部分後，仍要檢查有沒有超過上限。", "用了雨水就不需自來水了。"],
+    "correct": 1,
+    "hint": "先扣掉被雨水替代的量。",
+    "solution": "64－23＝41 公升；41－29＝12 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "remainingLimit",
+      "args": [64, 23, 29]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-1-3",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-1",
+    "title": "雨水澆花計畫",
+    "story": "花園原本全用自來水，改用收集的雨水替代其中一部分。",
+    "rows": [["原本需要", "69 公升"], ["改用雨水", "25 公升"], ["自來水上限", "31 公升"]],
+    "fields": [{
+      "label": "仍需自來水",
+      "answer": 44,
+      "unit": "公升"
+    }, {
+      "label": "超過上限",
+      "answer": 13,
+      "unit": "公升"
+    }],
+    "options": ["替代一部分後，仍要檢查有沒有超過上限。", "用了雨水就不需自來水了。", "雨水量要加到原本需求。"],
+    "correct": 0,
+    "hint": "先扣掉被雨水替代的量。",
+    "solution": "69－25＝44 公升；44－31＝13 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "remainingLimit",
+      "args": [69, 25, 31]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-2-0",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-2",
+    "title": "漏水前後的水表",
+    "story": "水表記錄累積用量；後一次讀數減去前一次，才是這段時間的用量。",
+    "rows": [["起點讀數", "21 度"], ["修理前讀數", "34 度"], ["修理後讀數", "43 度"], ["兩段時間", "長度相同"]],
+    "fields": [{
+      "label": "修理前這段用了",
+      "answer": 13,
+      "unit": "度"
+    }, {
+      "label": "修理後這段用了",
+      "answer": 9,
+      "unit": "度"
+    }],
+    "options": ["最後讀數最大，所以修理後一定用最多。", "水表讀數就是每一段的用量。", "相同時間內，修理後的用量比較少。"],
+    "correct": 2,
+    "hint": "每一段都用「終點減起點」。",
+    "solution": "34－21＝13 度；43－34＝9 度。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "meter",
+      "args": [21, 34, 43]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-2-1",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-2",
+    "title": "漏水前後的水表",
+    "story": "水表記錄累積用量；後一次讀數減去前一次，才是這段時間的用量。",
+    "rows": [["起點讀數", "24 度"], ["修理前讀數", "38 度"], ["修理後讀數", "48 度"], ["兩段時間", "長度相同"]],
+    "fields": [{
+      "label": "修理前這段用了",
+      "answer": 14,
+      "unit": "度"
+    }, {
+      "label": "修理後這段用了",
+      "answer": 10,
+      "unit": "度"
+    }],
+    "options": ["水表讀數就是每一段的用量。", "相同時間內，修理後的用量比較少。", "最後讀數最大，所以修理後一定用最多。"],
+    "correct": 1,
+    "hint": "每一段都用「終點減起點」。",
+    "solution": "38－24＝14 度；48－38＝10 度。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "meter",
+      "args": [24, 38, 48]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-2-2",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-2",
+    "title": "漏水前後的水表",
+    "story": "水表記錄累積用量；後一次讀數減去前一次，才是這段時間的用量。",
+    "rows": [["起點讀數", "27 度"], ["修理前讀數", "42 度"], ["修理後讀數", "53 度"], ["兩段時間", "長度相同"]],
+    "fields": [{
+      "label": "修理前這段用了",
+      "answer": 15,
+      "unit": "度"
+    }, {
+      "label": "修理後這段用了",
+      "answer": 11,
+      "unit": "度"
+    }],
+    "options": ["相同時間內，修理後的用量比較少。", "最後讀數最大，所以修理後一定用最多。", "水表讀數就是每一段的用量。"],
+    "correct": 0,
+    "hint": "每一段都用「終點減起點」。",
+    "solution": "42－27＝15 度；53－42＝11 度。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "meter",
+      "args": [27, 42, 53]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-2-3",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-2",
+    "title": "漏水前後的水表",
+    "story": "水表記錄累積用量；後一次讀數減去前一次，才是這段時間的用量。",
+    "rows": [["起點讀數", "30 度"], ["修理前讀數", "46 度"], ["修理後讀數", "58 度"], ["兩段時間", "長度相同"]],
+    "fields": [{
+      "label": "修理前這段用了",
+      "answer": 16,
+      "unit": "度"
+    }, {
+      "label": "修理後這段用了",
+      "answer": 12,
+      "unit": "度"
+    }],
+    "options": ["最後讀數最大，所以修理後一定用最多。", "水表讀數就是每一段的用量。", "相同時間內，修理後的用量比較少。"],
+    "correct": 2,
+    "hint": "每一段都用「終點減起點」。",
+    "solution": "46－30＝16 度；58－46＝12 度。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "meter",
+      "args": [30, 46, 58]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-3-0",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-3",
+    "title": "選擇省水方法",
+    "story": "兩個方法互相獨立，可以一起做。估計省水量如下。",
+    "rows": [["方法甲", "省 17 公升"], ["方法乙", "省 24 公升"], ["共同目標", "省 33 公升"]],
+    "fields": [{
+      "label": "一起做可省",
+      "answer": 41,
+      "unit": "公升"
+    }, {
+      "label": "比目標多省",
+      "answer": 8,
+      "unit": "公升"
+    }],
+    "options": ["兩個方法要相減才是總省水量。", "兩個一起做，才超過共同目標。", "只做甲就已超過共同目標。"],
+    "correct": 1,
+    "hint": "先合計，再和目標相比。",
+    "solution": "17＋24＝41；41－33＝8 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumAbove",
+      "args": [17, 24, 33]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-3-1",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-3",
+    "title": "選擇省水方法",
+    "story": "兩個方法互相獨立，可以一起做。估計省水量如下。",
+    "rows": [["方法甲", "省 18 公升"], ["方法乙", "省 25 公升"], ["共同目標", "省 34 公升"]],
+    "fields": [{
+      "label": "一起做可省",
+      "answer": 43,
+      "unit": "公升"
+    }, {
+      "label": "比目標多省",
+      "answer": 9,
+      "unit": "公升"
+    }],
+    "options": ["兩個一起做，才超過共同目標。", "只做甲就已超過共同目標。", "兩個方法要相減才是總省水量。"],
+    "correct": 0,
+    "hint": "先合計，再和目標相比。",
+    "solution": "18＋25＝43；43－34＝9 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumAbove",
+      "args": [18, 25, 34]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-3-2",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-3",
+    "title": "選擇省水方法",
+    "story": "兩個方法互相獨立，可以一起做。估計省水量如下。",
+    "rows": [["方法甲", "省 19 公升"], ["方法乙", "省 26 公升"], ["共同目標", "省 35 公升"]],
+    "fields": [{
+      "label": "一起做可省",
+      "answer": 45,
+      "unit": "公升"
+    }, {
+      "label": "比目標多省",
+      "answer": 10,
+      "unit": "公升"
+    }],
+    "options": ["只做甲就已超過共同目標。", "兩個方法要相減才是總省水量。", "兩個一起做，才超過共同目標。"],
+    "correct": 2,
+    "hint": "先合計，再和目標相比。",
+    "solution": "19＋26＝45；45－35＝10 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumAbove",
+      "args": [19, 26, 35]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm2-water-3-3",
+    "grade": 2,
+    "topic": "water",
+    "family": "2-water-3",
+    "title": "選擇省水方法",
+    "story": "兩個方法互相獨立，可以一起做。估計省水量如下。",
+    "rows": [["方法甲", "省 20 公升"], ["方法乙", "省 27 公升"], ["共同目標", "省 36 公升"]],
+    "fields": [{
+      "label": "一起做可省",
+      "answer": 47,
+      "unit": "公升"
+    }, {
+      "label": "比目標多省",
+      "answer": 11,
+      "unit": "公升"
+    }],
+    "options": ["兩個方法要相減才是總省水量。", "兩個一起做，才超過共同目標。", "只做甲就已超過共同目標。"],
+    "correct": 1,
+    "hint": "先合計，再和目標相比。",
+    "solution": "20＋27＝47；47－36＝11 公升。",
+    "kps": ["j_addstep", "j_add2"],
+    "audit": {
+      "rule": "sumAbove",
+      "args": [20, 27, 36]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-0-0",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "400 元"], ["模擬稅率", "5%"], ["店員請款", "440 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 20.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 20.0,
+      "unit": "元"
+    }],
+    "options": ["未稅金額就是最後售價。", "含稅售價已含這筆稅，不能重複收取。", "稅額要加兩次才完整。"],
+    "correct": 1,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "400×5%＝20 元；應付 420 元，多收 20 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "taxError",
+      "args": [400, 5, 440.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-0-1",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "600 元"], ["模擬稅率", "5%"], ["店員請款", "660 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 30.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 30.0,
+      "unit": "元"
+    }],
+    "options": ["含稅售價已含這筆稅，不能重複收取。", "稅額要加兩次才完整。", "未稅金額就是最後售價。"],
+    "correct": 0,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "600×5%＝30 元；應付 630 元，多收 30 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "taxError",
+      "args": [600, 5, 660.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-0-2",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "800 元"], ["模擬稅率", "5%"], ["店員請款", "880 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 40.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 40.0,
+      "unit": "元"
+    }],
+    "options": ["稅額要加兩次才完整。", "未稅金額就是最後售價。", "含稅售價已含這筆稅，不能重複收取。"],
+    "correct": 2,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "800×5%＝40 元；應付 840 元，多收 40 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "taxError",
+      "args": [800, 5, 880.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-0-3",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "1000 元"], ["模擬稅率", "5%"], ["店員請款", "1100 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 50.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 50.0,
+      "unit": "元"
+    }],
+    "options": ["未稅金額就是最後售價。", "含稅售價已含這筆稅，不能重複收取。", "稅額要加兩次才完整。"],
+    "correct": 1,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "1000×5%＝50 元；應付 1050 元，多收 50 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "taxError",
+      "args": [1000, 5, 1100.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-1-0",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1200 元"], ["本期水費", "300 元"], ["水費已付", "200 元"], ["預留金", "2500 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1300,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1200,
+      "unit": "元"
+    }],
+    "options": ["扣除已付金額，再合計今天支出。", "已付的金額要再加一次。", "稅單待繳金額還要重算稅率。"],
+    "correct": 0,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1200＋(300－200)＝1300 元；餘額 1200 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "bills",
+      "args": [1200, 300, 200, 2500]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-1-1",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1400 元"], ["本期水費", "350 元"], ["水費已付", "225 元"], ["預留金", "2800 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1525,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1275,
+      "unit": "元"
+    }],
+    "options": ["已付的金額要再加一次。", "稅單待繳金額還要重算稅率。", "扣除已付金額，再合計今天支出。"],
+    "correct": 2,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1400＋(350－225)＝1525 元；餘額 1275 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "bills",
+      "args": [1400, 350, 225, 2800]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-1-2",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1600 元"], ["本期水費", "400 元"], ["水費已付", "250 元"], ["預留金", "3100 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1750,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1350,
+      "unit": "元"
+    }],
+    "options": ["稅單待繳金額還要重算稅率。", "扣除已付金額，再合計今天支出。", "已付的金額要再加一次。"],
+    "correct": 1,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1600＋(400－250)＝1750 元；餘額 1350 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "bills",
+      "args": [1600, 400, 250, 3100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-1-3",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1800 元"], ["本期水費", "450 元"], ["水費已付", "275 元"], ["預留金", "3400 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1975,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1425,
+      "unit": "元"
+    }],
+    "options": ["扣除已付金額，再合計今天支出。", "已付的金額要再加一次。", "稅單待繳金額還要重算稅率。"],
+    "correct": 0,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1800＋(450－275)＝1975 元；餘額 1425 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "bills",
+      "args": [1800, 450, 275, 3400]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-2-0",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "600 元"], ["甲店", "付原價 80%，另收運費 60 元"], ["乙店", "折價 100 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 540.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 500,
+      "unit": "元"
+    }],
+    "options": ["只看折扣幅度，不必算運費。", "把兩家的優惠加在同一張訂單。", "乙店比較便宜。"],
+    "correct": 2,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 600×80%＋60＝540；乙 600－100＝500 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "discount",
+      "args": [600, 80, 60, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-2-1",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "800 元"], ["甲店", "付原價 80%，另收運費 60 元"], ["乙店", "折價 130 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 700.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 670,
+      "unit": "元"
+    }],
+    "options": ["把兩家的優惠加在同一張訂單。", "乙店比較便宜。", "只看折扣幅度，不必算運費。"],
+    "correct": 1,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 800×80%＋60＝700；乙 800－130＝670 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "discount",
+      "args": [800, 80, 60, 130]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-2-2",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "1000 元"], ["甲店", "付原價 80%，另收運費 60 元"], ["乙店", "折價 160 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 860.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 840,
+      "unit": "元"
+    }],
+    "options": ["乙店比較便宜。", "只看折扣幅度，不必算運費。", "把兩家的優惠加在同一張訂單。"],
+    "correct": 0,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 1000×80%＋60＝860；乙 1000－160＝840 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "discount",
+      "args": [1000, 80, 60, 160]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-2-3",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "1200 元"], ["甲店", "付原價 80%，另收運費 60 元"], ["乙店", "折價 190 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 1020.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 1010,
+      "unit": "元"
+    }],
+    "options": ["只看折扣幅度，不必算運費。", "把兩家的優惠加在同一張訂單。", "乙店比較便宜。"],
+    "correct": 2,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 1200×80%＋60＝1020；乙 1200－190＝1010 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "discount",
+      "args": [1200, 80, 60, 190]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-3-0",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "2400 元"], ["先預留", "全部經費的 25%"], ["必要費用", "1000 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 600.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 800.0,
+      "unit": "元"
+    }],
+    "options": ["預留金也全部拿去買布置。", "預留比例以全部經費為基準，再扣必要費用。", "先扣必要費用，才算全部經費的預留比例。"],
+    "correct": 1,
+    "hint": "先確認百分率的基準量。",
+    "solution": "2400×25%＝600；2400－600－1000＝800 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reserve",
+      "args": [2400, 25, 1000]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-3-1",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "2800 元"], ["先預留", "全部經費的 25%"], ["必要費用", "1100 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 700.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 1000.0,
+      "unit": "元"
+    }],
+    "options": ["預留比例以全部經費為基準，再扣必要費用。", "先扣必要費用，才算全部經費的預留比例。", "預留金也全部拿去買布置。"],
+    "correct": 0,
+    "hint": "先確認百分率的基準量。",
+    "solution": "2800×25%＝700；2800－700－1100＝1000 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reserve",
+      "args": [2800, 25, 1100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-3-2",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "3200 元"], ["先預留", "全部經費的 25%"], ["必要費用", "1200 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 800.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 1200.0,
+      "unit": "元"
+    }],
+    "options": ["先扣必要費用，才算全部經費的預留比例。", "預留金也全部拿去買布置。", "預留比例以全部經費為基準，再扣必要費用。"],
+    "correct": 2,
+    "hint": "先確認百分率的基準量。",
+    "solution": "3200×25%＝800；3200－800－1200＝1200 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reserve",
+      "args": [3200, 25, 1200]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-budget-3-3",
+    "grade": 5,
+    "topic": "budget",
+    "family": "5-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "3600 元"], ["先預留", "全部經費的 25%"], ["必要費用", "1300 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 900.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 1400.0,
+      "unit": "元"
+    }],
+    "options": ["預留金也全部拿去買布置。", "預留比例以全部經費為基準，再扣必要費用。", "先扣必要費用，才算全部經費的預留比例。"],
+    "correct": 1,
+    "hint": "先確認百分率的基準量。",
+    "solution": "3600×25%＝900；3600－900－1300＝1400 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reserve",
+      "args": [3600, 25, 1300]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-0-0",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "20 元"], ["第一段", "前 100 度，每度 2 元"], ["第二段", "超過 100 度的部分，每度 4 元"], ["本期用量", "120 度"], ["草稿帳單", "500 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 300,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 200,
+      "unit": "元"
+    }],
+    "options": ["固定費不需要列入帳單。", "只有超過門檻的部分用第二段費率。", "全部用量都改用最高費率。"],
+    "correct": 1,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "20＋100×2＋20×4＝300 元；多算 200 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "tierError",
+      "args": [20, 100, 2, 4, 120]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-0-1",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "25 元"], ["第一段", "前 100 度，每度 2 元"], ["第二段", "超過 100 度的部分，每度 4 元"], ["本期用量", "130 度"], ["草稿帳單", "545 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 345,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 200,
+      "unit": "元"
+    }],
+    "options": ["只有超過門檻的部分用第二段費率。", "全部用量都改用最高費率。", "固定費不需要列入帳單。"],
+    "correct": 0,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "25＋100×2＋30×4＝345 元；多算 200 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "tierError",
+      "args": [25, 100, 2, 4, 130]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-0-2",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "30 元"], ["第一段", "前 100 度，每度 2 元"], ["第二段", "超過 100 度的部分，每度 4 元"], ["本期用量", "140 度"], ["草稿帳單", "590 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 390,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 200,
+      "unit": "元"
+    }],
+    "options": ["全部用量都改用最高費率。", "固定費不需要列入帳單。", "只有超過門檻的部分用第二段費率。"],
+    "correct": 2,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "30＋100×2＋40×4＝390 元；多算 200 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "tierError",
+      "args": [30, 100, 2, 4, 140]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-0-3",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "35 元"], ["第一段", "前 100 度，每度 2 元"], ["第二段", "超過 100 度的部分，每度 4 元"], ["本期用量", "150 度"], ["草稿帳單", "635 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 435,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 200,
+      "unit": "元"
+    }],
+    "options": ["固定費不需要列入帳單。", "只有超過門檻的部分用第二段費率。", "全部用量都改用最高費率。"],
+    "correct": 1,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "35＋100×2＋50×4＝435 元；多算 200 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "tierError",
+      "args": [35, 100, 2, 4, 150]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-1-0",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "200 度"], ["新設備每期", "185 度"], ["固定單價", "每度 3 元"], ["購買設備", "180 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 45,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["先求每期省多少，再累積到購買費。", "少用幾度，就等於省下幾元。", "設備買了就立刻省回全部費用。"],
+    "correct": 0,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(200－185)×3＝45 元；180÷45＝4 期。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "payback",
+      "args": [200, 185, 3, 180]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-1-1",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "220 度"], ["新設備每期", "200 度"], ["固定單價", "每度 3 元"], ["購買設備", "240 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 60,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["少用幾度，就等於省下幾元。", "設備買了就立刻省回全部費用。", "先求每期省多少，再累積到購買費。"],
+    "correct": 2,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(220－200)×3＝60 元；240÷60＝4 期。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "payback",
+      "args": [220, 200, 3, 240]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-1-2",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "240 度"], ["新設備每期", "215 度"], ["固定單價", "每度 3 元"], ["購買設備", "300 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 75,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["設備買了就立刻省回全部費用。", "先求每期省多少，再累積到購買費。", "少用幾度，就等於省下幾元。"],
+    "correct": 1,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(240－215)×3＝75 元；300÷75＝4 期。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "payback",
+      "args": [240, 215, 3, 300]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-1-3",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "260 度"], ["新設備每期", "230 度"], ["固定單價", "每度 3 元"], ["購買設備", "360 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 90,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["先求每期省多少，再累積到購買費。", "少用幾度，就等於省下幾元。", "設備買了就立刻省回全部費用。"],
+    "correct": 0,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(260－230)×3＝90 元；360÷90＝4 期。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "payback",
+      "args": [260, 230, 3, 360]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-2-0",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "200 度"], ["減少比例", "10%"], ["每度", "2 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 20.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 385.0,
+      "unit": "元"
+    }],
+    "options": ["把整張帳單都打相同折扣。", "減少百分率就是新的用量。", "用量降低後，固定費仍要完整加入。"],
+    "correct": 2,
+    "hint": "百分率的基準是原用量。",
+    "solution": "200×10%＝20 度；(200－20)×2＋25＝385 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [200, 10, 2, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-2-1",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "240 度"], ["減少比例", "15%"], ["每度", "2 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 36.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 433.0,
+      "unit": "元"
+    }],
+    "options": ["減少百分率就是新的用量。", "用量降低後，固定費仍要完整加入。", "把整張帳單都打相同折扣。"],
+    "correct": 1,
+    "hint": "百分率的基準是原用量。",
+    "solution": "240×15%＝36 度；(240－36)×2＋25＝433 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [240, 15, 2, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-2-2",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "280 度"], ["減少比例", "20%"], ["每度", "2 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 56.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 473.0,
+      "unit": "元"
+    }],
+    "options": ["用量降低後，固定費仍要完整加入。", "把整張帳單都打相同折扣。", "減少百分率就是新的用量。"],
+    "correct": 0,
+    "hint": "百分率的基準是原用量。",
+    "solution": "280×20%＝56 度；(280－56)×2＋25＝473 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [280, 20, 2, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-2-3",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "320 度"], ["減少比例", "25%"], ["每度", "2 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 80.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 505.0,
+      "unit": "元"
+    }],
+    "options": ["把整張帳單都打相同折扣。", "減少百分率就是新的用量。", "用量降低後，固定費仍要完整加入。"],
+    "correct": 2,
+    "hint": "百分率的基準是原用量。",
+    "solution": "320×25%＝80 度；(320－80)×2＋25＝505 元。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [320, 25, 2, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-3-0",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "280 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 5 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 110,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 5,
+      "unit": "元"
+    }],
+    "options": ["固定費也能換成免費用量。", "先扣固定費與第一段費用，再算剩下可用幾度。", "直接用預算除以第一段單價。"],
+    "correct": 1,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(280－30－100×2)÷5＝10 度；最多 110 度，再多一度就超出 5 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 5, 280]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-3-1",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "305 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 5 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 115,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 5,
+      "unit": "元"
+    }],
+    "options": ["先扣固定費與第一段費用，再算剩下可用幾度。", "直接用預算除以第一段單價。", "固定費也能換成免費用量。"],
+    "correct": 0,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(305－30－100×2)÷5＝15 度；最多 115 度，再多一度就超出 5 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 5, 305]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-3-2",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "330 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 5 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 120,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 5,
+      "unit": "元"
+    }],
+    "options": ["直接用預算除以第一段單價。", "固定費也能換成免費用量。", "先扣固定費與第一段費用，再算剩下可用幾度。"],
+    "correct": 2,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(330－30－100×2)÷5＝20 度；最多 120 度，再多一度就超出 5 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 5, 330]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-energy-3-3",
+    "grade": 5,
+    "topic": "energy",
+    "family": "5-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "355 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 5 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 125,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 5,
+      "unit": "元"
+    }],
+    "options": ["固定費也能換成免費用量。", "先扣固定費與第一段費用，再算剩下可用幾度。", "直接用預算除以第一段單價。"],
+    "correct": 1,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(355－30－100×2)÷5＝25 度；最多 125 度，再多一度就超出 5 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 5, 355]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-0-0",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "300 度"], ["這次讀數", "325 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 25,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 180,
+      "unit": "元"
+    }],
+    "options": ["全部度數用第二段單價。", "讀數差才是本期用量，再按兩段計價。", "直接把最後讀數當本期用量。"],
+    "correct": 1,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "325－300＝25 度；40＋20×5＋5×8＝180 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [300, 325, 40, 20, 5, 8]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-0-1",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "320 度"], ["這次讀數", "350 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 30,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 220,
+      "unit": "元"
+    }],
+    "options": ["讀數差才是本期用量，再按兩段計價。", "直接把最後讀數當本期用量。", "全部度數用第二段單價。"],
+    "correct": 0,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "350－320＝30 度；40＋20×5＋10×8＝220 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [320, 350, 40, 20, 5, 8]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-0-2",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "340 度"], ["這次讀數", "375 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 35,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 260,
+      "unit": "元"
+    }],
+    "options": ["直接把最後讀數當本期用量。", "全部度數用第二段單價。", "讀數差才是本期用量，再按兩段計價。"],
+    "correct": 2,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "375－340＝35 度；40＋20×5＋15×8＝260 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [340, 375, 40, 20, 5, 8]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-0-3",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "360 度"], ["這次讀數", "400 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 40,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 300,
+      "unit": "元"
+    }],
+    "options": ["全部度數用第二段單價。", "讀數差才是本期用量，再按兩段計價。", "直接把最後讀數當本期用量。"],
+    "correct": 1,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "400－360＝40 度；40＋20×5＋20×8＝300 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [360, 400, 40, 20, 5, 8]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-1-0",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "80 公升"], ["新方法減少", "25%"], ["觀察天數", "5 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 60.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 100.0,
+      "unit": "公升"
+    }],
+    "options": ["先求每日少用量，再乘天數。", "新方法只用了原本的 25%。", "每天省的量就是整段期間省的量。"],
+    "correct": 0,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "80×75%＝60 公升；80×25%×5＝100 公升。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [80, 25, 5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-1-1",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "100 公升"], ["新方法減少", "25%"], ["觀察天數", "6 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 75.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 150.0,
+      "unit": "公升"
+    }],
+    "options": ["新方法只用了原本的 25%。", "每天省的量就是整段期間省的量。", "先求每日少用量，再乘天數。"],
+    "correct": 2,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "100×75%＝75 公升；100×25%×6＝150 公升。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [100, 25, 6]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-1-2",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "120 公升"], ["新方法減少", "25%"], ["觀察天數", "7 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 90.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 210.0,
+      "unit": "公升"
+    }],
+    "options": ["每天省的量就是整段期間省的量。", "先求每日少用量，再乘天數。", "新方法只用了原本的 25%。"],
+    "correct": 1,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "120×75%＝90 公升；120×25%×7＝210 公升。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [120, 25, 7]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-1-3",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "140 公升"], ["新方法減少", "25%"], ["觀察天數", "8 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 105.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 280.0,
+      "unit": "公升"
+    }],
+    "options": ["先求每日少用量，再乘天數。", "新方法只用了原本的 25%。", "每天省的量就是整段期間省的量。"],
+    "correct": 0,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "140×75%＝105 公升；140×25%×8＝280 公升。",
+    "kps": ["g5_n52", "g5_n510"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [140, 25, 8]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-2-0",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "80 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "15 度"], ["私人每度", "6 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 20.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 110.0,
+      "unit": "元"
+    }],
+    "options": ["把每戶私人費也分給其他家。", "小林家要付全部公用費。", "只平分公用費，再加自己家的私人費。"],
+    "correct": 2,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "80÷4＝20 元；15×6＋20＝110 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "shared",
+      "args": [80, 4, 15, 6]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-2-1",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "88 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "18 度"], ["私人每度", "6 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 22.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 130.0,
+      "unit": "元"
+    }],
+    "options": ["小林家要付全部公用費。", "只平分公用費，再加自己家的私人費。", "把每戶私人費也分給其他家。"],
+    "correct": 1,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "88÷4＝22 元；18×6＋22＝130 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "shared",
+      "args": [88, 4, 18, 6]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-2-2",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "96 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "21 度"], ["私人每度", "6 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 24.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 150.0,
+      "unit": "元"
+    }],
+    "options": ["只平分公用費，再加自己家的私人費。", "把每戶私人費也分給其他家。", "小林家要付全部公用費。"],
+    "correct": 0,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "96÷4＝24 元；21×6＋24＝150 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "shared",
+      "args": [96, 4, 21, 6]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-2-3",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "104 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "24 度"], ["私人每度", "6 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 26.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 170.0,
+      "unit": "元"
+    }],
+    "options": ["把每戶私人費也分給其他家。", "小林家要付全部公用費。", "只平分公用費，再加自己家的私人費。"],
+    "correct": 2,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "104÷4＝26 元；24×6＋26＝170 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "shared",
+      "args": [104, 4, 24, 6]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-3-0",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "40 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 230,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 250,
+      "unit": "元"
+    }],
+    "options": ["固定費比較低，就一定總價較低。", "方案甲較便宜。", "每度較便宜，就一定總價較低。"],
+    "correct": 1,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋40×5＝230；乙 90＋40×4＝250 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "plans",
+      "args": [40, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-3-1",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "48 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 270,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 282,
+      "unit": "元"
+    }],
+    "options": ["方案甲較便宜。", "每度較便宜，就一定總價較低。", "固定費比較低，就一定總價較低。"],
+    "correct": 0,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋48×5＝270；乙 90＋48×4＝282 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "plans",
+      "args": [48, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-3-2",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "56 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 310,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 314,
+      "unit": "元"
+    }],
+    "options": ["每度較便宜，就一定總價較低。", "固定費比較低，就一定總價較低。", "方案甲較便宜。"],
+    "correct": 2,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋56×5＝310；乙 90＋56×4＝314 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "plans",
+      "args": [56, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm5-water-3-3",
+    "grade": 5,
+    "topic": "water",
+    "family": "5-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "64 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 350,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 346,
+      "unit": "元"
+    }],
+    "options": ["固定費比較低，就一定總價較低。", "方案乙較便宜。", "每度較便宜，就一定總價較低。"],
+    "correct": 1,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋64×5＝350；乙 90＋64×4＝346 元。",
+    "kps": ["g5_n52"],
+    "audit": {
+      "rule": "plans",
+      "args": [64, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-0-0",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "400 元"], ["模擬稅率", "5%"], ["店員請款", "440 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 20.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 20.0,
+      "unit": "元"
+    }],
+    "options": ["含稅售價已含這筆稅，不能重複收取。", "稅額要加兩次才完整。", "未稅金額就是最後售價。"],
+    "correct": 0,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "400×5%＝20 元；應付 420 元，多收 20 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "taxError",
+      "args": [400, 5, 440.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-0-1",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "600 元"], ["模擬稅率", "5%"], ["店員請款", "660 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 30.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 30.0,
+      "unit": "元"
+    }],
+    "options": ["稅額要加兩次才完整。", "未稅金額就是最後售價。", "含稅售價已含這筆稅，不能重複收取。"],
+    "correct": 2,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "600×5%＝30 元；應付 630 元，多收 30 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "taxError",
+      "args": [600, 5, 660.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-0-2",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "800 元"], ["模擬稅率", "5%"], ["店員請款", "880 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 40.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 40.0,
+      "unit": "元"
+    }],
+    "options": ["未稅金額就是最後售價。", "含稅售價已含這筆稅，不能重複收取。", "稅額要加兩次才完整。"],
+    "correct": 1,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "800×5%＝40 元；應付 840 元，多收 40 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "taxError",
+      "args": [800, 5, 880.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-0-3",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-0",
+    "title": "含稅收據不能再加一次",
+    "story": "這張練習收據將含稅售價拆成未稅金額與稅額，模擬稅率為 5%。兩者合起來就是最後售價，不再另外加稅。",
+    "rows": [["未稅金額", "1000 元"], ["模擬稅率", "5%"], ["店員請款", "1100 元"]],
+    "fields": [{
+      "label": "收據上的稅額",
+      "answer": 50.0,
+      "unit": "元"
+    }, {
+      "label": "店員多請款",
+      "answer": 50.0,
+      "unit": "元"
+    }],
+    "options": ["含稅售價已含這筆稅，不能重複收取。", "稅額要加兩次才完整。", "未稅金額就是最後售價。"],
+    "correct": 0,
+    "hint": "先算一次稅，再核對應付總價。",
+    "solution": "1000×5%＝50 元；應付 1050 元，多收 50 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "taxError",
+      "args": [1000, 5, 1100.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-1-0",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1200 元"], ["本期水費", "300 元"], ["水費已付", "200 元"], ["預留金", "2500 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1300,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1200,
+      "unit": "元"
+    }],
+    "options": ["已付的金額要再加一次。", "稅單待繳金額還要重算稅率。", "扣除已付金額，再合計今天支出。"],
+    "correct": 2,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1200＋(300－200)＝1300 元；餘額 1200 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "bills",
+      "args": [1200, 300, 200, 2500]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-1-1",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1400 元"], ["本期水費", "350 元"], ["水費已付", "225 元"], ["預留金", "2800 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1525,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1275,
+      "unit": "元"
+    }],
+    "options": ["稅單待繳金額還要重算稅率。", "扣除已付金額，再合計今天支出。", "已付的金額要再加一次。"],
+    "correct": 1,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1400＋(350－225)＝1525 元；餘額 1275 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "bills",
+      "args": [1400, 350, 225, 2800]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-1-2",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1600 元"], ["本期水費", "400 元"], ["水費已付", "250 元"], ["預留金", "3100 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1750,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1350,
+      "unit": "元"
+    }],
+    "options": ["扣除已付金額，再合計今天支出。", "已付的金額要再加一次。", "稅單待繳金額還要重算稅率。"],
+    "correct": 0,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1600＋(400－250)＝1750 元；餘額 1350 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "bills",
+      "args": [1600, 400, 250, 3100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-1-3",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-1",
+    "title": "家庭繳費與預留金",
+    "story": "稅單已計算好，不需要再乘稅率。水費已先付一部分，剩餘金額才要列入今天支出。",
+    "rows": [["模擬稅單待繳", "1800 元"], ["本期水費", "450 元"], ["水費已付", "275 元"], ["預留金", "3400 元"]],
+    "fields": [{
+      "label": "今天還要付",
+      "answer": 1975,
+      "unit": "元"
+    }, {
+      "label": "預留金餘額",
+      "answer": 1425,
+      "unit": "元"
+    }],
+    "options": ["已付的金額要再加一次。", "稅單待繳金額還要重算稅率。", "扣除已付金額，再合計今天支出。"],
+    "correct": 2,
+    "hint": "先找出水費尚未付的部分。",
+    "solution": "1800＋(450－275)＝1975 元；餘額 1425 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "bills",
+      "args": [1800, 450, 275, 3400]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-2-0",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "600 元"], ["甲店", "付原價 75%，另收運費 60 元"], ["乙店", "折價 100 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 510.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 500,
+      "unit": "元"
+    }],
+    "options": ["把兩家的優惠加在同一張訂單。", "乙店比較便宜。", "只看折扣幅度，不必算運費。"],
+    "correct": 1,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 600×75%＋60＝510；乙 600－100＝500 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "discount",
+      "args": [600, 75, 60, 100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-2-1",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "800 元"], ["甲店", "付原價 75%，另收運費 60 元"], ["乙店", "折價 130 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 660.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 670,
+      "unit": "元"
+    }],
+    "options": ["甲店比較便宜。", "只看折扣幅度，不必算運費。", "把兩家的優惠加在同一張訂單。"],
+    "correct": 0,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 800×75%＋60＝660；乙 800－130＝670 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "discount",
+      "args": [800, 75, 60, 130]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-2-2",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "1000 元"], ["甲店", "付原價 75%，另收運費 60 元"], ["乙店", "折價 160 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 810.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 840,
+      "unit": "元"
+    }],
+    "options": ["只看折扣幅度，不必算運費。", "把兩家的優惠加在同一張訂單。", "甲店比較便宜。"],
+    "correct": 2,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 1000×75%＋60＝810；乙 1000－160＝840 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "discount",
+      "args": [1000, 75, 60, 160]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-2-3",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-2",
+    "title": "打折還是折價券",
+    "story": "兩家賣相同物品。列出的標價都含稅；甲打折後加運費，乙折價後免運。優惠不能合併。",
+    "rows": [["含稅標價", "1200 元"], ["甲店", "付原價 75%，另收運費 60 元"], ["乙店", "折價 190 元，免運"]],
+    "fields": [{
+      "label": "甲店實付",
+      "answer": 960.0,
+      "unit": "元"
+    }, {
+      "label": "乙店實付",
+      "answer": 1010,
+      "unit": "元"
+    }],
+    "options": ["把兩家的優惠加在同一張訂單。", "甲店比較便宜。", "只看折扣幅度，不必算運費。"],
+    "correct": 1,
+    "hint": "分別算完兩家的最後付款金額。",
+    "solution": "甲 1200×75%＋60＝960；乙 1200－190＝1010 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "discount",
+      "args": [1200, 75, 60, 190]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-3-0",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "2400 元"], ["先預留", "全部經費的 30%"], ["必要費用", "1000 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 720.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 680.0,
+      "unit": "元"
+    }],
+    "options": ["預留比例以全部經費為基準，再扣必要費用。", "先扣必要費用，才算全部經費的預留比例。", "預留金也全部拿去買布置。"],
+    "correct": 0,
+    "hint": "先確認百分率的基準量。",
+    "solution": "2400×30%＝720；2400－720－1000＝680 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reserve",
+      "args": [2400, 30, 1000]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-3-1",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "2800 元"], ["先預留", "全部經費的 30%"], ["必要費用", "1100 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 840.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 860.0,
+      "unit": "元"
+    }],
+    "options": ["先扣必要費用，才算全部經費的預留比例。", "預留金也全部拿去買布置。", "預留比例以全部經費為基準，再扣必要費用。"],
+    "correct": 2,
+    "hint": "先確認百分率的基準量。",
+    "solution": "2800×30%＝840；2800－840－1100＝860 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reserve",
+      "args": [2800, 30, 1100]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-3-2",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "3200 元"], ["先預留", "全部經費的 30%"], ["必要費用", "1200 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 960.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 1040.0,
+      "unit": "元"
+    }],
+    "options": ["預留金也全部拿去買布置。", "預留比例以全部經費為基準，再扣必要費用。", "先扣必要費用，才算全部經費的預留比例。"],
+    "correct": 1,
+    "hint": "先確認百分率的基準量。",
+    "solution": "3200×30%＝960；3200－960－1200＝1040 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reserve",
+      "args": [3200, 30, 1200]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-budget-3-3",
+    "grade": 6,
+    "topic": "budget",
+    "family": "6-budget-3",
+    "title": "活動預算先後順序",
+    "story": "班級先從全部經費預留一部分，支付必要費用後，剩餘才可拿來布置。",
+    "rows": [["全部經費", "3600 元"], ["先預留", "全部經費的 30%"], ["必要費用", "1300 元"]],
+    "fields": [{
+      "label": "先預留",
+      "answer": 1080.0,
+      "unit": "元"
+    }, {
+      "label": "最多可花在布置",
+      "answer": 1220.0,
+      "unit": "元"
+    }],
+    "options": ["預留比例以全部經費為基準，再扣必要費用。", "先扣必要費用，才算全部經費的預留比例。", "預留金也全部拿去買布置。"],
+    "correct": 0,
+    "hint": "先確認百分率的基準量。",
+    "solution": "3600×30%＝1080；3600－1080－1300＝1220 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reserve",
+      "args": [3600, 30, 1300]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-0-0",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "20 元"], ["第一段", "前 120 度，每度 2.5 元"], ["第二段", "超過 120 度的部分，每度 4.5 元"], ["本期用量", "140 度"], ["草稿帳單", "650 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 410.0,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 240.0,
+      "unit": "元"
+    }],
+    "options": ["只有超過門檻的部分用第二段費率。", "全部用量都改用最高費率。", "固定費不需要列入帳單。"],
+    "correct": 0,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "20＋120×2.5＋20×4.5＝410 元；多算 240 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "tierError",
+      "args": [20, 120, 2.5, 4.5, 140]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-0-1",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "25 元"], ["第一段", "前 120 度，每度 2.5 元"], ["第二段", "超過 120 度的部分，每度 4.5 元"], ["本期用量", "150 度"], ["草稿帳單", "700 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 460.0,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 240.0,
+      "unit": "元"
+    }],
+    "options": ["全部用量都改用最高費率。", "固定費不需要列入帳單。", "只有超過門檻的部分用第二段費率。"],
+    "correct": 2,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "25＋120×2.5＋30×4.5＝460 元；多算 240 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "tierError",
+      "args": [25, 120, 2.5, 4.5, 150]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-0-2",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "30 元"], ["第一段", "前 120 度，每度 2.5 元"], ["第二段", "超過 120 度的部分，每度 4.5 元"], ["本期用量", "160 度"], ["草稿帳單", "750 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 510.0,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 240.0,
+      "unit": "元"
+    }],
+    "options": ["固定費不需要列入帳單。", "只有超過門檻的部分用第二段費率。", "全部用量都改用最高費率。"],
+    "correct": 1,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "30＋120×2.5＋40×4.5＝510 元；多算 240 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "tierError",
+      "args": [30, 120, 2.5, 4.5, 160]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-0-3",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-0",
+    "title": "分段電費核對",
+    "story": "只按本題的單期模擬費率計算。前一段與超過的部分分開計價。",
+    "rows": [["固定費", "35 元"], ["第一段", "前 120 度，每度 2.5 元"], ["第二段", "超過 120 度的部分，每度 4.5 元"], ["本期用量", "170 度"], ["草稿帳單", "800 元"]],
+    "fields": [{
+      "label": "正確電費",
+      "answer": 560.0,
+      "unit": "元"
+    }, {
+      "label": "草稿多算",
+      "answer": 240.0,
+      "unit": "元"
+    }],
+    "options": ["只有超過門檻的部分用第二段費率。", "全部用量都改用最高費率。", "固定費不需要列入帳單。"],
+    "correct": 0,
+    "hint": "先拆成門檻內與門檻外兩段。",
+    "solution": "35＋120×2.5＋50×4.5＝560 元；多算 240 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "tierError",
+      "args": [35, 120, 2.5, 4.5, 170]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-1-0",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "200 度"], ["新設備每期", "185 度"], ["固定單價", "每度 3.5 元"], ["購買設備", "210 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 52.5,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["少用幾度，就等於省下幾元。", "設備買了就立刻省回全部費用。", "先求每期省多少，再累積到購買費。"],
+    "correct": 2,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(200－185)×3.5＝52.5 元；210÷52.5＝4 期。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "payback",
+      "args": [200, 185, 3.5, 210.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-1-1",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "220 度"], ["新設備每期", "200 度"], ["固定單價", "每度 3.5 元"], ["購買設備", "280 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 70.0,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["設備買了就立刻省回全部費用。", "先求每期省多少，再累積到購買費。", "少用幾度，就等於省下幾元。"],
+    "correct": 1,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(220－200)×3.5＝70 元；280÷70＝4 期。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "payback",
+      "args": [220, 200, 3.5, 280.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-1-2",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "240 度"], ["新設備每期", "215 度"], ["固定單價", "每度 3.5 元"], ["購買設備", "350 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 87.5,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["先求每期省多少，再累積到購買費。", "少用幾度，就等於省下幾元。", "設備買了就立刻省回全部費用。"],
+    "correct": 0,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(240－215)×3.5＝87.5 元；350÷87.5＝4 期。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "payback",
+      "args": [240, 215, 3.5, 350.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-1-3",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-1",
+    "title": "省電設備值不值得",
+    "story": "只比較購買費與省下的電費。假設每期用量、費率與省電效果相同，沒有其他費用。",
+    "rows": [["舊設備每期", "260 度"], ["新設備每期", "230 度"], ["固定單價", "每度 3.5 元"], ["購買設備", "420 元"]],
+    "fields": [{
+      "label": "每期省下",
+      "answer": 105.0,
+      "unit": "元"
+    }, {
+      "label": "幾期剛好省回購買費",
+      "answer": 4,
+      "unit": "期"
+    }],
+    "options": ["少用幾度，就等於省下幾元。", "設備買了就立刻省回全部費用。", "先求每期省多少，再累積到購買費。"],
+    "correct": 2,
+    "hint": "先求少用了幾度，再換成金額。",
+    "solution": "(260－230)×3.5＝105 元；420÷105＝4 期。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "payback",
+      "args": [260, 230, 3.5, 420.0]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-2-0",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "200 度"], ["減少比例", "10%"], ["每度", "2.5 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 20.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 475.0,
+      "unit": "元"
+    }],
+    "options": ["減少百分率就是新的用量。", "用量降低後，固定費仍要完整加入。", "把整張帳單都打相同折扣。"],
+    "correct": 1,
+    "hint": "百分率的基準是原用量。",
+    "solution": "200×10%＝20 度；(200－20)×2.5＋25＝475 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [200, 10, 2.5, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-2-1",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "240 度"], ["減少比例", "15%"], ["每度", "2.5 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 36.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 535.0,
+      "unit": "元"
+    }],
+    "options": ["用量降低後，固定費仍要完整加入。", "把整張帳單都打相同折扣。", "減少百分率就是新的用量。"],
+    "correct": 0,
+    "hint": "百分率的基準是原用量。",
+    "solution": "240×15%＝36 度；(240－36)×2.5＋25＝535 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [240, 15, 2.5, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-2-2",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "280 度"], ["減少比例", "20%"], ["每度", "2.5 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 56.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 585.0,
+      "unit": "元"
+    }],
+    "options": ["把整張帳單都打相同折扣。", "減少百分率就是新的用量。", "用量降低後，固定費仍要完整加入。"],
+    "correct": 2,
+    "hint": "百分率的基準是原用量。",
+    "solution": "280×20%＝56 度；(280－56)×2.5＋25＝585 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [280, 20, 2.5, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-2-3",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-2",
+    "title": "節電目標不是整張打折",
+    "story": "固定費不隨用量改變。只讓用電量比原本減少指定百分率。",
+    "rows": [["原用量", "320 度"], ["減少比例", "25%"], ["每度", "2.5 元"], ["固定費", "25 元"]],
+    "fields": [{
+      "label": "減少的用量",
+      "answer": 80.0,
+      "unit": "度"
+    }, {
+      "label": "達標後總電費",
+      "answer": 625.0,
+      "unit": "元"
+    }],
+    "options": ["減少百分率就是新的用量。", "用量降低後，固定費仍要完整加入。", "把整張帳單都打相同折扣。"],
+    "correct": 1,
+    "hint": "百分率的基準是原用量。",
+    "solution": "320×25%＝80 度；(320－80)×2.5＋25＝625 元。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "reductionFee",
+      "args": [320, 25, 2.5, 25]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-3-0",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "270 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 4 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 110,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 4,
+      "unit": "元"
+    }],
+    "options": ["先扣固定費與第一段費用，再算剩下可用幾度。", "直接用預算除以第一段單價。", "固定費也能換成免費用量。"],
+    "correct": 0,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(270－30－100×2)÷4＝10 度；最多 110 度，再多一度就超出 4 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 4, 270]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-3-1",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "290 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 4 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 115,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 4,
+      "unit": "元"
+    }],
+    "options": ["直接用預算除以第一段單價。", "固定費也能換成免費用量。", "先扣固定費與第一段費用，再算剩下可用幾度。"],
+    "correct": 2,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(290－30－100×2)÷4＝15 度；最多 115 度，再多一度就超出 4 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 4, 290]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-3-2",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "310 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 4 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 120,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 4,
+      "unit": "元"
+    }],
+    "options": ["固定費也能換成免費用量。", "先扣固定費與第一段費用，再算剩下可用幾度。", "直接用預算除以第一段單價。"],
+    "correct": 1,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(310－30－100×2)÷4＝20 度；最多 120 度，再多一度就超出 4 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 4, 310]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-energy-3-3",
+    "grade": 6,
+    "topic": "energy",
+    "family": "6-energy-3",
+    "title": "從預算倒推用量",
+    "story": "假設用量為整數度，費率如下。找出不超過預算的最多用量。",
+    "rows": [["預算", "330 元"], ["固定費", "30 元"], ["前 100 度", "每度 2 元"], ["超過的部分", "每度 4 元"]],
+    "fields": [{
+      "label": "最多可用",
+      "answer": 125,
+      "unit": "度"
+    }, {
+      "label": "再多用 1 度會超出",
+      "answer": 4,
+      "unit": "元"
+    }],
+    "options": ["先扣固定費與第一段費用，再算剩下可用幾度。", "直接用預算除以第一段單價。", "固定費也能換成免費用量。"],
+    "correct": 0,
+    "hint": "先看看完整第一段需要多少錢。",
+    "solution": "(330－30－100×2)÷4＝25 度；最多 125 度，再多一度就超出 4 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "reverseTier",
+      "args": [30, 100, 2, 4, 330]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-0-0",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "300 度"], ["這次讀數", "325 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8.5 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 25,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 182.5,
+      "unit": "元"
+    }],
+    "options": ["讀數差才是本期用量，再按兩段計價。", "直接把最後讀數當本期用量。", "全部度數用第二段單價。"],
+    "correct": 0,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "325－300＝25 度；40＋20×5＋5×8.5＝182.5 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [300, 325, 40, 20, 5, 8.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-0-1",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "320 度"], ["這次讀數", "350 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8.5 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 30,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 225.0,
+      "unit": "元"
+    }],
+    "options": ["直接把最後讀數當本期用量。", "全部度數用第二段單價。", "讀數差才是本期用量，再按兩段計價。"],
+    "correct": 2,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "350－320＝30 度；40＋20×5＋10×8.5＝225 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [320, 350, 40, 20, 5, 8.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-0-2",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "340 度"], ["這次讀數", "375 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8.5 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 35,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 267.5,
+      "unit": "元"
+    }],
+    "options": ["全部度數用第二段單價。", "讀數差才是本期用量，再按兩段計價。", "直接把最後讀數當本期用量。"],
+    "correct": 1,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "375－340＝35 度；40＋20×5＋15×8.5＝267.5 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [340, 375, 40, 20, 5, 8.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-0-3",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-0",
+    "title": "水表到帳單",
+    "story": "水表顯示累積讀數。先求本期用量，再依單期模擬表計費。",
+    "rows": [["上次讀數", "360 度"], ["這次讀數", "400 度"], ["固定費", "40 元"], ["前 20 度", "每度 5 元"], ["超過部分", "每度 8.5 元"]],
+    "fields": [{
+      "label": "本期用量",
+      "answer": 40,
+      "unit": "度"
+    }, {
+      "label": "本期水費",
+      "answer": 310.0,
+      "unit": "元"
+    }],
+    "options": ["讀數差才是本期用量，再按兩段計價。", "直接把最後讀數當本期用量。", "全部度數用第二段單價。"],
+    "correct": 0,
+    "hint": "先做讀數相減，再拆段。",
+    "solution": "400－360＝40 度；40＋20×5＋20×8.5＝310 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "meterTier",
+      "args": [360, 400, 40, 20, 5, 8.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-1-0",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "80 公升"], ["新方法減少", "25%"], ["觀察天數", "5 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 60.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 100.0,
+      "unit": "公升"
+    }],
+    "options": ["新方法只用了原本的 25%。", "每天省的量就是整段期間省的量。", "先求每日少用量，再乘天數。"],
+    "correct": 2,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "80×75%＝60 公升；80×25%×5＝100 公升。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [80, 25, 5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-1-1",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "100 公升"], ["新方法減少", "25%"], ["觀察天數", "6 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 75.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 150.0,
+      "unit": "公升"
+    }],
+    "options": ["每天省的量就是整段期間省的量。", "先求每日少用量，再乘天數。", "新方法只用了原本的 25%。"],
+    "correct": 1,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "100×75%＝75 公升；100×25%×6＝150 公升。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [100, 25, 6]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-1-2",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "120 公升"], ["新方法減少", "25%"], ["觀察天數", "7 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 90.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 210.0,
+      "unit": "公升"
+    }],
+    "options": ["先求每日少用量，再乘天數。", "新方法只用了原本的 25%。", "每天省的量就是整段期間省的量。"],
+    "correct": 0,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "120×75%＝90 公升；120×25%×7＝210 公升。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [120, 25, 7]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-1-3",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-1",
+    "title": "清洗區的省水週",
+    "story": "每天清洗次數相同。新方法的每日用水量比舊方法少四分之一，也就是 25%。",
+    "rows": [["原本每天", "140 公升"], ["新方法減少", "25%"], ["觀察天數", "8 天"]],
+    "fields": [{
+      "label": "新方法每天用",
+      "answer": 105.0,
+      "unit": "公升"
+    }, {
+      "label": "整段期間共省",
+      "answer": 280.0,
+      "unit": "公升"
+    }],
+    "options": ["新方法只用了原本的 25%。", "每天省的量就是整段期間省的量。", "先求每日少用量，再乘天數。"],
+    "correct": 2,
+    "hint": "分清「減少 25%」和「剩下 25%」。",
+    "solution": "140×75%＝105 公升；140×25%×8＝280 公升。",
+    "kps": ["m_mixed", "m_base"],
+    "audit": {
+      "rule": "dailySave",
+      "args": [140, 25, 8]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-2-0",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "80 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "15 度"], ["私人每度", "6.5 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 20.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 117.5,
+      "unit": "元"
+    }],
+    "options": ["小林家要付全部公用費。", "只平分公用費，再加自己家的私人費。", "把每戶私人費也分給其他家。"],
+    "correct": 1,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "80÷4＝20 元；15×6.5＋20＝117.5 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "shared",
+      "args": [80, 4, 15, 6.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-2-1",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "88 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "18 度"], ["私人每度", "6.5 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 22.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 139.0,
+      "unit": "元"
+    }],
+    "options": ["只平分公用費，再加自己家的私人費。", "把每戶私人費也分給其他家。", "小林家要付全部公用費。"],
+    "correct": 0,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "88÷4＝22 元；18×6.5＋22＝139 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "shared",
+      "args": [88, 4, 18, 6.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-2-2",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "96 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "21 度"], ["私人每度", "6.5 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 24.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 160.5,
+      "unit": "元"
+    }],
+    "options": ["把每戶私人費也分給其他家。", "小林家要付全部公用費。", "只平分公用費，再加自己家的私人費。"],
+    "correct": 2,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "96÷4＝24 元；21×6.5＋24＝160.5 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "shared",
+      "args": [96, 4, 21, 6.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-2-3",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-2",
+    "title": "公用水費怎麼分",
+    "story": "四戶平均分攤公用費，各戶私人水費另外付。私人水費已包含本題要算的全部私人費用。",
+    "rows": [["公用費合計", "104 元"], ["分攤戶數", "4 戶"], ["小林家私人用量", "24 度"], ["私人每度", "6.5 元"]],
+    "fields": [{
+      "label": "每戶分攤公用費",
+      "answer": 26.0,
+      "unit": "元"
+    }, {
+      "label": "小林家合計",
+      "answer": 182.0,
+      "unit": "元"
+    }],
+    "options": ["小林家要付全部公用費。", "只平分公用費，再加自己家的私人費。", "把每戶私人費也分給其他家。"],
+    "correct": 1,
+    "hint": "先把公用與私人兩部分分開。",
+    "solution": "104÷4＝26 元；24×6.5＋26＝182 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "shared",
+      "args": [104, 4, 24, 6.5]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-3-0",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "40 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 230,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 250,
+      "unit": "元"
+    }],
+    "options": ["方案甲較便宜。", "每度較便宜，就一定總價較低。", "固定費比較低，就一定總價較低。"],
+    "correct": 0,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋40×5＝230；乙 90＋40×4＝250 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "plans",
+      "args": [40, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-3-1",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "48 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 270,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 282,
+      "unit": "元"
+    }],
+    "options": ["每度較便宜，就一定總價較低。", "固定費比較低，就一定總價較低。", "方案甲較便宜。"],
+    "correct": 2,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋48×5＝270；乙 90＋48×4＝282 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "plans",
+      "args": [48, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-3-2",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "56 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 310,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 314,
+      "unit": "元"
+    }],
+    "options": ["固定費比較低，就一定總價較低。", "方案甲較便宜。", "每度較便宜，就一定總價較低。"],
+    "correct": 1,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋56×5＝310；乙 90＋56×4＝314 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "plans",
+      "args": [56, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }, {
+    "id": "lm6-water-3-3",
+    "grade": 6,
+    "topic": "water",
+    "family": "6-water-3",
+    "title": "兩個模擬供水方案",
+    "story": "只比較題目列出的固定費與用量費，使用同樣的用量。哪個方案的總價較低？",
+    "rows": [["本期用量", "64 度"], ["方案甲", "固定 30 元，每度 5 元"], ["方案乙", "固定 90 元，每度 4 元"]],
+    "fields": [{
+      "label": "甲的總價",
+      "answer": 350,
+      "unit": "元"
+    }, {
+      "label": "乙的總價",
+      "answer": 346,
+      "unit": "元"
+    }],
+    "options": ["方案乙較便宜。", "每度較便宜，就一定總價較低。", "固定費比較低，就一定總價較低。"],
+    "correct": 0,
+    "hint": "兩個方案都要先算完整總價。",
+    "solution": "甲 30＋64×5＝350；乙 90＋64×4＝346 元。",
+    "kps": ["m_mixed"],
+    "audit": {
+      "rule": "plans",
+      "args": [64, 30, 5, 90, 4]
+    },
+    "humanReviewed": false
+  }]
+};
+const LIFE_MATH_TOPICS = {
+  energy: '電費與節電',
+  water: '水費與節水',
+  budget: '稅單與家庭預算'
+};
+const LIFE_MATH_GIFTS = [{
+  id: 'badge_energy',
+  name: '暖光守護徽章',
+  kind: 'badge',
+  symbol: '⚡'
+}, {
+  id: 'badge_water',
+  name: '水滴生活徽章',
+  kind: 'badge',
+  symbol: '💧'
+}, {
+  id: 'badge_budget',
+  name: '精打細算紀念章',
+  kind: 'badge',
+  symbol: '✦'
+}, {
+  id: 'decor_lamp',
+  name: '星光書桌燈',
+  kind: 'decor',
+  symbol: '☀'
+}, {
+  id: 'decor_mint',
+  name: '薄荷小盆栽',
+  kind: 'decor',
+  symbol: '♧'
+}, {
+  id: 'decor_clock',
+  name: '黃銅小座鐘',
+  kind: 'decor',
+  symbol: '◷'
+}].map(g => ({
+  ...g,
+  asset: 'assets/items/island-supplies-v1/life_' + g.id + '.webp'
+}));
+const LIFE_MATH_BY_ID = Object.fromEntries(LIFE_MATH_DATA.questions.map(q => [q.id, q]));
+function lifeMathState(s) {
+  return s.student?.lifeMath || {
+    version: 1,
+    serial: 0,
+    seen: [],
+    drafts: {},
+    rounds: [],
+    hidden: []
+  };
+}
+function lifeMathPut(s, l) {
+  return {
+    ...s,
+    student: {
+      ...s.student,
+      lifeMath: l
+    }
+  };
+}
+function lifeMathDraft(s) {
+  return lifeMathState(s).drafts[studentGrade(s.student)];
+}
+function lifeMathPending(s) {
+  return lifeMathState(s).rounds.find(r => !r.gift);
+}
+function lifeMathCounts(s) {
+  return lifeMathState(s).rounds.reduce((a, r) => {
+    if (r.gift) a[r.gift] = (a[r.gift] || 0) + 1;
+    return a;
+  }, {});
+}
+function lifeMathPool(s) {
+  const allowed = new Set(practiceKpsFor(s)),
+    g = studentGrade(s.student);
+  return LIFE_MATH_DATA.questions.filter(q => q.grade === g && q.kps.every(k => allowed.has(k)));
+}
+function lifeMathCanRepeat(s) {
+  return studentGrade(s.student) !== 6 || s.settings?.g6AllowRepeat === true;
+}
+function lifeMathSelect(s, topic, done = [], exclude = null) {
+  const l = lifeMathState(s),
+    pool = lifeMathPool(s).filter(q => q.id !== exclude && !done.includes(q.id)),
+    fresh = pool.filter(q => !l.seen.includes(q.id));
+  const choices = fresh.length ? fresh : lifeMathCanRepeat(s) ? pool : [];
+  if (!choices.length) return null;
+  const families = new Set(done.map(id => LIFE_MATH_BY_ID[id]?.family)),
+    score = q => (q.topic === topic ? 0 : 20) + (families.has(q.family) ? 10 : 0);
+  return choices.slice().sort((a, b) => score(a) - score(b) || l.seen.indexOf(a.id) - l.seen.indexOf(b.id) || a.id.localeCompare(b.id))[0];
+}
+function lifeMathQuestionDraft(s, base, q) {
+  return {
+    ...base,
+    qid: q.id,
+    values: ['', ''],
+    choice: null,
+    status: 'answer',
+    attempts: 0,
+    hint: false,
+    repeated: lifeMathState(s).seen.includes(q.id),
+    signature: learningSignature(s),
+    feedback: ''
+  };
+}
+function lifeMathStart(s, topic) {
+  if (!s.student || !LIFE_MATH_TOPICS[topic] || lifeMathDraft(s) || lifeMathPending(s)) return s;
+  const q = lifeMathSelect(s, topic);
+  if (!q) return s;
+  const l = lifeMathState(s),
+    g = studentGrade(s.student),
+    serial = l.serial + 1;
+  const d = lifeMathQuestionDraft(s, {
+    id: 'life-round-' + serial,
+    grade: g,
+    topic,
+    done: []
+  }, q);
+  return lifeMathPut(s, {
+    ...l,
+    serial,
+    seen: [...l.seen.filter(id => id !== q.id), q.id],
+    drafts: {
+      ...l.drafts,
+      [g]: d
+    }
+  });
+}
+function lifeMathValid(s, d) {
+  return !!d && d.grade === studentGrade(s.student) && d.signature === learningSignature(s) && lifeMathPool(s).some(q => q.id === d.qid);
+}
+function lifeMathChange(s, token, patch) {
+  const d = lifeMathDraft(s);
+  if (!d || d.qid !== token || !lifeMathValid(s, d) || !['answer', 'wrong'].includes(d.status)) return s;
+  const p = {};
+  if (patch.values && Array.isArray(patch.values) && patch.values.length === 2 && patch.values.every(v => typeof v === 'string' && v.length <= 24)) p.values = patch.values;
+  if (patch.choice === null || Number.isInteger(patch.choice) && patch.choice >= 0 && patch.choice < 3) p.choice = patch.choice;
+  if (patch.hint === true) p.hint = true;
+  const l = lifeMathState(s);
+  return lifeMathPut(s, {
+    ...l,
+    drafts: {
+      ...l.drafts,
+      [d.grade]: {
+        ...d,
+        ...p,
+        status: 'answer',
+        feedback: ''
+      }
+    }
+  });
+}
+function lifeMathNumber(v) {
+  const x = String(v).normalize('NFKC').trim();
+  return /^\d+(\.\d+)?$/.test(x) ? Number(x) : NaN;
+}
+function lifeMathCorrect(q, values, choice) {
+  return choice === q.correct && values.length === 2 && q.fields.every((f, i) => Math.abs(lifeMathNumber(values[i]) - f.answer) < 1e-8);
+}
+function lifeMathSubmit(s, token, reveal = false) {
+  const d = lifeMathDraft(s);
+  if (!d || d.qid !== token || !lifeMathValid(s, d) || !['answer', 'wrong'].includes(d.status)) return s;
+  const q = LIFE_MATH_BY_ID[token],
+    passed = !reveal && lifeMathCorrect(q, d.values, d.choice),
+    status = reveal ? 'revealed' : passed ? 'passed' : 'wrong';
+  const next = {
+    ...d,
+    status,
+    attempts: d.attempts + 1,
+    feedback: status === 'wrong' ? '還有地方需要核對。算式、單位和最後的判斷都可以再修改。' : ''
+  };
+  let l = lifeMathState(s);
+  s = lifeMathPut(s, {
+    ...l,
+    drafts: {
+      ...l.drafts,
+      [d.grade]: next
+    }
+  });
+  if (passed || reveal) s = logPractice(s, {
+    source: 'life_math',
+    kpId: q.kps[0],
+    grade: q.grade,
+    contentGrade: q.grade,
+    questionId: q.id,
+    contentVersion: LIFE_MATH_DATA.version,
+    title: q.title,
+    passed,
+    attempts: next.attempts,
+    hints: d.hint ? 1 : 0,
+    repeatPractice: d.repeated,
+    detail: {
+      fullReveal: reveal,
+      lifeMath: true,
+      relatedKps: q.kps,
+      practiceOnly: true
+    }
+  });
+  return s;
+}
+function lifeMathNext(s, token) {
+  const d = lifeMathDraft(s);
+  if (!d || d.qid !== token || !lifeMathValid(s, d) || !['passed', 'revealed'].includes(d.status)) return s;
+  const done = d.status === 'passed' ? [...d.done, d.qid] : d.done,
+    l = lifeMathState(s),
+    drafts = {
+      ...l.drafts
+    };
+  if (done.length === 4) {
+    delete drafts[d.grade];
+    return lifeMathPut(s, {
+      ...l,
+      drafts,
+      rounds: [...l.rounds, {
+        id: d.id,
+        grade: d.grade,
+        done,
+        t: now(),
+        gift: null
+      }]
+    });
+  }
+  const q = lifeMathSelect(s, d.topic, done, d.qid);
+  if (!q) {
+    drafts[d.grade] = {
+      ...d,
+      done,
+      status: 'waiting',
+      feedback: ''
+    };
+    return lifeMathPut(s, {
+      ...l,
+      drafts
+    });
+  }
+  drafts[d.grade] = lifeMathQuestionDraft(s, {
+    id: d.id,
+    grade: d.grade,
+    topic: d.topic,
+    done
+  }, q);
+  return lifeMathPut(s, {
+    ...l,
+    seen: [...l.seen.filter(id => id !== q.id), q.id],
+    drafts
+  });
+}
+function lifeMathRefresh(s) {
+  const d = lifeMathDraft(s);
+  if (!d || lifeMathValid(s, d) && d.status !== 'waiting') return s;
+  if (['passed', 'revealed'].includes(d.status)) {
+    const aligned = lifeMathPut(s, {
+      ...lifeMathState(s),
+      drafts: {
+        ...lifeMathState(s).drafts,
+        [d.grade]: {
+          ...d,
+          signature: learningSignature(s)
+        }
+      }
+    });
+    const done = d.status === 'passed' ? [...d.done, d.qid] : d.done;
+    if (done.length === 4) {
+      const l = lifeMathState(aligned),
+        drafts = {
+          ...l.drafts
+        };
+      delete drafts[d.grade];
+      return lifeMathPut(aligned, {
+        ...l,
+        drafts,
+        rounds: [...l.rounds, {
+          id: d.id,
+          grade: d.grade,
+          done,
+          t: now(),
+          gift: null
+        }]
+      });
+    }
+    const l = lifeMathState(s);
+    s = lifeMathPut(s, {
+      ...l,
+      drafts: {
+        ...l.drafts,
+        [d.grade]: {
+          ...d,
+          done,
+          status: 'waiting'
+        }
+      }
+    });
+  }
+  const current = lifeMathDraft(s),
+    q = lifeMathSelect(s, current.topic, current.done, current.status === 'waiting' ? current.qid : null);
+  if (!q) return s;
+  const l = lifeMathState(s);
+  return lifeMathPut(s, {
+    ...l,
+    seen: [...l.seen.filter(id => id !== q.id), q.id],
+    drafts: {
+      ...l.drafts,
+      [current.grade]: lifeMathQuestionDraft(s, {
+        id: current.id,
+        grade: current.grade,
+        topic: current.topic,
+        done: current.done
+      }, q)
+    }
+  });
+}
+function lifeMathClaim(s, roundId, gift) {
+  const l = lifeMathState(s),
+    r = l.rounds.find(x => x.id === roundId);
+  if (!r || r.gift || r.done.length !== 4 || !LIFE_MATH_GIFTS.some(g => g.id === gift)) return s;
+  return lifeMathPut(s, {
+    ...l,
+    rounds: l.rounds.map(x => x.id === roundId ? {
+      ...x,
+      gift
+    } : x),
+    hidden: l.hidden.filter(id => id !== gift)
+  });
+}
+function lifeMathDisplay(s, id) {
+  if (!lifeMathCounts(s)[id]) return s;
+  const l = lifeMathState(s);
+  return lifeMathPut(s, {
+    ...l,
+    hidden: l.hidden.includes(id) ? l.hidden.filter(x => x !== id) : [...l.hidden, id]
+  });
+}
+function validateLifeMath(l, bad, p) {
+  const obj = x => x && typeof x === 'object' && !Array.isArray(x),
+    int = (x, a = 0, b = 100000) => Number.isInteger(x) && x >= a && x <= b,
+    ids = new Set(),
+    gift = id => LIFE_MATH_GIFTS.some(g => g.id === id);
+  if (!obj(l) || l.version !== 1 || !int(l.serial) || !Array.isArray(l.seen) || l.seen.length > 1000 || new Set(l.seen).size !== l.seen.length || l.seen.some(id => !LIFE_MATH_BY_ID[id]) || !obj(l.drafts) || !Array.isArray(l.rounds) || l.rounds.length > 10000 || !Array.isArray(l.hidden) || l.hidden.some(id => !gift(id))) return bad(p);
+  const check = (r, completed) => {
+    if (!obj(r) || !/^life-round-\d+$/.test(r.id) || ids.has(r.id) || Number(r.id.split('-').at(-1)) > l.serial || ![2, 5, 6].includes(r.grade) || !Array.isArray(r.done) || new Set(r.done).size !== r.done.length || r.done.some(id => LIFE_MATH_BY_ID[id]?.grade !== r.grade || !l.seen.includes(id)) || r.done.length > (completed ? 4 : 3) || completed && r.done.length !== 4) return bad(p + '.round');
+    ids.add(r.id);
+  };
+  for (const r of l.rounds) {
+    check(r, true);
+    if (!Number.isFinite(r.t) || r.t <= 0 || r.gift !== null && !gift(r.gift)) bad(p + '.gift');
+  }
+  for (const [g, d] of Object.entries(l.drafts)) {
+    check(d, false);
+    const q = LIFE_MATH_BY_ID[d.qid];
+    if (String(d.grade) !== g || !q || q.grade !== d.grade || !l.seen.includes(q.id) || !LIFE_MATH_TOPICS[d.topic] || !Array.isArray(d.values) || d.values.length !== 2 || d.values.some(v => typeof v !== 'string' || v.length > 24) || d.choice !== null && !int(d.choice, 0, 2) || !int(d.attempts) || typeof d.hint !== 'boolean' || typeof d.repeated !== 'boolean' || typeof d.signature !== 'string' || d.signature.length > 10000 || typeof d.feedback !== 'string' || d.feedback.length > 500 || !['answer', 'wrong', 'passed', 'revealed', 'waiting'].includes(d.status) || d.status === 'passed' && !lifeMathCorrect(q, d.values, d.choice) || d.status !== 'waiting' && d.done.includes(d.qid)) bad(p + '.draft');
+  }
+  const earned = {};
+  l.rounds.forEach(r => {
+    if (r.gift) earned[r.gift] = true;
+  });
+  if (l.hidden.some(id => !earned[id]) || new Set(l.hidden).size !== l.hidden.length) bad(p + '.hidden');
+}
 const HAIR_COLORS = [['栗棕', '#8a4b2a'], ['墨藍', '#1f2f4a'], ['銀白', '#cfd6e0'], ['紅棕', '#7a3a1f'], ['玫瑰', '#b75f83'], ['薰衣草', '#8972b5']];
 const EYE_COLORS = [['翡翠', '#3b7a57'], ['琥珀', '#b7791f'], ['紫羅蘭', '#7a4fa0'], ['湖藍', '#2f6f8f'], ['深棕', '#634331']];
 const COAT_COLORS = [['原色', ''], ['午夜藍', '#30476d'], ['森林綠', '#3c795d'], ['暮紫', '#765184'], ['暖金', '#c98a2a']];
@@ -187478,7 +191751,14 @@ function OfficeCollection({
     id: "office-gifts",
     onClick: () => setTab('gifts'),
     className: tab === 'gifts' ? 'active' : ''
-  }, "\u6211\u7684\u79AE\u7269", choices.length ? ' ●' : '')), tab === 'keepsakes' ? React.createElement(React.Fragment, null, React.createElement("p", null, "\u5192\u96AA\u5F97\u5230\u7684\u7D00\u5FF5\uFF0C\u90FD\u597D\u597D\u6536\u5728\u9019\u88E1\u3002\u53EF\u4EE5\u9078\u64C7\u8981\u4E0D\u8981\u9673\u5217\u5728\u6AC3\u88E1\u3002"), React.createElement("div", {
+  }, "\u6211\u7684\u79AE\u7269", choices.length ? ' ●' : ''), React.createElement("button", {
+    id: "office-life-math",
+    onClick: () => setTab('life'),
+    className: tab === 'life' ? 'active' : ''
+  }, "\u751F\u6D3B\u5C0F\u66F8\u684C")), tab === 'life' ? React.createElement(LifeMathShelf, {
+    state: state,
+    setState: setState
+  }) : tab === 'keepsakes' ? React.createElement(React.Fragment, null, React.createElement("p", null, "\u5192\u96AA\u5F97\u5230\u7684\u7D00\u5FF5\uFF0C\u90FD\u597D\u597D\u6536\u5728\u9019\u88E1\u3002\u53EF\u4EE5\u9078\u64C7\u8981\u4E0D\u8981\u9673\u5217\u5728\u6AC3\u88E1\u3002"), React.createElement("div", {
     className: "grid two"
   }, officeKeepsakes(state.student).map(o => React.createElement("label", {
     className: "card keepsake-choice",
@@ -189749,6 +194029,7 @@ function MainMenu({
   onStart,
   onParent,
   onWardrobe,
+  onLifeMath,
   profiles,
   onSwitchProfile,
   onNewProfile
@@ -189782,7 +194063,11 @@ function MainMenu({
     big: true,
     onClick: onStart,
     id: "btn-start"
-  }, "\u5EFA\u7ACB\u89D2\u8272\uFF0C\u958B\u59CB\u5192\u96AA"), React.createElement(Btn, {
+  }, "\u5EFA\u7ACB\u89D2\u8272\uFF0C\u958B\u59CB\u5192\u96AA"), s && React.createElement(Btn, {
+    big: true,
+    id: "menu-life-math",
+    onClick: onLifeMath
+  }, "\u751F\u6D3B\u6578\u5B78\u6311\u6230"), React.createElement(Btn, {
     big: true,
     onClick: onParent,
     id: "btn-parent"
@@ -190172,7 +194457,16 @@ function RepairHub({
     className: "eyebrow"
   }, "\u7070\u9D09\u5075\u63A2\u4E8B\u52D9\u6240\u30FB\u59D4\u8A17\u677F"), React.createElement("h2", null, "\u5C45\u6C11\u7684\u59D4\u8A17"), React.createElement("p", {
     className: "story"
-  }, "\u93AE\u4E0A\u7684\u5C45\u6C11\u6703\u628A\u751F\u6D3B\u88E1\u7684\u96E3\u984C\u8CBC\u5728\u9019\u88E1\u3002\u7070\u9D09\u592B\u4EBA\u8AAA\uFF0C\u9019\u4E9B\u59D4\u8A17\u90FD\u5C0D\u61C9\u5230\u4F60\u5728\u5B78\u6821\u5B78\u904E\u7684\u672C\u4E8B\u2014\u2014\u89E3\u6C7A\u5B83\u5011\uFF0C\u4F60\u7684\u8ABF\u67E5\u80FD\u529B\u5C31\u6703\u89BA\u9192\u3002\u6BCF\u4EF6\u59D4\u8A17\u6709\u4E09\u6BB5\uFF1A\u89C0\u5FF5\u91CD\u5EFA\u3001\u60C5\u5883\u61C9\u7528\u3001\u9077\u79FB\u6311\u6230\u3002")), paintEntryUnlocked(state) && React.createElement("article", {
+  }, "\u93AE\u4E0A\u7684\u5C45\u6C11\u6703\u628A\u751F\u6D3B\u88E1\u7684\u96E3\u984C\u8CBC\u5728\u9019\u88E1\u3002\u7070\u9D09\u592B\u4EBA\u8AAA\uFF0C\u9019\u4E9B\u59D4\u8A17\u90FD\u5C0D\u61C9\u5230\u4F60\u5728\u5B78\u6821\u5B78\u904E\u7684\u672C\u4E8B\u2014\u2014\u89E3\u6C7A\u5B83\u5011\uFF0C\u4F60\u7684\u8ABF\u67E5\u80FD\u529B\u5C31\u6703\u89BA\u9192\u3002\u6BCF\u4EF6\u59D4\u8A17\u6709\u4E09\u6BB5\uFF1A\u89C0\u5FF5\u91CD\u5EFA\u3001\u60C5\u5883\u61C9\u7528\u3001\u9077\u79FB\u6311\u6230\u3002")), React.createElement("section", {
+    className: "card life-entry",
+    id: "life-commission"
+  }, React.createElement(LifeMathArt, {
+    id: "badge_energy"
+  }), React.createElement("h2", null, "\u628A\u6578\u5B78\u5E36\u9032\u751F\u6D3B"), React.createElement("p", null, "\u96FB\u8CBB\u3001\u6C34\u8CBB\u3001\u7A05\u55AE\u8207\u751F\u6D3B\u9810\u7B97\u3002\u89E3\u958B\u56DB\u9053\u7D9C\u5408\u984C\uFF0C\u5C31\u80FD\u6311\u4E00\u679A\u5FBD\u7AE0\u6216\u66F8\u684C\u64FA\u98FE\u3002"), React.createElement(Btn, {
+    kind: "primary",
+    id: "life-open",
+    onClick: () => go('life_math')
+  }, "\u751F\u6D3B\u6578\u5B78\u6311\u6230")), paintEntryUnlocked(state) && React.createElement("article", {
     className: "card col",
     id: "paint-commission"
   }, React.createElement("span", {
@@ -190644,7 +194938,7 @@ function GrowthScreen({
       borderBottom: '1px solid var(--line)',
       paddingBottom: 4
     }
-  }, React.createElement("span", null, fmtDate(l.t), "\u30FB", KP_BY_ID[l.kpId]?.name, "\u30FB", l.source === 'chapter' ? '主線' : l.source === 'review' ? '複習' : l.source === 'wanted' ? '追捕' : l.source === 'chest' ? '寶箱' : '專屬任務'), React.createElement("span", null, l.passed ? React.createElement(Tag, {
+  }, React.createElement("span", null, fmtDate(l.t), "\u30FB", KP_BY_ID[l.kpId]?.name, "\u30FB", l.source === 'chapter' ? '主線' : l.source === 'review' ? '複習' : l.source === 'wanted' ? '追捕' : l.source === 'chest' ? '寶箱' : l.source === 'life_math' ? '生活數學挑戰' : '專屬任務'), React.createElement("span", null, l.source === 'life_math' && l.detail?.fullReveal ? React.createElement(Tag, null, "\u770B\u89E3\u6CD5\u7DF4\u7FD2") : l.passed ? React.createElement(Tag, {
     kind: "good"
   }, "\u901A\u904E") : React.createElement(Tag, {
     kind: "bad"
@@ -191478,6 +195772,7 @@ function StudentApp({
     onStart: () => go(s ? 'adventure' : 'create'),
     onParent: goParent,
     onWardrobe: () => go('wardrobe'),
+    onLifeMath: () => go('life_math'),
     profiles: profiles,
     onSwitchProfile: onSwitchProfile,
     onNewProfile: onNewProfile
@@ -191516,6 +195811,13 @@ function StudentApp({
         onExit: () => go('adventure'),
         onPractice: () => go('repair'),
         onRecords: () => go('records', 'maze')
+      });
+    case 'life_math':
+      return React.createElement(LifeMathChallenge, {
+        state: state,
+        setState: setState,
+        onExit: () => go('repair'),
+        onParent: goParent
       });
     case 'care':
       return React.createElement(CarePanel, {
@@ -192770,7 +197072,7 @@ function badgeEarnedDate(state, row, tier) {
   if (row.id.startsWith('skill-')) events = state.practiceLog.filter(l => l.passed && KP_BY_ID[l.kpId]?.subject === row.id.slice(6) && kpGrade(l.kpId) === studentGrade(state.student));else if (row.id === 'help') events = Object.values(state.student.keepsakes?.stamps || {});else if (row.id === 'review') events = state.missions.flatMap(m => (m.reviews || []).filter(r => r.passed));else if (row.id === 'arrests') events = getWallet(state.student).caseLog.filter(l => l.result === 'arrest');else if (row.id === 'repair') {
     const pending = new Set();
     for (const l of state.practiceLog) {
-      if (l.source === 'maze') continue;
+      if (l.source === 'maze' || l.detail?.practiceOnly) continue;
       if (l.passed) {
         if (pending.delete(l.kpId)) events.push(l);
       } else pending.add(l.kpId);
@@ -192853,7 +197155,10 @@ function MemorialBook({
     tier: i,
     earned: i < selected.level,
     size: 160
-  }), React.createElement("h3", null, i < selected.level ? selected.titles?.[i] || selected.label + '第 ' + (i + 1) + ' 階' : '下一枚未知徽章'), React.createElement("p", null, n, " ", selected.unit), i < selected.level ? React.createElement("time", null, badgeEarnedDate(state, selected, i)) : React.createElement("p", null, "\u518D\u7D2F\u7A4D ", Math.max(0, n - selected.count), " ", selected.unit, "\uFF0C\u5C31\u80FD\u53D6\u5F97\u3002"))))) : React.createElement(React.Fragment, null, React.createElement("h1", null, "\u5192\u96AA\u7D00\u5FF5\u518A"), React.createElement("div", {
+  }), React.createElement("h3", null, i < selected.level ? selected.titles?.[i] || selected.label + '第 ' + (i + 1) + ' 階' : '下一枚未知徽章'), React.createElement("p", null, n, " ", selected.unit), i < selected.level ? React.createElement("time", null, badgeEarnedDate(state, selected, i)) : React.createElement("p", null, "\u518D\u7D2F\u7A4D ", Math.max(0, n - selected.count), " ", selected.unit, "\uFF0C\u5C31\u80FD\u53D6\u5F97\u3002"))))) : React.createElement(React.Fragment, null, React.createElement("h1", null, "\u5192\u96AA\u7D00\u5FF5\u518A"), React.createElement(Btn, {
+    id: "memorial-life-math",
+    onClick: () => go('life_math')
+  }, "\u751F\u6D3B\u6311\u6230\u8207\u5C0F\u66F8\u684C"), React.createElement("div", {
     className: "tabs"
   }, [['wall', '徽章牆'], ['abilities', '我會的事'], ['done', '我做過的事']].map(([k, n]) => React.createElement("button", {
     key: k,
@@ -195594,6 +199899,274 @@ function HeroAdventure({
     onClose: () => setTaskPlace(null)
   }));
 }
+function LifeMathArt({
+  id,
+  size = 96
+}) {
+  const [failed, setFailed] = useState(false),
+    g = LIFE_MATH_GIFTS.find(x => x.id === id);
+  return React.createElement("span", {
+    className: "life-art",
+    style: {
+      width: size,
+      height: size
+    },
+    role: "img",
+    "aria-label": g.name
+  }, failed ? React.createElement("span", {
+    "aria-hidden": "true"
+  }, g.symbol) : React.createElement("img", {
+    src: g.asset,
+    alt: "",
+    width: size,
+    height: size,
+    onError: () => setFailed(true)
+  }));
+}
+function LifeMathShelf({
+  state,
+  setState
+}) {
+  const counts = lifeMathCounts(state),
+    l = lifeMathState(state),
+    owned = LIFE_MATH_GIFTS.filter(g => counts[g.id]),
+    shown = owned.filter(g => !l.hidden.includes(g.id));
+  return React.createElement("section", {
+    className: "life-shelf col",
+    id: "life-shelf"
+  }, React.createElement("div", null, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u751F\u6D3B\u88E1\u7684\u5C0F\u767C\u73FE"), React.createElement("h2", null, "\u6211\u7684\u5C0F\u66F8\u684C"), React.createElement("p", null, "\u5B8C\u6210\u56DB\u9053\u7D9C\u5408\u984C\uFF0C\u5C31\u80FD\u9078\u4E00\u4EF6\u7D00\u5FF5\u3002\u5FBD\u7AE0\u639B\u5728\u7246\u4E0A\uFF0C\u64FA\u98FE\u653E\u5728\u66F8\u684C\u3002")), React.createElement("div", {
+    className: "life-room"
+  }, React.createElement("div", {
+    className: "life-pinboard"
+  }, shown.filter(g => g.kind === 'badge').map(g => React.createElement(LifeMathArt, {
+    key: g.id,
+    id: g.id,
+    size: 80
+  })), !shown.some(g => g.kind === 'badge') && React.createElement("span", null, "\u4F60\u7684\u751F\u6D3B\u5FBD\u7AE0\u6703\u639B\u5728\u9019\u88E1")), React.createElement("div", {
+    className: "life-desktop"
+  }, shown.filter(g => g.kind === 'decor').map(g => React.createElement(LifeMathArt, {
+    key: g.id,
+    id: g.id,
+    size: 112
+  })), !shown.some(g => g.kind === 'decor') && React.createElement("span", null, "\u7559\u4E00\u500B\u4F4D\u7F6E\uFF0C\u7D66\u4F60\u7684\u7B2C\u4E00\u4EF6\u64FA\u98FE"))), React.createElement("div", {
+    className: "life-collection-grid"
+  }, owned.map(g => React.createElement("button", {
+    className: "life-collection-item",
+    id: 'life-display-' + g.id,
+    key: g.id,
+    "aria-pressed": !l.hidden.includes(g.id),
+    onClick: () => setState(s => lifeMathDisplay(s, g.id))
+  }, React.createElement(LifeMathArt, {
+    id: g.id,
+    size: 64
+  }), React.createElement("span", null, React.createElement("b", null, g.name), React.createElement("small", null, "\u6536\u85CF ", counts[g.id], " \u4EF6\u30FB", l.hidden.includes(g.id) ? '已收好，點一下展示' : '展示中，點一下收好'))))), !owned.length && React.createElement("p", {
+    className: "muted"
+  }, "\u9084\u6C92\u6709\u6536\u85CF\u3002\u6162\u6162\u5B8C\u6210\u7B2C\u4E00\u7D44\uFF0C\u4E0D\u9650\u6642\u9593\u3002"));
+}
+function LifeMathChallenge({
+  state,
+  setState,
+  onExit,
+  onParent
+}) {
+  const d = lifeMathDraft(state),
+    pending = lifeMathPending(state),
+    grade = studentGrade(state.student),
+    pool = lifeMathPool(state),
+    q = d && LIFE_MATH_BY_ID[d.qid],
+    valid = d && lifeMathValid(state, d),
+    terminal = d && ['passed', 'revealed'].includes(d.status),
+    counts = lifeMathCounts(state);
+  const [showShelf, setShowShelf] = useState(false),
+    [confirmReveal, setConfirmReveal] = useState(false);
+  useEffect(() => {
+    setConfirmReveal(false);
+    stopSpeech();
+  }, [d?.qid, showShelf, pending?.id]);
+  const act = fn => setState(fn),
+    art = {
+      energy: 'badge_energy',
+      water: 'badge_water',
+      budget: 'badge_budget'
+    };
+  return React.createElement("main", {
+    className: "stage life-page",
+    id: "life-math-page"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement(Btn, {
+    id: "life-exit",
+    onClick: onExit
+  }, "\u2190 \u56DE\u5230\u59D4\u8A17\u677F"), React.createElement(Btn, {
+    id: "life-open-shelf",
+    onClick: () => setShowShelf(v => !v)
+  }, showShelf ? '回到挑戰' : '我的小書桌')), React.createElement("section", {
+    className: "card life-header" + (d ? " compact" : "")
+  }, React.createElement("span", {
+    className: "eyebrow"
+  }, state.student.name, "\u30FB", grade, " \u5E74\u7D1A\u30FB\u9032\u968E\u7D9C\u5408\u6311\u6230"), React.createElement("h1", null, "\u628A\u6578\u5B78\u5E36\u9032\u751F\u6D3B"), React.createElement("p", null, "\u8B80\u8CC7\u6599\u3001\u7B97\u4E00\u7B97\uFF0C\u518D\u8AAA\u51FA\u4F60\u7684\u5224\u65B7\u3002\u5B8C\u6210 ", React.createElement("b", null, "4 \u9053\u5B8C\u6574\u984C\u76EE"), "\uFF0C\u9078\u4E00\u4EFD\u5C0F\u79AE\u7269\u3002"), React.createElement("div", {
+    className: "life-rules"
+  }, React.createElement("span", null, "\u4E0D\u7528\u5C08\u6CE8\u529B"), React.createElement("span", null, "\u4E0D\u9650\u6642\u9593"), React.createElement("span", null, "\u9032\u5EA6\u81EA\u52D5\u4FDD\u5B58")), React.createElement("p", {
+    className: "small muted"
+  }, "\u4F9D\u5BB6\u9577\u9078\u5B9A\u7684\u5DF2\u5B78\u7BC4\u570D\u51FA\u984C\u3002\u9019\u4E9B\u662F\u751F\u6D3B\u7D9C\u5408\u7DF4\u7FD2\uFF0C\u7D00\u5FF5\u54C1\u4E0D\u4EE3\u8868\u5DF2\u638C\u63E1\u5168\u90E8\u89C0\u5FF5\u3002")), showShelf ? React.createElement(LifeMathShelf, {
+    state: state,
+    setState: setState
+  }) : pending ? React.createElement("section", {
+    className: "card col",
+    id: "life-reward"
+  }, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u56DB\u500B\u751F\u6D3B\u554F\u984C\uFF0C\u56DB\u6B21\u8A8D\u771F\u601D\u8003"), React.createElement("h2", null, "\u6311\u4E00\u4EFD\u559C\u6B61\u7684\u5C0F\u79AE\u7269"), React.createElement("p", null, "\u9019\u4E00\u7D44\u5DF2\u5B8C\u6210\uFF01\u516D\u4EF6\u4E2D\u9078\u4E00\u4EF6\u3002\u5DF2\u64C1\u6709\u7684\u4E5F\u53EF\u4EE5\u518D\u6536\u85CF\u4E00\u4EF6\u3002"), React.createElement("div", {
+    className: "life-gift-grid"
+  }, LIFE_MATH_GIFTS.map(g => React.createElement("button", {
+    className: "life-gift",
+    key: g.id,
+    id: 'life-gift-' + g.id,
+    onClick: () => {
+      act(s => lifeMathClaim(s, pending.id, g.id));
+      setShowShelf(true);
+    }
+  }, React.createElement(LifeMathArt, {
+    id: g.id,
+    size: 128
+  }), React.createElement("b", null, g.name), React.createElement("span", null, g.kind === 'badge' ? '生活紀念徽章' : '書桌擺飾', "\u30FB\u5DF2\u6536\u85CF ", counts[g.id] || 0, " \u4EF6"), React.createElement("strong", null, "\u9078\u9019\u4E00\u4EF6"))))) : d ? React.createElement(React.Fragment, null, React.createElement("section", {
+    className: "card col life-progress"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement("b", null, "\u672C\u7D44\u5DF2\u5B8C\u6210 ", d.done.length + (d.status === 'passed' ? 1 : 0), "\uFF0F4 \u984C"), React.createElement("span", null, LIFE_MATH_TOPICS[d.topic])), React.createElement(Progress, {
+    value: (d.done.length + (d.status === 'passed' ? 1 : 0)) * 25
+  }), React.createElement("div", {
+    className: "life-stamps",
+    "aria-label": "\u672C\u7D44\u9032\u5EA6"
+  }, [0, 1, 2, 3].map(i => React.createElement("span", {
+    key: i,
+    "data-done": i < d.done.length + (d.status === 'passed' ? 1 : 0)
+  }, i < d.done.length + (d.status === 'passed' ? 1 : 0) ? '✓' : i + 1)))), !valid || d.status === 'waiting' ? React.createElement("section", {
+    className: "card col",
+    id: "life-scope"
+  }, React.createElement("h2", null, d.status === 'waiting' ? '這個範圍的題目先練到這裡' : '已學範圍更新了'), React.createElement("p", null, "\u5DF2\u5B8C\u6210\u7684 ", d.done.length, " \u984C\u6703\u4FDD\u7559\u3002\u53EF\u4EE5\u5957\u7528\u76EE\u524D\u7684\u5B78\u7FD2\u7BC4\u570D\uFF0C\u7E7C\u7E8C\u9019\u4E00\u7D44\u3002"), React.createElement("p", null, "\u516D\u5E74\u7D1A\u5982\u679C\u5DF2\u7528\u5B8C\u672A\u505A\u904E\u7684\u984C\u76EE\uFF0C\u53EF\u4EE5\u63DB\u5DF2\u5B78\u55AE\u5143\uFF0C\u6216\u7531\u5BB6\u9577\u958B\u555F\u8907\u7FD2\u984C\u3002"), React.createElement(Btn, {
+    id: "life-refresh",
+    onClick: () => act(lifeMathRefresh)
+  }, "\u4F9D\u76EE\u524D\u7BC4\u570D\u627E\u984C\u76EE"), React.createElement(Btn, {
+    onClick: onParent
+  }, "\u8ACB\u5BB6\u9577\u67E5\u770B\u5B78\u7FD2\u8A2D\u5B9A")) : React.createElement("article", {
+    className: "card col life-question",
+    id: "life-question",
+    "data-question": q.id
+  }, React.createElement("header", {
+    className: "life-question-head"
+  }, React.createElement(LifeMathArt, {
+    id: art[q.topic],
+    size: 72
+  }), React.createElement("div", null, React.createElement("span", {
+    className: "eyebrow"
+  }, LIFE_MATH_TOPICS[q.topic], d.repeated ? '・複習題' : ''), React.createElement("h2", null, q.title))), React.createElement("p", {
+    className: "life-disclaimer"
+  }, LIFE_MATH_DATA.disclaimer), React.createElement("p", {
+    className: "story"
+  }, q.story), React.createElement("dl", {
+    className: "life-bill"
+  }, q.rows.map(([label, value], i) => React.createElement("div", {
+    key: i
+  }, React.createElement("dt", null, label), React.createElement("dd", null, value)))), React.createElement("fieldset", {
+    className: "life-fields",
+    disabled: terminal
+  }, React.createElement("legend", null, "\u5148\u7B97\u51FA\u5169\u500B\u6578\u91CF"), q.fields.map((f, i) => React.createElement("label", {
+    key: i,
+    htmlFor: 'life-answer-' + i
+  }, React.createElement("span", null, i + 1, "\uFF0E", f.label), React.createElement("span", {
+    className: "life-input-unit"
+  }, React.createElement("input", {
+    id: 'life-answer-' + i,
+    inputMode: "decimal",
+    autoComplete: "off",
+    maxLength: 24,
+    value: d.values[i],
+    onChange: e => {
+      const value = e.target.value;
+      act(s => {
+        const active = lifeMathDraft(s);
+        return active?.qid === q.id ? lifeMathChange(s, q.id, {
+          values: active.values.map((x, n) => n === i ? value : x)
+        }) : s;
+      });
+    }
+  }), React.createElement("span", null, f.unit))))), React.createElement("fieldset", {
+    className: "life-reasons",
+    disabled: terminal
+  }, React.createElement("legend", null, "\u6700\u5F8C\uFF0C\u9078\u51FA\u5408\u7406\u7684\u5224\u65B7"), q.options.map((option, i) => React.createElement("button", {
+    type: "button",
+    id: 'life-reason-' + i,
+    className: d.choice === i ? 'selected' : '',
+    "aria-pressed": d.choice === i,
+    key: i,
+    onClick: () => act(s => lifeMathChange(s, q.id, {
+      choice: i
+    }))
+  }, option))), !terminal && React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    kind: "primary",
+    id: "life-submit",
+    onClick: () => act(s => lifeMathSubmit(s, q.id))
+  }, "\u78BA\u8A8D\u6574\u9053\u984C\u76EE"), React.createElement(Btn, {
+    id: "life-hint",
+    onClick: () => act(s => lifeMathChange(s, q.id, {
+      hint: true
+    }))
+  }, "\u7D66\u6211\u4E00\u9EDE\u63D0\u793A"), React.createElement(Btn, {
+    id: "life-reveal",
+    onClick: () => setConfirmReveal(v => !v)
+  }, "\u4E00\u8D77\u770B\u89E3\u6CD5")), d.hint && React.createElement(Notice, null, "\u63D0\u793A\uFF1A", q.hint), d.feedback && React.createElement("div", {
+    className: "notice warn",
+    role: "status",
+    id: "life-feedback"
+  }, d.feedback), confirmReveal && !terminal && React.createElement("div", {
+    className: "notice col",
+    id: "life-reveal-confirm"
+  }, React.createElement("p", null, "\u770B\u5B8C\u6574\u89E3\u6CD5\u5F8C\uFF0C\u9019\u984C\u6703\u7559\u4F5C\u7DF4\u7FD2\u7D00\u9304\uFF0C\u4E0D\u8A08\u5165\u56DB\u984C\u3002\u63A5\u8457\u63DB\u4E00\u984C\u518D\u8A66\u3002"), React.createElement(Btn, {
+    id: "life-confirm-reveal",
+    onClick: () => {
+      act(s => lifeMathSubmit(s, q.id, true));
+      setConfirmReveal(false);
+    }
+  }, "\u770B\u89E3\u6CD5\uFF0C\u518D\u63DB\u984C"), React.createElement(Btn, {
+    onClick: () => setConfirmReveal(false)
+  }, "\u5148\u81EA\u5DF1\u60F3\u60F3")), terminal && React.createElement("section", {
+    className: "life-solution col",
+    id: "life-result",
+    role: "status"
+  }, React.createElement("h3", null, d.status === 'passed' ? '計算與判斷都完成了！' : '我們一起拆開來看'), React.createElement("p", null, q.solution), React.createElement("p", null, q.options[q.correct]), React.createElement(Btn, {
+    kind: "primary",
+    id: "life-next",
+    onClick: () => act(s => lifeMathNext(s, q.id))
+  }, d.status === 'passed' && d.done.length === 3 ? '四題完成，去選禮物' : '繼續下一題')))) : React.createElement("section", {
+    className: "col"
+  }, React.createElement("h2", null, "\u4ECA\u5929\u5F9E\u54EA\u4EF6\u751F\u6D3B\u5C0F\u4E8B\u958B\u59CB\uFF1F"), React.createElement("p", null, "\u512A\u5148\u51FA\u9019\u500B\u4E3B\u984C\uFF0C\u63A5\u8457\u4F9D\u5DF2\u5B78\u7BC4\u570D\u642D\u914D\u4E0D\u540C\u984C\u578B\uFF1B\u56DB\u984C\u53EF\u4EE5\u8DE8\u4E3B\u984C\u7D2F\u7A4D\u3002"), React.createElement("div", {
+    className: "life-topic-grid"
+  }, Object.entries(LIFE_MATH_TOPICS).map(([id, name]) => {
+    const available = pool.filter(q => q.topic === id);
+    return React.createElement("article", {
+      className: "card col life-topic",
+      key: id
+    }, React.createElement(LifeMathArt, {
+      id: art[id],
+      size: 112
+    }), React.createElement("h3", null, name), React.createElement("p", null, id === 'energy' ? '核對帳單、追蹤節電，看看怎麼安排更合適。' : id === 'water' ? '讀懂水表、估計省水，替居民檢查費用。' : '分清已付與待付，核對收據，安排生活預算。'), React.createElement("span", {
+      className: "small"
+    }, "\u76EE\u524D\u7BC4\u570D\u6709 ", available.length, " \u984C"), React.createElement(Btn, {
+      id: 'life-start-' + id,
+      kind: "primary",
+      disabled: !available.length || !lifeMathSelect(state, id),
+      onClick: () => act(s => lifeMathStart(s, id))
+    }, "\u958B\u59CB\u6311\u6230"));
+  })), (!pool.length || !lifeMathSelect(state, 'energy')) && React.createElement(Notice, null, "\u76EE\u524D\u6C92\u6709\u53EF\u7528\u7684\u65B0\u984C\u3002\u9019\u500B\u5E74\u7D1A\u4F7F\u7528\u7684\u55AE\u5143\uFF1A", [...new Set(LIFE_MATH_DATA.questions.filter(q => q.grade === grade).flatMap(q => q.kps))].map(k => KP_BY_ID[k]?.name).join('、'), "\u3002\u8ACB\u5BB6\u9577\u78BA\u8A8D\u5DF2\u5B78\u7BC4\u570D\uFF1B\u516D\u5E74\u7D1A\u4E5F\u53EF\u958B\u555F\u8907\u7FD2\u984C\u3002"), React.createElement(Btn, {
+    id: "life-parent",
+    onClick: onParent
+  }, "\u8ACB\u5BB6\u9577\u67E5\u770B\u5B78\u7FD2\u8A2D\u5B9A")));
+}
 const AI_STATUS = {
   image: false,
   reason: false,
@@ -197481,7 +202054,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.15-v74",
+    "data-build": "2026.11.15-v74b",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
