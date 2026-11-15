@@ -907,7 +907,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261115-hero-leo-r1">
+<meta name="game-release" content="playtest-20261115-zhuyin-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -141329,6 +141329,71 @@ function validLanguageV65Params(kind, p) {
   if (kind === 'rhetoric') return Array.isArray(p.devices) && p.devices.length === 4 && new Set(p.devices).size === 4 && p.devices.every(x => LANGUAGE_V65_DEVICES.includes(x)) && items.every(x => nonempty(x.text) && p.devices.includes(x.device));
   return items.every(x => ['word', 'context', 'meaning'].every(k => nonempty(x[k])) && x.context.includes(x.word)) && new Set(items.map(x => x.word)).size === items.length && new Set(items.map(x => x.meaning)).size === items.length;
 }
+const ANSWER_GUARD_EMPTY = Object.freeze({
+  chars: '',
+  muteBopomofo: false
+});
+const ANSWER_GUARDS = new Map(),
+  ANSWER_GUARD_LISTENERS = new Set();
+let ANSWER_GUARD_SNAPSHOT = ANSWER_GUARD_EMPTY;
+const answerGuardSnapshot = () => ANSWER_GUARD_SNAPSHOT;
+const answerGuardSubscribe = listener => {
+  ANSWER_GUARD_LISTENERS.add(listener);
+  return () => ANSWER_GUARD_LISTENERS.delete(listener);
+};
+function answerGuardPolicy(chars = '', muteBopomofo = false) {
+  return {
+    chars: [...new Set(String(chars).match(/[㐀-䶿一-鿿]/g) || [])].sort().join(''),
+    muteBopomofo: !!muteBopomofo
+  };
+}
+function answerGuardForItem(it) {
+  if (!it) return ANSWER_GUARD_EMPTY;
+  if (it.answerGuard) return answerGuardPolicy(it.answerGuard.chars, it.answerGuard.muteBopomofo);
+  const f = it.figure,
+    options = (it.options || []).map(o => typeof o === 'string' ? o : o.text).join('');
+  if (f?.type !== 'big') return ANSWER_GUARD_EMPTY;
+  if (/[ㄅ-ㄩㆠ-ㆿ]/.test(f.text || '')) return answerGuardPolicy(options, true);
+  if ((f.nozy || it.nozy) && /[㐀-䶿一-鿿]/.test(f.text || '')) return answerGuardPolicy(f.text + options, true);
+  return ANSWER_GUARD_EMPTY;
+}
+function answerGuardForStage(kind, p) {
+  if (!p) return ANSWER_GUARD_EMPTY;
+  if (kind === 'polyphone') return answerGuardPolicy(p.char, true);
+  if (kind === 'typos') return answerGuardPolicy((p.errors || []).flatMap(e => [e.wrong, e.correct, ...(e.options || [])]).join(''), true);
+  if (kind === 'pickone') return answerGuardForItem(p.items?.[0]);
+  return ANSWER_GUARD_EMPTY;
+}
+function answerGuardUpdate(owner, policy) {
+  if (policy?.chars) ANSWER_GUARDS.set(owner, policy);else ANSWER_GUARDS.delete(owner);
+  const next = answerGuardPolicy([...ANSWER_GUARDS.values()].map(p => p.chars).join(''), [...ANSWER_GUARDS.values()].some(p => p.muteBopomofo));
+  if (next.chars === ANSWER_GUARD_SNAPSHOT.chars && next.muteBopomofo === ANSWER_GUARD_SNAPSHOT.muteBopomofo) return;
+  ANSWER_GUARD_SNAPSHOT = next;
+  stopSpeech();
+  ANSWER_GUARD_LISTENERS.forEach(listener => listener());
+}
+function useAnswerGuard(policy, active = true) {
+  const owner = React.useRef(Symbol('visible-question'));
+  const chars = active ? policy.chars : '',
+    mute = active && policy.muteBopomofo;
+  React.useLayoutEffect(() => {
+    answerGuardUpdate(owner.current, {
+      chars,
+      muteBopomofo: mute
+    });
+    return () => answerGuardUpdate(owner.current, null);
+  }, [chars, mute]);
+}
+function useAnswerGuardSnapshot() {
+  return React.useSyncExternalStore(answerGuardSubscribe, answerGuardSnapshot, answerGuardSnapshot);
+}
+function answerSafeSpeech(text) {
+  const p = answerGuardSnapshot();
+  let s = String(text || '');
+  if (p.chars) s = Array.from(s, c => p.chars.includes(c) ? ' ' : c).join('');
+  if (p.muteBopomofo) s = s.replace(/[ㄅ-ㄩㆠ-ㆿ˙ˊˇˋ]+/g, ' ');
+  return s.replace(/\s+/g, ' ').trim();
+}
 const ZY_CJK = /[㐀-䶿一-鿿]/;
 const ZY_MAX_WORD = 4;
 let JUNIOR_MODE = false;
@@ -141403,9 +141468,10 @@ function zySplit(z) {
 function Zy({
   text
 }) {
-  const toks = zyTokens(String(text));
+  const guard = useAnswerGuardSnapshot(),
+    toks = zyTokens(String(text));
   return toks.map((t, i) => {
-    if (!t.z) return React.createElement(React.Fragment, {
+    if (!t.z || guard.chars.includes(t.s)) return React.createElement(React.Fragment, {
       key: i
     }, t.s);
     const p = zySplit(t.z);
@@ -141428,7 +141494,7 @@ function zyPlainText(el) {
   if (!el) return '';
   const c = el.cloneNode(true);
   c.querySelectorAll('rt, rp, button, .hud, .topbar, [aria-hidden="true"], svg').forEach(n => n.remove());
-  return c.textContent.replace(/\s+/g, ' ').trim();
+  return answerSafeSpeech(c.textContent);
 }
 const GAME_SPEECH = {
   active: false,
@@ -141463,6 +141529,7 @@ function useSpeechPlaying() {
   return active;
 }
 function speakText(text) {
+  text = answerSafeSpeech(text);
   if (!window.speechSynthesis || typeof window.SpeechSynthesisUtterance !== 'function' || !text) return false;
   stopSpeech();
   try {
@@ -148855,7 +148922,10 @@ function PickOne({
     }
     if (score >= passNeed) m.pass(`完成！${items.length} 題已確認答對 ${score} 題，訂正答對也算通過。`, detail(answers));else m.giveUp(detail(answers));
   };
-  const solved = checked === 'correct';
+  const solved = checked === 'correct',
+    guard = answerGuardForItem(it),
+    released = solved || answerShown;
+  useAnswerGuard(guard, !released);
   return React.createElement("div", {
     className: "col mech junior-mech"
   }, story && React.createElement("p", {
@@ -148875,7 +148945,10 @@ function PickOne({
       color: '#2a2118'
     }
   }, React.createElement(JuniorFigure, {
-    fig: it.figure
+    fig: guard.chars && released ? {
+      ...it.figure,
+      nozy: false
+    } : it.figure
   }), React.createElement("p", {
     className: "junior-q",
     id: "po-q"
@@ -148888,7 +148961,7 @@ function PickOne({
     type: "button",
     id: `po-${j}`,
     "aria-pressed": chosen === j,
-    className: `junior-opt ${it.nozy ? 'nozy' : ''} ${chosen === j ? checked === 'correct' ? 'ok' : checked === 'wrong' ? 'no' : 'sel' : ''}`,
+    className: `junior-opt ${it.nozy && !(guard.chars && released) ? 'nozy' : ''} ${chosen === j ? checked === 'correct' ? 'ok' : checked === 'wrong' ? 'no' : 'sel' : ''}`,
     disabled: solved || m.done,
     onClick: () => choose(j)
   }, o.text)))), !m.done && React.createElement(React.Fragment, null, React.createElement("p", {
@@ -149738,6 +149811,9 @@ function ChinesePractice({
     [active, setActive] = useState(kind === 'typos' ? null : 0),
     [meaning, setMeaning] = useState(null),
     submitted = useRef(false);
+  const protectedQuestion = answerGuardForStage(kind, p),
+    released = m.done && m.feedback?.kind === 'good' || m.hintLevel >= 3;
+  useAnswerGuard(protectedQuestion, !released);
   const edit = (key, value) => {
     if (m.done) return;
     submitted.current = false;
@@ -149808,7 +149884,7 @@ function ChinesePractice({
       key: pos
     }, t.s);
     const selected = values[pos],
-      hide = p.errors.some(e => e.at === pos && e.hideReading);
+      hide = !released && p.errors.some(e => e.at === pos && e.hideReading);
     return React.createElement("button", {
       key: pos,
       id: 'cn-char-' + pos,
@@ -149829,7 +149905,7 @@ function ChinesePractice({
   }, React.createElement("span", {
     className: "nozy"
   }, p.text.slice(0, p.at)), React.createElement("mark", {
-    className: "nozy"
+    className: released ? '' : 'nozy'
   }, p.char), React.createElement("span", {
     className: "nozy"
   }, p.text.slice(p.at + 1)), React.createElement("p", null, "\u8A5E\u8A9E\uFF1A", React.createElement("b", {
@@ -149907,6 +149983,8 @@ function ChineseRuby({
   text,
   reading
 }) {
+  const guard = useAnswerGuardSnapshot();
+  if (Array.from(text).some(c => guard.chars.includes(c))) return React.createElement(React.Fragment, null, text);
   const p = zySplit(reading);
   return React.createElement("ruby", {
     className: "zy",
@@ -199301,6 +199379,10 @@ function MazeAdventure({
     answering = a?.phase === 'question',
     feedback = a?.phase === 'feedback',
     invalid = a && a.policy !== policy;
+  const questionGuard = answerGuardForStage(q?.stage?.kind, q?.stage?.params),
+    protectedQuestion = !!questionGuard.chars,
+    guardActive = !!q && !invalid && (answering || feedback && !a.feedback?.passed);
+  useAnswerGuard(questionGuard, guardActive);
   const careGrant = finished ? state.student.care?.log?.find(e => e.eventId === 'maze:' + a.id && e.type === 'stipend_granted')?.amount || 0 : 0;
   return React.createElement("div", {
     className: "maze-page",
@@ -199469,7 +199551,10 @@ function MazeAdventure({
   }, React.createElement("p", null, q.context), React.createElement("h2", {
     id: "maze-prompt"
   }, q.prompt), React.createElement(MazeFigure, {
-    figure: q.figure
+    figure: protectedQuestion && a.feedback?.passed ? {
+      ...q.figure,
+      nozy: false
+    } : q.figure
   })), React.createElement("div", {
     className: "maze-options",
     role: "group",
@@ -199498,7 +199583,7 @@ function MazeAdventure({
   }, "\u8D70\u9019\u689D")) : feedback ? React.createElement("div", {
     className: 'maze-feedback ' + (a.feedback.passed ? 'maze-pass' : 'maze-detour'),
     role: "status"
-  }, React.createElement("h3", null, a.feedback.passed ? '路燈亮了，繼續走吧！' : a.challenge ? '先回入口，再找新路。' : '這條路繞遠了，退一步再試。'), !a.feedback.passed && React.createElement("p", null, "\u8DEF\u724C\u7684\u610F\u601D\uFF1A", a.feedback.answer), React.createElement("p", null, a.feedback.why), !a.feedback.passed && React.createElement("small", null, "\u9019\u500B\u89C0\u5FF5\u5DF2\u8A18\u9032\u932F\u984C\uFF0C\u56DE\u53BB\u5F8C\u53EF\u4EE5\u518D\u7DF4\u7FD2\u3002"), React.createElement(Btn, {
+  }, React.createElement("h3", null, a.feedback.passed ? '路燈亮了，繼續走吧！' : a.challenge ? '先回入口，再找新路。' : '這條路繞遠了，退一步再試。'), protectedQuestion && !a.feedback.passed ? React.createElement("p", null, "\u518D\u6BD4\u8F03\u5B57\u5F62\u8207\u8B80\u97F3\uFF0C\u4E0B\u4E00\u584A\u8DEF\u724C\u518D\u8A66\u8A66\u770B\u3002") : React.createElement(React.Fragment, null, !a.feedback.passed && React.createElement("p", null, "\u8DEF\u724C\u7684\u610F\u601D\uFF1A", a.feedback.answer), React.createElement("p", null, a.feedback.why)), !a.feedback.passed && React.createElement("small", null, "\u9019\u500B\u89C0\u5FF5\u5DF2\u8A18\u9032\u932F\u984C\uFF0C\u56DE\u53BB\u5F8C\u53EF\u4EE5\u518D\u7DF4\u7FD2\u3002"), React.createElement(Btn, {
     id: "maze-next",
     disabled: moving,
     onClick: advance
@@ -202290,7 +202375,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.15-v75",
+    "data-build": "2026.11.15-v76",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"

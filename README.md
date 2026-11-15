@@ -1,6 +1,6 @@
 # 知識探索島 試玩版
 
-版本：playtest-20261115-hero-leo-r1。這是可獨立部署的靜態遊戲，首頁為 index.html。
+版本：playtest-20261115-zhuyin-r1。這是可獨立部署的靜態遊戲，首頁為 index.html。
 
 - 分享前請讀 [試玩須知與素材來源](playtest-notice.html)：使用暱稱、固定瀏覽器、私人保存備份；回報截圖遮住孩子個資。
 - 請以網站網址遊玩；本機預覽可在此資料夾執行 `python -m http.server 8080`，再開啟 http://localhost:8080。
