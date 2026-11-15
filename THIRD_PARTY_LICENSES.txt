@@ -44,3 +44,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+注音資料：中華民國教育部（Ministry of Education, R.O.C.）《重編國語辭典修訂本》；CC BY-ND 3.0 Taiwan。來源、轉檔版本與本地快照識別見 playtest-notice.html；完整使用說明見 moe-revised-use.txt。
+https://dict.revised.moe.edu.tw/
+https://creativecommons.org/licenses/by-nd/3.0/tw/legalcode

@@ -840,7 +840,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 
 .lang65{gap:12px}.lang65 button{min-height:44px}.lang65-labels{display:flex;flex-wrap:wrap;gap:10px}.lang65-labels button{min-width:72px}.lang65-pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.lang65-card{display:flex;flex-direction:column;gap:8px;min-height:60px;width:100%;border:2px solid #c5b18d;border-radius:14px;background:#fffdf6;padding:14px 16px;color:#243f50;text-align:left;font:inherit;line-height:1.65;cursor:pointer;overflow-wrap:anywhere}.lang65-card.selected{outline:3px solid #21849a;background:#edf8fc}.lang65-card:disabled{opacity:1;cursor:default}.lang65-card:focus-visible{outline:3px solid #21849a;outline-offset:2px}.lang65-text{font-size:18px}.lang65-selection{font-size:16px;color:#166178}.lang65 h4{margin:0}.lang65 .col{gap:12px}@media(max-width:600px){.lang65-pair-grid{grid-template-columns:1fr}.lang65-card{padding:12px}.lang65-labels{gap:8px}}
 
-.maze-page{max-width:1440px;margin:auto;padding:10px 18px 16px;color:#183c36}
+.maze-page{width:100%;box-sizing:border-box;max-width:1440px;margin:auto;padding:10px 18px 16px;color:#183c36}
 .maze-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.maze-heading small{color:#60786e}.maze-heading h1{font-size:25px;margin:0}
 .maze-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);height:calc(100dvh - 165px);min-height:520px;max-height:900px;border:1px solid #a1b7a6;border-radius:22px;overflow:hidden;box-shadow:0 14px 36px #15392b20;background:#fbf9ed}
 .maze-landscape{position:relative;isolation:isolate;background-position:center;background-size:cover;overflow:hidden;background-color:#27534a;min-height:260px}.maze-landscape:after{content:'';position:absolute;inset:60% 0 0;background:linear-gradient(transparent,#122b26bb);z-index:-1}.maze-scene-line{margin:16px;padding:12px 16px;background:#173e34e6;color:#fff9dd;border:1px solid #bdab70;border-radius:12px;font-size:16px;line-height:1.6}.maze-guide{position:absolute;height:67%;max-width:68%;object-fit:contain;bottom:3%;left:30%;filter:drop-shadow(0 12px 10px #12241a66)}.maze-explorers{position:absolute;width:57%;height:55%;bottom:4%;left:0;overflow:visible;filter:drop-shadow(0 8px 6px #12382b77)}.maze-landscape:not(.maze-scene-entrance):not(.maze-scene-exit) .maze-explorers{left:20%;bottom:3%;width:64%;height:59%}.maze-place-label{position:absolute;bottom:10px;left:16px;right:16px;text-align:center;color:#fff7d5;font-weight:700;text-shadow:0 2px 4px #000;font-size:18px}.maze-lanterns{margin:16px;border-radius:14px;padding:12px 16px;background:#fff8dedc;color:#22453a}.maze-lanterns b{display:flex;justify-content:space-between;gap:10px}.maze-lanterns>div{display:flex;gap:5px;margin-top:8px}.maze-lanterns i{font-style:normal;color:#7d8d8055;font-size:20px;flex:1;text-align:center}.maze-lanterns i.lit{color:#b87c17;text-shadow:0 0 7px #f9ce67}
@@ -849,7 +849,11 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 @media(max-width:1000px) and (min-width:701px){.maze-panel{padding:16px}.maze-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}.maze-options button{font-size:17px;padding:10px 6px}.maze-scene-line{margin:10px;font-size:14px}}
 @media(max-width:700px){.maze-page{padding:10px}.maze-heading h1{font-size:22px}.maze-heading small{font-size:12px}.maze-heading .btn{font-size:15px}.maze-layout{display:flex;flex-direction:column;height:auto;min-height:0;max-height:none;border-radius:16px}.maze-landscape{min-height:220px;height:220px;flex:none;background-position:center 66%}.maze-scene-line{margin:10px;font-size:13px;padding:7px 10px}.maze-guide{height:75%;left:45%;bottom:0}.maze-explorers{height:70%;width:42%;left:5%;bottom:0}.maze-landscape:not(.maze-scene-entrance):not(.maze-scene-exit) .maze-explorers{left:41%;width:43%;height:64%;bottom:0}.maze-lanterns{margin:8px 12px;width:45%;padding:8px;font-size:13px}.maze-lanterns>div{gap:1px;flex-wrap:wrap;margin-top:0}.maze-lanterns i{font-size:13px;flex:0 0 15%}.maze-place-label{left:auto;right:10px;bottom:5px;font-size:15px}.maze-panel{overflow:visible;padding:16px 14px;gap:12px}.maze-panel h2{font-size:22px}.maze-options{flex-direction:column;gap:8px}.maze-options button{flex-direction:row;min-height:58px;font-size:20px;padding:10px;gap:14px;justify-content:flex-start;text-align:left}.maze-option-copy{flex:1}.maze-route-symbol{width:30px;flex:none;text-align:center}.maze-end-actions{flex-direction:column}.maze-settings button{font-size:16px;padding:8px 5px}.maze-data{max-height:none}.maze-task-label{font-size:13px}.maze-panel .btn{min-height:48px}.junior .maze-panel h2{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.maze-walk{animation:none}}
-@media(min-width:701px){.maze-guide{height:54%;bottom:10%;left:43%;max-width:55%}.maze-scene-entrance .maze-explorers,.maze-scene-exit .maze-explorers{height:65%;width:60%;left:1%}}
+@media(min-width:701px){.maze-layout{height:calc(100dvh - 180px)}.maze-guide{height:54%;bottom:10%;left:43%;max-width:55%}.maze-scene-entrance .maze-explorers,.maze-scene-exit .maze-explorers{height:65%;width:60%;left:1%}}
+/* Keep the traveler on one continuous route, including the last step to the exit. */
+.maze-panel,.maze-feedback{min-width:0}.maze-feedback .btn,.maze-mobile-advance .btn{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.maze-has-journey .maze-scene-line{font-size:14px;margin:12px;padding:9px 12px}.maze-has-journey .maze-lanterns{position:absolute;top:83px;left:12px;right:12px;margin:0;padding:8px 12px}.maze-has-journey .maze-lanterns b{display:flex;align-items:center;justify-content:space-between}.maze-has-journey .maze-lanterns i{font-size:15px}.maze-has-journey .maze-lanterns>div{margin-top:3px}.maze-journey{position:absolute;top:173px;left:0;width:100%;height:calc(100% - 201px);overflow:visible}.maze-trail-border{fill:none;stroke:#fff2c3;stroke-width:30;stroke-linecap:round;stroke-linejoin:round;opacity:.7}.maze-trail-base{fill:none;stroke:#193f38;stroke-width:23;stroke-linecap:round;stroke-linejoin:round;opacity:.85}.maze-trail-segment{fill:none;stroke:#8ba893;stroke-width:5;stroke-dasharray:9 11;stroke-linecap:round}.maze-trail-segment.lit{stroke:#ffdc77;stroke-width:9;stroke-dasharray:none;filter:drop-shadow(0 0 5px #ffcf69)}.maze-trail-stop circle{fill:#1d493f;stroke:#f1dfaa;stroke-width:4}.maze-trail-stop.lit circle{fill:#ffd879;stroke:#fff5d1}.maze-trail-stop text{fill:#fff6d7;font:700 23px/1 sans-serif;paint-order:stroke;stroke:#173c34;stroke-width:1}.maze-trail-stop.lit text{fill:#1b493e;stroke:none}.maze-trail-stop.current circle{stroke-width:7;filter:drop-shadow(0 0 7px #fff0a8)}.maze-exit-flag{fill:#ffc86a;stroke:#5f4226;stroke-width:5;stroke-linejoin:round}.maze-traveler{filter:drop-shadow(0 5px 3px #0b251c77)}.maze-arrival{position:absolute;top:143px;left:12px;right:12px;padding:7px 10px;border:1px solid #e1c477;background:#173e34ed;color:#fff8dc;border-radius:10px;font-size:15px;line-height:1.55;text-align:center;z-index:2}.maze-arrival.moving{background:#866021ef}.maze-has-journey .maze-place-label{font-size:14px;bottom:6px}.maze-mobile-advance{display:none}.maze-landscape,.maze-panel{scroll-margin-top:110px}
+@media(max-width:700px){.maze-landscape.maze-has-journey{height:480px;min-height:480px}.maze-has-journey .maze-scene-line{font-size:13px;margin:9px;padding:7px 10px}.maze-has-journey .maze-lanterns{top:64px;left:10px;right:10px;width:auto;padding:6px 10px}.maze-has-journey .maze-lanterns>div{flex-wrap:nowrap;gap:2px}.maze-has-journey .maze-lanterns i{flex:1;font-size:13px}.maze-arrival{top:124px;left:10px;right:10px;font-size:14px;padding:7px}.maze-journey{top:157px;height:calc(100% - 221px)}.maze-mobile-advance{display:flex;justify-content:center;position:absolute;bottom:24px;left:12px;right:12px;z-index:3}.maze-mobile-advance .btn{min-height:38px;font-size:14px;padding:7px 16px}.maze-has-journey .maze-place-label{bottom:3px;left:8px;right:8px;font-size:12px}.maze-landscape,.maze-panel{scroll-margin-top:115px}}
 
 .hero-page{max-width:1120px;margin:auto;padding:22px 18px 60px;color:#193c43}.hero-heading,.hero-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.hero-heading{border-bottom:2px solid #d3b780;padding-bottom:16px;margin-bottom:18px}.hero-heading h1{margin:.2em 0}.hero-heading small,.hero-intro small{letter-spacing:.12em;color:#58757a}.hero-nav{justify-content:flex-start;margin-bottom:14px}.hero-route-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}.hero-route{display:flex;align-items:flex-start;gap:16px;padding:24px;background:#fffdf5;border:1px solid #d6c8aa;border-radius:20px;box-shadow:0 10px 22px #173f4910}.hero-route.open{border:2px solid #317d7b;background:linear-gradient(135deg,#ecf6f2,#fff8e5)}.hero-route h2{margin:4px 0}.hero-route h3{font-size:1.05rem;margin:10px 0}.hero-route p{line-height:1.8}.hero-route>svg{flex-shrink:0}.hero-planned{display:inline-block;padding:6px 16px;background:#e7ece9;border-radius:30px}.hero-progress{border-left:5px solid #2c7e7d;background:#e1efeb;padding:14px 18px;font-weight:bold;line-height:1.8}.hero-progress>span{display:block;font-size:.85rem;font-weight:normal}.hero-map{position:relative;background:#184a58;aspect-ratio:16/9;border:5px solid #e6dbc4;border-radius:18px;overflow:hidden;box-shadow:0 12px 28px #173f4920}.hero-map>img{width:100%;height:100%;object-fit:cover}.hero-map-pin{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:6px;border:2px solid #e3c386;border-radius:30px;background:#163b41ed;color:#fff8df;padding:5px 12px 5px 5px;box-shadow:0 3px 8px #0006;white-space:nowrap;cursor:pointer}.hero-map-pin>.nozy,.hero-place-number{display:inline-grid;place-items:center;flex-shrink:0;width:30px;height:30px;background:#ebd397;color:#173e46;border-radius:50%;font-size:1rem;font-weight:800}.hero-map-pin b{font-size:.95rem}.hero-map-pin:disabled{background:#354849e8;color:#e0ded2;opacity:1;border-color:#8b9690;cursor:default}.hero-map-pin:hover:not(:disabled){outline:3px solid #ffedb0}.hero-map-return{position:absolute;bottom:10px;left:12px;color:white;background:#133d47e6;padding:7px 13px;border-radius:8px;font-size:.85rem}.hero-places{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.hero-places button{display:flex;align-items:center;gap:9px;background:#fffdf5;border:1px solid #cdbd98;border-radius:12px;text-align:left;padding:13px;min-height:78px;color:#21464b;cursor:pointer}.hero-places button:disabled{opacity:.65;cursor:default}.hero-places small{display:block;margin-top:4px;font-size:.75rem}.hero-intro{margin:24px 0;padding:24px 30px;background:#fffdf6;border:1px solid #dfd2b8;border-radius:16px}.hero-intro p,.hero-dialog p,.hero-deduction p,.hero-book p{line-height:1.95;margin:.6em 0}.hero-scene{position:relative;aspect-ratio:16/9;background-color:#28505a;background-size:cover;background-position:center;border-radius:18px;overflow:hidden}.hero-scene h2{position:absolute;top:12px;left:16px;background:#173e46e8;color:#ffeed0;border:1px solid #dcbf8d;border-radius:10px;margin:0;padding:8px 18px;font-size:1.2rem}.hero-guide{position:absolute;right:19%;bottom:6%;height:64%;max-width:40%;object-fit:contain;filter:drop-shadow(0 7px 4px #0004)}.hero-explorer{position:absolute;left:20%;bottom:4%;width:30%;height:44%;overflow:visible}.hero-dialog{margin-top:16px}.hero-speakers{display:flex;align-items:center;gap:10px}.hero-evidence{border:1px solid #c9b990;border-left:5px solid #b48843;border-radius:9px;padding:15px 20px;background:#fff8e7}.hero-evidence h3{margin:.2em 0}.hero-rewards{display:flex;align-items:center;gap:24px;background:linear-gradient(125deg,#e1f0e9,#fff3d9);padding:22px;border:1px solid #d8bf7c;border-radius:14px}.hero-rewards>img{width:150px;height:150px;object-fit:contain}.hero-deduction fieldset{display:grid;gap:10px;border:1px solid #d4c9b5;border-radius:12px;padding:16px}.hero-deduction fieldset button{padding:16px;text-align:left;background:#fffdf5;border:2px solid #d4c5a6;border-radius:10px;color:#193d45;line-height:1.8;cursor:pointer}.hero-deduction fieldset button[aria-pressed=true]{border-color:#247a81;background:#dceef0;box-shadow:inset 5px 0 #247a81}.hero-deduction fieldset button>span{display:block;font-size:.95rem;margin-top:6px}.hero-art-fallback{display:grid;place-items:center;padding:20px;background:#e1e9e4;color:#193d45;min-height:70px}.hero-map>.hero-art-fallback{height:100%}.hero-outfit{display:flex;gap:18px;align-items:center;border:2px solid #c6ad72}.hero-outfit>img{width:140px;height:230px;object-fit:contain}.hero-outfit p{font-size:.9rem;line-height:1.8}.hero-task{width:min(920px,96vw)}.hero-task .notice .btn{margin:8px}.hero-page button:focus-visible{outline:3px solid #dd981f;outline-offset:3px}
 @media(max-width:760px){.hero-page{padding:14px 10px 40px}.hero-heading h1{font-size:1.5rem}.hero-route-grid{grid-template-columns:1fr}.hero-route{padding:16px}.hero-places{grid-template-columns:1fr 1fr}.hero-map-pin{padding:3px;border-width:2px}.hero-map-pin b{display:none}.hero-map-pin>.nozy{width:28px;height:28px}.hero-map-return{font-size:.65rem;padding:4px 8px;bottom:5px;left:5px}.hero-map{border-width:3px}.hero-nav .btn{font-size:.9rem;padding:10px 13px}.hero-intro{padding:18px}.hero-scene h2{font-size:.9rem;padding:5px 10px;top:7px;left:7px}.hero-rewards{flex-direction:column;align-items:flex-start;padding:16px}.hero-rewards>img{align-self:center;width:120px;height:120px}.hero-deduction fieldset{padding:10px}.hero-outfit{flex-direction:column}.hero-outfit>img{height:220px;width:150px}.hero-heading .btn{font-size:.85rem}.hero-places button{padding:10px;gap:6px}.hero-places b{font-size:.92rem}}
@@ -881,7 +885,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261115-hero-cheng-r1">
+<meta name="game-release" content="playtest-20261115-maze-motion-r2">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -144154,6 +144158,10 @@ Object.assign(ZHUYIN_DATA.words, {
   "一側": ["ㄧˊ", "ㄘㄜˋ"],
   "這一側": ["ㄓㄜˋ", "ㄧˊ", "ㄘㄜˋ"]
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  "抵": "ㄉㄧˇ",
+  "篷": "ㄆㄥˊ"
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -194355,6 +194363,167 @@ function Ch6Overlay({
     }
   }, s.result === 'guided' ? '自己試一次' : q.mode === 'startcheck' ? '開始查信封' : '收好紀錄，繼續調查'))));
 }
+function mazeTrailPoints(length) {
+  const rows = Math.ceil((length + 1) / 4);
+  return Array.from({
+    length: length + 1
+  }, (_, i) => {
+    const row = Math.floor(i / 4),
+      col = row % 2 ? 3 - i % 4 : i % 4;
+    return {
+      x: 140 + col * 240,
+      y: 660 - row * (480 / Math.max(1, rows - 1))
+    };
+  });
+}
+function mazeTrailAt(points, position) {
+  const i = Math.min(points.length - 1, Math.max(0, Math.floor(position))),
+    j = Math.min(i + 1, points.length - 1),
+    f = position - i;
+  return {
+    x: points[i].x + (points[j].x - points[i].x) * f,
+    y: points[i].y + (points[j].y - points[i].y) * f
+  };
+}
+function useMazeReducedMotion() {
+  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  useEffect(() => {
+    const q = window.matchMedia('(prefers-reduced-motion: reduce)'),
+      change = () => setReduced(q.matches);
+    q.addEventListener('change', change);
+    return () => q.removeEventListener('change', change);
+  }, []);
+  return reduced;
+}
+function MazeJourney({
+  run,
+  student,
+  reduced,
+  onArrive
+}) {
+  const shown = useRef({
+      id: run.id,
+      value: run.position
+    }),
+    canvas = useRef(null),
+    [motion, setMotion] = useState({
+      id: run.id,
+      value: run.position,
+      from: run.position,
+      to: run.position
+    });
+  useEffect(() => {
+    const before = shown.current,
+      id = run.id,
+      to = run.position;
+    if (before.id !== id || reduced || before.value === to) {
+      shown.current = {
+        id,
+        value: to
+      };
+      setMotion({
+        id,
+        value: to,
+        from: to,
+        to
+      });
+      onArrive({
+        id,
+        position: to
+      });
+      return;
+    }
+    const from = before.value,
+      queued = performance.now(),
+      duration = Math.abs(to - from) > 1 ? 1500 : 1250;
+    let frame,
+      start = null;
+    const tick = time => {
+      if (start === null) {
+        const box = canvas.current?.getBoundingClientRect(),
+          mobile = window.matchMedia('(max-width:700px)').matches;
+        if (mobile && box && (box.top < 90 || box.bottom > innerHeight - 16) && time - queued < 1800) {
+          frame = requestAnimationFrame(tick);
+          return;
+        }
+        start = time;
+      }
+      const f = Math.min(1, (time - start) / duration),
+        eased = f * f * (3 - 2 * f),
+        value = from + (to - from) * eased;
+      shown.current = {
+        id,
+        value
+      };
+      setMotion({
+        id,
+        value,
+        from,
+        to
+      });
+      if (f < 1) frame = requestAnimationFrame(tick);else onArrive({
+        id,
+        position: to
+      });
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [run.id, run.position, reduced, onArrive]);
+  const points = mazeTrailPoints(run.length),
+    m = motion.id === run.id ? motion : {
+      value: run.position,
+      from: run.position,
+      to: run.position
+    },
+    point = mazeTrailAt(points, m.value),
+    moving = !reduced && Math.abs(m.value - run.position) > .001;
+  const nearby = mazeTrailAt(points, Math.min(run.length, Math.max(0, m.value + (m.to >= m.from ? .03 : -.03)))),
+    dx = nearby.x - point.x,
+    dy = nearby.y - point.y;
+  const direction = Math.abs(dy) > Math.abs(dx) ? dy < 0 ? 'back' : 'front' : dx < 0 ? 'left' : 'right';
+  return React.createElement("svg", {
+    ref: canvas,
+    className: "maze-journey nozy",
+    viewBox: "0 0 1000 740",
+    role: "img",
+    "aria-label": `探路路線：已通過 ${run.position} 個路口，共 ${run.length} 個`,
+    "data-motion": moving ? 'walking' : 'arrived',
+    "data-visual-position": m.value.toFixed(3)
+  }, React.createElement("path", {
+    className: "maze-trail-border",
+    d: 'M' + points.map(p => p.x + ',' + p.y).join(' L')
+  }), React.createElement("path", {
+    className: "maze-trail-base",
+    d: 'M' + points.map(p => p.x + ',' + p.y).join(' L')
+  }), points.slice(1).map((p, i) => React.createElement("path", {
+    key: i,
+    className: 'maze-trail-segment' + (i < Math.floor(m.value) ? ' lit' : ''),
+    d: `M${points[i].x},${points[i].y} L${p.x},${p.y}`
+  })), points.map((p, i) => React.createElement("g", {
+    key: i,
+    className: 'maze-trail-stop' + (i <= Math.floor(m.value) ? ' lit' : '') + (i === run.position ? ' current' : ''),
+    transform: `translate(${p.x},${p.y})`
+  }, React.createElement("circle", {
+    r: i === run.length ? 29 : 23
+  }), React.createElement("text", {
+    textAnchor: "middle",
+    y: "8"
+  }, i), i === run.length && React.createElement("path", {
+    className: "maze-exit-flag",
+    d: "M31 0V-64L70 -51L31 -35"
+  }))), React.createElement("g", {
+    className: "maze-traveler",
+    "data-x": point.x.toFixed(2),
+    "data-y": point.y.toFixed(2),
+    transform: `translate(${point.x},${point.y - 8}) scale(.95)`
+  }, React.createElement(ExplorerWithCompanion, {
+    student: student,
+    direction: moving ? direction : 'front',
+    walking: moving,
+    selected: true,
+    animate: moving
+  })));
+}
 function MazeFigure({
   figure
 }) {
@@ -194395,6 +194564,24 @@ function MazeAdventure({
     challenge = length === 15;
   const policy = learningSignature(state),
     generation = useRef(0);
+  const reduced = useMazeReducedMotion(),
+    [arrival, setArrival] = useState(a ? {
+      id: a.id,
+      position: a.position
+    } : null),
+    landscape = useRef(null),
+    panel = useRef(null);
+  const onArrive = useCallback(value => setArrival(old => old?.id === value.id && old?.position === value.position ? old : value), []);
+  const moving = !!a && !reduced && arrival?.id === a.id && arrival.position !== a.position;
+  const reveal = ref => {
+    if (window.matchMedia('(max-width:700px)').matches) ref.current?.scrollIntoView({
+      block: 'start',
+      behavior: reduced ? 'auto' : 'smooth'
+    });
+  };
+  useEffect(() => {
+    if (a?.phase === 'question') reveal(panel);else if (['feedback', 'complete'].includes(a?.phase)) reveal(landscape);
+  }, [a?.id, a?.phase]);
   const update = fn => setState(s => s.student && s.student.createdAt + ':' + s.student.name === owner.current ? fn(s) : s);
   runRef.current = a?.id || null;
   useEffect(() => {
@@ -194436,7 +194623,12 @@ function MazeAdventure({
     update(s => mazeLeave(s, a?.id));
     callback();
   };
-  const scene = !a ? 'entrance' : a.phase === 'complete' ? 'exit' : ['forest', 'stone', 'vines'][Math.min(2, Math.floor(a.position / a.length * 3))];
+  const advance = () => {
+    if (moving) return;
+    stopSpeech();
+    update(s => mazeNext(s, a.id, pool));
+  };
+  const scene = !a ? 'entrance' : a.phase === 'complete' && !moving ? 'exit' : ['forest', 'stone', 'vines'][Math.min(2, Math.floor(a.position / a.length * 3))];
   const finished = a?.phase === 'complete',
     answering = a?.phase === 'question',
     feedback = a?.phase === 'feedback',
@@ -194453,17 +194645,18 @@ function MazeAdventure({
   }, "\u56DE\u5230\u68EE\u6797")), React.createElement("div", {
     className: "maze-layout"
   }, React.createElement("section", {
-    className: 'maze-landscape maze-scene-' + scene,
+    ref: landscape,
+    className: 'maze-landscape maze-scene-' + scene + (a ? ' maze-has-journey' : ''),
     "aria-label": scene === 'entrance' ? '迷宮入口' : scene === 'exit' ? '迷宮出口' : '迷宮岔路',
     style: {
       backgroundImage: `url('assets/scenes/maze_${scene}/background.webp')`
     }
   }, React.createElement("div", {
     className: "maze-scene-line"
-  }, MAZE_SCENE_COPY[scene]), a && !finished && React.createElement("div", {
+  }, MAZE_SCENE_COPY[scene]), a && React.createElement(React.Fragment, null, React.createElement("div", {
     className: "maze-lanterns",
     "aria-label": `已點亮 ${a.position} 盞，共 ${a.length} 盞`
-  }, React.createElement("b", null, "\u63D0\u71C8 ", React.createElement("span", {
+  }, React.createElement("b", null, React.createElement("span", null, "\u63D0\u71C8"), React.createElement("span", {
     className: "nozy"
   }, a.position, " / ", a.length)), React.createElement("div", {
     "aria-hidden": "true"
@@ -194472,7 +194665,26 @@ function MazeAdventure({
   }, (_, i) => React.createElement("i", {
     key: i,
     className: i < a.position ? 'lit' : ''
-  }, "\u25C6")))), (!a || finished) && React.createElement("img", {
+  }, "\u25C6")))), React.createElement(MazeJourney, {
+    run: a,
+    student: state.student,
+    reduced: reduced,
+    onArrive: onArrive
+  }), React.createElement("div", {
+    className: 'maze-arrival ' + (moving ? 'moving' : ''),
+    role: "status",
+    id: "maze-arrival"
+  }, moving ? a.feedback?.passed ? '路燈亮了，正在前進！' : a.challenge ? '沿著小徑回到入口…' : '退回上一個路口…' : finished ? '走出迷宮，抵達出口！' : feedback ? a.feedback.passed ? `已前進到第 ${a.position} 個路口！` : a.position ? `回到第 ${a.position} 個路口，再試一次。` : '回到入口，再選一條路。' : a.position ? `目前在第 ${a.position} 個路口` : '從入口出發'), React.createElement("div", {
+    className: "maze-mobile-advance"
+  }, feedback && React.createElement(Btn, {
+    id: "maze-scene-next",
+    disabled: moving,
+    onClick: advance
+  }, React.createElement("span", null, moving ? '正在走路…' : '繼續看下一塊路牌')), finished && React.createElement(Btn, {
+    id: "maze-scene-finish",
+    disabled: moving,
+    onClick: () => reveal(panel)
+  }, "\u770B\u63A2\u8DEF\u6210\u679C"))), !a && React.createElement(React.Fragment, null, React.createElement("img", {
     className: "maze-guide",
     src: "assets/chars/maze_guide/tachie_normal.webp",
     alt: "\u82D4\u71C8\uFF1A\u624B\u6301\u63D0\u71C8\u3001\u62AB\u8457\u7DA0\u8272\u6597\u7BF7\u7684\u68EE\u6797\u5F15\u8DEF\u4EBA",
@@ -194480,24 +194692,20 @@ function MazeAdventure({
       e.currentTarget.hidden = true;
     }
   }), React.createElement("svg", {
-    key: a?.used.length || 0,
-    className: 'maze-explorers' + (a ? ' maze-walk' : ''),
+    className: "maze-explorers",
     viewBox: "-170 -270 340 300",
     role: "img",
     "aria-label": `你和${selectedCompanion(state.student).name}一起探路`
   }, React.createElement(ExplorerWithCompanion, {
     student: state.student,
-    direction: "S",
+    direction: "front",
     walking: false,
     selected: true,
     animate: false
-  })), React.createElement("div", {
+  }))), React.createElement("div", {
     className: "maze-place-label"
-  }, !a ? '引路人・苔燈' : finished ? '海風出口' : `${{
-    forest: '林間',
-    stone: '石牆',
-    vines: '藤蔓'
-  }[scene]}路口`)), React.createElement("section", {
+  }, !a ? '引路人・苔燈' : finished && !moving ? '海風出口' : `入口 → ${a.length} 個路口 → 出口`)), React.createElement("section", {
+    ref: panel,
     className: "maze-panel",
     "aria-label": "\u8FF7\u5BAE\u8DEF\u724C"
   }, !a ? React.createElement(React.Fragment, null, React.createElement("h2", null, "\u5E36\u4E00\u76DE\u71C8\uFF0C\u53BB\u63A2\u8DEF"), React.createElement("p", null, "\u82D4\u71C8\uFF1A\u9019\u689D\u5C0F\u5F91\u6703\u8B8A\u63DB\u8DEF\u6A19\u3002\u4F60\u548C\u5925\u4F34\u4E00\u8D77\u770B\u61C2\u8DEF\u724C\uFF0C\u5E6B\u6211\u628A\u56DE\u5BB6\u7684\u71C8\u9EDE\u4EAE\u5427\u3002"), React.createElement("fieldset", null, React.createElement("legend", null, "\u9019\u6B21\u8D70\u591A\u9060\uFF1F"), React.createElement("div", {
@@ -194577,6 +194785,7 @@ function MazeAdventure({
     className: "maze-end-actions"
   }, React.createElement(Btn, {
     id: "maze-again",
+    disabled: moving,
     onClick: () => update(s => mazeLeave(s, a.id))
   }, "\u518D\u63A2\u4E00\u6B21"), React.createElement(Btn, {
     onClick: () => leave(onRecords)
@@ -194623,11 +194832,9 @@ function MazeAdventure({
     role: "status"
   }, React.createElement("h3", null, a.feedback.passed ? '路燈亮了，繼續走吧！' : a.challenge ? '先回入口，再找新路。' : '這條路繞遠了，退一步再試。'), !a.feedback.passed && React.createElement("p", null, "\u8DEF\u724C\u7684\u610F\u601D\uFF1A", a.feedback.answer), React.createElement("p", null, a.feedback.why), !a.feedback.passed && React.createElement("small", null, "\u9019\u500B\u89C0\u5FF5\u5DF2\u8A18\u9032\u932F\u984C\uFF0C\u56DE\u53BB\u5F8C\u53EF\u4EE5\u518D\u7DF4\u7FD2\u3002"), React.createElement(Btn, {
     id: "maze-next",
-    onClick: () => {
-      stopSpeech();
-      update(s => mazeNext(s, a.id, pool));
-    }
-  }, "\u8D70\u5230\u4E0B\u4E00\u500B\u8DEF\u53E3")) : null))));
+    disabled: moving,
+    onClick: advance
+  }, React.createElement("span", null, moving ? '正在走路…' : '繼續看下一塊路牌'))) : null))));
 }
 function StorySourcePicker({
   state,
@@ -197056,7 +197263,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.15-v73",
+    "data-build": "2026.11.15-v73b",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
@@ -197127,7 +197334,18 @@ function App() {
     toast: toast,
     profiles: profiles,
     onSwitchProfile: switchTo
-  }), toastEl, mode === 'student' && s && React.createElement(SpeakButton, {
+  }), (!s || mode === 'parent') && React.createElement("p", {
+    className: "nozy",
+    style: {
+      textAlign: 'center',
+      fontSize: 14,
+      padding: 12
+    }
+  }, React.createElement("a", {
+    href: "https://ms2977.github.io/knowledge-island-playtest/playtest-notice.html",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, "\u8A66\u73A9\u9808\u77E5\u8207\u7D20\u6750\u4F86\u6E90")), toastEl, mode === 'student' && s && React.createElement(SpeakButton, {
     key: 'speech-' + profiles.active,
     allowRead: junior
   })));
