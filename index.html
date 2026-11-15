@@ -532,6 +532,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 .life-header.compact h1{font-size:1.5rem}.life-header.compact .small,.life-header.compact .life-rules{display:none}.life-header.compact p{margin-bottom:0}
 
+.hero-leo-record{margin:12px 0;padding:20px;border:1px solid #c7a66e;border-radius:16px;background:linear-gradient(135deg,#fff8e8,#f1ead8);color:#344c45}.hero-leo-record figcaption{font-size:1.1rem;font-weight:700;margin-bottom:16px}.hero-leo-slip{display:flex;flex-direction:column;align-items:center;gap:9px;border:1px solid #d2c2a3;border-top:5px solid #a77c3a;border-radius:9px;background:#fffef7;padding:18px;text-align:center;min-width:0}.hero-leo-quantity{display:flex;align-items:baseline;justify-content:center;gap:12px}.hero-leo-quantity strong{font-size:3rem;line-height:1.2;color:#21665d}.hero-leo-quantity b{font-size:1.35rem}.hero-leo-transfer{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);gap:10px;align-items:center}.hero-leo-arrow{font-size:2rem;text-align:center;color:#9c6830}.hero-leo-checks{margin-top:14px;padding:8px 16px;background:#e7eee2;border-radius:8px}.hero-leo-checks p{margin:8px 0}.hero-leo-seals{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;padding:14px;background:#e1ece7;border-radius:8px;margin-top:16px}.hero-leo-record .hero-record-note{margin-bottom:0}.hero-page[data-route=leo_canal] .hero-intro{border-left-color:#ac793e}.hero-page[data-route=leo_canal] .hero-map-pin span{max-width:180px}.hero-leo-record .nozy{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:600px){.hero-leo-record{padding:14px}.hero-leo-transfer{grid-template-columns:1fr}.hero-leo-arrow{transform:rotate(90deg);line-height:1}.hero-leo-slip{padding:14px}.hero-leo-seals{flex-direction:column}.hero-leo-record figcaption{line-height:1.8}}
+
 .companion-picker {border:0;padding:0;margin:0;min-width:0;}
 .companion-picker legend {font-weight:700;color:#254658;margin-bottom:4px;}
 .companion-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
@@ -904,7 +907,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261115-life-math-r1">
+<meta name="game-release" content="playtest-20261115-hero-leo-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -144229,6 +144232,29 @@ Object.assign(ZHUYIN_DATA.words, {
   "待繳": ["ㄉㄞˋ", "ㄐㄧㄠˇ"],
   "座鐘": ["ㄗㄨㄛˋ", "ㄓㄨㄥ"]
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  "棚": "ㄆㄥˊ",
+  "藤": "ㄊㄥˊ",
+  "衫": "ㄕㄢ",
+  "靴": "ㄒㄩㄝ"
+});
+Object.assign(ZHUYIN_DATA.words, {
+  "穗安": ["ㄙㄨㄟˋ", "ㄢ"],
+  "秋穗運河": ["ㄑㄧㄡ", "ㄙㄨㄟˋ", "ㄩㄣˋ", "ㄏㄜˊ"],
+  "里歐": ["ㄌㄧˇ", "ㄡ"],
+  "過閘": ["ㄍㄨㄛˋ", "ㄓㄚˊ"],
+  "閘口": ["ㄓㄚˊ", "ㄎㄡˇ"],
+  "吊帶褲": ["ㄉㄧㄠˋ", "ㄉㄞˋ", "ㄎㄨˋ"],
+  "燈芯絨": ["ㄉㄥ", "ㄒㄧㄣ", "ㄖㄨㄥˊ"],
+  "針織衫": ["ㄓㄣ", "ㄓ", "ㄕㄢ"],
+  "葡萄": ["ㄆㄨˊ", "ㄊㄠˊ"],
+  "捲髮": ["ㄐㄩㄢˇ", "ㄈㄚˇ"],
+  "長椅": ["ㄔㄤˊ", "ㄧˇ"],
+  "長袖": ["ㄔㄤˊ", "ㄒㄧㄡˋ"],
+  "重新": ["ㄔㄨㄥˊ", "ㄒㄧㄣ"],
+  "批號": ["ㄆㄧ", "ㄏㄠˋ"],
+  "封條": ["ㄈㄥ", "ㄊㄧㄠˊ"]
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -177863,6 +177889,50 @@ WARDROBE_V1.items.hero_shuang_summer_outfit = {
   "fullSet": true,
   "unlockText": "完成小霜支線《花園裡沒有寄出的信》"
 };
+WARDROBE_V1.players.p_leo.hero_leo_autumn = {
+  "sheet": "assets/wardrobe/v1/sheets/hero_leo_autumn.webp",
+  "sw": 1920,
+  "sh": 960,
+  "frames": [{
+    "body": [0, 0, 320, 480],
+    "hair": [0, 480, 320, 480]
+  }, {
+    "body": [320, 0, 320, 480],
+    "hair": [320, 480, 320, 480]
+  }, {
+    "body": [640, 0, 320, 480],
+    "hair": [640, 480, 320, 480]
+  }, {
+    "body": [960, 0, 320, 480],
+    "hair": [960, 480, 320, 480]
+  }, {
+    "body": [1280, 0, 320, 480],
+    "hair": [1280, 480, 320, 480]
+  }, {
+    "body": [1600, 0, 320, 480],
+    "hair": [1600, 480, 320, 480]
+  }],
+  "hasHead": false,
+  "portrait": {
+    "sheet": "assets/wardrobe/v1/sheets/hero_leo_autumn_portrait.webp",
+    "sw": 1280,
+    "sh": 1080,
+    "canvas": [640, 1080],
+    "body": [0, 0, 640, 1080],
+    "hair": [640, 0, 640, 1080],
+    "face": [205, 15, 240, 200]
+  }
+};
+WARDROBE_V1.items.hero_leo_autumn_outfit = {
+  "id": "hero_leo_autumn_outfit",
+  "scope": "player",
+  "slot": "outfit",
+  "style": "hero_leo_autumn",
+  "name": "秋穗漫步吊帶褲",
+  "ownerAvatar": "p_leo",
+  "fullSet": true,
+  "unlockText": "完成里歐支線《秋日貨船的雙份清單》"
+};
 const PAINT_ROUTE_CONCEPT = {
   ratio: 'm_ratio',
   decimal: 'm_dec_addsub',
@@ -184417,6 +184487,120 @@ const HERO_CHENG_DATA = {
   "missingFeedback": "需要三份依據互相核對：記分紙說明實際比數，試拉觀察說明交叉接線，檢修簿說明換繩及待測試的記錄。"
 };
 const HERO_CHENG_PLACES = HERO_CHENG_DATA.places;
+const HERO_LEO_DATA = {
+  "id": "leo_canal",
+  "hero": "p_leo",
+  "region": "秋穗運河",
+  "title": "秋日貨船的雙份清單",
+  "guide": "穗安",
+  "places": [{
+    "id": "vineyard",
+    "name": "山坡葡萄園",
+    "number": 1,
+    "title": "先看這份清單在數什麼",
+    "before": ["穗安：葡萄園的清單寫 30，貨船的清單寫 24。碼頭的人說，船夫在路上弄丟了六份貨。", "里歐：兩個數字不一樣，一定有人記錯——我本來想這麼說。可是先看清楚：這個 30 的後面，寫的是什麼單位？"],
+    "clue": {
+      "id": "harvest",
+      "name": "葡萄園的採收清單",
+      "text": "「秋-17 批，清晨採收：葡萄 30 籃。」這份清單是葡萄還在園裡的時候寫的，數的是採收用的藤籃。",
+      "type": "document"
+    },
+    "after": "里歐：30 是「籃」。那 24 呢？數字要連單位一起讀。",
+    "point": [22, 28]
+  }, {
+    "id": "packing",
+    "name": "裝箱棚",
+    "number": 2,
+    "title": "中間發生了什麼",
+    "before": ["穗安：葡萄不是直接上船的。藤籃要留在園裡，下一輪採收還要用。", "里歐：所以中間換過容器？先完成整理小任務，再看棚子裡的紀錄。"],
+    "clue": {
+      "id": "repack",
+      "name": "裝箱棚的換裝紀錄",
+      "text": "「秋-17 批，上午：把 30 籃葡萄全數裝成 24 箱，沒有留下或丟棄葡萄。30 個空藤籃留在園裡。木箱逐箱封好，封條為秋17-01 至秋17-24。」裝箱的人和園主核對後都簽了名。",
+      "type": "document"
+    },
+    "after": "里歐：紀錄寫的是同一批葡萄，而且全數裝箱。30 是採收籃的個數，24 是木箱的箱數，不能直接相減。再到閘口核對這批箱子的封條。",
+    "point": [78, 27]
+  }, {
+    "id": "lock",
+    "name": "運河閘口",
+    "number": 3,
+    "title": "到的時候是多少",
+    "before": ["穗安：我在閘口工作。每艘船過閘，我都先自己點一次貨，再比對批號、封條和裝箱紀錄。", "里歐：另一個人、另一個時間再核對一次，更容易發現落差。先完成整理小任務，再看穗安的記錄。"],
+    "clue": {
+      "id": "lockslip",
+      "name": "閘口的過閘單",
+      "text": "「秋-17 批，下午過閘：葡萄木箱 24 箱。逐箱核對秋17-01 至秋17-24，編號全數相符、封條完整。」穗安點收後簽名；這批箱子的數量和換裝紀錄一致。",
+      "type": "document"
+    },
+    "after": "穗安：全數換裝的紀錄，加上同批箱子的過閘核對，才能說明沒有少貨。你可以把證據連起來，替船夫說清楚嗎？",
+    "point": [64, 66]
+  }, {
+    "id": "bench",
+    "name": "運河邊的長椅",
+    "number": 4,
+    "optional": true,
+    "title": "里歐的小小約定",
+    "before": ["里歐：我以前說同學把圖書室的書數錯了，後來才發現是我看錯了欄位。我一直沒有跟他道歉。", "穗安：紀錄是人寫的，也是人讀的，兩邊都會出錯。我們做一張卡片吧。"],
+    "clue": {
+      "id": "promise",
+      "name": "里歐的約定卡",
+      "text": "「數字對不起來的時候先問：我們數的是同一樣東西嗎？是同一個時間嗎？」里歐決定回去向那位同學道歉。",
+      "type": "reflection"
+    },
+    "after": "里歐：紀錄很重要，可是讀紀錄的人也要小心。",
+    "point": [17, 73]
+  }],
+  "conclusions": ["船夫在路上弄丟了六份貨，所以清單上少了 6。", "同一批葡萄全數從 30 籃換裝成 24 箱；過閘時 24 箱的封條編號全數相符、完整，本批沒有少貨。", "葡萄園故意多寫了 6，所以葡萄園的清單是假的。"],
+  "correct": 1,
+  "directEvidence": ["repack", "lockslip"],
+  "ending": ["碼頭的人核對了換裝紀錄與過閘單，向船夫道歉。穗安把批號、時間、數量、單位分成清楚的欄位，方便大家一起核對。", "園主請大家喝今年第一壺葡萄汁。大家發現，籃數和箱數不是同一種數量；兩個數字不同，不能直接說貨少了。", "里歐：我把「籃」和「箱」的對照表釘在裝箱棚門口。穿上新的秋日吊帶褲，我也要記得：先看單位，再核對記錄，別急著責怪別人。"],
+  "records": {
+    "batch": "秋-17",
+    "harvest": {
+      "time": "清晨",
+      "count": 30,
+      "unit": "籃",
+      "recorder": "採收人員"
+    },
+    "repack": {
+      "time": "上午",
+      "count": 24,
+      "unit": "箱",
+      "emptyBaskets": 30,
+      "recorder": "裝箱人員、園主"
+    },
+    "lock": {
+      "time": "下午",
+      "count": 24,
+      "unit": "箱",
+      "sealStart": "秋17-01",
+      "sealEnd": "秋17-24",
+      "recorder": "穗安"
+    }
+  },
+  "outfitId": "hero_leo_autumn_outfit",
+  "outfitName": "秋穗漫步吊帶褲",
+  "outfitLabel": "秋日男生休閒吊帶褲",
+  "artPrefix": "hero_leo",
+  "guideArt": "assets/chars/hero_suian/tachie_normal.webp",
+  "guideAlt": "閘口理貨員穗安",
+  "mapAlt": "秋穗運河：左上山坡葡萄園、右上裝箱棚、右下運河閘口、左下運河邊的長椅",
+  "optionalLabel": "里歐的小故事",
+  "optionalXPTitle": "里歐的約定卡",
+  "souvenir": {
+    "name": "秋穗過閘章",
+    "art": "assets/items/island-supplies-v1/autumn_canal_seal.webp"
+  },
+  "outfitArt": "assets/chars/hero_leo_autumn/tachie_normal.webp",
+  "outfitDescription": "苔綠燈芯絨吊帶褲、奶油色長袖針織衫與棕色短靴，保留里歐的圓眼鏡與捲髮。這是一套含鞋的完整秋日造型。",
+  "introTitle": "先看單位，再說少了什麼。",
+  "introText": "秋穗運河的貨船停在閘口。兩張清單分別寫著 30 和 24，船夫卻說一份貨也沒少。里歐邀你走訪葡萄園、裝箱棚與閘口，把同一批貨物的記錄按時間連起來。",
+  "questionTitle": "兩張清單不同，這批貨真的少了嗎？",
+  "endingTitle": "不同的單位，同一批秋日收成",
+  "wrongFeedback": "先看清單在數籃子還是箱子，再核對同批葡萄是否全數換裝、封條是否相符。不能只用 30 和 24 的差，就責怪船夫或園主。",
+  "missingFeedback": "請同時選「裝箱棚的換裝紀錄」與「閘口的過閘單」：前者記下同批葡萄全數裝箱，後者逐箱核對編號與封條。採收清單或約定卡不能替代其中任何一份。"
+};
 const HERO_SHUANG_DATA = {
   "id": "shuang_garden",
   "hero": "p_shuang",
@@ -185054,8 +185238,8 @@ const HERO_ROUTES = [{
   region: '秋穗運河',
   title: '秋日貨船的雙份清單',
   outfit: '秋日男生休閒吊帶褲',
-  description: '順著運河與葡萄園，核對一份奇怪的運貨記錄。',
-  open: false
+  description: '順著運河與葡萄園，核對同一批貨物的單位與去向。',
+  open: true
 }];
 const HERO_ARI_PLACES = [{
   id: 'posthouse',
@@ -185146,7 +185330,8 @@ const HERO_CASE_DEFS = {
     missingFeedback: '這個說法有兩部分：底稿是否送回？為什麼留白？請各找一份直接支持的記錄。'
   },
   cheng_river: HERO_CHENG_DATA,
-  shuang_garden: HERO_SHUANG_DATA
+  shuang_garden: HERO_SHUANG_DATA,
+  leo_canal: HERO_LEO_DATA
 };
 function heroDefinition(id = 'ari_coast') {
   return HERO_CASE_DEFS[id] || null;
@@ -199319,6 +199504,53 @@ function MazeAdventure({
     onClick: advance
   }, React.createElement("span", null, moving ? '正在走路…' : '繼續看下一塊路牌'))) : null))));
 }
+function HeroLeoRecord({
+  place
+}) {
+  const rec = HERO_LEO_DATA.records;
+  const card = (label, r) => React.createElement("section", {
+    className: "hero-leo-slip"
+  }, React.createElement("span", {
+    className: "eyebrow"
+  }, label), React.createElement("span", null, r.time, "\u30FB", rec.batch, " \u6279"), React.createElement("div", {
+    className: "hero-leo-quantity"
+  }, React.createElement("strong", {
+    className: "nozy"
+  }, r.count), React.createElement("b", null, r.unit)), React.createElement("small", null, "\u8A18\u9304\u4EBA\uFF1A", r.recorder));
+  if (place === 'vineyard') return React.createElement("figure", {
+    className: "hero-leo-record",
+    "aria-label": "\u63A1\u6536\u6E05\u55AE\u7684\u6642\u9593\u3001\u6578\u91CF\u8207\u55AE\u4F4D"
+  }, React.createElement("figcaption", null, "\u5148\u770B\u9019\u500B\u6578\u5B57\u5728\u6578\u4EC0\u9EBC"), card('採收清單', rec.harvest), React.createElement("p", null, "\u9019\u88E1\u6578\u7684\u662F\u63A1\u6536\u7528\u7684\u85E4\u7C43\uFF0C\u9084\u4E0D\u662F\u88DD\u8239\u7684\u6728\u7BB1\u3002"));
+  if (place === 'packing') return React.createElement("figure", {
+    className: "hero-leo-record",
+    "aria-label": "\u540C\u6279\u8461\u8404\u5168\u90E8\u7531\u4E09\u5341\u7C43\u63DB\u88DD\u6210\u4E8C\u5341\u56DB\u7BB1"
+  }, React.createElement("figcaption", null, "\u540C\u4E00\u6279\u8461\u8404\uFF0C\u5168\u6578\u63DB\u88DD"), React.createElement("div", {
+    className: "hero-leo-transfer"
+  }, card('採收時', rec.harvest), React.createElement("span", {
+    className: "hero-leo-arrow",
+    "aria-label": "\u5168\u6578\u88DD\u5165"
+  }, "\u2192"), card('裝箱後', rec.repack)), React.createElement("div", {
+    className: "hero-leo-checks"
+  }, React.createElement("p", null, "\u2713 \u63DB\u88DD\u8A18\u9304\uFF1A\u8461\u8404\u5168\u6578\u88DD\u7BB1\uFF0C\u6C92\u6709\u7559\u4E0B\u6216\u4E1F\u68C4\u3002"), React.createElement("p", null, "\u2713 \u7A7A\u85E4\u7C43 ", React.createElement("span", {
+    className: "nozy"
+  }, rec.repack.emptyBaskets), " \u500B\u7559\u5728\u5712\u88E1\uFF0C\u4E0B\u6B21\u63A1\u6536\u518D\u7528\u3002"), React.createElement("p", null, "\u2713 \u88DD\u7BB1\u4EBA\u54E1\u8207\u5712\u4E3B\u6838\u5C0D\u7C3D\u540D\u3002")), React.createElement("p", {
+    className: "hero-record-note"
+  }, "\u7C43\u8207\u7BB1\u7684\u5927\u5C0F\u3001\u7528\u9014\u4E0D\u540C\u3002\u6578\u91CF\u4E0D\u80FD\u76F4\u63A5\u76F8\u6E1B\uFF0C\u4E5F\u4E0D\u80FD\u628A\u9019\u6B21\u7684\u6578\u5B57\u7576\u6210\u6BCF\u6B21\u63DB\u88DD\u7684\u56FA\u5B9A\u6BD4\u4F8B\u3002"));
+  if (place === 'lock') return React.createElement("figure", {
+    className: "hero-leo-record",
+    "aria-label": "\u4E0A\u5348\u88DD\u7BB1\u8207\u4E0B\u5348\u904E\u9598\u7684\u540C\u6279\u5C01\u689D\u6838\u5C0D"
+  }, React.createElement("figcaption", null, "\u518D\u6838\u5C0D\u53E6\u4E00\u500B\u6642\u9593\u7684\u8A18\u9304"), React.createElement("div", {
+    className: "hero-leo-transfer"
+  }, card('上午換裝紀錄', rec.repack), React.createElement("span", {
+    className: "hero-leo-arrow",
+    "aria-label": "\u9001\u5230\u9598\u53E3"
+  }, "\u2192"), card('下午過閘單', rec.lock)), React.createElement("div", {
+    className: "hero-leo-seals"
+  }, React.createElement("b", null, "\u9010\u7BB1\u6838\u5C0D\u5C01\u689D"), React.createElement("span", {
+    className: "nozy"
+  }, rec.lock.sealStart, " \uFF5E ", rec.lock.sealEnd), React.createElement("span", null, "\u7DE8\u865F\u5168\u6578\u76F8\u7B26\u30FB\u5C01\u689D\u5B8C\u6574")), React.createElement("p", null, "\u5169\u4EFD\u6587\u4EF6\u63A5\u5F97\u8D77\u4F86\uFF1A\u540C\u4E00\u6279\u3001\u540C\u6A23\u7684\u7BB1\u6578\uFF0C\u5C01\u689D\u4E5F\u5168\u6578\u5C0D\u4E0A\u3002"));
+  return null;
+}
 function heroClueLabel(clue) {
   return {
     document: '書面證據',
@@ -199778,6 +200010,8 @@ function HeroAdventure({
     place: x.id
   }), routeId === 'shuang_garden' && React.createElement(HeroShuangRecord, {
     place: x.id
+  }), routeId === 'leo_canal' && React.createElement(HeroLeoRecord, {
+    place: x.id
   }))), complete && reward, React.createElement(Btn, {
     onClick: () => setBook(false)
   }, "\u56DE\u5230\u73FE\u5834")) : place === 'map' ? React.createElement(React.Fragment, null, React.createElement("div", {
@@ -199831,7 +200065,7 @@ function HeroAdventure({
     id: 'hero-evidence-' + x.clue.id,
     "aria-pressed": c.evidence.includes(x.clue.id),
     onClick: () => update(s => heroToggleEvidence(s, x.clue.id, routeId))
-  }, React.createElement("b", null, x.clue.name), routeId === 'shuang_garden' && React.createElement("small", null, heroClueLabel(x.clue)), React.createElement("span", null, x.clue.text)))), c.feedback && React.createElement("p", {
+  }, React.createElement("b", null, x.clue.name), ['shuang_garden', 'leo_canal'].includes(routeId) && React.createElement("small", null, heroClueLabel(x.clue)), React.createElement("span", null, x.clue.text)))), c.feedback && React.createElement("p", {
     role: "status",
     className: "notice"
   }, c.feedback), React.createElement(Btn, {
@@ -199873,6 +200107,8 @@ function HeroAdventure({
   }, React.createElement("h3", null, p.clue.name), React.createElement("p", null, p.clue.text), routeId === 'cheng_river' && React.createElement(HeroChengRecord, {
     place: p.id
   }), routeId === 'shuang_garden' && React.createElement(HeroShuangRecord, {
+    place: p.id
+  }), routeId === 'leo_canal' && React.createElement(HeroLeoRecord, {
     place: p.id
   })), React.createElement("p", null, p.after), p.optional && React.createElement("small", null, "\u5361\u7247\u5DF2\u6536\u85CF\uFF0C15 \u7D93\u9A57\u503C\u5DF2\u9818\u53D6\uFF08\u53EA\u9818\u4E00\u6B21\uFF09\u3002"), React.createElement(Btn, {
     id: "hero-next-place",
@@ -202054,7 +202290,7 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''}`,
-    "data-build": "2026.11.15-v74b",
+    "data-build": "2026.11.15-v75",
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
