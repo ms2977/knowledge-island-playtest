@@ -535,6 +535,10 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero-leo-record{margin:12px 0;padding:20px;border:1px solid #c7a66e;border-radius:16px;background:linear-gradient(135deg,#fff8e8,#f1ead8);color:#344c45}.hero-leo-record figcaption{font-size:1.1rem;font-weight:700;margin-bottom:16px}.hero-leo-slip{display:flex;flex-direction:column;align-items:center;gap:9px;border:1px solid #d2c2a3;border-top:5px solid #a77c3a;border-radius:9px;background:#fffef7;padding:18px;text-align:center;min-width:0}.hero-leo-quantity{display:flex;align-items:baseline;justify-content:center;gap:12px}.hero-leo-quantity strong{font-size:3rem;line-height:1.2;color:#21665d}.hero-leo-quantity b{font-size:1.35rem}.hero-leo-transfer{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);gap:10px;align-items:center}.hero-leo-arrow{font-size:2rem;text-align:center;color:#9c6830}.hero-leo-checks{margin-top:14px;padding:8px 16px;background:#e7eee2;border-radius:8px}.hero-leo-checks p{margin:8px 0}.hero-leo-seals{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;padding:14px;background:#e1ece7;border-radius:8px;margin-top:16px}.hero-leo-record .hero-record-note{margin-bottom:0}.hero-page[data-route=leo_canal] .hero-intro{border-left-color:#ac793e}.hero-page[data-route=leo_canal] .hero-map-pin span{max-width:180px}.hero-leo-record .nozy{font-variant-numeric:tabular-nums;white-space:nowrap}
 @media(max-width:600px){.hero-leo-record{padding:14px}.hero-leo-transfer{grid-template-columns:1fr}.hero-leo-arrow{transform:rotate(90deg);line-height:1}.hero-leo-slip{padding:14px}.hero-leo-seals{flex-direction:column}.hero-leo-record figcaption{line-height:1.8}}
 
+.weekly-page{max-width:1050px;margin:auto;gap:20px}.weekly-page>*{min-width:0}.weekly-entry{display:flex;align-items:center;gap:24px}.weekly-icon{width:100px;min-width:76px;flex-shrink:0}.weekly-scene{height:320px;position:relative;isolation:isolate;overflow:hidden;border-radius:20px;background:#25575b}.weekly-background{width:100%;height:100%;object-fit:cover;opacity:.8}.weekly-client{position:absolute;bottom:0;right:8%;height:92%;width:33%;object-fit:contain;object-position:bottom}.weekly-caption{position:absolute;bottom:0;left:0;right:0;padding:22px;color:#fff;background:linear-gradient(transparent,#15363bef)}.weekly-caption h1{margin:10px 0 0;font-size:1.65rem;max-width:70%}.weekly-copy p{margin:.3em 0;line-height:2}.weekly-statements{display:grid;gap:16px;padding-left:2em;line-height:2}.weekly-records{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.weekly-paper{padding:25px;border:1px solid #cabd9c;border-top:7px solid #ae8748;border-radius:8px;background:repeating-linear-gradient(transparent 0px,transparent 35px,#c8af7c12 36px),#fff9e9;box-shadow:0 5px 13px #1d374a0c;min-width:0}.weekly-sealed{background:#f1f3ee}.weekly-choices{min-width:0;border:1px solid #c8d7d7;border-radius:12px;padding:18px;display:grid;gap:12px}.weekly-choices legend{font-weight:bold;padding:0 6px}.weekly-choices button{white-space:normal;text-align:left;line-height:1.9;padding:16px;border:2px solid #c8d7d7;border-radius:12px;background:#fff;color:#203e50}.weekly-choices button.selected{border-color:#1e747a;background:#e3f2f0}.weekly-ending blockquote{margin:5px 0;padding:18px;border-left:5px solid #bc8d42;background:#fff8e8;line-height:2}.weekly-page .row{flex-wrap:wrap}.weekly-page button{max-width:100%;overflow-wrap:anywhere}.weekly-task{max-width:980px}.weekly-page .weekly-task{font-size:1rem}.weekly-page ruby{white-space:nowrap}.weekly-page .weekly-paper h2{line-height:1.9}.weekly-page .weekly-caption ruby rt{color:#fff}.weekly-page .hero-art-fallback{display:inline-flex;padding:15px;background:#f6eedc;color:#214b52;align-items:center;justify-content:center}.weekly-scene .hero-art-fallback.weekly-background{position:absolute;inset:0}.grade1 .weekly-copy{max-width:24em}.grade1 .weekly-copy p{margin-bottom:.7em}@media(max-width:640px){.weekly-page{gap:14px;padding:12px}.weekly-entry{gap:12px;padding:18px}.weekly-icon{width:76px}.weekly-records{grid-template-columns:1fr;gap:14px}.weekly-paper{padding:20px}.weekly-scene{height:270px}.weekly-client{right:3%;width:48%;height:88%}.weekly-caption{padding:18px}.weekly-caption h1{font-size:1.4rem;max-width:90%}.weekly-choices{padding:12px}.weekly-choices button{padding:13px}.weekly-page>.card{padding:18px}.weekly-entry h1{font-size:1.55rem}}
+
+.grade1 .weekly-choices button{min-height:64px}.grade1 .weekly-copy{max-width:18em}.grade1 .weekly-page .btn{min-height:56px}
+
 .companion-picker {border:0;padding:0;margin:0;min-width:0;}
 .companion-picker legend {font-weight:700;color:#254658;margin-bottom:4px;}
 .companion-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
@@ -934,7 +938,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261116-family-v79-r1">
+<meta name="game-release" content="playtest-20261116-weekly-v80-r2">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -189063,6 +189067,15 @@ Object.assign(ZHUYIN_DATA.words, {
   "批號": ["ㄆㄧ", "ㄏㄠˋ"],
   "封條": ["ㄈㄥ", "ㄊㄧㄠˊ"]
 });
+Object.assign(ZHUYIN_DATA.chars, {
+  "巡": "ㄒㄩㄣˊ",
+  "籠": "ㄌㄨㄥˊ"
+});
+Object.assign(ZHUYIN_DATA.words, {
+  "燈籠": ["ㄉㄥ", "ㄌㄨㄥˊ"],
+  "一行": ["ㄧ", "ㄏㄤˊ"],
+  "點數": ["ㄉㄧㄢˇ", "ㄕㄨˇ"]
+});
 const STORE_KEY = 'kei_v1';
 const DAY = 24 * 60 * 60 * 1000;
 const REVIEW_INTERVALS = [1, 3, 7, 14];
@@ -189756,6 +189769,7 @@ function validateBackupState(input) {
     opt(st, 'maze', (v, p) => validateMaze(v, bad, p));
     opt(st, 'lifeMath', (v, p) => validateLifeMath(v, bad, p));
     opt(st, 'heroCases', (v, p) => validateHeroCases(v, bad, p, stage));
+    opt(st, 'weeklyCases', (v, p) => validateWeeklyCases(v, bad, p, stage));
     opt(st, 'gifts', (v, p) => validateGifts(v, bad, p));
     opt(st, 'adventureUI', (v, p) => {
       obj(v, p);
@@ -190266,7 +190280,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.16-v79';
+const GAME_BUILD = '2026.11.16-v80';
 const PLAYTEST_LINE_KEY = 'kei_line_notice_dismissed_v1';
 const PLAYTEST_REPORT_SCOPES = new Map();
 function playtestBrowser(ua = '') {
@@ -190328,6 +190342,7 @@ function playtestProgressKey(s) {
         evidence: a.story.evidence,
         solved: a.story.solved
       } : null,
+      weeklyCases: a.weeklyCases,
       heroCases: a.heroCases,
       maze: a.maze,
       lifeMath: a.lifeMath,
@@ -208228,7 +208243,7 @@ function memorialStamps(state) {
     focus: '主線破案',
     kind: 'chapter'
   }));
-  return [...missions, ...cases, ...chapters].sort((a, b) => b.t - a.t);
+  return [...missions, ...cases, ...chapters, ...(typeof weeklyStamps === 'function' ? weeklyStamps(state) : [])].sort((a, b) => b.t - a.t);
 }
 function memorialRows(state) {
   const rows = [],
@@ -208276,10 +208291,10 @@ function memorialRows(state) {
     id: 'help',
     label: '幫忙居民',
     icon: '♡',
-    count: Object.keys(state.student.keepsakes?.stamps || {}).length,
+    count: Object.keys(state.student.keepsakes?.stamps || {}).length + (typeof weeklyStamps === 'function' ? weeklyStamps(state).length : 0),
     thresholds: [1, 5, 12, 25],
     unit: '件委託',
-    detail: '完成委託的三個階段。'
+    detail: '完成委託三階段，或查清一件本週小案。'
   }, {
     id: 'arrests',
     label: '追捕',
@@ -216848,6 +216863,7 @@ function stepTaskRows(state) {
   for (const [id, c] of Object.entries(w?.chests || {})) (c.locks || []).forEach((t, j) => add(t, ['student', 'wallet', 'chests', id, 'locks', j]));
   for (const k of ['storyTasks', 'reviewTasks']) for (const [id, t] of Object.entries(state?.learning?.[k] || {})) add(t, ['learning', k, id]);
   for (const [caseId, c] of Object.entries(state?.student?.heroCases?.cases || {})) for (const [place, t] of Object.entries(c.tasks || {})) if (!t.result) add(t, ['student', 'heroCases', 'cases', caseId, 'tasks', place]);
+  for (const [caseId, c] of Object.entries(state?.student?.weeklyCases?.cases || {})) for (const [slot, t] of Object.entries(c.tasks || {})) if (!t.result) add(t, ['student', 'weeklyCases', 'cases', caseId, 'tasks', slot]);
   return rows;
 }
 function findStepTask(state, params) {
@@ -230151,7 +230167,7 @@ function sourceProgressFields(t) {
   } : {};
 }
 function sourceProgressEvidence(e) {
-  if (e.source !== 'hero' && !(e.source === 'chapter' && ['mixed', 'subject'].includes(e.storySource))) return true;
+  if (e.source !== 'hero' && e.source !== 'weekly' && !(e.source === 'chapter' && ['mixed', 'subject'].includes(e.storySource))) return true;
   return e.progressionVersion === 77 && e.progressionQualified && e.sourceStageKey === 's3';
 }
 function finishSourceReview(state, t, res) {
@@ -230166,7 +230182,7 @@ function finishSourceReview(state, t, res) {
     attempts: res.attempts || 1,
     detail: res.detail,
     presentationId: t.presentationId,
-    sourceEntrance: 'story-or-hero'
+    sourceEntrance: t.presentationId?.startsWith('weekly:') ? 'weekly' : 'story-or-hero'
   };
   return upsertMission(state, scheduleNextReview({
     ...m,
@@ -235807,6 +235823,491 @@ function validateLifeMath(l, bad, p) {
   });
   if (l.hidden.some(id => !earned[id]) || new Set(l.hidden).size !== l.hidden.length) bad(p + '.hidden');
 }
+const WEEKLY_CASES = [{
+  "id": "wk01",
+  "title": "慢了五分鐘的站鐘",
+  "client": "tiesu",
+  "scene": "station",
+  "brief": ["最近有旅客說，站裡的鐘慢了五分鐘，害他們差點趕不上車。", "鐘是我每天對的，我想不通。你幫我查查看，問題到底在哪裡。"],
+  "statements": ["站裡的鐘壞了，慢了五分鐘。", "鐘是準的，是這班車的時間改了。", "旅客自己的手錶都快了。"],
+  "record1": {
+    "name": "站鐘的對時紀錄",
+    "text": "七天的對時本：每天發車時，站鐘都和鐘塔報時相同。昨天與今天五點十五分再核對，也都是零分誤差。",
+    "rulesOut": 0,
+    "why": "發車時兩邊報時相同，紀錄不支持站鐘慢了五分鐘。"
+  },
+  "record2": {
+    "name": "新的時刻表",
+    "text": "「本週一起，傍晚這班車由五點二十分改為五點十五分。」公告貼在售票口旁邊，字很小。",
+    "supports": 1,
+    "why": "車提早了五分鐘，照舊時間來的旅客就覺得鐘慢了。"
+  },
+  "leftover": "手錶快了的說法，沒有任何紀錄可以支持，先不採用。",
+  "ending": ["鐘沒有錯，是我公告貼得太小。我把新時刻表放大，貼到鐘的正下方。", "謝謝你。下次有人說「鐘慢了」，我會先問他看的是哪一張表。"],
+  "habit": "先問：我們看的是同一張表嗎？",
+  "humanReviewed": false,
+  "juniorStatements": ["站鐘慢了五分鐘。", "這班車提早了。", "旅客手錶都快了。"],
+  "juniorWhy": ["站鐘和報時一樣。", "車提早五分鐘了。"]
+}, {
+  "id": "wk02",
+  "title": "賣不完的報紙",
+  "client": "mei",
+  "scene": "market",
+  "brief": ["報攤每天訂四十份報紙，平常差不多賣完。今天下雨，卻剩了十二份。", "老闆懷疑剩下的報紙裡混了舊報紙。我想先查清楚再說。"],
+  "statements": ["剩下的報紙裡混了昨天的舊報紙。", "今天送來的報紙比平常多。", "今天下雨，出門買報的人變少了。"],
+  "record1": {
+    "name": "剩下報紙的日期",
+    "text": "剩下的十二份，報頭上印的都是今天的日期，沒有一份是舊的。",
+    "rulesOut": 0,
+    "why": "全部都是今天的報紙，沒有舊報紙混進來。"
+  },
+  "record2": {
+    "name": "報攤的銷售本子",
+    "text": "最近三個下雨天，各剩十份、十三份、十一份；晴天平均只剩兩份。每天送來的都是四十份。",
+    "supports": 2,
+    "why": "下雨天都會剩十份上下，今天也下雨，剩十二份和以前差不多。"
+  },
+  "leftover": "本子上每天都是四十份，今天沒有多送。",
+  "ending": ["紀錄支持下雨時買報的人較少。我想再觀察幾天，寫一篇下雨天訂報的小報導。", "沒查清楚就寫「有人混進舊報紙」，那就變成我在亂猜了。謝謝你。"],
+  "habit": "和以前的紀錄比一比，再說有沒有不對。",
+  "humanReviewed": false,
+  "juniorStatements": ["剩下的混著舊報紙。", "今天送來的報紙變多。", "下雨天買報的人變少。"],
+  "juniorWhy": ["剩下的都是今天的。", "下雨時常剩下較多。"]
+}, {
+  "id": "wk03",
+  "title": "差了三度的溫度計",
+  "client": "apprentice",
+  "scene": "lab",
+  "brief": ["觀測台有兩支溫度計，這幾天中午的讀數都差了三度。", "我怕其中一支壞了，可是又不確定。可以陪我查一次嗎？"],
+  "statements": ["其中一支溫度計壞了。", "兩支放的位置不一樣，一支曬得到太陽。", "阿嵐抄日誌的時候抄錯了。"],
+  "record1": {
+    "name": "三天的觀測日誌",
+    "text": "連續三天，中午差三度，清晨相同。阿嵐和星婆婆各自讀取、寫下讀數，再逐筆核對日誌，數字全都相同。",
+    "rulesOut": 2,
+    "why": "兩人分開讀取的數字與日誌逐筆相同，這幾筆沒有抄錯。"
+  },
+  "record2": {
+    "name": "換位置的小實驗",
+    "text": "同放陰影十分鐘，兩支讀數相同。一支移到曬到太陽的窗邊，十分鐘後高三度。交換兩支的位置再等十分鐘，仍是窗邊那支高三度。",
+    "supports": 1,
+    "why": "交換位置後，較高的讀數跟著窗邊位置走，支持日曬位置造成差異。"
+  },
+  "leftover": "這次測試沒有找到溫度計故障的證據，先不採用壞掉的說法。",
+  "ending": ["原來不是溫度計的問題，是我把一支掛在窗邊。我在日誌上加一欄「放在哪裡」。", "婆婆說過，一次只改變一個條件。今天我自己試出來了。"],
+  "habit": "一次只改變一個條件。",
+  "humanReviewed": false,
+  "juniorStatements": ["一支溫度計壞了。", "一支曬得到太陽。", "阿嵐抄錯了數字。"],
+  "juniorWhy": ["兩人的紀錄都一樣。", "曬太陽的那支較高。"]
+}, {
+  "id": "wk04",
+  "title": "多出來的六十個人",
+  "client": "curator",
+  "scene": "museum",
+  "brief": ["這個月的訪客簽名簿上有一百八十個名字，門口的計數器卻顯示兩百四十。", "我以為計數器壞了，正想請人來修。你覺得呢？"],
+  "statements": ["計數器現在一直亂加數字。", "有些人進來了但沒有簽名。", "有些人簽了兩次名。"],
+  "record1": {
+    "name": "計數器的測試",
+    "text": "余館員開館前、閉館後各測兩次：每次走進、走出各十次，計數器都剛好增加十。工作人員當天也逐人點數，與計數器相同。",
+    "rulesOut": 0,
+    "why": "這些測試與點數都相符，不支持計數器亂跳的說法。"
+  },
+  "record2": {
+    "name": "團體預約單",
+    "text": "這個月有三個班級來參觀，連老師共六十三人；簽名簿上每一班只有老師簽了一個名字。",
+    "supports": 1,
+    "why": "六十三個人只簽了三個名字，少了六十個；一百八十加六十，正好是兩百四十。"
+  },
+  "leftover": "重複簽名會增加名字，不能解釋這裡少掉的六十個名字；目前也沒有重複簽名的紀錄。",
+  "ending": ["紀錄支持團體漏簽的說法。以後團體來，我請老師寫上「共幾人」。", "差一點就把好好的機器送修了。謝謝你先查再說。"],
+  "habit": "兩個數字不一樣，先看它們各自在數什麼。",
+  "humanReviewed": false,
+  "juniorStatements": ["計數器數錯了。", "有人進館卻沒簽名。", "有人簽了兩次。"],
+  "juniorWhy": ["測試時數量都對。", "班上只有老師簽名。"]
+}, {
+  "id": "wk05",
+  "title": "看錯一行的潮汐表",
+  "client": "captain",
+  "scene": "harbor",
+  "brief": ["船夫今天準備出港，先在岸上查看水位，發現與自己抄的時間對不上，便留在港內等候。", "他以為潮汐表印錯了。這張表全港口都在用，我們一起核對。"],
+  "statements": ["潮汐表印錯了。", "船夫看到別天的那一行去了。", "港口外的沙洲位置變了。"],
+  "record1": {
+    "name": "觀測台的潮汐紀錄",
+    "text": "今天是星期三。核對原稿、印好的潮汐表與今天的實際觀測，滿潮時間都是上午九點，沒有印錯。",
+    "rulesOut": 0,
+    "why": "今天這一行的時間，和原稿及觀測紀錄相同，沒有印錯。"
+  },
+  "record2": {
+    "name": "船夫的出港紀錄",
+    "text": "船夫寫的「滿潮：上午八點十分」是表上星期二那一行。今天是星期三，滿潮是上午九點。",
+    "supports": 1,
+    "why": "抄下的時間屬於星期二，今天卻是星期三，支持看錯日期。滿潮時間不能單獨判定出港安全。"
+  },
+  "leftover": "沙洲有沒有移動，目前沒有紀錄；等下次測量再說。",
+  "ending": ["表沒有錯，是看錯了一行。我在公告欄的潮汐表上加一個會移動的夾子，夾在今天那一行。", "船夫會先核對日期，再請港務人員確認水位與出港條件。"],
+  "habit": "表沒有錯，也要看對那一行。",
+  "humanReviewed": false,
+  "juniorStatements": ["潮汐表印錯了。", "船夫看錯日期了。", "沙洲的位置變了。"],
+  "juniorWhy": ["表格和觀測都相同。", "他抄到昨天那一行。"]
+}, {
+  "id": "wk06",
+  "title": "已歸還卻找不到的書",
+  "client": "yan",
+  "scene": "academy",
+  "brief": ["……借書單上寫《島嶼植物圖鑑》已經歸還，可是書架上沒有。", "館長問起來，我答不出來。我不想隨便說是誰沒還。"],
+  "statements": ["借書的人沒有還，卻寫了已歸還。", "書還了，可是被放到別的書架。", "書被送去修補了。"],
+  "record1": {
+    "name": "修補登記簿",
+    "text": "館內和修書室一起核對所有待修、在修的書，共四本，沒有《島嶼植物圖鑑》。",
+    "rulesOut": 2,
+    "why": "所有待修和在修的書都核對了，裡面沒有這一本。"
+  },
+  "record2": {
+    "name": "書架巡查單",
+    "text": "在「地圖」區找到了這本書。它的書背編號是「植-12」，被放在「地-12」的位置。",
+    "supports": 1,
+    "why": "書就在館裡，只是放錯了區——兩個編號只差一個字。"
+  },
+  "leftover": "書已在館內找到，且歸還單有收書紀錄；沒有證據說借書的人沒還。",
+  "ending": ["……找到了。我想在書背貼上顏色不同的標籤，植物是綠色，地圖是藍色。", "還好沒有先去問借書的人「你為什麼沒還」。"],
+  "habit": "先找東西，再問人。",
+  "humanReviewed": false,
+  "juniorStatements": ["書沒有還。", "書放到別區了。", "書送去修補了。"],
+  "juniorWhy": ["送修名單沒有這本。", "書在別的區找到了。"]
+}, {
+  "id": "wk07",
+  "title": "少了五個的燈籠",
+  "client": "ling",
+  "scene": "tower_hall",
+  "brief": ["鐘塔節訂了五十個燈籠，我照著繩子一個一個掛，最後卻空了五個位置！", "是不是有人拿走了？還是一開始就送少了？"],
+  "statements": ["有五個燈籠不見了。", "送來的時候本來就只有四十五個。", "有五個已經掛在別的地方了。"],
+  "record1": {
+    "name": "燈籠的送貨單",
+    "text": "「燈籠五箱，每箱十個。」簽收的人是阿齒，五箱都點過。",
+    "rulesOut": 1,
+    "why": "五箱、每箱十個，送來的是五十個，沒有少。"
+  },
+  "record2": {
+    "name": "阿齒的佈置圖",
+    "text": "佈置圖在工坊門口畫了五個燈籠，旁邊寫著「昨晚先掛好」。到工坊核對，五個燈籠都在，與圖一致。",
+    "supports": 2,
+    "why": "哥哥昨晚先掛了五個在工坊門口，所以繩子上少了五個。"
+  },
+  "leftover": "四十五個加上工坊的五個，五十個都在；目前沒有燈籠失蹤的證據。",
+  "ending": ["原來是哥哥先掛了！我去數過了，工坊門口剛好五個。", "下次我們兩個先一起看佈置圖，再開始掛。"],
+  "habit": "東西變少了，先看它有沒有在別的地方。",
+  "humanReviewed": false,
+  "juniorStatements": ["有五個燈籠不見了。", "只送來四十五個。", "五個掛在別的地方。"],
+  "juniorWhy": ["送來的都點過了。", "工坊門口找到了五個。"]
+}, {
+  "id": "wk08",
+  "title": "重了二十克的秤",
+  "client": "chiu",
+  "scene": "market",
+  "brief": ["有客人說，同一袋豆子在我這裡秤是五百二十克，到隔壁秤卻只有五百克。", "我做生意幾十年，可沒有多算過誰的錢。你來查，我也想知道。"],
+  "statements": ["邱老闆的秤被動過手腳。", "邱老闆的秤沒有歸零。", "隔壁的秤少算了。"],
+  "record1": {
+    "name": "標準砝碼的測試",
+    "text": "拿一個五百克的標準砝碼：隔壁的秤顯示五百克，邱老闆的秤顯示五百二十克。",
+    "rulesOut": 2,
+    "why": "隔壁的秤量標準砝碼剛好五百克，是準的。"
+  },
+  "record2": {
+    "name": "重新歸零的結果",
+    "text": "不動紙袋，拿走砝碼，秤顯示二十克。紙袋留在原處按歸零，再放上五百克砝碼，正好顯示五百克。只改變歸零這一步。",
+    "supports": 1,
+    "why": "紙袋留在秤上歸零後，同一砝碼讀數恢復五百克，支持原先沒有扣掉紙袋重量。"
+  },
+  "leftover": "這次測試支持未歸零，沒有證據說有人故意動手腳，先不採用這個猜測。",
+  "ending": ["原來是那個紙袋！我把多收的錢退給客人。從今天起，開店第一件事就是歸零。", "嗯，查得清楚。下次有人說我的秤不準，我就請他一起看歸零。"],
+  "habit": "量之前，先歸零。",
+  "humanReviewed": false,
+  "juniorStatements": ["有人故意改動秤。", "秤沒有先歸零。", "隔壁的秤少算了。"],
+  "juniorWhy": ["隔壁的測試讀數對。", "歸零之後讀數就對。"]
+}];
+function weeklyWeek(t = now()) {
+  const d = new Date(t),
+    day = (d.getDay() + 6) % 7;
+  return Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000 - day) / 7);
+}
+function weeklyData(s) {
+  return s.student?.weeklyCases || {
+    version: 1,
+    cases: {},
+    lastWeek: null
+  };
+}
+function weeklyDefinition(id) {
+  return WEEKLY_CASES.find(c => c.id === id);
+}
+function weeklyCase(s, id) {
+  return weeklyData(s).cases[id];
+}
+function weeklyPut(s, id, c) {
+  return {
+    ...s,
+    student: {
+      ...s.student,
+      weeklyCases: {
+        ...weeklyData(s),
+        cases: {
+          ...weeklyData(s).cases,
+          [id]: c
+        }
+      }
+    }
+  };
+}
+function weeklyKnown(s, d) {
+  const st = s.student?.story;
+  return !!st && (st.met?.includes(d.client) || st.flags?.['met_' + d.client]);
+}
+function weeklyStatus(s, t = now()) {
+  const data = weeklyData(s),
+    active = Object.keys(data.cases).find(id => !data.cases[id].solvedAt),
+    done = Object.values(data.cases).filter(c => c.solvedAt).length;
+  if (!heroUnlocked(s)) return {
+    kind: 'locked',
+    done
+  };
+  if (active) return {
+    kind: 'active',
+    id: active,
+    done
+  };
+  if (done === WEEKLY_CASES.length) return {
+    kind: 'complete',
+    done
+  };
+  if (data.lastWeek !== null && weeklyWeek(t) <= data.lastWeek) return {
+    kind: 'wait',
+    done
+  };
+  const next = WEEKLY_CASES.find(d => !data.cases[d.id] && weeklyKnown(s, d));
+  return next ? {
+    kind: 'ready',
+    id: next.id,
+    done
+  } : {
+    kind: 'meet',
+    done
+  };
+}
+function weeklyOpen(s, t = now(), seed = Math.floor(Math.random() * 1e9)) {
+  const status = weeklyStatus(s, t);
+  if (status.kind !== 'ready') return s;
+  s = weeklyPut(s, status.id, {
+    openedAt: t,
+    week: weeklyWeek(t),
+    order: shuffle(makeRng(seed), [0, 1, 2]),
+    tasks: {},
+    choices: [null, null],
+    feedback: null,
+    solvedAt: 0
+  });
+  return {
+    ...s,
+    student: {
+      ...s.student,
+      weeklyCases: {
+        ...weeklyData(s),
+        lastWeek: weeklyWeek(t)
+      }
+    }
+  };
+}
+function weeklyTaskValid(s, t) {
+  return !!t && !t.blocked && t.policy === learningSignature(s) && learningAllows(s, t.kpId);
+}
+function weeklyBegin(s, id, slot, seed = Math.floor(Math.random() * 1e9)) {
+  const c = weeklyCase(s, id);
+  if (!c || c.solvedAt || ![0, 1].includes(slot) || slot === 1 && !c.tasks[0]?.result?.passed) return s;
+  const old = c.tasks[slot];
+  if (old?.result?.passed || old && !old.result && weeklyTaskValid(s, old)) return s;
+  const kps = practiceKpsFor(s).filter(k => missionSupported(k)),
+    recent = storySourceRecent(s),
+    rng = makeRng(seed);
+  const pool = sourceProgressPool(storySourceCandidates(s, kps, seed)).map(t => ({
+      t,
+      r: recent.filter(e => e.kpId === t.kpId).length * 3 + rng()
+    })).sort((a, b) => a.r - b.r),
+    chosen = pool[0]?.t;
+  const t = chosen ? {
+    ...chosen,
+    allowHints: true,
+    policy: learningSignature(s),
+    presentationId: 'weekly:' + id + ':' + slot + ':' + uid(),
+    difficulty: getSettings(s).difficulty,
+    result: null,
+    resumed: false,
+    opened: 0
+  } : {
+    blocked: true,
+    kind: 'bankempty',
+    params: {},
+    policy: learningSignature(s),
+    result: null
+  };
+  s = weeklyPut(s, id, {
+    ...c,
+    tasks: {
+      ...c.tasks,
+      [slot]: t
+    }
+  });
+  return chosen ? rememberLearningStage(s, t.kpId, t, 'weekly', t.presentationId) : s;
+}
+function weeklyEnter(s, id, slot, pid) {
+  const c = weeklyCase(s, id),
+    t = c?.tasks[slot];
+  return t && t.presentationId === pid && !t.result ? weeklyPut(s, id, {
+    ...c,
+    tasks: {
+      ...c.tasks,
+      [slot]: {
+        ...t,
+        opened: (t.opened || 0) + 1,
+        resumed: t.resumed || !!t.opened
+      }
+    }
+  }) : s;
+}
+function weeklyPause(s, id, slot, pid) {
+  const c = weeklyCase(s, id),
+    t = c?.tasks[slot];
+  return t && t.presentationId === pid && !t.result ? weeklyPut(s, id, {
+    ...c,
+    tasks: {
+      ...c.tasks,
+      [slot]: {
+        ...t,
+        resumed: true
+      }
+    }
+  }) : s;
+}
+function weeklyFinish(s, id, slot, pid, res) {
+  const c = weeklyCase(s, id),
+    t = c?.tasks[slot];
+  if (!t || c.solvedAt || t.result || t.presentationId !== pid || !weeklyTaskValid(s, t) || slot === 1 && !c.tasks[0]?.result?.passed) return s;
+  const result = {
+    passed: !!res.passed,
+    attempts: Math.max(1, res.attempts || 1),
+    hints: Math.max(0, res.hints || 0),
+    detail: {
+      ...res.detail,
+      ...(t.resumed ? {
+        resumed: true,
+        firstAttemptCorrect: null,
+        ...(res.detail?.english ? {
+          english: {
+            ...res.detail.english,
+            independent: false
+          }
+        } : {})
+      } : {})
+    }
+  };
+  const review = s.missions.find(m => m.id === t.sourceReviewMissionId),
+    settles = !!(result.passed && review?.status === 'passed' && review.nextReviewAt === t.sourceReviewDueAt);
+  s = finishSourceReview(logPractice(s, {
+    ...learningLogFields(s, t.kpId, t),
+    ...sourceProgressFields(t),
+    source: 'weekly',
+    title: weeklyDefinition(id).title,
+    eventId: id,
+    weeklyCaseId: id,
+    weeklySlot: slot,
+    presentationId: pid,
+    kpId: t.kpId,
+    kind: t.kind,
+    ...result
+  }), t, result);
+  return weeklyPut(s, id, {
+    ...c,
+    tasks: {
+      ...c.tasks,
+      [slot]: {
+        ...t,
+        result,
+        finishedAt: now(),
+        reviewSettled: settles
+      }
+    }
+  });
+}
+function weeklyChoose(s, id, step, value) {
+  const c = weeklyCase(s, id);
+  if (!c || c.solvedAt || ![0, 1].includes(step) || ![0, 1, 2].includes(value)) return s;
+  const choices = c.choices.slice();
+  choices[step] = value;
+  return weeklyPut(s, id, {
+    ...c,
+    choices,
+    feedback: null
+  });
+}
+function weeklyDeduce(s, id) {
+  const c = weeklyCase(s, id),
+    d = weeklyDefinition(id);
+  if (!c || !d || c.solvedAt || ![0, 1].every(n => c.tasks[n]?.result?.passed) || c.choices.includes(null)) return s;
+  const a = c.choices[0] === d.record1.rulesOut,
+    b = c.choices[1] === d.record2.supports;
+  if (!a || !b) return weeklyPut(s, id, {
+    ...c,
+    feedback: !a ? '再看第一份紀錄。' + d.record1.why : '第一步選好了。再看第二份紀錄。' + d.record2.why
+  });
+  return settleKeepsakes(addXP(weeklyPut(s, id, {
+    ...c,
+    solvedAt: now(),
+    feedback: null
+  }), 30, d.title));
+}
+function weeklyStamps(s) {
+  return Object.entries(weeklyData(s).cases).filter(([id, c]) => c.solvedAt && weeklyDefinition(id)).map(([id, c]) => {
+    const d = weeklyDefinition(id);
+    return {
+      id: 'w:' + id,
+      t: c.solvedAt,
+      n: 0,
+      title: d.title,
+      client: NPCS[d.client]?.name || '島上的居民',
+      focus: '本週小案',
+      kind: 'weekly',
+      habit: d.habit
+    };
+  });
+}
+function weeklySummary(s, t = now()) {
+  const cases = Object.values(weeklyData(s).cases),
+    tasks = cases.flatMap(c => Object.values(c.tasks)).filter(x => x.result?.passed && x.finishedAt >= t - 7 * 86400000 && x.finishedAt <= t);
+  return {
+    opened: cases.length,
+    done: cases.filter(c => c.solvedAt).length,
+    tasks: tasks.length,
+    reviews: tasks.filter(x => x.reviewSettled).length
+  };
+}
+function validateWeeklyCases(v, bad, p, stage) {
+  const obj = backupObject,
+    time = n => Number.isSafeInteger(n) && n >= 0;
+  if (!obj(v) || v.version !== 1 || !obj(v.cases) || Object.keys(v.cases).some(id => !weeklyDefinition(id)) || v.lastWeek !== null && !Number.isSafeInteger(v.lastWeek)) bad(p);
+  const weeks = new Set();
+  let active = 0;
+  for (const [id, c] of Object.entries(v.cases)) {
+    const d = weeklyDefinition(id);
+    if (!obj(c) || !time(c.openedAt) || !time(c.solvedAt) || !Number.isSafeInteger(c.week) || c.week > v.lastWeek || weeks.has(c.week) || !Array.isArray(c.order) || c.order.length !== 3 || new Set(c.order).size !== 3 || c.order.some(x => ![0, 1, 2].includes(x)) || !Array.isArray(c.choices) || c.choices.length !== 2 || c.choices.some(x => x !== null && ![0, 1, 2].includes(x)) || !obj(c.tasks) || c.feedback !== null && typeof c.feedback !== 'string') bad(p + '.' + id);
+    weeks.add(c.week);
+    if (!c.solvedAt) active++;
+    for (const [slot, t] of Object.entries(c.tasks)) {
+      if (!['0', '1'].includes(slot) || !obj(t) || typeof t.policy !== 'string') bad(p + '.tasks');
+      stage(t, p + '.tasks.' + slot);
+      if (!t.blocked && (!KP_BY_ID[t.kpId] || typeof t.presentationId !== 'string' || typeof t.resumed !== 'boolean' || !time(t.opened))) bad(p + '.task');
+      if (t.result !== null && (!obj(t.result) || typeof t.result.passed !== 'boolean' || !Number.isInteger(t.result.attempts) || t.result.attempts < 1 || !Number.isInteger(t.result.hints) || t.result.hints < 0 || !obj(t.result.detail) || !time(t.finishedAt) || typeof t.reviewSettled !== 'boolean')) bad(p + '.result');
+    }
+    if (c.tasks[1] && !c.tasks[0]?.result?.passed || c.solvedAt && (![0, 1].every(n => c.tasks[n]?.result?.passed) || c.choices[0] !== d.record1.rulesOut || c.choices[1] !== d.record2.supports)) bad(p + '.progress');
+  }
+  if (active > 1 || weeks.size && v.lastWeek !== Math.max(...weeks) || !weeks.size && v.lastWeek !== null) bad(p + '.weeks');
+}
 const HAIR_COLORS = [['栗棕', '#8a4b2a'], ['墨藍', '#1f2f4a'], ['銀白', '#cfd6e0'], ['紅棕', '#7a3a1f'], ['玫瑰', '#b75f83'], ['薰衣草', '#8972b5']];
 const EYE_COLORS = [['翡翠', '#3b7a57'], ['琥珀', '#b7791f'], ['紫羅蘭', '#7a4fa0'], ['湖藍', '#2f6f8f'], ['深棕', '#634331']];
 const COAT_COLORS = [['原色', ''], ['午夜藍', '#30476d'], ['森林綠', '#3c795d'], ['暮紫', '#765184'], ['暖金', '#c98a2a']];
@@ -240202,6 +240703,11 @@ function mechanicErrorContext(state, kind, params) {
     kp: t.kpId,
     source: 'hero'
   });
+  for (const c of Object.values(state?.student?.weeklyCases?.cases || {})) for (const t of Object.values(c.tasks || {})) rows.push({
+    t,
+    kp: t.kpId,
+    source: 'weekly'
+  });
   const row = rows.find(x => x.t.kind === kind && (x.t.params === params || clean(x.t.params) === clean(params)));
   return {
     kpId: row?.kp || 'unknown',
@@ -240379,6 +240885,7 @@ function MainMenu({
   onParent,
   onWardrobe,
   onLifeMath,
+  onWeekly,
   profiles,
   onSwitchProfile,
   onNewProfile
@@ -240413,6 +240920,10 @@ function MainMenu({
     onClick: onStart,
     id: "btn-start"
   }, "\u5EFA\u7ACB\u89D2\u8272\uFF0C\u958B\u59CB\u5192\u96AA"), s && React.createElement(Btn, {
+    big: true,
+    id: "menu-weekly",
+    onClick: onWeekly
+  }, "\u672C\u9031\u5C0F\u6848"), s && React.createElement(Btn, {
     big: true,
     id: "menu-life-math",
     onClick: onLifeMath
@@ -240826,7 +241337,10 @@ function RepairHub({
     student: state.student
   })), React.createElement("h2", null, "\u5C45\u6C11\u7684\u59D4\u8A17"), React.createElement("p", {
     className: "story"
-  }, "\u93AE\u4E0A\u7684\u5C45\u6C11\u6703\u628A\u751F\u6D3B\u88E1\u7684\u96E3\u984C\u8CBC\u5728\u9019\u88E1\u3002\u7070\u9D09\u592B\u4EBA\u8AAA\uFF0C\u9019\u4E9B\u59D4\u8A17\u90FD\u5C0D\u61C9\u5230\u4F60\u5728\u5B78\u6821\u5B78\u904E\u7684\u672C\u4E8B\u2014\u2014\u89E3\u6C7A\u5B83\u5011\uFF0C\u4F60\u7684\u8ABF\u67E5\u80FD\u529B\u5C31\u6703\u89BA\u9192\u3002\u6BCF\u4EF6\u59D4\u8A17\u6709\u4E09\u6BB5\uFF1A\u89C0\u5FF5\u91CD\u5EFA\u3001\u60C5\u5883\u61C9\u7528\u3001\u9077\u79FB\u6311\u6230\u3002")), React.createElement("section", {
+  }, "\u93AE\u4E0A\u7684\u5C45\u6C11\u6703\u628A\u751F\u6D3B\u88E1\u7684\u96E3\u984C\u8CBC\u5728\u9019\u88E1\u3002\u7070\u9D09\u592B\u4EBA\u8AAA\uFF0C\u9019\u4E9B\u59D4\u8A17\u90FD\u5C0D\u61C9\u5230\u4F60\u5728\u5B78\u6821\u5B78\u904E\u7684\u672C\u4E8B\u2014\u2014\u89E3\u6C7A\u5B83\u5011\uFF0C\u4F60\u7684\u8ABF\u67E5\u80FD\u529B\u5C31\u6703\u89BA\u9192\u3002\u6BCF\u4EF6\u59D4\u8A17\u6709\u4E09\u6BB5\uFF1A\u89C0\u5FF5\u91CD\u5EFA\u3001\u60C5\u5883\u61C9\u7528\u3001\u9077\u79FB\u6311\u6230\u3002")), React.createElement(WeeklyEntry, {
+    state: state,
+    onOpen: () => go('weekly')
+  }), React.createElement("section", {
     className: "card life-entry",
     id: "life-commission"
   }, React.createElement(LifeMathArt, {
@@ -242180,6 +242694,7 @@ function StudentApp({
     onParent: goParent,
     onWardrobe: () => go('wardrobe'),
     onLifeMath: () => go('life_math'),
+    onWeekly: () => go('weekly'),
     profiles: profiles,
     onSwitchProfile: onSwitchProfile,
     onNewProfile: onNewProfile
@@ -242203,6 +242718,13 @@ function StudentApp({
         onOpenCare: () => go('care'),
         onOpenMaze: () => go('maze'),
         onOpenHeroes: () => go('heroes')
+      });
+    case 'weekly':
+      return React.createElement(WeeklyCasesScreen, {
+        state: state,
+        setState: setState,
+        onExit: () => go('repair'),
+        onRecords: () => go('records', 'done')
       });
     case 'heroes':
       return React.createElement(HeroAdventure, {
@@ -243476,7 +243998,7 @@ function badgeEarnedDate(state, row, tier) {
   const need = row.thresholds[tier];
   let events = [];
   if (row.id === 'maze') return state.student.maze?.milestones?.[need] ? fmtDay(state.student.maze.milestones[need]) : '較早取得・日期未保存';
-  if (row.id.startsWith('skill-')) events = state.practiceLog.filter(l => l.passed && KP_BY_ID[l.kpId]?.subject === row.id.slice(6) && gradePracticeLog(state, l));else if (row.id === 'help') events = Object.values(state.student.keepsakes?.stamps || {});else if (row.id === 'review') events = state.missions.flatMap(m => (m.reviews || []).filter(r => r.passed));else if (row.id === 'arrests') events = getWallet(state.student).caseLog.filter(l => l.result === 'arrest');else if (row.id === 'repair') {
+  if (row.id.startsWith('skill-')) events = state.practiceLog.filter(l => l.passed && KP_BY_ID[l.kpId]?.subject === row.id.slice(6) && gradePracticeLog(state, l));else if (row.id === 'help') events = [...Object.values(state.student.keepsakes?.stamps || {}), ...weeklyStamps(state)];else if (row.id === 'review') events = state.missions.flatMap(m => (m.reviews || []).filter(r => r.passed));else if (row.id === 'arrests') events = getWallet(state.student).caseLog.filter(l => l.result === 'arrest');else if (row.id === 'repair') {
     const pending = new Set();
     for (const l of state.practiceLog) {
       if (l.source === 'maze' || l.detail?.practiceOnly) continue;
@@ -243632,7 +244154,7 @@ function MemorialBook({
     },
     tier: 0,
     size: 64
-  })), React.createElement("h3", null, s.title), React.createElement("small", null, s.t ? fmtDay(s.t) : '較早的紀錄', "\u30FB", s.focus), React.createElement("p", null, state.student.keepsakes?.quotes?.[s.id] || '謝謝你，調查員。', React.createElement("br", null), "\u2014\u2014", s.client), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))))));
+  })), React.createElement("h3", null, s.title), React.createElement("small", null, s.t ? fmtDay(s.t) : '較早的紀錄', "\u30FB", s.focus), React.createElement("p", null, state.student.keepsakes?.quotes?.[s.id] || '謝謝你，調查員。', React.createElement("br", null), "\u2014\u2014", s.client), s.habit && React.createElement("blockquote", null, s.habit), s.n > 0 && React.createElement("span", null, "\u53C8\u5E6B\u4E86 ", s.n, " \u6B21\u3002")))))));
 }
 function AbilityBadge({
   subject,
@@ -246700,6 +247222,301 @@ function LifeMathChallenge({
     onClick: onParent
   }, "\u8ACB\u5BB6\u9577\u67E5\u770B\u5B78\u7FD2\u8A2D\u5B9A")));
 }
+function WeeklyIcon() {
+  return React.createElement("svg", {
+    className: "weekly-icon",
+    viewBox: "0 0 100 100",
+    "aria-hidden": "true"
+  }, React.createElement("rect", {
+    x: "8",
+    y: "10",
+    width: "64",
+    height: "80",
+    rx: "12",
+    fill: "#174c54"
+  }), React.createElement("rect", {
+    x: "18",
+    y: "19",
+    width: "54",
+    height: "65",
+    rx: "5",
+    fill: "#fff7df"
+  }), React.createElement("path", {
+    d: "M28 34h30M28 45h22M28 56h15",
+    stroke: "#b18443",
+    strokeWidth: "4",
+    strokeLinecap: "round"
+  }), React.createElement("circle", {
+    cx: "66",
+    cy: "64",
+    r: "18",
+    fill: "#bde2dc",
+    stroke: "#b18443",
+    strokeWidth: "6"
+  }), React.createElement("path", {
+    d: "m79 78 13 14",
+    stroke: "#174c54",
+    strokeWidth: "9",
+    strokeLinecap: "round"
+  }), React.createElement("path", {
+    d: "m57 64 6 6 12-14",
+    fill: "none",
+    stroke: "#21696b",
+    strokeWidth: "4"
+  }));
+}
+function WeeklyEntry({
+  state,
+  onOpen
+}) {
+  const status = weeklyStatus(state);
+  return React.createElement("section", {
+    className: "card weekly-entry",
+    id: "weekly-commission"
+  }, React.createElement(WeeklyIcon, null), React.createElement("div", null, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u5C45\u6C11\u5BC4\u4F86\u7684\u5C0F\u59D4\u8A17"), React.createElement("h2", null, "\u672C\u9031\u5C0F\u6848"), React.createElement("p", null, status.kind === 'locked' ? '完成第一章，就能接下小案。' : '查兩份紀錄，再把事情想清楚。每週一案，沒做完會留著。'), React.createElement(Btn, {
+    id: "weekly-open",
+    kind: "primary",
+    onClick: onOpen
+  }, status.kind === 'active' ? '繼續小案' : status.kind === 'ready' ? '看看新委託' : '查看小案')));
+}
+function WeeklyTask({
+  state,
+  setState,
+  id,
+  slot,
+  onClose
+}) {
+  const t = weeklyCase(state, id)?.tasks[slot],
+    pid = t?.presentationId,
+    Mech = t && ALL_MECHS[t.kind];
+  useEffect(() => {
+    if (pid) setState(s => weeklyEnter(s, id, slot, pid));
+    return () => stopSpeech();
+  }, [pid]);
+  const close = () => {
+    stopSpeech();
+    if (pid) setState(s => weeklyPause(s, id, slot, pid));
+    onClose();
+  };
+  return React.createElement("div", {
+    className: "overlay",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": "\u5C0F\u6848\u5B78\u7FD2\u4EFB\u52D9"
+  }, React.createElement("div", {
+    className: "overlay-panel col weekly-task"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement("h2", null, "\u67E5\u8B49\u5C0F\u4EFB\u52D9"), React.createElement(Btn, {
+    id: "weekly-task-close",
+    onClick: close
+  }, "\u5148\u56DE\u73FE\u5834")), !weeklyTaskValid(state, t) || !Mech ? React.createElement(React.Fragment, null, React.createElement(Notice, null, "\u76EE\u524D\u8A2D\u5B9A\u6C92\u6709\u9069\u5408\u7684\u984C\u76EE\u3002\u5DF2\u53D6\u5F97\u7684\u7D00\u9304\u6703\u4FDD\u7559\uFF0C\u53EF\u8ACB\u5BB6\u9577\u6AA2\u67E5\u7DF4\u7FD2\u7BC4\u570D\u3002"), React.createElement(Btn, {
+    id: "weekly-task-refresh",
+    onClick: () => setState(s => weeklyBegin(s, id, slot))
+  }, "\u4F9D\u76EE\u524D\u8A2D\u5B9A\u91CD\u65B0\u51FA\u984C")) : React.createElement(React.Fragment, null, React.createElement("p", null, KP_BY_ID[t.kpId]?.name, "\u30FB", t.sourceReviewMissionId ? '到期複習' : t.sourceStageKey === 's1' ? '先學觀念' : t.sourceStageKey === 's2' ? '試著應用' : '進一步練習'), React.createElement("p", {
+    className: "small"
+  }, "\u5B8C\u6210\u5F8C\u53D6\u5F97\u7D00\u9304\u3002\u63D0\u793A\u514D\u8CBB\uFF0C\u4E0D\u6263\u5C08\u6CE8\u529B\u3002"), !t.result ? React.createElement(MechOptions.Provider, {
+    value: {
+      maxHints: Infinity
+    }
+  }, React.createElement(Mech, {
+    key: pid,
+    params: t.params,
+    hintsAllowed: true,
+    seed: t.seed,
+    onDone: r => setState(s => weeklyFinish(s, id, slot, pid, r))
+  })) : React.createElement("div", {
+    role: "status",
+    className: "notice"
+  }, React.createElement("h3", null, t.result.passed ? '紀錄找到了！' : '這次先記下來，再試試。'), !t.result.passed && React.createElement(Btn, {
+    id: "weekly-task-retry",
+    onClick: () => setState(s => weeklyBegin(s, id, slot))
+  }, "\u63DB\u4E00\u984C\u518D\u8A66"), React.createElement(Btn, {
+    id: "weekly-task-continue",
+    kind: "primary",
+    onClick: close
+  }, "\u56DE\u5230\u73FE\u5834")))));
+}
+function WeeklyRead({
+  text
+}) {
+  return React.createElement("div", {
+    className: "weekly-copy"
+  }, (text.match(/[^。？！]+[。？！][」』]?|[^。？！]+$/g) || [text]).filter(Boolean).map((line, i) => React.createElement("p", {
+    key: i
+  }, line)));
+}
+function WeeklyCasesScreen({
+  state,
+  setState,
+  onExit,
+  onRecords
+}) {
+  const [selected, setSelected] = useState(() => weeklyStatus(state).kind === 'active' ? weeklyStatus(state).id : null),
+    [slot, setSlot] = useState(null),
+    [clock, setClock] = useState(now),
+    status = weeklyStatus(state, clock),
+    id = selected || status.id,
+    c = id && weeklyCase(state, id),
+    d = c && weeklyDefinition(id),
+    finished = weeklyStamps(state);
+  usePlaytestReportScope(25, {
+    location: 'weekly',
+    scene: d?.scene || 'agency',
+    entry: 'weekly',
+    id: id || 'weekly-board',
+    kind: 'story'
+  });
+  useEffect(() => {
+    const timer = setInterval(() => setClock(now()), 60000);
+    return () => {
+      clearInterval(timer);
+      stopSpeech();
+    };
+  }, []);
+  const junior = studentGrade(state.student) === 1,
+    statements = d && (junior ? d.juniorStatements : d.statements);
+  const open = () => {
+    setState(s => weeklyOpen(s));
+    setSelected(status.id || null);
+  };
+  const leave = () => {
+    stopSpeech();
+    setSlot(null);
+    setSelected(null);
+  };
+  return React.createElement("div", {
+    className: "stage col weekly-page",
+    id: "weekly-page"
+  }, React.createElement("div", {
+    className: "row between"
+  }, React.createElement(Btn, {
+    id: "weekly-exit",
+    onClick: onExit
+  }, "\u56DE\u5230\u59D4\u8A17\u677F"), React.createElement(Btn, {
+    onClick: onRecords
+  }, "\u5192\u96AA\u7D00\u5FF5\u518A")), !d ? React.createElement(React.Fragment, null, React.createElement("section", {
+    className: "card weekly-entry"
+  }, React.createElement(WeeklyIcon, null), React.createElement("div", null, React.createElement("h1", null, "\u672C\u9031\u5C0F\u6848"), React.createElement("p", null, "\u627E\u7D00\u9304\uFF0C\u4E00\u8D77\u60F3\u3002"), React.createElement("p", null, "\u6BCF\u9031\u4E00\u6848\uFF0C\u672A\u5B8C\u6210\u4E0D\u6703\u904E\u671F\u3002"), React.createElement("p", null, "\u5DF2\u5B8C\u6210 ", status.done, " \u6848"))), React.createElement("section", {
+    className: "card col",
+    id: "weekly-status"
+  }, status.kind === 'ready' ? React.createElement(React.Fragment, null, React.createElement("h2", null, "\u6709\u4E00\u5C01\u65B0\u59D4\u8A17"), React.createElement("p", null, "\u719F\u6089\u7684\u5C45\u6C11\u6709\u4E8B\u60F3\u8ACB\u4F60\u5E6B\u5FD9\u3002"), React.createElement(Btn, {
+    id: "weekly-start",
+    kind: "primary",
+    onClick: open
+  }, "\u63A5\u4E0B\u59D4\u8A17")) : React.createElement("p", null, {
+    locked: '先完成第一章，再來接案。',
+    wait: '這週的委託已接過了。下週一再看看；現在也可以回顧紀錄。',
+    meet: '先到島上認識居民，再回來看看。',
+    complete: '下一案還在路上。'
+  }[status.kind])), finished.length > 0 && React.createElement("section", {
+    className: "card col"
+  }, React.createElement("h2", null, "\u6211\u7684\u5C0F\u6848\u7D00\u9304"), finished.map(s => React.createElement(Btn, {
+    key: s.id,
+    "data-weekly-history": s.id.slice(2),
+    onClick: () => setSelected(s.id.slice(2))
+  }, s.title, "\u30FB\u5DF2\u5B8C\u6210")))) : React.createElement(React.Fragment, null, React.createElement("section", {
+    className: "weekly-scene"
+  }, React.createElement(HeroImage, {
+    className: "weekly-background",
+    src: SCENE_ART[d.scene],
+    alt: SCENES[d.scene]?.name || '居民所在的場景'
+  }), React.createElement(HeroImage, {
+    className: "weekly-client",
+    src: charArt(d.client),
+    alt: NPCS[d.client]?.name
+  }), React.createElement("div", {
+    className: "weekly-caption"
+  }, React.createElement("span", null, "\u672C\u9031\u5C0F\u6848\u30FB", NPCS[d.client]?.name), React.createElement("h1", null, d.title))), React.createElement("section", {
+    className: "card col"
+  }, React.createElement("h2", null, "\u5C45\u6C11\u7684\u59D4\u8A17"), d.brief.map((x, i) => React.createElement(WeeklyRead, {
+    text: x,
+    key: i
+  })), React.createElement("h3", null, "\u4E09\u500B\u5F85\u67E5\u7684\u8AAA\u6CD5"), React.createElement("ol", {
+    className: "weekly-statements"
+  }, c.order.map(i => React.createElement("li", {
+    key: i
+  }, statements[i])))), React.createElement("div", {
+    className: "weekly-records"
+  }, [d.record1, d.record2].map((r, n) => React.createElement("article", {
+    className: 'weekly-paper ' + (c.tasks[n]?.result?.passed ? '' : 'weekly-sealed'),
+    key: n,
+    "data-weekly-record": n
+  }, React.createElement("span", {
+    className: "eyebrow"
+  }, "\u7D00\u9304 ", n + 1), React.createElement("h2", null, c.tasks[n]?.result?.passed ? r.name : '等待查證'), c.tasks[n]?.result?.passed ? React.createElement(WeeklyRead, {
+    text: r.text
+  }) : React.createElement(React.Fragment, null, React.createElement("p", null, n === 1 && !c.tasks[0]?.result?.passed ? '先找到第一份紀錄。' : '完成一個學習任務，取得這份紀錄。'), React.createElement(Btn, {
+    id: 'weekly-task-' + n,
+    kind: "primary",
+    disabled: n === 1 && !c.tasks[0]?.result?.passed,
+    onClick: () => {
+      setState(s => weeklyBegin(s, id, n));
+      setSlot(n);
+    }
+  }, c.tasks[n] ? '繼續查證' : '開始查證'))))), [0, 1].every(n => c.tasks[n]?.result?.passed) && !c.solvedAt && React.createElement("section", {
+    className: "card col",
+    id: "weekly-deduction"
+  }, React.createElement("h2", null, "\u628A\u7D00\u9304\u9023\u8D77\u4F86"), (junior ? ['紀錄一排除哪個說法？', '紀錄二支持哪個說法？'] : ['第一份紀錄排除哪個說法？', '第二份紀錄支持哪個說法？']).map((q, n) => React.createElement("fieldset", {
+    className: "weekly-choices",
+    key: n
+  }, React.createElement("legend", null, q), c.order.map(i => React.createElement("button", {
+    type: "button",
+    key: i,
+    id: 'weekly-choice-' + n + '-' + i,
+    "aria-pressed": c.choices[n] === i,
+    className: c.choices[n] === i ? 'selected' : '',
+    onClick: () => setState(s => weeklyChoose(s, id, n, i))
+  }, statements[i])))), React.createElement("p", null, "\u78BA\u8A8D\u524D\u90FD\u53EF\u4EE5\u6539\u9078\u3002"), React.createElement(Btn, {
+    id: "weekly-confirm",
+    kind: "primary",
+    disabled: c.choices.includes(null),
+    onClick: () => setState(s => weeklyDeduce(s, id))
+  }, "\u78BA\u8A8D\u63A8\u7406"), c.feedback && React.createElement(Notice, null, React.createElement("span", {
+    role: "status"
+  }, junior ? d.juniorWhy[c.choices[0] !== d.record1.rulesOut ? 0 : 1] : c.feedback))), !!c.solvedAt && React.createElement("section", {
+    className: "card col weekly-ending",
+    id: "weekly-ending"
+  }, React.createElement("div", {
+    className: "row"
+  }, React.createElement(SubjectBadge, {
+    row: {
+      id: 'help',
+      label: '幫忙居民',
+      icon: '♡'
+    },
+    tier: 0,
+    size: 90
+  }), React.createElement("div", null, React.createElement("h2", null, "\u9019\u4EF6\u4E8B\u67E5\u6E05\u695A\u4E86"), React.createElement("p", null, "\u5DF2\u53D6\u5F97 30 \u7D93\u9A57\u503C\u8207\u5E6B\u5FD9\u7D00\u5FF5\u7AE0"))), d.ending.map((x, i) => React.createElement(WeeklyRead, {
+    text: x,
+    key: i
+  })), React.createElement("p", null, d.leftover), React.createElement("blockquote", null, d.habit), React.createElement("p", {
+    className: "small"
+  }, "\u8ABF\u67E5\u7FD2\u6163\u8207\u8B1D\u8A5E\uFF0C\u5DF2\u6536\u9032\u7D00\u5FF5\u518A\u3002"), React.createElement(Btn, {
+    id: "weekly-back",
+    onClick: leave
+  }, "\u56DE\u5230\u5C0F\u6848\u4FE1\u7BB1"))), slot !== null && d && React.createElement(WeeklyTask, {
+    state: state,
+    setState: setState,
+    id: id,
+    slot: slot,
+    onClose: () => setSlot(null)
+  }));
+}
+function WeeklyParentSummary({
+  state
+}) {
+  if (!state.student) return null;
+  const a = weeklySummary(state);
+  return React.createElement("section", {
+    className: "card col",
+    id: "weekly-parent-summary"
+  }, React.createElement("h3", null, "\u672C\u9031\u5C0F\u6848"), React.createElement("p", null, a.opened ? '已接到第 ' + a.opened + ' 案，完成 ' + a.done + ' 案。' : '完成第一章後可接案，目前尚未接案。'), React.createElement("p", null, "\u8FD1\u4E03\u65E5\u5B8C\u6210 ", a.tasks, " \u500B\u5B78\u7FD2\u4EFB\u52D9\uFF0C\u5176\u4E2D ", a.reviews, " \u500B\u5B8C\u6210\u5230\u671F\u8907\u7FD2\u3002"), React.createElement("p", {
+    className: "small muted"
+  }, "\u5404\u5B69\u5B50\u5206\u958B\u8A18\u9304\uFF1B\u7D50\u6848\u734E\u52F5\u4E0D\u4EE3\u8868\u89C0\u5FF5\u5DF2\u638C\u63E1\u3002"));
+}
 const AI_STATUS = {
   image: false,
   reason: false,
@@ -247940,6 +248757,8 @@ function ParentApp({
       setAdding(k === 'input');
     }
   }, n))), tab === 'overview' && React.createElement(React.Fragment, null, React.createElement(ParentOverview, {
+    state: state
+  }), React.createElement(WeeklyParentSummary, {
     state: state
   }), React.createElement(CareParentPanel, {
     state: state,
