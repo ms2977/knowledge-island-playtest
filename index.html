@@ -928,6 +928,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .playtest-report-dialog{box-sizing:border-box;max-width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #90a6ae;border-radius:20px;padding:24px;color:#193e4c;background:#fffdf7}.playtest-report-dialog::backdrop{background:#102d3acc}.playtest-report-dialog h2{margin-top:0}.playtest-report-dialog p{line-height:1.6}.playtest-report-dialog textarea{box-sizing:border-box;width:100%;height:245px;font-size:15px;line-height:1.6;padding:12px;resize:vertical}.playtest-report-dialog .row{margin-top:12px;flex-wrap:wrap}
 .playtest-guide-toggle{background:transparent;border:0;text-align:left;font-size:18px;font-weight:700;color:#214e5d;padding:8px 0;min-height:44px}.parent-app #parent-first-guide ol{margin:0;padding-left:24px;line-height:1.7}.parent-app #parent-first-guide li{margin:8px 0}.backup-export textarea{min-height:140px;font:12px monospace}.backup-export [role=status]:empty{display:none}.parent-app{padding-bottom:80px}
 @media(max-width:600px){.playtest-line{margin:10px}.playtest-report-dialog{padding:18px}.playtest-report-trigger{font-size:13px}.playtest-report-dialog button{min-height:44px}}
+.playtest-report-dialog #report-description{height:108px;min-height:90px}.report-screenshot-help{padding:14px 16px;background:#e9f1ed;border-radius:12px;margin:16px 0}.report-screenshot-help p{font-size:14px;margin:6px 0 12px}.report-send{margin-top:16px}.report-send .btn{text-align:center;text-decoration:none;white-space:normal}.report-send p{margin:0;overflow-wrap:anywhere}.playtest-report-dialog details{border-top:1px solid #c9d5cf;padding-top:14px;margin-top:10px}.playtest-report-dialog summary,#backup-paste-details summary{cursor:pointer;line-height:1.6;padding:10px 0}.backup-file-picker{display:flex;flex-direction:column;gap:12px;padding:18px;border:2px dashed #91b6ae;border-radius:14px;background:#edf5f0}.backup-file-status{overflow-wrap:anywhere}#backup-paste-details textarea{width:100%;box-sizing:border-box}#backup-preview label{align-items:flex-start}#backup-preview .row{flex-wrap:wrap}
 
 .playtest-top-version{display:block;font-size:11px;font-weight:400;letter-spacing:0;color:#e1edf1;line-height:1.4}
 
@@ -938,7 +939,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261116-speech-shuang-v81-r1">
+<meta name="game-release" content="playtest-20261116-family-tools-v81-1-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -190283,7 +190284,15 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.16-v81';
+const GAME_BUILD = '2026.11.16-v81.1';
+const PLAYTEST_REPORT_EMAIL = '';
+function playtestReportMessage(description, details) {
+  return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
+}
+function playtestReportMailto(description, details) {
+  if (!PLAYTEST_REPORT_EMAIL) return '';
+  return 'mailto:' + encodeURIComponent(PLAYTEST_REPORT_EMAIL) + '?subject=' + encodeURIComponent('知識探索島・試玩問題回報') + '&body=' + encodeURIComponent(playtestReportMessage(description, details));
+}
 const PLAYTEST_LINE_KEY = 'kei_line_notice_dismissed_v1';
 const PLAYTEST_REPORT_SCOPES = new Map();
 function playtestBrowser(ua = '') {
@@ -240500,10 +240509,18 @@ function PlaytestReportButton({
   state
 }) {
   const [text, setText] = useState(''),
+    [description, setDescription] = useState(''),
     [copied, setCopied] = useState(''),
+    [manual, setManual] = useState(false),
     dialog = useRef(null),
     trigger = useRef(null),
     area = useRef(null);
+  useEffect(() => {
+    if (manual) {
+      area.current?.focus();
+      area.current?.select();
+    }
+  }, [manual]);
   const close = () => {
     dialog.current?.close();
     setText('');
@@ -240512,8 +240529,20 @@ function PlaytestReportButton({
   const open = () => {
     stopSpeech();
     setCopied('');
+    setManual(false);
     setText(playtestReportText(state, playtestReportFields(), navigator.userAgent, innerWidth));
     dialog.current?.showModal();
+  };
+  const message = playtestReportMessage(description, text),
+    email = PLAYTEST_REPORT_EMAIL;
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopied('已複製。貼到郵件或私人訊息，再附上截圖即可。');
+    } catch {
+      setManual(true);
+      setCopied('無法自動複製，請長按或全選下方的回報內容複製。');
+    }
   };
   return React.createElement(React.Fragment, null, React.createElement("button", {
     className: "playtest-report-trigger nozy",
@@ -240532,34 +240561,75 @@ function PlaytestReportButton({
     "data-speech-skip": "true"
   }, React.createElement("h2", {
     id: "report-title"
-  }, "\u56DE\u5831\u9019\u4E00\u984C\uFF0F\u9019\u500B\u756B\u9762"), React.createElement("p", null, "\u53EA\u6709\u7248\u672C\u3001\u5E74\u7D1A\u8207\u554F\u984C\u4F4D\u7F6E\u7B49\u8CC7\u8A0A\uFF0C\u4E0D\u542B\u5B69\u5B50\u59D3\u540D\u3001\u7B54\u6848\u6216\u5B58\u6A94\u3002\u8907\u88FD\u5F8C\uFF0C\u8ACB\u8CBC\u7D66\u5206\u4EAB\u9023\u7D50\u7D66\u4F60\u7684\u4EBA\u3002"), React.createElement("textarea", {
-    id: "playtest-report-text",
+  }, "\u9047\u5230\u554F\u984C\u4E86\u55CE\uFF1F"), React.createElement("p", null, "\u8ACB\u5BB6\u9577\u9644\u4E0A\u4E00\u5F35\u554F\u984C\u756B\u9762\u7684\u622A\u5716\uFF0C\u518D\u7C21\u55AE\u8AAA\u660E\u767C\u751F\u4EC0\u9EBC\u4E8B\uFF0C\u5C31\u80FD\u5E6B\u5FD9\u67E5\u554F\u984C\u3002"), React.createElement("div", {
+    className: "report-screenshot-help"
+  }, React.createElement("b", null, "\u6E96\u5099\u554F\u984C\u756B\u9762\u7684\u622A\u5716"), React.createElement("p", null, "\u9084\u6C92\u622A\u5716\uFF0C\u53EF\u4EE5\u5148\u56DE\u5230\u525B\u624D\u7684\u756B\u9762\u3002\u622A\u5716\u8ACB\u906E\u4F4F\u5B69\u5B50\u59D3\u540D\u3001\u5B78\u6821\u548C\u73ED\u7D1A\u3002"), React.createElement(Btn, {
+    small: true,
+    id: "report-screenshot-back",
+    onClick: close
+  }, "\u56DE\u5230\u756B\u9762\u622A\u5716")), React.createElement("label", {
+    className: "col",
+    htmlFor: "report-description"
+  }, React.createElement("b", null, "\u767C\u751F\u4E86\u4EC0\u9EBC\u4E8B\uFF1F"), React.createElement("textarea", {
+    id: "report-description",
+    value: description,
+    maxLength: 1200,
+    onChange: e => {
+      setDescription(e.target.value);
+      setCopied('');
+    },
+    placeholder: "\u4F8B\u5982\uFF1A\u6211\u6309\u4E86\u300C\u78BA\u8A8D\u300D\uFF0C\u7B54\u6848\u6B63\u78BA\u537B\u986F\u793A\u932F\u8AA4\u3002"
+  })), email ? React.createElement("div", {
+    className: "col report-send"
+  }, React.createElement("a", {
+    id: "report-email",
+    className: "btn primary",
+    href: playtestReportMailto(description, text)
+  }, "\u958B\u555F\u90F5\u4EF6\uFF0C\u9644\u4E0A\u622A\u5716"), React.createElement("p", {
+    className: "small"
+  }, "\u6536\u4EF6\u4EBA\uFF1A", React.createElement("span", {
+    id: "report-email-address"
+  }, email), React.createElement("br", null), "\u6703\u958B\u555F\u4F60\u7684\u90F5\u4EF6\u7A0B\u5F0F\uFF0C\u8ACB\u81EA\u884C\u9644\u4E0A\u622A\u5716\uFF0C\u78BA\u8A8D\u5167\u5BB9\u5F8C\u5BC4\u51FA\u3002\u9019\u88E1\u4E0D\u6703\u81EA\u52D5\u5BC4\u4FE1\u3002"), React.createElement(Btn, {
+    small: true,
+    id: "report-copy-email",
+    onClick: async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+        setCopied('信箱已複製，可以貼到你常用的郵件服務。');
+      } catch {
+        setCopied('無法自動複製，請選取上方收件信箱複製。');
+      }
+    }
+  }, "\u8907\u88FD\u6536\u4EF6\u4FE1\u7BB1")) : React.createElement("p", null, "\u8ACB\u628A\u622A\u5716\u548C\u8AAA\u660E\uFF0C\u79C1\u8A0A\u7D66\u5206\u4EAB\u904A\u6232\u7D66\u4F60\u7684\u5BB6\u9577\uFF0C\u7531\u4ED6\u5354\u52A9\u8F49\u9054\u3002"), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: "report-copy",
+    kind: email ? 'ghost' : 'primary',
+    onClick: copy
+  }, "\u8907\u88FD\u56DE\u5831\u5167\u5BB9"), React.createElement(Btn, {
+    id: "report-close",
+    onClick: close
+  }, "\u95DC\u9589")), React.createElement("p", {
+    role: "status",
+    id: "report-copy-status"
+  }, copied), manual && React.createElement("textarea", {
+    id: "report-manual-copy",
     ref: area,
+    readOnly: true,
+    value: message,
+    "aria-label": "\u624B\u52D5\u8907\u88FD\u56DE\u5831\u5167\u5BB9",
+    onFocus: e => e.target.select()
+  }), React.createElement("details", {
+    id: "report-technical"
+  }, React.createElement("summary", null, "\u81EA\u52D5\u9644\u4E0A\u7684\u904A\u6232\u8CC7\u8A0A\uFF08\u4E0D\u7528\u586B\u5BEB\uFF09"), React.createElement("p", {
+    className: "small"
+  }, "\u9019\u4E9B\u4EE3\u78BC\u5E6B\u7DAD\u8B77\u8005\u627E\u5230\u984C\u76EE\uFF0C\u4F60\u4E0D\u9700\u8981\u770B\u61C2\u3002\u81EA\u52D5\u8CC7\u8A0A\u4E0D\u542B\u5B69\u5B50\u59D3\u540D\u3001\u7B54\u6848\u6216\u5B8C\u6574\u5B58\u6A94\u3002"), React.createElement("textarea", {
+    id: "playtest-report-text",
     readOnly: true,
     value: text,
     "aria-label": "\u56DE\u5831\u8CC7\u8A0A",
     onFocus: e => e.target.select()
-  }), React.createElement("div", {
-    className: "row"
-  }, React.createElement(Btn, {
-    id: "report-copy",
-    kind: "primary",
-    onClick: async () => {
-      try {
-        await navigator.clipboard.writeText(text);
-        setCopied('已複製，可以自行貼上。');
-      } catch {
-        area.current?.focus();
-        area.current?.select();
-        setCopied('無法自動複製，請長按或全選上方文字複製。');
-      }
-    }
-  }, "\u8907\u88FD\u56DE\u5831\u8CC7\u8A0A"), React.createElement(Btn, {
-    id: "report-close",
-    onClick: close
-  }, "\u95DC\u9589")), React.createElement("p", {
-    role: "status"
-  }, copied)));
+  }))));
 }
 function ParentFirstGuide({
   state,
@@ -240581,7 +240651,7 @@ function ParentFirstGuide({
     id: "parent-guide-toggle",
     "aria-expanded": open,
     onClick: toggle
-  }, "\u7B2C\u4E00\u6B21\u4F86\uFF1F\u4E94\u6B65\u958B\u59CB ", open ? '▴' : '▾'), open && React.createElement(React.Fragment, null, React.createElement("ol", null, React.createElement("li", null, "\u78BA\u8A8D\u5B69\u5B50\u7684\u5E74\u7D1A\u9078\u5C0D\u4E86\u3002\u76EE\u524D\u652F\u63F4\u4E00\u3001\u4E8C\u3001\u4E94\u3001\u516D\u5E74\u7D1A\u3002"), React.createElement("li", null, "\u5230\u300C\u7DF4\u7FD2\u8A2D\u5B9A\u300D\u52FE\u9078\u5B78\u6821\u5DF2\u6559\u904E\u7684\u55AE\u5143\uFF0C\u6C92\u6559\u904E\u7684\u5148\u4E0D\u8981\u52FE\u3002"), React.createElement("li", null, "\u5B69\u5B50\u5361\u4F4F\u6642\u53EF\u4EE5\u7528\u63D0\u793A\uFF0C\u7528\u63D0\u793A\u4E0D\u6703\u6263\u91D1\u5E63\u6216\u5C08\u6CE8\u529B\u3002"), React.createElement("li", null, "\u9032\u5EA6\u53EA\u5B58\u5728\u9019\u53F0\u88DD\u7F6E\u7684\u9019\u500B\u700F\u89BD\u5668\u3002\u56FA\u5B9A\u4F7F\u7528\u540C\u4E00\u500B\u700F\u89BD\u5668\uFF0C\u6BCF\u9031\u532F\u51FA\u4E00\u6B21\u5099\u4EFD\u3002"), React.createElement("li", null, "\u984C\u76EE\u6709\u7591\u554F\uFF0C\u6309\u756B\u9762\u89D2\u843D\u7684\u300C\u56DE\u5831\u300D\u8907\u88FD\u8CC7\u8A0A\uFF0C\u8CBC\u7D66\u5206\u4EAB\u9023\u7D50\u7D66\u4F60\u7684\u4EBA\u3002")), React.createElement("div", {
+  }, "\u7B2C\u4E00\u6B21\u4F86\uFF1F\u4E94\u6B65\u958B\u59CB ", open ? '▴' : '▾'), open && React.createElement(React.Fragment, null, React.createElement("ol", null, React.createElement("li", null, "\u78BA\u8A8D\u5B69\u5B50\u7684\u5E74\u7D1A\u9078\u5C0D\u4E86\u3002\u76EE\u524D\u652F\u63F4\u4E00\u3001\u4E8C\u3001\u4E94\u3001\u516D\u5E74\u7D1A\u3002"), React.createElement("li", null, "\u5230\u300C\u7DF4\u7FD2\u8A2D\u5B9A\u300D\u52FE\u9078\u5B78\u6821\u5DF2\u6559\u904E\u7684\u55AE\u5143\uFF0C\u6C92\u6559\u904E\u7684\u5148\u4E0D\u8981\u52FE\u3002"), React.createElement("li", null, "\u5B69\u5B50\u5361\u4F4F\u6642\u53EF\u4EE5\u7528\u63D0\u793A\uFF0C\u7528\u63D0\u793A\u4E0D\u6703\u6263\u91D1\u5E63\u6216\u5C08\u6CE8\u529B\u3002"), React.createElement("li", null, "\u9032\u5EA6\u53EA\u5B58\u5728\u9019\u53F0\u88DD\u7F6E\u7684\u9019\u500B\u700F\u89BD\u5668\u3002\u56FA\u5B9A\u4F7F\u7528\u540C\u4E00\u500B\u700F\u89BD\u5668\uFF0C\u6BCF\u9031\u532F\u51FA\u4E00\u6B21\u5099\u4EFD\uFF1B\u56DE\u4F86\u6642\u53EF\u76F4\u63A5\u9078\u64C7 JSON \u6A94\u6848\u532F\u5165\u3002"), React.createElement("li", null, "\u984C\u76EE\u6709\u7591\u554F\uFF0C\u622A\u4E0B\u554F\u984C\u756B\u9762\uFF0C\u6309\u300C\u56DE\u5831\u9019\u500B\u756B\u9762\u300D\u7C21\u55AE\u8AAA\u660E\u767C\u751F\u4EC0\u9EBC\u4E8B\u3002", PLAYTEST_REPORT_EMAIL ? '可開啟郵件，附上截圖後自行寄出。' : '請私訊給分享遊戲給你的家長。')), React.createElement("div", {
     className: "row"
   }, React.createElement(Btn, {
     id: "guide-settings",
@@ -249141,12 +249211,52 @@ function BackupImportCard({
     [preview, setPreview] = useState(null),
     [mode, setMode] = useState('new'),
     [error, setError] = useState('');
+  const [fileName, setFileName] = useState(''),
+    [reading, setReading] = useState(false),
+    readVersion = useRef(0),
+    fileInput = useRef(null);
+  useEffect(() => () => {
+    readVersion.current++;
+  }, []);
   const point = getRecoveryPoint();
   const change = t => {
+    readVersion.current++;
+    setReading(false);
+    setFileName('');
     setText(t);
     setPreview(null);
     setError('');
     setMode('new');
+  };
+  const selectFile = async e => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    const version = ++readVersion.current;
+    setReading(true);
+    setFileName(file.name);
+    setText('');
+    setPreview(null);
+    setError('');
+    setMode('new');
+    try {
+      if (file.size > BACKUP_LIMITS.bytes) throw new Error('備份超過 3 MB，請保留原檔，先聯絡維護者協助。');
+      if (!file.size) throw new Error('這個檔案是空的，請重新選擇遊戲匯出的 JSON 備份。');
+      let raw;
+      try {
+        raw = await file.text();
+      } catch {
+        throw new Error('讀不到這個檔案，請重新選擇已下載到裝置的備份。');
+      }
+      if (version !== readVersion.current) return;
+      const next = importJSON(raw);
+      setText(raw);
+      setPreview(next);
+    } catch (e) {
+      if (version === readVersion.current) setError('這份檔案尚未匯入。' + (e.message.includes('JSON') ? '檔案內容不完整，請重新選擇遊戲匯出的 JSON 備份。' : e.message));
+    } finally {
+      if (version === readVersion.current) setReading(false);
+    }
   };
   const inspect = () => {
     try {
@@ -249158,11 +249268,14 @@ function BackupImportCard({
     }
   };
   const commit = () => {
+    if (reading || !preview) return;
     try {
       const next = commitBackupImport(text, state, mode, recovery);
+      readVersion.current++;
       setState(next);
       setPreview(null);
       setText('');
+      setFileName('');
       setError('');
       toast(mode === 'new' ? '已另存為新角色，原角色保留。' : '已匯入，覆蓋前的角色已留存復原備份。');
     } catch (e) {
@@ -249172,20 +249285,45 @@ function BackupImportCard({
   return React.createElement("div", {
     className: "card col",
     id: "backup-import"
-  }, React.createElement("h3", null, "\u532F\u5165\u8207\u5FA9\u539F\u5099\u4EFD"), React.createElement("p", {
-    className: "small muted"
-  }, "\u5148\u6AA2\u67E5\u5099\u4EFD\uFF0C\u518D\u78BA\u8A8D\u532F\u5165\u3002\u9810\u8A2D\u53E6\u5B58\u65B0\u89D2\u8272\uFF0C\u4FDD\u7559\u539F\u6709\u9032\u5EA6\uFF1B\u8ACB\u52FF\u532F\u5165\u4F86\u6E90\u4E0D\u660E\u7684\u5099\u4EFD\u3002"), React.createElement("textarea", {
+  }, React.createElement("h3", null, "\u532F\u5165\u8207\u5FA9\u539F\u5099\u4EFD"), React.createElement("p", null, "\u9078\u64C7\u5148\u524D\u4E0B\u8F09\u7684 JSON \u5099\u4EFD\u6A94\uFF0C\u4E0D\u7528\u6253\u958B\u6A94\u6848\u6216\u8907\u88FD\u6587\u5B57\u3002"), React.createElement("div", {
+    className: "backup-file-picker"
+  }, React.createElement("b", null, "\u5F9E\u624B\u6A5F\u6216\u96FB\u8166\u9078\u64C7\u6A94\u6848"), React.createElement("div", null, React.createElement(Btn, {
+    id: "choose-backup-file",
+    kind: "primary",
+    onClick: () => fileInput.current?.click()
+  }, "\u9078\u64C7 JSON \u5099\u4EFD\u6A94")), React.createElement("input", {
+    ref: fileInput,
+    hidden: true,
+    id: "backup-file",
+    type: "file",
+    accept: ".json,application/json",
+    onChange: selectFile,
+    "aria-label": "\u9078\u64C7 JSON \u5099\u4EFD\u6A94",
+    "aria-describedby": "backup-file-help"
+  })), React.createElement("p", {
+    className: "small muted",
+    id: "backup-file-help"
+  }, "\u6A94\u6848\u53EA\u5728\u9019\u53F0\u88DD\u7F6E\u8B80\u53D6\uFF0C\u4E0D\u6703\u4E0A\u50B3\u3002\u63A5\u8457\u6838\u5C0D\u5B69\u5B50\u8207\u5E74\u7D1A\uFF0C\u6309\u300C\u78BA\u8A8D\u532F\u5165\u300D\u624D\u6703\u5132\u5B58\uFF1B\u9810\u8A2D\u53E6\u5B58\u65B0\u89D2\u8272\uFF0C\u4FDD\u7559\u539F\u9032\u5EA6\u3002"), React.createElement("div", {
+    className: "small backup-file-status",
+    role: "status"
+  }, reading ? '正在讀取備份……' : fileName ? '已選擇：' + fileName : ''), React.createElement("details", {
+    id: "backup-paste-details"
+  }, React.createElement("summary", null, "\u6C92\u6709\u6A94\u6848\uFF1F\u6539\u7528\u8CBC\u4E0A\u5099\u4EFD\u6587\u5B57"), React.createElement("div", {
+    className: "col"
+  }, React.createElement("textarea", {
     id: "backup-input",
     value: text,
     onChange: e => change(e.target.value),
     placeholder: "\u8CBC\u4E0A\u5099\u4EFD\u6587\u5B57",
+    "aria-label": "\u5099\u4EFD\u6587\u5B57",
     style: {
       minHeight: 90
     }
   }), React.createElement("div", null, React.createElement(Btn, {
     id: "preview-backup",
+    disabled: reading,
     onClick: inspect
-  }, "\u6AA2\u67E5\u4E26\u9810\u89BD\u5099\u4EFD")), error && React.createElement(Notice, {
+  }, "\u6AA2\u67E5\u4E26\u9810\u89BD\u5099\u4EFD")))), error && React.createElement(Notice, {
     kind: "bad"
   }, React.createElement("span", {
     role: "alert",
@@ -249216,9 +249354,11 @@ function BackupImportCard({
   }, React.createElement(Btn, {
     kind: "primary",
     id: "confirm-backup-import",
+    disabled: reading,
     onClick: commit
   }, "\u78BA\u8A8D\u532F\u5165"), React.createElement(Btn, {
     kind: "ghost",
+    id: "cancel-backup-import",
     onClick: () => setPreview(null)
   }, "\u53D6\u6D88"))), React.createElement("div", {
     className: "card soft col"
