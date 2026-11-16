@@ -938,7 +938,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261116-weekly-v80-r2">
+<meta name="game-release" content="playtest-20261116-speech-shuang-v81-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -186238,8 +186238,11 @@ function Zy({
 function zyPlainText(el) {
   if (!el) return '';
   const c = el.cloneNode(true);
-  c.querySelectorAll('rt, rp, button, .hud, .topbar, [aria-hidden="true"], [data-speech-skip], svg').forEach(n => n.remove());
+  c.querySelectorAll('rt, rp, button, .hud, .topbar, [aria-hidden="true"], [hidden], [data-speech-skip], svg, script, style, template, noscript').forEach(n => n.remove());
   return answerSafeSpeech(c.textContent);
+}
+function currentSpeechTarget() {
+  return document.querySelector('.dialogue-history .history-lines') || document.querySelector('#dialogue [data-speech-content]') || document.querySelector('#dialogue .dlg-text') || document.querySelector('.overlay-panel') || document.querySelector('.stage .card.raised') || document.querySelector('main') || document.body;
 }
 const GAME_SPEECH = {
   active: false,
@@ -186312,7 +186315,7 @@ function SpeakButton({
   }, []);
   if (!ok) return null;
   const onClick = () => {
-    const target = document.querySelector('#dialogue') || document.querySelector('.overlay-panel') || document.querySelector('.stage .card.raised') || document.querySelector('main') || document.body;
+    const target = currentSpeechTarget();
     const text = zyPlainText(target);
     if (!text) return;
     speakText(text);
@@ -190280,7 +190283,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.16-v80';
+const GAME_BUILD = '2026.11.16-v81';
 const PLAYTEST_LINE_KEY = 'kei_line_notice_dismissed_v1';
 const PLAYTEST_REPORT_SCOPES = new Map();
 function playtestBrowser(ua = '') {
@@ -223764,6 +223767,7 @@ WARDROBE_V1.items.hero_shuang_summer_outfit = {
   "fullSet": true,
   "unlockText": "完成小霜支線《花園裡沒有寄出的信》"
 };
+WARDROBE_V1.players.p_shuang.hero_shuang_summer.sheet = "assets/wardrobe/v1/sheets/hero_shuang_summer_v81.webp";
 WARDROBE_V1.players.p_leo.hero_leo_autumn = {
   "sheet": "assets/wardrobe/v1/sheets/hero_leo_autumn.webp",
   "sw": 1920,
@@ -239735,6 +239739,10 @@ function DialogueBox({
   const [i, setI] = useState(0);
   const [shown, setShown] = useState(0);
   const [history, setHistory] = useState(false);
+  useEffect(() => {
+    stopSpeech();
+    return () => stopSpeech();
+  }, [node.id, i, history]);
   const historyButton = useRef(null);
   const closeHistoryButton = useRef(null);
   const line = node.lines[i] ? companionDialogue(node.lines[i], student) : null;
@@ -239839,9 +239847,11 @@ function DialogueBox({
   }, React.createElement("span", {
     "aria-hidden": "true"
   }, text.slice(0, shown)), React.createElement("span", {
-    className: "sr-only"
+    className: "sr-only",
+    "data-speech-content": "dialogue"
   }, text)), React.createElement("div", {
     className: "dlg-tools",
+    "data-speech-skip": "true",
     onClick: e => e.stopPropagation()
   }, React.createElement("span", null, Math.min(i + 1, node.lines.length), " / ", node.lines.length), React.createElement("button", {
     ref: historyButton,
