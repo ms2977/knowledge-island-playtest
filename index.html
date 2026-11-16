@@ -932,6 +932,24 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 
 .playtest-top-version{display:block;font-size:11px;font-weight:400;letter-spacing:0;color:#e1edf1;line-height:1.4}
 
+/* v82: younger readers see the next action first. */
+.junior-board{max-width:1000px;gap:14px}.junior-board h2{font-size:1.3rem;margin:4px 0 12px}.junior-today{display:grid;gap:10px}.junior-commission{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:12px;background:#fffdf6;border:1px solid #c6d7cf;border-radius:18px;padding:14px;box-shadow:0 3px 0 #d8e4dd}.junior-commission h3{margin:0;font-size:1.1rem;line-height:1.6;max-width:none!important}.junior-subject-icon{width:48px;height:48px}.junior-commission .btn{max-width:142px}.junior-fragments{background:#edf4ec;border-radius:16px;padding:12px 16px}.junior-fragment-line{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.junior-fragment-dots{display:flex;gap:5px}.junior-fragment-dots>span{width:14px;height:18px;background:#fff;border:1px solid #9eb4a8;border-radius:4px;transform:rotate(8deg)}.junior-fragment-dots>.got{background:#e3b65f;border-color:#a47b37}.junior-board details summary{cursor:pointer;padding:8px 0}.junior-board details p{margin:8px 0}.junior-board-more{padding:10px 16px;border:1px solid #c6d7cf;border-radius:16px;background:#fffdf6}.junior-extra{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:#edf1f4;border-radius:14px}.junior-weekly-locked{margin:0;font-size:.9rem}.junior-mission-rail{display:none}
+/* The child report control participates in layout, including overlay headers. */
+.app .playtest-report-trigger.compact{position:static;display:inline-flex;align-items:center;justify-content:center;min-width:44px;width:44px;min-height:44px;height:44px;padding:8px;border-radius:14px;font-size:14px;line-height:1;color:#dcebed;background:#1d4952;border-color:#72949a;box-shadow:none;flex-shrink:0}.playtest-report-trigger.compact svg{display:block;flex-shrink:0}.report-overlay-slot{display:inline-flex;flex-shrink:0}.report-overlay-rail{display:flex;justify-content:flex-end;margin-bottom:8px}.app .topbar #playtest-report-slot{display:flex;align-items:center}.app .topbar #playtest-report-slot:empty{display:none}
+@media(min-width:769px){.junior-today{grid-template-columns:repeat(3,minmax(0,1fr))}.junior-commission{grid-template-columns:48px 1fr}.junior-commission .btn{grid-column:1/-1;max-width:none;justify-self:stretch}.junior-board #junior-all-commissions .junior-today{margin-top:12px}}
+@media(max-width:768px){
+ .junior:has(.junior-board)>.topbar #top-growth{display:none}.junior:has(.junior-board)>.topbar{padding:8px 12px;gap:6px}.junior:has(.junior-board)>.topbar .brand{font-size:16px;letter-spacing:0}.junior:has(.junior-board)>.topbar .spacer{min-width:0}
+ .junior .junior-board{padding:12px}.junior-commission{padding:12px;gap:10px;grid-template-columns:42px minmax(0,1fr) auto}.junior-subject-icon{width:42px;height:42px}.junior-commission h3{font-size:18px}.junior-commission .btn{font-size:16px;padding:8px 10px;max-width:116px}.junior .junior-board h2{font-size:21px;max-inline-size:none}.junior-fragment-line b{font-size:16px}.junior-fragments summary{font-size:16px}
+ .junior:has(.junior-mission-play)>.topbar{display:none}
+ .junior .junior-mission-play{padding:8px 10px;gap:10px}.junior-mission-play>.mission-return,.junior-mission-play>.mission-phases,.junior-mission-play>.card>.mission-heading{display:none}
+ .junior-mission-rail{display:flex;align-items:center;gap:8px;min-height:56px;padding:0 2px;background:#edf3f2;font-size:16px;line-height:1.4}.junior-mission-rail [data-report-slot]{margin-left:auto;display:flex}.junior .junior-mission-rail .btn{min-width:64px;min-height:48px;padding:8px;font-size:16px}.junior-mission-rail>span{white-space:nowrap}.junior .junior-mission-play>.card{padding:12px;gap:12px}
+ .junior-mission-play .g1-topline,.junior-mission-play .pickone-progress{display:none}.junior-mission-play .g1-mech{gap:12px}.junior-mission-play .g1-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.junior-mission-play .g1-heading h3{font-size:21px;line-height:1.7}.junior-mission-play .g1-voice{gap:6px;flex-direction:column}.junior-mission-play .g1-voice button{font-size:16px;min-width:64px;padding:8px;min-height:56px}.junior-mission-play .g1-display{font-size:46px;line-height:1.5;padding:6px}.junior-mission-play .g1-figure{padding:8px;gap:8px}.junior-mission-play .g1-dish{padding:8px;min-width:95px}.junior-mission-play .g1-pile img{width:30px}.junior-mission-play .g1-pile{min-height:36px}.junior-mission-play .g1-dish>b{font-size:32px}.junior-mission-play .g1-clock{width:170px}.junior-mission-play .g1-activity{gap:10px}.junior-mission-play .g1-choices{gap:8px}.junior-mission-play .g1-choices button{min-height:70px;font-size:28px;padding:8px 4px}.junior-mission-play .g1-actions{gap:8px}.junior-mission-play .g1-actions button{font-size:18px;padding:8px;min-height:56px}.junior-mission-play .g1-tokens{gap:8px}.junior-mission-play .g1-order-slots{gap:8px}.junior-mission-play .g1-order-slots button{min-height:60px;padding:8px;font-size:18px}.junior-mission-play .g1-bins button{min-height:64px;min-width:80px}.junior-mission-play .g1-mech[data-g1-form="sort"] .g1-tokens button{flex-basis:90px;min-width:80px;font-size:20px;padding:8px}
+ .junior-mission-play .junior-mech{gap:10px}.junior-mission-play .junior-mech>.story{margin:0;font-size:16px;line-height:1.6}.junior-mission-play .junior-mech>.card{padding:10px}.junior-mission-play .junior-q{font-size:20px;line-height:1.8;margin:0}.junior-mission-play .junior-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.junior-mission-play .junior-opt{min-height:56px;font-size:18px;padding:8px}.junior-mission-play #po-instruction{margin:0;font-size:14px;line-height:1.6}.junior-mission-play .junior-mech svg{max-height:140px;max-width:100%}.junior-mission-play .jh-mech{gap:10px}.junior-mission-play .jh-mech>h3{margin:0;font-size:21px}.junior-mission-play .jh-speak{font-size:16px;min-height:48px;padding:8px}
+}
+
+.junior .junior-commission>.btn{display:block;text-align:center}
+.junior-commission-action>span{display:inline-block;white-space:nowrap}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -939,7 +957,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261116-family-tools-v81-1-r1">
+<meta name="game-release" content="playtest-20261116-junior-v82-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -190284,7 +190302,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.16-v81.1';
+const GAME_BUILD = '2026.11.16-v82';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -190908,6 +190926,16 @@ function NumInput({
     disabled: disabled,
     onChange: e => onChange(e.target.value)
   });
+}
+const JuniorQuestionProgress = React.createContext(null);
+function useJuniorQuestionProgress(index, total) {
+  const update = useContext(JuniorQuestionProgress);
+  useEffect(() => {
+    update?.({
+      index,
+      total
+    });
+  }, [update, index, total]);
 }
 function validLockRule(c, count, legacy = false) {
   if (!c || typeof c !== 'object' || typeof c.text !== 'string') return false;
@@ -193819,6 +193847,7 @@ function PickOne({
     }
     if (score >= passNeed) m.pass(`完成！${items.length} 題已確認答對 ${score} 題，訂正答對也算通過。`, detail(answers));else m.giveUp(detail(answers));
   };
+  useJuniorQuestionProgress(idx + 1, items.length);
   const solved = checked === 'correct',
     guard = answerGuardForItem(it),
     released = solved || answerShown;
@@ -193828,7 +193857,7 @@ function PickOne({
   }, story && React.createElement("p", {
     className: "story"
   }, story), React.createElement("div", {
-    className: "row between"
+    className: "row between pickone-progress"
   }, React.createElement(Tag, {
     kind: "accent"
   }, "\u7B2C ", idx + 1, " \u984C\uFF0F\u5171 ", items.length, " \u984C"), React.createElement("span", {
@@ -196882,6 +196911,7 @@ function JuniorHands({
       part
     });
   };
+  useJuniorQuestionProgress(part + 1, parts);
   const props = {
       p,
       a,
@@ -197731,6 +197761,7 @@ function Grade1Practice({
     host = useRef(null),
     seenSpeech = useRef(null),
     speaking = useSpeechPlaying();
+  useJuniorQuestionProgress(index + 1, params.items.length);
   const q = params.items[index],
     protectedQuestion = grade1Guard(q),
     correct = checked === true;
@@ -209032,6 +209063,31 @@ Object.assign(CARE_COPY.abilities, {
   "m_time_units": "我會換算時、分、秒，算出經過的時間",
   "m_mult_div_int": "我會用整數乘除解兩步驟的問題"
 });
+Object.assign(CARE_COPY.abilities, {
+  "g1_zy_symbol": "我認得注音符號，分得出聲符和韻符",
+  "g1_zy_tone": "我會分辨一聲、二聲、三聲、四聲",
+  "g1_zy_spell": "我會把注音符號拼成一個字的音",
+  "g1_zy_read": "我會讀注音寫的短句，知道它在說什麼",
+  "g1_vocab_1a": "我認得一年級的常用字，也會數筆畫",
+  "g1_count10": "我會數到十，知道多一個、少一個是多少",
+  "g1_bonds": "我會把十以內的數分成兩堆",
+  "g1_add10": "我會算十以內的加法",
+  "g1_sub10": "我會算十以內的減法",
+  "g1_order": "我會說出排在第幾個，分得出左右前後",
+  "g1_compare": "我會比出哪個長、哪個短、哪個高",
+  "g1_shape": "我會分辨像球、像盒子、像罐子的東西",
+  "g1_num30": "我會數到三十，知道十個一數",
+  "g1_vocab_1b": "我認得更多一年級的字，也知道怎麼念",
+  "g1_words": "我會看圖選出對的語詞",
+  "g1_sentence": "我會把短句排成通順的順序",
+  "g1_marks": "我會分辨句子要用句號還是問號",
+  "g1_count100": "我會數到一百，比出哪個數大",
+  "g1_addsub18": "我會算十八以內的加法和減法",
+  "g1_time": "我會看鐘面讀出幾點和幾點半",
+  "g1_coins": "我會數一元、五元、十元一共多少錢",
+  "g1_record": "我會把東西分類，數出每一類有幾個",
+  "g1_swap": "我知道兩個數換位置相加，答案一樣"
+});
 const STAGE_META = [{
   key: 's1',
   name: '第一階段・觀念重建',
@@ -218267,6 +218323,43 @@ juniorHandsPick = function (base, state, kp, seed, difficulty = 'normal', histor
     juniorForm: q.kind
   };
 };
+const GRADE1_LEGACY_OPTIONS = Object.fromEntries(GRADE1_BANK.filter(q => q.form === 'choice').map(q => [q.id, [...q.options]]));
+function grade1OptionHash(text) {
+  let n = 2166136261;
+  for (const c of text) n = Math.imul(n ^ c.charCodeAt(0), 16777619);
+  return n >>> 0;
+}
+function grade1ReviseNumericOptions() {
+  const targets = ['g1_count10', 'g1_bonds', 'g1_add10', 'g1_sub10', 'g1_order'];
+  for (const kp of targets) {
+    const rows = GRADE1_BANK.filter(q => q.kpId === kp && q.form === 'choice' && /^\d+$/.test(q.answer)).sort((a, b) => grade1OptionHash(a.id) - grade1OptionHash(b.id));
+    const used = {};
+    for (const q of rows) {
+      const a = Number(q.answer),
+        f = q.figure || {},
+        min = kp === 'g1_order' ? 1 : 0,
+        max = kp === 'g1_order' ? 6 : 10;
+      const candidates = Array.from({
+        length: max - min + 1
+      }, (_, i) => i + min).filter(n => n !== a && (n !== 0 || a <= 2));
+      const common = kp === 'g1_add10' ? [f.a, f.b] : kp === 'g1_sub10' ? [f.a, f.b, f.a + f.b] : kp === 'g1_bonds' ? [f.n, f.left] : [a - 1, a + 1];
+      const pairs = [];
+      for (const near of candidates.filter(n => Math.abs(n - a) <= 2)) for (const other of candidates.filter(n => n !== near && (kp === 'g1_order' || common.includes(n) || Math.abs(n - a) <= 2))) {
+        const score = ((used[near] || 0) + (used[other] || 0)) * 2 + (Math.abs(near - a) === 1 ? 0 : 1) + (common.includes(other) ? 0 : 3) + Math.min(4, Math.abs(other - a)) * .2;
+        pairs.push({
+          values: [near, other],
+          score,
+          tie: grade1OptionHash(q.id + ':' + near + ':' + other)
+        });
+      }
+      pairs.sort((x, y) => x.score - y.score || x.tie - y.tie);
+      const wrong = pairs[0].values;
+      wrong.forEach(n => used[n] = (used[n] || 0) + 1);
+      q.options = [q.answer, ...wrong.map(String)];
+    }
+  }
+}
+grade1ReviseNumericOptions();
 const GRADE1_WORD_BY_ID = Object.fromEntries(GRADE1_WORDS.map(w => [w.id, w]));
 function isGrade1(state) {
   return studentGrade(state?.student) === 1;
@@ -218314,7 +218407,7 @@ function validGrade1Params(p) {
     if (!b || q.form !== b.form || typeof q.prompt !== 'string' || q.prompt.length > 12) return false;
     if (JSON.stringify(q.guard) !== JSON.stringify(b.guard) || q.hint !== b.hint || q.word !== b.word || q.display !== b.display || q.reading !== b.reading || q.pictureOptions !== b.pictureOptions || q.equation !== b.equation) return false;
     if (q.figure && JSON.stringify(q.figure) !== JSON.stringify(b.figure) || !q.figure && b.figure && !b.equation) return false;
-    if (q.form === 'choice') return sorted(q.options) === sorted(b.options) && q.answer === b.answer;
+    if (q.form === 'choice') return (sorted(q.options) === sorted(b.options) || sorted(q.options) === sorted(GRADE1_LEGACY_OPTIONS[b.id])) && q.answer === b.answer;
     if (q.form === 'spell') return JSON.stringify(q.parts) === JSON.stringify(b.parts) && sorted(q.tiles) === sorted(b.tiles) && sorted(q.toneOptions) === sorted(b.toneOptions) && q.tone === b.tone;
     if (q.form === 'order') return JSON.stringify(q.cards) === JSON.stringify(b.cards) && JSON.stringify(q.answer) === JSON.stringify(b.answer) && sorted(q.cardOrder) === sorted(b.cards.map((_, i) => i));
     if (q.form === 'sort') return Array.isArray(q.cards) && Array.isArray(q.answers) && q.cards.length === b.cards.length && q.answers.length === b.answers.length && JSON.stringify(q.bins) === JSON.stringify(b.bins) && sorted(q.cards.map((c, i) => JSON.stringify([c, q.answers[i]]))) === sorted(b.cards.map((c, i) => JSON.stringify([c, b.answers[i]])));
@@ -240506,8 +240599,54 @@ function LineBrowserNotice() {
   }, "\u95DC\u9589\u63D0\u9192"));
 }
 function PlaytestReportButton({
-  state
+  state,
+  compact = false
 }) {
+  const [slot, setSlot] = useState(null);
+  useEffect(() => {
+    if (!compact) {
+      setSlot(null);
+      return;
+    }
+    let frame = 0;
+    const locate = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const rail = innerWidth <= 768 ? document.querySelector('.junior-mission-rail [data-report-slot]') : null;
+        const overlays = [...document.querySelectorAll('.overlay .overlay-panel')].filter(n => n.getBoundingClientRect().width > 0);
+        let target = rail;
+        if (overlays.length) {
+          const panel = overlays.at(-1);
+          target = panel.querySelector('[data-report-slot="overlay"]');
+          if (!target) {
+            target = document.createElement('span');
+            target.dataset.reportSlot = 'overlay';
+            target.className = 'report-overlay-slot';
+            const header = panel.querySelector(':scope>.row.between');
+            if (header) header.append(target);else {
+              const row = document.createElement('div');
+              row.className = 'report-overlay-rail';
+              row.append(target);
+              panel.prepend(row);
+            }
+          }
+        }
+        setSlot(target || document.getElementById('playtest-report-slot'));
+      });
+    };
+    const observer = new MutationObserver(locate);
+    observer.observe(document.getElementById('root'), {
+      childList: true,
+      subtree: true
+    });
+    window.addEventListener('resize', locate);
+    locate();
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', locate);
+    };
+  }, [compact]);
   const [text, setText] = useState(''),
     [description, setDescription] = useState(''),
     [copied, setCopied] = useState(''),
@@ -240544,13 +240683,31 @@ function PlaytestReportButton({
       setCopied('無法自動複製，請長按或全選下方的回報內容複製。');
     }
   };
-  return React.createElement(React.Fragment, null, React.createElement("button", {
-    className: "playtest-report-trigger nozy",
+  const triggerButton = React.createElement("button", {
+    className: 'playtest-report-trigger nozy' + (compact ? ' compact' : ''),
     id: "playtest-report",
     ref: trigger,
     onClick: open,
+    "aria-label": "\u56DE\u5831\u9019\u500B\u756B\u9762",
+    title: "\u8ACB\u5BB6\u9577\u56DE\u5831\u554F\u984C",
     "data-speech-skip": "true"
-  }, "\u56DE\u5831\u9019\u500B\u756B\u9762"), React.createElement("dialog", {
+  }, compact ? React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    width: "24",
+    height: "24",
+    "aria-hidden": "true"
+  }, React.createElement("path", {
+    d: "M4 4h16v12H10l-6 4Z",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinejoin: "round"
+  }), React.createElement("path", {
+    d: "M12 7v4m0 2v1",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  })) : '回報這個畫面');
+  return React.createElement(React.Fragment, null, compact ? slot && ReactDOM.createPortal(triggerButton, slot) : triggerButton, React.createElement("dialog", {
     className: "playtest-report-dialog nozy",
     ref: dialog,
     onCancel: e => {
@@ -240743,6 +240900,131 @@ function ParentBackupReminder({
     setState: setState,
     compact: true
   })) : null;
+}
+function juniorTodayMissions(missions) {
+  const rank = m => missionDueForReview(m) ? 0 : m.status === 'ready' && !m.stages.some(t => t.presented || t.status === 'passed') ? 1 : m.status !== 'passed' ? 2 : 3;
+  const rest = [...missions].sort((a, b) => rank(a) - rank(b) || (a.createdAt || 0) - (b.createdAt || 0) || a.id.localeCompare(b.id)),
+    picked = [],
+    subjects = new Set();
+  while (rest.length && picked.length < 3) {
+    const priority = rank(rest[0]),
+      i = rest.findIndex(m => rank(m) === priority && !subjects.has(m.subject));
+    const [m] = rest.splice(i < 0 ? 0 : i, 1);
+    picked.push(m);
+    subjects.add(m.subject);
+  }
+  return picked;
+}
+function JuniorSubjectIcon({
+  subject
+}) {
+  return React.createElement("svg", {
+    viewBox: "0 0 48 48",
+    className: "junior-subject-icon",
+    "aria-hidden": "true"
+  }, React.createElement("rect", {
+    x: "2",
+    y: "2",
+    width: "44",
+    height: "44",
+    rx: "13",
+    fill: subject === 'math' ? '#f5dfaa' : subject === 'chinese' ? '#dce5f4' : '#dcebd6'
+  }), subject === 'math' ? React.createElement("path", {
+    d: "M13 16h12m-6-6v12m9 9h9m-9 6h9M12 31l8 8m0-8-8 8",
+    stroke: "#785425",
+    strokeWidth: "3",
+    strokeLinecap: "round"
+  }) : subject === 'chinese' ? React.createElement("path", {
+    d: "M9 13q8-4 15 1 7-5 15-1v24q-8-4-15 1-7-5-15-1Zm15 1v24",
+    fill: "#fffdf6",
+    stroke: "#426681",
+    strokeWidth: "2.5"
+  }) : React.createElement(React.Fragment, null, React.createElement("path", {
+    d: "M12 33C8 14 24 10 37 11c0 16-7 28-25 22Z",
+    fill: "#7baf73"
+  }), React.createElement("path", {
+    d: "m12 37 19-20M22 27l-2-9m2 9 9 1",
+    stroke: "#365f49",
+    strokeWidth: "2.5",
+    fill: "none"
+  })));
+}
+function JuniorRepairHub({
+  state,
+  missions,
+  go
+}) {
+  const today = juniorTodayMissions(missions),
+    ids = new Set(today.map(m => m.id)),
+    rest = missions.filter(m => !ids.has(m.id)),
+    p = chapterFragmentProgress(state.student),
+    g1 = isGrade1(state);
+  const card = m => React.createElement("article", {
+    key: m.id,
+    className: "junior-commission"
+  }, React.createElement(JuniorSubjectIcon, {
+    subject: m.subject
+  }), React.createElement("h3", null, KP_BY_ID[m.kpId]?.name || m.title), React.createElement(Btn, {
+    kind: "primary",
+    id: 'mission-' + m.id,
+    onClick: () => go('mission', m.id)
+  }, React.createElement("span", {
+    className: "junior-commission-action"
+  }, (missionDueForReview(m) ? '進行複習' : m.status === 'passed' ? '再接一次' : m.status === 'in_progress' ? '繼續委託' : '接下委託').match(/.{1,2}/gu).map((part, i) => React.createElement("span", {
+    key: i
+  }, part)))));
+  return React.createElement("div", {
+    className: "stage junior-board",
+    id: "junior-board"
+  }, React.createElement("div", null, React.createElement(Btn, {
+    small: true,
+    onClick: () => go('adventure')
+  }, "\u56DE\u5230\u5192\u96AA")), React.createElement("section", {
+    "aria-labelledby": "junior-today-title"
+  }, React.createElement("h2", {
+    id: "junior-today-title"
+  }, "\u4ECA\u5929\u53EF\u4EE5\u505A\u7684\u59D4\u8A17"), React.createElement("div", {
+    className: "junior-today"
+  }, today.map(card)), !today.length && React.createElement(Notice, null, "\u8ACB\u5BB6\u9577\u5148\u9078\u64C7\u5DF2\u5B78\u904E\u7684\u7DF4\u7FD2\u4E3B\u984C\u3002")), React.createElement("section", {
+    className: "junior-fragments",
+    id: "chapter-fragment-board"
+  }, React.createElement("div", {
+    className: "junior-fragment-line"
+  }, React.createElement("span", {
+    className: "junior-fragment-dots",
+    "aria-label": '本章已收集' + p.count + '片線索'
+  }, Array.from({
+    length: 9
+  }, (_, i) => React.createElement("span", {
+    key: i,
+    className: i < p.count ? 'got' : '',
+    "aria-hidden": "true"
+  }))), React.createElement("b", null, p.ready ? '本章集滿了！' : '還差 ' + (9 - p.count) + ' 片')), React.createElement("details", null, React.createElement("summary", null, "\u600E\u9EBC\u62FF\u5230\u7DDA\u7D22\uFF1F"), React.createElement("p", null, g1 ? '完成不同的委託練習階段，每階段得一片。看解說、診斷與重複領取不計入。' : '到通緝板完成案件，每逮捕一位怪盜得一片。', "\u6BCF\u7AE0\u5404\u81EA\u6536\u96C6\u4E5D\u7247\u3002"), React.createElement("p", null, p.ready ? '完成本章劇情，再繼續冒險。' : g1 ? '先挑上方的一件委託吧。' : '練習好了，回島上找通緝板。'))), React.createElement("details", {
+    id: "junior-all-commissions",
+    className: "junior-board-more"
+  }, React.createElement("summary", null, "\u5168\u90E8\u59D4\u8A17", React.createElement("span", {
+    className: "nozy"
+  }, "\uFF08", missions.length, "\uFF09")), React.createElement("div", {
+    className: "junior-today"
+  }, rest.map(card)), React.createElement("p", {
+    className: "small"
+  }, "\u4ECA\u5929\u63A8\u85A6\u7684\u59D4\u8A17\u5DF2\u5217\u5728\u4E0A\u65B9\u3002")), React.createElement(WeeklyEntry, {
+    state: state,
+    onOpen: () => go('weekly'),
+    compact: true
+  }), !g1 && React.createElement("section", {
+    className: "junior-extra",
+    id: "life-commission"
+  }, React.createElement("span", null, "\u751F\u6D3B\u6578\u5B78\u6311\u6230"), React.createElement(Btn, {
+    id: "life-open",
+    onClick: () => go('life_math')
+  }, "\u53BB\u6311\u6230")), !g1 && paintEntryUnlocked(state) && React.createElement("section", {
+    className: "junior-extra",
+    id: "paint-commission"
+  }, React.createElement("span", null, "\u88AB\u6389\u5305\u7684\u984F\u6599"), React.createElement(Btn, {
+    id: "paint-open",
+    onClick: () => go('paint')
+  }, "\u524D\u5F80\u8ABF\u67E5")), g1 && React.createElement(Grade1SymbolCards, null));
 }
 const MechanicSafetyContext = React.createContext(null);
 const MECHANIC_ERROR_KEY = 'kei_mechanic_errors_v1';
@@ -241003,7 +241285,7 @@ function MainMenu({
     big: true,
     id: "menu-weekly",
     onClick: onWeekly
-  }, "\u672C\u9031\u5C0F\u6848"), s && React.createElement(Btn, {
+  }, "\u672C\u9031\u5C0F\u6848"), s && !isGrade1(state) && React.createElement(Btn, {
     big: true,
     id: "menu-life-math",
     onClick: onLifeMath
@@ -241362,6 +241644,11 @@ function RepairHub({
     if (st !== state) setState(st);
   }, []);
   const ms = state.missions.filter(m => m.status !== 'paused_scope' && learningAllows(state, m.kpId));
+  if (isJuniorState(state)) return React.createElement(JuniorRepairHub, {
+    state: state,
+    missions: ms,
+    go: go
+  });
   const parentMs = ms.filter(m => m.errorItemId).slice().reverse();
   const seedMs = ms.filter(m => !m.errorItemId);
   const Card = ({
@@ -241477,6 +241764,11 @@ function MissionPlayer({
   const [result, setResult] = useState(null);
   const [key, setKey] = useState(0);
   const [local, setLocal] = useState(current);
+  const [questionProgress, setQuestionProgress] = useState({
+    index: 1,
+    total: current?.params?.items?.length || 1
+  });
+  const compactPlay = isJuniorState(state) && step === 'play';
   useEffect(() => {
     if (step !== 'play' || !local) return;
     const token = `${isReview ? 'review' : 'mission'}:${mission.id}:${local.presentationId || local.id}:${learningKeys(mission.kpId, local).join('|')}`;
@@ -241664,16 +241956,27 @@ function MissionPlayer({
   }
   const Mech = ALL_MECHS[local.kind];
   return React.createElement("div", {
-    className: "stage"
-  }, React.createElement("div", {
-    className: "row between"
+    className: 'stage mission-player' + (compactPlay ? ' junior-mission-play' : '')
+  }, compactPlay && React.createElement("div", {
+    className: "junior-mission-rail"
+  }, React.createElement(Btn, {
+    id: "junior-mission-back",
+    small: true,
+    onClick: () => go('repair')
+  }, "\u8FD4\u56DE"), React.createElement("span", {
+    className: "nozy",
+    "data-speech-skip": "true"
+  }, questionProgress.index, "\uFF0F", questionProgress.total), React.createElement("span", null, isReview ? '再練習' : local.short), React.createElement("span", {
+    "data-report-slot": "mission"
+  })), React.createElement("div", {
+    className: "row between mission-return"
   }, React.createElement(Btn, {
     small: true,
     onClick: () => go('repair')
   }, isGrade1(state) ? '回委託板' : '← 回到委託板（進度已保存）'), React.createElement("span", {
     className: "small muted"
   }, mission.title)), React.createElement("div", {
-    className: "row",
+    className: "row mission-phases",
     style: {
       gap: 6
     }
@@ -241684,7 +241987,9 @@ function MissionPlayer({
     kind: s.id === local.id ? 'accent' : s.status === 'passed' ? 'good' : s.status === 'failed' ? 'bad' : ''
   }, s.short))), React.createElement("div", {
     className: "card raised col"
-  }, React.createElement("div", null, React.createElement("span", {
+  }, React.createElement("div", {
+    className: "mission-heading"
+  }, React.createElement("span", {
     className: "eyebrow"
   }, QUEST_FRAMES[mission.kpId]?.title || mission.title, "\u30FB", KP_BY_ID[mission.kpId]?.name), React.createElement("h2", null, local.name), local.desc && React.createElement("p", {
     className: "muted small"
@@ -241703,14 +242008,16 @@ function MissionPlayer({
     kind: "primary",
     id: "stage-start",
     onClick: () => setStep('play')
-  }, "\u958B\u59CB"))), step === 'play' && local.repeatPractice && React.createElement(Notice, null, "\u9019\u662F\u540C\u89C0\u5FF5\u7684\u8907\u7FD2\u984C\uFF0C\u518D\u78BA\u8A8D\u4E00\u6B21\u4F60\u7684\u60F3\u6CD5\u3002"), step !== 'intro' && React.createElement(Mech, {
+  }, "\u958B\u59CB"))), step === 'play' && local.repeatPractice && React.createElement(Notice, null, "\u9019\u662F\u540C\u89C0\u5FF5\u7684\u8907\u7FD2\u984C\uFF0C\u518D\u78BA\u8A8D\u4E00\u6B21\u4F60\u7684\u60F3\u6CD5\u3002"), step !== 'intro' && React.createElement(JuniorQuestionProgress.Provider, {
+    value: setQuestionProgress
+  }, React.createElement(Mech, {
     key: `${key}:${local.presented ? 'ready' : 'pending'}`,
     params: local.params,
     hintsAllowed: !!local.allowHints,
     maxAttempts: local.maxAttempts,
     onDone: onDone,
     seed: mission.seed + key
-  }), step === 'result' && React.createElement(CareResultLine, {
+  })), step === 'result' && React.createElement(CareResultLine, {
     state: state,
     eventId: careEvent,
     onRetry: () => setCareRetry(state.student.care?.log.find(e => e.eventId === careEvent)?.key)
@@ -247347,9 +247654,20 @@ function WeeklyIcon() {
 }
 function WeeklyEntry({
   state,
-  onOpen
+  onOpen,
+  compact = false
 }) {
   const status = weeklyStatus(state);
+  if (compact) return status.kind === 'locked' ? React.createElement("p", {
+    className: "junior-weekly-locked",
+    id: "weekly-commission"
+  }, "\u5B8C\u6210\u7B2C\u4E00\u7AE0\uFF0C\u5C31\u80FD\u63A5\u672C\u9031\u5C0F\u6848\u3002") : React.createElement("section", {
+    className: "junior-extra",
+    id: "weekly-commission"
+  }, React.createElement("span", null, "\u672C\u9031\u5C0F\u6848"), React.createElement(Btn, {
+    id: "weekly-open",
+    onClick: onOpen
+  }, status.kind === 'active' ? '繼續小案' : '看看小案'));
   return React.createElement("section", {
     className: "card weekly-entry",
     id: "weekly-commission"
@@ -249573,7 +249891,7 @@ function App() {
       setState
     }
   }, React.createElement("div", {
-    className: `app ${junior ? 'junior' : ''} ${GRADE1_MODE ? 'grade1' : ''}`,
+    className: `app ${junior ? 'junior' : ''} ${GRADE1_MODE ? 'grade1' : ''} ${mode === 'student' ? 'child-mode' : ''}`,
     "data-build": GAME_BUILD,
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
@@ -249593,6 +249911,8 @@ function App() {
     id: "adventure-tools-slot"
   }), React.createElement("span", {
     className: "spacer"
+  }), React.createElement("span", {
+    id: "playtest-report-slot"
   }), mode === 'student' ? React.createElement("button", {
     onClick: () => setMode('parent'),
     id: "top-parent"
@@ -249661,7 +249981,8 @@ function App() {
     rel: "noopener noreferrer"
   }, "\u8A66\u73A9\u9808\u77E5\u8207\u7D20\u6750\u4F86\u6E90")), React.createElement(PlaytestReportButton, {
     key: mode + profiles.active,
-    state: state
+    state: state,
+    compact: mode === 'student'
   }), toastEl, mode === 'student' && s && React.createElement(SpeakButton, {
     key: 'speech-' + profiles.active,
     allowRead: junior
