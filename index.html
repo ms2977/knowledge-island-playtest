@@ -918,6 +918,15 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 /* Short life phrases stay horizontal; avoid one-character vertical strips. */
 .g1-mech[data-g1-form="sort"] .g1-tokens button{flex:1 1 140px;min-width:140px;max-width:100%;line-height:1.8;word-break:normal;overflow-wrap:normal}.g1-choices{grid-template-columns:repeat(auto-fit,minmax(88px,1fr))}
 
+.playtest-version{display:block;text-align:center;padding:10px;color:#496373;font-size:13px}
+.playtest-line{display:flex;align-items:flex-start;gap:12px;max-width:960px;margin:12px auto}.playtest-line p{margin:8px 0 0}.playtest-line button{flex-shrink:0}
+.playtest-report-trigger{position:fixed;z-index:9500;left:10px;bottom:10px;background:#fffdf3;color:#294b59;border:1px solid #557782;border-radius:22px;min-height:44px;padding:8px 14px;font-size:14px;box-shadow:0 2px 8px #16323d33}
+.playtest-report-dialog{box-sizing:border-box;max-width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #90a6ae;border-radius:20px;padding:24px;color:#193e4c;background:#fffdf7}.playtest-report-dialog::backdrop{background:#102d3acc}.playtest-report-dialog h2{margin-top:0}.playtest-report-dialog p{line-height:1.6}.playtest-report-dialog textarea{box-sizing:border-box;width:100%;height:245px;font-size:15px;line-height:1.6;padding:12px;resize:vertical}.playtest-report-dialog .row{margin-top:12px;flex-wrap:wrap}
+.playtest-guide-toggle{background:transparent;border:0;text-align:left;font-size:18px;font-weight:700;color:#214e5d;padding:8px 0;min-height:44px}.parent-app #parent-first-guide ol{margin:0;padding-left:24px;line-height:1.7}.parent-app #parent-first-guide li{margin:8px 0}.backup-export textarea{min-height:140px;font:12px monospace}.backup-export [role=status]:empty{display:none}.parent-app{padding-bottom:80px}
+@media(max-width:600px){.playtest-line{margin:10px}.playtest-report-dialog{padding:18px}.playtest-report-trigger{font-size:13px}.playtest-report-dialog button{min-height:44px}}
+
+.playtest-top-version{display:block;font-size:11px;font-weight:400;letter-spacing:0;color:#e1edf1;line-height:1.4}
+
 </style>
 <meta name="theme-color" content="#19364a">
 <meta name="description" content="知識探索島：在冒險、解謎與角色對話中練習課堂知識。">
@@ -925,7 +934,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261116-grade1-v78-r5">
+<meta name="game-release" content="playtest-20261116-family-v79-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -189893,6 +189902,7 @@ function validateBackupState(input) {
   unique(s.errorItems, 'errorItems');
   records(s.practiceLog, 'practiceLog');
   obj(s.meta, 'meta');
+  if (s.meta.playtest !== undefined) validatePlaytestMeta(s.meta.playtest, bad);
   opt(s, 'settings', (v, p) => {
     opt(v, 'storySource', (x, q) => validateStorySource(x, bad, q), p);
     obj(v, p);
@@ -190255,6 +190265,125 @@ function validatePaintCases(v, bad, p) {
     if (c.seen !== undefined && (!Array.isArray(c.seen) || c.seen.length > 200 || !c.seen.every(x => typeof x === 'string'))) bad(p + '.seen');
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
+}
+const GAME_BUILD = '2026.11.16-v79';
+const PLAYTEST_LINE_KEY = 'kei_line_notice_dismissed_v1';
+const PLAYTEST_REPORT_SCOPES = new Map();
+function playtestBrowser(ua = '') {
+  if (/\bLine\//i.test(ua)) return 'LINE';
+  if (/Edg(?:e|A|iOS)?\//i.test(ua)) return 'Edge';
+  if (/Firefox\/|FxiOS\//i.test(ua)) return 'Firefox';
+  if (/Chrome\/|CriOS\//i.test(ua)) return 'Chrome';
+  return /Safari\//i.test(ua) ? 'Safari' : '其他瀏覽器';
+}
+function playtestHash(value) {
+  let h = 2166136261;
+  for (const c of JSON.stringify(value ?? null)) {
+    h ^= c.charCodeAt(0);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
+function playtestCode(value) {
+  return typeof value === 'string' && /^[a-zA-Z0-9_.:/-]{1,150}$/.test(value) ? value : '未指定';
+}
+function playtestQuestionCode(q) {
+  return q?.id && /^[a-z0-9_-]{1,100}$/i.test(q.id) ? q.id : 'q-' + playtestHash(q);
+}
+function usePlaytestReportScope(priority, fields) {
+  const owner = useRef(Symbol('report')),
+    signature = JSON.stringify(fields);
+  React.useLayoutEffect(() => {
+    PLAYTEST_REPORT_SCOPES.set(owner.current, {
+      priority,
+      fields: JSON.parse(signature)
+    });
+    return () => PLAYTEST_REPORT_SCOPES.delete(owner.current);
+  }, [priority, signature]);
+}
+function playtestReportFields() {
+  return [...PLAYTEST_REPORT_SCOPES.values()].sort((a, b) => a.priority - b.priority).reduce((v, row) => ({
+    ...v,
+    ...row.fields
+  }), {});
+}
+function playtestReportText(state, fields, ua, width) {
+  const grade = [1, 2, 5, 6].includes(state.student?.grade) ? state.student.grade + ' 年級' : '尚未建立';
+  return ['知識探索島・問題回報', '版本：' + GAME_BUILD, '年級：' + grade, '目前位置：' + playtestCode([fields.location, fields.entry].filter(Boolean).join('/')), '場景／航路：' + playtestCode(fields.scene), '題目／對話代號：' + playtestCode(fields.id), '題型：' + playtestCode(fields.kind), '瀏覽器：' + playtestBrowser(ua), '畫面寬度：' + (Number.isFinite(width) ? Math.max(0, Math.min(20000, Math.round(width))) : 0) + ' px'].join('\n');
+}
+function playtestMeta(state) {
+  return state.meta?.playtest || {};
+}
+function playtestProgressKey(s) {
+  const a = s.student;
+  return JSON.stringify({
+    student: a ? {
+      createdAt: a.createdAt,
+      grade: a.grade,
+      xp: a.xp,
+      achievements: a.achievements,
+      chapters: a.chapters,
+      story: a.story ? {
+        flags: a.story.flags,
+        evidence: a.story.evidence,
+        solved: a.story.solved
+      } : null,
+      heroCases: a.heroCases,
+      maze: a.maze,
+      lifeMath: a.lifeMath,
+      wardrobe: a.wardrobe
+    } : null,
+    practiceLog: s.practiceLog,
+    errorItems: s.errorItems,
+    missions: (s.missions || []).map(m => ({
+      id: m.id,
+      status: m.status,
+      diag: m.diag,
+      stages: m.stages,
+      reviews: m.reviews
+    }))
+  });
+}
+function playtestTrackProgress(previous, next, t = now()) {
+  if (next === previous || !next?.student || playtestProgressKey(previous) === playtestProgressKey(next)) return next;
+  return {
+    ...next,
+    meta: {
+      ...next.meta,
+      playtest: {
+        ...playtestMeta(next),
+        progressAt: t
+      }
+    }
+  };
+}
+function playtestLastProgress(state) {
+  const times = [state.student?.createdAt, playtestMeta(state).progressAt, ...(state.practiceLog || []).map(x => x.t), ...(state.student?.log || []).map(x => x.t), ...(state.student?.story?.log || []).map(x => x.t)];
+  return Math.max(0, ...times.filter(Number.isFinite));
+}
+function playtestBackupDue(state, t = now()) {
+  if (!state.student) return false;
+  const last = playtestMeta(state).exportedAt || 0,
+    progress = playtestLastProgress(state);
+  if (!last) return t - (state.student.createdAt || state.meta.createdAt) >= 3 * DAY;
+  return t - last > 7 * DAY && progress > last && progress >= t - 7 * DAY;
+}
+function playtestMark(state, fields) {
+  return {
+    ...state,
+    meta: {
+      ...state.meta,
+      playtest: {
+        ...playtestMeta(state),
+        ...fields
+      }
+    }
+  };
+}
+function validatePlaytestMeta(v, bad) {
+  if (!backupObject(v)) bad('meta.playtest');
+  for (const k of ['progressAt', 'exportedAt']) if (v[k] !== undefined && (!Number.isSafeInteger(v[k]) || v[k] < 0)) bad('meta.playtest.' + k);
+  if (v.guideSeen !== undefined && typeof v.guideSeen !== 'boolean') bad('meta.playtest.guideSeen');
 }
 const {
   useState,
@@ -193586,6 +193715,10 @@ function PickOne({
     onDone: complete,
     maxAttempts
   });
+  usePlaytestReportScope(40, {
+    id: playtestQuestionCode(items[idx]),
+    kind: 'pickone/item-' + (idx + 1)
+  });
   const it = items[idx];
   const hintTexts = hints.length ? hints : it?.hint ? [it.hint] : ['先把題目念一次，再看圖。', '把每一個選項都看一遍，不急。'];
   const score = answers.filter(a => a.correct).length,
@@ -195275,6 +195408,12 @@ function EnglishPractice({
     playToken = useRef(0);
   const p = useMemo(() => fallback ? englishShuffleParams(ENGLISH_V59_BANK.find(q => q.id === original.targetId + '-read_en').params, makeRng(seed)) : original, [fallback, original, seed]),
     listening = p.skill === 'listen';
+  usePlaytestReportScope(40, {
+    id: playtestQuestionCode({
+      id: p.targetId + '-' + p.skill
+    }),
+    kind: 'english/' + p.skill
+  });
   const stop = () => {
     playToken.current++;
     clearTimeout(timer.current);
@@ -197568,6 +197707,10 @@ function Grade1Practice({
   const q = params.items[index],
     protectedQuestion = grade1Guard(q),
     correct = checked === true;
+  usePlaytestReportScope(40, {
+    id: playtestQuestionCode(q),
+    kind: 'grade1/' + q.form
+  });
   useAnswerGuard(protectedQuestion, !correct && !reveal && !finished);
   const read = () => {
     const text = zyPlainText(host.current);
@@ -208847,6 +208990,21 @@ function validateEnglishLearning(e, bad, p) {
     }
   }
 }
+Object.assign(CARE_COPY.abilities, {
+  "en_days": "我聽到、看到都認得星期和日期的英文",
+  "en_numbers_time": "我聽到、看到都認得數字和時間的英文",
+  "en_letter_words": "我看得懂信封上的英文和問候語",
+  "en_weather": "我聽到、看到都認得天氣和季節的英文",
+  "en_family": "我聽到、看到都認得家人稱呼的英文",
+  "en_school": "我聽到、看到都認得學校和文具的英文",
+  "en_colors_shapes": "我聽到、看到都認得顏色和形狀的英文",
+  "en_actions": "我聽到、看到都認得日常動作的英文",
+  "en_places": "我聽到、看到都認得地點和方向的英文",
+  "en_food": "我聽到、看到都認得食物和飲料的英文",
+  "en_patterns_1": "我讀得懂簡單的英文句子和短信",
+  "m_time_units": "我會換算時、分、秒，算出經過的時間",
+  "m_mult_div_int": "我會用整數乘除解兩步驟的問題"
+});
 const STAGE_META = [{
   key: 's1',
   name: '第一階段・觀念重建',
@@ -231335,10 +231493,21 @@ function heroDeduce(state, routeId = 'ari_coast') {
     d = heroDefinition(routeId);
   if (!c || !d || c.solvedAt || !heroRequiredClues(routeId).every(x => c.clues.includes(x)) || c.conclusion === null) return state;
   const passed = c.conclusion === d.correct && heroRequiredEvidence(routeId).every(x => c.evidence.includes(x));
-  if (!passed) return heroPut(state, routeId, {
-    ...c,
-    feedback: c.conclusion !== d.correct ? d.wrongFeedback : d.missingFeedback
-  });
+  if (!passed) {
+    if (c.conclusion !== d.correct) return heroPut(state, routeId, {
+      ...c,
+      feedback: d.wrongFeedback
+    });
+    const tries = c.missingEvidenceAttempts || 0,
+      question = HERO_EVIDENCE_QUESTIONS[routeId];
+    return heroPut(state, routeId, {
+      ...c,
+      ...(question ? {
+        missingEvidenceAttempts: Math.min(2, tries + 1)
+      } : {}),
+      feedback: question && tries === 0 ? question : d.missingFeedback
+    });
+  }
   state = heroPut(state, routeId, {
     ...c,
     solvedAt: now(),
@@ -231373,6 +231542,7 @@ function validateHeroCases(v, bad, p, stage) {
       ids = places.map(x => x.clue.id),
       optional = places.find(x => x.optional);
     if (!obj(c) || !time(c.startedAt) || !time(c.solvedAt) || !time(c.optionalAt) || !['map', 'deduction', ...places.map(x => x.id)].includes(c.place) || !obj(c.tasks) || !Array.isArray(c.clues) || c.clues.some(x => !ids.includes(x)) || new Set(c.clues).size !== c.clues.length || !Array.isArray(c.evidence) || new Set(c.evidence).size !== c.evidence.length || c.evidence.some(x => !c.clues.includes(x)) || c.conclusion !== null && ![0, 1, 2].includes(c.conclusion) || c.feedback !== null && typeof c.feedback !== 'string' || c.optionOrder !== undefined && (!Array.isArray(c.optionOrder) || c.optionOrder.length !== 3 || new Set(c.optionOrder).size !== 3 || c.optionOrder.some(x => ![0, 1, 2].includes(x)))) bad(p + '.' + id);
+    if (c.missingEvidenceAttempts !== undefined && (!Number.isInteger(c.missingEvidenceAttempts) || c.missingEvidenceAttempts < 0 || c.missingEvidenceAttempts > 2)) bad(p + '.missingEvidenceAttempts');
     for (const [place, t] of Object.entries(c.tasks)) {
       const placeDef = places.find(x => x.id === place);
       if (!placeDef || !obj(t) || typeof t.policy !== 'string') bad(p + '.tasks');
@@ -231384,6 +231554,11 @@ function validateHeroCases(v, bad, p, stage) {
     if (c.clues.some(k => !c.tasks[places.find(x => x.clue.id === k).id]?.result?.passed) || c.solvedAt && (!heroRequiredClues(id).every(k => c.clues.includes(k)) || c.conclusion !== d.correct || !heroRequiredEvidence(id).every(k => c.evidence.includes(k))) || !!c.optionalAt !== c.clues.includes(optional?.clue.id)) bad(p + '.progress');
   }
 }
+const HERO_EVIDENCE_QUESTIONS = {
+  "cheng_river": "實際的比數是多少？板子為什麼會記到對面？換繩之後發生了什麼？請各找一份依據。",
+  "shuang_garden": "信有沒有離開莊園？寫信的人當時在等什麼？請各找一份她們自己留下的紀錄。",
+  "leo_canal": "30 和 24 數的是同一種東西嗎？到閘口時是多少、封條有沒有動過？請各找一份紀錄。"
+};
 const LIFE_MATH_DATA = {
   "version": "life-math-v74b-1",
   "disclaimer": "模擬帳單：只依題目資料練習，不代表真實費率。",
@@ -239052,6 +239227,10 @@ function DialogueBox({
   onChoice,
   onEnd
 }) {
+  usePlaytestReportScope(25, {
+    id: node.id?.startsWith('tip_') ? 'companion-tip' : node.id,
+    kind: 'dialogue'
+  });
   const [i, setI] = useState(0);
   const [shown, setShown] = useState(0);
   const [history, setHistory] = useState(false);
@@ -239777,6 +239956,213 @@ function BankEmpty() {
   }, "\u9019\u500B\u55AE\u5143\u5728\u76EE\u524D\u96E3\u5EA6\u7684\u65B0\u984C\u5DF2\u7DF4\u7FD2\u5B8C\u3002\u53EF\u4EE5\u5148\u63DB\u4E00\u500B\u5DF2\u5B78\u55AE\u5143\uFF0C\u6216\u8ACB\u5BB6\u9577\u5728\u300C\u7DF4\u7FD2\u8A2D\u5B9A\u300D\u958B\u555F\u300C\u65B0\u984C\u7528\u5B8C\u5F8C\u91CD\u8907\u8907\u7FD2\u300D\u3002\u4F60\u7684\u9032\u5EA6\u5DF2\u4FDD\u7559\u3002");
 }
 ALL_MECHS.bankempty = BankEmpty;
+function PlaytestVersion() {
+  return React.createElement("small", {
+    className: "playtest-version nozy",
+    "data-speech-skip": "true"
+  }, "\u8A66\u73A9\u7248 ", GAME_BUILD);
+}
+function LineBrowserNotice() {
+  const [closed, setClosed] = useState(() => {
+    try {
+      return localStorage.getItem(PLAYTEST_LINE_KEY) === '1';
+    } catch {
+      return false;
+    }
+  });
+  if (closed || playtestBrowser(navigator.userAgent) !== 'LINE') return null;
+  return React.createElement("aside", {
+    className: "notice playtest-line nozy",
+    id: "line-notice"
+  }, React.createElement("div", null, React.createElement("b", null, "\u5EFA\u8B70\u7528\u5916\u90E8\u700F\u89BD\u5668\u958B\u555F"), React.createElement("p", null, "\u8ACB\u958B\u555F LINE \u7684\u9078\u55AE\uFF0C\u9078\u64C7\u7528 Safari \u6216 Chrome \u958B\u555F\u3002\u4E4B\u5F8C\u56FA\u5B9A\u7528\u540C\u4E00\u500B\u700F\u89BD\u5668\uFF0C\u4E26\u5B9A\u671F\u5099\u4EFD\uFF0C\u8F03\u5BB9\u6613\u4FDD\u7559\u9032\u5EA6\u3002")), React.createElement(Btn, {
+    small: true,
+    id: "line-dismiss",
+    onClick: () => {
+      setClosed(true);
+      try {
+        localStorage.setItem(PLAYTEST_LINE_KEY, '1');
+      } catch {}
+    }
+  }, "\u95DC\u9589\u63D0\u9192"));
+}
+function PlaytestReportButton({
+  state
+}) {
+  const [text, setText] = useState(''),
+    [copied, setCopied] = useState(''),
+    dialog = useRef(null),
+    trigger = useRef(null),
+    area = useRef(null);
+  const close = () => {
+    dialog.current?.close();
+    setText('');
+    trigger.current?.focus();
+  };
+  const open = () => {
+    stopSpeech();
+    setCopied('');
+    setText(playtestReportText(state, playtestReportFields(), navigator.userAgent, innerWidth));
+    dialog.current?.showModal();
+  };
+  return React.createElement(React.Fragment, null, React.createElement("button", {
+    className: "playtest-report-trigger nozy",
+    id: "playtest-report",
+    ref: trigger,
+    onClick: open,
+    "data-speech-skip": "true"
+  }, "\u56DE\u5831\u9019\u500B\u756B\u9762"), React.createElement("dialog", {
+    className: "playtest-report-dialog nozy",
+    ref: dialog,
+    onCancel: e => {
+      e.preventDefault();
+      close();
+    },
+    "aria-labelledby": "report-title",
+    "data-speech-skip": "true"
+  }, React.createElement("h2", {
+    id: "report-title"
+  }, "\u56DE\u5831\u9019\u4E00\u984C\uFF0F\u9019\u500B\u756B\u9762"), React.createElement("p", null, "\u53EA\u6709\u7248\u672C\u3001\u5E74\u7D1A\u8207\u554F\u984C\u4F4D\u7F6E\u7B49\u8CC7\u8A0A\uFF0C\u4E0D\u542B\u5B69\u5B50\u59D3\u540D\u3001\u7B54\u6848\u6216\u5B58\u6A94\u3002\u8907\u88FD\u5F8C\uFF0C\u8ACB\u8CBC\u7D66\u5206\u4EAB\u9023\u7D50\u7D66\u4F60\u7684\u4EBA\u3002"), React.createElement("textarea", {
+    id: "playtest-report-text",
+    ref: area,
+    readOnly: true,
+    value: text,
+    "aria-label": "\u56DE\u5831\u8CC7\u8A0A",
+    onFocus: e => e.target.select()
+  }), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: "report-copy",
+    kind: "primary",
+    onClick: async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setCopied('已複製，可以自行貼上。');
+      } catch {
+        area.current?.focus();
+        area.current?.select();
+        setCopied('無法自動複製，請長按或全選上方文字複製。');
+      }
+    }
+  }, "\u8907\u88FD\u56DE\u5831\u8CC7\u8A0A"), React.createElement(Btn, {
+    id: "report-close",
+    onClick: close
+  }, "\u95DC\u9589")), React.createElement("p", {
+    role: "status"
+  }, copied)));
+}
+function ParentFirstGuide({
+  state,
+  setState,
+  onSettings
+}) {
+  const [open, setOpen] = useState(!playtestMeta(state).guideSeen);
+  const toggle = () => {
+    setOpen(!open);
+    if (open) setState(s => playtestMark(s, {
+      guideSeen: true
+    }));
+  };
+  return React.createElement("section", {
+    className: "card col nozy",
+    id: "parent-first-guide"
+  }, React.createElement("button", {
+    className: "playtest-guide-toggle",
+    id: "parent-guide-toggle",
+    "aria-expanded": open,
+    onClick: toggle
+  }, "\u7B2C\u4E00\u6B21\u4F86\uFF1F\u4E94\u6B65\u958B\u59CB ", open ? '▴' : '▾'), open && React.createElement(React.Fragment, null, React.createElement("ol", null, React.createElement("li", null, "\u78BA\u8A8D\u5B69\u5B50\u7684\u5E74\u7D1A\u9078\u5C0D\u4E86\u3002\u76EE\u524D\u652F\u63F4\u4E00\u3001\u4E8C\u3001\u4E94\u3001\u516D\u5E74\u7D1A\u3002"), React.createElement("li", null, "\u5230\u300C\u7DF4\u7FD2\u8A2D\u5B9A\u300D\u52FE\u9078\u5B78\u6821\u5DF2\u6559\u904E\u7684\u55AE\u5143\uFF0C\u6C92\u6559\u904E\u7684\u5148\u4E0D\u8981\u52FE\u3002"), React.createElement("li", null, "\u5B69\u5B50\u5361\u4F4F\u6642\u53EF\u4EE5\u7528\u63D0\u793A\uFF0C\u7528\u63D0\u793A\u4E0D\u6703\u6263\u91D1\u5E63\u6216\u5C08\u6CE8\u529B\u3002"), React.createElement("li", null, "\u9032\u5EA6\u53EA\u5B58\u5728\u9019\u53F0\u88DD\u7F6E\u7684\u9019\u500B\u700F\u89BD\u5668\u3002\u56FA\u5B9A\u4F7F\u7528\u540C\u4E00\u500B\u700F\u89BD\u5668\uFF0C\u6BCF\u9031\u532F\u51FA\u4E00\u6B21\u5099\u4EFD\u3002"), React.createElement("li", null, "\u984C\u76EE\u6709\u7591\u554F\uFF0C\u6309\u756B\u9762\u89D2\u843D\u7684\u300C\u56DE\u5831\u300D\u8907\u88FD\u8CC7\u8A0A\uFF0C\u8CBC\u7D66\u5206\u4EAB\u9023\u7D50\u7D66\u4F60\u7684\u4EBA\u3002")), React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: "guide-settings",
+    onClick: onSettings
+  }, "\u524D\u5F80\u7DF4\u7FD2\u8A2D\u5B9A"), React.createElement(Btn, {
+    id: "guide-read",
+    onClick: () => {
+      setOpen(false);
+      setState(s => playtestMark(s, {
+        guideSeen: true
+      }));
+    }
+  }, "\u6211\u770B\u904E\u4E86\uFF0C\u6536\u8D77\u8AAA\u660E"))));
+}
+function BackupExportControl({
+  state,
+  setState,
+  compact = false
+}) {
+  const [text, setText] = useState(''),
+    [status, setStatus] = useState('');
+  const download = () => {
+    try {
+      const stamped = playtestMark(state, {
+          exportedAt: now()
+        }),
+        payload = exportJSON(stamped);
+      validateBackupText(payload);
+      const url = URL.createObjectURL(new Blob([payload], {
+          type: 'application/json'
+        })),
+        a = document.createElement('a');
+      a.href = url;
+      a.download = 'knowledge-island-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+      document.body.append(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+      setState(s => playtestMark(s, {
+        exportedAt: playtestMeta(stamped).exportedAt
+      }));
+      setStatus('已開始下載備份。請確認檔案已存好；備份含私人資料，請自行保管。');
+    } catch {
+      setStatus('無法下載，請改用備份文字另存。');
+      setText(exportJSON(state));
+    }
+  };
+  return React.createElement("div", {
+    className: "col backup-export nozy"
+  }, React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    id: compact ? 'backup-reminder-export' : 'backup-download',
+    kind: "primary",
+    onClick: download
+  }, "\u532F\u51FA\u5099\u4EFD"), !compact && React.createElement(Btn, {
+    id: "backup-generate",
+    onClick: () => {
+      setText(exportJSON(state));
+      setStatus('請把備份文字另存到自己的檔案，勿貼到群組。');
+    }
+  }, "\u7522\u751F\u5099\u4EFD\u6587\u5B57")), text && React.createElement(React.Fragment, null, React.createElement("textarea", {
+    id: "backup-export-text",
+    readOnly: true,
+    value: text,
+    "aria-label": "\u79C1\u4EBA\u5099\u4EFD\u6587\u5B57",
+    onFocus: e => e.target.select()
+  }), React.createElement(Btn, {
+    id: "backup-saved",
+    onClick: () => {
+      setState(s => playtestMark(s, {
+        exportedAt: now()
+      }));
+      setStatus('已記下這次備份時間。');
+    }
+  }, "\u6211\u5DF2\u5C07\u5099\u4EFD\u6587\u5B57\u53E6\u5B58")), React.createElement("span", {
+    role: "status"
+  }, status));
+}
+function ParentBackupReminder({
+  state,
+  setState
+}) {
+  return playtestBackupDue(state) ? React.createElement("aside", {
+    className: "notice nozy",
+    id: "parent-backup-reminder"
+  }, React.createElement("b", null, "\u6700\u8FD1\u7684\u5192\u96AA\u503C\u5F97\u7559\u4E00\u4EFD\u5099\u4EFD"), React.createElement("p", null, playtestMeta(state).exportedAt ? '距離上次備份已超過七天，而且最近有新進度。' : '角色已建立滿三天，還沒有匯出紀錄。', "\u8ACB\u628A\u76EE\u524D\u89D2\u8272\u7684\u9032\u5EA6\u5B58\u4E00\u4EFD\u3002"), React.createElement(BackupExportControl, {
+    state: state,
+    setState: setState,
+    compact: true
+  })) : null;
+}
 const MechanicSafetyContext = React.createContext(null);
 const MECHANIC_ERROR_KEY = 'kei_mechanic_errors_v1';
 function mechanicErrorRows() {
@@ -239829,7 +240215,7 @@ function recordMechanicError(error, context) {
   const message = technical.test(raw) ? raw.slice(0, 200) : String(error?.name || 'Error').slice(0, 40) + '：機關發生未預期錯誤';
   const row = {
     t: Date.now(),
-    build: '2026.11.13-v62',
+    build: GAME_BUILD,
     ...context,
     message
   };
@@ -239886,6 +240272,11 @@ function guardedMechanic(Component, kind) {
       if (shared?.setState && pathKey !== '[]') shared.setState(prev => saveStepDraft(prev, JSON.parse(pathKey), signature, draft));
     }, [shared?.setState, pathKey, signature]);
     const context = mechanicErrorContext(state, kind, props.params);
+    usePlaytestReportScope(30, {
+      entry: context.source,
+      kind,
+      id: kind + '-' + playtestHash(props.params)
+    });
     const done = result => {
       if (finished.current) return;
       finished.current = true;
@@ -239996,7 +240387,7 @@ function MainMenu({
   const plist = profiles?.list || [];
   return React.createElement("div", {
     className: "stage"
-  }, React.createElement("div", {
+  }, React.createElement(LineBrowserNotice, null), React.createElement(PlaytestVersion, null), React.createElement("div", {
     className: "menu-hero"
   }, React.createElement("div", {
     className: "col",
@@ -240287,7 +240678,7 @@ function CharacterCreate({
     className: "eyebrow"
   }, "\u5E74\u7D1A"), React.createElement("p", {
     className: "small muted"
-  }, "\u76EE\u524D\u958B\u653E\u4E00\u3001\u4E8C\u3001\u4E94\u3001\u516D\u5E74\u7D1A\u3002"), React.createElement("div", {
+  }, "\u76EE\u524D\u958B\u653E\u4E00\u3001\u4E8C\u3001\u4E94\u3001\u516D\u5E74\u7D1A\u3002\u4E09\u3001\u56DB\u5E74\u7D1A\u5167\u5BB9\u4ECD\u5728\u6E96\u5099\uFF0C\u8ACB\u4E0D\u8981\u9078\u9130\u8FD1\u5E74\u7D1A\u4EE3\u66FF\u3002"), React.createElement("div", {
     className: "row",
     style: {
       gap: 6
@@ -241008,6 +241399,10 @@ function Adventure({
     });
   };
   const scene = SCENES[story.scene] || SCENES.agency;
+  usePlaytestReportScope(20, {
+    location: 'main/chapter-' + chapterFragmentProgress(student).chapter,
+    scene: scene.id
+  });
   const [node, setNode] = useState(null);
   const [mech, setMech] = useState(null);
   const [book, setBook] = useState(false);
@@ -241703,6 +242098,12 @@ function StudentApp({
 }) {
   const [view, setView] = useState('menu');
   const [arg, setArg] = useState(null);
+  usePlaytestReportScope(1, {
+    location: view,
+    scene: 'screen',
+    id: 'screen',
+    kind: 'screen'
+  });
   const go = (v, a = null) => {
     stopSpeech();
     setView(v);
@@ -245072,6 +245473,12 @@ function MazeAdventure({
     [pool, setPool] = useState([]),
     [poolError, setPoolError] = useState(false),
     challenge = length === 15;
+  usePlaytestReportScope(35, {
+    location: 'maze',
+    scene: 'maze/waypoint-' + (a?.position || 0),
+    id: q ? playtestQuestionCode(q) : 'maze-entry',
+    kind: q?.stage?.kind || 'screen'
+  });
   const policy = learningSignature(state),
     generation = useRef(0);
   const reduced = useMazeReducedMotion(),
@@ -245802,6 +246209,12 @@ function HeroAdventure({
     ready = heroRequiredClues(routeId).every(x => clues.includes(x)),
     optional = d.places.find(x => x.optional);
   useEffect(() => () => stopSpeech(), []);
+  usePlaytestReportScope(25, {
+    location: 'hero',
+    scene: routeId + '/' + place,
+    id: place,
+    kind: place === 'deduction' ? 'evidence' : 'dialogue'
+  });
   const visit = id => {
     stopSpeech();
     update(s => heroVisit(s, id, routeId));
@@ -245949,7 +246362,7 @@ function HeroAdventure({
   }, c.feedback), React.createElement(Btn, {
     id: "hero-confirm",
     kind: "primary",
-    disabled: !ready || c.conclusion === null || c.evidence.length < heroRequiredEvidence(routeId).length,
+    disabled: !ready || c.conclusion === null,
     onClick: () => update(s => heroDeduce(s, routeId))
   }, "\u78BA\u8A8D\u63A8\u7406"))) : p ? React.createElement(React.Fragment, null, React.createElement("div", {
     className: "hero-scene",
@@ -246093,6 +246506,12 @@ function LifeMathChallenge({
     valid = d && lifeMathValid(state, d),
     terminal = d && ['passed', 'revealed'].includes(d.status),
     counts = lifeMathCounts(state);
+  usePlaytestReportScope(35, {
+    location: 'life_math',
+    scene: 'life_math',
+    id: q ? playtestQuestionCode(q) : 'entry',
+    kind: q ? 'life_math' : 'screen'
+  });
   const [showShelf, setShowShelf] = useState(false),
     [confirmReveal, setConfirmReveal] = useState(false);
   useEffect(() => {
@@ -247355,7 +247774,7 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u7CFB\u7D71\u72C0\u614B"), React.createElement("p", {
     className: "small muted"
-  }, "\u7248\u672C\uFF1A2026.11.14-v70\uFF08\u88DC\u7D66\u8207\u514D\u8CBB\u4F11\u606F\uFF09"), React.createElement("div", {
+  }, "\u7248\u672C\uFF1A", GAME_BUILD), React.createElement("div", {
     className: "small"
   }, "\u5716\u50CF\u8FA8\u8B58\uFF1A", React.createElement(Tag, {
     kind: "warn"
@@ -247371,17 +247790,9 @@ function DataPanel({
     className: "card col"
   }, React.createElement("h3", null, "\u532F\u51FA\u5099\u4EFD"), React.createElement("p", {
     className: "small muted"
-  }, "\u6309\u4E0B\u5F8C\u628A\u5167\u5BB9\u5168\u9078\u8907\u88FD\uFF0C\u8CBC\u5230\u8A18\u4E8B\u672C\u4FDD\u5B58\uFF08\u904A\u6232\u9801\u9762\u7121\u6CD5\u76F4\u63A5\u4E0B\u8F09\u6A94\u6848\uFF09\u3002"), React.createElement("div", null, React.createElement(Btn, {
-    onClick: () => setTxt(exportJSON(state))
-  }, "\u7522\u751F\u5099\u4EFD\u6587\u5B57")), txt && React.createElement("textarea", {
-    readOnly: true,
-    value: txt,
-    style: {
-      minHeight: 140,
-      fontFamily: 'monospace',
-      fontSize: 12
-    },
-    onFocus: e => e.target.select()
+  }, "\u5099\u4EFD\u76EE\u524D\u89D2\u8272\u3002\u8ACB\u4E0B\u8F09\u4E26\u81EA\u884C\u4FDD\u7BA1\uFF0C\u4E5F\u53EF\u4EE5\u5C07\u5099\u4EFD\u6587\u5B57\u53E6\u5B58\u5230\u6A94\u6848\u3002\u4E0D\u8981\u628A\u5B8C\u6574\u5099\u4EFD\u8CBC\u5230\u7FA4\u7D44\u3002"), React.createElement(BackupExportControl, {
+    state: state,
+    setState: setState
   })), React.createElement(MechanicErrorReport, null), React.createElement(BackupImportCard, {
     state: state,
     setState: setState,
@@ -247471,6 +247882,12 @@ function ParentApp({
     setTab('list');
   };
   setJuniorMode(ok && isJuniorState(state) && ['input', 'list'].includes(tab));
+  usePlaytestReportScope(10, {
+    location: ok ? 'parent/' + tab : 'parent/gate',
+    scene: 'parent',
+    id: 'screen',
+    kind: 'screen'
+  });
   if (!ok) return React.createElement(ParentGate, {
     onPass: () => setOk(true),
     onBack: goStudent
@@ -247501,7 +247918,14 @@ function ParentApp({
     onClick: () => m.id !== profiles.active && onSwitchProfile(m.id, adding && tab === 'input' ? draftRef.current : null, tab === 'map' ? 'map' : null)
   }, m.name, m.grade ? `・${gradeName(m.grade)}年級` : '')), React.createElement("span", {
     className: "small muted"
-  }, "\uFF08\u5207\u63DB\u89D2\u8272\u6703\u540C\u6642\u5207\u63DB\u904A\u6232\u756B\u9762\u7684\u89D2\u8272\uFF09")), React.createElement(ParentNewTopics, {
+  }, "\uFF08\u5207\u63DB\u89D2\u8272\u6703\u540C\u6642\u5207\u63DB\u904A\u6232\u756B\u9762\u7684\u89D2\u8272\uFF09")), React.createElement(ParentFirstGuide, {
+    state: state,
+    setState: setState,
+    onSettings: () => setTab('settings')
+  }), React.createElement(ParentBackupReminder, {
+    state: state,
+    setState: setState
+  }), React.createElement(ParentNewTopics, {
     state: state,
     setState: setState,
     toast: toast
@@ -248080,8 +248504,8 @@ function App() {
   const [toast, toastEl] = useToast();
   const [storageWarning, setStorageWarning] = useState('');
   const [unsavedText, setUnsavedText] = useState('');
-  const setState = useCallback(s => {
-    setStateRaw(s);
+  const setState = useCallback(next => {
+    setStateRaw(previous => playtestTrackProgress(previous, typeof next === 'function' ? next(previous) : next));
   }, []);
   const [profiles, setProfiles] = useState(() => loadProfiles());
   const [parentDraft, setParentDraft] = useState(null);
@@ -248181,13 +248605,16 @@ function App() {
     }
   }, React.createElement("div", {
     className: `app ${junior ? 'junior' : ''} ${GRADE1_MODE ? 'grade1' : ''}`,
-    "data-build": "2026.11.16-v78",
+    "data-build": GAME_BUILD,
     "data-junior": junior ? 'true' : 'false'
   }, React.createElement("header", {
     className: "topbar"
   }, React.createElement("span", {
     className: "brand"
-  }, "\u77E5\u8B58\u63A2\u7D22\u5CF6"), React.createElement("div", {
+  }, "\u77E5\u8B58\u63A2\u7D22\u5CF6", mode === 'parent' && React.createElement("span", {
+    className: "playtest-top-version nozy",
+    "data-speech-skip": "true"
+  }, GAME_BUILD)), React.createElement("div", {
     id: "current-objective-slot"
   }), s && mode === 'student' && React.createElement("button", {
     id: "top-growth",
@@ -248263,7 +248690,10 @@ function App() {
     href: "https://ms2977.github.io/knowledge-island-playtest/playtest-notice.html",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "\u8A66\u73A9\u9808\u77E5\u8207\u7D20\u6750\u4F86\u6E90")), toastEl, mode === 'student' && s && React.createElement(SpeakButton, {
+  }, "\u8A66\u73A9\u9808\u77E5\u8207\u7D20\u6750\u4F86\u6E90")), React.createElement(PlaytestReportButton, {
+    key: mode + profiles.active,
+    state: state
+  }), toastEl, mode === 'student' && s && React.createElement(SpeakButton, {
     key: 'speech-' + profiles.active,
     allowRead: junior
   })));
