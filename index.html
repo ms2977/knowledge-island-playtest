@@ -912,6 +912,12 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .g5v87-review input { flex:none; margin-top:6px; }
 @media(max-width:520px){.g5v87-sliders{grid-template-columns:1fr}.g5v87-fields{flex-direction:column}.g5v87-field{flex:auto;max-width:none}.g5v87-fraction,.g5v87-solid,.g5v87-place,.g5v87-data{padding:10px}.g5v87-place th{font-size:.85rem}.g5v87-options button{font-size:1rem}}
 
+/* One visible response area keeps the result beside the next action. */
+.g1-response-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;scroll-margin:16px;width:100%}.g1-response-bar .g1-feedback{flex:1 1 130px;font-size:22px;font-weight:700;padding:10px 14px;line-height:1.7}.g1-response-bar .g1-actions{flex:1 1 auto}.g1-tone-mark{width:42px;height:42px;display:block;flex:none}.g1-mech .g1-choices button:has(.g1-tone-mark){min-height:82px}.jh-aligned,.jh-align-pending{padding:10px 12px;border-radius:10px;background:#e3f0e6}.jh-align-pending{background:#fff0d8}.feedback[role=status]{scroll-margin:16px}
+
+/* Leave room below the last answer button even at the end of the document. */
+.g1-mech{padding-bottom:12px}
+
 .lang65{gap:12px}.lang65 button{min-height:44px}.lang65-labels{display:flex;flex-wrap:wrap;gap:10px}.lang65-labels button{min-width:72px}.lang65-pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.lang65-card{display:flex;flex-direction:column;gap:8px;min-height:60px;width:100%;border:2px solid #c5b18d;border-radius:14px;background:#fffdf6;padding:14px 16px;color:#243f50;text-align:left;font:inherit;line-height:1.65;cursor:pointer;overflow-wrap:anywhere}.lang65-card.selected{outline:3px solid #21849a;background:#edf8fc}.lang65-card:disabled{opacity:1;cursor:default}.lang65-card:focus-visible{outline:3px solid #21849a;outline-offset:2px}.lang65-text{font-size:18px}.lang65-selection{font-size:16px;color:#166178}.lang65 h4{margin:0}.lang65 .col{gap:12px}@media(max-width:600px){.lang65-pair-grid{grid-template-columns:1fr}.lang65-card{padding:12px}.lang65-labels{gap:8px}}
 
 .maze-page{width:100%;box-sizing:border-box;max-width:1440px;margin:auto;padding:10px 18px 16px;color:#183c36}
@@ -1033,7 +1039,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261117-grade5-v87-r2">
+<meta name="game-release" content="playtest-20261117-feedback-v88-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -107610,6 +107616,22 @@ const ERROR_CONCEPTS = [{
   "availability": "runtime-partial",
   "prerequisites": [],
   "taskCoverage": "五年級補充選材；三階段練習、操作模擬、六十字英語入門，不等同完整第三學習階段或實作能力評量。"
+}, {
+  "id": "g6_radicals",
+  "name": "部首辨字與字典尋寶",
+  "subject": "chinese",
+  "codes": ["Ab-III-3", "Ab-III-7"],
+  "levels": [{
+    "kind": "stage",
+    "value": "III"
+  }, {
+    "kind": "stage",
+    "value": "III"
+  }],
+  "scope": "辨部首、同部首字、偏旁變形與部首外筆畫；六年級選用複習，依教育部辭典核對。",
+  "availability": "runtime-partial",
+  "prerequisites": [],
+  "taskCoverage": "部首、偏旁與檢字選擇練習；不等同手寫或完整識字能力評量。"
 }];
 const CONCEPT_KEYWORDS = {
   "m_prime": ["質數", "質因數", "因數分解", "合數", "質數與質因數分解", "分解質因數", "質因數分解", "最小質數", "唯一的偶質數", "只有兩個因數", "因數個數", "1不是質數", "分解乘積", "質數表", "判斷質數", "樹狀分解", "合數分解"],
@@ -107891,7 +107913,8 @@ const CONCEPT_KEYWORDS = {
   "g5_enlisten": ["英語聽力", "英語聽音", "聽單字", "聽句子", "生活對話", "課室用語", "listening", "listen", "spoken English", "語音播放", "聽辨訊息", "數量聽辨", "時間聽辨", "方向聽辨", "重聽"],
   "g5_enpattern": ["英語句型", "英文問答", "主詞動詞", "be動詞", "助動詞", "現在進行式", "第三人稱", "問號", "句號", "自我介紹", "日常問答", "can", "does", "have", "There is"],
   "g5_enread": ["英語短文", "英語閱讀", "事件順序", "英文推論", "人物線索", "時間線索", "地點線索", "故事閱讀", "paragraph", "reading", "sequence", "inference", "why", "when", "who"],
-  "g5_enphonics": ["字母組合", "拼讀規律", "子音組合", "母音組合", "自然發音", "phonics", "sh", "ch", "th", "ee", "ai", "oa", "ay", "oo", "末尾不發音e"]
+  "g5_enphonics": ["字母組合", "拼讀規律", "子音組合", "母音組合", "自然發音", "phonics", "sh", "ch", "th", "ee", "ai", "oa", "ay", "oo", "末尾不發音e"],
+  "g6_radicals": ["部首外筆畫", "部首檢字", "月字旁", "肉字旁", "阜部", "邑部", "衣字旁", "示字旁", "部首", "偏旁", "查字典", "同部首", "部件", "表音", "表義", "國字分類", "總筆畫", "檢字表"]
 };
 const G6_EXPANSION_BANK = [{
   "id": "g6x_prime_factor_1",
@@ -134668,6 +134691,18 @@ const PAINT_CONCEPTS = {
   "g5_enphonics": {
     "name": "字母組合與拼讀規律",
     "subject": "english",
+    "curriculum": [{
+      "kind": "stage",
+      "value": "III"
+    }, {
+      "kind": "stage",
+      "value": "III"
+    }],
+    "prerequisites": []
+  },
+  "g6_radicals": {
+    "name": "部首辨字與字典尋寶",
+    "subject": "chinese",
     "curriculum": [{
       "kind": "stage",
       "value": "III"
@@ -277761,6 +277796,3560 @@ function grade5LabCorrect(q, d) {
   if (a.mode === 'inquiry') return num(d.value) === a.mean && d.conclusion === q.answer;
   return false;
 }
+const RADICALS_V88_KP = {
+  "id": "g6_radicals",
+  "grade": 6,
+  "subject": "chinese",
+  "name": "部首辨字與字典尋寶",
+  "code": "Ab-III-3 / Ab-III-7",
+  "unit": "部首與檢字補充",
+  "semester": "複習",
+  "mech": ["pickone"],
+  "desc": "辨部首、同部首字、偏旁變形與部首外筆畫；六年級選用複習，依教育部辭典核對。"
+};
+KNOWLEDGE_POINTS.push(RADICALS_V88_KP);
+KP_BY_ID.g6_radicals = RADICALS_V88_KP;
+const RADICALS_V88_BANK = [{
+  "id": "g6rad_identify_樹",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「樹」在字典中歸在哪個部首？",
+  "options": ["木", "水", "金"],
+  "answer": "木",
+  "why": "「樹」歸木部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "樹"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_樹"
+}, {
+  "id": "g6rad_family_樹",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「樹」屬於同一部首？",
+  "options": ["橋", "海", "細"],
+  "answer": "橋",
+  "why": "「樹」與「橋」都歸木部；「海」歸水部，「細」歸糸部。",
+  "figure": {
+    "type": "big",
+    "text": "樹"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_樹"
+}, {
+  "id": "g6rad_lookup_樹",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「樹」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["木部，部首外12畫", "木部，部首外16畫", "手部，部首外12畫"],
+  "answer": "木部，部首外12畫",
+  "why": "依教育部辭典，「樹」歸木部，部首外12畫，總筆畫16畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "樹"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_樹"
+}, {
+  "id": "g6rad_identify_橋",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「橋」在字典中歸在哪個部首？",
+  "options": ["木", "火", "糸"],
+  "answer": "木",
+  "why": "「橋」歸木部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "橋"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_橋"
+}, {
+  "id": "g6rad_family_橋",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「橋」屬於同一部首？",
+  "options": ["林", "河", "紀"],
+  "answer": "林",
+  "why": "「橋」與「林」都歸木部；「河」歸水部，「紀」歸糸部。",
+  "figure": {
+    "type": "big",
+    "text": "橋"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_橋"
+}, {
+  "id": "g6rad_lookup_橋",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「橋」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["木部，部首外12畫", "木部，部首外16畫", "心部，部首外12畫"],
+  "answer": "木部，部首外12畫",
+  "why": "依教育部辭典，「橋」歸木部，部首外12畫，總筆畫16畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "橋"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_橋"
+}, {
+  "id": "g6rad_identify_林",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「林」在字典中歸在哪個部首？",
+  "options": ["木", "手", "衣"],
+  "answer": "木",
+  "why": "「林」歸木部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "林"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_林"
+}, {
+  "id": "g6rad_family_林",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「林」屬於同一部首？",
+  "options": ["森", "湖", "組"],
+  "answer": "森",
+  "why": "「林」與「森」都歸木部；「湖」歸水部，「組」歸糸部。",
+  "figure": {
+    "type": "big",
+    "text": "林"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_林"
+}, {
+  "id": "g6rad_lookup_林",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「林」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["木部，部首外4畫", "木部，部首外8畫", "言部，部首外4畫"],
+  "answer": "木部，部首外4畫",
+  "why": "依教育部辭典，「林」歸木部，部首外4畫，總筆畫8畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "林"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_林"
+}, {
+  "id": "g6rad_identify_森",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「森」在字典中歸在哪個部首？",
+  "options": ["木", "心", "辵"],
+  "answer": "木",
+  "why": "「森」歸木部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "森"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_森"
+}, {
+  "id": "g6rad_family_森",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「森」屬於同一部首？",
+  "options": ["機", "清", "線"],
+  "answer": "機",
+  "why": "「森」與「機」都歸木部；「清」歸水部，「線」歸糸部。",
+  "figure": {
+    "type": "big",
+    "text": "森"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_森"
+}, {
+  "id": "g6rad_lookup_森",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「森」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["木部，部首外8畫", "木部，部首外12畫", "金部，部首外8畫"],
+  "answer": "木部，部首外8畫",
+  "why": "依教育部辭典，「森」歸木部，部首外8畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "森"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_森"
+}, {
+  "id": "g6rad_identify_機",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「機」在字典中歸在哪個部首？",
+  "options": ["木", "言", "艸"],
+  "answer": "木",
+  "why": "「機」歸木部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "機"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_機"
+}, {
+  "id": "g6rad_family_機",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「機」屬於同一部首？",
+  "options": ["樹", "潔", "紙"],
+  "answer": "樹",
+  "why": "「機」與「樹」都歸木部；「潔」歸水部，「紙」歸糸部。",
+  "figure": {
+    "type": "big",
+    "text": "機"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_機"
+}, {
+  "id": "g6rad_lookup_機",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「機」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["木部，部首外12畫", "木部，部首外16畫", "糸部，部首外12畫"],
+  "answer": "木部，部首外12畫",
+  "why": "依教育部辭典，「機」歸木部，部首外12畫，總筆畫16畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "機"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_機"
+}, {
+  "id": "g6rad_identify_海",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「海」在字典中歸在哪個部首？",
+  "options": ["水", "金", "阜"],
+  "answer": "水",
+  "why": "「海」歸水部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "海"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_海"
+}, {
+  "id": "g6rad_family_海",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「海」屬於同一部首？",
+  "options": ["河", "煙", "褲"],
+  "answer": "河",
+  "why": "「海」與「河」都歸水部；「煙」歸火部，「褲」歸衣部。",
+  "figure": {
+    "type": "big",
+    "text": "海"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_海"
+}, {
+  "id": "g6rad_lookup_海",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「海」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["水部，部首外7畫", "水部，部首外10畫", "衣部，部首外7畫"],
+  "answer": "水部，部首外7畫",
+  "why": "依教育部辭典，「海」歸水部，部首外7畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "海"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_海"
+}, {
+  "id": "g6rad_identify_河",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「河」在字典中歸在哪個部首？",
+  "options": ["水", "糸", "邑"],
+  "answer": "水",
+  "why": "「河」歸水部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "河"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_河"
+}, {
+  "id": "g6rad_family_河",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「河」屬於同一部首？",
+  "options": ["湖", "燃", "袍"],
+  "answer": "湖",
+  "why": "「河」與「湖」都歸水部；「燃」歸火部，「袍」歸衣部。",
+  "figure": {
+    "type": "big",
+    "text": "河"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_河"
+}, {
+  "id": "g6rad_lookup_河",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「河」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["水部，部首外5畫", "水部，部首外8畫", "辵部，部首外5畫"],
+  "answer": "水部，部首外5畫",
+  "why": "依教育部辭典，「河」歸水部，部首外5畫，總筆畫8畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "河"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_河"
+}, {
+  "id": "g6rad_identify_湖",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「湖」在字典中歸在哪個部首？",
+  "options": ["水", "衣", "示"],
+  "answer": "水",
+  "why": "「湖」歸水部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "湖"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_湖"
+}, {
+  "id": "g6rad_family_湖",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「湖」屬於同一部首？",
+  "options": ["清", "燒", "裡"],
+  "answer": "清",
+  "why": "「湖」與「清」都歸水部；「燒」歸火部，「裡」歸衣部。",
+  "figure": {
+    "type": "big",
+    "text": "湖"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_湖"
+}, {
+  "id": "g6rad_lookup_湖",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「湖」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["水部，部首外9畫", "水部，部首外12畫", "艸部，部首外9畫"],
+  "answer": "水部，部首外9畫",
+  "why": "依教育部辭典，「湖」歸水部，部首外9畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "湖"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_湖"
+}, {
+  "id": "g6rad_identify_清",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「清」在字典中歸在哪個部首？",
+  "options": ["水", "辵", "肉"],
+  "answer": "水",
+  "why": "「清」歸水部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "清"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_清"
+}, {
+  "id": "g6rad_family_清",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「清」屬於同一部首？",
+  "options": ["潔", "燈", "裙"],
+  "answer": "潔",
+  "why": "「清」與「潔」都歸水部；「燈」歸火部，「裙」歸衣部。",
+  "figure": {
+    "type": "big",
+    "text": "清"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_清"
+}, {
+  "id": "g6rad_lookup_清",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「清」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["水部，部首外8畫", "水部，部首外11畫", "阜部，部首外8畫"],
+  "answer": "水部，部首外8畫",
+  "why": "依教育部辭典，「清」歸水部，部首外8畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "清"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_清"
+}, {
+  "id": "g6rad_identify_潔",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「潔」在字典中歸在哪個部首？",
+  "options": ["水", "艸", "木"],
+  "answer": "水",
+  "why": "「潔」歸水部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "潔"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_潔"
+}, {
+  "id": "g6rad_family_潔",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「潔」屬於同一部首？",
+  "options": ["海", "熱", "袖"],
+  "answer": "海",
+  "why": "「潔」與「海」都歸水部；「熱」歸火部，「袖」歸衣部。",
+  "figure": {
+    "type": "big",
+    "text": "潔"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_潔"
+}, {
+  "id": "g6rad_lookup_潔",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「潔」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["水部，部首外12畫", "水部，部首外15畫", "邑部，部首外12畫"],
+  "answer": "水部，部首外12畫",
+  "why": "依教育部辭典，「潔」歸水部，部首外12畫，總筆畫15畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "潔"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_潔"
+}, {
+  "id": "g6rad_identify_煙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「煙」在字典中歸在哪個部首？",
+  "options": ["火", "阜", "水"],
+  "answer": "火",
+  "why": "「煙」歸火部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "煙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_煙"
+}, {
+  "id": "g6rad_family_煙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「煙」屬於同一部首？",
+  "options": ["燃", "把", "遠"],
+  "answer": "燃",
+  "why": "「煙」與「燃」都歸火部；「把」歸手部，「遠」歸辵部。",
+  "figure": {
+    "type": "big",
+    "text": "煙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_煙"
+}, {
+  "id": "g6rad_lookup_煙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「煙」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["火部，部首外9畫", "火部，部首外13畫", "示部，部首外9畫"],
+  "answer": "火部，部首外9畫",
+  "why": "依教育部辭典，「煙」歸火部，部首外9畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "煙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_煙"
+}, {
+  "id": "g6rad_identify_燃",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「燃」在字典中歸在哪個部首？",
+  "options": ["火", "邑", "手"],
+  "answer": "火",
+  "why": "「燃」歸火部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "燃"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_燃"
+}, {
+  "id": "g6rad_family_燃",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「燃」屬於同一部首？",
+  "options": ["燒", "推", "近"],
+  "answer": "燒",
+  "why": "「燃」與「燒」都歸火部；「推」歸手部，「近」歸辵部。",
+  "figure": {
+    "type": "big",
+    "text": "燃"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_燃"
+}, {
+  "id": "g6rad_lookup_燃",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「燃」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["火部，部首外12畫", "火部，部首外16畫", "肉部，部首外12畫"],
+  "answer": "火部，部首外12畫",
+  "why": "依教育部辭典，「燃」歸火部，部首外12畫，總筆畫16畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "燃"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_燃"
+}, {
+  "id": "g6rad_identify_燒",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「燒」在字典中歸在哪個部首？",
+  "options": ["火", "示", "心"],
+  "answer": "火",
+  "why": "「燒」歸火部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "燒"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_燒"
+}, {
+  "id": "g6rad_family_燒",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「燒」屬於同一部首？",
+  "options": ["燈", "提", "連"],
+  "answer": "燈",
+  "why": "「燒」與「燈」都歸火部；「提」歸手部，「連」歸辵部。",
+  "figure": {
+    "type": "big",
+    "text": "燒"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_燒"
+}, {
+  "id": "g6rad_lookup_燒",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「燒」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["火部，部首外12畫", "火部，部首外16畫", "木部，部首外12畫"],
+  "answer": "火部，部首外12畫",
+  "why": "依教育部辭典，「燒」歸火部，部首外12畫，總筆畫16畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "燒"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_燒"
+}, {
+  "id": "g6rad_identify_燈",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「燈」在字典中歸在哪個部首？",
+  "options": ["火", "肉", "言"],
+  "answer": "火",
+  "why": "「燈」歸火部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "燈"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_燈"
+}, {
+  "id": "g6rad_family_燈",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「燈」屬於同一部首？",
+  "options": ["熱", "握", "道"],
+  "answer": "熱",
+  "why": "「燈」與「熱」都歸火部；「握」歸手部，「道」歸辵部。",
+  "figure": {
+    "type": "big",
+    "text": "燈"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_燈"
+}, {
+  "id": "g6rad_lookup_燈",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「燈」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["火部，部首外12畫", "火部，部首外16畫", "水部，部首外12畫"],
+  "answer": "火部，部首外12畫",
+  "why": "依教育部辭典，「燈」歸火部，部首外12畫，總筆畫16畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "燈"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_燈"
+}, {
+  "id": "g6rad_identify_熱",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「熱」在字典中歸在哪個部首？",
+  "options": ["火", "木", "金"],
+  "answer": "火",
+  "why": "「熱」歸火部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "熱"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_熱"
+}, {
+  "id": "g6rad_family_熱",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「熱」屬於同一部首？",
+  "options": ["煙", "扶", "進"],
+  "answer": "煙",
+  "why": "「熱」與「煙」都歸火部；「扶」歸手部，「進」歸辵部。",
+  "figure": {
+    "type": "big",
+    "text": "熱"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_熱"
+}, {
+  "id": "g6rad_lookup_熱",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「熱」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["火部，部首外11畫", "火部，部首外15畫", "手部，部首外11畫"],
+  "answer": "火部，部首外11畫",
+  "why": "依教育部辭典，「熱」歸火部，部首外11畫，總筆畫15畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "熱"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_熱"
+}, {
+  "id": "g6rad_identify_把",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「把」在字典中歸在哪個部首？",
+  "options": ["手", "水", "糸"],
+  "answer": "手",
+  "why": "「把」歸手部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "把"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_把"
+}, {
+  "id": "g6rad_family_把",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「把」屬於同一部首？",
+  "options": ["推", "想", "茶"],
+  "answer": "推",
+  "why": "「把」與「推」都歸手部；「想」歸心部，「茶」歸艸部。",
+  "figure": {
+    "type": "big",
+    "text": "把"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_把"
+}, {
+  "id": "g6rad_lookup_把",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「把」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["手部，部首外4畫", "手部，部首外7畫", "心部，部首外4畫"],
+  "answer": "手部，部首外4畫",
+  "why": "依教育部辭典，「把」歸手部，部首外4畫，總筆畫7畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "把"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_把"
+}, {
+  "id": "g6rad_identify_推",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「推」在字典中歸在哪個部首？",
+  "options": ["手", "火", "衣"],
+  "answer": "手",
+  "why": "「推」歸手部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "推"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_推"
+}, {
+  "id": "g6rad_family_推",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「推」屬於同一部首？",
+  "options": ["提", "念", "葉"],
+  "answer": "提",
+  "why": "「推」與「提」都歸手部；「念」歸心部，「葉」歸艸部。",
+  "figure": {
+    "type": "big",
+    "text": "推"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_推"
+}, {
+  "id": "g6rad_lookup_推",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「推」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["手部，部首外8畫", "手部，部首外11畫", "言部，部首外8畫"],
+  "answer": "手部，部首外8畫",
+  "why": "依教育部辭典，「推」歸手部，部首外8畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "推"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_推"
+}, {
+  "id": "g6rad_identify_提",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「提」在字典中歸在哪個部首？",
+  "options": ["手", "心", "辵"],
+  "answer": "手",
+  "why": "「提」歸手部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "提"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_提"
+}, {
+  "id": "g6rad_family_提",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「提」屬於同一部首？",
+  "options": ["握", "情", "藥"],
+  "answer": "握",
+  "why": "「提」與「握」都歸手部；「情」歸心部，「藥」歸艸部。",
+  "figure": {
+    "type": "big",
+    "text": "提"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_提"
+}, {
+  "id": "g6rad_lookup_提",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「提」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["手部，部首外9畫", "手部，部首外12畫", "金部，部首外9畫"],
+  "answer": "手部，部首外9畫",
+  "why": "依教育部辭典，「提」歸手部，部首外9畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "提"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_提"
+}, {
+  "id": "g6rad_identify_握",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「握」在字典中歸在哪個部首？",
+  "options": ["手", "言", "艸"],
+  "answer": "手",
+  "why": "「握」歸手部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "握"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_握"
+}, {
+  "id": "g6rad_family_握",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「握」屬於同一部首？",
+  "options": ["扶", "悅", "花"],
+  "answer": "扶",
+  "why": "「握」與「扶」都歸手部；「悅」歸心部，「花」歸艸部。",
+  "figure": {
+    "type": "big",
+    "text": "握"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_握"
+}, {
+  "id": "g6rad_lookup_握",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「握」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["手部，部首外9畫", "手部，部首外12畫", "糸部，部首外9畫"],
+  "answer": "手部，部首外9畫",
+  "why": "依教育部辭典，「握」歸手部，部首外9畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "握"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_握"
+}, {
+  "id": "g6rad_identify_扶",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「扶」在字典中歸在哪個部首？",
+  "options": ["手", "金", "阜"],
+  "answer": "手",
+  "why": "「扶」歸手部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "扶"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_扶"
+}, {
+  "id": "g6rad_family_扶",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「扶」屬於同一部首？",
+  "options": ["把", "慮", "草"],
+  "answer": "把",
+  "why": "「扶」與「把」都歸手部；「慮」歸心部，「草」歸艸部。",
+  "figure": {
+    "type": "big",
+    "text": "扶"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_扶"
+}, {
+  "id": "g6rad_lookup_扶",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「扶」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["手部，部首外4畫", "手部，部首外7畫", "衣部，部首外4畫"],
+  "answer": "手部，部首外4畫",
+  "why": "依教育部辭典，「扶」歸手部，部首外4畫，總筆畫7畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "扶"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_扶"
+}, {
+  "id": "g6rad_identify_想",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「想」在字典中歸在哪個部首？",
+  "options": ["心", "糸", "邑"],
+  "answer": "心",
+  "why": "「想」歸心部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "想"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_想"
+}, {
+  "id": "g6rad_family_想",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「想」屬於同一部首？",
+  "options": ["念", "語", "陰"],
+  "answer": "念",
+  "why": "「想」與「念」都歸心部；「語」歸言部，「陰」歸阜部。",
+  "figure": {
+    "type": "big",
+    "text": "想"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_想"
+}, {
+  "id": "g6rad_lookup_想",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「想」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["心部，部首外9畫", "心部，部首外13畫", "辵部，部首外9畫"],
+  "answer": "心部，部首外9畫",
+  "why": "依教育部辭典，「想」歸心部，部首外9畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "想"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_想"
+}, {
+  "id": "g6rad_identify_念",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「念」在字典中歸在哪個部首？",
+  "options": ["心", "衣", "示"],
+  "answer": "心",
+  "why": "「念」歸心部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "念"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_念"
+}, {
+  "id": "g6rad_family_念",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「念」屬於同一部首？",
+  "options": ["情", "說", "陽"],
+  "answer": "情",
+  "why": "「念」與「情」都歸心部；「說」歸言部，「陽」歸阜部。",
+  "figure": {
+    "type": "big",
+    "text": "念"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_念"
+}, {
+  "id": "g6rad_lookup_念",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「念」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["心部，部首外4畫", "心部，部首外8畫", "艸部，部首外4畫"],
+  "answer": "心部，部首外4畫",
+  "why": "依教育部辭典，「念」歸心部，部首外4畫，總筆畫8畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "念"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_念"
+}, {
+  "id": "g6rad_identify_情",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「情」在字典中歸在哪個部首？",
+  "options": ["心", "辵", "肉"],
+  "answer": "心",
+  "why": "「情」歸心部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "情"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_情"
+}, {
+  "id": "g6rad_family_情",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「情」屬於同一部首？",
+  "options": ["悅", "讀", "階"],
+  "answer": "悅",
+  "why": "「情」與「悅」都歸心部；「讀」歸言部，「階」歸阜部。",
+  "figure": {
+    "type": "big",
+    "text": "情"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_情"
+}, {
+  "id": "g6rad_lookup_情",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「情」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["心部，部首外8畫", "心部，部首外11畫", "阜部，部首外8畫"],
+  "answer": "心部，部首外8畫",
+  "why": "依教育部辭典，「情」歸心部，部首外8畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "情"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_情"
+}, {
+  "id": "g6rad_identify_悅",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「悅」在字典中歸在哪個部首？",
+  "options": ["心", "艸", "木"],
+  "answer": "心",
+  "why": "「悅」歸心部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "悅"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_悅"
+}, {
+  "id": "g6rad_family_悅",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「悅」屬於同一部首？",
+  "options": ["慮", "詩", "院"],
+  "answer": "慮",
+  "why": "「悅」與「慮」都歸心部；「詩」歸言部，「院」歸阜部。",
+  "figure": {
+    "type": "big",
+    "text": "悅"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_悅"
+}, {
+  "id": "g6rad_lookup_悅",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「悅」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["心部，部首外7畫", "心部，部首外10畫", "邑部，部首外7畫"],
+  "answer": "心部，部首外7畫",
+  "why": "依教育部辭典，「悅」歸心部，部首外7畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "悅"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_悅"
+}, {
+  "id": "g6rad_identify_慮",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「慮」在字典中歸在哪個部首？",
+  "options": ["心", "阜", "水"],
+  "answer": "心",
+  "why": "「慮」歸心部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "慮"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_慮"
+}, {
+  "id": "g6rad_family_慮",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「慮」屬於同一部首？",
+  "options": ["想", "談", "陸"],
+  "answer": "想",
+  "why": "「慮」與「想」都歸心部；「談」歸言部，「陸」歸阜部。",
+  "figure": {
+    "type": "big",
+    "text": "慮"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_慮"
+}, {
+  "id": "g6rad_lookup_慮",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「慮」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["心部，部首外11畫", "心部，部首外15畫", "示部，部首外11畫"],
+  "answer": "心部，部首外11畫",
+  "why": "依教育部辭典，「慮」歸心部，部首外11畫，總筆畫15畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "慮"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_慮"
+}, {
+  "id": "g6rad_identify_語",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「語」在字典中歸在哪個部首？",
+  "options": ["言", "邑", "火"],
+  "answer": "言",
+  "why": "「語」歸言部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "語"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_語"
+}, {
+  "id": "g6rad_family_語",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「語」屬於同一部首？",
+  "options": ["說", "銀", "郵"],
+  "answer": "說",
+  "why": "「語」與「說」都歸言部；「銀」歸金部，「郵」歸邑部。",
+  "figure": {
+    "type": "big",
+    "text": "語"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_語"
+}, {
+  "id": "g6rad_lookup_語",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「語」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["言部，部首外7畫", "言部，部首外14畫", "肉部，部首外7畫"],
+  "answer": "言部，部首外7畫",
+  "why": "依教育部辭典，「語」歸言部，部首外7畫，總筆畫14畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "語"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_語"
+}, {
+  "id": "g6rad_identify_說",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「說」在字典中歸在哪個部首？",
+  "options": ["言", "示", "手"],
+  "answer": "言",
+  "why": "「說」歸言部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "說"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_說"
+}, {
+  "id": "g6rad_family_說",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「說」屬於同一部首？",
+  "options": ["讀", "銅", "鄰"],
+  "answer": "讀",
+  "why": "「說」與「讀」都歸言部；「銅」歸金部，「鄰」歸邑部。",
+  "figure": {
+    "type": "big",
+    "text": "說"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_說"
+}, {
+  "id": "g6rad_lookup_說",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「說」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["言部，部首外7畫", "言部，部首外14畫", "木部，部首外7畫"],
+  "answer": "言部，部首外7畫",
+  "why": "依教育部辭典，「說」歸言部，部首外7畫，總筆畫14畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "說"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_說"
+}, {
+  "id": "g6rad_identify_讀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「讀」在字典中歸在哪個部首？",
+  "options": ["言", "肉", "心"],
+  "answer": "言",
+  "why": "「讀」歸言部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "讀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_讀"
+}, {
+  "id": "g6rad_family_讀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「讀」屬於同一部首？",
+  "options": ["詩", "鐵", "郊"],
+  "answer": "詩",
+  "why": "「讀」與「詩」都歸言部；「鐵」歸金部，「郊」歸邑部。",
+  "figure": {
+    "type": "big",
+    "text": "讀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_讀"
+}, {
+  "id": "g6rad_lookup_讀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「讀」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["言部，部首外15畫", "言部，部首外22畫", "水部，部首外15畫"],
+  "answer": "言部，部首外15畫",
+  "why": "依教育部辭典，「讀」歸言部，部首外15畫，總筆畫22畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "讀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_讀"
+}, {
+  "id": "g6rad_identify_詩",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「詩」在字典中歸在哪個部首？",
+  "options": ["言", "木", "金"],
+  "answer": "言",
+  "why": "「詩」歸言部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "詩"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_詩"
+}, {
+  "id": "g6rad_family_詩",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「詩」屬於同一部首？",
+  "options": ["談", "鐘", "都"],
+  "answer": "談",
+  "why": "「詩」與「談」都歸言部；「鐘」歸金部，「都」歸邑部。",
+  "figure": {
+    "type": "big",
+    "text": "詩"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_詩"
+}, {
+  "id": "g6rad_lookup_詩",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「詩」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["言部，部首外6畫", "言部，部首外13畫", "火部，部首外6畫"],
+  "answer": "言部，部首外6畫",
+  "why": "依教育部辭典，「詩」歸言部，部首外6畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "詩"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_詩"
+}, {
+  "id": "g6rad_identify_談",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「談」在字典中歸在哪個部首？",
+  "options": ["言", "水", "糸"],
+  "answer": "言",
+  "why": "「談」歸言部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "談"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_談"
+}, {
+  "id": "g6rad_family_談",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「談」屬於同一部首？",
+  "options": ["語", "針", "部"],
+  "answer": "語",
+  "why": "「談」與「語」都歸言部；「針」歸金部，「部」歸邑部。",
+  "figure": {
+    "type": "big",
+    "text": "談"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_談"
+}, {
+  "id": "g6rad_lookup_談",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「談」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["言部，部首外8畫", "言部，部首外15畫", "手部，部首外8畫"],
+  "answer": "言部，部首外8畫",
+  "why": "依教育部辭典，「談」歸言部，部首外8畫，總筆畫15畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "談"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_談"
+}, {
+  "id": "g6rad_identify_銀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「銀」在字典中歸在哪個部首？",
+  "options": ["金", "火", "衣"],
+  "answer": "金",
+  "why": "「銀」歸金部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "銀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_銀"
+}, {
+  "id": "g6rad_family_銀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「銀」屬於同一部首？",
+  "options": ["銅", "線", "祝"],
+  "answer": "銅",
+  "why": "「銀」與「銅」都歸金部；「線」歸糸部，「祝」歸示部。",
+  "figure": {
+    "type": "big",
+    "text": "銀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_銀"
+}, {
+  "id": "g6rad_lookup_銀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「銀」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["金部，部首外6畫", "金部，部首外14畫", "心部，部首外6畫"],
+  "answer": "金部，部首外6畫",
+  "why": "依教育部辭典，「銀」歸金部，部首外6畫，總筆畫14畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "銀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_銀"
+}, {
+  "id": "g6rad_identify_銅",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「銅」在字典中歸在哪個部首？",
+  "options": ["金", "手", "辵"],
+  "answer": "金",
+  "why": "「銅」歸金部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "銅"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_銅"
+}, {
+  "id": "g6rad_family_銅",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「銅」屬於同一部首？",
+  "options": ["鐵", "紙", "福"],
+  "answer": "鐵",
+  "why": "「銅」與「鐵」都歸金部；「紙」歸糸部，「福」歸示部。",
+  "figure": {
+    "type": "big",
+    "text": "銅"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_銅"
+}, {
+  "id": "g6rad_lookup_銅",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「銅」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["金部，部首外6畫", "金部，部首外14畫", "言部，部首外6畫"],
+  "answer": "金部，部首外6畫",
+  "why": "依教育部辭典，「銅」歸金部，部首外6畫，總筆畫14畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "銅"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_銅"
+}, {
+  "id": "g6rad_identify_鐵",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「鐵」在字典中歸在哪個部首？",
+  "options": ["金", "心", "艸"],
+  "answer": "金",
+  "why": "「鐵」歸金部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "鐵"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_鐵"
+}, {
+  "id": "g6rad_family_鐵",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「鐵」屬於同一部首？",
+  "options": ["鐘", "細", "禮"],
+  "answer": "鐘",
+  "why": "「鐵」與「鐘」都歸金部；「細」歸糸部，「禮」歸示部。",
+  "figure": {
+    "type": "big",
+    "text": "鐵"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_鐵"
+}, {
+  "id": "g6rad_lookup_鐵",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「鐵」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["金部，部首外13畫", "金部，部首外21畫", "糸部，部首外13畫"],
+  "answer": "金部，部首外13畫",
+  "why": "依教育部辭典，「鐵」歸金部，部首外13畫，總筆畫21畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "鐵"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_鐵"
+}, {
+  "id": "g6rad_identify_鐘",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「鐘」在字典中歸在哪個部首？",
+  "options": ["金", "言", "阜"],
+  "answer": "金",
+  "why": "「鐘」歸金部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "鐘"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_鐘"
+}, {
+  "id": "g6rad_family_鐘",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「鐘」屬於同一部首？",
+  "options": ["針", "紀", "神"],
+  "answer": "針",
+  "why": "「鐘」與「針」都歸金部；「紀」歸糸部，「神」歸示部。",
+  "figure": {
+    "type": "big",
+    "text": "鐘"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_鐘"
+}, {
+  "id": "g6rad_lookup_鐘",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「鐘」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["金部，部首外12畫", "金部，部首外20畫", "衣部，部首外12畫"],
+  "answer": "金部，部首外12畫",
+  "why": "依教育部辭典，「鐘」歸金部，部首外12畫，總筆畫20畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "鐘"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_鐘"
+}, {
+  "id": "g6rad_identify_針",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「針」在字典中歸在哪個部首？",
+  "options": ["金", "糸", "邑"],
+  "answer": "金",
+  "why": "「針」歸金部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "針"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_針"
+}, {
+  "id": "g6rad_family_針",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「針」屬於同一部首？",
+  "options": ["銀", "組", "祈"],
+  "answer": "銀",
+  "why": "「針」與「銀」都歸金部；「組」歸糸部，「祈」歸示部。",
+  "figure": {
+    "type": "big",
+    "text": "針"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_針"
+}, {
+  "id": "g6rad_lookup_針",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「針」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["金部，部首外2畫", "金部，部首外10畫", "辵部，部首外2畫"],
+  "answer": "金部，部首外2畫",
+  "why": "依教育部辭典，「針」歸金部，部首外2畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "針"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_針"
+}, {
+  "id": "g6rad_identify_線",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「線」在字典中歸在哪個部首？",
+  "options": ["糸", "衣", "示"],
+  "answer": "糸",
+  "why": "「線」歸糸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "線"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_線"
+}, {
+  "id": "g6rad_family_線",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「線」屬於同一部首？",
+  "options": ["紙", "裙", "腸"],
+  "answer": "紙",
+  "why": "「線」與「紙」都歸糸部；「裙」歸衣部，「腸」歸肉部。",
+  "figure": {
+    "type": "big",
+    "text": "線"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_線"
+}, {
+  "id": "g6rad_lookup_線",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「線」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["糸部，部首外9畫", "糸部，部首外15畫", "艸部，部首外9畫"],
+  "answer": "糸部，部首外9畫",
+  "why": "依教育部辭典，「線」歸糸部，部首外9畫，總筆畫15畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "線"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_線"
+}, {
+  "id": "g6rad_identify_紙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「紙」在字典中歸在哪個部首？",
+  "options": ["糸", "辵", "肉"],
+  "answer": "糸",
+  "why": "「紙」歸糸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "紙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_紙"
+}, {
+  "id": "g6rad_family_紙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「紙」屬於同一部首？",
+  "options": ["細", "袖", "肩"],
+  "answer": "細",
+  "why": "「紙」與「細」都歸糸部；「袖」歸衣部，「肩」歸肉部。",
+  "figure": {
+    "type": "big",
+    "text": "紙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_紙"
+}, {
+  "id": "g6rad_lookup_紙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「紙」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["糸部，部首外4畫", "糸部，部首外10畫", "阜部，部首外4畫"],
+  "answer": "糸部，部首外4畫",
+  "why": "依教育部辭典，「紙」歸糸部，部首外4畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "紙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_紙"
+}, {
+  "id": "g6rad_identify_細",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「細」在字典中歸在哪個部首？",
+  "options": ["糸", "艸", "木"],
+  "answer": "糸",
+  "why": "「細」歸糸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "細"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_細"
+}, {
+  "id": "g6rad_family_細",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「細」屬於同一部首？",
+  "options": ["紀", "褲", "肥"],
+  "answer": "紀",
+  "why": "「細」與「紀」都歸糸部；「褲」歸衣部，「肥」歸肉部。",
+  "figure": {
+    "type": "big",
+    "text": "細"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_細"
+}, {
+  "id": "g6rad_lookup_細",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「細」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["糸部，部首外5畫", "糸部，部首外11畫", "邑部，部首外5畫"],
+  "answer": "糸部，部首外5畫",
+  "why": "依教育部辭典，「細」歸糸部，部首外5畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "細"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_細"
+}, {
+  "id": "g6rad_identify_紀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「紀」在字典中歸在哪個部首？",
+  "options": ["糸", "阜", "水"],
+  "answer": "糸",
+  "why": "「紀」歸糸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "紀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_紀"
+}, {
+  "id": "g6rad_family_紀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「紀」屬於同一部首？",
+  "options": ["組", "袍", "腿"],
+  "answer": "組",
+  "why": "「紀」與「組」都歸糸部；「袍」歸衣部，「腿」歸肉部。",
+  "figure": {
+    "type": "big",
+    "text": "紀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_紀"
+}, {
+  "id": "g6rad_lookup_紀",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「紀」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["糸部，部首外3畫", "糸部，部首外9畫", "示部，部首外3畫"],
+  "answer": "糸部，部首外3畫",
+  "why": "依教育部辭典，「紀」歸糸部，部首外3畫，總筆畫9畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "紀"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_紀"
+}, {
+  "id": "g6rad_identify_組",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「組」在字典中歸在哪個部首？",
+  "options": ["糸", "邑", "火"],
+  "answer": "糸",
+  "why": "「組」歸糸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "組"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_組"
+}, {
+  "id": "g6rad_family_組",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「組」屬於同一部首？",
+  "options": ["線", "裡", "臉"],
+  "answer": "線",
+  "why": "「組」與「線」都歸糸部；「裡」歸衣部，「臉」歸肉部。",
+  "figure": {
+    "type": "big",
+    "text": "組"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_組"
+}, {
+  "id": "g6rad_lookup_組",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「組」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["糸部，部首外5畫", "糸部，部首外11畫", "肉部，部首外5畫"],
+  "answer": "糸部，部首外5畫",
+  "why": "依教育部辭典，「組」歸糸部，部首外5畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "組"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_組"
+}, {
+  "id": "g6rad_identify_裙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「裙」在字典中歸在哪個部首？",
+  "options": ["衣", "示", "手"],
+  "answer": "衣",
+  "why": "「裙」歸衣部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "裙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_裙"
+}, {
+  "id": "g6rad_family_裙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「裙」屬於同一部首？",
+  "options": ["袖", "道", "林"],
+  "answer": "袖",
+  "why": "「裙」與「袖」都歸衣部；「道」歸辵部，「林」歸木部。",
+  "figure": {
+    "type": "big",
+    "text": "裙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_裙"
+}, {
+  "id": "g6rad_lookup_裙",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「裙」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["衣部，部首外7畫", "衣部，部首外13畫", "木部，部首外7畫"],
+  "answer": "衣部，部首外7畫",
+  "why": "依教育部辭典，「裙」歸衣部，部首外7畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "裙"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_裙"
+}, {
+  "id": "g6rad_identify_袖",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「袖」在字典中歸在哪個部首？",
+  "options": ["衣", "肉", "心"],
+  "answer": "衣",
+  "why": "「袖」歸衣部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "袖"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_袖"
+}, {
+  "id": "g6rad_family_袖",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「袖」屬於同一部首？",
+  "options": ["褲", "進", "森"],
+  "answer": "褲",
+  "why": "「袖」與「褲」都歸衣部；「進」歸辵部，「森」歸木部。",
+  "figure": {
+    "type": "big",
+    "text": "袖"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_袖"
+}, {
+  "id": "g6rad_lookup_袖",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「袖」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["衣部，部首外5畫", "衣部，部首外11畫", "水部，部首外5畫"],
+  "answer": "衣部，部首外5畫",
+  "why": "依教育部辭典，「袖」歸衣部，部首外5畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "袖"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_袖"
+}, {
+  "id": "g6rad_identify_褲",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「褲」在字典中歸在哪個部首？",
+  "options": ["衣", "木", "言"],
+  "answer": "衣",
+  "why": "「褲」歸衣部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "褲"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_褲"
+}, {
+  "id": "g6rad_family_褲",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「褲」屬於同一部首？",
+  "options": ["袍", "遠", "機"],
+  "answer": "袍",
+  "why": "「褲」與「袍」都歸衣部；「遠」歸辵部，「機」歸木部。",
+  "figure": {
+    "type": "big",
+    "text": "褲"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_褲"
+}, {
+  "id": "g6rad_lookup_褲",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「褲」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["衣部，部首外10畫", "衣部，部首外16畫", "火部，部首外10畫"],
+  "answer": "衣部，部首外10畫",
+  "why": "依教育部辭典，「褲」歸衣部，部首外10畫，總筆畫16畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "褲"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_褲"
+}, {
+  "id": "g6rad_identify_袍",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「袍」在字典中歸在哪個部首？",
+  "options": ["衣", "水", "金"],
+  "answer": "衣",
+  "why": "「袍」歸衣部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "袍"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_袍"
+}, {
+  "id": "g6rad_family_袍",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「袍」屬於同一部首？",
+  "options": ["裡", "近", "樹"],
+  "answer": "裡",
+  "why": "「袍」與「裡」都歸衣部；「近」歸辵部，「樹」歸木部。",
+  "figure": {
+    "type": "big",
+    "text": "袍"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_袍"
+}, {
+  "id": "g6rad_lookup_袍",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「袍」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["衣部，部首外5畫", "衣部，部首外11畫", "手部，部首外5畫"],
+  "answer": "衣部，部首外5畫",
+  "why": "依教育部辭典，「袍」歸衣部，部首外5畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "袍"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_袍"
+}, {
+  "id": "g6rad_identify_裡",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「裡」在字典中歸在哪個部首？",
+  "options": ["衣", "火", "糸"],
+  "answer": "衣",
+  "why": "「裡」歸衣部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "裡"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_裡"
+}, {
+  "id": "g6rad_family_裡",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「裡」屬於同一部首？",
+  "options": ["裙", "連", "橋"],
+  "answer": "裙",
+  "why": "「裡」與「裙」都歸衣部；「連」歸辵部，「橋」歸木部。",
+  "figure": {
+    "type": "big",
+    "text": "裡"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_裡"
+}, {
+  "id": "g6rad_lookup_裡",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「裡」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["衣部，部首外7畫", "衣部，部首外13畫", "心部，部首外7畫"],
+  "answer": "衣部，部首外7畫",
+  "why": "依教育部辭典，「裡」歸衣部，部首外7畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "裡"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_裡"
+}, {
+  "id": "g6rad_identify_道",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「道」在字典中歸在哪個部首？",
+  "options": ["辵", "手", "衣"],
+  "answer": "辵",
+  "why": "「道」歸辵部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "道"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_道"
+}, {
+  "id": "g6rad_family_道",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「道」屬於同一部首？",
+  "options": ["進", "花", "湖"],
+  "answer": "進",
+  "why": "「道」與「進」都歸辵部；「花」歸艸部，「湖」歸水部。",
+  "figure": {
+    "type": "big",
+    "text": "道"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_道"
+}, {
+  "id": "g6rad_lookup_道",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「道」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["辵部，部首外9畫", "辵部，部首外13畫", "言部，部首外9畫"],
+  "answer": "辵部，部首外9畫",
+  "why": "依教育部辭典，「道」歸辵部，部首外9畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "道"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_道"
+}, {
+  "id": "g6rad_identify_進",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「進」在字典中歸在哪個部首？",
+  "options": ["辵", "心", "艸"],
+  "answer": "辵",
+  "why": "「進」歸辵部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "進"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_進"
+}, {
+  "id": "g6rad_family_進",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「進」屬於同一部首？",
+  "options": ["遠", "草", "清"],
+  "answer": "遠",
+  "why": "「進」與「遠」都歸辵部；「草」歸艸部，「清」歸水部。",
+  "figure": {
+    "type": "big",
+    "text": "進"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_進"
+}, {
+  "id": "g6rad_lookup_進",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「進」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["辵部，部首外8畫", "辵部，部首外12畫", "金部，部首外8畫"],
+  "answer": "辵部，部首外8畫",
+  "why": "依教育部辭典，「進」歸辵部，部首外8畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "進"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_進"
+}, {
+  "id": "g6rad_identify_遠",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「遠」在字典中歸在哪個部首？",
+  "options": ["辵", "言", "阜"],
+  "answer": "辵",
+  "why": "「遠」歸辵部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "遠"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_遠"
+}, {
+  "id": "g6rad_family_遠",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「遠」屬於同一部首？",
+  "options": ["近", "茶", "潔"],
+  "answer": "近",
+  "why": "「遠」與「近」都歸辵部；「茶」歸艸部，「潔」歸水部。",
+  "figure": {
+    "type": "big",
+    "text": "遠"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_遠"
+}, {
+  "id": "g6rad_lookup_遠",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「遠」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["辵部，部首外10畫", "辵部，部首外14畫", "糸部，部首外10畫"],
+  "answer": "辵部，部首外10畫",
+  "why": "依教育部辭典，「遠」歸辵部，部首外10畫，總筆畫14畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "遠"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_遠"
+}, {
+  "id": "g6rad_identify_近",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「近」在字典中歸在哪個部首？",
+  "options": ["辵", "金", "邑"],
+  "answer": "辵",
+  "why": "「近」歸辵部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "近"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_近"
+}, {
+  "id": "g6rad_family_近",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「近」屬於同一部首？",
+  "options": ["連", "葉", "海"],
+  "answer": "連",
+  "why": "「近」與「連」都歸辵部；「葉」歸艸部，「海」歸水部。",
+  "figure": {
+    "type": "big",
+    "text": "近"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_近"
+}, {
+  "id": "g6rad_lookup_近",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「近」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["辵部，部首外4畫", "辵部，部首外8畫", "衣部，部首外4畫"],
+  "answer": "辵部，部首外4畫",
+  "why": "依教育部辭典，「近」歸辵部，部首外4畫，總筆畫8畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "近"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_近"
+}, {
+  "id": "g6rad_identify_連",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「連」在字典中歸在哪個部首？",
+  "options": ["辵", "糸", "示"],
+  "answer": "辵",
+  "why": "「連」歸辵部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "連"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_連"
+}, {
+  "id": "g6rad_family_連",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「連」屬於同一部首？",
+  "options": ["道", "藥", "河"],
+  "answer": "道",
+  "why": "「連」與「道」都歸辵部；「藥」歸艸部，「河」歸水部。",
+  "figure": {
+    "type": "big",
+    "text": "連"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_連"
+}, {
+  "id": "g6rad_lookup_連",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「連」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["辵部，部首外7畫", "辵部，部首外11畫", "艸部，部首外7畫"],
+  "answer": "辵部，部首外7畫",
+  "why": "依教育部辭典，「連」歸辵部，部首外7畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "連"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_連"
+}, {
+  "id": "g6rad_identify_花",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「花」在字典中歸在哪個部首？",
+  "options": ["艸", "衣", "肉"],
+  "answer": "艸",
+  "why": "「花」歸艸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "花"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_花"
+}, {
+  "id": "g6rad_family_花",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「花」屬於同一部首？",
+  "options": ["草", "院", "燒"],
+  "answer": "草",
+  "why": "「花」與「草」都歸艸部；「院」歸阜部，「燒」歸火部。",
+  "figure": {
+    "type": "big",
+    "text": "花"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_花"
+}, {
+  "id": "g6rad_lookup_花",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「花」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["艸部，部首外4畫", "艸部，部首外8畫", "阜部，部首外4畫"],
+  "answer": "艸部，部首外4畫",
+  "why": "依教育部辭典，「花」歸艸部，部首外4畫，總筆畫8畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "花"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_花"
+}, {
+  "id": "g6rad_identify_草",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「草」在字典中歸在哪個部首？",
+  "options": ["艸", "辵", "木"],
+  "answer": "艸",
+  "why": "「草」歸艸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "草"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_草"
+}, {
+  "id": "g6rad_family_草",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「草」屬於同一部首？",
+  "options": ["茶", "陸", "燈"],
+  "answer": "茶",
+  "why": "「草」與「茶」都歸艸部；「陸」歸阜部，「燈」歸火部。",
+  "figure": {
+    "type": "big",
+    "text": "草"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_草"
+}, {
+  "id": "g6rad_lookup_草",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「草」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["艸部，部首外6畫", "艸部，部首外10畫", "邑部，部首外6畫"],
+  "answer": "艸部，部首外6畫",
+  "why": "依教育部辭典，「草」歸艸部，部首外6畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "草"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_草"
+}, {
+  "id": "g6rad_identify_茶",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「茶」在字典中歸在哪個部首？",
+  "options": ["艸", "阜", "水"],
+  "answer": "艸",
+  "why": "「茶」歸艸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "茶"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_茶"
+}, {
+  "id": "g6rad_family_茶",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「茶」屬於同一部首？",
+  "options": ["葉", "陰", "熱"],
+  "answer": "葉",
+  "why": "「茶」與「葉」都歸艸部；「陰」歸阜部，「熱」歸火部。",
+  "figure": {
+    "type": "big",
+    "text": "茶"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_茶"
+}, {
+  "id": "g6rad_lookup_茶",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「茶」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["艸部，部首外6畫", "艸部，部首外10畫", "示部，部首外6畫"],
+  "answer": "艸部，部首外6畫",
+  "why": "依教育部辭典，「茶」歸艸部，部首外6畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "茶"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_茶"
+}, {
+  "id": "g6rad_identify_葉",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「葉」在字典中歸在哪個部首？",
+  "options": ["艸", "邑", "火"],
+  "answer": "艸",
+  "why": "「葉」歸艸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "葉"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_葉"
+}, {
+  "id": "g6rad_family_葉",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「葉」屬於同一部首？",
+  "options": ["藥", "陽", "煙"],
+  "answer": "藥",
+  "why": "「葉」與「藥」都歸艸部；「陽」歸阜部，「煙」歸火部。",
+  "figure": {
+    "type": "big",
+    "text": "葉"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_葉"
+}, {
+  "id": "g6rad_lookup_葉",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「葉」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["艸部，部首外9畫", "艸部，部首外13畫", "肉部，部首外9畫"],
+  "answer": "艸部，部首外9畫",
+  "why": "依教育部辭典，「葉」歸艸部，部首外9畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "葉"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_葉"
+}, {
+  "id": "g6rad_identify_藥",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「藥」在字典中歸在哪個部首？",
+  "options": ["艸", "示", "手"],
+  "answer": "艸",
+  "why": "「藥」歸艸部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "藥"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_藥"
+}, {
+  "id": "g6rad_family_藥",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「藥」屬於同一部首？",
+  "options": ["花", "階", "燃"],
+  "answer": "花",
+  "why": "「藥」與「花」都歸艸部；「階」歸阜部，「燃」歸火部。",
+  "figure": {
+    "type": "big",
+    "text": "藥"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_藥"
+}, {
+  "id": "g6rad_lookup_藥",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「藥」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["艸部，部首外15畫", "艸部，部首外19畫", "木部，部首外15畫"],
+  "answer": "艸部，部首外15畫",
+  "why": "依教育部辭典，「藥」歸艸部，部首外15畫，總筆畫19畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "藥"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_藥"
+}, {
+  "id": "g6rad_identify_院",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「院」在字典中歸在哪個部首？",
+  "options": ["阜", "肉", "心"],
+  "answer": "阜",
+  "why": "「院」歸阜部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "院"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_院"
+}, {
+  "id": "g6rad_family_院",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「院」屬於同一部首？",
+  "options": ["陸", "都", "提"],
+  "answer": "陸",
+  "why": "「院」與「陸」都歸阜部；「都」歸邑部，「提」歸手部。",
+  "figure": {
+    "type": "big",
+    "text": "院"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_院"
+}, {
+  "id": "g6rad_lookup_院",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「院」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["阜部，部首外7畫", "阜部，部首外10畫", "水部，部首外7畫"],
+  "answer": "阜部，部首外7畫",
+  "why": "依教育部辭典，「院」歸阜部，部首外7畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "院"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_院"
+}, {
+  "id": "g6rad_identify_陸",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「陸」在字典中歸在哪個部首？",
+  "options": ["阜", "木", "言"],
+  "answer": "阜",
+  "why": "「陸」歸阜部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "陸"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_陸"
+}, {
+  "id": "g6rad_family_陸",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「陸」屬於同一部首？",
+  "options": ["陰", "部", "握"],
+  "answer": "陰",
+  "why": "「陸」與「陰」都歸阜部；「部」歸邑部，「握」歸手部。",
+  "figure": {
+    "type": "big",
+    "text": "陸"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_陸"
+}, {
+  "id": "g6rad_lookup_陸",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「陸」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["阜部，部首外8畫", "阜部，部首外11畫", "火部，部首外8畫"],
+  "answer": "阜部，部首外8畫",
+  "why": "依教育部辭典，「陸」歸阜部，部首外8畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "陸"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_陸"
+}, {
+  "id": "g6rad_identify_陰",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「陰」在字典中歸在哪個部首？",
+  "options": ["阜", "水", "金"],
+  "answer": "阜",
+  "why": "「陰」歸阜部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "陰"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_陰"
+}, {
+  "id": "g6rad_family_陰",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「陰」屬於同一部首？",
+  "options": ["陽", "郵", "扶"],
+  "answer": "陽",
+  "why": "「陰」與「陽」都歸阜部；「郵」歸邑部，「扶」歸手部。",
+  "figure": {
+    "type": "big",
+    "text": "陰"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_陰"
+}, {
+  "id": "g6rad_lookup_陰",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「陰」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["阜部，部首外8畫", "阜部，部首外11畫", "手部，部首外8畫"],
+  "answer": "阜部，部首外8畫",
+  "why": "依教育部辭典，「陰」歸阜部，部首外8畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "陰"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_陰"
+}, {
+  "id": "g6rad_identify_陽",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「陽」在字典中歸在哪個部首？",
+  "options": ["阜", "火", "糸"],
+  "answer": "阜",
+  "why": "「陽」歸阜部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "陽"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_陽"
+}, {
+  "id": "g6rad_family_陽",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「陽」屬於同一部首？",
+  "options": ["階", "鄰", "把"],
+  "answer": "階",
+  "why": "「陽」與「階」都歸阜部；「鄰」歸邑部，「把」歸手部。",
+  "figure": {
+    "type": "big",
+    "text": "陽"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_陽"
+}, {
+  "id": "g6rad_lookup_陽",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「陽」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["阜部，部首外9畫", "阜部，部首外12畫", "心部，部首外9畫"],
+  "answer": "阜部，部首外9畫",
+  "why": "依教育部辭典，「陽」歸阜部，部首外9畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "陽"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_陽"
+}, {
+  "id": "g6rad_identify_階",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「階」在字典中歸在哪個部首？",
+  "options": ["阜", "手", "衣"],
+  "answer": "阜",
+  "why": "「階」歸阜部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "階"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_階"
+}, {
+  "id": "g6rad_family_階",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「階」屬於同一部首？",
+  "options": ["院", "郊", "推"],
+  "answer": "院",
+  "why": "「階」與「院」都歸阜部；「郊」歸邑部，「推」歸手部。",
+  "figure": {
+    "type": "big",
+    "text": "階"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_階"
+}, {
+  "id": "g6rad_lookup_階",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「階」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["阜部，部首外9畫", "阜部，部首外12畫", "言部，部首外9畫"],
+  "answer": "阜部，部首外9畫",
+  "why": "依教育部辭典，「階」歸阜部，部首外9畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "階"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_階"
+}, {
+  "id": "g6rad_identify_都",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「都」在字典中歸在哪個部首？",
+  "options": ["邑", "心", "辵"],
+  "answer": "邑",
+  "why": "「都」歸邑部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "都"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_都"
+}, {
+  "id": "g6rad_family_都",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「都」屬於同一部首？",
+  "options": ["部", "神", "情"],
+  "answer": "部",
+  "why": "「都」與「部」都歸邑部；「神」歸示部，「情」歸心部。",
+  "figure": {
+    "type": "big",
+    "text": "都"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_都"
+}, {
+  "id": "g6rad_lookup_都",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「都」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["邑部，部首外8畫", "邑部，部首外11畫", "金部，部首外8畫"],
+  "answer": "邑部，部首外8畫",
+  "why": "依教育部辭典，「都」歸邑部，部首外8畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "都"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_都"
+}, {
+  "id": "g6rad_identify_部",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「部」在字典中歸在哪個部首？",
+  "options": ["邑", "言", "艸"],
+  "answer": "邑",
+  "why": "「部」歸邑部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "部"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_部"
+}, {
+  "id": "g6rad_family_部",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「部」屬於同一部首？",
+  "options": ["郵", "祈", "悅"],
+  "answer": "郵",
+  "why": "「部」與「郵」都歸邑部；「祈」歸示部，「悅」歸心部。",
+  "figure": {
+    "type": "big",
+    "text": "部"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_部"
+}, {
+  "id": "g6rad_lookup_部",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「部」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["邑部，部首外8畫", "邑部，部首外11畫", "糸部，部首外8畫"],
+  "answer": "邑部，部首外8畫",
+  "why": "依教育部辭典，「部」歸邑部，部首外8畫，總筆畫11畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "部"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_部"
+}, {
+  "id": "g6rad_identify_郵",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「郵」在字典中歸在哪個部首？",
+  "options": ["邑", "金", "阜"],
+  "answer": "邑",
+  "why": "「郵」歸邑部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "郵"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_郵"
+}, {
+  "id": "g6rad_family_郵",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「郵」屬於同一部首？",
+  "options": ["鄰", "祝", "慮"],
+  "answer": "鄰",
+  "why": "「郵」與「鄰」都歸邑部；「祝」歸示部，「慮」歸心部。",
+  "figure": {
+    "type": "big",
+    "text": "郵"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_郵"
+}, {
+  "id": "g6rad_lookup_郵",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「郵」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["邑部，部首外9畫", "邑部，部首外12畫", "衣部，部首外9畫"],
+  "answer": "邑部，部首外9畫",
+  "why": "依教育部辭典，「郵」歸邑部，部首外9畫，總筆畫12畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "郵"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_郵"
+}, {
+  "id": "g6rad_identify_鄰",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「鄰」在字典中歸在哪個部首？",
+  "options": ["邑", "糸", "示"],
+  "answer": "邑",
+  "why": "「鄰」歸邑部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "鄰"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_鄰"
+}, {
+  "id": "g6rad_family_鄰",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「鄰」屬於同一部首？",
+  "options": ["郊", "福", "想"],
+  "answer": "郊",
+  "why": "「鄰」與「郊」都歸邑部；「福」歸示部，「想」歸心部。",
+  "figure": {
+    "type": "big",
+    "text": "鄰"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_鄰"
+}, {
+  "id": "g6rad_lookup_鄰",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「鄰」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["邑部，部首外12畫", "邑部，部首外15畫", "辵部，部首外12畫"],
+  "answer": "邑部，部首外12畫",
+  "why": "依教育部辭典，「鄰」歸邑部，部首外12畫，總筆畫15畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "鄰"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_鄰"
+}, {
+  "id": "g6rad_identify_郊",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「郊」在字典中歸在哪個部首？",
+  "options": ["邑", "衣", "肉"],
+  "answer": "邑",
+  "why": "「郊」歸邑部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "郊"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_郊"
+}, {
+  "id": "g6rad_family_郊",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「郊」屬於同一部首？",
+  "options": ["都", "禮", "念"],
+  "answer": "都",
+  "why": "「郊」與「都」都歸邑部；「禮」歸示部，「念」歸心部。",
+  "figure": {
+    "type": "big",
+    "text": "郊"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_郊"
+}, {
+  "id": "g6rad_lookup_郊",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「郊」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["邑部，部首外6畫", "邑部，部首外9畫", "艸部，部首外6畫"],
+  "answer": "邑部，部首外6畫",
+  "why": "依教育部辭典，「郊」歸邑部，部首外6畫，總筆畫9畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "郊"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_郊"
+}, {
+  "id": "g6rad_identify_神",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「神」在字典中歸在哪個部首？",
+  "options": ["示", "辵", "木"],
+  "answer": "示",
+  "why": "「神」歸示部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "神"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_神"
+}, {
+  "id": "g6rad_family_神",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「神」屬於同一部首？",
+  "options": ["祈", "腿", "讀"],
+  "answer": "祈",
+  "why": "「神」與「祈」都歸示部；「腿」歸肉部，「讀」歸言部。",
+  "figure": {
+    "type": "big",
+    "text": "神"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_神"
+}, {
+  "id": "g6rad_lookup_神",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「神」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["示部，部首外5畫", "示部，部首外10畫", "阜部，部首外5畫"],
+  "answer": "示部，部首外5畫",
+  "why": "依教育部辭典，「神」歸示部，部首外5畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "神"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_神"
+}, {
+  "id": "g6rad_identify_祈",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「祈」在字典中歸在哪個部首？",
+  "options": ["示", "艸", "水"],
+  "answer": "示",
+  "why": "「祈」歸示部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "祈"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_祈"
+}, {
+  "id": "g6rad_family_祈",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「祈」屬於同一部首？",
+  "options": ["祝", "臉", "詩"],
+  "answer": "祝",
+  "why": "「祈」與「祝」都歸示部；「臉」歸肉部，「詩」歸言部。",
+  "figure": {
+    "type": "big",
+    "text": "祈"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_祈"
+}, {
+  "id": "g6rad_lookup_祈",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「祈」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["示部，部首外4畫", "示部，部首外9畫", "邑部，部首外4畫"],
+  "answer": "示部，部首外4畫",
+  "why": "依教育部辭典，「祈」歸示部，部首外4畫，總筆畫9畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "祈"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_祈"
+}, {
+  "id": "g6rad_identify_祝",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「祝」在字典中歸在哪個部首？",
+  "options": ["示", "阜", "火"],
+  "answer": "示",
+  "why": "「祝」歸示部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "祝"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_祝"
+}, {
+  "id": "g6rad_family_祝",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「祝」屬於同一部首？",
+  "options": ["福", "腸", "談"],
+  "answer": "福",
+  "why": "「祝」與「福」都歸示部；「腸」歸肉部，「談」歸言部。",
+  "figure": {
+    "type": "big",
+    "text": "祝"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_祝"
+}, {
+  "id": "g6rad_lookup_祝",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「祝」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["示部，部首外5畫", "示部，部首外10畫", "肉部，部首外5畫"],
+  "answer": "示部，部首外5畫",
+  "why": "依教育部辭典，「祝」歸示部，部首外5畫，總筆畫10畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "祝"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_祝"
+}, {
+  "id": "g6rad_identify_福",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「福」在字典中歸在哪個部首？",
+  "options": ["示", "邑", "手"],
+  "answer": "示",
+  "why": "「福」歸示部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "福"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_福"
+}, {
+  "id": "g6rad_family_福",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「福」屬於同一部首？",
+  "options": ["禮", "肩", "語"],
+  "answer": "禮",
+  "why": "「福」與「禮」都歸示部；「肩」歸肉部，「語」歸言部。",
+  "figure": {
+    "type": "big",
+    "text": "福"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_福"
+}, {
+  "id": "g6rad_lookup_福",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「福」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["示部，部首外9畫", "示部，部首外14畫", "木部，部首外9畫"],
+  "answer": "示部，部首外9畫",
+  "why": "依教育部辭典，「福」歸示部，部首外9畫，總筆畫14畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "福"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_福"
+}, {
+  "id": "g6rad_identify_禮",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「禮」在字典中歸在哪個部首？",
+  "options": ["示", "肉", "心"],
+  "answer": "示",
+  "why": "「禮」歸示部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "禮"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_禮"
+}, {
+  "id": "g6rad_family_禮",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「禮」屬於同一部首？",
+  "options": ["神", "肥", "說"],
+  "answer": "神",
+  "why": "「禮」與「神」都歸示部；「肥」歸肉部，「說」歸言部。",
+  "figure": {
+    "type": "big",
+    "text": "禮"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_禮"
+}, {
+  "id": "g6rad_lookup_禮",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「禮」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["示部，部首外13畫", "示部，部首外18畫", "水部，部首外13畫"],
+  "answer": "示部，部首外13畫",
+  "why": "依教育部辭典，「禮」歸示部，部首外13畫，總筆畫18畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "禮"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_禮"
+}, {
+  "id": "g6rad_identify_腿",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「腿」在字典中歸在哪個部首？",
+  "options": ["肉", "木", "言"],
+  "answer": "肉",
+  "why": "「腿」歸肉部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "腿"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_腿"
+}, {
+  "id": "g6rad_family_腿",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「腿」屬於同一部首？",
+  "options": ["臉", "樹", "鐵"],
+  "answer": "臉",
+  "why": "「腿」與「臉」都歸肉部；「樹」歸木部，「鐵」歸金部。",
+  "figure": {
+    "type": "big",
+    "text": "腿"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_腿"
+}, {
+  "id": "g6rad_lookup_腿",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「腿」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["肉部，部首外10畫", "肉部，部首外14畫", "火部，部首外10畫"],
+  "answer": "肉部，部首外10畫",
+  "why": "依教育部辭典，「腿」歸肉部，部首外10畫，總筆畫14畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "腿"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_腿"
+}, {
+  "id": "g6rad_identify_臉",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「臉」在字典中歸在哪個部首？",
+  "options": ["肉", "水", "金"],
+  "answer": "肉",
+  "why": "「臉」歸肉部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "臉"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_臉"
+}, {
+  "id": "g6rad_family_臉",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「臉」屬於同一部首？",
+  "options": ["腸", "橋", "鐘"],
+  "answer": "腸",
+  "why": "「臉」與「腸」都歸肉部；「橋」歸木部，「鐘」歸金部。",
+  "figure": {
+    "type": "big",
+    "text": "臉"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_臉"
+}, {
+  "id": "g6rad_lookup_臉",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「臉」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["肉部，部首外13畫", "肉部，部首外17畫", "手部，部首外13畫"],
+  "answer": "肉部，部首外13畫",
+  "why": "依教育部辭典，「臉」歸肉部，部首外13畫，總筆畫17畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "臉"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_臉"
+}, {
+  "id": "g6rad_identify_腸",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「腸」在字典中歸在哪個部首？",
+  "options": ["肉", "火", "糸"],
+  "answer": "肉",
+  "why": "「腸」歸肉部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "腸"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_腸"
+}, {
+  "id": "g6rad_family_腸",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「腸」屬於同一部首？",
+  "options": ["肩", "林", "針"],
+  "answer": "肩",
+  "why": "「腸」與「肩」都歸肉部；「林」歸木部，「針」歸金部。",
+  "figure": {
+    "type": "big",
+    "text": "腸"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_腸"
+}, {
+  "id": "g6rad_lookup_腸",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「腸」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["肉部，部首外9畫", "肉部，部首外13畫", "心部，部首外9畫"],
+  "answer": "肉部，部首外9畫",
+  "why": "依教育部辭典，「腸」歸肉部，部首外9畫，總筆畫13畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "腸"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_腸"
+}, {
+  "id": "g6rad_identify_肩",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「肩」在字典中歸在哪個部首？",
+  "options": ["肉", "手", "衣"],
+  "answer": "肉",
+  "why": "「肩」歸肉部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "肩"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_肩"
+}, {
+  "id": "g6rad_family_肩",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「肩」屬於同一部首？",
+  "options": ["肥", "森", "銀"],
+  "answer": "肥",
+  "why": "「肩」與「肥」都歸肉部；「森」歸木部，「銀」歸金部。",
+  "figure": {
+    "type": "big",
+    "text": "肩"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_肩"
+}, {
+  "id": "g6rad_lookup_肩",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「肩」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["肉部，部首外4畫", "肉部，部首外8畫", "言部，部首外4畫"],
+  "answer": "肉部，部首外4畫",
+  "why": "依教育部辭典，「肩」歸肉部，部首外4畫，總筆畫8畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "肩"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_肩"
+}, {
+  "id": "g6rad_identify_肥",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 0,
+  "q": "「肥」在字典中歸在哪個部首？",
+  "options": ["肉", "心", "辵"],
+  "answer": "肉",
+  "why": "「肥」歸肉部。部首是查字時的分類，不能只看字的左邊。",
+  "figure": {
+    "type": "big",
+    "text": "肥"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:identify_肥"
+}, {
+  "id": "g6rad_family_肥",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "哪個字和「肥」屬於同一部首？",
+  "options": ["腿", "機", "銅"],
+  "answer": "腿",
+  "why": "「肥」與「腿」都歸肉部；「機」歸木部，「銅」歸金部。",
+  "figure": {
+    "type": "big",
+    "text": "肥"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:family_肥"
+}, {
+  "id": "g6rad_lookup_肥",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 2,
+  "q": "用部首檢字法查「肥」，應先找哪一部，再找幾畫的部首外筆畫？",
+  "options": ["肉部，部首外4畫", "肉部，部首外8畫", "金部，部首外4畫"],
+  "answer": "肉部，部首外4畫",
+  "why": "依教育部辭典，「肥」歸肉部，部首外4畫，總筆畫8畫。部首外筆畫不等於總筆畫；部首可能有變形。",
+  "figure": {
+    "type": "big",
+    "text": "肥"
+  },
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:lookup_肥"
+}, {
+  "id": "g6rad_reason_1",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "青在「清、晴、情」這組字裡，可提供哪種線索？",
+  "options": ["相近讀音的線索，但聲調仍須確認", "三字的部首完全相同", "三字意思完全相同"],
+  "answer": "相近讀音的線索，但聲調仍須確認",
+  "why": "共同部件可能提示相近的讀音；這三字的部首分別是水、日、心，字義與聲調仍須分辨。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_1"
+}, {
+  "id": "g6rad_reason_2",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「清水」的清，哪個部件較能提示和水有關？",
+  "options": ["氵", "青", "整個字只有讀音，沒有字義線索"],
+  "answer": "氵",
+  "why": "清歸水部，氵是水的偏旁形式；青可提供相近讀音的線索。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_2"
+}, {
+  "id": "g6rad_reason_3",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「情、悅」左邊的忄，查字時歸哪一部？",
+  "options": ["心部", "人部", "小部"],
+  "answer": "心部",
+  "why": "忄是心的偏旁形式，這兩字歸心部，常和心情、感受有關。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_3"
+}, {
+  "id": "g6rad_reason_4",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「推、提、握」的扌，查字時歸哪一部？",
+  "options": ["手部", "木部", "才部"],
+  "answer": "手部",
+  "why": "扌是手的偏旁形式，推、提、握都歸手部。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_4"
+}, {
+  "id": "g6rad_reason_5",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「海、河、湖」的氵，查字時歸哪一部？",
+  "options": ["水部", "冰部", "小部"],
+  "answer": "水部",
+  "why": "氵是水的偏旁形式，海、河、湖都歸水部。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_5"
+}, {
+  "id": "g6rad_reason_6",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「熱」下方的灬，查字時歸哪一部？",
+  "options": ["火部", "水部", "心部"],
+  "answer": "火部",
+  "why": "灬是火常見的偏旁形式；熱歸火部。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_6"
+}, {
+  "id": "g6rad_reason_7",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「裙、袖、褲」左邊是衤，這組字歸哪一部？",
+  "options": ["衣部", "示部", "巾部"],
+  "answer": "衣部",
+  "why": "衤和礻不同。裙、袖、褲都歸衣部，字義與衣物有關。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_7"
+}, {
+  "id": "g6rad_reason_8",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「神、祈、祝」左邊是礻，這組字歸哪一部？",
+  "options": ["示部", "衣部", "木部"],
+  "answer": "示部",
+  "why": "礻是示的偏旁形式，這組字與祭祀或祝禱等字義有關。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_8"
+}, {
+  "id": "g6rad_reason_9",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「線、紙、細」的糹，查字時歸哪一部？",
+  "options": ["糸部", "衣部", "木部"],
+  "answer": "糸部",
+  "why": "糹是糸的偏旁形式；這三字歸糸部，仍需結合整字和詞語判斷字義。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_9"
+}, {
+  "id": "g6rad_reason_10",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「花、草、茶」的艹，查字時歸哪一部？",
+  "options": ["艸部", "木部", "竹部"],
+  "answer": "艸部",
+  "why": "艹是艸的偏旁形式；這三字的字義都與植物有關。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_10"
+}, {
+  "id": "g6rad_reason_11",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「院、陸、階」左側的阝，查字時歸哪一部？",
+  "options": ["阜部", "邑部", "耳部"],
+  "answer": "阜部",
+  "why": "阝在左側通常是阜的偏旁形式；院、陸、階歸阜部。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_11"
+}, {
+  "id": "g6rad_reason_12",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「都、郵、鄰」右側的阝，查字時歸哪一部？",
+  "options": ["邑部", "阜部", "耳部"],
+  "answer": "邑部",
+  "why": "阝在右側通常是邑的偏旁形式；都、郵、鄰歸邑部。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_12"
+}, {
+  "id": "g6rad_reason_13",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「腿、臉、腸」左側看起來像月，查字時歸哪一部？",
+  "options": ["肉部", "月部", "夕部"],
+  "answer": "肉部",
+  "why": "這組字的月形偏旁來自肉，字義與身體有關；不能把所有月形偏旁都歸月部。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_13"
+}, {
+  "id": "g6rad_reason_14",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "「想、念」的部首在下方。這提醒我們什麼？",
+  "options": ["部首不一定在字的左邊", "所有字的部首都在下方", "部首一定是筆畫最多的部分"],
+  "answer": "部首不一定在字的左邊",
+  "why": "想、念都歸心部。部首可能位於字的不同位置，需要依字形與字典確認。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_14"
+}, {
+  "id": "g6rad_reason_15",
+  "kpId": "g6_radicals",
+  "grade": 6,
+  "level": 1,
+  "q": "知道一個字的部首後，怎樣理解字義較可靠？",
+  "options": ["把部首當線索，再看整字、詞語與辭典", "只看部首就能確定每個字的全部意思", "同部首的字讀音和意思一定相同"],
+  "answer": "把部首當線索，再看整字、詞語與辭典",
+  "why": "部首是識字和檢字的線索；同部首的字不一定同音或同義。",
+  "humanReviewed": false,
+  "contentKey": "radicals-v88:reason_15"
+}];
 const ANSWER_GUARD_EMPTY = Object.freeze({
   chars: '',
   muteBopomofo: false
@@ -277937,7 +281526,8 @@ function zyPlainText(el) {
   return answerSafeSpeech(c.textContent);
 }
 function currentSpeechTarget() {
-  return document.querySelector('.dialogue-history .history-lines') || document.querySelector('#dialogue [data-speech-content]') || document.querySelector('#dialogue .dlg-text') || document.querySelector('.overlay-panel') || document.querySelector('.stage .card.raised') || document.querySelector('main') || document.body;
+  const root = document.querySelector('.dialogue-history .history-lines') || document.querySelector('#dialogue [data-speech-content]') || document.querySelector('#dialogue .dlg-text') || document.querySelector('.overlay-panel') || document.querySelector('.stage .card.raised') || document.querySelector('main') || document.body;
+  return root.querySelector('[data-question-speech]') || root;
 }
 const GAME_SPEECH = {
   active: false,
@@ -281300,6 +284890,7 @@ function profileMeta(state, id) {
 function syncProfiles(state) {
   if (typeof STORAGE_SAFETY !== "undefined" && STORAGE_SAFETY.issue) return loadProfiles();
   const p = loadProfiles();
+  if (!p.active && typeof isEmptyProfileDraft === 'function' && isEmptyProfileDraft(state)) return p;
   if (!p.active) {
     const id = 'p' + now().toString(36);
     p.active = id;
@@ -282174,7 +285765,25 @@ function assertStorageCurrent() {
     backupError(STORAGE_SAFETY.issue);
   }
 }
+function isEmptyProfileDraft(s) {
+  return !!s && s.student === null && ['errorItems', 'missions', 'practiceLog'].every(k => Array.isArray(s[k]) && s[k].length === 0) && Object.keys(s).every(k => ['version', 'student', 'errorItems', 'missions', 'practiceLog', 'meta'].includes(k)) && Object.keys(s.meta || {}).every(k => ['createdAt', 'aiProvider'].includes(k));
+}
+function profileSlotIsEmpty(id, current, p) {
+  try {
+    const s = id === p.active ? current : JSON.parse(localStorage.getItem('kei_p_' + id));
+    return isEmptyProfileDraft(s);
+  } catch {
+    return false;
+  }
+}
+function visibleProfileIndex(p, current) {
+  return {
+    ...p,
+    list: p.list.filter(m => !profileSlotIsEmpty(m.id, current, p))
+  };
+}
 function profileIndexFor(state, p = loadProfiles()) {
+  if (!p.active && isEmptyProfileDraft(state)) return p;
   const id = p.active || 'p' + now().toString(36);
   return {
     ...p,
@@ -282254,10 +285863,12 @@ function commitBackupImport(text, current, mode = 'new', recovery = false, reaso
 }
 function switchProfileSafely(current, targetId, create = false) {
   assertStorageCurrent();
+  if (create && isEmptyProfileDraft(current)) return current;
   const p = profileIndexFor(current);
   if (!create && !p.list.some(m => m.id === targetId)) backupError('找不到要切換的角色。');
   if (!create && targetId === p.active) return current;
-  const id = create ? 'p' + uid() : targetId;
+  const reusable = create ? p.list.find(m => m.id !== p.active && profileSlotIsEmpty(m.id, current, p)) : null;
+  const id = create ? reusable?.id || 'p' + uid() : targetId;
   const raw = create ? JSON.stringify(createInitialState()) : localStorage.getItem('kei_p_' + id);
   if (raw === null) backupError('這個角色的存檔遺失，已保留目前角色。');
   const parsed = validateBackupText(raw),
@@ -282266,10 +285877,12 @@ function switchProfileSafely(current, targetId, create = false) {
   const index = {
     ...p,
     active: id,
-    list: create ? [...p.list, profileMeta(next, id)] : p.list.map(m => m.id === id ? profileMeta(next, id) : m)
+    list: create && !reusable ? [...p.list, profileMeta(next, id)] : p.list.map(m => m.id === id ? profileMeta(next, id) : m)
   };
   writeStorageBatch({
-    ['kei_p_' + p.active]: JSON.stringify(current),
+    ...(p.active ? {
+      ['kei_p_' + p.active]: JSON.stringify(current)
+    } : {}),
     [STORE_KEY]: text,
     [PROFILES_KEY]: JSON.stringify(index)
   });
@@ -282419,7 +286032,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.17-v87';
+const GAME_BUILD = '2026.11.17-v88';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -282981,6 +286594,22 @@ function useMechanic({
     maxHints
   };
 }
+function useFeedbackVisibility(ref, feedback) {
+  React.useLayoutEffect(() => {
+    if (feedback === null || feedback === undefined) return;
+    const token = requestAnimationFrame(() => {
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect(),
+        height = window.visualViewport?.height || innerHeight;
+      if (r.top < 12 || r.bottom > height - 12) el.scrollIntoView({
+        block: 'nearest',
+        behavior: 'auto'
+      });
+    });
+    return () => cancelAnimationFrame(token);
+  }, [feedback]);
+}
 function MechHUD({
   m,
   hintsAllowed,
@@ -282988,6 +286617,8 @@ function MechHUD({
   extra,
   fullRevealAt = Infinity
 }) {
+  const feedbackRef = useRef(null);
+  useFeedbackVisibility(feedbackRef, m.feedback);
   const shared = useContext(MechanicSafetyContext),
     student = (shared?.state || shared)?.student;
   const support = student && (m.hints > 0 || m.feedback?.kind === 'bad') ? careCopyPick(carePetCopy(selectedCompanion(student).id).support, m.attempts + m.hints) : '';
@@ -282996,7 +286627,11 @@ function MechHUD({
     style: {
       gap: 8
     }
-  }, React.createElement("div", {
+  }, m.feedback && React.createElement("div", {
+    ref: feedbackRef,
+    role: "status",
+    className: `feedback notice ${m.feedback.kind}`
+  }, m.feedback.text), React.createElement("div", {
     className: "hud"
   }, React.createElement("div", {
     className: "row",
@@ -283017,9 +286652,7 @@ function MechHUD({
     className: "notice"
   }, hintTexts.slice(0, m.hintLevel).map((h, i) => React.createElement("div", {
     key: i
-  }, "\uD83D\uDCA1 ", h))), m.feedback && React.createElement("div", {
-    className: `feedback notice ${m.feedback.kind}`
-  }, m.feedback.text), support && React.createElement("p", {
+  }, "\uD83D\uDCA1 ", h))), support && React.createElement("p", {
     className: "care-support"
   }, selectedCompanion(student).name, "\uFF1A", support));
 }
@@ -288327,7 +291960,8 @@ function JhRuler({
   change
 }) {
   const drag = useRef(null),
-    step = 18;
+    step = 18,
+    aligned = a.offset === p.objectLeft - p.start;
   const move = e => {
     if (!drag.current) return;
     const dx = (e.clientX - drag.current.x) / drag.current.width * 360;
@@ -288358,7 +291992,15 @@ function JhRuler({
     onPointerMove: move,
     onPointerUp: () => drag.current = null,
     onPointerCancel: () => drag.current = null
-  }, React.createElement("rect", {
+  }, React.createElement("line", {
+    x1: 30 + p.objectLeft * step,
+    x2: 30 + p.objectLeft * step,
+    y1: "12",
+    y2: "90",
+    stroke: aligned ? '#287b76' : '#b76b25',
+    strokeWidth: "2",
+    strokeDasharray: "4 3"
+  }), React.createElement("rect", {
     x: 30 + p.objectLeft * step,
     y: "22",
     width: p.length * step,
@@ -288391,7 +292033,11 @@ function JhRuler({
     textAnchor: "middle",
     fontSize: "14",
     fill: "#33291e"
-  }, i))))), React.createElement("p", null, "\u62D6\u52D5\u76F4\u5C3A\uFF0C\u6216\u6309\u5DE6\u53F3\u79FB\u52D5\u3002"), React.createElement("div", {
+  }, i))))), React.createElement("p", {
+    id: "jh-ruler-alignment",
+    role: "status",
+    className: aligned ? 'jh-aligned' : 'jh-align-pending'
+  }, aligned ? '已對齊。填好長度後，再確認答案。' : '先把刻度 ' + p.start + ' 對齊紙帶左端的虛線，再確認長度。'), React.createElement("p", null, "\u62D6\u52D5\u76F4\u5C3A\uFF0C\u6216\u6309\u5DE6\u53F3\u79FB\u52D5\u3002"), React.createElement("div", {
     className: "jh-actions"
   }, React.createElement("button", {
     id: "jh-ruler-left",
@@ -289022,6 +292668,13 @@ function JuniorHands({
   };
   const check = () => {
     if (m.done || partDone || submitted.current) return;
+    if (kind === 'jh_ruler' && a.offset !== p.objectLeft - p.start) {
+      m.setFeedback({
+        kind: 'warn',
+        text: '請先把指定刻度對齊紙帶左端，再確認長度。'
+      });
+      return;
+    }
     submitted.current = true;
     if (jhCheck(kind, p, a, parts > 1 ? part : null)) {
       if (part + 1 < parts) {
@@ -289122,6 +292775,7 @@ function JuniorHands({
   }, "\u7E7C\u7E8C\u4E0B\u4E00\u90E8\u5206") : React.createElement("button", {
     id: "jh-check",
     className: "btn primary",
+    disabled: kind === 'jh_ruler' && (a.offset !== p.objectLeft - p.start || !jhInteger(a.length)),
     onClick: check
   }, "\u78BA\u8A8D", parts > 1 ? '這一部分' : '答案'), React.createElement("button", {
     id: "jh-reset",
@@ -289860,6 +293514,40 @@ function G1Figure({
     layout: f.layout
   }));
 }
+const G1_TONE_NAMES = {
+  '—': '一聲',
+  'ˊ': '二聲',
+  'ˇ': '三聲',
+  'ˋ': '四聲',
+  '˙': '輕聲'
+};
+function G1ToneMark({
+  tone
+}) {
+  return React.createElement("svg", {
+    className: "g1-tone-mark",
+    viewBox: "0 0 48 48",
+    role: "img",
+    "aria-label": G1_TONE_NAMES[tone]
+  }, tone === '˙' ? React.createElement("circle", {
+    cx: "24",
+    cy: "24",
+    r: "4",
+    fill: "currentColor"
+  }) : React.createElement("path", {
+    d: {
+      '—': 'M10 24H38',
+      'ˊ': 'M13 35L35 13',
+      'ˇ': 'M10 16L24 34L38 16',
+      'ˋ': 'M13 13L35 35'
+    }[tone],
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "4",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }));
+}
 function Grade1Practice({
   params,
   hintsAllowed = true,
@@ -289894,6 +293582,8 @@ function Grade1Practice({
   const q = params.items[index],
     protectedQuestion = grade1Guard(q),
     correct = checked === true;
+  const feedbackBar = useRef(null);
+  useFeedbackVisibility(feedbackBar, checked);
   usePlaytestReportScope(40, {
     id: playtestQuestionCode(q),
     kind: 'grade1/' + q.form
@@ -289909,7 +293599,7 @@ function Grade1Practice({
     const t = setTimeout(read, 50);
     return () => clearTimeout(t);
   }, [q.id]);
-  useEffect(() => () => stopSpeech(), []);
+  useEffect(() => () => stopSpeech(), [q.id]);
   const edit = a => {
     if (correct || finished) return;
     submitted.current = false;
@@ -290055,10 +293745,12 @@ function Grade1Practice({
   return React.createElement("section", {
     className: "g1-mech col",
     ref: host,
+    "data-question-speech": "true",
     "data-g1-question": q.id,
     "data-g1-form": q.form
   }, React.createElement("div", {
-    className: "g1-topline"
+    className: "g1-topline",
+    "data-speech-skip": "true"
   }, React.createElement("span", {
     className: "nozy"
   }, index + 1, " / 3"), React.createElement("span", null, hintsAllowed ? '慢慢試' : '自己試')), React.createElement("div", {
@@ -290104,9 +293796,9 @@ function Grade1Practice({
   }, q.pictureOptions ? React.createElement(React.Fragment, null, React.createElement(G1Picture, {
     id: option,
     size: 76
-  }), React.createElement("span", null, GRADE1_WORDS.find(w => w.id === option)?.word)) : option === '—' ? React.createElement(React.Fragment, null, React.createElement("span", {
-    className: "nozy"
-  }, "\u2500"), React.createElement("small", null, "\u4E00\u8072")) : option))), q.form === 'spell' && React.createElement(React.Fragment, null, React.createElement("div", {
+  }), React.createElement("span", null, GRADE1_WORDS.find(w => w.id === option)?.word)) : G1_TONE_NAMES[option] ? React.createElement(G1ToneMark, {
+    tone: option
+  }) : option))), q.form === 'spell' && React.createElement(React.Fragment, null, React.createElement("div", {
     className: "g1-slots"
   }, q.parts.map((_, i) => React.createElement("button", _extends({
     id: 'g1-slot-' + i,
@@ -290141,7 +293833,9 @@ function Grade1Practice({
       ...answer,
       tone: t
     })
-  }, t === '—' ? '一聲' : t)))), answer.parts?.length === q.parts.length && !syllablesCorrect && React.createElement("p", null, "\u7B26\u865F\u53EF\u4EE5\u9EDE\u4E00\u4E0B\u91CD\u6392\u3002")), q.form === 'sort' && React.createElement(React.Fragment, null, React.createElement("div", {
+  }, React.createElement(G1ToneMark, {
+    tone: t
+  }))))), answer.parts?.length === q.parts.length && !syllablesCorrect && React.createElement("p", null, "\u7B26\u865F\u53EF\u4EE5\u9EDE\u4E00\u4E0B\u91CD\u6392\u3002")), q.form === 'sort' && React.createElement(React.Fragment, null, React.createElement("div", {
     className: "g1-tokens"
   }, q.cards.map((c, i) => React.createElement("button", _extends({
     id: 'g1-card-' + i,
@@ -290176,6 +293870,12 @@ function Grade1Practice({
   }, dragProps(n), {
     onClick: () => chooseToken(n)
   }), q.cards[n]))))), React.createElement("div", {
+    className: "g1-response-bar",
+    ref: feedbackBar
+  }, checked !== null && React.createElement("p", {
+    className: 'g1-feedback ' + (correct ? 'good' : 'try'),
+    role: "status"
+  }, correct ? '答對了！' : '再想一想。'), React.createElement("div", {
     className: "g1-actions"
   }, React.createElement("button", {
     id: "g1-check",
@@ -290193,10 +293893,7 @@ function Grade1Practice({
     id: "g1-reveal",
     disabled: counts.hints >= maxHints,
     onClick: () => useHint(true)
-  }, "\u770B\u89E3\u8AAA")), checked !== null && React.createElement("p", {
-    className: 'g1-feedback ' + (correct ? 'good' : 'try'),
-    role: "status"
-  }, correct ? '答對了！' : '再想一想。'), hint && React.createElement("aside", {
+  }, "\u770B\u89E3\u8AAA"))), hint && React.createElement("aside", {
     className: "g1-hint"
   }, React.createElement("p", null, q.hint), q.word && React.createElement(G1Picture, {
     id: q.word,
@@ -304453,7 +308150,7 @@ const QUEST_FRAMES = {
 function buildDiagnostic(kpId, rng) {
   const kp = KP_BY_ID[kpId];
   if (!kp) return null;
-  if (typeof GRADE5_V87_IDS !== 'undefined' && GRADE5_V87_IDS.includes(kpId) || typeof GRADE3_IDS !== 'undefined' && GRADE3_IDS.includes(kpId) || typeof GRADE4_IDS !== 'undefined' && GRADE4_IDS.includes(kpId)) {
+  if (kpId === 'g6_radicals' || typeof GRADE5_V87_IDS !== 'undefined' && GRADE5_V87_IDS.includes(kpId) || typeof GRADE3_IDS !== 'undefined' && GRADE3_IDS.includes(kpId) || typeof GRADE4_IDS !== 'undefined' && GRADE4_IDS.includes(kpId)) {
     const st = genFor(kpId)(rng)[0];
     return [{
       ...st,
@@ -312620,6 +316317,44 @@ NEW_TOPIC_RELEASES.push({
     grades: [5],
     desc: k.ability.replace(/^我會/, '練習')
   }))
+});
+GENERATORS.radicalsv88 = {
+  g6_radicals: rng => [0, 1, 2].map(level => {
+    const rows = shuffle(rng, RADICALS_V88_BANK.filter(q => q.level === level)).slice(0, 3);
+    return {
+      ...stage(level, 'pickone', {
+        story: ['替書院分好部首書籤。', '找出共同偏旁，核對字形與字義。', '用部首和部首外筆畫，找到字典裡的字。'][level],
+        items: rows.map(q => ({
+          id: q.id,
+          q: q.q,
+          figure: q.figure,
+          options: shuffle(rng, q.options.map(text => ({
+            text,
+            correct: text === q.answer,
+            why: text === q.answer ? q.why : '先觀察整個字，分辨部首與其他部件，再確認。'
+          }))),
+          hint: level === 2 ? '先找部首，再數部首以外的筆畫；別把總筆畫當成部首外筆畫。' : '部首可能在不同位置，也可能變形；可以回想同一部首的字。'
+        })),
+        passNeed: 3
+      }),
+      name: ['辨認部首', '比較與字義', '字典尋寶'][level],
+      short: ['辨部首', '找線索', '查字典'][level]
+    };
+  })
+};
+QUEST_FRAMES.g6_radicals = {
+  title: '書院的部首書籤',
+  client: '墨水先生',
+  intro: '書籤混在一起了。辨認部首，讓每個字回到自己的位置。'
+};
+CARE_COPY.abilities.g6_radicals = '我會辨認部首與偏旁，利用部首外筆畫查字。';
+NEW_TOPIC_RELEASES.push({
+  id: 'radicals-v88',
+  topics: [{
+    id: 'g6_radicals',
+    grades: [6],
+    desc: '辨部首、同部首字、偏旁變形與部首外筆畫；75個例字與240道原創練習。'
+  }]
 });
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
@@ -339611,7 +343346,7 @@ function MainMenu({
     id: `profile-${m.id}`,
     className: `chip ${m.id === profiles.active ? 'sel' : ''}`,
     onClick: () => m.id !== profiles.active && onSwitchProfile(m.id)
-  }, m.name, m.grade ? `・${gradeName(m.grade)}年級` : '')), React.createElement("button", {
+  }, m.name, m.grade ? `・${gradeName(m.grade)}年級` : '')), s && React.createElement("button", {
     className: "chip",
     id: "profile-new",
     onClick: onNewProfile
@@ -347335,11 +351070,11 @@ function DataPanel({
     state: state,
     setState: setState,
     toast: toast
-  }), loadProfiles().list.length > 1 && React.createElement("div", {
+  }), visibleProfileIndex(loadProfiles(), state).list.filter(m => m.id !== loadProfiles().active).length > 0 && React.createElement("div", {
     className: "card col"
   }, React.createElement("h3", null, "\u5176\u4ED6\u89D2\u8272"), React.createElement("p", {
     className: "small muted"
-  }, "\u522A\u9664\u524D\u6703\u5148\u4FDD\u7559\u8A72\u89D2\u8272\u7684\u5FA9\u539F\u5099\u4EFD\u3002"), loadProfiles().list.filter(m => m.id !== loadProfiles().active).map(m => React.createElement("div", {
+  }, "\u522A\u9664\u524D\u6703\u5148\u4FDD\u7559\u8A72\u89D2\u8272\u7684\u5FA9\u539F\u5099\u4EFD\u3002"), visibleProfileIndex(loadProfiles(), state).list.filter(m => m.id !== loadProfiles().active).map(m => React.createElement("div", {
     key: m.id,
     className: "row between small"
   }, React.createElement("span", null, m.name, "\u30FB", gradeName(m.grade), "\u5E74\u7D1A"), React.createElement(Btn, {
@@ -348118,6 +351853,14 @@ function App() {
     setStateRaw(previous => playtestTrackProgress(previous, typeof next === 'function' ? next(previous) : next));
   }, []);
   const [profiles, setProfiles] = useState(() => loadProfiles());
+  const profileView = useRef({
+    id: profiles.active,
+    epoch: 0
+  });
+  if (profileView.current.id !== profiles.active) {
+    if (profileView.current.id !== null) profileView.current.epoch++;
+    profileView.current.id = profiles.active;
+  }
   const [parentDraft, setParentDraft] = useState(null);
   const [parentTab, setParentTab] = useState(null);
   useEffect(() => {
@@ -348182,6 +351925,7 @@ function App() {
     if (r.gained.length) setStateRaw(cur => grantCompanionRewards(cur).state);
   }, [state.student?.achievements?.length, profiles.active]);
   useCareRuntime(state, setState, profiles.active, mode === 'student');
+  const displayProfiles = visibleProfileIndex(profiles, state);
   const s = state.student;
   const lp = s ? levelProgress(s.xp) : null;
   const junior = isReadingSupportState(state) && mode === 'student';
@@ -348272,16 +352016,16 @@ function App() {
       setPaintPreview(false);
     }
   }) : mode === 'student' ? React.createElement(StudentApp, {
-    key: 'student-' + profiles.active,
+    key: 'student-' + profileView.current.epoch,
     state: state,
     setState: setState,
     goParent: () => setMode('parent'),
     toast: toast,
-    profiles: profiles,
+    profiles: displayProfiles,
     onSwitchProfile: switchTo,
     onNewProfile: newProfile
   }) : React.createElement(ParentApp, {
-    key: 'parent-' + profiles.active,
+    key: 'parent-' + profileView.current.epoch,
     initialDraft: parentDraft,
     initialTab: parentTab,
     clearDraft: () => setParentDraft(null),
@@ -348289,7 +352033,7 @@ function App() {
     setState: setState,
     goStudent: () => setMode('student'),
     toast: toast,
-    profiles: profiles,
+    profiles: displayProfiles,
     onSwitchProfile: switchTo
   }), (!s || mode === 'parent') && React.createElement("p", {
     className: "nozy",
