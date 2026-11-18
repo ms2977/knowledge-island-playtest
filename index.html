@@ -546,6 +546,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .classics-card-intro{align-self:stretch;flex:1;border-top:1px solid #cfbc90;padding:13px 0 8px;margin:3px 0 10px;min-height:105px;text-align:left}.classics-card-intro h3{font-size:1rem;margin:0 0 8px;color:#496a64}.classics-card-intro p{font-size:1rem;line-height:1.85;margin:0;overflow-wrap:anywhere}
 @media(max-width:600px){.classics-heading{display:grid;grid-template-columns:1fr 1fr}.classics-heading>span{grid-column:1/-1;grid-row:1;font-size:1.1rem}.classics-heading .btn:last-child{justify-self:end}.classics-mini-context{margin-top:8px}}
 
+.middle-hints{border:1px solid #a9c6bd;border-radius:16px;padding:14px 18px;background:#f4faf7;display:flex;flex-direction:column;gap:10px;color:#244b47;max-width:100%;box-sizing:border-box}
+.middle-hint-heading{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.middle-hint-list{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.middle-hint-list li{padding:10px 12px;border-left:3px solid #74a99d;background:#fffefa;border-radius:6px}
+.middle-hint-list p{margin:6px 0 0;line-height:1.8;overflow-wrap:anywhere}
+.middle-hint-list .middle-hint-solution{border-color:#ca963f;background:#fff5df}
+.app .middle-hints>.btn{display:block;align-self:flex-start;white-space:normal;text-align:left;max-width:100%;line-height:1.8}
+@media(max-width:600px){.middle-hints{padding:12px}.middle-hints>.btn{width:100%}.middle-hint-heading{flex-direction:column}}
+
 .companion-picker {border:0;padding:0;margin:0;min-width:0;}
 .companion-picker legend {font-weight:700;color:#254658;margin-bottom:4px;}
 .companion-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
@@ -1046,7 +1055,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261118-style-v92-r2">
+<meta name="game-release" content="playtest-20261118-hints-v93-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -276227,6 +276236,134 @@ function grade5LabCorrect(q, d) {
   if (a.mode === 'inquiry') return num(d.value) === a.mean && d.conclusion === q.answer;
   return false;
 }
+const MIDDLE_HINTS = {
+  "v": 93,
+  "topics": {
+    "g3_place": ["找出題目指定的位值，留意它問的是數字、數值，還是大小。", "從個位往左標出各位；比較大小時，從最高的不同位開始看。"],
+    "g3_addsub": ["看清楚是合起來、增加，還是拿走、相差。", "相同位值對齊，從個位開始；進位或退位後記得修改旁邊那一位。"],
+    "g3_multiply": ["找出每份的數量和份數；如果是算式，先看清楚兩個因數。", "分開計算各位的乘積，注意位值，再把部分乘積合起來。"],
+    "g3_divide": ["找出總量和分法：是分成幾份，還是每份有多少。", "先想除數乘多少接近被除數，再算剩下多少；餘數必須比除數小。"],
+    "g3_twostep": ["找出題目這一步要問什麼，先不要急著算最後的總量。", "把先發生和後發生的事分成兩步，確認哪一步的結果是現在需要的。"],
+    "g3_fraction": ["先確認一個整體分成幾等份，再看題目使用了幾份。", "用分母表示每份的大小，再數分子的份數；需要換成帶分數時，先分出完整的整體。"],
+    "g3_decimal": ["先找小數點，分清楚整數部分和各小數位。", "把相同位值排在一起；加減時小數點對齊，比較時從高位逐位看。"],
+    "g3_length": ["先看數量旁邊的長度單位，再找題目要求的單位。", "想想兩個單位之間的倍數關係；換成較小單位時，表示的數字會變大。"],
+    "g3_capacity": ["先看容器的容量用哪個單位，題目又要用哪個單位回答。", "先把容量換成同一個單位，再進行合併、比較或相減。"],
+    "g3_mass": ["先分清楚公斤和公克，確認題目問總重還是換算。", "把各個重量換成同一個單位；算完後再核對回答的單位。"],
+    "g3_time": ["找出開始、結束或經過的時間，留意上午、下午和跨日。", "可以分段算到下一個整點，再接著算剩餘時間；時和分不要當成十進位。"],
+    "g3_area": ["留意題目問的是裡面有多大，還是外圍有多長。", "面積可數方格或用長乘寬；周長要把外圍邊長合起來，缺一塊時可分區計算。"],
+    "g3_shape": ["觀察圖形的邊和角，不要只看它擺放的方向。", "逐一核對邊的關係和角的特徵，再排除不符合條件的選項。"],
+    "g3_table": ["先讀圖表標題、項目和單位，再找問題指定的資料。", "沿著相同的列、欄或刻度讀值；問合計就合起來，問相差就比較兩個值。"],
+    "g3_pattern": ["觀察相鄰數量或圖形，看看每一步有哪些地方相同或改變。", "試著把規律說成一句話，再用前面幾項檢查這個規律是否都成立。"],
+    "g3_words": ["先讀目標詞語前後的句子，找出人物、事情和語氣。", "把各選項放回句子試讀，選意思和情境都能連起來的，不只看字面。"],
+    "g3_sentence": ["先讀完整句子，找出前後兩部分的關係和說話的語氣。", "試著用不同連接詞或標點停頓；檢查因果、轉折或條件是否仍然清楚。"],
+    "g3_reading": ["回到文章，找題目提到的人、事、時間或原因。", "每個判斷都找一句文中的依據；排除文章沒說、或推得太遠的選項。"],
+    "g3_paragraph": ["找出各段共同在談什麼，以及事情的先後關係。", "主旨要能涵蓋整段重點；排序時留意時間詞、指代詞和前因後果。"],
+    "g3_plant": ["觀察題目中的植物部位、生長條件或觀察紀錄。", "把觀察到的現象和可能原因分開，逐項檢查選項是否有題目資料支持。"],
+    "g3_animal": ["先找動物的身體特徵、行為和生活環境。", "把特徵和生活需要連起來，檢查說法是否符合這種動物，不把一種動物推到全部。"],
+    "g3_water": ["先看材料、溫度和操作前後出現的變化。", "比較改變的是形態、位置還是混合情形，再用觀察證據核對各選項。"],
+    "g3_weather": ["先讀觀測的時間、地點、工具和單位。", "比較同一項目在相同條件下的紀錄，不用單一天的現象推斷所有情況。"],
+    "g3_magnet": ["先找出哪些物品、哪一端磁極，以及觀察到的移動。", "區分吸引和排斥，再用實際觀察核對材料或磁極的說法。"],
+    "g3_community": ["先看地點、生活需要，以及環境或設施的變化。", "把做法放回當地情境，比較它對居民、交通和環境的影響。"],
+    "g3_rules": ["找出情境中各人的需要、權利和應盡的責任。", "比較各做法是否尊重別人、能說明理由，也能共同遵守。"],
+    "g3_cooperation": ["先找出共同目標，以及每個人負責的事情。", "檢查分工能否互相配合，意見不同時是否有溝通和調整的方法。"],
+    "g3_choice": ["分清楚需要和想要，再找金錢或資源的限制。", "比較各選擇的用途和代價，想想選了其中一項，就會少了什麼其他機會。"],
+    "g3_letters": ["看清楚題目指定的字母，留意它是大寫還是小寫。", "比較每個字母的線條和開口，找同一個字母的對應形式。"],
+    "g3_enwords": ["先讀單字或情境，找題目要辨認的物品、動作或特徵。", "把選項意思放回情境，檢查是否和前後資訊一致。"],
+    "g3_greetings": ["先看誰在說話、對方問什麼，以及回答需要哪種資訊。", "分清楚是問候、姓名、狀態還是位置，選能接得上問題的回答。"],
+    "g3_classroom": ["先找句子中的動作，以及教室裡要操作的物品。", "想像聽到指令後要做什麼，再核對選項，不只認其中一個字。"],
+    "g3_estimate": ["先看題目指定估到哪一位，以及估算是為了什麼。", "依指定方法取概數，再計算；留意四捨五入、無條件進入與捨去的差別。"],
+    "g3_numberline": ["找出起點、刻度的單位，以及相鄰兩個標記的距離。", "數的是間隔，不是刻度線；往右增加、往左減少，再確認目標位置。"],
+    "g3_angles": ["觀察兩條邊張開的程度，找一個直角作比較。", "比較角的開口，不比較邊畫得多長；需要量角時把中心和起始邊對齊。"],
+    "g3_circle": ["先找圓心，確認題目提到的線段從哪裡到哪裡。", "連圓心和圓周的是半徑；穿過圓心、兩端在圓周的線段，長度是兩段半徑。"],
+    "g3_nets": ["先數面，再觀察哪些邊會在摺合時接在一起。", "想像固定一個面，把旁邊的面往上摺；檢查是否重疊，或留下缺口。"],
+    "g3_radicals": ["仔細看字的部件和位置，分清楚部首與其他部分。", "比較相似字不同在哪一筆或哪個部件，再核對題目要求的字義或分類。"],
+    "g3_figurative": ["找出句中描寫的事物，留意它被比成什麼、被寫成會做什麼。", "比較描寫方式與原本事物的關係，再想這樣寫帶來什麼感覺。"],
+    "g3_practical": ["先確認這段文字寫給誰、為什麼要寫。", "檢查讀者需要知道的人、事、時間和地點，選清楚、合宜又符合目的的表達。"],
+    "g3_revise": ["先看句子想表達什麼，找出不清楚、重複或不連貫的地方。", "修改後再讀一次，確認意思保留，而且順序、用字和細節更清楚。"],
+    "g3_air": ["找出實驗的容器、開口和空氣可能移動的地方。", "比較操作前後的現象，想想空氣是否有進出或佔住空間；同時檢查操作安全。"],
+    "g3_soundlight": ["先分清楚題目在觀察聲音、光線還是影子。", "沿著聲音或光傳遞的過程找變化，並比較改變前後的條件。"],
+    "g3_force": ["先找出物體、施力方式或測量條件，以及觀察到的變化。", "比較前後的形狀、運動或測量結果，用觀察證據檢查選項，不只憑猜想。"],
+    "g3_electric": ["找出電池、接線、元件或磁鐵的位置，注意題目的觀察結果。", "沿著連接或作用的位置逐一檢查；實驗只用安全的低電壓電池，不碰插座。"],
+    "g3_ecology": ["找出棲地原有的條件，以及人或環境造成的改變。", "比較行動對生物和環境的影響，選有觀察依據、能減少傷害的做法。"],
+    "g3_maps": ["先讀圖例、方向和地點，確認出發點與目的地。", "依圖上的路線和公共設施逐步核對，不把畫面左右直接當成東西方向。"],
+    "g3_cultures": ["找出不同家庭或群體的生活方式，以及當事人的感受。", "比較做法是否尊重差異，避免用單一習慣判斷所有人。"],
+    "g3_information": ["先找消息從哪裡來、何時發布，以及是否涉及個人資料。", "用其他可靠資料交叉核對；有風險或不確定時，想想可以向誰求助。"],
+    "g3_listen": ["先確認要聽的是字母、單字還是整句。", "再聽一次，注意開頭、結尾及重點詞，逐一比對選項。"],
+    "g3_spell": ["先確認單字的意思，再觀察字母的順序。", "把單字分成較短的部分逐段核對，注意容易漏掉或交換的字母。"],
+    "g3_enpattern": ["先找句子中的人物、物品和位置關係。", "把句型中的關鍵詞放回圖或情境，檢查前後描述是否一致。"],
+    "g4_place": ["找出題目指定的位值，留意它問的是數字、數值，還是大小。", "從個位往左標出各位；比較大小時，從最高的不同位開始看。"],
+    "g4_multiply": ["找出每份的數量和份數；如果是算式，先看清楚兩個因數。", "分開計算各位的乘積，注意位值，再把部分乘積合起來。"],
+    "g4_divide": ["找出總量和分法：是分成幾份，還是每份有多少。", "先想除數乘多少接近被除數，再算剩下多少；餘數必須比除數小。"],
+    "g4_multistep": ["圈出問題需要的資料，觀察算式中的括號和運算符號。", "有括號先算括號，再乘除後加減；同級運算由左往右。"],
+    "g4_estimate": ["先看題目指定估到哪一位，以及估算是為了什麼。", "依指定方法取概數，再計算；留意四捨五入、無條件進入與捨去的差別。"],
+    "g4_fraction": ["先確認一個整體分成幾等份，再看題目使用了幾份。", "用分母表示每份的大小，再數分子的份數；需要換成帶分數時，先分出完整的整體。"],
+    "g4_equivalent": ["先確認兩個分數表示的是同樣大小的整體。", "分子和分母同乘或同除一個非零的數，才不會改變原來的大小。"],
+    "g4_decimal": ["先找小數點，分清楚整數部分和各小數位。", "把相同位值排在一起；加減時小數點對齊，比較時從高位逐位看。"],
+    "g4_numberline": ["找出起點、刻度的單位，以及相鄰兩個標記的距離。", "數的是間隔，不是刻度線；往右增加、往左減少，再確認目標位置。"],
+    "g4_length": ["先看數量旁邊的長度單位，再找題目要求的單位。", "想想兩個單位之間的倍數關係；換成較小單位時，表示的數字會變大。"],
+    "g4_angle": ["先找頂點、起始邊和題目指定的角。", "量角器中心對頂點，零度線對起始邊，沿同一圈刻度讀到另一條邊。"],
+    "g4_area": ["留意題目問的是裡面有多大，還是外圍有多長。", "面積可數方格或用長乘寬；周長要把外圍邊長合起來，缺一塊時可分區計算。"],
+    "g4_volume": ["先看每層有幾個小方塊，以及總共有幾層。", "一層一層數，記得看不見的方塊；有缺口時再扣掉缺少的部分。"],
+    "g4_time": ["找出開始、結束或經過的時間，留意上午、下午和跨日。", "可以分段算到下一個整點，再接著算剩餘時間；時和分不要當成十進位。"],
+    "g4_rotation": ["找出旋轉前的方向、旋轉方向和要轉的角度。", "固定中心，按指定方向分段轉動；別把順時針和逆時針混在一起。"],
+    "g4_parallel": ["觀察兩條線延伸後的方向，以及相交時的角。", "想像把線延長；再分別檢查是否相交、是否形成直角。"],
+    "g4_congruence": ["比較圖形的大小和形狀，不要只比朝向。", "試著平移、旋轉或翻面；看所有對應的邊和角能不能一起重合。"],
+    "g4_triangle": ["先看題目要依邊長還是角的大小來判斷三角形。", "逐一檢查相等的邊、直角或最大角；別只憑看起來像哪一種。"],
+    "g4_quadrilateral": ["先數邊和角，再找平行、等長或直角的條件。", "把每個選項的特徵逐項核對，確認它符合題目要求的所有條件。"],
+    "g4_pattern": ["觀察相鄰數量或圖形，看看每一步有哪些地方相同或改變。", "試著把規律說成一句話，再用前面幾項檢查這個規律是否都成立。"],
+    "g4_table": ["先讀圖表標題、項目和單位，再找問題指定的資料。", "沿著相同的列、欄或刻度讀值；問合計就合起來，問相差就比較兩個值。"],
+    "g4_words": ["先讀目標詞語前後的句子，找出人物、事情和語氣。", "把各選項放回句子試讀，選意思和情境都能連起來的，不只看字面。"],
+    "g4_sentence": ["先讀完整句子，找出前後兩部分的關係和說話的語氣。", "試著用不同連接詞或標點停頓；檢查因果、轉折或條件是否仍然清楚。"],
+    "g4_reading": ["回到文章，找題目提到的人、事、時間或原因。", "每個判斷都找一句文中的依據；排除文章沒說、或推得太遠的選項。"],
+    "g4_paragraph": ["找出各段共同在談什麼，以及事情的先後關係。", "主旨要能涵蓋整段重點；排序時留意時間詞、指代詞和前因後果。"],
+    "g4_practical": ["先確認這段文字寫給誰、為什麼要寫。", "檢查讀者需要知道的人、事、時間和地點，選清楚、合宜又符合目的的表達。"],
+    "g4_plant": ["觀察題目中的植物部位、生長條件或觀察紀錄。", "把觀察到的現象和可能原因分開，逐項檢查選項是否有題目資料支持。"],
+    "g4_water": ["先看材料、溫度和操作前後出現的變化。", "比較改變的是形態、位置還是混合情形，再用觀察證據核對各選項。"],
+    "g4_sky": ["先讀觀測日期、時間、方向和資料中的變化。", "比較同一種觀測條件下的紀錄，區分看到的現象和由此推論的原因。"],
+    "g4_electric": ["找出電池、接線、元件或磁鐵的位置，注意題目的觀察結果。", "沿著連接或作用的位置逐一檢查；實驗只用安全的低電壓電池，不碰插座。"],
+    "g4_force": ["先找出物體、施力方式或測量條件，以及觀察到的變化。", "比較前後的形狀、運動或測量結果，用觀察證據檢查選項，不只憑猜想。"],
+    "g4_ecology": ["找出棲地原有的條件，以及人或環境造成的改變。", "比較行動對生物和環境的影響，選有觀察依據、能減少傷害的做法。"],
+    "g4_community": ["先看地點、生活需要，以及環境或設施的變化。", "把做法放回當地情境，比較它對居民、交通和環境的影響。"],
+    "g4_history": ["分清楚資料記錄的年代，以及它是照片、口述還是其他紀錄。", "比較不同來源，區分資料直接顯示的事和自己的猜測。"],
+    "g4_rules": ["找出情境中各人的需要、權利和應盡的責任。", "比較各做法是否尊重別人、能說明理由，也能共同遵守。"],
+    "g4_economy": ["先看資源、工作分工和消費目的，以及有哪些限制。", "比較不同選擇的成本和影響，檢查是否只顧眼前，忽略其他人的需要。"],
+    "g4_culture": ["找出不同家庭或群體的生活方式，以及當事人的感受。", "比較做法是否尊重差異，避免用單一習慣判斷所有人。"],
+    "g4_enwords": ["先讀單字或情境，找題目要辨認的物品、動作或特徵。", "把選項意思放回情境，檢查是否和前後資訊一致。"],
+    "g4_greetings": ["先看誰在說話、對方問什麼，以及回答需要哪種資訊。", "分清楚是問候、姓名、狀態還是位置，選能接得上問題的回答。"],
+    "g4_listen": ["先確認要聽的是字母、單字還是整句。", "再聽一次，注意開頭、結尾及重點詞，逐一比對選項。"],
+    "g4_spell": ["先確認單字的意思，再觀察字母的順序。", "把單字分成較短的部分逐段核對，注意容易漏掉或交換的字母。"],
+    "g4_division_check": ["找出被除數、除數及題目要檢查的商或餘數。", "用「除數乘商，再加餘數」核對總量；同時檢查餘數是否小於除數。"],
+    "g4_fraction_compare": ["先看整體是否相同，再看分母和分子哪些相同、哪些不同。", "可以畫同樣長的長條來分份；必要時先換成相同分母，再比較份數。"],
+    "g4_estimate_reason": ["先看生活情境：是不能超過限制，還是必須準備足夠。", "把估算的方法放回情境檢查：少估會不會不夠，多估會不會超過限制？"],
+    "g4_angle_build": ["先找出哪些角相鄰，題目問整個角還是其中一部分。", "畫出角的範圍；合起來的角用加法，知道總角求其中一角時用減法。"],
+    "g4_shape_build": ["找出圖形的頂點、邊和方格位置，以及要完成的條件。", "沿方格檢查距離與方向，再核對畫好的邊是否符合平行、垂直或等長。"],
+    "g4_calculation": ["先看數字和運算順序，找可以湊整數或方便計算的組合。", "只用合法的交換、結合或分配關係整理算式；改寫前後必須表示同一個量。"],
+    "g4_longread": ["先找各段的重點，再回到題目指定的段落找證據。", "把不同段落的資訊連起來；摘要要保留主要內容，推論不能超出文章的依據。"],
+    "g4_revision": ["先看句子想表達什麼，找出不清楚、重複或不連貫的地方。", "修改後再讀一次，確認意思保留，而且順序、用字和細節更清楚。"],
+    "g4_science_records": ["先看表格記錄的是什麼，以及哪些條件相同、哪些有改變。", "從指定的列欄讀資料；要比較影響時，檢查是否只改變要研究的條件。"],
+    "g4_animals": ["先找動物的身體特徵、行為和生活環境。", "把特徵和生活需要連起來，檢查說法是否符合這種動物，不把一種動物推到全部。"],
+    "g4_sources": ["先確認每份資料的來源、日期和主張。", "比較它們相同與不同的地方，找可核對的證據，再判斷哪些結論還不能確定。"],
+    "g4_passage": ["先讀問題，再回短文找相關人物、時間、地點或動作。", "把兩句相關訊息連起來；選項中的資訊都要能在短文找到依據。"]
+  },
+  "operations": {
+    "digit": "先從個位往左找到題目指定的位，再分清楚它問數字還是這個位的數值。",
+    "sum": "相同位值對齊後相加，從個位開始，留意進位。",
+    "floorDiv": "先找除數的倍數，試著接近被除數，再檢查還剩多少。",
+    "divrem": "先求可以分出的完整份數，再算餘數；餘數要小於除數。",
+    "subDiv": "先處理題目中減少的數量，再依題意平均分配。",
+    "mulAdd": "先算乘法表示的數量，再處理要增加的部分。",
+    "chainDiv": "按照題目中的分配順序，一次完成一層分配，再算下一層。",
+    "hundredths": "把小數點對齊，從最低位計算，注意進位或退位。",
+    "decimalTimes": "先確認相同的量有幾份，再用乘法合起來；計算後按原來的小數位數放回小數點。",
+    "mixed": "用分子除以分母，想想有幾個完整的整體，以及還剩幾份。",
+    "elapsed": "先用同一種時間表示法，把跨整點的時間分段加起來。",
+    "perimeter": "沿外圍走一圈，把經過的邊長相加，別把裡面的線也算進去。",
+    "cutArea": "先算完整區域，再扣掉挖去的區域；兩部分都用相同面積單位。",
+    "ceil": "先算完整份數和剩餘量；如果剩下的也必須安置，還需要增加一份。",
+    "floor": "先算能買或裝下幾個完整的單位，檢查剩餘量是否足夠再多一個。",
+    "division": "先估商，再用除數乘商檢查；有餘數時還要加回去核對。"
+  }
+};
 const RADICALS_V88_KP = {
   "id": "g6_radicals",
   "grade": 6,
@@ -285314,6 +285451,10 @@ function validateBackupState(input) {
         if (typeof o.correct !== 'boolean') bad(q + '.correct');
       });
     });
+    if (t.kind === 'pickone') {
+      for (const x of r.items) if (x.hints?.v === 93 && !validMiddleHints(x.hints)) bad(p + '.hints');
+      if (t.middleHintDraft !== undefined && !validMiddleHintDraft(t.middleHintDraft, r)) bad(p + '.middleHintDraft');
+    }
     if (t.kind === 'problems') r.problems.forEach(x => {
       obj(x, p);
       str(x.q, p);
@@ -285780,7 +285921,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.18-v92';
+const GAME_BUILD = '2026.11.18-v93';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -286434,6 +286575,54 @@ function useJuniorQuestionProgress(index, total) {
       total
     });
   }, [update, index, total]);
+}
+function MiddleHints({
+  plan,
+  level = 0,
+  answer,
+  disabled = false,
+  onHint
+}) {
+  const opened = useRef(null);
+  React.useLayoutEffect(() => {
+    if (!level) return;
+    const token = requestAnimationFrame(() => {
+      const el = opened.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect(),
+        height = window.visualViewport?.height || innerHeight;
+      if (r.top < 16 || r.bottom > height - 100) el.scrollIntoView({
+        block: 'center',
+        behavior: 'auto'
+      });
+    });
+    return () => cancelAnimationFrame(token);
+  }, [level]);
+  if (!validMiddleHints(plan)) return null;
+  const titles = ['找出資料', '想想下一步', '完整解說'];
+  return React.createElement("section", {
+    className: "middle-hints",
+    "aria-label": "\u5206\u5C64\u63D0\u793A"
+  }, React.createElement("div", {
+    className: "middle-hint-heading"
+  }, React.createElement("b", null, "\u4E00\u6B65\u4E00\u6B65\u60F3"), React.createElement("span", {
+    className: "small muted",
+    "data-speech-skip": "true"
+  }, level === 0 ? '先試試，需要時再打開提示' : `已開啟 ${level} 層提示`)), level > 0 && React.createElement("ol", {
+    className: "middle-hint-list",
+    "aria-live": "polite"
+  }, plan.levels.slice(0, level).map((text, i) => React.createElement("li", {
+    key: i,
+    ref: i === level - 1 ? opened : null,
+    className: i === 2 ? 'middle-hint-solution' : ''
+  }, React.createElement("b", null, titles[i]), React.createElement("p", null, i === 2 && React.createElement("strong", null, "\u6B63\u78BA\u7B54\u6848\uFF1A", answer, "\u3002 "), text)))), level < 3 && React.createElement(Btn, {
+    id: "middle-hint-next",
+    kind: level === 2 ? 'ghost' : 'teal',
+    disabled: disabled,
+    onClick: onHint
+  }, level === 0 ? '給我一點方向' : level === 1 ? '再給我一個步驟' : '看完整解說（記錄求助）'), level === 3 && React.createElement("p", {
+    className: "small muted"
+  }, "\u5DF2\u8A18\u9304\u770B\u904E\u89E3\u8AAA\u3002\u8ACB\u81EA\u5DF1\u9078\u4E00\u6B21\u7B54\u6848\uFF0C\u518D\u78BA\u8A8D\u3002"));
 }
 function validLockRule(c, count, legacy = false) {
   if (!c || typeof c !== 'object' || typeof c.text !== 'string') return false;
@@ -289255,7 +289444,9 @@ function PickOne({
   params,
   hintsAllowed = true,
   onDone,
-  maxAttempts
+  maxAttempts,
+  hintDraft,
+  onHintDraft
 }) {
   const {
     story,
@@ -289278,10 +289469,20 @@ function PickOne({
     finished.current = true;
     onDone?.(result);
   };
+  const initialHints = useRef(validMiddleHintDraft(hintDraft, params) ? hintDraft : {
+    v: 93,
+    levels: items.map(() => 0),
+    hints: 0
+  });
+  const [itemLevels, setItemLevels] = useState(initialHints.current.levels),
+    levelsRef = useRef(initialHints.current.levels);
   const m = useMechanic({
     hintsAllowed,
     onDone: complete,
-    maxAttempts
+    maxAttempts,
+    initialProgress: {
+      hints: initialHints.current.hints
+    }
   });
   usePlaytestReportScope(40, {
     id: playtestQuestionCode(items[idx]),
@@ -289289,6 +289490,9 @@ function PickOne({
   });
   const it = items[idx];
   const hintTexts = hints.length ? hints.map(ownVocabularyHint) : it?.hint ? [ownVocabularyHint(it.hint)] : ['先把題目念一次，再看圖。', '把每一個選項都看一遍，不急。'];
+  const layered = validMiddleHints(it.hints),
+    level = itemLevels[idx] || 0,
+    shown = answerShown || layered && level === 3;
   const score = answers.filter(a => a.correct).length,
     firstTryCorrect = answers.filter(a => a.firstTryCorrect).length;
   const detail = rows => ({
@@ -289298,9 +289502,29 @@ function PickOne({
     firstTryCorrect: rows.filter(a => a.firstTryCorrect).length,
     log: rows.map(a => a.firstTryCorrect),
     answers: rows,
-    fullReveal: rows.some(a => a.answerShown),
-    revealKnown: true
+    fullReveal: rows.some(a => a.answerShown) || levelsRef.current.includes(3),
+    revealKnown: true,
+    ...(middleHintParams(params) ? {
+      hintVersion: 93,
+      hintLevels: levelsRef.current.slice()
+    } : {})
   });
+  const openHint = () => {
+    if (!layered || m.done || finished.current || checked === 'correct' || (levelsRef.current[idx] || 0) >= 3) return;
+    const nextLevel = (levelsRef.current[idx] || 0) + 1;
+    if (!m.useHint({
+      fullReveal: nextLevel === 3
+    })) return;
+    const levels = levelsRef.current.slice();
+    levels[idx] = nextLevel;
+    levelsRef.current = levels;
+    setItemLevels(levels);
+    onHintDraft?.({
+      v: 93,
+      levels,
+      hints: levels.reduce((a, b) => a + b, 0)
+    });
+  };
   const choose = j => {
     if (m.done || finished.current || checked === 'correct') return;
     setChosen(j);
@@ -289316,10 +289540,10 @@ function PickOne({
         item: idx,
         choice: chosen,
         correct: !!option.correct,
-        firstTryCorrect: !!option.correct && tries === 0 && !answerShown,
+        firstTryCorrect: !!option.correct && tries === 0 && !shown && (!layered || level === 0),
         wrongAttempts: tries + (option.correct ? 0 : 1),
-        answerShown,
-        assisted: answerShown || m.hints > 0
+        answerShown: shown,
+        assisted: shown || (layered ? level > 0 : m.hints > 0)
       };
     if (option.correct) {
       setChecked('correct');
@@ -289363,7 +289587,7 @@ function PickOne({
   useJuniorQuestionProgress(idx + 1, items.length);
   const solved = checked === 'correct',
     guard = answerGuardForItem(it),
-    released = solved || answerShown;
+    released = solved || shown;
   useAnswerGuard(guard, !released);
   return React.createElement("div", {
     className: "col mech junior-mech"
@@ -289422,7 +289646,7 @@ function PickOne({
     id: "po-check",
     disabled: chosen == null || checked === 'wrong',
     onClick: check
-  }, "\u78BA\u8A8D\u7B54\u6848"), !solved && tries >= 2 && hintsAllowed && !answerShown && m.hints < m.maxHints && React.createElement(Btn, {
+  }, "\u78BA\u8A8D\u7B54\u6848"), !layered && !solved && tries >= 2 && hintsAllowed && !answerShown && m.hints < m.maxHints && React.createElement(Btn, {
     small: true,
     kind: "ghost",
     id: "po-skip",
@@ -289433,7 +289657,13 @@ function PickOne({
   }, React.createElement("b", null, "\u7B54\u6848\u89E3\u8AAA\uFF1A"), it.options.find(o => o.correct).text, " ", it.options.find(o => o.correct).why || '', React.createElement("p", null, "\u770B\u904E\u89E3\u8AAA\u5F8C\uFF0C\u8ACB\u81EA\u5DF1\u9078\u4E00\u6B21\uFF0C\u518D\u6309\u300C\u78BA\u8A8D\u7B54\u6848\u300D\u3002\u7CFB\u7D71\u6703\u8A18\u9304\u9019\u6B21\u4F7F\u7528\u4E86\u63D0\u793A\u3002")), React.createElement(MechHUD, {
     m: m,
     hintsAllowed: hintsAllowed,
-    hintTexts: hintTexts
+    hintTexts: layered ? [] : hintTexts
+  }), layered && hintsAllowed && React.createElement(MiddleHints, {
+    plan: it.hints,
+    level: level,
+    answer: it.options.find(o => o.correct)?.text,
+    disabled: solved || m.done || m.hints >= m.maxHints,
+    onHint: openHint
   }));
 }
 Object.assign(MATH_MECHS, {
@@ -315425,7 +315655,8 @@ function mazePresent(state, pool) {
       used: [...a.used, q.id],
       lastSubject: q.subject,
       selection: null,
-      feedback: null
+      feedback: null,
+      hintLevel: 0
     }
   });
 }
@@ -315525,11 +315756,12 @@ function mazeSubmit(state, id, qid, t = now()) {
     title: '提燈迷宮',
     kpId: q.kpId,
     passed,
-    hints: 0,
+    hints: mazeMiddleHints(q) ? a.hintLevel || 0 : 0,
     attempts: 1,
     detail: {
       maze: true,
-      fullReveal: false,
+      fullReveal: !!mazeMiddleHints(q) && a.hintLevel === 3,
+      revealKnown: true,
       answer: q.options[a.selection]
     }
   });
@@ -315612,6 +315844,7 @@ function validateMaze(m, bad, p) {
   if (q !== null) {
     if (!obj(q) || !str(q.id) || !KP_BY_ID[q.kpId] || q.subject !== KP_BY_ID[q.kpId].subject || !str(q.prompt) || !str(q.context) || !str(q.why) || !Array.isArray(q.options) || q.options.length < 2 || q.options.length > 3 || q.options.some(x => !str(x)) || !int(q.answer) || q.answer >= q.options.length || !obj(q.stage) || !obj(q.stage.params) || !a.used.includes(q.id) || a.selection !== null && (!int(a.selection) || a.selection >= q.options.length)) bad(p + '.question');
   } else if (['question', 'feedback', 'complete'].includes(a.phase)) bad(p + '.question');
+  if (a.hintLevel !== undefined && (!int(a.hintLevel) || a.hintLevel > 3 || a.hintLevel > 0 && !mazeMiddleHints(q))) bad(p + '.hintLevel');
   if (a.phase === 'complete' && (!m.history.some(e => e.id === a.id) || a.position !== a.length)) bad(p + '.completion');
 }
 const JUNIOR_LIFE_IDS = ['j_quake', 'j_plastic', 'j_seed', 'j_magnet', 'j_color'];
@@ -316107,6 +316340,111 @@ NEW_TOPIC_RELEASES.push({
     desc: '辨部首、同部首字、偏旁變形與部首外筆畫；75個例字與240道原創練習。'
   }]
 });
+const MIDDLE_HINT_BANK = new Map([...GRADE3_BANK, ...GRADE4_BANK].map(q => [q.id, q]));
+function validMiddleHints(h) {
+  return !!h && h.v === 93 && Array.isArray(h.levels) && h.levels.length === 3 && h.levels.every(s => typeof s === 'string' && s.length > 0 && s.length <= 2000);
+}
+function middleHintPlan(q) {
+  const topic = MIDDLE_HINTS.topics[q.kpId];
+  if (!topic) return null;
+  const math = KP_BY_ID[q.kpId]?.subject === 'math';
+  const givens = math ? [...new Set(q.q.match(/\d+(?:\.\d+)?/g) || [])].slice(0, 8) : [];
+  const first = topic[0] + (givens.length ? ' 題目寫出的數字有 ' + givens.join('、') + '，先確認各自代表什麼。' : '');
+  let operation = q.proof?.op;
+  if (operation === 'sum' && !['g3_addsub', 'g3_place'].includes(q.kpId)) operation = null;
+  if (operation === 'hundredths' && q.kpId === 'g4_decimal' && q.level === 2) operation = 'decimalTimes';
+  return {
+    v: 93,
+    levels: [first, math && MIDDLE_HINTS.operations[operation] || topic[1], q.why]
+  };
+}
+function prepareMiddleHintStage(t) {
+  if (t.kind !== 'pickone') return t;
+  return {
+    ...t,
+    params: {
+      ...t.params,
+      items: t.params.items.map(it => {
+        const q = MIDDLE_HINT_BANK.get(it.id);
+        if (!q || q.q !== it.q || it.options.find(o => o.correct)?.text !== q.answer) return it;
+        return {
+          ...it,
+          hints: middleHintPlan(q)
+        };
+      })
+    }
+  };
+}
+for (const grade of ['grade3', 'grade4']) for (const [id, gen] of Object.entries(GENERATORS[grade])) GENERATORS[grade][id] = (...args) => gen(...args).map(prepareMiddleHintStage);
+function middleHintParams(p) {
+  return !!p?.items?.some(it => validMiddleHints(it.hints));
+}
+function validMiddleHintDraft(d, p) {
+  return !!d && d.v === 93 && Array.isArray(d.levels) && d.levels.length === p.items.length && d.levels.every((n, i) => Number.isInteger(n) && n >= 0 && n <= (validMiddleHints(p.items[i].hints) ? 3 : 0)) && d.hints === d.levels.reduce((a, b) => a + b, 0);
+}
+function middleHintSignature(p) {
+  return JSON.stringify(p);
+}
+function middleHintOwner(s) {
+  return s?.student ? String(s.student.createdAt) + ':' + s.student.name + ':' + studentGrade(s.student) : '';
+}
+function middleHintTaskRows(s) {
+  const rows = [],
+    add = (task, path) => {
+      if (task?.kind === 'pickone' && middleHintParams(task.params) && !task.done && task.status !== 'passed' && !task.result) rows.push({
+        task,
+        path
+      });
+    };
+  (s?.missions || []).forEach((m, i) => {
+    for (const k of ['diag', 'stages']) (m[k] || []).forEach((t, j) => add(t, ['missions', i, k, j]));
+  });
+  const w = s?.student?.wallet;
+  (w?.active?.stages || []).forEach((t, j) => add(t, ['student', 'wallet', 'active', 'stages', j]));
+  for (const [id, c] of Object.entries(w?.chests || {})) (c.locks || []).forEach((t, j) => add(t, ['student', 'wallet', 'chests', id, 'locks', j]));
+  for (const k of ['storyTasks', 'reviewTasks']) for (const [id, t] of Object.entries(s?.learning?.[k] || {})) add(t, ['learning', k, id]);
+  for (const k of ['heroCases', 'weeklyCases', 'classics']) for (const [id, c] of Object.entries(s?.student?.[k]?.cases || {})) for (const [slot, t] of Object.entries(c.tasks || {})) add(t, ['student', k, 'cases', id, 'tasks', slot]);
+  return rows;
+}
+function findMiddleHintTask(s, p) {
+  const rows = middleHintTaskRows(s),
+    exact = rows.find(r => r.task.params === p);
+  if (exact) return exact;
+  const sig = middleHintSignature(p),
+    matches = rows.filter(r => middleHintSignature(r.task.params) === sig);
+  return matches.length === 1 ? matches[0] : null;
+}
+function saveMiddleHintDraft(s, path, signature, owner, draft) {
+  if (middleHintOwner(s) !== owner || !path.length) return s;
+  const task = path.reduce((o, k) => o?.[k], s);
+  if (!task || task.done || task.status === 'passed' || task.result || middleHintSignature(task.params) !== signature || !validMiddleHintDraft(draft, task.params) || JSON.stringify(task.middleHintDraft) === JSON.stringify(draft)) return s;
+  if (validMiddleHintDraft(task.middleHintDraft, task.params) && task.middleHintDraft.levels.some((n, i) => n > draft.levels[i])) return s;
+  const put = (obj, i) => {
+    const copy = Array.isArray(obj) ? obj.slice() : {
+      ...obj
+    };
+    copy[path[i]] = i === path.length - 1 ? {
+      ...task,
+      middleHintDraft: draft
+    } : put(obj[path[i]], i + 1);
+    return copy;
+  };
+  return put(s, 0);
+}
+function mazeMiddleHints(q) {
+  const it = q?.stage?.kind === 'pickone' && q.stage.params.items?.[0];
+  return it && validMiddleHints(it.hints) ? it.hints : null;
+}
+function mazeHint(s, id, qid) {
+  const a = mazeState(s).active;
+  if (!a || a.id !== id || a.question?.id !== qid || a.phase !== 'question' || a.policy !== learningSignature(s) || !learningAllows(s, a.question.kpId) || !mazeMiddleHints(a.question) || (a.hintLevel || 0) >= 3) return s;
+  return mazePut(s, {
+    active: {
+      ...a,
+      hintLevel: (a.hintLevel || 0) + 1
+    }
+  });
+}
 const CHAR_ART = Object.fromEntries(['p_ari', 'p_cheng', 'p_shuang', 'p_leo'].map(id => [id, {
   tachie: {
     normal: `assets/chars/${id}/tachie_normal.webp`
@@ -340714,7 +341052,7 @@ function CareParentPanel({
     key: i
   }, v))))))), React.createElement("p", {
     className: "small muted"
-  }, "\u7167\u9867\u7D71\u8A08\u4FDD\u7559\u6700\u8FD1 300 \u7B46\uFF1B\u5B8C\u6574\u89E3\u7B54\u53EA\u8FA8\u8B58\u7B97\u5F0F\u6B65\u9A5F\u984C\uFF0C\u5176\u9918\u672A\u77E5\u3002\u518D\u8A66\u5305\u542B\u540C\u6B21\u7B54\u932F\u8207\u4E0A\u4E00\u7B46\u672A\u901A\u904E\uFF0C\u4E0D\u4EE3\u8868\u81EA\u9858\u53C3\u8207\u3002\u6536\u652F\u4F9D\u4FDD\u7559\u7684\u88DC\u7D66\u3001\u8FFD\u6355\u3001\u8CFC\u8CB7\u8207\u9000\u8CBB\u7D00\u9304\u8A08\u7B97\uFF1B\u820A\u5BF6\u7BB1\u6C92\u6709\u65E5\u671F\uFF0C\u4E0D\u56DE\u63A8\u3002\u95DC\u9589\u671F\u9593\u4E0D\u7D71\u8A08\u7167\u9867\u3002"), React.createElement(AbilityEntrySummary, {
+  }, "\u7167\u9867\u7D71\u8A08\u4FDD\u7559\u6700\u8FD1 300 \u7B46\uFF1B\u5B8C\u6574\u89E3\u7B54\u5305\u542B\u7B97\u5F0F\u6B65\u9A5F\u984C\u8207\u4E09\u3001\u56DB\u5E74\u7D1A\u5206\u5C64\u63D0\u793A\u984C\uFF1B\u5176\u4ED6\u984C\u578B\u4F9D\u73FE\u6709\u7D00\u9304\uFF0C\u7121\u6CD5\u5224\u65B7\u6642\u6A19\u70BA\u672A\u77E5\u3002\u518D\u8A66\u5305\u542B\u540C\u6B21\u7B54\u932F\u8207\u4E0A\u4E00\u7B46\u672A\u901A\u904E\uFF0C\u4E0D\u4EE3\u8868\u81EA\u9858\u53C3\u8207\u3002\u6536\u652F\u4F9D\u4FDD\u7559\u7684\u88DC\u7D66\u3001\u8FFD\u6355\u3001\u8CFC\u8CB7\u8207\u9000\u8CBB\u7D00\u9304\u8A08\u7B97\uFF1B\u820A\u5BF6\u7BB1\u6C92\u6709\u65E5\u671F\uFF0C\u4E0D\u56DE\u63A8\u3002\u95DC\u9589\u671F\u9593\u4E0D\u7D71\u8A08\u7167\u9867\u3002"), React.createElement(AbilityEntrySummary, {
     state: state
   }));
 }
@@ -344037,6 +344375,13 @@ function guardedMechanic(Component, kind) {
     const onDraft = useCallback(draft => {
       if (shared?.setState && pathKey !== '[]') shared.setState(prev => saveStepDraft(prev, JSON.parse(pathKey), signature, draft));
     }, [shared?.setState, pathKey, signature]);
+    const hintBinding = kind === 'pickone' ? findMiddleHintTask(state, props.params) : null,
+      hintPath = JSON.stringify(hintBinding?.path || []),
+      hintSignature = kind === 'pickone' ? middleHintSignature(props.params) : '',
+      hintOwner = middleHintOwner(state);
+    const onHintDraft = useCallback(draft => {
+      if (shared?.setState && hintPath !== '[]') shared.setState(prev => saveMiddleHintDraft(prev, JSON.parse(hintPath), hintSignature, hintOwner, draft));
+    }, [shared?.setState, hintPath, hintSignature, hintOwner]);
     const context = mechanicErrorContext(state, kind, props.params);
     usePlaytestReportScope(30, {
       entry: context.source,
@@ -344062,9 +344407,11 @@ function guardedMechanic(Component, kind) {
       disabled: ended,
       inert: ended ? '' : undefined
     }, React.createElement(Component, _extends({}, props, {
-      key: kind + pathKey + signature,
+      key: kind + pathKey + signature + hintSignature + (kind === 'pickone' ? hintOwner : ''),
       draft: binding?.task.stepDraft,
       onDraft: onDraft,
+      hintDraft: hintBinding?.task.middleHintDraft,
+      onHintDraft: onHintDraft,
       onDone: done
     }))));
   };
@@ -349574,9 +349921,10 @@ function MazeAdventure({
     answering = a?.phase === 'question',
     feedback = a?.phase === 'feedback',
     invalid = a && a.policy !== policy;
-  const questionGuard = answerGuardForStage(q?.stage?.kind, q?.stage?.params),
+  const hintPlan = mazeMiddleHints(q),
+    questionGuard = answerGuardForStage(q?.stage?.kind, q?.stage?.params),
     protectedQuestion = !!(questionGuard.chars || questionGuard.muteBopomofo),
-    guardActive = !!q && !invalid && (answering || feedback && !a.feedback?.passed);
+    guardActive = !!q && !invalid && !(hintPlan && a.hintLevel === 3) && (answering || feedback && !a.feedback?.passed);
   useAnswerGuard(questionGuard, guardActive);
   const careGrant = finished ? state.student.care?.log?.find(e => e.eventId === 'maze:' + a.id && e.type === 'stipend_granted')?.amount || 0 : 0;
   return React.createElement("div", {
@@ -349776,7 +350124,13 @@ function MazeAdventure({
   }, q.figure?.type === 'grade1' && q.figure.item.pictureOptions && React.createElement(G1Picture, {
     id: GRADE1_WORDS.find(w => w.word === text)?.id,
     size: 70
-  }), React.createElement("span", null, text))))), answering ? React.createElement(React.Fragment, null, React.createElement("p", {
+  }), React.createElement("span", null, text))))), hintPlan && answering && React.createElement(MiddleHints, {
+    key: q.id,
+    plan: hintPlan,
+    level: a.hintLevel || 0,
+    answer: q.options[q.answer],
+    onHint: () => update(s => mazeHint(s, a.id, q.id))
+  }), answering ? React.createElement(React.Fragment, null, React.createElement("p", {
     className: "maze-selection-help"
   }, "\u5148\u9078\u8DEF\u724C\uFF0C\u53EF\u4EE5\u63DB\u9078\uFF1B\u6E96\u5099\u597D\u518D\u51FA\u767C\u3002"), React.createElement(Btn, {
     id: "maze-confirm",
