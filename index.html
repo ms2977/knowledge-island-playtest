@@ -1071,7 +1071,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261118-casebook-v95-r1">
+<meta name="game-release" content="playtest-20261118-clue-v96-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -296190,7 +296190,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.18-v95';
+const GAME_BUILD = '2026.11.18-v96';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -309910,7 +309910,7 @@ Object.assign(EVIDENCE, {
   },
   E43: {
     id: 'E43',
-    name: '地板下的鐵',
+    name: '地板下的鐵盒',
     desc: '實驗做完、線圈繞到 80 圈後，你和阿嵐拿電磁鐵實際掃過觀測台地板：只有太陽系儀正下方吸得住，那裡的地板縫也比別處新。（實驗卡是知識；吸住的位置是現場發現。）',
     tl: '地板下有鐵的位置在太陽系儀下方。'
   },
@@ -310709,7 +310709,7 @@ CHAPTERS[CH4_ID] = {
     }
   }, {
     id: 'r3',
-    title: '地板下的鐵',
+    title: '地板下的鐵盒',
     kp: 's_magnet',
     mech: 'variables',
     xp: 35,
@@ -310994,8 +310994,8 @@ Object.assign(JUNIOR_CH1_TEXT, {
     "choices": ["一起檢查實驗桌", "等一下再做"]
   },
   "d_c4_coil": {
-    "lines": [["apprentice", "我們來找地板下的鐵。"], ["apprentice", "先完成工作台的小任務。"], ["apprentice", "再一起用磁鐵找找看。"]],
-    "choices": ["一起找地板下的鐵", "等一下再做"]
+    "lines": [["apprentice", "我們來找地板下的鐵盒。"], ["apprentice", "先完成工作台的小任務。"], ["apprentice", "再一起用磁鐵找找看。"]],
+    "choices": ["一起找地板下的鐵盒", "等一下再做"]
   },
   "d_c4_hatch": {
     "lines": [["narr", "這裡的地板縫比別處新。"], ["aki", "暗格是我上個月封的。"], ["aki", "我猜它最近被撬開過。"], ["aki", "但我沒看到是誰撬的。"], ["narr", "先完成小任務，再請阿齒開門。"]],
@@ -311171,7 +311171,7 @@ Object.assign(JUNIOR_CH1_EVIDENCE, {
     "displayTime": "深夜留下的痕跡"
   },
   "E43": {
-    "name": "地板下的鐵",
+    "name": "地板下的鐵盒",
     "source": "小任務後，你們用磁鐵找的",
     "lines": ["磁鐵只在太陽系儀下方吸住。", "那裡的地板縫也比較新。", "這是找出位置的現場線索。"],
     "tl": "太陽系儀下面有鐵的東西。"
@@ -311594,7 +311594,7 @@ const JUNIOR_CH23_ROUTES = [{
   "steps": [["!c3_brief", "聽新的委託", "回事務所找灰鴉夫人。"], ["!ev:G1", "看看月台長椅", "找鐵叔，再去午夜月台。"], ["!ev:G2", "把行李送上車", "點月台上的行李推車。"], ["!ev:G3", "看看桌上的信", "進第三節車廂，點小桌。"], ["!ev:G4", "看看懷錶", "點座位上的懷錶。"], ["!ev:G5", "找找坐墊下的便條", "點座位下的便條。"], ["!q4_solved", "想想是誰安排的", "打開手冊的「想一想」。"], ["!c3_done", "聽她說出真相", "找午夜信差，完成最後任務。"]]
 }, {
   "chapter": "ch4",
-  "steps": [["!ev:E41", "查日誌", "從鐘塔頂樓去觀測台找婆婆。"], ["!ev:E42", "找水跡", "到檢驗室，查看鏡片實驗桌。"], ["!q41_solved", "想一想", "打開手冊，想想水從哪裡來。"], ["!ev:E43", "找地板下的鐵", "到檢驗室，查看電磁鐵工作台。"], ["!c4_aki", "聽阿齒說", "回鐘塔一樓，問阿齒暗格的事。"], ["!c4_captain", "聽浪叔說", "到港口，問浪叔那晚做了什麼。"], ["!c4_e4", "打開暗格", "回觀測台，查看儀器下的地板。"], ["!ev:E45", "查看岩壁", "進地下星圖室，看看牆壁。"], ["!q42_solved", "想一想", "打開手冊，想想先找誰聊聊。"], ["!c4_confess", "問問阿嵐", "阿嵐在星圖室，先聽她說。"], ["!c4_done", "上山找星圖", "從島嶼地圖去觀星山丘。"], ["c4_done", "一起想辦法", "星圖找到了！回事務所報告吧。"]]
+  "steps": [["!ev:E41", "查日誌", "從鐘塔頂樓去觀測台找婆婆。"], ["!ev:E42", "找水跡", "到檢驗室，查看鏡片實驗桌。"], ["!q41_solved", "想一想", "打開手冊，想想水從哪裡來。"], ["!ev:E43", "找地板下的鐵盒", "到檢驗室，查看電磁鐵工作台。"], ["!c4_aki", "聽阿齒說", "回鐘塔一樓，問阿齒暗格的事。"], ["!c4_captain", "聽浪叔說", "到港口，問浪叔那晚做了什麼。"], ["!c4_e4", "打開暗格", "回觀測台，查看儀器下的地板。"], ["!ev:E45", "查看岩壁", "進地下星圖室，看看牆壁。"], ["!q42_solved", "想一想", "打開手冊，想想先找誰聊聊。"], ["!c4_confess", "問問阿嵐", "阿嵐在星圖室，先聽她說。"], ["!c4_done", "上山找星圖", "從島嶼地圖去觀星山丘。"], ["c4_done", "一起想辦法", "星圖找到了！回事務所報告吧。"]]
 }, {
   "chapter": "ch5",
   "steps": [["!c5_f1", "整理照片箱", "到博物館，找特展照片箱。"], ["!c5_f2", "查看預告", "從博物館進典藏庫，看看預告。"], ["!q51_solved", "想一想", "打開手冊，想想照片有何特別。"], ["!c5_f3", "聽老屋的故事", "到港口，幫浪叔整理貨箱。"], ["!c5_chiu", "聽邱老闆說", "到市集，找邱老闆聊聊。"], ["!c5_f4", "核對借閱簿", "到市集找小梅，一起查紀錄。"], ["!q52_solved", "想一想", "打開手冊，想想下一步去哪裡。"], ["!c5_f5", "去老街", "從島嶼地圖去老街，看看資料牆。"], ["!c5_done", "先聽，再討論", "找阿海聊聊，一起想辦法。"], ["c5_done", "回事務所", "照片找到了！回去告訴灰鴉夫人。"]]
@@ -353743,7 +353743,7 @@ function Casebook({
     className: "small muted",
     "data-speech-part": "tab-evidence",
     "data-speech-default": true
-  }, "\u5148\u9EDE\u4E00\u5F35", junior ? '線索' : '證據', "\uFF0C\u518D\u6309\u300C\u5FF5\u7D66\u6211\u807D\u300D\uFF0C\u53EA\u6703\u5FF5\u9019\u5F35\u7684\u5167\u5BB9\u3002"), !!evs.length && React.createElement("div", {
+  }, "\u9EDE\u4E00\u5F35", junior ? '線索' : '證據', "\uFF0C\u518D\u6309\u5361\u7247\u5167\u7684\u300C\u5FF5\u9019\u5F35\u7DDA\u7D22\u300D\u3002", isReadingSupportState(state) && '右下角「念給我聽」也只念目前點選的這張。'), !!evs.length && React.createElement("div", {
     className: "small muted"
   }, hasLinks ? junior ? '選兩張線索再按「放在一起看」，也可以到「想一想」一步一步試。' : '選兩個證據再按「建立關聯」，看看它們合起來說了什麼。' : junior ? '讀完線索，直接到「想一想」，選線索說明你的想法。' : '讀完證據，直接到「推論」選擇依據並提出判斷。'), !!evs.length && !hasLinks && React.createElement("div", {
     className: "row"
@@ -353771,7 +353771,12 @@ function Casebook({
     "data-speech-part": 'clue-' + openEv
   }, junior && evidence(openEv).lines ? React.createElement(JuniorEvidenceDetail, {
     evidence: evidence(openEv)
-  }) : React.createElement(React.Fragment, null, React.createElement("b", null, evidence(openEv).name), React.createElement("p", null, evidence(openEv).desc))), !!evs.length && hasLinks && React.createElement("div", {
+  }) : React.createElement(React.Fragment, null, React.createElement("b", null, evidence(openEv).name), React.createElement("p", null, evidence(openEv).desc)), React.createElement(Btn, {
+    small: true,
+    kind: "teal",
+    id: "read-active-clue",
+    onClick: () => readPart('clue-' + openEv, true)
+  }, "\u5FF5\u9019\u5F35\u7DDA\u7D22")), !!evs.length && hasLinks && React.createElement("div", {
     className: "row"
   }, React.createElement(Btn, {
     kind: "teal",
@@ -353814,7 +353819,12 @@ function Casebook({
     evidence: e
   }) : React.createElement(React.Fragment, null, React.createElement("b", null, e.name), React.createElement("p", null, e.desc)), e.time && React.createElement("p", {
     className: "small muted archive-time"
-  }, e.displayTime || e.time, "\uFF1A", e.tl)))), g.notes.map((n, i) => React.createElement("div", {
+  }, e.displayTime || e.time, "\uFF1A", e.tl), React.createElement(Btn, {
+    small: true,
+    kind: "teal",
+    id: 'read-archive-' + e.id,
+    onClick: () => readPart('archive-' + e.id, true)
+  }, "\u5FF5\u9019\u5F35\u7DDA\u7D22")))), g.notes.map((n, i) => React.createElement("div", {
     key: i,
     className: "notice good"
   }, "\uD83D\uDD17 ", storyNote(student, n))))))), tab === 'puzzles' && React.createElement("div", {
