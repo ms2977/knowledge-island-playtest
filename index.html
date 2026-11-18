@@ -543,6 +543,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media(max-width:600px){.classics-page{padding:12px!important}.classics-heading{gap:6px;font-size:.85rem;margin-bottom:10px}.classics-heading .btn{padding:8px 10px}.classics-entry,.classics-welcome{gap:13px;padding:16px}.classics-icon{width:75px}.classics-entry h2{font-size:1.2rem}.classics-letters{grid-template-columns:1fr}.classics-letter{min-height:165px;padding:12px}.classics-letter-art{height:140px;width:85px}.classics-scene{height:215px}.classics-person{width:37%;left:2%}.classics-paper,.classics-task,.classics-hands{padding:17px;margin:10px 0}.classics-card-grid{grid-template-columns:1fr}.classics-mini-context{max-height:46px;margin-bottom:5px;font-size:.86rem}.classics-mini-context img{height:42px;width:33px}.classics-parent-table table{min-width:0}.classics-parent-table th,.classics-parent-table td{padding:6px 3px;font-size:.75rem}.classics-evidence-people{gap:5px}.classics-evidence-people>div{padding:7px;font-size:.9rem}.classics-low .classics-options .classics-copy{line-height:1.65}.classics-low .classics-hands h2{margin-bottom:8px}.classics-low .classics-step{margin-bottom:8px}.classics-low .classics-actions{margin-top:10px}.classics-before-after{gap:7px}.classics-before-after div{padding:9px}.classics-gate{height:100px}}
 @media(prefers-reduced-motion:reduce){.classics-gate .inside,.classics-letter{transition:none}.classics-letter:hover{transform:none}}
 .classics-character-card header{display:grid;grid-template-columns:40px 1fr}.classics-character-card header h2{font-size:1.3rem;white-space:nowrap}.classics-character-card header small{grid-column:2;text-align:right}.classics-mini-context img{object-fit:contain}
+.classics-card-intro{align-self:stretch;flex:1;border-top:1px solid #cfbc90;padding:13px 0 8px;margin:3px 0 10px;min-height:105px;text-align:left}.classics-card-intro h3{font-size:1rem;margin:0 0 8px;color:#496a64}.classics-card-intro p{font-size:1rem;line-height:1.85;margin:0;overflow-wrap:anywhere}
 @media(max-width:600px){.classics-heading{display:grid;grid-template-columns:1fr 1fr}.classics-heading>span{grid-column:1/-1;grid-row:1;font-size:1.1rem}.classics-heading .btn:last-child{justify-self:end}.classics-mini-context{margin-top:8px}}
 
 .companion-picker {border:0;padding:0;margin:0;min-width:0;}
@@ -1045,7 +1046,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261118-classics-v91-r1">
+<meta name="game-release" content="playtest-20261118-style-v92-r2">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -285779,7 +285780,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.18-v91';
+const GAME_BUILD = '2026.11.18-v92';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -351469,6 +351470,9 @@ function ClassicsConclusion({
     className: "small"
   }, "\u78BA\u8A8D\u524D\u90FD\u53EF\u4EE5\u6539\u9078\u3002"));
 }
+function classicsPortrait(portrait) {
+  return 'assets/chars/classics_' + portrait + '/tachie_normal.webp?v=92';
+}
 function ClassicsCard({
   state,
   update,
@@ -351489,15 +351493,18 @@ function ClassicsCard({
     className: "classics-card-back"
   }, [['是誰', d.card.who], ['哪一邊', d.faction], ['我幫他做了什麼', d.card.help], ['出處', d.card.source], ['一句話', d.habit]].map(([k, v]) => React.createElement(React.Fragment, {
     key: k
-  }, React.createElement("dt", null, k), React.createElement("dd", null, v)))) : React.createElement("div", {
+  }, React.createElement("dt", null, k), React.createElement("dd", null, v)))) : React.createElement(React.Fragment, null, React.createElement("div", {
     className: "classics-card-front"
   }, React.createElement(HeroImage, {
-    src: 'assets/chars/classics_' + d.portrait + '/tachie_normal.webp',
+    src: classicsPortrait(d.portrait),
     alt: earned ? d.person + '的人物卡' : '尚未取得的人物卡剪影'
-  }), React.createElement("p", null, earned ? d.title : '完成案件後收藏')), earned ? React.createElement(Btn, {
+  }), React.createElement("p", null, earned ? d.title : '完成案件後收藏')), earned && React.createElement("section", {
+    className: "classics-card-intro",
+    "aria-label": "\u4EBA\u7269\u4ECB\u7D39"
+  }, React.createElement("h3", null, "\u4EBA\u7269\u4ECB\u7D39"), React.createElement("p", null, d.card.who))), earned ? React.createElement(Btn, {
     id: 'classics-flip-' + id,
     onClick: flip
-  }, back ? '看正面' : '翻到背面') : React.createElement("span", {
+  }, back ? '看正面' : '故事與出處') : React.createElement("span", {
     className: "small"
   }, d.title));
 }
@@ -351636,7 +351643,7 @@ function ClassicsScreen({
     }, React.createElement("span", {
       className: "classics-letter-art"
     }, React.createElement(HeroImage, {
-      src: 'assets/chars/classics_' + x.portrait + '/tachie_normal.webp',
+      src: classicsPortrait(x.portrait),
       alt: x.person
     })), React.createElement("span", {
       className: "classics-letter-copy"
@@ -351644,7 +351651,7 @@ function ClassicsScreen({
   }))) : React.createElement(React.Fragment, null, ['hands', 'conclusion', 'task1', 'task2'].includes(phase) ? React.createElement("div", {
     className: "classics-mini-context"
   }, React.createElement(HeroImage, {
-    src: 'assets/chars/classics_' + d.portrait + '/tachie_normal.webp',
+    src: classicsPortrait(d.portrait),
     alt: ""
   }), React.createElement("span", null, d.person, "\u8207\u4F60\u4E00\u8D77\u8ABF\u67E5")) : React.createElement("section", {
     className: "classics-scene"
@@ -351654,7 +351661,7 @@ function ClassicsScreen({
     alt: d.title + '的故事場景'
   }), React.createElement(HeroImage, {
     className: "classics-person",
-    src: 'assets/chars/classics_' + d.portrait + '/tachie_normal.webp',
+    src: classicsPortrait(d.portrait),
     alt: d.person
   }), React.createElement("span", {
     className: "classics-scene-name"
