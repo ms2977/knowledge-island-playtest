@@ -680,6 +680,9 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .casebook-archive .archive-clue summary { font-weight: 500; }
 .casebook-archive p { overflow-wrap: anywhere; }
 .book #link-btn { display: block; max-width: 100%; white-space: normal; }
+.casebook-readable-clue { padding:12px; border:1px solid var(--line); border-radius:12px; margin-top:10px; }
+.casebook-readable-clue.current { border-color:var(--teal); background:var(--surface); }
+.book #book-start-deduce { min-height:48px; white-space:normal; }
 
 .care-neutral{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px}.care-profile{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.care-actions{flex-wrap:wrap}.care-actions button,.care-result button{min-height:46px}.care-result{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:12px auto;padding:12px;max-width:960px;border-left:4px solid var(--teal);background:var(--surface)}.care-retry-overlay{position:fixed;inset:0;background:#172b36b3;z-index:150;overflow:auto;padding:24px}.care-retry-overlay>.card{max-width:900px;margin:auto}.care-table{overflow-x:auto}.care-table table{border-collapse:collapse;white-space:nowrap;width:100%}.care-table td,.care-table th{padding:8px;border-bottom:1px solid var(--line);text-align:right}.badge-row{display:flex;align-items:center;gap:12px;min-width:0;border-bottom:1px solid var(--line);padding:12px 0}.badge-label{flex:0 0 100px;text-align:left;border:0;background:none;display:flex;flex-direction:column;gap:6px}.badge-strip{display:flex;gap:10px;overflow-x:auto;min-width:0;padding:5px;align-items:center}.memorial-badge{flex:0 0 66px;width:66px;height:66px;border-radius:50%;border:4px double #906b44;background:#f4dfbd;color:#493a27;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;box-shadow:0 2px 4px #0002}.memorial-badge span{font-size:23px;line-height:1}.memorial-badge small{font-size:12px}.memorial-badge.tier-1{border-color:#7b8792;background:#e2e7ed}.memorial-badge.tier-2{border-color:#a58325;background:#fff0b6}.memorial-badge.unknown{border:2px dashed #777;background:transparent;color:var(--text)}.memorial-stamp{font-size:30px;color:var(--teal)}#care-cap{width:70px}#care-page select{max-width:100%;min-height:44px}#care-page .care-profile svg{flex-shrink:0}@media(max-width:500px){.care-profile{gap:8px}.care-profile svg{width:120px;height:130px}.care-retry-overlay{padding:10px}.badge-label{flex-basis:112px}.memorial-badge{flex-basis:58px;width:58px;height:58px}.care-result{margin:8px}#memorial-book{padding:14px}}
 
@@ -694,7 +697,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .train-route-heading{font-size:15px}.train-route-heading strong{font-size:21px;white-space:nowrap;color:#694313}
 .train-fragment-track{display:flex;gap:5px;margin:9px 0}.train-fragment-track span{flex:1;text-align:center;border-radius:5px;border:1px solid #ad8b53;color:#967c54;background:#fffdf5;line-height:21px}.train-fragment-track span.got{background:#785322;color:#fff4c6;border-color:#785322}
 .train-route-body>div{flex:1;min-width:0}.train-route-body b{font-size:18px}.train-route-body p{margin:5px 0 0;line-height:1.6;font-size:16px}.train-route-body button{flex-shrink:0}
-@media(max-width:600px){.train-route{padding:11px 12px}.train-route-heading{flex-wrap:wrap;gap:3px}.train-route-heading strong{font-size:22px}.train-route-body{align-items:stretch;flex-direction:column;gap:10px}.train-route-body button{width:100%;min-height:44px}.train-route-body b{font-size:18px}.train-route-body p{font-size:15px}.train-fragment-track{margin:7px 0}}
+@media(max-width:600px){.train-route{padding:11px 12px}.train-route-heading{flex-wrap:wrap;gap:3px}.train-route-heading strong{font-size:22px;white-space:normal;min-width:0;max-width:100%}.train-route-body{align-items:stretch;flex-direction:column;gap:10px}.train-route-body button{width:100%;min-height:44px}.train-route-body b{font-size:18px}.train-route-body p{font-size:15px}.train-fragment-track{margin:7px 0}}
 
 .paint-preview{color:#203b50;max-width:1240px;margin:auto}.paint-cover{background:linear-gradient(90deg,#123648ed,#1236488c),url('assets/scenes/workshop/background.webp') center/cover;color:#fff;padding:32px;border-radius:20px}.paint-cover h1{font-size:clamp(26px,4vw,42px);margin:8px 0}.paint-cover .eyebrow{color:#f2cd88}.paint-cover button{color:#203b50;background:#fff}.paint-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;margin-top:20px}.paint-evidence{position:sticky;top:12px;align-self:start;background:#eee7d9;padding:18px;border-radius:18px;max-height:calc(100vh - 24px);overflow:auto}.paint-evidence h2{font-size:20px}.paint-evidence details,.paint-learning{background:#fff9ed;color:#203b50;border:1px solid #d9cba9;padding:12px;border-radius:12px;margin:10px 0}.paint-evidence summary{cursor:pointer;font-weight:bold}.paint-progress{list-style:none;padding:0}.paint-progress li{padding:5px}.paint-progress .complete{color:#146553}.paint-art{object-fit:contain;max-width:100%;display:block}.paint-cans{width:100%}.paint-labels{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}.paint-form{background:#fffdf7;color:#203b50;border:1px solid #d8cdb5;border-radius:18px;padding:24px;margin-bottom:18px}.paint-form-head{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:18px;align-items:center}.paint-form-head .paint-art{max-height:180px;width:100%}.paint-form p{margin:8px 0}.paint-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px;margin:22px 0}.paint-field{display:flex;flex-direction:column;gap:8px;min-width:0}.paint-field input,.paint-field select,.paint-form>select{width:100%;max-width:100%;min-height:44px;color:#203b50;background:#fff;border:1px solid #8b9eaa;border-radius:8px;padding:10px}.paint-preview button{min-height:44px;padding:10px 16px;border:1px solid #8299a6;border-radius:10px;cursor:pointer}.paint-preview button:disabled{opacity:.55;cursor:default}.paint-preview .paint-primary{background:#176d77;color:white;border-color:#176d77}.paint-counter output{min-width:60px;text-align:center}.paint-count-visual{display:flex;flex-wrap:wrap;gap:4px;max-width:260px;min-height:22px;margin:8px 0}.paint-count-visual i{display:block;width:14px;height:18px;background:#226f96;border:1px solid #173d57;border-radius:0 0 4px 4px}.paint-hint,.paint-assist{padding:16px;border-radius:12px;background:#e8f2f0;color:#173f40;margin-top:14px}.paint-assist button{margin:4px}.paint-route{font-size:14px}.paint-art-fallback{padding:16px;border:2px dashed #9d946f;border-radius:12px;background:#f8f1df;color:#203b50}.paint-invoice{max-height:240px}.paint-demo-groups{display:flex;gap:16px;flex-wrap:wrap}.paint-demo-groups span{padding:8px;border:1px dashed #366981;animation:paintAppear 1.5s ease both}.paint-demo-groups span+span{animation-delay:.8s}.paint-halves{display:flex;width:180px}.paint-halves i{width:50%;background:#a9cee4;border:1px solid #315c74;text-align:center;padding:20px 4px}.paint-main{min-width:0}.paint-preview .wrap{flex-wrap:wrap}@keyframes paintAppear{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.paint-demo-groups span{animation:none}}@media(max-width:700px){.paint-cover{padding:20px}.paint-layout{grid-template-columns:1fr;gap:12px}.paint-evidence{position:static;max-height:none;padding:14px}.paint-evidence>.paint-art{max-height:140px}.paint-progress{display:flex;flex-wrap:wrap;gap:8px}.paint-form{padding:16px}.paint-form-head{grid-template-columns:1fr}.paint-form-head .paint-art{max-height:100px}.paint-fields{grid-template-columns:1fr}.paint-preview button{font-size:16px}}
 
@@ -1068,7 +1071,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261118-quality-v94-r1">
+<meta name="game-release" content="playtest-20261118-casebook-v95-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -291570,9 +291573,20 @@ function zyPlainText(el) {
   if (!el) return '';
   const c = el.cloneNode(true);
   c.querySelectorAll('rt, rp, button, .hud, .topbar, [aria-hidden="true"], [hidden], [data-speech-skip], svg, script, style, template, noscript').forEach(n => n.remove());
+  c.querySelectorAll('details:not([open])').forEach(n => n.remove());
   return answerSafeSpeech(c.textContent);
 }
+function speechVisible(el) {
+  if (!el || !el.getClientRects().length || el.closest('[hidden], [aria-hidden="true"]')) return false;
+  for (let p = el.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS' && !p.open) return false;
+  return true;
+}
+function casebookSpeechPart(book, key) {
+  return Array.from(book?.querySelectorAll('[data-speech-part]') || []).find(el => el.dataset.speechPart === key && speechVisible(el));
+}
 function currentSpeechTarget() {
+  const panel = Array.from(document.querySelectorAll('.overlay-panel')).filter(speechVisible).at(-1);
+  if (panel?.hasAttribute('data-casebook-speech')) return casebookSpeechPart(panel, panel.dataset.casebookSpeech) || Array.from(panel.querySelectorAll('[data-speech-default]')).find(speechVisible) || null;
   const root = document.querySelector('.dialogue-history .history-lines') || document.querySelector('#dialogue [data-speech-content]') || document.querySelector('#dialogue .dlg-text') || document.querySelector('.overlay-panel') || document.querySelector('.stage .card.raised') || document.querySelector('main') || document.body;
   return root.querySelector('[data-question-speech]') || root;
 }
@@ -296176,7 +296190,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.18-v94';
+const GAME_BUILD = '2026.11.18-v95';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -312628,6 +312642,13 @@ const CASEBOOK_CARRY = {
   E11: 'ch3',
   F6: 'ch3'
 };
+function casebookChapterLinks(story, student) {
+  const chapter = currentChapter(story);
+  return storyLinks(student).filter(link => {
+    const owner = link.chapter || CASEBOOK_CASES.filter(c => link.pair.some(id => c.evidence.includes(id))).slice(-1)[0]?.id;
+    return owner === chapter;
+  });
+}
 function casebookEntries(story, student) {
   const flags = story.flags || {},
     cases = CASEBOOK_CASES;
@@ -353589,6 +353610,23 @@ function Casebook({
   const [tab, setTab] = useState('evidence');
   const [sel, setSel] = useState([]);
   const [openEv, setOpenEv] = useState(null);
+  const [speechTarget, setSpeechTarget] = useState('tab-evidence'),
+    bookRef = useRef(null);
+  useEffect(() => {
+    stopSpeech();
+    return () => stopSpeech();
+  }, []);
+  const readPart = (key, play = false) => {
+    stopSpeech();
+    setSpeechTarget(key);
+    if (play) speakText(zyPlainText(casebookSpeechPart(bookRef.current, key)));
+  };
+  const chooseTab = key => {
+    stopSpeech();
+    setTab(key);
+    setSpeechTarget(key === 'evidence' && openEv ? 'clue-' + openEv : 'tab-' + key);
+  };
+  const [dedReadEv, setDedReadEv] = useState(null);
   const [dq, setDq] = useState(null);
   const [dOpt, setDOpt] = useState(null);
   const [dEv, setDEv] = useState([]);
@@ -353602,11 +353640,28 @@ function Casebook({
     notes: activeNotes,
     archives
   } = casebookEntries(story, student);
+  const chapterLinks = casebookChapterLinks(story, student),
+    hasLinks = chapterLinks.length > 0;
+  const openDeduction = d => {
+    stopSpeech();
+    setDq(d.id);
+    setDedReadEv(null);
+    setDOpt(null);
+    setDEv([]);
+    setDFb(null);
+    setSpeechTarget('deduction-' + d.id + (d.junior ? '-question' : ''));
+  };
+  const goThink = () => {
+    chooseTab('deduce');
+    const next = deductions.find(d => d.chapter === chapter && !story.flags[d.set] && condOk(story, d.after));
+    if (next) openDeduction(next);
+  };
   const archivedCount = archives.reduce((n, g) => n + g.evidence.length, 0);
   const tryLink = () => {
-    if (sel.length !== 2) return;
+    if (sel.length !== 2 || !hasLinks) return;
+    stopSpeech();
     const key = sel.slice().sort().join('+');
-    const link = storyLinks(student).find(l => l.pair.slice().sort().join('+') === key);
+    const link = chapterLinks.find(l => l.pair.slice().sort().join('+') === key);
     if (!link) {
       toast('這兩個證據之間看不出直接關係。');
       setSel([]);
@@ -353616,6 +353671,7 @@ function Casebook({
     setSel([]);
   };
   const submitDeduce = () => {
+    stopSpeech();
     const d = deductions.find(x => x.id === dq);
     if (dOpt == null) {
       setDFb({
@@ -353655,14 +353711,19 @@ function Casebook({
     role: "dialog",
     "aria-label": "\u8ABF\u67E5\u624B\u518A"
   }, React.createElement("div", {
-    className: "overlay-panel book col"
+    className: "overlay-panel book col",
+    ref: bookRef,
+    "data-casebook-speech": speechTarget
   }, React.createElement("div", {
     className: "row between"
   }, React.createElement("div", null, React.createElement("span", {
     className: "eyebrow"
   }, "\u5192\u96AA\u8ABF\u67E5\u624B\u518A\u30FB", STORY_TITLE), React.createElement("h2", null, typeof CHAPTER_TITLES !== 'undefined' && CHAPTER_TITLES[chapter] || (chapter === 'ch1' ? '第一章・時鐘塔的秘密' : chapter === 'ch2' ? '第二章・失落的手稿' : '第三章・午夜列車'))), React.createElement(Btn, {
     small: true,
-    onClick: onClose,
+    onClick: () => {
+      stopSpeech();
+      onClose();
+    },
     id: "book-close"
   }, junior ? '關閉手冊' : '闔上手冊')), React.createElement("div", {
     className: "tabs"
@@ -353670,7 +353731,7 @@ function Casebook({
     key: k,
     id: `book-${k}`,
     className: tab === k ? 'active' : '',
-    onClick: () => setTab(k)
+    onClick: () => chooseTab(k)
   }, n))), junior && React.createElement("details", {
     className: "junior-glossary",
     id: "junior-glossary"
@@ -353678,26 +353739,39 @@ function Casebook({
     key: word
   }, React.createElement("dt", null, word), React.createElement("dd", null, meaning))))), tab === 'evidence' && React.createElement("div", {
     className: "col"
-  }, !evs.length && React.createElement(Notice, null, archivedCount ? '用完的線索已收進下方「已結案線索」。找到新線索時，會顯示在這裡。' : '還沒有證據。到各處觀察、和人談話，證據會記在這裡。'), !!evs.length && React.createElement("div", {
+  }, !evs.length && React.createElement(Notice, null, archivedCount ? '用完的線索已收進下方「已結案線索」。找到新線索時，會顯示在這裡。' : '還沒有證據。到各處觀察、和人談話，證據會記在這裡。'), React.createElement("div", {
+    className: "small muted",
+    "data-speech-part": "tab-evidence",
+    "data-speech-default": true
+  }, "\u5148\u9EDE\u4E00\u5F35", junior ? '線索' : '證據', "\uFF0C\u518D\u6309\u300C\u5FF5\u7D66\u6211\u807D\u300D\uFF0C\u53EA\u6703\u5FF5\u9019\u5F35\u7684\u5167\u5BB9\u3002"), !!evs.length && React.createElement("div", {
     className: "small muted"
-  }, junior ? chapter === 'ch1' ? '點一張線索卡，讀讀內容。選兩張再按「放在一起看」，也可以到「想一想」一步一步試。' : '點一張線索卡，讀讀內容。選兩張再按「放在一起看」，看看它們有什麼關係。' : '點證據查看；選兩個證據再按「建立關聯」，看看它們合起來說了什麼。'), React.createElement("div", {
+  }, hasLinks ? junior ? '選兩張線索再按「放在一起看」，也可以到「想一想」一步一步試。' : '選兩個證據再按「建立關聯」，看看它們合起來說了什麼。' : junior ? '讀完線索，直接到「想一想」，選線索說明你的想法。' : '讀完證據，直接到「推論」選擇依據並提出判斷。'), !!evs.length && !hasLinks && React.createElement("div", {
+    className: "row"
+  }, React.createElement(Btn, {
+    kind: "primary",
+    id: "book-start-deduce",
+    onClick: goThink
+  }, junior ? '到想一想' : '到推論')), React.createElement("div", {
     className: "evgrid"
   }, evs.map(e => React.createElement("button", {
     key: e.id,
     id: `ev-${e.id}`,
-    className: `evcard ${sel.includes(e.id) ? 'sel' : ''}`,
+    className: `evcard ${(hasLinks ? sel.includes(e.id) : openEv === e.id) ? 'sel' : ''}`,
+    "aria-pressed": hasLinks ? sel.includes(e.id) : openEv === e.id,
     onClick: () => {
+      readPart('clue-' + e.id);
       setOpenEv(e.id);
-      setSel(s => s.includes(e.id) ? s.filter(x => x !== e.id) : s.length >= 2 ? [s[1], e.id] : [...s, e.id]);
+      if (hasLinks) setSel(s => s.includes(e.id) ? s.filter(x => x !== e.id) : s.length >= 2 ? [s[1], e.id] : [...s, e.id]);
     }
   }, React.createElement("span", {
     className: "evid",
     "aria-hidden": junior ? true : undefined
   }, junior ? '🔎' : e.id), React.createElement("b", null, e.name)))), openEv && evs.some(e => e.id === openEv) && React.createElement("div", {
-    className: "card soft"
+    className: "card soft",
+    "data-speech-part": 'clue-' + openEv
   }, junior && evidence(openEv).lines ? React.createElement(JuniorEvidenceDetail, {
     evidence: evidence(openEv)
-  }) : React.createElement(React.Fragment, null, React.createElement("b", null, evidence(openEv).name), React.createElement("p", null, evidence(openEv).desc))), !!evs.length && React.createElement("div", {
+  }) : React.createElement(React.Fragment, null, React.createElement("b", null, evidence(openEv).name), React.createElement("p", null, evidence(openEv).desc))), !!evs.length && hasLinks && React.createElement("div", {
     className: "row"
   }, React.createElement(Btn, {
     kind: "teal",
@@ -353713,26 +353787,40 @@ function Casebook({
     className: "notice good"
   }, "\uD83D\uDD17 ", storyNote(student, n)))), archives.length > 0 && React.createElement("details", {
     className: "casebook-archive",
-    id: "book-archive"
+    id: "book-archive",
+    onToggle: e => {
+      if (e.target === e.currentTarget && !e.currentTarget.open) stopSpeech();
+    }
   }, React.createElement("summary", null, "\u5DF2\u7D50\u6848\u7DDA\u7D22\uFF08", archivedCount, "\uFF09"), React.createElement("p", {
     className: "small muted"
   }, junior ? '用完的線索收在這裡。點章節，再點線索，就能重看。後面還要用的線索會留在上方。' : '已完成案件的線索與關聯保存在這裡，可隨時展開查閱。後續案件仍會用到的證據會留在上方。'), archives.map(g => React.createElement("details", {
     key: g.id,
     className: "archive-case",
-    id: `archive-${g.id}`
+    id: `archive-${g.id}`,
+    onToggle: e => {
+      if (e.target === e.currentTarget && !e.currentTarget.open) stopSpeech();
+    }
   }, React.createElement("summary", null, CHAPTER_TITLES[g.id], "\uFF08", g.evidence.length, "\uFF09"), g.evidence.map(e => React.createElement("details", {
     key: e.id,
     className: "archive-clue",
-    id: `archive-ev-${e.id}`
-  }, React.createElement("summary", null, junior ? '🔎' : e.id, " ", e.name), junior ? React.createElement(JuniorEvidenceDetail, {
+    id: `archive-ev-${e.id}`,
+    onToggle: event => {
+      if (event.target !== event.currentTarget) return;
+      if (event.currentTarget.open) readPart('archive-' + e.id);else stopSpeech();
+    }
+  }, React.createElement("summary", null, junior ? '🔎' : e.id, " ", e.name), React.createElement("div", {
+    "data-speech-part": 'archive-' + e.id
+  }, junior ? React.createElement(JuniorEvidenceDetail, {
     evidence: e
-  }) : React.createElement("p", null, e.desc), e.time && React.createElement("p", {
+  }) : React.createElement(React.Fragment, null, React.createElement("b", null, e.name), React.createElement("p", null, e.desc)), e.time && React.createElement("p", {
     className: "small muted archive-time"
-  }, e.displayTime || e.time, "\uFF1A", e.tl))), g.notes.map((n, i) => React.createElement("div", {
+  }, e.displayTime || e.time, "\uFF1A", e.tl)))), g.notes.map((n, i) => React.createElement("div", {
     key: i,
     className: "notice good"
   }, "\uD83D\uDD17 ", storyNote(student, n))))))), tab === 'puzzles' && React.createElement("div", {
-    className: "col"
+    className: "col",
+    "data-speech-part": "tab-puzzles",
+    "data-speech-default": true
   }, storyObjectives(student).filter(o => o.chapter === chapter || condOk(story, o.done)).map(o => React.createElement("div", {
     key: o.id,
     className: `ach ${condOk(story, o.done) ? '' : 'locked'}`,
@@ -353744,7 +353832,9 @@ function Casebook({
       textDecoration: condOk(story, o.done) ? 'line-through' : 'none'
     }
   }, o.text)))), tab === 'people' && React.createElement("div", {
-    className: "grid"
+    className: "grid",
+    "data-speech-part": "tab-people",
+    "data-speech-default": true
   }, Object.values(NPCS).map(n => storyPerson(student, n)).filter(n => story.met.includes(n.id) || n.companion && story.flags.has_tick).map(n => n.companion ? {
     ...n,
     ...selectedCompanion(student),
@@ -353777,7 +353867,9 @@ function Casebook({
   }, n.desc), React.createElement("p", {
     className: "small muted"
   }, "\u76EE\u7684\uFF1A", n.goal)))), !story.met.length && React.createElement(Notice, null, "\u9084\u6C92\u6709\u9047\u5230\u4EFB\u4F55\u4EBA\u3002")), tab === 'map' && React.createElement("div", {
-    className: "col"
+    className: "col",
+    "data-speech-part": "tab-map",
+    "data-speech-default": true
   }, uniq.map(id => React.createElement("div", {
     key: id,
     className: "ach"
@@ -353786,7 +353878,9 @@ function Casebook({
   }, id === 'overworld' ? '島上的道路連接各地' : visibleHotspots(SCENES[id], story).filter(h => h.kind !== 'exit').map(h => h.kind === 'npc' ? NPCS[h.npc].name : h.label).join('、') || '—')))), story.evidence.includes('E10') && React.createElement("div", {
     className: "notice"
   }, evidence('E10').desc)), tab === 'timeline' && React.createElement("div", {
-    className: "col"
+    className: "col",
+    "data-speech-part": "tab-timeline",
+    "data-speech-default": true
   }, archivedCount > 0 && React.createElement("p", {
     className: "small muted"
   }, "\u820A\u6848\u7684\u6642\u9593\u7D00\u9304\u5DF2\u6536\u5728\u300C", junior ? '線索' : '證據', "\u300D\u9801\u7684\u300C\u5DF2\u7D50\u6848\u7DDA\u7D22\u300D\u3002"), !timeline.length && React.createElement(Notice, null, "\u76EE\u524D\u6C92\u6709\u5F85\u67E5\u7684\u6642\u9593\u7D00\u9304\u3002"), timeline.map(e => React.createElement("div", {
@@ -353809,7 +353903,9 @@ function Casebook({
   }, junior ? JUNIOR_CH1_LINKS.ins_time : '洞察：鐘其實在 6 點過後不久就停了；6:40 是被撥出來的。')), tab === 'deduce' && React.createElement("div", {
     className: "col"
   }, React.createElement("div", {
-    className: "small muted"
+    className: "small muted",
+    "data-speech-part": "tab-deduce",
+    "data-speech-default": true
   }, junior && chapter === 'ch1' ? '先找線索，再說想法。選錯可以回去看，不會結束遊戲。' : '推論必須指出依據的證據。答錯不會結束遊戲，可以回去重新檢查證據。'), deductions.filter(d => d.chapter === chapter).map(d => {
     if (d.junior) return React.createElement(JuniorDeduction, {
       key: d.id,
@@ -353817,9 +353913,14 @@ function Casebook({
       story: story,
       student: student,
       active: dq === d.id,
-      onOpen: () => setDq(d.id),
-      onClose: () => setDq(null),
-      onDeduce: onDeduce
+      onOpen: () => openDeduction(d),
+      onClose: () => {
+        setDq(null);
+        readPart('tab-deduce');
+      },
+      onDeduce: onDeduce,
+      onReadPart: readPart,
+      speechTarget: speechTarget
     });
     const solved = !!story.flags[d.set];
     const open = condOk(story, d.after);
@@ -353827,6 +353928,7 @@ function Casebook({
     return React.createElement("div", {
       key: d.id,
       className: "card col",
+      "data-speech-part": 'deduction-' + d.id,
       style: {
         opacity: open || solved ? 1 : 0.6
       }
@@ -353842,12 +353944,7 @@ function Casebook({
       small: true,
       kind: "primary",
       id: `ded-${d.id}`,
-      onClick: () => {
-        setDq(d.id);
-        setDOpt(null);
-        setDEv([]);
-        setDFb(null);
-      }
+      onClick: () => openDeduction(d)
     }, "\u958B\u59CB\u63A8\u8AD6")), !solved && dq === d.id && React.createElement("div", {
       className: "col"
     }, d.options.map((o, i) => React.createElement("label", {
@@ -353866,8 +353963,15 @@ function Casebook({
       key: e.id,
       id: `dev-${e.id}`,
       className: `chip ${dEv.includes(e.id) ? 'sel' : ''}`,
-      onClick: () => setDEv(x => x.includes(e.id) ? x.filter(y => y !== e.id) : [...x, e.id])
-    }, e.id, " ", e.name))), React.createElement("div", {
+      onClick: () => {
+        setDedReadEv(e.id);
+        readPart('deduction-' + d.id + '-' + e.id);
+        setDEv(x => x.includes(e.id) ? x.filter(y => y !== e.id) : [...x, e.id]);
+      }
+    }, e.id, " ", e.name))), dedReadEv && deductionEvs.some(e => e.id === dedReadEv) && React.createElement("div", {
+      className: "card soft",
+      "data-speech-part": 'deduction-' + d.id + '-' + dedReadEv
+    }, React.createElement("b", null, evidence(dedReadEv).name), React.createElement("p", null, evidence(dedReadEv).desc)), React.createElement("div", {
       className: "row"
     }, React.createElement(Btn, {
       kind: "primary",
@@ -353875,17 +353979,22 @@ function Casebook({
       onClick: submitDeduce
     }, "\u63D0\u51FA\u63A8\u8AD6"), React.createElement(Btn, {
       kind: "ghost",
-      onClick: () => setDq(null)
+      onClick: () => {
+        setDq(null);
+        readPart('tab-deduce');
+      }
     }, "\u53D6\u6D88")), dFb && React.createElement("div", {
       className: `notice ${dFb.kind}`
     }, dFb.text)));
   }))));
 }
 function JuniorEvidenceDetail({
-  evidence
+  evidence,
+  speechId
 }) {
   return React.createElement("div", {
-    className: "junior-evidence-detail col"
+    className: "junior-evidence-detail col",
+    "data-speech-part": speechId
   }, React.createElement("b", null, evidence.name), evidence.source && React.createElement("span", {
     className: "small muted"
   }, "\u7DDA\u7D22\u5F9E\u54EA\u88E1\u4F86\uFF1A", evidence.source), React.createElement("ul", null, (evidence.lines || [evidence.desc]).map((line, i) => React.createElement("li", {
@@ -353899,7 +354008,9 @@ function JuniorDeduction({
   active,
   onOpen,
   onClose,
-  onDeduce
+  onDeduce,
+  onReadPart = () => {},
+  speechTarget = ''
 }) {
   const [phase, setPhase] = useState('evidence'),
     [selected, setSelected] = useState([]),
@@ -353913,7 +354024,10 @@ function JuniorDeduction({
     open = condOk(story, d.after);
   const need = Math.max(2, (d.requires || []).length);
   const available = d.pool.filter(id => story.evidence.includes(id)).map(id => storyEvidence(student, id));
+  const questionKey = 'deduction-' + d.id + '-question',
+    clueKey = id => 'deduction-' + d.id + '-' + id;
   const reset = () => {
+    stopSpeech();
     setPhase('evidence');
     setSelected([]);
     setAnswer(null);
@@ -353921,10 +354035,12 @@ function JuniorDeduction({
     onOpen();
   };
   const toggle = id => {
+    onReadPart(clueKey(id));
     setFeedback(null);
     setSelected(prev => prev.includes(id) ? prev.filter(x => x !== id) : prev.length < need ? [...prev, id] : [...prev.slice(1), id]);
   };
   const submit = () => {
+    stopSpeech();
     if (answer == null) {
       setFeedback({
         kind: 'warn',
@@ -353960,7 +354076,9 @@ function JuniorDeduction({
     "aria-label": d.question
   }, React.createElement("div", {
     className: "row between"
-  }, React.createElement("h3", null, d.question), React.createElement(Tag, {
+  }, React.createElement("h3", {
+    "data-speech-part": questionKey
+  }, d.question), React.createElement(Tag, {
     kind: solved ? 'good' : open ? 'accent' : undefined
   }, solved ? '已想清楚' : open ? '可以開始' : '先找線索')), solved && React.createElement("p", {
     role: "status"
@@ -353995,7 +354113,8 @@ function JuniorDeduction({
   }, React.createElement("span", {
     className: "junior-evidence-state"
   }, selected.includes(e.id) ? '✓ 已選' : '○ 未選'), React.createElement(JuniorEvidenceDetail, {
-    evidence: e
+    evidence: e,
+    speechId: clueKey(e.id)
   })))), React.createElement("div", {
     className: "row"
   }, React.createElement("span", {
@@ -354005,19 +354124,34 @@ function JuniorDeduction({
     id: "ded-next",
     disabled: selected.length !== need,
     onClick: () => {
+      stopSpeech();
       setPhase('reason');
       setFeedback(null);
     }
   }, "\u5E36\u8457\u7DDA\u7D22\u60F3\u4E00\u60F3"), React.createElement(Btn, {
     kind: "ghost",
-    onClick: onClose
+    onClick: () => {
+      stopSpeech();
+      onClose();
+    }
   }, "\u5148\u4F11\u606F"))) : React.createElement(React.Fragment, null, React.createElement("details", {
     className: "junior-selected-evidence",
-    open: true
-  }, React.createElement("summary", null, "\u518D\u770B\u4E00\u6B21\u6211\u9078\u7684\u7DDA\u7D22"), selected.map(id => React.createElement(JuniorEvidenceDetail, {
+    open: true,
+    onToggle: e => {
+      if (e.target === e.currentTarget && !e.currentTarget.open) stopSpeech();
+    }
+  }, React.createElement("summary", null, "\u518D\u770B\u4E00\u6B21\u6211\u9078\u7684\u7DDA\u7D22"), selected.map(id => React.createElement("div", {
     key: id,
-    evidence: storyEvidence(student, id)
-  }))), React.createElement("fieldset", {
+    className: 'casebook-readable-clue' + (speechTarget === clueKey(id) ? ' current' : '')
+  }, React.createElement(JuniorEvidenceDetail, {
+    evidence: storyEvidence(student, id),
+    speechId: clueKey(id)
+  }), React.createElement(Btn, {
+    small: true,
+    kind: "ghost",
+    id: 'read-clue-' + id,
+    onClick: () => onReadPart(clueKey(id), true)
+  }, "\u5FF5\u9019\u5F35\u7DDA\u7D22")))), React.createElement("fieldset", {
     className: "junior-reason-options"
   }, React.createElement("legend", null, "\u54EA\u4E00\u500B\u60F3\u6CD5\u6709\u7DDA\u7D22\u652F\u6301\uFF1F"), d.options.map((o, i) => React.createElement("label", {
     key: i,
@@ -354042,6 +354176,7 @@ function JuniorDeduction({
     id: "ded-back",
     kind: "ghost",
     onClick: () => {
+      stopSpeech();
       setPhase('evidence');
       setFeedback(null);
     }
