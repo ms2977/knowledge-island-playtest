@@ -1071,7 +1071,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261118-weekly-v97-r1">
+<meta name="game-release" content="playtest-20261119-hints-v98-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -134745,6 +134745,361 @@ const PAINT_CONCEPTS = {
     "prerequisites": []
   }
 };
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory();else root.HintBuilder = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+  const fmt = n => typeof n === 'number' && Number.isFinite(n) ? n.toLocaleString('en-US') : String(n);
+  const has = (p, k) => p && p[k] !== undefined && p[k] !== null;
+  const UNIT_RULES = [[/公分/, /毫米/, '看尺上的刻度：1 公分裡面有幾個小格？每一小格是 1 毫米。'], [/公尺/, /公分/, '想想 1 公尺的尺有多長，上面最大的數字是幾公分。'], [/公里/, /公尺/, '公里是大單位，換成公尺要乘很多倍；先想 1 公里是幾公尺，再乘。'], [/公升/, /毫升/, '想想 1 公升的牛奶盒上面寫幾毫升，再乘或除。'], [/公斤/, /公克/, '想想 1 公斤的米有幾公克，再乘或除。'], [/公噸/, /公斤/, '公噸是很大的單位；先想 1 公噸是幾公斤，再乘或除。'], [/小時|時/, /分鐘|分/, '1 小時有幾分鐘？大單位換小單位用乘，小單位換大單位用除。'], [/分鐘|分/, /秒/, '1 分鐘有幾秒？大單位換小單位用乘，小單位換大單位用除。']];
+  function byUnit(text) {
+    const t = String(text || '');
+    if (!/幾|多少|換|合起來|等於/.test(t)) return null;
+    for (const [a, b, hint] of UNIT_RULES) if (a.test(t) && b.test(t)) return hint;
+    return null;
+  }
+  function byFigure(fig) {
+    if (!fig || typeof fig !== 'object') return null;
+    const m = fig.mode || fig.kind || fig.type;
+    if (m === 'grid' && has(fig, 'rows') && has(fig, 'cols')) {
+      const miss = Number(fig.missing) || 0;
+      return `這張圖有 ${fig.rows} 排，每排 ${fig.cols} 格。先算 ${fig.rows}×${fig.cols}` + (miss ? `，再扣掉 ${miss} 個空格。` : '。');
+    }
+    if (m === 'rectangle' && has(fig, 'w') && has(fig, 'h')) return `長方形的面積是長×寬，用 ${fig.w}×${fig.h}。`;
+    if (m === 'rectangle') return '長方形的面積是長×寬；周長是四邊相加。';
+    if (m === 'clockTurn') return '鐘面一圈 360 度，分成 12 大格，每大格 30 度；轉幾格就是幾個 30。';
+    if (m === 'calendar') return '月曆一列是 7 天；正下方一格是加 7，正上方一格是減 7。';
+    if (m === 'pie') return '先數圓被平分成幾份（分母），再數塗色的有幾份（分子）。';
+    if (m === 'placeValue' || m === 'place') return '先把千位、百位、十位、個位分開看，題目問的是哪一位？';
+    if (m === 'numberline' || m === 'line') return '先看數線一格代表多少，再從起點一格一格數。';
+    if (m === 'protractor' || m === 'angle') return '先把量角器的中心對準頂點、0 對準一邊，再看另一邊指到的刻度。';
+    if (m === 'clock') return '先看短針在哪兩個數字之間，再看長針指幾分。';
+    if (m === 'table' || m === 'chart' || m === 'bar' || m === 'lineChart') return '先在表格或圖裡找到題目問的那一列，再比較數字。';
+    if (m === 'fractionBar' || m === 'fraction') return '分母是平分成幾份，分子是取了幾份。';
+    return null;
+  }
+  function byProof(p) {
+    if (!p || typeof p !== 'object') return null;
+    const a = Array.isArray(p.args) ? p.args : [];
+    const op = p.op;
+    switch (op) {
+      case 'sum':
+      case 'add':
+        if (a.length === 1) return null;
+        if (a.length >= 2) return `把 ${a.map(fmt).join('、')} 加起來；從個位開始加，滿十要進位。`;
+        if (has(p, 'a') && has(p, 'b')) return `把 ${fmt(p.a)} 和 ${fmt(p.b)} 加起來。`;
+        return '先把要加的數都找出來，從個位開始加。';
+      case 'sub':
+        if (a.length === 1) return null;
+        if (a.length >= 2) return `用 ${fmt(a[0])} 減 ${a.slice(1).map(fmt).join('、再減 ')}；不夠減要向前一位借。`;
+        return '先找出「原本有多少」和「拿走多少」，再相減。';
+      case 'mul':
+        if (a.length === 1) return null;
+        if (a.length === 2) return `這題是「${fmt(a[1])} 個 ${fmt(a[0])}」，用乘法 ${fmt(a[0])}×${fmt(a[1])}；先算個位，再算十位。`;
+        if (a.length === 3) return `先算 ${fmt(a[0])}×${fmt(a[1])}，再把結果乘 ${fmt(a[2])}。`;
+        return '題目裡有「每個幾個、共幾個」，就是乘法。';
+      case 'mulAdd':
+        if (a.length === 3) return `先算 ${fmt(a[0])}×${fmt(a[1])}，再加上 ${fmt(a[2])}。`;
+        return '先乘再加：先算「幾個幾」，再加上多出來的。';
+      case 'mulSub':
+        if (a.length === 3) return `先算 ${fmt(a[0])}×${fmt(a[1])}，換成相同單位，再減去 ${fmt(a[2])}。`;
+        return '先換成相同單位，再扣掉用掉的數量。';
+      case 'arrivalMinute':
+        return '從出發時刻往後數，先到整點，再算剩下幾分鐘。';
+      case 'subDiv':
+        if (a.length === 3) return `先算 ${fmt(a[0])}−${fmt(a[1])}，再把結果平均分成 ${fmt(a[2])} 份。`;
+        return '先減再除：先算剩下多少，再平均分。';
+      case 'floorDiv':
+      case 'division':
+      case 'divrem':
+      case 'chainDiv':
+      case 'estimateDiv':
+      case 'divEstimate':
+        if (a.length >= 2) return `${fmt(a[0])} 裡面有幾個 ${fmt(a[1])}？用除法 ${fmt(a[0])}÷${fmt(a[1])}，分不完的是餘數。`;
+        return '「平均分」或「每幾個一組」就是除法；分不完的是餘數。';
+      case 'tenths':
+      case 'hundredths':
+      case 'fractionDecimal':
+        return '先把小數點對齊，像整數一樣算，最後再把小數點放回去。';
+      case 'compare':
+        return '整體一樣時，分母相同就比分子；分母不同，先換成一樣的分母再比。';
+      case 'fraction':
+      case 'mixed':
+        return '分母是平分成幾份，分子是取了幾份；帶分數先看整數部分。';
+      case 'round':
+      case 'estimate':
+      case 'estimateAdd':
+      case 'floor':
+      case 'ceil':
+        return '先看要估到哪一位，再看它右邊那一位是 0 到 4（捨去）還是 5 到 9（進位）。';
+      case 'elapsed':
+      case 'clock':
+        return '先算到整點，再算剩下的分鐘；跨過 12 點要分兩段。';
+      case 'angle':
+        return '先把量角器的中心對準頂點、0 對準一邊，再讀另一邊的刻度；大於 90 度是鈍角。';
+      case 'line':
+        return '先看數線一格代表多少，再從 0 數到題目的位置。';
+      case 'chart':
+      case 'records':
+      case 'calc':
+        return '先在表格或圖裡找到題目問的那一列，再把需要的數字抄下來計算。';
+      case 'perimeter':
+        return '周長是四邊加起來；長方形有兩個長、兩個寬。';
+      case 'cutArea':
+        return '先算整個長方形的面積，再扣掉被切掉的部分。';
+      case 'cubes':
+      case 'faces':
+      case 'net':
+        return '先數一層有幾個、有幾層；看展開圖時，相對的面不會相鄰。';
+      case 'parity':
+        return '個位是 0、2、4、6、8 的是偶數，其他是奇數。';
+      case 'congruence':
+        return '全等是形狀和大小都一樣，翻轉或轉向也算。';
+      case 'lineRelation':
+        return '永遠不相交的是平行；相交成直角的是垂直。';
+      case 'circle':
+        return '半徑從圓心到圓周；直徑是兩個半徑。';
+      case 'digit':
+        return '先把數字一位一位寫出來，題目問的是哪一位？';
+      default:
+        return null;
+    }
+  }
+  function bySubject(subject) {
+    switch (subject) {
+      case 'math':
+        return '先找出題目給的數字和單位，再想這題是加、減、乘、除哪一種。';
+      case 'chinese':
+        return '先找題目裡的關鍵詞，再把每個選項放回句子裡讀讀看，哪一個最通順。';
+      case 'science':
+        return '先想題目裡的條件有哪些一樣、哪些不一樣，答案要有觀察到的證據。';
+      case 'social':
+        return '先找出資料的來源和時間，再判斷哪個說法有根據。';
+      case 'english':
+        return '先看單字的開頭字母和中文意思對不對，再念一次。';
+      case 'life':
+        return '先想想生活裡遇到這種情況，你會先做什麼。';
+      default:
+        return '先找題目要你確認的資料，再比較選項。';
+    }
+  }
+  function leaks(text, answer) {
+    if (!text || answer == null) return false;
+    const ans = String(answer).replace(/,/g, '').trim();
+    if (!ans) return false;
+    const plain = String(text).replace(/,/g, '');
+    if (/^\d+(\.\d+)?$/.test(ans)) {
+      const re = new RegExp('(^|[^\\d.])' + ans.replace('.', '\\.') + '(?![\\d.])');
+      return re.test(plain);
+    }
+    return ans.length >= 2 && plain.includes(ans);
+  }
+  function buildPlan(raw, meta) {
+    const subject = meta && meta.subject || raw.subject || '';
+    const answer = raw.answer ?? raw.options?.find(o => o && o.correct)?.text;
+    const kpId = raw.kpId || meta?.kpId;
+    const rules = meta?.rules || {};
+    const topic = Array.isArray(rules[kpId]) ? rules[kpId] : [];
+    const candidates = [['unit', byUnit(raw.q || raw.prompt)], ['figure', byFigure(raw.figure)], ['proof', byProof(raw.proof)], ...topic.map(t => ['topic', t])];
+    const accepted = candidates.find(([, text]) => text && !leaks(text, answer));
+    const out = [],
+      kinds = [],
+      sources = [];
+    if (accepted) {
+      out.push(accepted[1]);
+      kinds.push(accepted[0] === 'topic' ? 'topic' : 'specific');
+      sources.push(accepted[0]);
+    }
+    let second = bySubject(subject);
+    if (leaks(second, answer)) second = '再讀一次問題，核對需要的線索。';
+    if (!out.length || out[0] !== second) {
+      out.push(second);
+      kinds.push('subject');
+      sources.push(subject ? 'subject' : 'generic');
+    }
+    return {
+      hints: out,
+      hintKinds: kinds,
+      sources
+    };
+  }
+  function buildHints(raw, meta) {
+    return buildPlan(raw, meta).hints;
+  }
+  function forQuestion(raw, meta) {
+    const own = Array.isArray(raw.hints) && raw.hints.length ? raw.hints : raw.hint ? [raw.hint] : raw.quality?.hints;
+    const generated = !Array.isArray(own) || !own.length;
+    const plan = buildPlan(raw, meta);
+    const hints = (generated ? plan.hints : own).map(h => typeof h === 'string' ? h : h.text).filter(Boolean);
+    const kinds = generated ? plan.hintKinds : hints.map((_, i) => i === 0 ? 'specific' : 'subject');
+    let fullRevealAt = raw.fullRevealAt || null;
+    let filtered = false;
+    const answer = raw.answer ?? raw.options?.find(o => o && o.correct)?.text;
+    if (!generated) hints.forEach((h, i) => {
+      if ((!fullRevealAt || i < fullRevealAt - 1) && leaks(h, answer)) {
+        hints[i] = plan.hints[Math.min(i, plan.hints.length - 1)];
+        kinds[i] = plan.hintKinds[Math.min(i, plan.hintKinds.length - 1)];
+        filtered = true;
+      }
+    });
+    const why = String(raw.why || raw.explain || '');
+    if (!fullRevealAt && why) {
+      hints.push(why);
+      kinds.push('explanation');
+      fullRevealAt = hints.length;
+    }
+    if (fullRevealAt) kinds[fullRevealAt - 1] = 'explanation';
+    return {
+      hints,
+      fullRevealAt,
+      hintKinds: kinds,
+      hintSource: generated ? plan.sources[0] : filtered ? 'authored-filtered' : 'authored'
+    };
+  }
+  return {
+    buildHints,
+    buildPlan,
+    forQuestion,
+    leaks,
+    byUnit,
+    byFigure,
+    byProof
+  };
+});
+const HINT_RULES = {
+  "g3_place": ["先標出每個數字所在的位值。"],
+  "g3_addsub": ["相同位值對齊，再由右往左算。"],
+  "g3_multiply": ["找出每份的數量和共有幾份。"],
+  "g3_divide": ["圈出總量，想想要平均分幾份。"],
+  "g3_twostep": ["先想要回答問題，還缺哪個數量。"],
+  "g3_fraction": ["先確認每一份是不是一樣大。"],
+  "g3_decimal": ["先分清整數部分和小數部分。"],
+  "g3_length": ["先圈出長度單位，再回想尺的刻度。"],
+  "g3_capacity": ["先圈出容量單位，再想換算方向。"],
+  "g3_mass": ["先圈出重量單位，再想換算方向。"],
+  "g3_time": ["把開始和結束時刻標在時間線上。"],
+  "g3_area": ["先數完整的排數，再數每排格數。"],
+  "g3_shape": ["拿紙張的角比一比，再觀察各邊。"],
+  "g3_table": ["先找題目指定的列，再對應欄名。"],
+  "g3_pattern": ["比較相鄰兩個數，找出變化方式。"],
+  "g3_words": ["先找空格前後的關鍵詞，再讀一次。"],
+  "g3_sentence": ["先判斷句子是在問、在說或感嘆。"],
+  "g3_reading": ["圈出問題的關鍵詞，再回短文找。"],
+  "g3_paragraph": ["找出先後順序的詞，再連起事件。"],
+  "g3_plant": ["對照植物各部位的位置與觀察紀錄。"],
+  "g3_animal": ["比較身體構造與生活環境的關係。"],
+  "g3_water": ["比較變化前後，找出改變的條件。"],
+  "g3_weather": ["先看紀錄的時間、工具和測量項目。"],
+  "g3_magnet": ["比較物品材質與靠近後的觀察紀錄。"],
+  "g3_community": ["比較不同時期的資料，再找差異。"],
+  "g3_rules": ["想想每個做法會怎樣影響別人。"],
+  "g3_cooperation": ["先看每個人負責什麼，再看如何合作。"],
+  "g3_choice": ["先列出眼前需求，再比較可用資源。"],
+  "g3_letters": ["先念字母名稱，再比較兩種寫法。"],
+  "g3_enwords": ["先看開頭字母，再回想學過的單字。"],
+  "g3_greetings": ["先想說話情境，再比較各句的用途。"],
+  "g3_classroom": ["想像老師說這句話時，要你做什麼。"],
+  "g3_estimate": ["先看要估到哪一位，再比較接近哪個數。"],
+  "g3_numberline": ["先看起點和每一格代表的數量。"],
+  "g3_angles": ["用紙張的角比一比開口的大小。"],
+  "g3_circle": ["先找中心，再看線段連到哪裡。"],
+  "g3_nets": ["想像把紙面摺起來，哪些邊會碰到。"],
+  "g3_radicals": ["把各字拆成部件，找相同與不同處。"],
+  "g3_figurative": ["先找描述的對象，再看拿什麼比喻。"],
+  "g3_practical": ["先找稱呼、內容與最後的署名。"],
+  "g3_revise": ["把句子念一遍，圈出重複或不清楚處。"],
+  "g3_air": ["想想操作前後，哪些現象能看出變化。"],
+  "g3_soundlight": ["比較操作前後，找出現象發生的條件。"],
+  "g3_force": ["先看施力方式，再比較物體的改變。"],
+  "g3_electric": ["沿著連接路線，檢查各處是否接好。"],
+  "g3_ecology": ["比較環境條件與生物生活的需要。"],
+  "g3_maps": ["先看圖例與方向，再找指定的位置。"],
+  "g3_cultures": ["想想不同生活習慣，各有什麼原因。"],
+  "g3_information": ["先查來源，再想哪些資料適合提供。"],
+  "g3_listen": ["先聽開頭的聲音，再核對字母順序。"],
+  "g3_spell": ["先念單字，再逐一核對字母的順序。"],
+  "g3_enpattern": ["先找句中的人或物，再看動作與位置。"],
+  "g4_place": ["把數字依位值分組，再讀題目問哪位。"],
+  "g4_multiply": ["先估乘積大小，再按位值逐步計算。"],
+  "g4_divide": ["先比較被除數和除數，再試商驗算。"],
+  "g4_multistep": ["先列出各步要算什麼，再安排順序。"],
+  "g4_estimate": ["先看估算的目的，再決定保留哪一位。"],
+  "g4_fraction": ["先看每份大小，再比較整數和分數部分。"],
+  "g4_equivalent": ["想想每份如何再平分，總量才不改變。"],
+  "g4_decimal": ["先看小數位值，確認要相加還是倍增。"],
+  "g4_numberline": ["先找刻度間隔，再看整體分成幾份。"],
+  "g4_length": ["先圈出兩種單位，想大單位換小單位。"],
+  "g4_angle": ["先找角的頂點，再比較兩邊的開口。"],
+  "g4_area": ["先分清題目問裡面的大小或外圍長度。"],
+  "g4_volume": ["先數一層的方塊，再看共有幾層。"],
+  "g4_time": ["先標出起訖時刻，再分段計算。"],
+  "g4_rotation": ["先看旋轉方向，再數轉過幾個大格。"],
+  "g4_parallel": ["延長兩條線，想想會不會相交。"],
+  "g4_congruence": ["想像移動或翻轉圖形，再比較各邊。"],
+  "g4_triangle": ["先數哪些邊相等，再觀察角的大小。"],
+  "g4_quadrilateral": ["逐一比較邊長、角度與相對邊。"],
+  "g4_pattern": ["先比較前後的變化，再檢查是否重複。"],
+  "g4_table": ["先讀標題、單位和刻度，再找資料。"],
+  "g4_words": ["從前後句找關鍵詞，再代入選項。"],
+  "g4_sentence": ["先看前後兩句是什麼關係。"],
+  "g4_reading": ["圈出問題關鍵詞，回文中找支持句。"],
+  "g4_paragraph": ["找出主要事件，分清重點與補充。"],
+  "g4_practical": ["先核對收件人、事情與時間。"],
+  "g4_plant": ["先看觀察部位，再對照它的作用。"],
+  "g4_water": ["比較變化條件，觀察前後還有哪些物質。"],
+  "g4_sky": ["先看觀測時間，再比對工具與紀錄。"],
+  "g4_electric": ["分別檢查連接方式與材料的觀察結果。"],
+  "g4_force": ["先找改變的條件，再看測量結果。"],
+  "g4_ecology": ["對照環境變化前後的生物紀錄。"],
+  "g4_community": ["先看圖例與方向，再比較土地用途。"],
+  "g4_history": ["先核對資料年代，再比較前後變化。"],
+  "g4_rules": ["比較各做法如何影響大家的權益。"],
+  "g4_economy": ["先看需求、分工與資源，再比較選擇。"],
+  "g4_culture": ["先理解不同習慣的背景，再比較做法。"],
+  "g4_enwords": ["看單字前後的情境，再回想字義。"],
+  "g4_greetings": ["先看問的是人、事物、時間或位置。"],
+  "g4_listen": ["先聽清楚關鍵字，再比對整句意思。"],
+  "g4_spell": ["先拆成聽到的音，再核對字母順序。"],
+  "g4_division_check": ["先試商，再用乘法檢查是否太大。"],
+  "g4_fraction_compare": ["先確認整體相同，再比較每份大小。"],
+  "g4_estimate_reason": ["比較估算目的，想偏大或偏小的影響。"],
+  "g4_angle_build": ["把大角分成已知部分和未知部分。"],
+  "g4_shape_build": ["先列出邊與角的條件，再逐項檢查。"],
+  "g4_calculation": ["先找能湊整數的部分，再決定順序。"],
+  "g4_longread": ["對照各段關鍵詞，找出支持推論的句子。"],
+  "g4_revision": ["先確認人物指代，再檢查資訊是否清楚。"],
+  "g4_science_records": ["先比同一欄，再確認比較條件相同。"],
+  "g4_animals": ["比較身體構造與活動方式的關係。"],
+  "g4_sources": ["先分清各份資料能支持哪些說法。"],
+  "g4_passage": ["先讀問題，再回短文找對應的句子。"],
+  "g5_fraction_model": ["先確認整體與每份大小，再看運算意義。"],
+  "g5_decimal_reason": ["先拆開各位的數量，再檢查小數點位置。"],
+  "g5_expression": ["先標出各數代表什麼，再安排運算順序。"],
+  "g5_solid_model": ["把立體想成各個面，再核對相接的邊。"],
+  "g5_data_model": ["先看資料總量和筆數，再判斷問題。"],
+  "g5_word_tools": ["先看部件與語境，再查適合的詞義。"],
+  "g5_genre_read": ["先比較兩篇的目的，再找共同與差異。"],
+  "g5_poems": ["先找描寫對象，再讀語句表現的感受。"],
+  "g5_writing": ["先確認讀者需要，再檢查內容與順序。"],
+  "g5_energy": ["比較變化前後，能量以什麼方式呈現。"],
+  "g5_ecosystem": ["先看生物之間的關係，再追蹤物質來源。"],
+  "g5_organisms": ["先比較構造與功能，再找分類依據。"],
+  "g5_adaptation": ["對照生活環境，想行為有什麼作用。"],
+  "g5_earth_water": ["比較前後環境與觀察紀錄，找出變因。"],
+  "g5_sky": ["先看觀測位置與時間，再比較規律。"],
+  "g5_matter": ["先觀察物質特性，再選擇比較的方法。"],
+  "g5_inquiry": ["先區分改變的條件和測量的結果。"],
+  "g5_settlement": ["先看地形與環境，再想生活的需要。"],
+  "g5_migration": ["比較交通與工作機會，再找移動原因。"],
+  "g5_history": ["先核對史料年代與作者，再找佐證。"],
+  "g5_culture": ["比較生活背景，再理解交流帶來的改變。"],
+  "g5_rights": ["先看每個人的處境，再比較制度的影響。"],
+  "g5_enwords": ["從句子情境找線索，再比較單字意思。"],
+  "g5_enspell": ["先分成音節，再逐一核對字母組合。"],
+  "g5_enlisten": ["先聽關鍵字，再核對說話者的意思。"],
+  "g5_enpattern": ["先找主詞與動詞，再看句子在問什麼。"],
+  "g5_enread": ["先找事件順序，再回文中確認推論。"],
+  "g5_enphonics": ["先分出字母組合，再比較共同的發音。"]
+};
 const CURRICULUM_NOTE = '依教育部／國教院課綱對應，按本遊戲自訂能力分類。請勾選孩子已學過的內容；不依教科書課次或學期排列。既有學習紀錄與獎勵保留。';
 const KNOWLEDGE_POINTS = [{
   id: 'm_prime',
@@ -189373,12 +189728,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [10]
+    "op": "mul",
+    "args": [1, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:bbb11db929c27efd874ad8d2"
+  "contentKey": "g3v83:f59547583475add33ea5105d"
 }, {
   "id": "g3v83_capacity_0001",
   "kpId": "g3_capacity",
@@ -189389,12 +189744,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000]
+    "op": "mul",
+    "args": [2, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:138a0dcc598ac3b028ba149d"
+  "contentKey": "g3v83:fe65196ec4e780677795faee"
 }, {
   "id": "g3v83_mass_0001",
   "kpId": "g3_mass",
@@ -189405,12 +189760,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000]
+    "op": "mul",
+    "args": [2, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:4554ec1e95161c64208c5b58"
+  "contentKey": "g3v83:63fde5047da300b67af5670a"
 }, {
   "id": "g3v83_time_0001",
   "kpId": "g3_time",
@@ -189617,12 +189972,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [20]
+    "op": "mul",
+    "args": [2, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:e408abb43132e8882d7284c4"
+  "contentKey": "g3v83:21fc5de256dd1220fda9148d"
 }, {
   "id": "g3v83_capacity_0002",
   "kpId": "g3_capacity",
@@ -189633,12 +189988,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000]
+    "op": "mul",
+    "args": [3, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:c5fe152e295cf3d7d4e7910b"
+  "contentKey": "g3v83:a243bbe4b9d9209c1a2802c4"
 }, {
   "id": "g3v83_mass_0002",
   "kpId": "g3_mass",
@@ -189649,12 +190004,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000]
+    "op": "mul",
+    "args": [3, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:f0a0d15ff319a11c731f8ae4"
+  "contentKey": "g3v83:2492b3b1d6763a584801a4d5"
 }, {
   "id": "g3v83_time_0002",
   "kpId": "g3_time",
@@ -189861,12 +190216,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [30]
+    "op": "mul",
+    "args": [3, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:479d1686d46c89ed78230eb4"
+  "contentKey": "g3v83:e46328b7fa2a84e133d6e438"
 }, {
   "id": "g3v83_capacity_0003",
   "kpId": "g3_capacity",
@@ -189877,12 +190232,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000]
+    "op": "mul",
+    "args": [4, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:365107a713b98f7e544e9078"
+  "contentKey": "g3v83:636cc2ffaf6d9f6a10d3bd28"
 }, {
   "id": "g3v83_mass_0003",
   "kpId": "g3_mass",
@@ -189893,12 +190248,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000]
+    "op": "mul",
+    "args": [4, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:7b2ec1102aa6c3bce8f206d9"
+  "contentKey": "g3v83:02bdf7f12975fffaf2a31b0e"
 }, {
   "id": "g3v83_time_0003",
   "kpId": "g3_time",
@@ -190105,12 +190460,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [40]
+    "op": "mul",
+    "args": [4, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:28ebcede27bb2fc0eb6d11e0"
+  "contentKey": "g3v83:bc19b0aeaad9f4f39dbd3c73"
 }, {
   "id": "g3v83_capacity_0004",
   "kpId": "g3_capacity",
@@ -190121,12 +190476,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000]
+    "op": "mul",
+    "args": [5, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:4b053242c5ba06862e26f013"
+  "contentKey": "g3v83:2df81eb63b0e131c4022cd47"
 }, {
   "id": "g3v83_mass_0004",
   "kpId": "g3_mass",
@@ -190137,12 +190492,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000]
+    "op": "mul",
+    "args": [5, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:2b23fbe982a97b873cc4cac0"
+  "contentKey": "g3v83:b87304c0986d9f340145126b"
 }, {
   "id": "g3v83_time_0004",
   "kpId": "g3_time",
@@ -190349,12 +190704,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [50]
+    "op": "mul",
+    "args": [5, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:2f252dc6006109a846004922"
+  "contentKey": "g3v83:014fd26363dac9f06a236198"
 }, {
   "id": "g3v83_capacity_0005",
   "kpId": "g3_capacity",
@@ -190365,12 +190720,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000]
+    "op": "mul",
+    "args": [6, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:4e3865353caa30751f350f81"
+  "contentKey": "g3v83:24836a4f335f74efce9aaae5"
 }, {
   "id": "g3v83_mass_0005",
   "kpId": "g3_mass",
@@ -190381,12 +190736,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000]
+    "op": "mul",
+    "args": [6, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:a3ed1df01d3f8f3580f8a5ea"
+  "contentKey": "g3v83:a28ddb8bbfe19daf56e3e4c3"
 }, {
   "id": "g3v83_time_0005",
   "kpId": "g3_time",
@@ -190593,12 +190948,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [60]
+    "op": "mul",
+    "args": [6, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:3c0b44bbba1fae35b112bfe9"
+  "contentKey": "g3v83:ae5e622049891cb6b7da7f92"
 }, {
   "id": "g3v83_capacity_0006",
   "kpId": "g3_capacity",
@@ -190609,12 +190964,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000]
+    "op": "mul",
+    "args": [7, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:6f87237ca57e44fc462ae8a9"
+  "contentKey": "g3v83:45c7c338173290de466cc75b"
 }, {
   "id": "g3v83_mass_0006",
   "kpId": "g3_mass",
@@ -190625,12 +190980,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000]
+    "op": "mul",
+    "args": [7, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:918e962cdf32ce6c0aa07c98"
+  "contentKey": "g3v83:da7f072f0de876c16ff14946"
 }, {
   "id": "g3v83_time_0006",
   "kpId": "g3_time",
@@ -190837,12 +191192,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [70]
+    "op": "mul",
+    "args": [7, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:ab15c889807cd7f803df91f7"
+  "contentKey": "g3v83:deb9a951bdd8eb415519d1c4"
 }, {
   "id": "g3v83_capacity_0007",
   "kpId": "g3_capacity",
@@ -190853,12 +191208,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000]
+    "op": "mul",
+    "args": [8, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:7441df6fa0af67fba2830011"
+  "contentKey": "g3v83:31bccd806c0b348388222cb7"
 }, {
   "id": "g3v83_mass_0007",
   "kpId": "g3_mass",
@@ -190869,12 +191224,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000]
+    "op": "mul",
+    "args": [8, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:af4d8847c208f5044ec7a412"
+  "contentKey": "g3v83:a7fcd57e50769aa1ad881a27"
 }, {
   "id": "g3v83_time_0007",
   "kpId": "g3_time",
@@ -191081,12 +191436,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [80]
+    "op": "mul",
+    "args": [8, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:c574d6e289e354cfae3185d4"
+  "contentKey": "g3v83:6d35f04b60fe638d7464f703"
 }, {
   "id": "g3v83_capacity_0008",
   "kpId": "g3_capacity",
@@ -191097,12 +191452,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000]
+    "op": "mul",
+    "args": [1, 1000]
   },
   "variantGroup": "capacity-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:a1a0ea7f40ee353ea0a055bf"
+  "contentKey": "g3v83:9e573dd4c9fa367098b4e134"
 }, {
   "id": "g3v83_mass_0008",
   "kpId": "g3_mass",
@@ -191113,12 +191468,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000]
+    "op": "mul",
+    "args": [1, 1000]
   },
   "variantGroup": "mass-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:6806885a62359ce1fd71fc96"
+  "contentKey": "g3v83:a18d59517aa1e91c9d1ff47f"
 }, {
   "id": "g3v83_area_0008",
   "kpId": "g3_area",
@@ -191309,12 +191664,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [90]
+    "op": "mul",
+    "args": [9, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:d06d1ccb24a95ec3fe994306"
+  "contentKey": "g3v83:18955f25a5dbe99e989e5d36"
 }, {
   "id": "g3v83_area_0009",
   "kpId": "g3_area",
@@ -191505,12 +191860,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [100]
+    "op": "mul",
+    "args": [10, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:a59d0e6d92d90fc0e49e260c"
+  "contentKey": "g3v83:1b27cbd4be1cf6a6a70fad4e"
 }, {
   "id": "g3v83_area_0010",
   "kpId": "g3_area",
@@ -191701,12 +192056,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [110]
+    "op": "mul",
+    "args": [11, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:39e70213863bef5520d9b569"
+  "contentKey": "g3v83:96f267cec49382739e68a592"
 }, {
   "id": "g3v83_area_0011",
   "kpId": "g3_area",
@@ -191876,12 +192231,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [120]
+    "op": "mul",
+    "args": [12, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:c2eb627afc88d654dc2356fe"
+  "contentKey": "g3v83:58636149d7120d13d1b16405"
 }, {
   "id": "g3v83_area_0012",
   "kpId": "g3_area",
@@ -192072,12 +192427,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [130]
+    "op": "mul",
+    "args": [13, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:675c5b4315030cdc86a0cf76"
+  "contentKey": "g3v83:3fc638f98915171abb3a9973"
 }, {
   "id": "g3v83_area_0013",
   "kpId": "g3_area",
@@ -192268,12 +192623,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [140]
+    "op": "mul",
+    "args": [14, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:8034052ba0bfe677f386d378"
+  "contentKey": "g3v83:b74157a35b47a9afba442350"
 }, {
   "id": "g3v83_area_0014",
   "kpId": "g3_area",
@@ -192464,12 +192819,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [150]
+    "op": "mul",
+    "args": [15, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:6c6bcb32a68afb6cd31ff8ad"
+  "contentKey": "g3v83:b106b3719942172ad7e57d19"
 }, {
   "id": "g3v83_area_0015",
   "kpId": "g3_area",
@@ -192660,12 +193015,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [160]
+    "op": "mul",
+    "args": [16, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:79d7d6f2ef95061d394dd612"
+  "contentKey": "g3v83:80b95dfe8f661cf52f8b0a30"
 }, {
   "id": "g3v83_table_0016",
   "kpId": "g3_table",
@@ -192834,12 +193189,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [170]
+    "op": "mul",
+    "args": [17, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:da73f61c502d8e899414b113"
+  "contentKey": "g3v83:703844c16232ea73cf21c526"
 }, {
   "id": "g3v83_table_0017",
   "kpId": "g3_table",
@@ -193008,12 +193363,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [180]
+    "op": "mul",
+    "args": [18, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:be5f16fa95ab42335d8d82fd"
+  "contentKey": "g3v83:ceb229cb6a7d23d2b1769618"
 }, {
   "id": "g3v83_table_0018",
   "kpId": "g3_table",
@@ -193161,12 +193516,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [190]
+    "op": "mul",
+    "args": [19, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:eab67cf5d28c9ae03b965822"
+  "contentKey": "g3v83:9470d26f845ffbd313e3d8b6"
 }, {
   "id": "g3v83_table_0019",
   "kpId": "g3_table",
@@ -193335,12 +193690,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [200]
+    "op": "mul",
+    "args": [20, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:244ebe61708cf4af832afd8a"
+  "contentKey": "g3v83:eff00ad99b11d4c3a670534a"
 }, {
   "id": "g3v83_table_0020",
   "kpId": "g3_table",
@@ -193488,12 +193843,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [210]
+    "op": "mul",
+    "args": [21, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:587d06332c21aa50e9a5317c"
+  "contentKey": "g3v83:277ac54d79118be48b90625c"
 }, {
   "id": "g3v83_table_0021",
   "kpId": "g3_table",
@@ -193641,12 +193996,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [220]
+    "op": "mul",
+    "args": [22, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:700768c96e9aa34d3b21a1d3"
+  "contentKey": "g3v83:a21a9e3d4f77823ade9c2848"
 }, {
   "id": "g3v83_table_0022",
   "kpId": "g3_table",
@@ -193815,12 +194170,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [230]
+    "op": "mul",
+    "args": [23, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:751c77e9912d956a45b4fc44"
+  "contentKey": "g3v83:588bbed4a9ecd6e57e2c5057"
 }, {
   "id": "g3v83_table_0023",
   "kpId": "g3_table",
@@ -193989,12 +194344,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [240]
+    "op": "mul",
+    "args": [24, 10]
   },
   "variantGroup": "length-0",
   "humanReviewed": false,
-  "contentKey": "g3v83:db994b4b1bf601ccb525dc91"
+  "contentKey": "g3v83:863769a08fb42dd2561d6003"
 }, {
   "id": "g3v83_table_0024",
   "kpId": "g3_table",
@@ -194155,12 +194510,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [10, 3]
+    "op": "mulAdd",
+    "args": [1, 10, 3]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:9e726b761438cd4c758bd980"
+  "contentKey": "g3v83:e99492bfc9f8951c56dc9078"
 }, {
   "id": "g3v83_capacity_0009",
   "kpId": "g3_capacity",
@@ -194171,12 +194526,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000, 67]
+    "op": "mulAdd",
+    "args": [2, 1000, 67]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:fe80bb6c801efa5a1e9e666e"
+  "contentKey": "g3v83:74996a00263d293f07ecfd81"
 }, {
   "id": "g3v83_mass_0009",
   "kpId": "g3_mass",
@@ -194187,12 +194542,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000, 67]
+    "op": "mulAdd",
+    "args": [2, 1000, 67]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:118cf40682403b20b34501f4"
+  "contentKey": "g3v83:4eb8d4bf9cf9a96a00c1764c"
 }, {
   "id": "g3v83_time_0008",
   "kpId": "g3_time",
@@ -194203,12 +194558,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [542, 540]
+    "op": "arrivalMinute",
+    "args": [8, 36, 26, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:f70a1cb18ebff2413271657c"
+  "contentKey": "g3v83:4331cd759f13507301daf78a"
 }, {
   "id": "g3v83_area_0016",
   "kpId": "g3_area",
@@ -194391,12 +194746,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [20, 4]
+    "op": "mulAdd",
+    "args": [2, 10, 4]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:18ce7f1d36d86aa20e93e506"
+  "contentKey": "g3v83:bf06cd3e6037d675b1af0b81"
 }, {
   "id": "g3v83_capacity_0010",
   "kpId": "g3_capacity",
@@ -194407,12 +194762,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000, 84]
+    "op": "mulAdd",
+    "args": [3, 1000, 84]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:f5ce740d45070cf40a674132"
+  "contentKey": "g3v83:e0284b31bb53f054589510b9"
 }, {
   "id": "g3v83_mass_0010",
   "kpId": "g3_mass",
@@ -194423,12 +194778,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000, 84]
+    "op": "mulAdd",
+    "args": [3, 1000, 84]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:d2d08f75619155526ede0a5b"
+  "contentKey": "g3v83:91bd7565cdbd6b4ac899ddf3"
 }, {
   "id": "g3v83_time_0009",
   "kpId": "g3_time",
@@ -194439,12 +194794,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [544, 540]
+    "op": "arrivalMinute",
+    "args": [8, 37, 27, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:f0a8358535876f5310977822"
+  "contentKey": "g3v83:5a7fd7ff3e07e9c6e608f78d"
 }, {
   "id": "g3v83_area_0017",
   "kpId": "g3_area",
@@ -194627,12 +194982,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [30, 5]
+    "op": "mulAdd",
+    "args": [3, 10, 5]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:8ac131f8f826fb7cdb7be27f"
+  "contentKey": "g3v83:918781a9d936a110033c5f8d"
 }, {
   "id": "g3v83_capacity_0011",
   "kpId": "g3_capacity",
@@ -194643,12 +194998,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000, 101]
+    "op": "mulAdd",
+    "args": [4, 1000, 101]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:fa2311ca45f3fb78ca4fe0b5"
+  "contentKey": "g3v83:23c5bbbd6663d3242fb9db31"
 }, {
   "id": "g3v83_mass_0011",
   "kpId": "g3_mass",
@@ -194659,12 +195014,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000, 101]
+    "op": "mulAdd",
+    "args": [4, 1000, 101]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:98465285b72f2a4d6a4d53a4"
+  "contentKey": "g3v83:c59cc3c33a32726d04dbbf37"
 }, {
   "id": "g3v83_time_0010",
   "kpId": "g3_time",
@@ -194675,12 +195030,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [546, 540]
+    "op": "arrivalMinute",
+    "args": [8, 38, 28, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:697ba9e5998fe8d1feefb47f"
+  "contentKey": "g3v83:6f77446fd05d03a31735db6d"
 }, {
   "id": "g3v83_area_0018",
   "kpId": "g3_area",
@@ -194863,12 +195218,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [40, 6]
+    "op": "mulAdd",
+    "args": [4, 10, 6]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:0665024d008e1d6bb4739ef0"
+  "contentKey": "g3v83:f77bbcc3da1242d9b6a181fd"
 }, {
   "id": "g3v83_capacity_0012",
   "kpId": "g3_capacity",
@@ -194879,12 +195234,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000, 118]
+    "op": "mulAdd",
+    "args": [5, 1000, 118]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:6efaec636e5f5b2b601b7c3c"
+  "contentKey": "g3v83:38f94c9d2b9e104834e80de5"
 }, {
   "id": "g3v83_mass_0012",
   "kpId": "g3_mass",
@@ -194895,12 +195250,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000, 118]
+    "op": "mulAdd",
+    "args": [5, 1000, 118]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:80db8c5fc55d55c6bffdbd76"
+  "contentKey": "g3v83:d557ee5efee5be8522852eaf"
 }, {
   "id": "g3v83_time_0011",
   "kpId": "g3_time",
@@ -194911,12 +195266,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [548, 540]
+    "op": "arrivalMinute",
+    "args": [8, 39, 29, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:4e4945adbff76f8da08698b2"
+  "contentKey": "g3v83:5df2a41c5d016277d1e30063"
 }, {
   "id": "g3v83_area_0019",
   "kpId": "g3_area",
@@ -195099,12 +195454,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [50, 7]
+    "op": "mulAdd",
+    "args": [5, 10, 7]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:51b9dd0d5671d44930d7e8a6"
+  "contentKey": "g3v83:5c181c20586dd379c82b6de3"
 }, {
   "id": "g3v83_capacity_0013",
   "kpId": "g3_capacity",
@@ -195115,12 +195470,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000, 135]
+    "op": "mulAdd",
+    "args": [6, 1000, 135]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:b69f1ca378dc8e04cb62f8ce"
+  "contentKey": "g3v83:8740334c6fc2bcdaf4878ccd"
 }, {
   "id": "g3v83_mass_0013",
   "kpId": "g3_mass",
@@ -195131,12 +195486,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000, 135]
+    "op": "mulAdd",
+    "args": [6, 1000, 135]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:aeeef92a6396cda7de89358c"
+  "contentKey": "g3v83:e0ca19d87557a392095be72f"
 }, {
   "id": "g3v83_time_0012",
   "kpId": "g3_time",
@@ -195147,12 +195502,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [550, 540]
+    "op": "arrivalMinute",
+    "args": [8, 40, 30, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:fb6c209aeac911076fce0baf"
+  "contentKey": "g3v83:d4c80b33dac49cf5e4008f09"
 }, {
   "id": "g3v83_area_0020",
   "kpId": "g3_area",
@@ -195335,12 +195690,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [60, 8]
+    "op": "mulAdd",
+    "args": [6, 10, 8]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:fdbad8266e7828e0c4e15343"
+  "contentKey": "g3v83:e9aa2c2e139e60efe45ebddc"
 }, {
   "id": "g3v83_capacity_0014",
   "kpId": "g3_capacity",
@@ -195351,12 +195706,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000, 152]
+    "op": "mulAdd",
+    "args": [7, 1000, 152]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:78ee5537086995f76ec7b046"
+  "contentKey": "g3v83:011fdfd6480ccda7afcf531c"
 }, {
   "id": "g3v83_mass_0014",
   "kpId": "g3_mass",
@@ -195367,12 +195722,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000, 152]
+    "op": "mulAdd",
+    "args": [7, 1000, 152]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:f3f5ec0080e188a2d7777a08"
+  "contentKey": "g3v83:abbc4d293331c209867b3e4d"
 }, {
   "id": "g3v83_time_0013",
   "kpId": "g3_time",
@@ -195383,12 +195738,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [552, 540]
+    "op": "arrivalMinute",
+    "args": [8, 41, 31, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:e5c77142e1337fee1945d0a3"
+  "contentKey": "g3v83:61b9bcfb8487db508ed1ea71"
 }, {
   "id": "g3v83_area_0021",
   "kpId": "g3_area",
@@ -195571,12 +195926,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [70, 2]
+    "op": "mulAdd",
+    "args": [7, 10, 2]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:94ca2c9b57f70e51158c9b7e"
+  "contentKey": "g3v83:1bae678a76c28074e168fb97"
 }, {
   "id": "g3v83_capacity_0015",
   "kpId": "g3_capacity",
@@ -195587,12 +195942,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000, 169]
+    "op": "mulAdd",
+    "args": [8, 1000, 169]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:9dc092d9adec7a23083397d1"
+  "contentKey": "g3v83:124727d42992d79764efe371"
 }, {
   "id": "g3v83_mass_0015",
   "kpId": "g3_mass",
@@ -195603,12 +195958,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000, 169]
+    "op": "mulAdd",
+    "args": [8, 1000, 169]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:8b920a3d59d32070f7660dbc"
+  "contentKey": "g3v83:bd202e0ed8c02130551226b3"
 }, {
   "id": "g3v83_time_0014",
   "kpId": "g3_time",
@@ -195619,12 +195974,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [554, 540]
+    "op": "arrivalMinute",
+    "args": [8, 42, 32, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:14fe5ceb3c196cdd5e022b48"
+  "contentKey": "g3v83:3752a27e1e3e761d6603c211"
 }, {
   "id": "g3v83_area_0022",
   "kpId": "g3_area",
@@ -195807,12 +196162,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [80, 3]
+    "op": "mulAdd",
+    "args": [8, 10, 3]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:ab5c8d478b313e8ee840b565"
+  "contentKey": "g3v83:885f1dc84e8477fc110d70eb"
 }, {
   "id": "g3v83_capacity_0016",
   "kpId": "g3_capacity",
@@ -195823,12 +196178,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000, 186]
+    "op": "mulAdd",
+    "args": [1, 1000, 186]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:616560a43bb387f785f8d56e"
+  "contentKey": "g3v83:f86105062460e37d2bf9ffb4"
 }, {
   "id": "g3v83_mass_0016",
   "kpId": "g3_mass",
@@ -195839,12 +196194,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000, 186]
+    "op": "mulAdd",
+    "args": [1, 1000, 186]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:6bba8e93eb1d01dee0def2fb"
+  "contentKey": "g3v83:895287f3a03ecc566836216d"
 }, {
   "id": "g3v83_time_0015",
   "kpId": "g3_time",
@@ -195855,12 +196210,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [556, 540]
+    "op": "arrivalMinute",
+    "args": [8, 43, 33, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:c4aa4be34e07c70fceea0e5e"
+  "contentKey": "g3v83:7fb44188b74f1cacd466a5dd"
 }, {
   "id": "g3v83_area_0023",
   "kpId": "g3_area",
@@ -196043,12 +196398,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [90, 4]
+    "op": "mulAdd",
+    "args": [9, 10, 4]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:eaec999a0f0e13f3f6cd1433"
+  "contentKey": "g3v83:052ae463abb61eabfb0d7423"
 }, {
   "id": "g3v83_capacity_0017",
   "kpId": "g3_capacity",
@@ -196059,12 +196414,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000, 203]
+    "op": "mulAdd",
+    "args": [2, 1000, 203]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:d4411bd5ba042edf17c2b945"
+  "contentKey": "g3v83:4c5b1ed3f0fa583f3b839cff"
 }, {
   "id": "g3v83_mass_0017",
   "kpId": "g3_mass",
@@ -196075,12 +196430,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000, 203]
+    "op": "mulAdd",
+    "args": [2, 1000, 203]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:8fcf50b089d8a5c70ef7a257"
+  "contentKey": "g3v83:b5f8ecd573f97d14fe4315d1"
 }, {
   "id": "g3v83_time_0016",
   "kpId": "g3_time",
@@ -196091,12 +196446,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [558, 540]
+    "op": "arrivalMinute",
+    "args": [8, 44, 34, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:7e2b173769781fdadba371ef"
+  "contentKey": "g3v83:fc46560754a8921378895692"
 }, {
   "id": "g3v83_area_0024",
   "kpId": "g3_area",
@@ -196279,12 +196634,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [100, 5]
+    "op": "mulAdd",
+    "args": [10, 10, 5]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:a4df1d6df9a884ab836ccdac"
+  "contentKey": "g3v83:6a85957ee24205386144b84f"
 }, {
   "id": "g3v83_capacity_0018",
   "kpId": "g3_capacity",
@@ -196295,12 +196650,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000, 220]
+    "op": "mulAdd",
+    "args": [3, 1000, 220]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:dd0dceb89e1a8095a4a66be4"
+  "contentKey": "g3v83:cb968936c94ff7d03f5f764e"
 }, {
   "id": "g3v83_mass_0018",
   "kpId": "g3_mass",
@@ -196311,12 +196666,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000, 220]
+    "op": "mulAdd",
+    "args": [3, 1000, 220]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:af52ac221bf4138f13fa1d9c"
+  "contentKey": "g3v83:b46fde09fa1af59e6e7377f1"
 }, {
   "id": "g3v83_time_0017",
   "kpId": "g3_time",
@@ -196327,12 +196682,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [560, 540]
+    "op": "arrivalMinute",
+    "args": [8, 45, 35, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:d34dc49e8420b38df1515504"
+  "contentKey": "g3v83:8bb041a7544177daaad3edcd"
 }, {
   "id": "g3v83_area_0025",
   "kpId": "g3_area",
@@ -196515,12 +196870,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [110, 6]
+    "op": "mulAdd",
+    "args": [11, 10, 6]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:c1169c784f437eecc91d824e"
+  "contentKey": "g3v83:29240d736bee90d6594f6a74"
 }, {
   "id": "g3v83_capacity_0019",
   "kpId": "g3_capacity",
@@ -196531,12 +196886,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000, 237]
+    "op": "mulAdd",
+    "args": [4, 1000, 237]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:59156cb15c32cfda65323bd1"
+  "contentKey": "g3v83:b7c08d885fa98e5b9c7220ae"
 }, {
   "id": "g3v83_mass_0019",
   "kpId": "g3_mass",
@@ -196547,12 +196902,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000, 237]
+    "op": "mulAdd",
+    "args": [4, 1000, 237]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:7f5bc737bbb5b9c5ff94946c"
+  "contentKey": "g3v83:ccd6d3491dd15715824e569c"
 }, {
   "id": "g3v83_time_0018",
   "kpId": "g3_time",
@@ -196563,12 +196918,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [562, 540]
+    "op": "arrivalMinute",
+    "args": [8, 46, 36, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:c5ce4a850004389b264a679e"
+  "contentKey": "g3v83:47215e5b838b3c68c366de9d"
 }, {
   "id": "g3v83_area_0026",
   "kpId": "g3_area",
@@ -196734,12 +197089,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [120, 7]
+    "op": "mulAdd",
+    "args": [12, 10, 7]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:b1496bdd3f39737dcda6208f"
+  "contentKey": "g3v83:65b57ebc3f1bba852e2c91bb"
 }, {
   "id": "g3v83_capacity_0020",
   "kpId": "g3_capacity",
@@ -196750,12 +197105,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000, 254]
+    "op": "mulAdd",
+    "args": [5, 1000, 254]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:bfdd27e95a00e97f6855d8ee"
+  "contentKey": "g3v83:c92c3b99314d47b08cc37937"
 }, {
   "id": "g3v83_mass_0020",
   "kpId": "g3_mass",
@@ -196766,12 +197121,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000, 254]
+    "op": "mulAdd",
+    "args": [5, 1000, 254]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:ec8b083f496ba0cb80f79348"
+  "contentKey": "g3v83:658cea89497298a764bbc9ab"
 }, {
   "id": "g3v83_time_0019",
   "kpId": "g3_time",
@@ -196782,12 +197137,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [564, 540]
+    "op": "arrivalMinute",
+    "args": [8, 47, 37, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:16518c743b47a8cd01ad206b"
+  "contentKey": "g3v83:c6447757b22977d985c9b120"
 }, {
   "id": "g3v83_area_0027",
   "kpId": "g3_area",
@@ -196970,12 +197325,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [130, 8]
+    "op": "mulAdd",
+    "args": [13, 10, 8]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:fdc8dc0b3599b7ea81ae39e4"
+  "contentKey": "g3v83:7c6e8dd26437beaceb801fc1"
 }, {
   "id": "g3v83_capacity_0021",
   "kpId": "g3_capacity",
@@ -196986,12 +197341,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000, 271]
+    "op": "mulAdd",
+    "args": [6, 1000, 271]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:7aac4265594edc9a8374b2e1"
+  "contentKey": "g3v83:1b2e248b6775b7ff886ac687"
 }, {
   "id": "g3v83_mass_0021",
   "kpId": "g3_mass",
@@ -197002,12 +197357,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000, 271]
+    "op": "mulAdd",
+    "args": [6, 1000, 271]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:db75d31d13839974022ec7ad"
+  "contentKey": "g3v83:dcae9c1f6a12f3ef31e42e71"
 }, {
   "id": "g3v83_time_0020",
   "kpId": "g3_time",
@@ -197018,12 +197373,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [566, 540]
+    "op": "arrivalMinute",
+    "args": [8, 48, 38, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:610f35eb6406459bae83cf89"
+  "contentKey": "g3v83:a864cf70a262a53bd7e5c30e"
 }, {
   "id": "g3v83_area_0028",
   "kpId": "g3_area",
@@ -197206,12 +197561,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [140, 2]
+    "op": "mulAdd",
+    "args": [14, 10, 2]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:49df3d16fd4edd12e7131dfb"
+  "contentKey": "g3v83:25de954dbbedff01d820bdd8"
 }, {
   "id": "g3v83_capacity_0022",
   "kpId": "g3_capacity",
@@ -197222,12 +197577,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000, 288]
+    "op": "mulAdd",
+    "args": [7, 1000, 288]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:337f3184ad74fde8a71ca0dc"
+  "contentKey": "g3v83:abd6adc9c2cffaf8fcf5588d"
 }, {
   "id": "g3v83_mass_0022",
   "kpId": "g3_mass",
@@ -197238,12 +197593,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000, 288]
+    "op": "mulAdd",
+    "args": [7, 1000, 288]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:2c883bafb2d390ba6c4d2ba9"
+  "contentKey": "g3v83:5c97d040e56c86a46a9258b6"
 }, {
   "id": "g3v83_time_0021",
   "kpId": "g3_time",
@@ -197254,12 +197609,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [568, 540]
+    "op": "arrivalMinute",
+    "args": [8, 49, 39, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:23d10ec0bc91be9fb88287ac"
+  "contentKey": "g3v83:f94b18b43b571f59bfc489cd"
 }, {
   "id": "g3v83_area_0029",
   "kpId": "g3_area",
@@ -197442,12 +197797,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [150, 3]
+    "op": "mulAdd",
+    "args": [15, 10, 3]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:383bb306318772bf1c5c94a4"
+  "contentKey": "g3v83:8a1a4319aaa4b5a85cf5ae83"
 }, {
   "id": "g3v83_capacity_0023",
   "kpId": "g3_capacity",
@@ -197458,12 +197813,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000, 305]
+    "op": "mulAdd",
+    "args": [8, 1000, 305]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:193c67a5ef26ccac1e2202d0"
+  "contentKey": "g3v83:93e5a51854196df04130c04a"
 }, {
   "id": "g3v83_mass_0023",
   "kpId": "g3_mass",
@@ -197474,12 +197829,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000, 305]
+    "op": "mulAdd",
+    "args": [8, 1000, 305]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:e2d0bb219b1bb25a9197f298"
+  "contentKey": "g3v83:cb84016d57fd04cfb8e98af0"
 }, {
   "id": "g3v83_time_0022",
   "kpId": "g3_time",
@@ -197490,12 +197845,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [570, 540]
+    "op": "arrivalMinute",
+    "args": [8, 50, 40, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:fb84340787090d9679074a4f"
+  "contentKey": "g3v83:59769ecd33dd397d9250109b"
 }, {
   "id": "g3v83_area_0030",
   "kpId": "g3_area",
@@ -197678,12 +198033,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [160, 4]
+    "op": "mulAdd",
+    "args": [16, 10, 4]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:b1e14f1b2c661b29193bb605"
+  "contentKey": "g3v83:560be08da64296f29dfb8e5d"
 }, {
   "id": "g3v83_capacity_0024",
   "kpId": "g3_capacity",
@@ -197694,12 +198049,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000, 322]
+    "op": "mulAdd",
+    "args": [1, 1000, 322]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:6b8306b2b8824fbc0197c242"
+  "contentKey": "g3v83:535fc0329c134f2423195027"
 }, {
   "id": "g3v83_mass_0024",
   "kpId": "g3_mass",
@@ -197710,12 +198065,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000, 322]
+    "op": "mulAdd",
+    "args": [1, 1000, 322]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:0b104b266864f440b266de4b"
+  "contentKey": "g3v83:c516fc681648f89db46d2fcd"
 }, {
   "id": "g3v83_time_0023",
   "kpId": "g3_time",
@@ -197726,12 +198081,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [572, 540]
+    "op": "arrivalMinute",
+    "args": [8, 51, 41, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:01dc07f21cab52fa572bdef0"
+  "contentKey": "g3v83:5841265d3a7a489d894f0fcb"
 }, {
   "id": "g3v83_table_0040",
   "kpId": "g3_table",
@@ -197892,12 +198247,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [170, 5]
+    "op": "mulAdd",
+    "args": [17, 10, 5]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:d8c94a9b2b2e1df8633af5e4"
+  "contentKey": "g3v83:1bf77f6317ccc8c97cc05d67"
 }, {
   "id": "g3v83_capacity_0025",
   "kpId": "g3_capacity",
@@ -197908,12 +198263,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000, 339]
+    "op": "mulAdd",
+    "args": [2, 1000, 339]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:690d8e7fe7f543f3b6454634"
+  "contentKey": "g3v83:a56e5c51379f3c4ccbe48820"
 }, {
   "id": "g3v83_mass_0025",
   "kpId": "g3_mass",
@@ -197924,12 +198279,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [2000, 339]
+    "op": "mulAdd",
+    "args": [2, 1000, 339]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:7704547c353c6db694e17420"
+  "contentKey": "g3v83:73e6a6b2df79ab1dfb96e5e6"
 }, {
   "id": "g3v83_time_0024",
   "kpId": "g3_time",
@@ -197940,12 +198295,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [574, 540]
+    "op": "arrivalMinute",
+    "args": [8, 52, 42, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:f7a36202204dfc687022bba0"
+  "contentKey": "g3v83:9dd6240534eb9a1632829595"
 }, {
   "id": "g3v83_table_0041",
   "kpId": "g3_table",
@@ -198106,12 +198461,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [180, 6]
+    "op": "mulAdd",
+    "args": [18, 10, 6]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:64489eb9d89f6f0f80bd0aab"
+  "contentKey": "g3v83:38edd1efc9ff3f830d9a2fc7"
 }, {
   "id": "g3v83_capacity_0026",
   "kpId": "g3_capacity",
@@ -198122,12 +198477,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000, 356]
+    "op": "mulAdd",
+    "args": [3, 1000, 356]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:19c2dc0fe96d550815204da6"
+  "contentKey": "g3v83:a4d36b412e8a1cb038f6a230"
 }, {
   "id": "g3v83_mass_0026",
   "kpId": "g3_mass",
@@ -198138,12 +198493,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [3000, 356]
+    "op": "mulAdd",
+    "args": [3, 1000, 356]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:46348353e2e8cedbce94ed83"
+  "contentKey": "g3v83:0ab978f7a69a9ee861df2c1e"
 }, {
   "id": "g3v83_time_0025",
   "kpId": "g3_time",
@@ -198154,12 +198509,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [576, 540]
+    "op": "arrivalMinute",
+    "args": [8, 53, 43, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:9a32d7e6779da486b248e0b0"
+  "contentKey": "g3v83:a770e6dd6d1fe3c1c429ae4d"
 }, {
   "id": "g3v83_table_0042",
   "kpId": "g3_table",
@@ -198303,12 +198658,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [190, 7]
+    "op": "mulAdd",
+    "args": [19, 10, 7]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:7205b0fa8918d81493bd3783"
+  "contentKey": "g3v83:db1e783501074f748e2c9656"
 }, {
   "id": "g3v83_capacity_0027",
   "kpId": "g3_capacity",
@@ -198319,12 +198674,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000, 373]
+    "op": "mulAdd",
+    "args": [4, 1000, 373]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:5827dd92082321de5bad6ac5"
+  "contentKey": "g3v83:a286d443ef39a7732de617db"
 }, {
   "id": "g3v83_mass_0027",
   "kpId": "g3_mass",
@@ -198335,12 +198690,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [4000, 373]
+    "op": "mulAdd",
+    "args": [4, 1000, 373]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:90d0488a518eaff6938bc291"
+  "contentKey": "g3v83:cecb1c13548572f94b866a5b"
 }, {
   "id": "g3v83_time_0026",
   "kpId": "g3_time",
@@ -198351,12 +198706,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [578, 540]
+    "op": "arrivalMinute",
+    "args": [8, 54, 44, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:326cf89e19b9da8afc152f8f"
+  "contentKey": "g3v83:8b561a6b657fce7064952cbc"
 }, {
   "id": "g3v83_table_0043",
   "kpId": "g3_table",
@@ -198517,12 +198872,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [200, 8]
+    "op": "mulAdd",
+    "args": [20, 10, 8]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:74541294555f779de902e69d"
+  "contentKey": "g3v83:4e9be9492bdda301e511f4c4"
 }, {
   "id": "g3v83_capacity_0028",
   "kpId": "g3_capacity",
@@ -198533,12 +198888,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000, 390]
+    "op": "mulAdd",
+    "args": [5, 1000, 390]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:3eb4fd6f789a11be1dab58e6"
+  "contentKey": "g3v83:1185e170fba6c914cee8e3b8"
 }, {
   "id": "g3v83_mass_0028",
   "kpId": "g3_mass",
@@ -198549,12 +198904,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [5000, 390]
+    "op": "mulAdd",
+    "args": [5, 1000, 390]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:27cfa6f3a3b4ceba1a811fea"
+  "contentKey": "g3v83:e18ddbba1f16e83ddfc85731"
 }, {
   "id": "g3v83_time_0027",
   "kpId": "g3_time",
@@ -198565,12 +198920,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [580, 540]
+    "op": "arrivalMinute",
+    "args": [8, 55, 45, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:21aab96dad246c42a27acb4f"
+  "contentKey": "g3v83:3da8bed6de1f2b43db271278"
 }, {
   "id": "g3v83_table_0044",
   "kpId": "g3_table",
@@ -198714,12 +199069,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [210, 2]
+    "op": "mulAdd",
+    "args": [21, 10, 2]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:a080e479b1efb7c6c0effbdd"
+  "contentKey": "g3v83:3f09db6b4ce224685e5bdf34"
 }, {
   "id": "g3v83_capacity_0029",
   "kpId": "g3_capacity",
@@ -198730,12 +199085,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000, 407]
+    "op": "mulAdd",
+    "args": [6, 1000, 407]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:9aaa0edf33998fd46a2bee25"
+  "contentKey": "g3v83:5e25fc698feb3dd00fe89379"
 }, {
   "id": "g3v83_mass_0029",
   "kpId": "g3_mass",
@@ -198746,12 +199101,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [6000, 407]
+    "op": "mulAdd",
+    "args": [6, 1000, 407]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:5ed9541900b0e17930e47c90"
+  "contentKey": "g3v83:5c09d67e3cc6e9c78d694f2a"
 }, {
   "id": "g3v83_time_0028",
   "kpId": "g3_time",
@@ -198762,12 +199117,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [582, 540]
+    "op": "arrivalMinute",
+    "args": [8, 56, 46, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:7027278d3926dfc3e8fbd71d"
+  "contentKey": "g3v83:24c8e1c52e1c0a90d213ca54"
 }, {
   "id": "g3v83_table_0045",
   "kpId": "g3_table",
@@ -198911,12 +199266,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [220, 3]
+    "op": "mulAdd",
+    "args": [22, 10, 3]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:fbf2bb02f01057dc6a2b05d3"
+  "contentKey": "g3v83:f664871f7401ff4ad1041f09"
 }, {
   "id": "g3v83_capacity_0030",
   "kpId": "g3_capacity",
@@ -198927,12 +199282,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000, 424]
+    "op": "mulAdd",
+    "args": [7, 1000, 424]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:414aa23c006adf22b479b2be"
+  "contentKey": "g3v83:8cfe87089e9139e939d592de"
 }, {
   "id": "g3v83_mass_0030",
   "kpId": "g3_mass",
@@ -198943,12 +199298,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [7000, 424]
+    "op": "mulAdd",
+    "args": [7, 1000, 424]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:3472ea3cd2517badafb71b23"
+  "contentKey": "g3v83:0afc71f02ee4cafc4fa26a0a"
 }, {
   "id": "g3v83_time_0029",
   "kpId": "g3_time",
@@ -198959,12 +199314,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [584, 540]
+    "op": "arrivalMinute",
+    "args": [8, 57, 47, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:2c9cdb1e6d3a159c74c14f24"
+  "contentKey": "g3v83:a3d63ab5aaade7a533332de6"
 }, {
   "id": "g3v83_table_0046",
   "kpId": "g3_table",
@@ -199125,12 +199480,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [230, 4]
+    "op": "mulAdd",
+    "args": [23, 10, 4]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:23aab5ccc4ed91779e7a0d33"
+  "contentKey": "g3v83:e1a7a97e7a50e2a60e18778e"
 }, {
   "id": "g3v83_capacity_0031",
   "kpId": "g3_capacity",
@@ -199141,12 +199496,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000, 441]
+    "op": "mulAdd",
+    "args": [8, 1000, 441]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:916fb9fa5b9a77b2ed1b6577"
+  "contentKey": "g3v83:478ab089fffacd2cd88f5e70"
 }, {
   "id": "g3v83_mass_0031",
   "kpId": "g3_mass",
@@ -199157,12 +199512,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [8000, 441]
+    "op": "mulAdd",
+    "args": [8, 1000, 441]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:a897e1bc120bbd7c124a0afd"
+  "contentKey": "g3v83:b027bc5fcc1a2940b9fb5b89"
 }, {
   "id": "g3v83_time_0030",
   "kpId": "g3_time",
@@ -199173,12 +199528,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [586, 540]
+    "op": "arrivalMinute",
+    "args": [8, 58, 48, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:c1dc2081868561611a882e77"
+  "contentKey": "g3v83:37beeda1565e0bd11d871809"
 }, {
   "id": "g3v83_table_0047",
   "kpId": "g3_table",
@@ -199339,12 +199694,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [240, 5]
+    "op": "mulAdd",
+    "args": [24, 10, 5]
   },
   "variantGroup": "length-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:2128fae544daa7b67ff515d6"
+  "contentKey": "g3v83:3d89aa4add31d6215cbaf050"
 }, {
   "id": "g3v83_capacity_0032",
   "kpId": "g3_capacity",
@@ -199355,12 +199710,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000, 458]
+    "op": "mulAdd",
+    "args": [1, 1000, 458]
   },
   "variantGroup": "capacity-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:44983d0fac530f46e1d2b1d6"
+  "contentKey": "g3v83:8a52a8ad438f9034fac25f7a"
 }, {
   "id": "g3v83_mass_0032",
   "kpId": "g3_mass",
@@ -199371,12 +199726,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sum",
-    "args": [1000, 458]
+    "op": "mulAdd",
+    "args": [1, 1000, 458]
   },
   "variantGroup": "mass-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:3ea5cb2bb1d139e7abcd4694"
+  "contentKey": "g3v83:73016a9d8c9dce89d55e0190"
 }, {
   "id": "g3v83_time_0031",
   "kpId": "g3_time",
@@ -199387,12 +199742,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [588, 540]
+    "op": "arrivalMinute",
+    "args": [8, 59, 49, 9]
   },
   "variantGroup": "time-1",
   "humanReviewed": false,
-  "contentKey": "g3v83:35c1d9819e5f939a4144d4a8"
+  "contentKey": "g3v83:96df46ef8435e0deff6280e6"
 }, {
   "id": "g3v83_table_0048",
   "kpId": "g3_table",
@@ -199555,12 +199910,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [30, 3]
+    "op": "mulSub",
+    "args": [3, 10, 3]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:cf1062f9feaf1e1c43dc4f7f"
+  "contentKey": "g3v83:cd23594f800dd0b03ce45585"
 }, {
   "id": "g3v83_capacity_0033",
   "kpId": "g3_capacity",
@@ -199571,12 +199926,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [3000, 67]
+    "op": "mulSub",
+    "args": [3, 1000, 67]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:7ae353b72dfea248a447b432"
+  "contentKey": "g3v83:f02bcf1977ea581077eb846c"
 }, {
   "id": "g3v83_mass_0033",
   "kpId": "g3_mass",
@@ -199587,12 +199942,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [3000, 67]
+    "op": "mulSub",
+    "args": [3, 1000, 67]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:10983e2d65a6e06216c8e34d"
+  "contentKey": "g3v83:1385bac740469f58044f5790"
 }, {
   "id": "g3v83_time_0032",
   "kpId": "g3_time",
@@ -199603,12 +199958,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [542, 516]
+    "op": "elapsed",
+    "args": [8, 36, 9, 2]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:9f84ae6fdbb4bb8ea7cf21bd"
+  "contentKey": "g3v83:49dd7ca40a57284f58e4f7f1"
 }, {
   "id": "g3v83_area_0031",
   "kpId": "g3_area",
@@ -199793,12 +200148,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [40, 4]
+    "op": "mulSub",
+    "args": [4, 10, 4]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:f4089feb73152a5ba27d88af"
+  "contentKey": "g3v83:1ef03e28461b7b64add57257"
 }, {
   "id": "g3v83_capacity_0034",
   "kpId": "g3_capacity",
@@ -199809,12 +200164,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [4000, 84]
+    "op": "mulSub",
+    "args": [4, 1000, 84]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:7c850b69bee8168a3690a020"
+  "contentKey": "g3v83:13a463540fe090a884895a87"
 }, {
   "id": "g3v83_mass_0034",
   "kpId": "g3_mass",
@@ -199825,12 +200180,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [4000, 84]
+    "op": "mulSub",
+    "args": [4, 1000, 84]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:98d856712e6628dfc686d4fe"
+  "contentKey": "g3v83:9165e78b426741484f58cb70"
 }, {
   "id": "g3v83_time_0033",
   "kpId": "g3_time",
@@ -199841,12 +200196,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [544, 517]
+    "op": "elapsed",
+    "args": [8, 37, 9, 4]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:fd33597cdb6c2af3b54626f9"
+  "contentKey": "g3v83:9dec92ae54746f40c60c7f1e"
 }, {
   "id": "g3v83_area_0032",
   "kpId": "g3_area",
@@ -200031,12 +200386,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [50, 5]
+    "op": "mulSub",
+    "args": [5, 10, 5]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:f75daab9b0dab2ba65c0baca"
+  "contentKey": "g3v83:54cc53e0f5f1419ea20e8c45"
 }, {
   "id": "g3v83_capacity_0035",
   "kpId": "g3_capacity",
@@ -200047,12 +200402,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [5000, 101]
+    "op": "mulSub",
+    "args": [5, 1000, 101]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:89609916c708d0440cff2856"
+  "contentKey": "g3v83:ef1f5652546513a6a0d7cf4a"
 }, {
   "id": "g3v83_mass_0035",
   "kpId": "g3_mass",
@@ -200063,12 +200418,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [5000, 101]
+    "op": "mulSub",
+    "args": [5, 1000, 101]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:6b937125064a26b4d02118a4"
+  "contentKey": "g3v83:bf77ba01d30ae4a236ef0859"
 }, {
   "id": "g3v83_time_0034",
   "kpId": "g3_time",
@@ -200079,12 +200434,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [546, 518]
+    "op": "elapsed",
+    "args": [8, 38, 9, 6]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:28267b2fe75ecfd5c0cea39f"
+  "contentKey": "g3v83:68b60ed3ce30bfcbc949b1ad"
 }, {
   "id": "g3v83_area_0033",
   "kpId": "g3_area",
@@ -200269,12 +200624,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [60, 6]
+    "op": "mulSub",
+    "args": [6, 10, 6]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:0657037de7d9dce4daa32546"
+  "contentKey": "g3v83:baef9b86253b1df78d82c142"
 }, {
   "id": "g3v83_capacity_0036",
   "kpId": "g3_capacity",
@@ -200285,12 +200640,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [6000, 118]
+    "op": "mulSub",
+    "args": [6, 1000, 118]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:fde89563afd7040f286cddab"
+  "contentKey": "g3v83:f92871f999f7e559b9e8f052"
 }, {
   "id": "g3v83_mass_0036",
   "kpId": "g3_mass",
@@ -200301,12 +200656,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [6000, 118]
+    "op": "mulSub",
+    "args": [6, 1000, 118]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:bf396085efe36dee461eae35"
+  "contentKey": "g3v83:ba1e1d59e731f817cddbcbe5"
 }, {
   "id": "g3v83_time_0035",
   "kpId": "g3_time",
@@ -200317,12 +200672,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [548, 519]
+    "op": "elapsed",
+    "args": [8, 39, 9, 8]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:92e5a541dfae99814f5d65a6"
+  "contentKey": "g3v83:11a28b5981641eef171668ed"
 }, {
   "id": "g3v83_area_0034",
   "kpId": "g3_area",
@@ -200507,12 +200862,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [70, 7]
+    "op": "mulSub",
+    "args": [7, 10, 7]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:96a7b3e5a128a954e5802460"
+  "contentKey": "g3v83:170b19123b76d43bf70f7fc7"
 }, {
   "id": "g3v83_capacity_0037",
   "kpId": "g3_capacity",
@@ -200523,12 +200878,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [7000, 135]
+    "op": "mulSub",
+    "args": [7, 1000, 135]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:6f310e55e5ced7106c030824"
+  "contentKey": "g3v83:628e877a22a45b46e051a013"
 }, {
   "id": "g3v83_mass_0037",
   "kpId": "g3_mass",
@@ -200539,12 +200894,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [7000, 135]
+    "op": "mulSub",
+    "args": [7, 1000, 135]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:c11a26be29a5f82a57535d1c"
+  "contentKey": "g3v83:e5976526e0bd1411db629e12"
 }, {
   "id": "g3v83_time_0036",
   "kpId": "g3_time",
@@ -200555,12 +200910,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [550, 520]
+    "op": "elapsed",
+    "args": [8, 40, 9, 10]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:eeef24e2222e894608121055"
+  "contentKey": "g3v83:3feeabd1e194dcdef7857fb2"
 }, {
   "id": "g3v83_area_0035",
   "kpId": "g3_area",
@@ -200745,12 +201100,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [80, 8]
+    "op": "mulSub",
+    "args": [8, 10, 8]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:6494215d61084dcd283d5427"
+  "contentKey": "g3v83:4bbb0ab0da063f7d8104f1ed"
 }, {
   "id": "g3v83_capacity_0038",
   "kpId": "g3_capacity",
@@ -200761,12 +201116,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [8000, 152]
+    "op": "mulSub",
+    "args": [8, 1000, 152]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:806696be274627861662887e"
+  "contentKey": "g3v83:f0c720a73ae663f826a4b9e9"
 }, {
   "id": "g3v83_mass_0038",
   "kpId": "g3_mass",
@@ -200777,12 +201132,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [8000, 152]
+    "op": "mulSub",
+    "args": [8, 1000, 152]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:9dc146fd00a4dbb20285f2ea"
+  "contentKey": "g3v83:17f0aac696b2e9973beec345"
 }, {
   "id": "g3v83_time_0037",
   "kpId": "g3_time",
@@ -200793,12 +201148,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [552, 521]
+    "op": "elapsed",
+    "args": [8, 41, 9, 12]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:a66d557d40cfed62300b3144"
+  "contentKey": "g3v83:fbf3109f0f102277b90c949b"
 }, {
   "id": "g3v83_area_0036",
   "kpId": "g3_area",
@@ -200983,12 +201338,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [90, 2]
+    "op": "mulSub",
+    "args": [9, 10, 2]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:c4e0929e7956a63c7ee5d106"
+  "contentKey": "g3v83:ed283e2b952292efb57f50b4"
 }, {
   "id": "g3v83_capacity_0039",
   "kpId": "g3_capacity",
@@ -200999,12 +201354,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [9000, 169]
+    "op": "mulSub",
+    "args": [9, 1000, 169]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:c76a3b77db91aaed76e8f9d3"
+  "contentKey": "g3v83:a966237f875b65a056820f2b"
 }, {
   "id": "g3v83_mass_0039",
   "kpId": "g3_mass",
@@ -201015,12 +201370,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [9000, 169]
+    "op": "mulSub",
+    "args": [9, 1000, 169]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:c89665e0aa8f4c9dfdccf710"
+  "contentKey": "g3v83:f79b51ab6c9d4d0743e2eaaf"
 }, {
   "id": "g3v83_time_0038",
   "kpId": "g3_time",
@@ -201031,12 +201386,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [554, 522]
+    "op": "elapsed",
+    "args": [8, 42, 9, 14]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:60604ec982e0af46da640508"
+  "contentKey": "g3v83:b4b40fa0ed1dc86b38da810e"
 }, {
   "id": "g3v83_area_0037",
   "kpId": "g3_area",
@@ -201221,12 +201576,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [100, 3]
+    "op": "mulSub",
+    "args": [10, 10, 3]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:ded3ba9422263e095d22dc29"
+  "contentKey": "g3v83:f49a3cbc225fc62e09b3a672"
 }, {
   "id": "g3v83_capacity_0040",
   "kpId": "g3_capacity",
@@ -201237,12 +201592,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [2000, 186]
+    "op": "mulSub",
+    "args": [2, 1000, 186]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:4f7c3da182afa4de2a44c34a"
+  "contentKey": "g3v83:92847cdfb9954fa5f6c347b9"
 }, {
   "id": "g3v83_mass_0040",
   "kpId": "g3_mass",
@@ -201253,12 +201608,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [2000, 186]
+    "op": "mulSub",
+    "args": [2, 1000, 186]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:ff39c7d95c6bde531767c4a8"
+  "contentKey": "g3v83:026dd1706ea2944981028036"
 }, {
   "id": "g3v83_time_0039",
   "kpId": "g3_time",
@@ -201269,12 +201624,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [556, 523]
+    "op": "elapsed",
+    "args": [8, 43, 9, 16]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:5701f4561bbfc4e46fe16001"
+  "contentKey": "g3v83:a333c88b99dbde11e2ccc596"
 }, {
   "id": "g3v83_area_0038",
   "kpId": "g3_area",
@@ -201459,12 +201814,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [110, 4]
+    "op": "mulSub",
+    "args": [11, 10, 4]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:f2a338218108dfe7a70d373e"
+  "contentKey": "g3v83:d1525d49d8ddc6196a22c3d1"
 }, {
   "id": "g3v83_capacity_0041",
   "kpId": "g3_capacity",
@@ -201475,12 +201830,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [3000, 203]
+    "op": "mulSub",
+    "args": [3, 1000, 203]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:cc23feaab11b5f3be22e1283"
+  "contentKey": "g3v83:73e126cc08a368c2dfefa501"
 }, {
   "id": "g3v83_mass_0041",
   "kpId": "g3_mass",
@@ -201491,12 +201846,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [3000, 203]
+    "op": "mulSub",
+    "args": [3, 1000, 203]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:ddb761d96c5be9632c090577"
+  "contentKey": "g3v83:b124bfd54986781bff36a187"
 }, {
   "id": "g3v83_time_0040",
   "kpId": "g3_time",
@@ -201507,12 +201862,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [558, 524]
+    "op": "elapsed",
+    "args": [8, 44, 9, 18]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:2f7a954ca2f4b99acdfb0e55"
+  "contentKey": "g3v83:26b0f50f805af3815ca31d92"
 }, {
   "id": "g3v83_area_0039",
   "kpId": "g3_area",
@@ -201695,12 +202050,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [120, 5]
+    "op": "mulSub",
+    "args": [12, 10, 5]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:b7ada1131b6ce5026c039c9d"
+  "contentKey": "g3v83:d05e0dade9cf47beb9e609a8"
 }, {
   "id": "g3v83_capacity_0042",
   "kpId": "g3_capacity",
@@ -201711,12 +202066,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [4000, 220]
+    "op": "mulSub",
+    "args": [4, 1000, 220]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:e47f9c4fabc82b4f78745b96"
+  "contentKey": "g3v83:d3f731c815df00355b4df554"
 }, {
   "id": "g3v83_mass_0042",
   "kpId": "g3_mass",
@@ -201727,12 +202082,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [4000, 220]
+    "op": "mulSub",
+    "args": [4, 1000, 220]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:6457cf4459efe8c800c5407f"
+  "contentKey": "g3v83:ea4f79bef5a6d71809b6ad55"
 }, {
   "id": "g3v83_time_0041",
   "kpId": "g3_time",
@@ -201743,12 +202098,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [560, 525]
+    "op": "elapsed",
+    "args": [8, 45, 9, 20]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:410b4d57d5d299ec38be2842"
+  "contentKey": "g3v83:37bb508e9f98b74bdb6a36dd"
 }, {
   "id": "g3v83_area_0040",
   "kpId": "g3_area",
@@ -201933,12 +202288,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [130, 6]
+    "op": "mulSub",
+    "args": [13, 10, 6]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:776124bb626b8955bb229b35"
+  "contentKey": "g3v83:3da2c46fbb24c7cba2436122"
 }, {
   "id": "g3v83_capacity_0043",
   "kpId": "g3_capacity",
@@ -201949,12 +202304,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [5000, 237]
+    "op": "mulSub",
+    "args": [5, 1000, 237]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:2763820a1d8a9feef78006d9"
+  "contentKey": "g3v83:8ae5a4f350afd26951424df5"
 }, {
   "id": "g3v83_mass_0043",
   "kpId": "g3_mass",
@@ -201965,12 +202320,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [5000, 237]
+    "op": "mulSub",
+    "args": [5, 1000, 237]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:818c99c3c0eb4b0fe7416f3b"
+  "contentKey": "g3v83:f80cb66d45559e4c1a0b3149"
 }, {
   "id": "g3v83_time_0042",
   "kpId": "g3_time",
@@ -201981,12 +202336,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [562, 526]
+    "op": "elapsed",
+    "args": [8, 46, 9, 22]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:4cdb5638e25571715171f6ab"
+  "contentKey": "g3v83:08f6ebe1603e63d5a4e3a90f"
 }, {
   "id": "g3v83_area_0041",
   "kpId": "g3_area",
@@ -202154,12 +202509,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [140, 7]
+    "op": "mulSub",
+    "args": [14, 10, 7]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:0f819a571f4cf8ebb311b8a6"
+  "contentKey": "g3v83:c7cc4eeb5dfd02515f7e12f5"
 }, {
   "id": "g3v83_capacity_0044",
   "kpId": "g3_capacity",
@@ -202170,12 +202525,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [6000, 254]
+    "op": "mulSub",
+    "args": [6, 1000, 254]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:8b62002a2bce0966984e7507"
+  "contentKey": "g3v83:055d0cbb57240029d8b562e9"
 }, {
   "id": "g3v83_mass_0044",
   "kpId": "g3_mass",
@@ -202186,12 +202541,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [6000, 254]
+    "op": "mulSub",
+    "args": [6, 1000, 254]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:c7a328d40c4333c8e26c97ef"
+  "contentKey": "g3v83:1ebbb1600ab2549e91b5aba4"
 }, {
   "id": "g3v83_time_0043",
   "kpId": "g3_time",
@@ -202202,12 +202557,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [564, 527]
+    "op": "elapsed",
+    "args": [8, 47, 9, 24]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:ceb3149953f2cc4c430e17ea"
+  "contentKey": "g3v83:244026c8a1098daa05525058"
 }, {
   "id": "g3v83_area_0042",
   "kpId": "g3_area",
@@ -202392,12 +202747,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [150, 8]
+    "op": "mulSub",
+    "args": [15, 10, 8]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:848179010781dacc748204ca"
+  "contentKey": "g3v83:3b4427c709a0fe7832ddf6f2"
 }, {
   "id": "g3v83_capacity_0045",
   "kpId": "g3_capacity",
@@ -202408,12 +202763,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [7000, 271]
+    "op": "mulSub",
+    "args": [7, 1000, 271]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:1b5f0bae25de310d7c30ff36"
+  "contentKey": "g3v83:1821e0a3261a00151d9bf7eb"
 }, {
   "id": "g3v83_mass_0045",
   "kpId": "g3_mass",
@@ -202424,12 +202779,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [7000, 271]
+    "op": "mulSub",
+    "args": [7, 1000, 271]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:f1f2bc59b7089e5ae036a10e"
+  "contentKey": "g3v83:84961b43764c746c6aaaa911"
 }, {
   "id": "g3v83_time_0044",
   "kpId": "g3_time",
@@ -202440,12 +202795,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [566, 528]
+    "op": "elapsed",
+    "args": [8, 48, 9, 26]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:ece0bb1a916f55e384321f10"
+  "contentKey": "g3v83:432dbeaf1d423219e5458239"
 }, {
   "id": "g3v83_area_0043",
   "kpId": "g3_area",
@@ -202628,12 +202983,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [160, 2]
+    "op": "mulSub",
+    "args": [16, 10, 2]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:a82f89eea002e2457e459a90"
+  "contentKey": "g3v83:0a6de6a1818ae854880c71b8"
 }, {
   "id": "g3v83_capacity_0046",
   "kpId": "g3_capacity",
@@ -202644,12 +202999,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [8000, 288]
+    "op": "mulSub",
+    "args": [8, 1000, 288]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:2ac4ccc3825f5b2d77067a7a"
+  "contentKey": "g3v83:769fb08819b1078c435f7663"
 }, {
   "id": "g3v83_mass_0046",
   "kpId": "g3_mass",
@@ -202660,12 +203015,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [8000, 288]
+    "op": "mulSub",
+    "args": [8, 1000, 288]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:53a4905e82400a868dff2a1f"
+  "contentKey": "g3v83:e4bb7c7c14776ff06c6f5830"
 }, {
   "id": "g3v83_time_0045",
   "kpId": "g3_time",
@@ -202676,12 +203031,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [568, 529]
+    "op": "elapsed",
+    "args": [8, 49, 9, 28]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:cc947731bb70ee299444ac0a"
+  "contentKey": "g3v83:c96d272b2a3dc91b66ded146"
 }, {
   "id": "g3v83_area_0044",
   "kpId": "g3_area",
@@ -202864,12 +203219,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [170, 3]
+    "op": "mulSub",
+    "args": [17, 10, 3]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:4fe2f7b8be0fdec4f6d14a4c"
+  "contentKey": "g3v83:fe09b57eb0b695a8d233de7a"
 }, {
   "id": "g3v83_capacity_0047",
   "kpId": "g3_capacity",
@@ -202880,12 +203235,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [9000, 305]
+    "op": "mulSub",
+    "args": [9, 1000, 305]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:39ec9b2959b6cfe31b7b07c5"
+  "contentKey": "g3v83:99042edbb93c73011d4af5b1"
 }, {
   "id": "g3v83_mass_0047",
   "kpId": "g3_mass",
@@ -202896,12 +203251,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [9000, 305]
+    "op": "mulSub",
+    "args": [9, 1000, 305]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:08757b6ebdaa9e6d7ed882eb"
+  "contentKey": "g3v83:9a2b65dabcd176408eb7f784"
 }, {
   "id": "g3v83_time_0046",
   "kpId": "g3_time",
@@ -202912,12 +203267,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [570, 530]
+    "op": "elapsed",
+    "args": [8, 50, 9, 30]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:9250ab609bccd1f8014f1596"
+  "contentKey": "g3v83:abe2b2f6ce6b373a99a57ed1"
 }, {
   "id": "g3v83_area_0045",
   "kpId": "g3_area",
@@ -203100,12 +203455,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [180, 4]
+    "op": "mulSub",
+    "args": [18, 10, 4]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:e07a056f460792d62ee529f1"
+  "contentKey": "g3v83:dbd258374e00360591d52ce0"
 }, {
   "id": "g3v83_capacity_0048",
   "kpId": "g3_capacity",
@@ -203116,12 +203471,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [2000, 322]
+    "op": "mulSub",
+    "args": [2, 1000, 322]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:aef0608b2b8ac05c3c283063"
+  "contentKey": "g3v83:a6f8276d90b62f3f6aa013e2"
 }, {
   "id": "g3v83_mass_0048",
   "kpId": "g3_mass",
@@ -203132,12 +203487,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [2000, 322]
+    "op": "mulSub",
+    "args": [2, 1000, 322]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:99c9808d3bffa7f1d0b05341"
+  "contentKey": "g3v83:6f1573eea59c0e02df016bae"
 }, {
   "id": "g3v83_time_0047",
   "kpId": "g3_time",
@@ -203148,12 +203503,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [572, 531]
+    "op": "elapsed",
+    "args": [8, 51, 9, 32]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:251ffd8660c10e56d7a22bd0"
+  "contentKey": "g3v83:e536bc8ae24cecdcb3a7587c"
 }, {
   "id": "g3v83_area_0046",
   "kpId": "g3_area",
@@ -203338,12 +203693,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [190, 5]
+    "op": "mulSub",
+    "args": [19, 10, 5]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:57d927b889fcfb264c70e1fd"
+  "contentKey": "g3v83:ef5e4daf88b0848708a00ba2"
 }, {
   "id": "g3v83_capacity_0049",
   "kpId": "g3_capacity",
@@ -203354,12 +203709,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [3000, 339]
+    "op": "mulSub",
+    "args": [3, 1000, 339]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:e057897181c8e7fb7277762a"
+  "contentKey": "g3v83:846d11b2a868d08a1f8ffddf"
 }, {
   "id": "g3v83_mass_0049",
   "kpId": "g3_mass",
@@ -203370,12 +203725,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [3000, 339]
+    "op": "mulSub",
+    "args": [3, 1000, 339]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:72c2c88661ff30d536dadc43"
+  "contentKey": "g3v83:deb5b37edafee9154074eb77"
 }, {
   "id": "g3v83_time_0048",
   "kpId": "g3_time",
@@ -203386,12 +203741,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [574, 532]
+    "op": "elapsed",
+    "args": [8, 52, 9, 34]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:8fbd74319638c10c55273932"
+  "contentKey": "g3v83:be82be9735cfedb12ac9657e"
 }, {
   "id": "g3v83_area_0047",
   "kpId": "g3_area",
@@ -203574,12 +203929,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [200, 6]
+    "op": "mulSub",
+    "args": [20, 10, 6]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:58f0755e03f9c992cd86e0ed"
+  "contentKey": "g3v83:a06540c49e27f2e40e8eb2b0"
 }, {
   "id": "g3v83_capacity_0050",
   "kpId": "g3_capacity",
@@ -203590,12 +203945,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [4000, 356]
+    "op": "mulSub",
+    "args": [4, 1000, 356]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:1c2c9d894a944ea6b0bb1965"
+  "contentKey": "g3v83:078f0da4e4591d2aa97336fa"
 }, {
   "id": "g3v83_mass_0050",
   "kpId": "g3_mass",
@@ -203606,12 +203961,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [4000, 356]
+    "op": "mulSub",
+    "args": [4, 1000, 356]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:5712a6f252f031b0f3dc5aa1"
+  "contentKey": "g3v83:6377e82224192f20392fe1b6"
 }, {
   "id": "g3v83_time_0049",
   "kpId": "g3_time",
@@ -203622,12 +203977,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [576, 533]
+    "op": "elapsed",
+    "args": [8, 53, 9, 36]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:587676e5b20075ed35f3ad9b"
+  "contentKey": "g3v83:42f0f53c88b4d3ad13a94f6d"
 }, {
   "id": "g3v83_area_0048",
   "kpId": "g3_area",
@@ -203795,12 +204150,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [210, 7]
+    "op": "mulSub",
+    "args": [21, 10, 7]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:f051672d3386e69a815d24e5"
+  "contentKey": "g3v83:49cf416080cc3437a2ec9a5f"
 }, {
   "id": "g3v83_capacity_0051",
   "kpId": "g3_capacity",
@@ -203811,12 +204166,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [5000, 373]
+    "op": "mulSub",
+    "args": [5, 1000, 373]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:e1d20ea67ca59dea4bd5cf6f"
+  "contentKey": "g3v83:b5b04c9b511aac0a29cba985"
 }, {
   "id": "g3v83_mass_0051",
   "kpId": "g3_mass",
@@ -203827,12 +204182,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [5000, 373]
+    "op": "mulSub",
+    "args": [5, 1000, 373]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:3e256b6c95c8fd831c6a07c5"
+  "contentKey": "g3v83:1ecb04973b9dca748eff3704"
 }, {
   "id": "g3v83_time_0050",
   "kpId": "g3_time",
@@ -203843,12 +204198,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [578, 534]
+    "op": "elapsed",
+    "args": [8, 54, 9, 38]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:538c473f71463128b87ab73f"
+  "contentKey": "g3v83:9b54c3d97db5868e8d7bb19b"
 }, {
   "id": "g3v83_area_0049",
   "kpId": "g3_area",
@@ -204033,12 +204388,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [220, 8]
+    "op": "mulSub",
+    "args": [22, 10, 8]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:bd204948a2663872fce567a2"
+  "contentKey": "g3v83:efe1a87cb73c2f973072193f"
 }, {
   "id": "g3v83_capacity_0052",
   "kpId": "g3_capacity",
@@ -204049,12 +204404,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [6000, 390]
+    "op": "mulSub",
+    "args": [6, 1000, 390]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:292996ca427d512b71e48c21"
+  "contentKey": "g3v83:91dc4040f1e632041e5174b2"
 }, {
   "id": "g3v83_mass_0052",
   "kpId": "g3_mass",
@@ -204065,12 +204420,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [6000, 390]
+    "op": "mulSub",
+    "args": [6, 1000, 390]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:54497a364127c2e52fef5fd9"
+  "contentKey": "g3v83:d6b56e162d1a0076843ab8ac"
 }, {
   "id": "g3v83_time_0051",
   "kpId": "g3_time",
@@ -204081,12 +204436,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [580, 535]
+    "op": "elapsed",
+    "args": [8, 55, 9, 40]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:e08ffea7b9563d4f8ae29757"
+  "contentKey": "g3v83:d0d96b0c694adeab9080ddc4"
 }, {
   "id": "g3v83_area_0050",
   "kpId": "g3_area",
@@ -204254,12 +204609,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [230, 2]
+    "op": "mulSub",
+    "args": [23, 10, 2]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:3afddfbc3393821ac4b7e5c0"
+  "contentKey": "g3v83:611d616b4e098ed95e473731"
 }, {
   "id": "g3v83_capacity_0053",
   "kpId": "g3_capacity",
@@ -204270,12 +204625,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [7000, 407]
+    "op": "mulSub",
+    "args": [7, 1000, 407]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:8a39f32730f92a9f00e075ae"
+  "contentKey": "g3v83:f29c2fabe8de7592a26fc796"
 }, {
   "id": "g3v83_mass_0053",
   "kpId": "g3_mass",
@@ -204286,12 +204641,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [7000, 407]
+    "op": "mulSub",
+    "args": [7, 1000, 407]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:fe972d6bb5287d5ea0a922e9"
+  "contentKey": "g3v83:f0f292a791f9f80e4e7a537b"
 }, {
   "id": "g3v83_time_0052",
   "kpId": "g3_time",
@@ -204302,12 +204657,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [582, 536]
+    "op": "elapsed",
+    "args": [8, 56, 9, 42]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:975cb0aef7a36d6730da357d"
+  "contentKey": "g3v83:2c0b59cb57727e9bd2b12ecb"
 }, {
   "id": "g3v83_area_0051",
   "kpId": "g3_area",
@@ -204475,12 +204830,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [240, 3]
+    "op": "mulSub",
+    "args": [24, 10, 3]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:cb26ecca539db9db086e2111"
+  "contentKey": "g3v83:fb18a2ad928615844905e356"
 }, {
   "id": "g3v83_capacity_0054",
   "kpId": "g3_capacity",
@@ -204491,12 +204846,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [8000, 424]
+    "op": "mulSub",
+    "args": [8, 1000, 424]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:e3a5ac3710af119ff831d91a"
+  "contentKey": "g3v83:454c92247b9031687c9a3b9c"
 }, {
   "id": "g3v83_mass_0054",
   "kpId": "g3_mass",
@@ -204507,12 +204862,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [8000, 424]
+    "op": "mulSub",
+    "args": [8, 1000, 424]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:6f21787cba182d18b3a7fd61"
+  "contentKey": "g3v83:cea3fb5dfcb8d24c2a0fcf21"
 }, {
   "id": "g3v83_time_0053",
   "kpId": "g3_time",
@@ -204523,12 +204878,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [584, 537]
+    "op": "elapsed",
+    "args": [8, 57, 9, 44]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:0e470d771768b10bc170abde"
+  "contentKey": "g3v83:59f576963dfa5c1e08a07adc"
 }, {
   "id": "g3v83_area_0052",
   "kpId": "g3_area",
@@ -204713,12 +205068,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [250, 4]
+    "op": "mulSub",
+    "args": [25, 10, 4]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:a56e7847363e9c069633ea17"
+  "contentKey": "g3v83:cb8c8df27b4b0d198ac1f975"
 }, {
   "id": "g3v83_capacity_0055",
   "kpId": "g3_capacity",
@@ -204729,12 +205084,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [9000, 441]
+    "op": "mulSub",
+    "args": [9, 1000, 441]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:264af8f8c7c5946ac3d27fc9"
+  "contentKey": "g3v83:ed57faece3c88b58fd718859"
 }, {
   "id": "g3v83_mass_0055",
   "kpId": "g3_mass",
@@ -204745,12 +205100,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [9000, 441]
+    "op": "mulSub",
+    "args": [9, 1000, 441]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:caa04a80eb632f6c4fadcb7c"
+  "contentKey": "g3v83:db6f64a955ed45a58eb9af7d"
 }, {
   "id": "g3v83_time_0054",
   "kpId": "g3_time",
@@ -204761,12 +205116,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [586, 538]
+    "op": "elapsed",
+    "args": [8, 58, 9, 46]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:6994d7bb298316cd7038730f"
+  "contentKey": "g3v83:ff6cf230e863329511ace1f6"
 }, {
   "id": "g3v83_area_0053",
   "kpId": "g3_area",
@@ -204951,12 +205306,12 @@ const GRADE3_BANK = [{
   "why": "一公分是十毫米，先換成同一單位。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [260, 5]
+    "op": "mulSub",
+    "args": [26, 10, 5]
   },
   "variantGroup": "length-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:536fbe5e876a0b194a13a84c"
+  "contentKey": "g3v83:59b420383d13500e625556c1"
 }, {
   "id": "g3v83_capacity_0056",
   "kpId": "g3_capacity",
@@ -204967,12 +205322,12 @@ const GRADE3_BANK = [{
   "why": "一公升是一千毫升，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [2000, 458]
+    "op": "mulSub",
+    "args": [2, 1000, 458]
   },
   "variantGroup": "capacity-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:042869f23d02091b0351b8b5"
+  "contentKey": "g3v83:5c5cca543808d4474014fac2"
 }, {
   "id": "g3v83_mass_0056",
   "kpId": "g3_mass",
@@ -204983,12 +205338,12 @@ const GRADE3_BANK = [{
   "why": "一公斤是一千公克，統一單位再計算。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [2000, 458]
+    "op": "mulSub",
+    "args": [2, 1000, 458]
   },
   "variantGroup": "mass-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:26e352e0ef738d06912de586"
+  "contentKey": "g3v83:49a7100892b77d88abc0eced"
 }, {
   "id": "g3v83_time_0055",
   "kpId": "g3_time",
@@ -204999,12 +205354,12 @@ const GRADE3_BANK = [{
   "why": "一小時是六十分鐘，一分鐘是六十秒。",
   "figure": null,
   "proof": {
-    "op": "sub",
-    "args": [588, 539]
+    "op": "elapsed",
+    "args": [8, 59, 9, 48]
   },
   "variantGroup": "time-2",
   "humanReviewed": false,
-  "contentKey": "g3v83:24ff56e0af11fbe6cc273eeb"
+  "contentKey": "g3v83:57922c2757e927b36836eb43"
 }, {
   "id": "g3v83_area_0054",
   "kpId": "g3_area",
@@ -296215,7 +296570,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.18-v97';
+const GAME_BUILD = '2026.11.19-v98';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -296893,7 +297248,8 @@ function MiddleHints({
     return () => cancelAnimationFrame(token);
   }, [level]);
   if (!validMiddleHints(plan)) return null;
-  const titles = ['找出資料', '想想下一步', '完整解說'];
+  const titles = plan.levels.length === 2 ? ['想想下一步', '完整解說'] : ['找出資料', '想想下一步', '完整解說'];
+  const last = plan.levels.length - 1;
   return React.createElement("section", {
     className: "middle-hints",
     "aria-label": "\u5206\u5C64\u63D0\u793A"
@@ -296908,13 +297264,13 @@ function MiddleHints({
   }, plan.levels.slice(0, level).map((text, i) => React.createElement("li", {
     key: i,
     ref: i === level - 1 ? opened : null,
-    className: i === 2 ? 'middle-hint-solution' : ''
-  }, React.createElement("b", null, titles[i]), React.createElement("p", null, i === 2 && React.createElement("strong", null, "\u6B63\u78BA\u7B54\u6848\uFF1A", answer, "\u3002 "), text)))), level < 3 && React.createElement(Btn, {
+    className: i === last ? 'middle-hint-solution' : ''
+  }, React.createElement("b", null, titles[i]), React.createElement("p", null, i === last && React.createElement("strong", null, "\u6B63\u78BA\u7B54\u6848\uFF1A", answer, "\u3002 "), text)))), level < plan.levels.length && React.createElement(Btn, {
     id: "middle-hint-next",
-    kind: level === 2 ? 'ghost' : 'teal',
+    kind: level === last ? 'ghost' : 'teal',
     disabled: disabled,
     onClick: onHint
-  }, level === 0 ? '給我一點方向' : level === 1 ? '再給我一個步驟' : '看完整解說（記錄求助）'), level === 3 && React.createElement("p", {
+  }, level === last ? '看完整解說（記錄求助）' : level === 0 ? '給我一點方向' : '再給我一個步驟'), level === plan.levels.length && React.createElement("p", {
     className: "small muted"
   }, "\u5DF2\u8A18\u9304\u770B\u904E\u89E3\u8AAA\u3002\u8ACB\u81EA\u5DF1\u9078\u4E00\u6B21\u7B54\u6848\uFF0C\u518D\u78BA\u8A8D\u3002"));
 }
@@ -299786,7 +300142,7 @@ function PickOne({
   const hintTexts = hints.length ? hints.map(ownVocabularyHint) : it?.hint ? [ownVocabularyHint(it.hint)] : ['先把題目念一次，再看圖。', '把每一個選項都看一遍，不急。'];
   const layered = validMiddleHints(it.hints),
     level = itemLevels[idx] || 0,
-    shown = answerShown || layered && level === 3;
+    shown = answerShown || layered && level === it.hints.levels.length;
   const score = answers.filter(a => a.correct).length,
     firstTryCorrect = answers.filter(a => a.firstTryCorrect).length;
   const detail = rows => ({
@@ -299796,7 +300152,7 @@ function PickOne({
     firstTryCorrect: rows.filter(a => a.firstTryCorrect).length,
     log: rows.map(a => a.firstTryCorrect),
     answers: rows,
-    fullReveal: rows.some(a => a.answerShown) || levelsRef.current.includes(3),
+    fullReveal: rows.some(a => a.answerShown) || levelsRef.current.some((n, i) => validMiddleHints(items[i].hints) && n === items[i].hints.levels.length),
     revealKnown: true,
     ...(middleHintParams(params) ? {
       hintVersion: 93,
@@ -299804,10 +300160,10 @@ function PickOne({
     } : {})
   });
   const openHint = () => {
-    if (!layered || m.done || finished.current || checked === 'correct' || (levelsRef.current[idx] || 0) >= 3) return;
+    if (!layered || m.done || finished.current || checked === 'correct' || (levelsRef.current[idx] || 0) >= it.hints.levels.length) return;
     const nextLevel = (levelsRef.current[idx] || 0) + 1;
     if (!m.useHint({
-      fullReveal: nextLevel === 3
+      fullReveal: nextLevel === it.hints.levels.length
     })) return;
     const levels = levelsRef.current.slice();
     levels[idx] = nextLevel;
@@ -304667,8 +305023,8 @@ function Grade3English({
             fallback,
             heard
           },
-          fullReveal: fallback,
-          firstAttemptCorrect: correct && m.attempts === 0 && !fallback
+          fullReveal: fallback || !!p.fullRevealAt && m.hintLevel >= p.fullRevealAt,
+          firstAttemptCorrect: correct && m.attempts === 0 && m.hints === 0 && !fallback
         };
       if (correct) {
         stop();
@@ -304729,7 +305085,8 @@ function Grade3English({
   }, "\u78BA\u8A8D\u7B54\u6848"), React.createElement(MechHUD, {
     m: m,
     hintsAllowed: hintsAllowed,
-    hintTexts: listening ? ['可以再聽一次，注意單字或句子裡的重要訊息。'] : ['先回想單字，再核對字母的順序。']
+    fullRevealAt: p.fullRevealAt || Infinity,
+    hintTexts: p.hints?.length ? p.hints : listening ? ['可以再聽一次，注意單字或句子裡的重要訊息。'] : ['先回想單字，再核對字母的順序。']
   }));
 }
 ALL_MECHS.g3workshop = Grade3Workshop;
@@ -326061,7 +326418,7 @@ function mazeSubmit(state, id, qid, t = now()) {
     attempts: 1,
     detail: {
       maze: true,
-      fullReveal: !!mazeMiddleHints(q) && a.hintLevel === 3,
+      fullReveal: !!mazeMiddleHints(q) && a.hintLevel === mazeMiddleHints(q).levels.length,
       revealKnown: true,
       answer: q.options[a.selection]
     }
@@ -326145,7 +326502,7 @@ function validateMaze(m, bad, p) {
   if (q !== null) {
     if (!obj(q) || !str(q.id) || !KP_BY_ID[q.kpId] || q.subject !== KP_BY_ID[q.kpId].subject || !str(q.prompt) || !str(q.context) || !str(q.why) || !Array.isArray(q.options) || q.options.length < 2 || q.options.length > 3 || q.options.some(x => !str(x)) || !int(q.answer) || q.answer >= q.options.length || !obj(q.stage) || !obj(q.stage.params) || !a.used.includes(q.id) || a.selection !== null && (!int(a.selection) || a.selection >= q.options.length)) bad(p + '.question');
   } else if (['question', 'feedback', 'complete'].includes(a.phase)) bad(p + '.question');
-  if (a.hintLevel !== undefined && (!int(a.hintLevel) || a.hintLevel > 3 || a.hintLevel > 0 && !mazeMiddleHints(q))) bad(p + '.hintLevel');
+  if (a.hintLevel !== undefined && (!int(a.hintLevel) || a.hintLevel > (mazeMiddleHints(q)?.levels.length || 0) || a.hintLevel > 0 && !mazeMiddleHints(q))) bad(p + '.hintLevel');
   if (a.phase === 'complete' && (!m.history.some(e => e.id === a.id) || a.position !== a.length)) bad(p + '.completion');
 }
 const JUNIOR_LIFE_IDS = ['j_quake', 'j_plastic', 'j_seed', 'j_magnet', 'j_color'];
@@ -326349,15 +326706,16 @@ GENERATORS.grade3 = Object.fromEntries(GRADE3_IDS.map(kp => [kp, rng => [0, 1, 2
   const rows = shuffle(rng, GRADE3_POOLS[kp][level]).slice(0, 3);
   const params = {
     items: rows.map(q => ({
-      id: q.id,
-      q: q.q,
-      figure: q.figure,
+      ...q,
+      ...HintBuilder.forQuestion(q, {
+        subject: KP_BY_ID[kp]?.subject,
+        rules: HINT_RULES
+      }),
       options: shuffle(rng, q.options.map(text => ({
         text,
         correct: text === q.answer,
         why: text === q.answer ? q.why : q.optionWhy?.[text] || '再核對題目和資料，改選後確認。'
-      }))),
-      hint: '先找題目要你確認的資料，再比較選項。'
+      })))
     })),
     passNeed: 3
   };
@@ -326395,6 +326753,10 @@ for (const k of GRADE3_V84_KPS) {
       ...s,
       kind: 'g3english',
       params: {
+        ...HintBuilder.forQuestion(q, {
+          subject: KP_BY_ID[k.id]?.subject,
+          rules: HINT_RULES
+        }),
         questionId: q.id,
         mode: k.id === 'g3_listen' ? 'listen' : 'spell',
         spoken: q.spoken || q.word,
@@ -326458,6 +326820,10 @@ GENERATORS.grade4 = Object.fromEntries(GRADE4_IDS.map(kp => [kp, rng => [0, 1, 2
   if (['g4_listen', 'g4_spell'].includes(kp)) task = {
     kind: 'g4english',
     params: {
+      ...HintBuilder.forQuestion(q, {
+        subject: KP_BY_ID[kp]?.subject,
+        rules: HINT_RULES
+      }),
       questionId: q.id,
       mode: kp === 'g4_listen' ? 'listen' : 'spell',
       spoken: q.spoken || q.word,
@@ -326479,15 +326845,16 @@ GENERATORS.grade4 = Object.fromEntries(GRADE4_IDS.map(kp => [kp, rng => [0, 1, 2
     kind: 'pickone',
     params: {
       items: rows.map(q => ({
-        id: q.id,
-        q: q.q,
-        figure: q.figure,
+        ...q,
+        ...HintBuilder.forQuestion(q, {
+          subject: KP_BY_ID[kp]?.subject,
+          rules: HINT_RULES
+        }),
         options: shuffle(rng, q.options.map(text => ({
           text,
           correct: text === q.answer,
           why: text === q.answer ? q.why : q.optionWhy?.[text] || '再核對題目和資料，改選後確認。'
-        }))),
-        hint: '先找題目要你確認的資料，再比較選項。'
+        })))
       })),
       passNeed: 3
     }
@@ -326549,6 +326916,10 @@ GENERATORS.grade5v87 = Object.fromEntries(GRADE5_V87_IDS.map(kp => [kp, rng => [
   if (['g5_enlisten', 'g5_enspell'].includes(kp)) task = {
     kind: 'g5english',
     params: {
+      ...HintBuilder.forQuestion(q, {
+        subject: KP_BY_ID[kp]?.subject,
+        rules: HINT_RULES
+      }),
       questionId: q.id,
       mode: kp === 'g5_enlisten' ? 'listen' : 'spell',
       spoken: q.spoken || q.word,
@@ -326567,15 +326938,16 @@ GENERATORS.grade5v87 = Object.fromEntries(GRADE5_V87_IDS.map(kp => [kp, rng => [
     kind: 'pickone',
     params: {
       items: rows.map(q => ({
-        id: q.id,
-        q: q.q,
-        figure: q.figure,
+        ...q,
+        ...HintBuilder.forQuestion(q, {
+          subject: KP_BY_ID[kp]?.subject,
+          rules: HINT_RULES
+        }),
         options: shuffle(rng, q.options.map(text => ({
           text,
           correct: text === q.answer,
           why: text === q.answer ? q.why : '再核對題目、圖表與資料，改選後確認。'
-        }))),
-        hint: '先找要解決的問題，再從資料找理由。'
+        })))
       })),
       passNeed: 3
     }
@@ -326641,26 +327013,19 @@ NEW_TOPIC_RELEASES.push({
     desc: '辨部首、同部首字、偏旁變形與部首外筆畫；75個例字與240道原創練習。'
   }]
 });
-const MIDDLE_HINT_BANK = new Map([...GRADE3_BANK, ...GRADE4_BANK].map(q => [q.id, q]));
+const MIDDLE_HINT_BANK = new Map([...GRADE3_BANK, ...GRADE4_BANK, ...GRADE5_V87_BANK].map(q => [q.id, q]));
 function validMiddleHints(h) {
-  return !!h && h.v === 93 && Array.isArray(h.levels) && h.levels.length === 3 && h.levels.every(s => typeof s === 'string' && s.length > 0 && s.length <= 2000);
+  return !!h && h.v === 93 && Array.isArray(h.levels) && h.levels.length >= 2 && h.levels.length <= 3 && h.levels.every(s => typeof s === 'string' && s.length > 0 && s.length <= 2000);
 }
 function middleHintPlan(q) {
-  if (q.quality?.version === 94 && Array.isArray(q.quality.hints) && q.quality.hints.length === 2) return {
-    v: 93,
-    levels: [...q.quality.hints, q.why]
-  };
-  const topic = MIDDLE_HINTS.topics[q.kpId];
-  if (!topic) return null;
-  const math = KP_BY_ID[q.kpId]?.subject === 'math';
-  const givens = math ? [...new Set(q.q.match(/\d+(?:\.\d+)?/g) || [])].slice(0, 8) : [];
-  const first = topic[0] + (givens.length ? ' 題目寫出的數字有 ' + givens.join('、') + '，先確認各自代表什麼。' : '');
-  let operation = q.proof?.op;
-  if (operation === 'sum' && !['g3_addsub', 'g3_place'].includes(q.kpId)) operation = null;
-  if (operation === 'hundredths' && q.kpId === 'g4_decimal' && q.level === 2) operation = 'decimalTimes';
+  const shared = HintBuilder.forQuestion(q, {
+    subject: KP_BY_ID[q.kpId]?.subject,
+    rules: HINT_RULES
+  });
   return {
     v: 93,
-    levels: [first, math && MIDDLE_HINTS.operations[operation] || topic[1], q.why]
+    levels: shared.hints,
+    hintKinds: shared.hintKinds
   };
 }
 function prepareMiddleHintStage(t) {
@@ -326680,12 +327045,12 @@ function prepareMiddleHintStage(t) {
     }
   };
 }
-for (const grade of ['grade3', 'grade4']) for (const [id, gen] of Object.entries(GENERATORS[grade])) GENERATORS[grade][id] = (...args) => gen(...args).map(prepareMiddleHintStage);
+for (const grade of ['grade3', 'grade4', 'grade5v87']) for (const [id, gen] of Object.entries(GENERATORS[grade])) GENERATORS[grade][id] = (...args) => gen(...args).map(prepareMiddleHintStage);
 function middleHintParams(p) {
   return !!p?.items?.some(it => validMiddleHints(it.hints));
 }
 function validMiddleHintDraft(d, p) {
-  return !!d && d.v === 93 && Array.isArray(d.levels) && d.levels.length === p.items.length && d.levels.every((n, i) => Number.isInteger(n) && n >= 0 && n <= (validMiddleHints(p.items[i].hints) ? 3 : 0)) && d.hints === d.levels.reduce((a, b) => a + b, 0);
+  return !!d && d.v === 93 && Array.isArray(d.levels) && d.levels.length === p.items.length && d.levels.every((n, i) => Number.isInteger(n) && n >= 0 && n <= (validMiddleHints(p.items[i].hints) ? p.items[i].hints.levels.length : 0)) && d.hints === d.levels.reduce((a, b) => a + b, 0);
 }
 function middleHintSignature(p) {
   return JSON.stringify(p);
@@ -326742,7 +327107,7 @@ function mazeMiddleHints(q) {
 }
 function mazeHint(s, id, qid) {
   const a = mazeState(s).active;
-  if (!a || a.id !== id || a.question?.id !== qid || a.phase !== 'question' || a.policy !== learningSignature(s) || !learningAllows(s, a.question.kpId) || !mazeMiddleHints(a.question) || (a.hintLevel || 0) >= 3) return s;
+  if (!a || a.id !== id || a.question?.id !== qid || a.phase !== 'question' || a.policy !== learningSignature(s) || !learningAllows(s, a.question.kpId) || !mazeMiddleHints(a.question) || (a.hintLevel || 0) >= mazeMiddleHints(a.question).levels.length) return s;
   return mazePut(s, {
     active: {
       ...a,
@@ -360554,7 +360919,7 @@ function MazeAdventure({
   const hintPlan = mazeMiddleHints(q),
     questionGuard = answerGuardForStage(q?.stage?.kind, q?.stage?.params),
     protectedQuestion = !!(questionGuard.chars || questionGuard.muteBopomofo),
-    guardActive = !!q && !invalid && !(hintPlan && a.hintLevel === 3) && (answering || feedback && !a.feedback?.passed);
+    guardActive = !!q && !invalid && !(hintPlan && a.hintLevel === hintPlan.levels.length) && (answering || feedback && !a.feedback?.passed);
   useAnswerGuard(questionGuard, guardActive);
   const careGrant = finished ? state.student.care?.log?.find(e => e.eventId === 'maze:' + a.id && e.type === 'stipend_granted')?.amount || 0 : 0;
   return React.createElement("div", {
