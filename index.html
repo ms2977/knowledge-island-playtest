@@ -1023,6 +1023,32 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 .junior .junior-commission>.btn{display:block;text-align:center}
 .junior-commission-action>span{display:inline-block;white-space:nowrap}
 
+/* Keep ordinary Chinese sentences horizontal; each Bopomofo syllable reads down. */
+.g1-phonetic-text{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.3em .45em;vertical-align:middle;letter-spacing:normal;max-width:100%}
+.g1-zy-syllable{position:relative;display:inline-flex;flex:none;align-items:center;justify-content:center;padding:.45em .6em .1em .05em;line-height:1;white-space:nowrap;writing-mode:horizontal-tb;text-orientation:upright}
+.g1-zy-stack{display:flex;flex-direction:column;align-items:center;gap:0;line-height:1.15}
+.g1-zy-unit{display:block;width:1em;height:1.15em;line-height:1.15;text-align:center;writing-mode:horizontal-tb}
+.g1-zy-tone{position:absolute;right:0;bottom:.55em;line-height:1;display:block;width:.6em;text-align:center}
+.g1-zy-light{position:absolute;top:0;left:.05em;width:1em;line-height:.5;text-align:center}
+.g1-mech .g1-choices .g1-phonetic-text,.g1-mech .g1-choices .g1-phonetic-text span{font-size:inherit}
+.g1-reading .g1-phonetic-text{gap:.5em .55em}
+.g1-spelling-board{display:flex;align-items:center;justify-content:center;gap:24px;max-width:100%;padding:4px 0}
+.g1-spelling-column,.g1-spelling-bank{display:flex;flex-direction:column;align-items:center;gap:6px}
+.g1-spelling-guide{margin:0;font-size:17px;line-height:1.7;color:#476c63}
+.g1-zy-editable{font-size:36px;padding:20px 24px 0 0}
+.g1-zy-editable .g1-slots{display:flex;flex-direction:column;flex-wrap:nowrap;gap:6px}
+.g1-mech .g1-zy-editable .g1-slots button{display:grid;place-items:center;box-sizing:border-box;width:64px;height:64px;min-width:64px;min-height:64px;padding:0;font-size:34px;line-height:1;border-radius:14px}
+.g1-zy-editable .g1-zy-tone{bottom:23px;right:0;width:24px}
+.g1-zy-editable .g1-zy-light{left:0;width:64px;top:0;line-height:20px}
+.g1-spelling-bank .g1-tokens{display:grid;grid-template-columns:repeat(2,64px);gap:8px}
+.g1-mech .g1-spelling-bank .g1-tokens button{width:64px;height:64px;padding:0;min-width:64px;min-height:64px;font-size:32px;line-height:1}
+.g1-mech .g1-tone .g1-tone-name{font-size:17px;line-height:1.5}
+.g1-tone>p{text-align:center;margin:0 0 8px}
+.g1-hint-vertical{writing-mode:vertical-rl;text-orientation:upright;line-height:1}
+@media(max-width:360px){.g1-spelling-board{gap:12px}.g1-spelling-guide{font-size:15px}.g1-spelling-bank .g1-tokens{gap:6px}}
+.g1-spelling-answer{display:flex;align-items:center;gap:8px}.g1-spelling-character{font-size:44px;line-height:1.3}.g1-tone>p.g1-tone-note{font-size:17px;margin:8px 0 0;line-height:1.8}
+@media(max-width:600px){.g1-spelling-board{gap:12px}.g1-spelling-answer{gap:4px}.g1-spelling-character{font-size:32px}}
+
 .g3-figure { max-width:100%; margin:4px auto; }
 .g3-place { display:flex; gap:6px; justify-content:center; }
 .g3-place>div { min-width:58px; text-align:center; border:1px solid #b2cecb; border-radius:12px; overflow:hidden; background:#f0f7f3; }
@@ -1071,7 +1097,7 @@ ruby.zy .zy-t { margin-left: .05em; line-height: 1; align-self: center; }
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="game-release" content="playtest-20261119-hints-v98-r1">
+<meta name="game-release" content="playtest-20261120-zhuyin-v99-r1">
 </head><body><div id="root"></div>
 <script src="./react.production.min.js"></script>
 <script src="./react-dom.production.min.js"></script>
@@ -296570,7 +296596,7 @@ function validatePaintCases(v, bad, p) {
     if (c.help !== undefined && (!backupObject(c.help) || Object.keys(c.help).length > 200 || !Object.values(c.help).every(x => x === 'solve'))) bad(p + '.help');
   }
 }
-const GAME_BUILD = '2026.11.19-v98';
+const GAME_BUILD = '2026.11.20-v99';
 const PLAYTEST_REPORT_EMAIL = '';
 function playtestReportMessage(description, details) {
   return ['知識探索島・問題回報', '我遇到的問題：', description.trim() || '（請簡單說明按了什麼，以及發生什麼事。）', '', '請附上問題畫面的截圖。', '', '以下遊戲資訊會自動附上，不用另外填寫：', details].join('\n');
@@ -303429,6 +303455,50 @@ function JuniorHands({
 for (const kind of JH_KINDS) ALL_MECHS[kind] = props => React.createElement(JuniorHands, _extends({}, props, {
   kind: kind
 }));
+function G1ZhuyinSyllable({
+  parts,
+  tone = '',
+  children,
+  editable = false
+}) {
+  return React.createElement("span", {
+    className: 'g1-zy-syllable nozy' + (editable ? ' g1-zy-editable' : ''),
+    "data-g1-zy-count": parts.length,
+    "data-g1-zy-tone": tone
+  }, tone === '˙' && React.createElement("span", {
+    className: "g1-zy-light"
+  }, "\u02D9"), React.createElement("span", {
+    className: "g1-zy-stack"
+  }, children || parts.map((part, i) => React.createElement("span", {
+    className: "g1-zy-unit",
+    key: i
+  }, part))), ['ˊ', 'ˇ', 'ˋ'].includes(tone) && React.createElement("span", {
+    className: "g1-zy-tone"
+  }, tone));
+}
+function G1ZhuyinText({
+  text
+}) {
+  const pieces = String(text).split(/(˙?[ㄅ-ㄩ]+[ˊˇˋ˙—]?)/g).filter(Boolean);
+  return React.createElement("span", {
+    className: "g1-phonetic-text"
+  }, pieces.map((piece, i) => {
+    if (!/[ㄅ-ㄩ]/.test(piece)) return piece.trim() ? React.createElement("span", {
+      key: i
+    }, piece) : null;
+    const tone = piece.includes('˙') ? '˙' : piece.match(/[ˊˇˋ—]$/)?.[0] || '';
+    return React.createElement(G1ZhuyinSyllable, {
+      key: i,
+      parts: [...piece.replace(/[ˊˇˋ˙—]/g, '')],
+      tone: tone
+    });
+  }));
+}
+function g1PhoneticText(text) {
+  return typeof text === 'string' && /[ㄅ-ㄩ]/.test(text) ? React.createElement(G1ZhuyinText, {
+    text: text
+  }) : text;
+}
 function G1V78Figure({
   figure: f
 }) {
@@ -304278,6 +304348,7 @@ function Grade1Practice({
     },
     onPointerDown: e => {
       if (correct) return;
+      suppressClick.current = false;
       drag.current = {
         value,
         x: e.clientX,
@@ -304292,7 +304363,9 @@ function Grade1Practice({
       if (target && Math.hypot(e.clientX - d.x, e.clientY - d.y) > 8) {
         suppressClick.current = true;
         put(d.value, Number(target.dataset.g1Drop));
-        setTimeout(() => suppressClick.current = false, 0);
+      } else if (e.pointerType === 'touch' && Math.hypot(e.clientX - d.x, e.clientY - d.y) <= 8) {
+        suppressClick.current = true;
+        q.form === 'sort' ? setActive(d.value) : put(d.value);
       }
       drag.current = null;
     }
@@ -304308,8 +304381,12 @@ function Grade1Practice({
       }
     }
   });
-  const chooseToken = value => {
-    if (suppressClick.current) return;
+  const chooseToken = (value, event) => {
+    if (suppressClick.current && event?.detail !== 0) {
+      suppressClick.current = false;
+      return;
+    }
+    suppressClick.current = false;
     q.form === 'sort' ? setActive(value) : put(value);
   };
   const useHint = full => {
@@ -304388,7 +304465,7 @@ function Grade1Practice({
     className: "g1-heading"
   }, React.createElement("h3", {
     id: "g1-prompt"
-  }, q.prompt), React.createElement("div", {
+  }, g1PhoneticText(q.prompt)), React.createElement("div", {
     className: "g1-voice"
   }, React.createElement("button", {
     id: "g1-read",
@@ -304402,10 +304479,10 @@ function Grade1Practice({
     id: q.word
   }), React.createElement("b", null, GRADE1_WORDS.find(w => w.id === q.word)?.word)), q.display && React.createElement("div", {
     className: "g1-display"
-  }, q.display), q.reading && React.createElement("p", {
+  }, g1PhoneticText(q.display)), q.reading && React.createElement("p", {
     className: "g1-reading nozy",
     "aria-label": "\u6CE8\u97F3\u77ED\u53E5"
-  }, q.reading), q.figure ? React.createElement(G1Figure, {
+  }, g1PhoneticText(q.reading)), q.figure ? React.createElement(G1Figure, {
     figure: q.figure
   }) : q.equation && React.createElement("div", {
     className: "g1-equation nozy"
@@ -304429,7 +304506,23 @@ function Grade1Practice({
     size: 76
   }), React.createElement("span", null, GRADE1_WORDS.find(w => w.id === option)?.word)) : G1_TONE_NAMES[option] ? React.createElement(G1ToneMark, {
     tone: option
-  }) : option))), q.form === 'spell' && React.createElement(React.Fragment, null, React.createElement("div", {
+  }) : g1PhoneticText(option)))), q.form === 'spell' && React.createElement(React.Fragment, null, React.createElement("div", {
+    className: "g1-spelling-board"
+  }, React.createElement("div", {
+    className: "g1-spelling-column"
+  }, React.createElement("p", {
+    className: "g1-spelling-guide",
+    "data-speech-skip": "true"
+  }, "\u7531\u4E0A\u5F80\u4E0B\u62FC"), React.createElement("div", {
+    className: "g1-spelling-answer"
+  }, q.word && React.createElement("b", {
+    className: "g1-spelling-character nozy",
+    "data-speech-skip": "true"
+  }, GRADE1_WORD_BY_ID[q.word]?.word[0]), React.createElement(G1ZhuyinSyllable, {
+    parts: q.parts.map((_, i) => answer.parts?.[i] || '□'),
+    tone: answer.tone,
+    editable: true
+  }, React.createElement("span", {
     className: "g1-slots"
   }, q.parts.map((_, i) => React.createElement("button", _extends({
     id: 'g1-slot-' + i,
@@ -304445,14 +304538,19 @@ function Grade1Practice({
       });
     },
     "aria-label": '第' + (i + 1) + '格，點一下重排'
-  }), answer.parts?.[i] || '□'))), React.createElement("div", {
+  }), answer.parts?.[i] || '□')))))), React.createElement("div", {
+    className: "g1-spelling-bank"
+  }, React.createElement("p", {
+    className: "g1-spelling-guide",
+    "data-speech-skip": "true"
+  }, "\u9078\u7B26\u865F"), React.createElement("div", {
     className: "g1-tokens"
   }, q.tiles.map((s, i) => React.createElement("button", _extends({
     key: s,
     id: 'g1-tile-' + i
   }, dragProps(s), {
-    onClick: () => chooseToken(s)
-  }), s))), syllablesCorrect && React.createElement("div", {
+    onClick: e => chooseToken(s, e)
+  }), s))))), syllablesCorrect && React.createElement("div", {
     className: "g1-tone"
   }, React.createElement("p", null, "\u518D\u9078\u8072\u8ABF"), React.createElement("div", {
     className: "g1-choices"
@@ -304466,14 +304564,18 @@ function Grade1Practice({
     })
   }, React.createElement(G1ToneMark, {
     tone: t
-  }))))), answer.parts?.length === q.parts.length && !syllablesCorrect && React.createElement("p", null, "\u7B26\u865F\u53EF\u4EE5\u9EDE\u4E00\u4E0B\u91CD\u6392\u3002")), q.form === 'sort' && React.createElement(React.Fragment, null, React.createElement("div", {
+  }), React.createElement("span", {
+    className: "g1-tone-name"
+  }, G1_TONE_NAMES[t])))), q.toneOptions.includes('—') && React.createElement("p", {
+    className: "g1-tone-note"
+  }, "\u4E00\u8072\u4E0D\u7528\u6A19\u8A18\u3002")), answer.parts?.length === q.parts.length && !syllablesCorrect && React.createElement("p", null, "\u7B26\u865F\u53EF\u4EE5\u9EDE\u4E00\u4E0B\u91CD\u6392\u3002")), q.form === 'sort' && React.createElement(React.Fragment, null, React.createElement("div", {
     className: "g1-tokens"
   }, q.cards.map((c, i) => React.createElement("button", _extends({
     id: 'g1-card-' + i,
     key: i,
     className: active === i ? 'selected' : ''
   }, dragProps(i), {
-    onClick: () => chooseToken(i)
+    onClick: e => chooseToken(i, e)
   }), React.createElement("span", null, c), React.createElement("small", null, answer.bins?.[i] === undefined ? '' : q.bins[answer.bins[i]])))), React.createElement("div", {
     className: "g1-bins"
   }, q.bins.map((b, i) => React.createElement("button", _extends({
@@ -304499,7 +304601,7 @@ function Grade1Practice({
     key: n,
     id: 'g1-card-' + i
   }, dragProps(n), {
-    onClick: () => chooseToken(n)
+    onClick: e => chooseToken(n, e)
   }), q.cards[n]))))), React.createElement("div", {
     className: "g1-response-bar",
     ref: feedbackBar
@@ -304526,15 +304628,15 @@ function Grade1Practice({
     onClick: () => useHint(true)
   }, "\u770B\u89E3\u8AAA"))), hint && React.createElement("aside", {
     className: "g1-hint"
-  }, React.createElement("p", null, q.hint), q.word && React.createElement(G1Picture, {
+  }, React.createElement("p", null, g1PhoneticText(q.hint)), q.word && React.createElement(G1Picture, {
     id: q.word,
     size: 72
   }), React.createElement("span", {
-    className: "g1-hint-mark",
+    className: "g1-hint-mark" + (q.form === 'spell' ? ' g1-hint-vertical' : ''),
     "aria-hidden": "true"
-  }, "\u25CC \u2192 \u25CC")), reveal && React.createElement("p", {
+  }, q.form === 'spell' ? '◌ ↓ ◌' : '◌ → ◌')), reveal && React.createElement("p", {
     className: "g1-explanation"
-  }, grade1Explanation(q)));
+  }, g1PhoneticText(grade1Explanation(q))));
 }
 ALL_MECHS.grade1 = Grade1Practice;
 function Grade3Figure({
@@ -360790,9 +360892,9 @@ function MazeFigure({
       id: q.word
     }), React.createElement("b", null, GRADE1_WORD_BY_ID[q.word].word)), q.display && React.createElement("div", {
       className: "g1-display"
-    }, q.display), q.reading && React.createElement("p", {
+    }, g1PhoneticText(q.display)), q.reading && React.createElement("p", {
       className: "g1-reading nozy"
-    }, q.reading), q.figure ? React.createElement(G1Figure, {
+    }, g1PhoneticText(q.reading)), q.figure ? React.createElement(G1Figure, {
       figure: q.figure
     }) : q.equation && React.createElement("div", {
       className: "g1-equation nozy"
@@ -361096,7 +361198,7 @@ function MazeAdventure({
     key: q.id
   }, React.createElement("p", null, q.context), React.createElement("h2", {
     id: "maze-prompt"
-  }, q.prompt), React.createElement(MazeFigure, {
+  }, q.figure?.type === 'grade1' ? g1PhoneticText(q.prompt) : q.prompt), React.createElement(MazeFigure, {
     figure: protectedQuestion && a.feedback?.passed ? {
       ...q.figure,
       nozy: false
@@ -361119,7 +361221,7 @@ function MazeAdventure({
   }, q.figure?.type === 'grade1' && q.figure.item.pictureOptions && React.createElement(G1Picture, {
     id: GRADE1_WORDS.find(w => w.word === text)?.id,
     size: 70
-  }), React.createElement("span", null, text))))), hintPlan && answering && React.createElement(MiddleHints, {
+  }), React.createElement("span", null, q.figure?.type === 'grade1' ? g1PhoneticText(text) : text))))), hintPlan && answering && React.createElement(MiddleHints, {
     key: q.id,
     plan: hintPlan,
     level: a.hintLevel || 0,
@@ -361138,7 +361240,7 @@ function MazeAdventure({
   }, "\u8D70\u9019\u689D")) : feedback ? React.createElement("div", {
     className: 'maze-feedback ' + (a.feedback.passed ? 'maze-pass' : 'maze-detour'),
     role: "status"
-  }, React.createElement("h3", null, a.feedback.passed ? '路燈亮了，繼續走吧！' : a.challenge ? '先回入口，再找新路。' : '這條路繞遠了，退一步再試。'), protectedQuestion && !a.feedback.passed ? React.createElement("p", null, "\u518D\u6BD4\u8F03\u5B57\u5F62\u8207\u8B80\u97F3\uFF0C\u4E0B\u4E00\u584A\u8DEF\u724C\u518D\u8A66\u8A66\u770B\u3002") : React.createElement(React.Fragment, null, !a.feedback.passed && React.createElement("p", null, "\u8DEF\u724C\u7684\u610F\u601D\uFF1A", a.feedback.answer), React.createElement("p", null, a.feedback.why)), !a.feedback.passed && React.createElement("small", null, "\u9019\u500B\u89C0\u5FF5\u5DF2\u8A18\u9032\u932F\u984C\uFF0C\u56DE\u53BB\u5F8C\u53EF\u4EE5\u518D\u7DF4\u7FD2\u3002"), React.createElement(Btn, {
+  }, React.createElement("h3", null, a.feedback.passed ? '路燈亮了，繼續走吧！' : a.challenge ? '先回入口，再找新路。' : '這條路繞遠了，退一步再試。'), protectedQuestion && !a.feedback.passed ? React.createElement("p", null, "\u518D\u6BD4\u8F03\u5B57\u5F62\u8207\u8B80\u97F3\uFF0C\u4E0B\u4E00\u584A\u8DEF\u724C\u518D\u8A66\u8A66\u770B\u3002") : React.createElement(React.Fragment, null, !a.feedback.passed && React.createElement("p", null, "\u8DEF\u724C\u7684\u610F\u601D\uFF1A", q.figure?.type === 'grade1' ? g1PhoneticText(a.feedback.answer) : a.feedback.answer), React.createElement("p", null, q.figure?.type === 'grade1' ? g1PhoneticText(a.feedback.why) : a.feedback.why)), !a.feedback.passed && React.createElement("small", null, "\u9019\u500B\u89C0\u5FF5\u5DF2\u8A18\u9032\u932F\u984C\uFF0C\u56DE\u53BB\u5F8C\u53EF\u4EE5\u518D\u7DF4\u7FD2\u3002"), React.createElement(Btn, {
     id: "maze-next",
     disabled: moving,
     onClick: advance
